@@ -9,4 +9,8 @@ class Convenio < ActiveRecord::Base
   def inativa!
     self.ativo = false
   end
+  
+  def ativa!
+    self.ativo = true
+  end
 end

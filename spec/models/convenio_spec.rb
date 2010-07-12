@@ -22,4 +22,13 @@ describe Convenio do
     amil.inativa!
     amil.should_not be_ativo
   end
+  
+  it 'deve ser ativo' do
+    amil = Convenio.new
+    amil.inativa!
+    amil.should_not be_ativo
+    
+    amil.ativa!
+    amil.should be_ativo
+  end
 end
