@@ -24,5 +24,23 @@ class ConveniosController < ApplicationController
       end
     end
   end
+  
+  def new
+    @convenio = Convenio.new
+  end
+  
+  def create
+    @convenio = Convenio.new(params[:convenio])
+    @convenio.clinica = @clinica
+    
+    respond_to do |resposta|
+      if @convenio.save
+        flash[:aviso] = 'Convênio criado com sucesso.'
+        resposta.html { redirect_to(@convenio) }
+      else
+        resposta.html { render :action => 'new' }
+      end
+    end
+  end
 
 end
