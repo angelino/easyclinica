@@ -15,4 +15,10 @@ describe ConveniosController do
     
     assigns(:convenios).size.should == 2
   end
+  
+  it 'deve retornar o convenio passado para edicao' do
+    get :edit, :id => @amil.id.to_s
+    
+    assigns(:convenio).should == @amil
+  end
 end

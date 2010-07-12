@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100712224738) do
+ActiveRecord::Schema.define(:version => 20100712230104) do
 
   create_table "clinicas", :force => true do |t|
     t.string   "nome",       :limit => 100, :null => false
@@ -36,6 +36,8 @@ ActiveRecord::Schema.define(:version => 20100712224738) do
     t.datetime "updated_at"
     t.boolean  "ativo",                               :default => true, :null => false
     t.string   "email",                :limit => 150
+    t.text     "observacoes"
+    t.string   "website",              :limit => 100
   end
 
 end

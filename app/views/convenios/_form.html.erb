@@ -1,0 +1,70 @@
+<% form_for(@convenio, :html => { :class => "form"} ) do |f| %>
+<div class="flash"> 
+<div class="message error">
+  <p><%= f.error_messages :header_message => '', :message => 'Os seguintes erros ocorreram:' %></p>
+</div>
+</div>
+
+  <div class="group">
+    <label class="label">Nome:</label>
+    <%= f.text_field :nome, :class => 'text_field' %>
+    <span class="description">Ex: 'Amil', 'Blue Life'</span>
+  </div>
+
+  <div class="group">
+    <label class="label">Endereço:</label>
+    <%= f.text_field :endereco, :class => 'text_field' %>
+    <span class="description">Ex: 'Av. Paulista, 123'</span>
+  </div>
+
+  <div class="group">
+    <label class="label">Bairro:</label>
+    <%= f.text_field :bairro, :class => 'text_field' %>
+    <span class="description">Ex: 'Jardins'</span>
+  </div>
+
+  <div class="group">
+    <label class="label">CEP:</label>
+    <%= f.text_field :cep, :class => 'text_field' %>
+    <span class="description">Ex: '12345-789'</span>
+  </div>
+
+  <div class="group">
+    <label class="label">Telefone:</label>
+    <%= f.text_field :telefone, :class => 'text_field' %>
+    <span class="description">Ex: '(11) 1111-1111'</span>
+  </div>
+
+  <div class="group">
+    <label class="label">Nome do Responsável:</label>
+    <%= f.text_field :responsavel, :class => 'text_field' %>
+    <span class="description">Ex: 'José da Silva'</span>
+  </div>
+
+  <div class="group">
+    <label class="label">E-mail:</label>
+    <%= f.text_field :email, :class => 'text_field' %>
+    <span class="description">Ex: 'pessoa@convenio.com.br'</span>
+  </div>
+
+  <div class="group">
+    <label class="label">Website:</label>
+    <%= f.text_field :website, :class => 'text_field' %>
+    <span class="description">Ex: 'http://www.convenio.com.br'</span>
+  </div>
+
+  <div class="group">
+    <label class="label">Observações</label>
+    <%= f.text_area :observacoes, :class => 'text_field' %>
+    <span class="description">Ex: 'só atende ortopedia'</span>
+  </div>
+
+  <div class="group navform wat-cf">
+    <button class="button" type="submit">
+      <%= image_tag 'tick.png', :alt => 'Salvar' %> Salvar
+    </button>
+	<% link_to(convenios_path, :class => 'button') do %>
+      <%= image_tag 'cross.png', :alt => 'Cancelar' %> Cancelar
+    <% end %>
+  </div>
+<% end %>
