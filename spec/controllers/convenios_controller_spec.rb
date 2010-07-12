@@ -60,4 +60,14 @@ describe ConveniosController do
       response.should render_template(:new)
     end
   end
+  
+  context 'quando um convenio eh inativado' do
+    it 'ele deve ter seu status alterado' do
+      delete :destroy, :id => @amil.id
+      
+      @amil.reload
+      @amil.should_not be_ativo
+    end
+  end
+
 end
