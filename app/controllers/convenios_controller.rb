@@ -46,10 +46,14 @@ class ConveniosController < ApplicationController
   def destroy
     @convenio = Convenio.da(@clinica).find(params[:id])
     @convenio.inativa!
-    @convenio.save
     
-    respond_to do |resposta|
+    if @convenio.save
       flash[:aviso] = 'Convênio inativado com sucesso.'
+    else
+      flash[:aviso] = 'Ocorreu um problema ao inativar o convênio. Por favor, tente novamente!'
+    end
+
+    respond_to do |resposta|
       resposta.html { redirect_to :action => 'index', :controller => 'convenios' }
     end
   end
