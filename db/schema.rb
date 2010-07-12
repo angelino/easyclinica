@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100712215953) do
+ActiveRecord::Schema.define(:version => 20100712224738) do
 
   create_table "clinicas", :force => true do |t|
     t.string   "nome",       :limit => 100, :null => false
@@ -21,8 +21,8 @@ ActiveRecord::Schema.define(:version => 20100712215953) do
   add_index "clinicas", ["login"], :name => "index_clinicas_on_login", :unique => true
 
   create_table "convenios", :force => true do |t|
-    t.string   "nome",                 :limit => 150, :null => false
-    t.string   "telefone",             :limit => 20,  :null => false
+    t.string   "nome",                 :limit => 150,                   :null => false
+    t.string   "telefone",             :limit => 20,                    :null => false
     t.string   "endereco",             :limit => 200
     t.string   "bairro",               :limit => 100
     t.string   "cidade",               :limit => 100
@@ -34,6 +34,8 @@ ActiveRecord::Schema.define(:version => 20100712215953) do
     t.integer  "clinica_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "ativo",                               :default => true, :null => false
+    t.string   "email",                :limit => 150
   end
 
 end

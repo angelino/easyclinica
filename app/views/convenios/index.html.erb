@@ -1,1 +1,32 @@
-bla
+<% content_for :conteudo do %>
+<div class="block" id="block">
+
+  <div class="content">
+    <h2 class="title">Relação de Convênios</h2>
+    <div class="inner">
+	
+		<table class="table"> 
+			<tr> 
+			<th	 class="first"><input type="checkbox" class="checkbox toggle" /></th> 
+				<th>Nome</th> 
+				<th>Telefone</th> 
+				<th>Responsável</th> 
+				<th>E-mail</th>
+				<th class="last">&nbsp;</th> 
+			</tr> 
+			<% for convenio in @convenios %>
+			<tr class="<%= @convenios.index(convenio)%2 == 0 ? 'odd' : 'even' %>"> 
+				<td><input type="checkbox" class="checkbox" name="id" value="<%= convenio.id %>" /></td>
+				<td><%= h convenio.nome %></td>
+				<td><%= h convenio.telefone %></td>
+				<td><%= h convenio.responsavel %></td>
+				<td><%= h convenio.email %></td>
+				<td class="last"><a href="#">exibir</a> | <a href="#">editar</a> | <a href="#">inativar</a></td> 
+			</tr> 
+			<% end %>
+		</table>
+		
+	</div>
+  </div>
+</div>
+<% end %>
