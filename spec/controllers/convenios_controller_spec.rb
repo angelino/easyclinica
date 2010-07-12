@@ -21,4 +21,25 @@ describe ConveniosController do
     
     assigns(:convenio).should == @amil
   end
+
+  it 'deve exibir o convenio' do
+    get :show, :id => @amil.id.to_s
+    
+    assigns(:convenio).should == @amil
+  end
+  
+  context 'no momento da atualizacao' do
+    it 'deve atualizar caso os dados sejam validos' do
+      put :update, :id => @amil.id, :convenio => {:nome => 'amil alterado'}
+    
+      @amil.reload
+      @amil.nome.should == 'amil alterado'
+    end
+  
+    it 'deve exibir erros de validacao caso os dados sejam invalidos' do
+      put :update, :id => @amil.id, :convenio => {:nome => ''}
+    
+      response.should render_template(:edit)
+    end
+  end
 end

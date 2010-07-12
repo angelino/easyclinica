@@ -1,4 +1,4 @@
-<% form_for(@convenio, :html => { :class => "form"} ) do |f| %>
+<%= form_for(@convenio, :html => { :class => "form"} ) do |f| %>
 <div class="flash"> 
 <div class="message error">
   <p><%= f.error_messages :header_message => '', :message => 'Os seguintes erros ocorreram:' %></p>
@@ -63,7 +63,7 @@
     <button class="button" type="submit">
       <%= image_tag 'tick.png', :alt => 'Salvar' %> Salvar
     </button>
-	<% link_to(convenios_path, :class => 'button') do %>
+	<%= link_to(convenios_path, :class => 'button') do %>
       <%= image_tag 'cross.png', :alt => 'Cancelar' %> Cancelar
     <% end %>
   </div>

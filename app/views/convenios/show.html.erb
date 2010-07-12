@@ -1,0 +1,62 @@
+
+<% content_for :conteudo do %>
+
+<div class="block" id="block">
+	
+	<div class="content">
+
+		<%= render :partial => 'shared/avisos' %>
+				
+   		<h2 class="title"><%=h @convenio.nome %></h2>
+		<div class="inner form">
+
+  <div class="group">
+    <label class="label">Endereço:</label>
+    <%=h @convenio.endereco %>
+  </div>
+
+  <div class="group">
+    <label class="label">Bairro:</label>
+    <%=h @convenio.bairro %>
+  </div>
+
+  <div class="group">
+    <label class="label">CEP:</label>
+    <%=h @convenio.cep %>
+  </div>
+
+  <div class="group">
+    <label class="label">Telefone:</label>
+    <%=h @convenio.telefone %>
+  </div>
+
+  <div class="group">
+    <label class="label">Nome do Responsável:</label>
+    <%=h @convenio.responsavel %>
+  </div>
+
+  <div class="group">
+    <label class="label">E-mail:</label>
+    <%=h @convenio.email %>
+  </div>
+
+  <div class="group">
+    <label class="label">Website:</label>
+    <%=h @convenio.website %>
+  </div>
+
+  <div class="group">
+    <label class="label">Observações</label>
+    <%=h @convenio.observacoes %>
+  </div>
+
+  <div class="group navform wat-cf">
+	<% link_to(convenios_path, :class => 'button') do %>
+      <%= image_tag 'cross.png', :alt => 'Voltar' %> Voltar
+    <% end %>
+  </div>
+
+		</div>
+	</div>
+</div>
+<% end -%>
