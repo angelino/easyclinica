@@ -14,4 +14,12 @@ describe Convenio do
     amil.clinica = @clinica
     amil.should be_valid
   end
+  
+  it 'deve ser inativo' do
+    amil = Convenio.new
+    amil.should be_ativo
+    
+    amil.inativa!
+    amil.should_not be_ativo
+  end
 end

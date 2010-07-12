@@ -4,6 +4,9 @@ class Convenio < ActiveRecord::Base
   include MultiTenancy
   
   belongs_to :clinica
-  
   validates_presence_of :nome, :telefone, :clinica
+  
+  def inativa!
+    self.ativo = false
+  end
 end
