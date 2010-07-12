@@ -1,14 +1,68 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
 <head>
-  <title>Easyclinica</title>
-  <%= stylesheet_link_tag :all %>
-  <%= javascript_include_tag :defaults %>
-  <%= csrf_meta_tag %>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title><%= @page_title or 'Easy Clínica' %></title>
+	
+  	<%= stylesheet_link_tag :all %>
+	<style type="text/css"><%= yield :css %></style>
+  
+	<%= javascript_include_tag 'jquery-1.4.2.min.js' %>
+	<%= javascript_include_tag 'ui-utils.js' %>
+	<script type="text/javascript" charset="utf-8"><%= yield :js %></script>
+	<%= csrf_meta_tag %>
 </head>
 <body>
+  <div id="container">
+    <div id="header">
+      <h1><a href="#">Easy Clínica</a></h1>
+      <div id="user-navigation">
+        <ul class="wat-cf">
+          <li><a href="#">Dados da clínica</a></li>
+          <li><a href="#">Configurações</a></li>
+          <li><a class="logout" href="#">Logout</a></li>
+        </ul>
+      </div>
+      <div id="main-navigation">
+        <ul class="wat-cf">
+          <li><a href="#">Dashboard</a></li>
+          <li><a href="#">Pacientes</a></li>
+          <li id="menu-link-convenios"><a href="#">Convênios</a></li>
+          <li><a href="#">Médicos</a></li>
+          <li><a href="#">Relatórios</a></li>
+        </ul>
+      </div>
+    </div>
+    <div id="wrapper" class="wat-cf">
+      <div id="main">
+	
+		<%= yield(:conteudo) or yield %>
 
-<%= yield %>
+        <div id="footer">
+          <div class="block">
+            <p>Copyright &copy; 2010 Easy Clínica.</p>
+          </div>
+        </div>
+      </div>
+      <div id="sidebar">
 
+        <div class="block">
+          <h3>Navegação</h3>
+          <ul class="navigation">
+            <li><a href="#">Opção</a></li>
+            <li><a href="#">Opção</a></li>
+            <li><a href="#">Opção</a></li>
+            <li><a href="#">Opção</a></li>
+          </ul>
+        </div>
+
+        <div class="block notice">
+          <h4>Notícia</h4>
+          <p>bla.</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
+
