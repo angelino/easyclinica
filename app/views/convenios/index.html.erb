@@ -21,7 +21,15 @@
 				<td><%= h convenio.telefone %></td>
 				<td><%= h convenio.responsavel %></td>
 				<td><%= h convenio.email %></td>
-				<td class="last"><a href="#">exibir</a> | <a href="#">editar</a> | <a href="#">inativar</a></td> 
+				<td class="last">
+					<%= form_for :convenio, :url => convenio_path(convenio), :html => { :method => :delete } do |f| %>
+						<%=link_to 'exibir', convenio %> 
+						<% if convenio.ativo? %>
+						| <%=link_to 'alterar', edit_convenio_path(convenio) %> 
+						| <a href="#" onclick="if(confirm('Você confirma?')) $(this).parent().submit();"/>inativar</a>
+						<% end %>
+					<% end %>
+				</td> 
 			</tr> 
 			<% end %>
 		</table>
@@ -30,3 +38,12 @@
   </div>
 </div>
 <% end %>
+
+<% content_for :navegacao do %>
+<div class="block">
+  <h3>Navegação</h3>
+  <ul class="navigation">
+    <li><a href="<%= new_convenio_path %>">Criar novo convênio</a></li>
+  </ul>
+</div>
+<% end -%>
