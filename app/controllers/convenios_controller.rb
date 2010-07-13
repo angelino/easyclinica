@@ -1,7 +1,9 @@
+require 'lib/config'
+
 class ConveniosController < ApplicationController
   
   def index
-    @convenios = Convenio.da(@clinica).find(:all)
+    @convenios = Convenio.da(@clinica).paginate :page => params[:page], :per_page => Config::QTD_POR_PAGINA
   end
   
   def edit
