@@ -68,6 +68,18 @@ describe ConveniosController do
       @amil.reload
       @amil.should_not be_ativo
     end
+    
+    it 'ele deve retornar erro caso a operacao falhe' do
+      convenio_com_problema = mock("Convenio")
+      convenio_com_problema.should_receive(:inativa!)
+      convenio_com_problema.should_receive(:save).and_return(false)
+      Convenio.stub_chain(:da, :find).and_return(convenio_com_problema)
+      
+      delete :destroy, :id => '999'
+      
+      #response.should render_template('index')
+      flash.now[:aviso].include?('problema').should == true
+    end
   end
 
 end
