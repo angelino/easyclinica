@@ -32,8 +32,7 @@ class ConveniosController < ApplicationController
   end
   
   def create
-    @convenio = Convenio.new(params[:convenio])
-    @convenio.clinica = @clinica
+    @convenio = @clinica.convenios.build params[:convenio]
     
     respond_to do |resposta|
       if @convenio.save
