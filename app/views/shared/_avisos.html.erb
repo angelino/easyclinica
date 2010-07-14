@@ -1,7 +1,7 @@
 <% if !flash[:aviso].nil? %>
 <div class="spaced flash"> 
 <div class="message notice">
-  <p><%= flash[:aviso] %></p>
+  <p><%=h flash[:aviso] %></p>
 </div>
 </div>
 <% end %>

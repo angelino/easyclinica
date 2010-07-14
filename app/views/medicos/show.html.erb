@@ -1,0 +1,47 @@
+
+<% content_for :conteudo do %>
+
+<div class="block" id="block">
+	
+	<div class="content">
+
+		<%= render :partial => 'shared/avisos' %>
+				
+   		<h2 class="title"><%=h @medico.nome %></h2>
+		<div class="inner form">
+
+	<div class="group">
+    <label class="label">CRM:</label>
+    <%=h @medico.crm %>
+  </div>
+  
+  <div class="group">
+    <label class="label">Especialidade:</label>
+    <%=h @medico.especialidade %>
+  </div>
+ 
+  <div class="group">
+    <label class="label">Telefone:</label>
+    <%=h @medico.telefone %>
+  </div>
+
+   <div class="group">
+    <label class="label">E-mail:</label>
+    <%=h @medico.email %>
+  </div>
+
+  <div class="group">
+    <label class="label">Observações</label>
+    <%=h @medico.observacoes %>
+  </div>
+
+  <div class="group navform wat-cf">
+	<% link_to(medicos_path, :class => 'button') do %>
+      <%= image_tag 'cross.png', :alt => 'Voltar' %> Voltar
+    <% end %>
+  </div>
+
+		</div>
+	</div>
+</div>
+<% end -%>

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100712230104) do
+ActiveRecord::Schema.define(:version => 20100714003724) do
 
   create_table "clinicas", :force => true do |t|
     t.string   "nome",       :limit => 100, :null => false
@@ -39,5 +39,20 @@ ActiveRecord::Schema.define(:version => 20100712230104) do
     t.text     "observacoes"
     t.string   "website",              :limit => 100
   end
+
+  create_table "medicos", :force => true do |t|
+    t.string   "nome",          :limit => 150,                   :null => false
+    t.string   "crm",           :limit => 50,                    :null => false
+    t.string   "especialidade", :limit => 150
+    t.string   "telefone",      :limit => 20
+    t.string   "email",         :limit => 100
+    t.text     "observacoes"
+    t.boolean  "ativo",                        :default => true, :null => false
+    t.integer  "clinica_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "medicos", ["crm"], :name => "index_medicos_on_crm", :unique => true
 
 end

@@ -2,6 +2,7 @@ Easyclinica::Application.routes.draw do |map|
   root :to => "home#dashboard"
 
   resources :convenios
+  resources :medicos
   
   # The priority is based upon order of creation:
   # first created -> highest priority.
