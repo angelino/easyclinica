@@ -302,6 +302,49 @@ input.checkbox {
   border-bottom: 1px solid #AAA;
 }
 
+.table tr.even {
+	background-color: #EBEBEB;
+}
+
+.table tr.odd {
+	background-color: #fff;
+}
+
+/* fieldsets */
+.cadastro label {
+	clear: both;
+	display: block;
+	font-size: 1.2em;
+  padding: 5px 0 2px;  
+  font-weight: bold;
+}
+
+.cadastro input {
+	width: 91.5%!important;
+}
+
+.cadastro textarea {
+	width: 91.5%!important;
+	height: 200px;
+} 
+
+.cadastro input.medio {
+	width: 48%!important;
+}
+
+.agrupar_campos {
+	float: left;
+	width: 48%;	
+}
+
+.agrupar_campos input {
+	width: 90%!important;
+}
+
+.botoes {
+	margin: 20px 0 0;
+}
+
 /* forms */
 
 .form input.text, .form textarea.textarea {
@@ -333,6 +376,8 @@ input.checkbox {
 }
 
 .description {
+	clear:both;
+	display:block;
   color:#aaa;
   font-family:Georgia, serif;
 }
