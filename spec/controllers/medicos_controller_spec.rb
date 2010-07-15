@@ -32,10 +32,10 @@ describe MedicosController do
     end
 
     it 'deve atualizar caso os dados sejam validos' do
-      put :update, :id => @medico1.id, :medico => {:nome => 'médico 1 alterado'}
+      put :update, :id => @medico1.id, :medico => {:nome => 'medico 1 alterado'}
     
       @medico1.reload
-      @medico1.nome.should == 'médico 1 alterado'
+      @medico1.nome.should == 'medico 1 alterado'
     end
   
     it 'deve exibir erros de validacao caso os dados sejam invalidos' do
@@ -45,12 +45,12 @@ describe MedicosController do
     end
   end
   
-  context 'no momento da criacao de um novo médico' do
+  context 'no momento da criacao de um novo medico' do
     it 'deve salvar caso os dados sejam validos' do
-      post :create, :medico => { :nome => 'novo médico', :crm => '77.777', :email => 'medico3@email.com.br'}
+      post :create, :medico => { :nome => 'novo medico', :crm => '77.777', :email => 'medico3@email.com.br'}
       
-      novo_medico = Convenio.find_by_nome('novo médico')
-      novo_medico.nome.should == 'novo médico'
+      novo_medico = Medico.find_by_nome('novo medico')
+      novo_medico.nome.should == 'novo medico'
       novo_medico.clinica.should == @clinica
     end
     
@@ -61,12 +61,12 @@ describe MedicosController do
     end
   end
   
-  context 'quando um médico é inativado' do
+  context 'quando um medico e inativado' do
     it 'ele deve ter seu status alterado' do
       delete :destroy, :id => @medico1.id
       
-      @amil.reload
-      @amil.should_not be_ativo
+      @medico1.reload
+      @medico1.should_not be_ativo
     end
     
     it 'ele deve retornar erro caso a operacao falhe' do

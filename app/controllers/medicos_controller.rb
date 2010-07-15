@@ -18,7 +18,7 @@ class MedicosController < ApplicationController
     @medico = Medico.da(@clinica).find(params[:id])
     
     respond_to do |resposta|
-      if @medico.update_attributes(params[:convenio])
+      if @medico.update_attributes(params[:medico])
         flash[:aviso] = 'Médico alterado com sucesso.'
         resposta.html { redirect_to(@medico) }
       else
