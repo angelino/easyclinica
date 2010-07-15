@@ -32,8 +32,7 @@ class MedicosController < ApplicationController
   end
   
   def create
-    @medico = Medico.new(params[:medico])
-    @medico.clinica = @clinica
+    @medico = @clinica.medicos.build params[:medico]
     
     respond_to do |resposta|
       if @medico.save
