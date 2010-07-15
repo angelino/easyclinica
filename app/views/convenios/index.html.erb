@@ -15,7 +15,7 @@
 				<th class="last">&nbsp;</th> 
 			</tr> 
 			<% for convenio in @convenios %>
-			<tr class="<%= @convenios.index(convenio).even? ? 'odd' : 'even' %>"> 
+			<tr class="<%= @convenios.index(convenio).even? ? 'odd' : 'even' %> <%= 'inativo' unless convenio.ativo? %>"> 
 				<td><input type="checkbox" class="checkbox" name="id" value="<%= convenio.id %>" /></td>
 				<td><%= h convenio.nome %></td>
 				<td><%= h convenio.telefone %></td>

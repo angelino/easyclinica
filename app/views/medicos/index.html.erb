@@ -16,7 +16,7 @@
 				<th class="last">&nbsp;</th> 
 			</tr> 
 			<% for medico in @medicos %>
-			<tr class="<%= @medicos.index(medico).even? ? 'odd' : 'even' %>"> 
+			<tr class="<%= @medicos.index(medico).even? ? 'odd' : 'even' %> <%= 'inativo' unless medico.ativo? %>"> 
 				<td><input type="checkbox" class="checkbox" name="id" value="<%= medico.id %>" /></td>
 				<td><%= h medico.nome %></td>
 				<td><%= h medico.crm %></td>
