@@ -5,20 +5,17 @@ class Medico < ActiveRecord::Base
   
   belongs_to :clinica
   
-  validates :nome, :presence => true,
-  								 :length => {:minimum => 1, :maximum => 150}
-  
-  validates :crm, :presence => true,
-  								:uniqueness => true,
-  								:length => {:minimum => 1, :maximum => 50}
+  validates_length_of   	:nome, :minimum => 1, :maximum => 150, :message => 'é obrigatório e deve possuir no máximo 150 caracteres.'
+  								   
+  validates_length_of			:crm, :minimum => 1, :maximum => 50, :message => 'inválido.'
+  validates_uniqueness_of	:crm, :message => 'já cadastrado anteriormente.'
   								
-  validates	:clinica, :presence => true
-  
-  validates :email, :presence => true, 
-                    :length => {:minimum => 3, :maximum => 100},
-                    :uniqueness => true,
-                    :format => {:with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i}
-  
+  validates_associated		:clinica
+
+	validates_length_of			:email, :minimum => 3, :maximum => 100, :message => 'é obrigatório e deve possuir no máximo 100 caracteres.'
+  validates_uniqueness_of	:email, :message => 'já cadastrado anteriormente.'
+ 	validates_format_of			:email, :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i, :message => 'inválido.'
+
   def inativa!
     self.ativo = false
   end

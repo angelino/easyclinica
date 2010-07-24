@@ -5,13 +5,12 @@ class Convenio < ActiveRecord::Base
   
   belongs_to :clinica
   
-  validates :nome, :presence => true,
-  								 :length => {:minimum => 1, :maximum => 150}	
-  
-  validates :telefone, :presence => true
-  								
-  validates	:clinica, :presence => true
-  
+  validates_length_of   	:nome, :minimum => 1, :maximum => 150, :message => 'é obrigatório e deve possuir no máximo 150 caracteres.'
+ 								
+  validates_associated		:clinica
+
+	validates_presence_of		:telefone, :message => 'é obrigatório'
+	 
   def inativa!
     self.ativo = false
   end

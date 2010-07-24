@@ -4,10 +4,13 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title><%= @page_title or 'Easy Clínica' %></title>
 	
-  <%= stylesheet_link_tag :all %>
+  <%= stylesheet_link_tag 'reset' %>
+  <%= stylesheet_link_tag 'easyclinica' %>
 	<style type="text/css"><%= yield :css %></style>
   
 	<%= javascript_include_tag 'jquery-1.4.2.min' %>
+	<%= javascript_include_tag 'jquery.maskedinput-1.2.2.min' %>
+	<%= javascript_include_tag 'easyclinica' %>
 	<script type="text/javascript" charset="utf-8"><%= yield :js %></script>
 	<%= csrf_meta_tag %>
 </head>
@@ -35,7 +38,7 @@
     <div id="wrapper" class="wat-cf">
       <div id="main">
 	
-		<%= yield(:conteudo) or yield %>
+				<%= yield(:conteudo) or yield %>
 
         <div id="footer">
           <div class="block">
@@ -44,11 +47,10 @@
         </div>
       </div>
       <div id="sidebar">
-
-		  <%= yield(:navegacao) %>
+		  	<%= yield(:navegacao) %>
 
         <div class="block notice">
-          <h4>Notícia</h4>
+          <h3>Notícia</h3>
           <p>bla.</p>
         </div>
       </div>
