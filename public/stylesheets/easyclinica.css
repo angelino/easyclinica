@@ -73,6 +73,8 @@ p, a, label {
   padding: 1px 0 20px;
   margin-bottom:20px;
   background: transparent;
+  float:left;
+  width: 100%;
 }
 
 #main .block h2.title {
@@ -89,6 +91,8 @@ p, a, label {
   border-bottom: 1px solid #ccc;
   border-right: 1px solid #ccc;
   background: #fff;
+  float: left;
+  width: 100%;
 }
 
 #main .block .content .inner {
@@ -108,6 +112,10 @@ p, a, label {
 #footer {
   background-color: #ddd;
   border-top: 1px solid #bbb;
+  float: left;
+  width: 100%;
+  padding: 3px 5px;
+  text-align: center;
 }
 
 #footer .block {
@@ -448,7 +456,9 @@ p, a, label {
 }
 
 .botoes {
-	margin: 20px 0 0;
+	float: left;
+	width: 100%;
+	margin: 20px 0 10px;
 }
 
 .description {
@@ -467,7 +477,6 @@ p, a, label {
 .flash .message {
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
-  text-align:center;
   margin:0 auto 5px;
   width:80%;
 }
@@ -477,6 +486,23 @@ p, a, label {
 .flash .error {
   border: 1px solid #fbb;
   background-color: #fdd;
+}
+
+.flash .error h3 {
+	text-align: center;
+	font-size: 15px;
+	font-weight: bold;
+	margin-top: 5px;
+}
+
+.flash .error ul {
+	margin: 0 10px 10px;
+	font-size: 12px;
+}
+
+.flash .error li {
+	list-style-type: disc;
+	margin-left: 10px; 
 }
 .flash .warning {
   border: 1px solid #fffaaa;
@@ -593,3 +619,64 @@ button.button:active, a.button:active {
   background-color:#e5e5e5;
 }
 /* FIM BUTTON */
+
+/* INÍCIO EXIBIÇÃO DADOS */
+.exibicao_dados {
+	width: 100%;
+	float:left;
+}
+
+.exibicao_dados div.info {
+	float: left;
+	width: 100%;
+}
+
+.exibicao_dados div.info p {
+	margin: 6px 0;
+	float: left;
+	width: 100%;
+}
+
+
+.exibicao_dados div.foto {
+	margin-top: 10px;
+	float: left;
+	width: 100%;
+}
+
+.exibicao_dados div.foto img {
+	float: left;
+	width: 50px;
+	height: 50px;
+	border: solid 1px;
+}
+
+.exibicao_dados div.foto div.info {
+	margin-left:5px;
+	float: left;
+	width: 80%;
+	height: 50px;
+	font-size: 11px;
+}
+
+.exibicao_dados div.foto div.info .nome {
+	font-size:18px;
+  color: #456;
+  display: block;
+}
+
+span.descricao {
+	font-weight: bold;
+	font-size: 12px;
+	margin-right: 5px;
+}
+
+span.observacoes {
+	display: block;
+	margin-bottom:5px;
+}
+
+.exibicao_dados div.foto div.info span.descricao {
+	font-size:11px;
+}
+/* FIM EXIBIÇÃO DADOS */

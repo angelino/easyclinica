@@ -21,6 +21,6 @@ table {
     border-spacing:0;}
 caption, th, td {
     font-weight: normal;
-    text-align: center;}
+    text-align: left;}
 blockquote:before, blockquote:after, q:before, q:after {content: "";}
 blockquote, q {quotes: "" "";}

@@ -1,62 +1,60 @@
-
 <% content_for :conteudo do %>
 
-<div class="block" id="block">
-	
-	<div class="content">
-
-		<%= render :partial => 'shared/avisos' %>
+	<div class="block" id="block">
+		<div class="content">
+			<%= render :partial => 'shared/avisos' %>
 				
    		<h2 class="title"><%=h @convenio.nome %></h2>
-		<div class="inner form">
+			<div class="inner exibicao_dados">
+	  		<div class="info">
+	        <p>
+        		<span class="descricao">Endereço</span><%=h @convenio.endereco %>
+        	</p>
 
-  <div class="group">
-    <label class="label">Endereço:</label>
-    <%=h @convenio.endereco %>
-  </div>
-
-  <div class="group">
-    <label class="label">Bairro:</label>
-    <%=h @convenio.bairro %>
-  </div>
-
-  <div class="group">
-    <label class="label">CEP:</label>
-    <%=h @convenio.cep %>
-  </div>
-
-  <div class="group">
-    <label class="label">Telefone:</label>
-    <%=h @convenio.telefone %>
-  </div>
-
-  <div class="group">
-    <label class="label">Nome do Responsável:</label>
-    <%=h @convenio.responsavel %>
-  </div>
-
-  <div class="group">
-    <label class="label">E-mail:</label>
-    <%=h @convenio.email %>
-  </div>
-
-  <div class="group">
-    <label class="label">Website:</label>
-    <%=h @convenio.website %>
-  </div>
-
-  <div class="group">
-    <label class="label">Observações</label>
-    <%=h @convenio.observacoes %>
-  </div>
-
-  <div class="group navform wat-cf">
-	<% link_to(convenios_path, :class => 'button') do %>
-      <%= image_tag 'cross.png', :alt => 'Voltar' %> Voltar
-    <% end %>
-  </div>
-
+					<div class="agrupar_campos">
+						<p>
+							<span class="descricao">Bairro:</span><%=h @convenio.bairro %>
+			  		</p>
+					</div>				    
+			  
+			    <div class="agrupar_campos">
+						<p>
+							<span class="descricao">CEP:</span><%=h @convenio.cep %>
+			  		</p>
+					</div>	
+			    
+		    	<p>
+						<span class="descricao">Nome do Responsável:</span><%=h @convenio.responsavel %>
+		  		</p>
+					
+					<div class="agrupar_campos">
+						<p>
+							<span class="descricao">Telefone:</span><%=h @convenio.telefone %>
+			  		</p>
+					</div>	
+					
+					<div class="agrupar_campos">
+						<p>
+							<span class="descricao">E-mail:</span><a href="mailto:<%=h @convenio.email %>"><%=h @convenio.email %></a>
+			  		</p>
+					</div>
+			    		    
+			    <p>
+			    	<span class="descricao">Website:</span><%=h @convenio.website %>
+			  	</p>
+			  	
+			  	<p>
+			    	<span class="descricao observacoes">Observações:</span><%=h @convenio.observacoes %>
+			    </p>	
+	  		</div>
+	  		
+			  <div class="botoes">
+					<% link_to(convenios_path, :class => 'button') do %>
+			      <%= image_tag 'cross.png', :alt => 'Voltar' %> Voltar
+			    <% end %>
+			  </div>
+			  
+			</div>
 		</div>
 	</div>
-</div>
 <% end -%>

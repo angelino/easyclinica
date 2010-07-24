@@ -3,9 +3,9 @@
 	<% if !f.error_messages.empty? %>
 	<div class="flash"> 
 		<div class="message error">
-		  <p><%=h f.error_messages :header_message => 'Dados inválidos', 
-		  												 :message => 'Os seguintes erros ocorreram:', 
-		  												 :header_tag => :h3 %></p>
+		  <%=h f.error_messages :header_message => 'Dados inválidos', 
+		  											:message => 'Os seguintes erros ocorreram:', 
+		  											:header_tag => :h3 %>
 		</div>
 	</div>
 	<% end %>
