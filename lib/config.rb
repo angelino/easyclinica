@@ -1,3 +1,3 @@
 module Config
-  QTD_POR_PAGINA = 2
+  QTD_POR_PAGINA = 1
 end

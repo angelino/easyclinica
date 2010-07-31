@@ -331,7 +331,11 @@ p, a, label {
 /* FIM NAVIGATION */
 
 /* INÍCIO PAGINATION */
-.pagination a, .pagination span {
+.pagination {
+	margin-bottom: 10px;
+}
+
+.pagination a, .pagination span, .pagination em {
   padding: 2px 5px;
   margin-right: 5px; 
   display: block;
@@ -353,9 +357,10 @@ p, a, label {
   color: #aaa;
   border: 1px solid #ddd;
   -moz-border-radius:5px;
+  font-size:11px;
 }
 
-.pagination a {
+.pagination a, .pagination em {
   color: #364B69;
   border: 1px solid #ddd;
   text-decoration: none;
@@ -363,7 +368,7 @@ p, a, label {
   font-size:11px;
 }
 
-.pagination a:hover {
+.pagination a:hover, .pagination em {
   color: #444;
   background: #eaeaea;
   border: 1px solid #576C82;
