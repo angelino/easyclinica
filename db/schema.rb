@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100731220244) do
+ActiveRecord::Schema.define(:version => 20100731222439) do
 
   create_table "clinicas", :force => true do |t|
     t.string   "nome",       :limit => 100, :null => false
@@ -41,12 +41,15 @@ ActiveRecord::Schema.define(:version => 20100731220244) do
   end
 
   create_table "materiais", :force => true do |t|
-    t.string   "nome",       :limit => 100,                                                 :null => false
-    t.string   "codigo",     :limit => 50,                                                  :null => false
-    t.decimal  "ch",                        :precision => 10, :scale => 2, :default => 0.0, :null => false
+    t.string   "nome",                  :limit => 100,                                                 :null => false
+    t.string   "codigo",                :limit => 50,                                                  :null => false
+    t.decimal  "ch",                                   :precision => 10, :scale => 2, :default => 0.0, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "tabela_de_servicos_fk"
   end
+
+  add_index "materiais", ["tabela_de_servicos_fk"], :name => "index_materiais_on_tabela_de_servicos_fk"
 
   create_table "materiais_servicos", :id => false, :force => true do |t|
     t.integer "material_id", :null => false
@@ -69,9 +72,18 @@ ActiveRecord::Schema.define(:version => 20100731220244) do
   add_index "medicos", ["crm"], :name => "index_medicos_on_crm", :unique => true
 
   create_table "servicos", :force => true do |t|
-    t.string   "nome",       :limit => 100,                                                 :null => false
-    t.string   "codigo",     :limit => 50,                                                  :null => false
-    t.decimal  "ch",                        :precision => 10, :scale => 2, :default => 0.0, :null => false
+    t.string   "nome",                  :limit => 100,                                                 :null => false
+    t.string   "codigo",                :limit => 50,                                                  :null => false
+    t.decimal  "ch",                                   :precision => 10, :scale => 2, :default => 0.0, :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "tabela_de_servicos_fk"
+  end
+
+  add_index "servicos", ["tabela_de_servicos_fk"], :name => "index_servicos_on_tabela_de_servicos_fk"
+
+  create_table "tabelas_de_servicos", :force => true do |t|
+    t.string   "nome",       :limit => 50, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
