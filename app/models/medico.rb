@@ -4,9 +4,7 @@ class Medico < ActiveRecord::Base
 	include MultiTenancy
 	include DefaultScopes
 	
-	scope :ordenado_por_ativo, :order => "ativo DESC"
-  
-  belongs_to :clinica
+	belongs_to :clinica
   
   validates_length_of   	:nome, :minimum => 1, :maximum => 150, :message => 'é obrigatório e deve possuir no máximo 150 caracteres.'
   								   
