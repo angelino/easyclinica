@@ -7,7 +7,7 @@
 	
 		<table class="table"> 
 			<tr> 
-				<th	class="first"><input type="checkbox" class="checkbox toggle" /></th> 
+				<th	class="first"><input type="checkbox" class="checkbox toggle check_all" rel="chk_medicos" /></th> 
 				<th>Nome</th> 
 				<th>CRM</th>
 				<th>Especialidade</th> 
@@ -17,7 +17,7 @@
 			</tr> 
 			<% for medico in @medicos %>
 			<tr class="<%= @medicos.index(medico).even? ? 'odd' : 'even' %> <%= 'inativo' unless medico.ativo? %>"> 
-				<td><input type="checkbox" class="checkbox" name="id" value="<%= medico.id %>" /></td>
+				<td><input type="checkbox" class="checkbox" name="id" value="<%= medico.id %>" rel="chk_medicos" /></td>
 				<td><%= h medico.nome %></td>
 				<td><%= h medico.crm %></td>
 				<td><%= h medico.especialidade %></td>

@@ -7,7 +7,7 @@
 	
 		<table class="table"> 
 			<tr> 
-				<th	class="first"><input type="checkbox" class="checkbox toggle" /></th> 
+				<th	class="first"><input type="checkbox" class="checkbox toggle check_all" rel="chk_convenios" /></th> 
 				<th>Nome</th> 
 				<th>Telefone</th> 
 				<th>Responsável</th> 
@@ -16,7 +16,7 @@
 			</tr> 
 			<% for convenio in @convenios %>
 			<tr class="<%= @convenios.index(convenio).even? ? 'odd' : 'even' %> <%= 'inativo' unless convenio.ativo? %>"> 
-				<td><input type="checkbox" class="checkbox" name="id" value="<%= convenio.id %>" /></td>
+				<td><input type="checkbox" class="checkbox" name="id" value="<%= convenio.id %>" rel="chk_convenios"/></td>
 				<td><%= h convenio.nome %></td>
 				<td><%= h convenio.telefone %></td>
 				<td><%= h convenio.responsavel %></td>
