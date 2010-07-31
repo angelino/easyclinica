@@ -1,48 +1,48 @@
 require 'lib/config'
 
 class ConveniosController < ApplicationController
-  
-  def index
-    @convenios = Convenio.da(@clinica).paginate :page => params[:page], :per_page => Config::QTD_POR_PAGINA
+
+  def index 
+  	@convenios = Convenio.da(@clinica).all(:order => "ativo DESC").paginate :page => params[:page],  :per_page => Config::QTD_POR_PAGINA
   end
-  
+
   def edit
-    @convenio = Convenio.da(@clinica).find(params[:id])
+    @convenio = Convenio.da(@clinica).find(params[:id]) 
   end
-  
+
   def show
-    @convenio = Convenio.da(@clinica).find(params[:id])
+    @convenio = Convenio.da(@clinica).find(params[:id]) 
   end
-  
+
   def update
     @convenio = Convenio.da(@clinica).find(params[:id])
-    
+
     respond_to do |resposta|
-      if @convenio.update_attributes(params[:convenio])
-        flash[:aviso] = 'Convênio alterado com sucesso.'
-        resposta.html { redirect_to(@convenio) }
-      else
-        resposta.html { render :action => 'edit' }
-      end
-    end
+    	if @convenio.update_attributes(params[:convenio]) 
+  			flash[:aviso] = 'Convênio alterado com sucesso.' 
+  			resposta.html { redirect_to(@convenio) } 
+  		else 
+  			resposta.html { render :action => 'edit' } 
+  		end 
+  	end 
   end
-  
+
   def new
-    @convenio = Convenio.new
+    @convenio = Convenio.new 
   end
-  
+
   def create
     @convenio = @clinica.convenios.build params[:convenio]
-    
+
     respond_to do |resposta|
-      if @convenio.save
-        flash[:aviso] = 'Convênio criado com sucesso.'
-        resposta.html { redirect_to(@convenio) }
-      else
-        resposta.html { render :action => 'new' }
-      end
-    end
-  end
+    	if @convenio.save 
+    		flash[:aviso] = 'Convênio criado com sucesso.' 
+    		resposta.html { redirect_to(@convenio) } 
+    	else 
+  			resposta.html { render :action => 'new' }
+			end
+		end
+	end
 
   def destroy
     @convenio = Convenio.da(@clinica).find(params[:id])

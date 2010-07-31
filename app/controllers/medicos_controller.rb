@@ -3,7 +3,7 @@ require 'lib/config'
 class MedicosController < ApplicationController
 
 	def index
-    @medicos = Medico.da(@clinica).paginate :page => params[:page], :per_page => Config::QTD_POR_PAGINA
+    @medicos = Medico.da(@clinica).all(:order => "ativo DESC").paginate :page => params[:page], :per_page => Config::QTD_POR_PAGINA
   end
   
   def edit
