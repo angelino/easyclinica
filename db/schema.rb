@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100731222439) do
+ActiveRecord::Schema.define(:version => 20100731223040) do
 
   create_table "clinicas", :force => true do |t|
     t.string   "nome",       :limit => 100, :null => false
@@ -21,23 +21,24 @@ ActiveRecord::Schema.define(:version => 20100731222439) do
   add_index "clinicas", ["login"], :name => "index_clinicas_on_login", :unique => true
 
   create_table "convenios", :force => true do |t|
-    t.string   "nome",                 :limit => 150,                   :null => false
-    t.string   "telefone",             :limit => 20,                    :null => false
-    t.string   "endereco",             :limit => 200
-    t.string   "bairro",               :limit => 100
-    t.string   "cidade",               :limit => 100
-    t.string   "estado",               :limit => 2
-    t.string   "cep",                  :limit => 9
-    t.string   "complemento",          :limit => 20
-    t.string   "responsavel",          :limit => 20
-    t.string   "telefone_responsavel", :limit => 20
+    t.string   "nome",                  :limit => 150,                   :null => false
+    t.string   "telefone",              :limit => 20,                    :null => false
+    t.string   "endereco",              :limit => 200
+    t.string   "bairro",                :limit => 100
+    t.string   "cidade",                :limit => 100
+    t.string   "estado",                :limit => 2
+    t.string   "cep",                   :limit => 9
+    t.string   "complemento",           :limit => 20
+    t.string   "responsavel",           :limit => 20
+    t.string   "telefone_responsavel",  :limit => 20
     t.integer  "clinica_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "ativo",                               :default => true, :null => false
-    t.string   "email",                :limit => 150
+    t.boolean  "ativo",                                :default => true, :null => false
+    t.string   "email",                 :limit => 150
     t.text     "observacoes"
-    t.string   "website",              :limit => 100
+    t.string   "website",               :limit => 100
+    t.integer  "tabela_de_servicos_fk",                :default => 0,    :null => false
   end
 
   create_table "materiais", :force => true do |t|

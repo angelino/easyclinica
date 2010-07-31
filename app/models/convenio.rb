@@ -5,6 +5,7 @@ class Convenio < ActiveRecord::Base
   include DefaultScopes
   
   belongs_to :clinica
+  has_one :tabela_de_servicos
   
   validates_length_of   	:nome, :minimum => 1, :maximum => 150, :message => 'é obrigatório e deve possuir no máximo 150 caracteres.'
  								
