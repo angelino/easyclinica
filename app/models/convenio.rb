@@ -2,6 +2,7 @@ require 'lib/multitenant'
 
 class Convenio < ActiveRecord::Base
   include MultiTenancy
+  include DefaultScopes
   
   belongs_to :clinica
   

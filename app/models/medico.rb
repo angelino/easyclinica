@@ -2,6 +2,9 @@ require 'lib/multitenant'
 
 class Medico < ActiveRecord::Base
 	include MultiTenancy
+	include DefaultScopes
+	
+	scope :ordenado_por_ativo, :order => "ativo DESC"
   
   belongs_to :clinica
   
