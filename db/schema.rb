@@ -9,48 +9,56 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100714003724) do
+ActiveRecord::Schema.define(:version => 20100731215243) do
 
   create_table "clinicas", :force => true do |t|
-    t.string   "nome",       :limit => 100, :null => false
-    t.string   "login",      :limit => 25,  :null => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string    "nome",       :limit => 100, :null => false
+    t.string    "login",      :limit => 25,  :null => false
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
   end
 
   add_index "clinicas", ["login"], :name => "index_clinicas_on_login", :unique => true
 
   create_table "convenios", :force => true do |t|
-    t.string   "nome",                 :limit => 150,                   :null => false
-    t.string   "telefone",             :limit => 20,                    :null => false
-    t.string   "endereco",             :limit => 200
-    t.string   "bairro",               :limit => 100
-    t.string   "cidade",               :limit => 100
-    t.string   "estado",               :limit => 2
-    t.string   "cep",                  :limit => 9
-    t.string   "complemento",          :limit => 20
-    t.string   "responsavel",          :limit => 20
-    t.string   "telefone_responsavel", :limit => 20
-    t.integer  "clinica_id"
+    t.string    "nome",                 :limit => 150,                   :null => false
+    t.string    "telefone",             :limit => 20,                    :null => false
+    t.string    "endereco",             :limit => 200
+    t.string    "bairro",               :limit => 100
+    t.string    "cidade",               :limit => 100
+    t.string    "estado",               :limit => 2
+    t.string    "cep",                  :limit => 9
+    t.string    "complemento",          :limit => 20
+    t.string    "responsavel",          :limit => 20
+    t.string    "telefone_responsavel", :limit => 20
+    t.integer   "clinica_id"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
+    t.boolean   "ativo",                               :default => true, :null => false
+    t.string    "email",                :limit => 150
+    t.text      "observacoes"
+    t.string    "website",              :limit => 100
+  end
+
+  create_table "materials", :force => true do |t|
+    t.string   "nome",       :limit => 100,                                                 :null => false
+    t.string   "codigo",     :limit => 50,                                                  :null => false
+    t.decimal  "ch",                        :precision => 10, :scale => 2, :default => 0.0, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "ativo",                               :default => true, :null => false
-    t.string   "email",                :limit => 150
-    t.text     "observacoes"
-    t.string   "website",              :limit => 100
   end
 
   create_table "medicos", :force => true do |t|
-    t.string   "nome",          :limit => 150,                   :null => false
-    t.string   "crm",           :limit => 50,                    :null => false
-    t.string   "especialidade", :limit => 150
-    t.string   "telefone",      :limit => 20
-    t.string   "email",         :limit => 100
-    t.text     "observacoes"
-    t.boolean  "ativo",                        :default => true, :null => false
-    t.integer  "clinica_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string    "nome",          :limit => 150,                   :null => false
+    t.string    "crm",           :limit => 50,                    :null => false
+    t.string    "especialidade", :limit => 150
+    t.string    "telefone",      :limit => 20
+    t.string    "email",         :limit => 100
+    t.text      "observacoes"
+    t.boolean   "ativo",                        :default => true, :null => false
+    t.integer   "clinica_id"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
   end
 
   add_index "medicos", ["crm"], :name => "index_medicos_on_crm", :unique => true
