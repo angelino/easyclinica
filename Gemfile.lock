@@ -87,7 +87,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  rails (>= 3.0.0.beta4)
+  rails (>= 3.0.0.rc)
   rspec-rails (>= 2.0.0.beta.17)
   sqlite3-ruby
   will_paginate (>= 3.0.pre)
