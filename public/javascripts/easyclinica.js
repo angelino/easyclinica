@@ -7,18 +7,30 @@ function setup(main_selector){
 	criar_mascaras_campos(main_selector);
 	
 	check_all_checkboxes(main_selector);
+	
+	ativar_opcao_menu_principal();
 }
 
 /* 
 	Método responsável por ativas a opção selecionada no menu active
 */
-function ativar_opcao_menu_principal(opcao) {
+function ativar_opcao_menu_principal() {
 	//desativar todas as opções do menu
 	$('#menu-principal li').each(function(index){
 		$(this).removeClass('active');
 	});
 	
-	$('#menu-link-' + opcao).addClass('active');
+	var url = document.location.href;
+	var partes = url.split('/');
+	
+	for(var i = partes.length - 1; i >= 0; i--)
+	{
+		var opcao = $('#menu-link-' + partes[i]);
+		if($(opcao).length) {
+			$(opcao).addClass('active');
+			break;
+		}
+	}	
 }
 
 /*
