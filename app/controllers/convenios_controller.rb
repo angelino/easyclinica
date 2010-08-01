@@ -1,5 +1,3 @@
-require 'lib/config'
-
 class ConveniosController < ApplicationController
 
   def index 

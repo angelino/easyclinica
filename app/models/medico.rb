@@ -1,9 +1,5 @@
-require 'lib/multitenant'
-require 'lib/default_scopes'
-
 class Medico < ActiveRecord::Base
-	include MultiTenancy
-	include DefaultScopes
+	include MultiTenancy, Scopes
 	
 	belongs_to :clinica
   
