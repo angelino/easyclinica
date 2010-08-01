@@ -1,4 +1,4 @@
-Easyclinica::Application.routes.draw do |map|
+Easyclinica::Application.routes.draw do
   root :to => "home#dashboard"
 
 	resources :convenios

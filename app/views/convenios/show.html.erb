@@ -13,7 +13,7 @@
 				
 				<ul>
 					<li><a href="#dados_gerais">Dados Gerais</a></li>
-					<li><a href="#precos">Preços</a></li>
+					<li><a href="#servicos">Tabela de Serviços</a></li>
 				</ul>
 				
 				<!-- INÍCIO DADOS GERAIS -->
@@ -75,13 +75,13 @@
 				<!-- FIM DADOS GERAIS -->
 			
 				<!-- INÍCIO SERVIÇOS -->
-				<div id="precos">
-					<h2 class="title">TUSS</h2>	
+				<div id="servicos">
+					<h2 class="title"><%=h @convenio.tabela.nome %></h2>	
 					
 					<div class="inner exibicao_dados">
 						<div class="info">
 							<p>
-								<span class="descricao">Valor CH:</span>R$ 1,35
+								<span class="descricao">Valor CH:</span>R$ <%=h @convenio.valor_ch %>
 				  		</p>
 						</div>	
 					
@@ -89,6 +89,7 @@
 							<h3>Exceções de Serviços</h3>
 							<a href="#" class="botao">Adicionar Exceção</a>
 						</div>
+						<% if(@convenio.excecoesdeservicos.size > 0)%>
 						<table class="table"> 
 							<tr>
 								<th class="first"></th> 
@@ -112,11 +113,16 @@
 								<td><a href="#" onclick="return confirm('Deseja realmente deletar essa exceção?')"/>deletar</a></td> 
 							</tr>  
 						</table>						
+						<% else %>
+						<div class="info">Não há exceções para valores de serviços!</div>
+						<% end%>
 					
 						<div class="descricao_tabela">
 							<h3>Exceções de Materiais</h3>
 							<a href="#" class="botao">Adicionar Exceção</a>
 						</div>
+						
+						<% if(@convenio.excecoesdemateriais.size > 0)%>						
 						<table class="table"> 
 							<tr>
 								<th class="first"></th> 
@@ -140,6 +146,9 @@
 								<td><a href="#" onclick="return confirm('Deseja realmente deletar esse material?')"/>deletar</a></td> 
 							</tr>  
 						</table>
+						<% else %>
+						<div class="info">Não há exceções para valores de materiais!</div>
+						<% end%>
 					
 					</div>
 				</div>
@@ -156,6 +165,7 @@
   <h3>Navegação</h3>
   <ul class="navigation">
     <li><a href="<%= new_convenio_path %>">Criar novo convênio</a></li>
+    <li><a href="<%= edit_convenio_path(@convenio) %>">Editar convênio</a></li>
     <li><a href="<%= convenios_path %>">Voltar para listagem</a></li>
   </ul>
 </div>

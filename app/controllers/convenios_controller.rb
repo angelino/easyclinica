@@ -1,5 +1,3 @@
-require 'lib/config'
-
 class ConveniosController < ApplicationController
 
   def index 
@@ -7,6 +5,7 @@ class ConveniosController < ApplicationController
   end
 
   def edit
+    @tabelas = Tabela.all
     @convenio = Convenio.da(@clinica).find(params[:id]) 
   end
 
@@ -29,6 +28,7 @@ class ConveniosController < ApplicationController
 
   def new
     @convenio = Convenio.new 
+    @tabelas = Tabela.all
   end
 
   def create

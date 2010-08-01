@@ -1,10 +1,11 @@
-# This file is auto-generated from the current state of the database. Instead of editing this file, 
-# please use the migrations feature of Active Record to incrementally modify your database, and
-# then regenerate this schema definition.
+# This file is auto-generated from the current state of the database. Instead 
+# of editing this file, please use the migrations feature of Active Record to
+# incrementally modify your database, and then regenerate this schema definition.
 #
-# Note that this schema.rb definition is the authoritative source for your database schema. If you need
-# to create the application database on another system, you should be using db:schema:load, not running
-# all the migrations from scratch. The latter is a flawed and unsustainable approach (the more migrations
+# Note that this schema.rb definition is the authoritative source for your 
+# database schema. If you need to create the application database on another
+# system, you should be using db:schema:load, not running all the migrations
+# from scratch. The latter is a flawed and unsustainable approach (the more migrations
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
 # It's strongly recommended to check this file into your version control system.
@@ -38,7 +39,7 @@ ActiveRecord::Schema.define(:version => 20100801000422) do
     t.string   "email",                :limit => 150
     t.text     "observacoes"
     t.string   "website",              :limit => 100
-    t.integer  "tabelas_id",                                                         :default => 0,    :null => false
+    t.integer  "tabela_id",                                                          :default => 0,    :null => false
     t.decimal  "valor_ch",                            :precision => 10, :scale => 2, :default => 0.0,  :null => false
   end
 
@@ -66,10 +67,10 @@ ActiveRecord::Schema.define(:version => 20100801000422) do
     t.decimal  "ch",                        :precision => 10, :scale => 2, :default => 0.0, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "tabelas_id"
+    t.integer  "tabela_id"
   end
 
-  add_index "materiais", ["tabelas_id"], :name => "index_materiais_on_tabelas_id"
+  add_index "materiais", ["tabela_id"], :name => "index_materiais_on_tabela_id"
 
   create_table "materiais_servicos", :id => false, :force => true do |t|
     t.integer "material_id", :null => false
@@ -97,10 +98,10 @@ ActiveRecord::Schema.define(:version => 20100801000422) do
     t.decimal  "ch",                        :precision => 10, :scale => 2, :default => 0.0, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "tabelas_id"
+    t.integer  "tabela_id"
   end
 
-  add_index "servicos", ["tabelas_id"], :name => "index_servicos_on_tabelas_id"
+  add_index "servicos", ["tabela_id"], :name => "index_servicos_on_tabela_id"
 
   create_table "tabelas", :force => true do |t|
     t.string   "nome",       :limit => 50, :null => false

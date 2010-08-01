@@ -2,7 +2,8 @@ require 'spec_helper'
 
 describe Medico do
   before(:each) do
-    @clinica = Clinica.new :login => 'teste'
+    @clinica = Clinica.new :login => 'teste', :nome => 'clinica'
+    @clinica.save!
   end
   
   it 'deve validar dados obrigatorios' do
@@ -34,10 +35,10 @@ describe Medico do
   end
   
   it 'não deve permitir o cadastro de dois CRMs iguais' do
-  	doutor1 = Medico.new :nome => 'nome do médico 1', :crm => '55.555', :email => 'doutor1@email.com.br', :clinica => @clinica
+  	doutor1 = Medico.new :nome => 'nome do medico 1', :crm => '55.555', :email => 'doutor1@email.com.br', :clinica => @clinica
     doutor1.save.should == true
     
-    doutor2 = Medico.new :nome => 'nome do médico 2', :crm => '55.555', :email => 'doutor2@email.com.br', :clinica => @clinica
+    doutor2 = Medico.new :nome => 'nome do medico 2', :crm => '55.555', :email => 'doutor2@email.com.br', :clinica => @clinica
     doutor2.save.should == false
     
   end

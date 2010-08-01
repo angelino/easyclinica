@@ -1,5 +1,3 @@
-require 'lib/config'
-
 class MedicosController < ApplicationController
 
 	def index

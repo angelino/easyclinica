@@ -5,9 +5,11 @@ describe ConveniosController do
   before(:each) do
     @clinica = Clinica.new :nome => 'clinica', :login => 'www' ; @clinica.save!
     Clinica.should_receive(:find_by_login!).with(nil).and_return(@clinica)
+    
+    @tabela = Tabela.new :nome => 'tabela'; @tabela.save!
 
-    @amil = Convenio.new :nome => 'amil', :telefone => '1234', :clinica => @clinica ; @amil.save!
-    @blue_life = Convenio.new :nome => 'blue life', :telefone => '1234', :clinica => @clinica ; @blue_life.save!
+    @amil = Convenio.new :nome => 'amil', :telefone => '1234', :clinica => @clinica, :tabela => @tabela ; @amil.save!
+    @blue_life = Convenio.new :nome => 'blue life', :telefone => '1234', :clinica => @clinica, :tabela => @tabela ; @blue_life.save!
   end
   
   context 'no momento da exibicao' do
@@ -29,6 +31,7 @@ describe ConveniosController do
       get :edit, :id => @amil.id.to_s
     
       assigns(:convenio).should == @amil
+      assigns(:tabelas).size.should == Tabela.all.size
     end
 
     it 'deve atualizar caso os dados sejam validos' do
@@ -46,8 +49,14 @@ describe ConveniosController do
   end
   
   context 'no momento da criacao de um novo convenio' do
+    it 'deve listar as tabelas' do
+      get :new
+      
+      assigns(:tabelas).size.should == Tabela.all.size
+    end
+    
     it 'deve salvar caso os dados sejam validos' do
-      post :create, :convenio => { :nome => 'novo convenio', :telefone => '123'}
+      post :create, :convenio => { :nome => 'novo convenio', :telefone => '123', :tabela => @tabela }
       
       novo_convenio = Convenio.find_by_nome('novo convenio')
       novo_convenio.nome.should == 'novo convenio'
