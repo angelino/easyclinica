@@ -31,6 +31,7 @@ describe ConveniosController do
       get :edit, :id => @amil.id.to_s
     
       assigns(:convenio).should == @amil
+      assigns(:tabelas).size.should == Tabela.all.size
     end
 
     it 'deve atualizar caso os dados sejam validos' do
@@ -48,6 +49,12 @@ describe ConveniosController do
   end
   
   context 'no momento da criacao de um novo convenio' do
+    it 'deve listar as tabelas' do
+      get :new
+      
+      assigns(:tabelas).size.should == Tabela.all.size
+    end
+    
     it 'deve salvar caso os dados sejam validos' do
       post :create, :convenio => { :nome => 'novo convenio', :telefone => '123', :tabela => @tabela }
       
