@@ -1,3 +1,3 @@
 class Material < ActiveRecord::Base
-  belongs_to :tabelas
+  belongs_to :tabela
 end

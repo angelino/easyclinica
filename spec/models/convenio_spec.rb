@@ -2,7 +2,8 @@ require 'spec_helper'
 
 describe Convenio do
   before(:each) do
-    @clinica = Clinica.new :login => 'teste'
+    @clinica = Clinica.new :login => 'teste', :nome => 'clinica'
+    @clinica.save!
   end
   
   it 'deve validar dados obrigatorios' do

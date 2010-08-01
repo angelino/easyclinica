@@ -1,4 +1,4 @@
 class Servico < ActiveRecord::Base
   has_and_belongs_to_many :materiais
-  belongs_to :tabelas
+  belongs_to :tabela
 end
