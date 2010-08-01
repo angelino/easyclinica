@@ -1,4 +1,5 @@
 require 'lib/multitenant'
+require 'lib/default_scopes'
 
 class Medico < ActiveRecord::Base
 	include MultiTenancy

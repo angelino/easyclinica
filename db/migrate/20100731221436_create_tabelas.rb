@@ -1,6 +1,6 @@
-class CreateTabelasDeServicos < ActiveRecord::Migration
+class CreateTabelas < ActiveRecord::Migration
   def self.up
-    create_table :tabelas_de_servicos do |t|
+    create_table :tabelas do |t|
       t.column :nome, :string, :limit => 50, :null => false
       
       t.timestamps
@@ -8,6 +8,6 @@ class CreateTabelasDeServicos < ActiveRecord::Migration
   end
 
   def self.down
-    drop_table :tabelas_de_servicos
+    drop_table :tabelas
   end
 end

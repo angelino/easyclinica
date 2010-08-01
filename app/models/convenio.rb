@@ -1,11 +1,15 @@
 require 'lib/multitenant'
+require 'lib/default_scopes'
 
 class Convenio < ActiveRecord::Base
   include MultiTenancy
   include DefaultScopes
   
   belongs_to :clinica
-  has_one :tabela_de_servicos
+  belongs_to :tabela
+  
+  has_many :excecoesdeservicos
+  has_many :excecoesdemateriais
   
   validates_length_of   	:nome, :minimum => 1, :maximum => 150, :message => 'é obrigatório e deve possuir no máximo 150 caracteres.'
  								
