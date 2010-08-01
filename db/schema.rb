@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100731223851) do
+ActiveRecord::Schema.define(:version => 20100801000422) do
 
   create_table "clinicas", :force => true do |t|
     t.string   "nome",       :limit => 100, :null => false
@@ -22,8 +22,8 @@ ActiveRecord::Schema.define(:version => 20100731223851) do
   add_index "clinicas", ["login"], :name => "index_clinicas_on_login", :unique => true
 
   create_table "convenios", :force => true do |t|
-    t.string   "nome",                 :limit => 150,                   :null => false
-    t.string   "telefone",             :limit => 20,                    :null => false
+    t.string   "nome",                 :limit => 150,                                                  :null => false
+    t.string   "telefone",             :limit => 20,                                                   :null => false
     t.string   "endereco",             :limit => 200
     t.string   "bairro",               :limit => 100
     t.string   "cidade",               :limit => 100
@@ -35,11 +35,12 @@ ActiveRecord::Schema.define(:version => 20100731223851) do
     t.integer  "clinica_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "ativo",                               :default => true, :null => false
+    t.boolean  "ativo",                                                              :default => true, :null => false
     t.string   "email",                :limit => 150
     t.text     "observacoes"
     t.string   "website",              :limit => 100
-    t.integer  "tabelas_id",                          :default => 0,    :null => false
+    t.integer  "tabelas_id",                                                         :default => 0,    :null => false
+    t.decimal  "valor_ch",                            :precision => 10, :scale => 2, :default => 0.0,  :null => false
   end
 
   create_table "excecoesdemateriais", :force => true do |t|
