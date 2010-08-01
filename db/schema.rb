@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(:version => 20100801000422) do
     t.string   "email",                :limit => 150
     t.text     "observacoes"
     t.string   "website",              :limit => 100
-    t.integer  "tabelas_id",                                                         :default => 0,    :null => false
+    t.integer  "tabela_id",                                                          :default => 0,    :null => false
     t.decimal  "valor_ch",                            :precision => 10, :scale => 2, :default => 0.0,  :null => false
   end
 
