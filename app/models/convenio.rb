@@ -1,5 +1,5 @@
 class Convenio < ActiveRecord::Base
-  include MultiTenancy, Scopes
+  include MultiTenancy, DefaultScopes
   
   belongs_to :clinica
   belongs_to :tabela
