@@ -9,6 +9,10 @@ function setup(main_selector){
 	check_all_checkboxes(main_selector);
 	
 	ativar_opcao_menu_principal();
+	
+	//INÍCIO MÉDICOS
+	executar_acoes_medicos(main_selector);
+	//FIM MÉDICOS
 }
 
 /* 
@@ -58,5 +62,29 @@ function check_all_checkboxes(main_selector) {
 				$(this).attr('checked', $(pai).attr('checked'));
 		});	
 		
+	});
+}
+
+/*
+	Método responsável por invocar os métodos para atição e desativação dos médicos selecionados, por ajax.
+*/
+function executar_acoes_medicos(main_selector) {
+	$(main_selector).find('a.executar_acao_medicos').click(function(){
+			
+			var a = $(this);
+			var url = $(a).attr('href') + "/ativar_selecionados";
+			
+			$.ajax({ 
+				url: url,
+				type: 'POST',
+				cache: false,
+				success: function(jsonResponse){
+					alert(jsonResponse.nome);
+      	},
+      	error: function(xhr, ajaxOptions, thrownError) {
+      		alert(xhr.status);
+          alert(thrownError);
+      	}
+      });
 	});
 }

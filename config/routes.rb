@@ -1,7 +1,9 @@
 Easyclinica::Application.routes.draw do |map|
   root :to => "home#dashboard"
 
-  resources :convenios
+	resources :convenios
+  
+  match 'medicos/ativar_selecionados' => 'medicos#ativar_selecionados', :via => :post
   resources :medicos
   
   # The priority is based upon order of creation:
