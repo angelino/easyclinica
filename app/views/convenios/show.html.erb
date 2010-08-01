@@ -1,60 +1,163 @@
 <% content_for :conteudo do %>
-
+<script type="text/javascript" language="javascript"> ativar_opcao_menu_principal('convenios'); </script>
+	
+	<script type="text/javascript" language="javascript">
+		$(document).ready(function(){
+				$("#tabs").tabs();
+		});
+	</script>
+	
 	<div class="block" id="block">
 		<div class="content">
-			<%= render :partial => 'shared/avisos' %>
+		
+			<div id="tabs">
 				
-   		<h2 class="title"><%=h @convenio.nome %></h2>
-			<div class="inner exibicao_dados">
-	  		<div class="info">
-	        <p>
-        		<span class="descricao">Endereço</span><%=h @convenio.endereco %>
-        	</p>
-
-					<div class="agrupar_campos">
-						<p>
-							<span class="descricao">Bairro:</span><%=h @convenio.bairro %>
-			  		</p>
-					</div>				    
-			  
-			    <div class="agrupar_campos">
-						<p>
-							<span class="descricao">CEP:</span><%=h @convenio.cep %>
-			  		</p>
-					</div>	
-			    
-		    	<p>
-						<span class="descricao">Nome do Responsável:</span><%=h @convenio.responsavel %>
-		  		</p>
+				<ul>
+					<li><a href="#dados_gerais">Dados Gerais</a></li>
+					<li><a href="#precos">Preços</a></li>
+				</ul>
+				
+				<!-- INÍCIO DADOS GERAIS -->
+				<div id="dados_gerais">
+					<%= render :partial => 'shared/avisos' %>
+				
+		   		<h2 class="title"><%=h @convenio.nome %></h2>
+					<div class="inner exibicao_dados">
+			  		<div class="info">
+			        <p>
+		        		<span class="descricao">Endereço</span><%=h @convenio.endereco %>
+		        	</p>
+		
+							<div class="agrupar_campos">
+								<p>
+									<span class="descricao">Bairro:</span><%=h @convenio.bairro %>
+					  		</p>
+							</div>				    
+					  
+					    <div class="agrupar_campos">
+								<p>
+									<span class="descricao">CEP:</span><%=h @convenio.cep %>
+					  		</p>
+							</div>	
+					    
+				    	<p>
+								<span class="descricao">Nome do Responsável:</span><%=h @convenio.responsavel %>
+				  		</p>
+							
+							<div class="agrupar_campos">
+								<p>
+									<span class="descricao">Telefone:</span><%=h @convenio.telefone %>
+					  		</p>
+							</div>	
+							
+							<div class="agrupar_campos">
+								<p>
+									<span class="descricao">E-mail:</span><a href="mailto:<%=h @convenio.email %>"><%=h @convenio.email %></a>
+					  		</p>
+							</div>
+					    		    
+					    <p>
+					    	<span class="descricao">Website:</span><%=h @convenio.website %>
+					  	</p>
+					  	
+					  	<p class="observacoes">
+					    	<span class="descricao observacoes">Observações:</span><%=h @convenio.observacoes %>
+					    </p>	
+			  		</div>
+			  		
+					  <div class="botoes">
+							<% link_to(convenios_path, :class => 'button') do %>
+					      <%= image_tag 'cross.png', :alt => 'Voltar' %> Voltar
+					    <% end %>
+					  </div>
+					  
+					</div>		
+				</div>
+				<!-- FIM DADOS GERAIS -->
+			
+				<!-- INÍCIO SERVIÇOS -->
+				<div id="precos">
+					<h2 class="title">TUSS</h2>	
 					
-					<div class="agrupar_campos">
-						<p>
-							<span class="descricao">Telefone:</span><%=h @convenio.telefone %>
-			  		</p>
-					</div>	
+					<div class="inner exibicao_dados">
+						<div class="info">
+							<p>
+								<span class="descricao">Valor CH:</span>R$ 1,35
+				  		</p>
+						</div>	
 					
-					<div class="agrupar_campos">
-						<p>
-							<span class="descricao">E-mail:</span><a href="mailto:<%=h @convenio.email %>"><%=h @convenio.email %></a>
-			  		</p>
+						<div class="descricao_tabela">
+							<h3>Exceções de Serviços</h3>
+							<a href="#" class="botao">Adicionar Exceção</a>
+						</div>
+						<table class="table"> 
+							<tr>
+								<th class="first"></th> 
+								<th>Serviço</th> 
+								<th>Valor CH</th> 
+								<th>Valor Bruto</th>
+								<th class="last">&nbsp;</th> 
+							</tr>
+							<tr class="odd"> 
+								<td>&nbsp;</td>
+								<td>Aplicação de Soro</td> 
+								<td>13</td> 
+								<td>R$ 20,00</td>
+								<td><a href="#" onclick="return confirm('Deseja realmente deletar essa exceção?')"/>deletar</a></td> 
+							</tr> 
+							<tr class="even"> 
+								<td>&nbsp;</td>
+								<td>Engessar braço</td> 
+								<td>25</td> 
+								<td>R$ 43,00</td>
+								<td><a href="#" onclick="return confirm('Deseja realmente deletar essa exceção?')"/>deletar</a></td> 
+							</tr>  
+						</table>						
+					
+						<div class="descricao_tabela">
+							<h3>Exceções de Materiais</h3>
+							<a href="#" class="botao">Adicionar Exceção</a>
+						</div>
+						<table class="table"> 
+							<tr>
+								<th class="first"></th> 
+								<th>Material</th> 
+								<th>Valor CH</th> 
+								<th>Valor Bruto</th>
+								<th class="last">&nbsp;</th> 
+							</tr>
+							<tr class="odd"> 
+								<td>&nbsp;</td>
+								<td>Gesso</td> 
+								<td>2</td> 
+								<td>R$ 3,00</td>
+								<td><a href="#" onclick="return confirm('Deseja realmente deletar esse material?')"/>deletar</a></td> 
+							</tr> 
+							<tr class="even"> 
+								<td>&nbsp;</td>
+								<td>Algodão</td> 
+								<td>1</td> 
+								<td>R$ 1,50</td>
+								<td><a href="#" onclick="return confirm('Deseja realmente deletar esse material?')"/>deletar</a></td> 
+							</tr>  
+						</table>
+					
 					</div>
-			    		    
-			    <p>
-			    	<span class="descricao">Website:</span><%=h @convenio.website %>
-			  	</p>
-			  	
-			  	<p>
-			    	<span class="descricao observacoes">Observações:</span><%=h @convenio.observacoes %>
-			    </p>	
-	  		</div>
-	  		
-			  <div class="botoes">
-					<% link_to(convenios_path, :class => 'button') do %>
-			      <%= image_tag 'cross.png', :alt => 'Voltar' %> Voltar
-			    <% end %>
-			  </div>
-			  
+				</div>
+				<!-- FIM SERVIÇOS -->
+			
 			</div>
+			
 		</div>
 	</div>
+<% end -%>
+
+<% content_for :navegacao do %>
+<div class="block navegacao">
+  <h3>Navegação</h3>
+  <ul class="navigation">
+    <li><a href="<%= new_convenio_path %>">Criar novo convênio</a></li>
+    <li><a href="<%= convenios_path %>">Voltar para listagem</a></li>
+  </ul>
+</div>
 <% end -%>

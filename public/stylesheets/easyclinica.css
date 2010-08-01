@@ -237,16 +237,16 @@ p, a, label {
   display: block;
 }
 
-#main-navigation ul li.active {
-  border-top: 1px solid #fff;
-  background-color: #eee !important;
-  color: #333;
-}
-
 #main-navigation ul li:hover {
   border-top-color: #7593B0;
   background-color: #576C82 !important;
   color: #fff;
+}
+
+#main-navigation ul li.active {
+  border-top: 1px solid #fff;
+  background-color: #eee !important;
+  color: #333;
 }
 
 #main-navigation ul li.active a:link, #main-navigation ul li.active a:visited, #main-navigation ul li.active a:hover, #main-navigation ul li.active a:active {
@@ -414,7 +414,7 @@ p, a, label {
 
 .table td {
   border-bottom: 1px solid #AAA;
- 	padding: 10px;
+ 	padding: 5px;
 }
 
 .table td.last {
@@ -663,6 +663,10 @@ button.button:active, a.button:active {
 	float:left;
 }
 
+.exibicao_dados .table {
+	width: 95%;
+}
+
 .exibicao_dados div.info {
 	float: left;
 	width: 100%;
@@ -713,7 +717,27 @@ span.observacoes {
 	margin-bottom:5px;
 }
 
+p.observacoes {
+	width: 95%!important;
+}
+
 .exibicao_dados div.foto div.info span.descricao {
 	font-size:11px;
+}
+
+.descricao_tabela {
+	width: 95%;
+	margin: 10px 0 5px;
+	float:left;
+}
+
+.descricao_tabela h3 {
+	float: left;
+	color: #445566;
+	font-size: 16px;
+}
+
+.descricao_tabela .botao {
+	float: right;
 }
 /* FIM EXIBIÇÃO DADOS */
