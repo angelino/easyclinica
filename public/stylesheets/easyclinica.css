@@ -114,8 +114,10 @@ p, a, label {
   border-top: 1px solid #bbb;
   float: left;
   width: 100%;
-  padding: 3px 5px;
+  padding: 3px 0;
   text-align: center;
+  position: absolute;
+  bottom: 0;
 }
 
 #footer .block {
