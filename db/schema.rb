@@ -67,10 +67,10 @@ ActiveRecord::Schema.define(:version => 20100801000422) do
     t.decimal  "ch",                        :precision => 10, :scale => 2, :default => 0.0, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "tabelas_id"
+    t.integer  "tabela_id"
   end
 
-  add_index "materiais", ["tabelas_id"], :name => "index_materiais_on_tabelas_id"
+  add_index "materiais", ["tabela_id"], :name => "index_materiais_on_tabela_id"
 
   create_table "materiais_servicos", :id => false, :force => true do |t|
     t.integer "material_id", :null => false
@@ -98,10 +98,10 @@ ActiveRecord::Schema.define(:version => 20100801000422) do
     t.decimal  "ch",                        :precision => 10, :scale => 2, :default => 0.0, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "tabelas_id"
+    t.integer  "tabela_id"
   end
 
-  add_index "servicos", ["tabelas_id"], :name => "index_servicos_on_tabelas_id"
+  add_index "servicos", ["tabela_id"], :name => "index_servicos_on_tabela_id"
 
   create_table "tabelas", :force => true do |t|
     t.string   "nome",       :limit => 50, :null => false
