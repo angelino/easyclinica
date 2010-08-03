@@ -18,4 +18,12 @@ describe Excecaodematerial do
     
     excecao.should be_valid
   end
+  
+  it 'nao deve repetir no mesmo convenio' do
+    excecao = Excecaodematerial.new :convenio => @convenio, :material => @material
+    excecao.save.should == true
+    
+    excecao_igual = Excecaodematerial.new :convenio => @convenio, :material => @material
+    excecao_igual.save.should == false
+  end
 end

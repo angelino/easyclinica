@@ -1,12 +1,12 @@
 <% content_for :js do %>
 function novo() {
-	$('#nova_excecao_de_servico').show();
+	$('#nova_excecao_de_material').show();
 }
 
 $(document).ready(function(){
 		$("#tabs").tabs();
 		$('#adicionar_excecao').click(novo);
-		$('#nova_excecao_de_servico').hide();
+		$('#nova_excecao_de_material').hide();
 });
 
 function deletar(id) {
@@ -15,7 +15,6 @@ function deletar(id) {
 		form.submit();
 	}
 }
-
 <% end %>
 
 <% content_for :conteudo do %>
@@ -23,6 +22,7 @@ function deletar(id) {
 	<div class="block" id="block">
 		<div class="content">
 			<%= render :partial => 'shared/avisos' %>
+			<%= render :partial => 'shared/erros', :locals => { :f => f } %>
 
 			<div id="tabs">
 				
@@ -33,10 +33,7 @@ function deletar(id) {
 					<li><a href="#materiais">Exceções de materiais</a></li>
 				</ul>
 				
-				<%= render :partial => 'shared/erros', :locals => { :f => f } %>
-				
-				<!-- INÍCIO SERVIÇOS -->
-				<div id="servicos">
+				<div id="materiais">
 					<h2 class="title"><%=h @convenio.tabela.nome %></h2>	
 
 					<div class="inner exibicao_dados">
@@ -47,27 +44,27 @@ function deletar(id) {
 						</div>	
 					
 						<div class="descricao_tabela">
-							<h3>Exceções de Serviços</h3>
+							<h3>Exceções de Materiais</h3>
 							<a href="#" class="botao" id="adicionar_excecao">Adicionar Exceção</a>
 						</div>
 												
 						<table class="table"> 
 							<tr>
 								<th class="first"></th> 
-								<th>Serviço</th> 
+								<th>Material</th> 
 								<th>Valor CH (em R$)</th> 
 								<th>Valor Bruto (em R$)</th>
 								<th class="last">&nbsp;</th> 
 							</tr>
-							<% if(@convenio.excecoesdeservicos.size == 0)%>
+							<% if(@convenio.excecoesdemateriais.size == 0)%>
 							<tr>
-								<td colspan="5">Não há exceções para valores de serviços!</td>
+								<td colspan="5">Não há exceções para valores de materiais!</td>
 							</tr>
 							<% else %>
-							<% for excecao in @convenio.excecoesdeservicos %>
+							<% for excecao in @convenio.excecoesdemateriais %>
 							<tr class="odd"> 
 								<td>&nbsp;</td>
-								<td><%= h excecao.servico.nome %></td> 
+								<td><%= h excecao.material.nome %></td> 
 								<td><%= h excecao.valor_ch %></td> 
 								<td><%= h excecao.valor_bruto %></td>
 								<td>
@@ -78,10 +75,10 @@ function deletar(id) {
 							</tr> 							
 							<% end %>
 							<% end %> 
-							<tr id="nova_excecao_de_servico" class="odd">
+							<tr id="nova_excecao_de_material" class="odd">
 								<td>&nbsp;</td>
 								<td>
-									<%= f.select :servico_id, @convenio.tabela.servicos.collect{|servico| ["#{servico.nome} (#{servico.codigo})", servico.id]} %>
+									<%= f.select :material_id, @convenio.tabela.materiais.collect{|material| ["#{material.nome} (#{material.codigo})", material.id]} %>
 								</td>
 								<td><%= f.text_field :valor_ch, :class => 'text_field' %></td>
 								<td><%= f.text_field :valor_bruto, :class => 'text_field' %></td>
@@ -91,7 +88,6 @@ function deletar(id) {
 					
 					</div>
 				</div>
-				<!-- FIM SERVIÇOS -->
 			
 			</div>
 			

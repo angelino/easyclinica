@@ -3,6 +3,7 @@ Easyclinica::Application.routes.draw do
 
 	resources :convenios do
 	  resources :excecoesdeservicos, :only => [:index, :create, :destroy]
+	  resources :excecoesdemateriais, :only => [:index, :create, :destroy]
   end
   
   match 'medicos/ativar_selecionados' => 'medicos#ativar_selecionados', :via => :post
