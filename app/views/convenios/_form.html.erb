@@ -1,14 +1,6 @@
 <%= form_for(@convenio, :html => { :class => "form"} ) do |f| %>
 	
-	<% if !f.error_messages.empty? %>
-	<div class="flash"> 
-		<div class="message error">
-		  <%=h f.error_messages :header_message => 'Dados inválidos', 
-		  											:message => 'Os seguintes erros ocorreram:', 
-		  											:header_tag => :h3 %>
-		</div>
-	</div>
-	<% end %>
+	<%= render :partial => 'shared/erros', :locals => { :f => f } %>
 
 	<fieldset class="cadastro">	
 		<label class="label">Nome*:</label>
@@ -59,7 +51,7 @@
 	
 	<div class="agrupar_campos">
 		<label class="label">Valor em R$ da CH:</label>
-	<%= f.text_field :email, :class => 'text_field' %>
+	<%= f.text_field :valor_ch, :class => 'text_field' %>
 	<span class="description">Ex: 'R$ 0.15'</span>
 	</div>
 	

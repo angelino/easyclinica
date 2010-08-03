@@ -1,7 +1,9 @@
 Easyclinica::Application.routes.draw do
   root :to => "home#dashboard"
 
-	resources :convenios
+	resources :convenios do
+	  resources :excecoesdeservicos, :only => [:index, :create, :destroy]
+  end
   
   match 'medicos/ativar_selecionados' => 'medicos#ativar_selecionados', :via => :post
   resources :medicos

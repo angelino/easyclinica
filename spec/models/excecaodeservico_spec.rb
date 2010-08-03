@@ -18,4 +18,12 @@ describe Excecaodeservico do
     
     excecao.should be_valid
   end
+  
+  it 'nao deve repetir no mesmo convenio' do
+    excecao = Excecaodeservico.new :convenio => @convenio, :servico => @servico
+    excecao.save.should == true
+    
+    excecao_igual = Excecaodeservico.new :convenio => @convenio, :servico => @servico
+    excecao_igual.save.should == false
+  end
 end
