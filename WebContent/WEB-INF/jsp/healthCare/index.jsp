@@ -1,15 +1,42 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
-		<c:forEach var="healthCare" items="${healthcares}">
-			${healthCare.name}<br/>
-		</c:forEach>
-</body>
-</html>
+
+<div class="block" id="block-tables">
+	<div class="secondary-navigation">
+	  <ul class="wat-cf">
+	    <li class="first"><a href="javascript:void(0);">Ativos</a></li>
+	    <li class="active"><a href="javascript:void(0);">Inativos</a></li>
+	  </ul>
+	</div>
+    <div class="content">
+    	<h2 class="title">Listagem de Convênios</h2>
+        <div class="inner">
+			<table class="table">
+				<tr>
+					<th class="first"><input type="checkbox" class="checkbox toggle check_all" rel="chk_convenios"/></th>
+					<th>Nome</th>
+					<th class="last">&nbsp;</th>
+				</tr>
+				
+				<c:forEach var="healthCare" items="${healthcares}" varStatus="status">
+					<tr class="${status.count % 2 == 0 ? 'odd' : 'even' }">
+						<td><input type="checkbox" class="checkbox" rel="chk_convenios" name="id" value="${healthCare.id}" /></td>
+						<td>${healthCare.name}</td>
+						<td></td>
+					</tr>
+				</c:forEach>
+			</table>
+			
+            <div class="actions-bar wat-cf">
+	             <div class="actions">
+	               <button class="button" type="submit">
+	                 <img src="images/icons/cross.png" alt="Delete" /> Delete
+	               </button>
+	             </div>
+                 <div class="pagination">
+                    <span class="disabled prev_page">« Previous</span><span class="current">1</span><a rel="next" href="#">2</a><a href="#">3</a><a href="#">4</a><a href="#">5</a><a href="#">6</a><a href="#">7</a><a href="#">8</a><a href="#">9</a><a href="#">10</a><a href="#">11</a><a rel="next" class="next_page" href="#">Next »</a>
+                 </div>
+            </div>
+		</div>
+	</div>
+</div>
