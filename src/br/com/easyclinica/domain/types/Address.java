@@ -51,5 +51,8 @@ public class Address {
 	public void setState(State state) {
 		this.state = state;
 	}
+	public static Address empty() {
+		return new Address(new Street(""), new Neighborhood(""), new PostalCode(""), new City(""), new State(""));
+	}
 
 }

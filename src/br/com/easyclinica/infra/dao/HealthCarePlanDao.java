@@ -22,6 +22,6 @@ public class HealthCarePlanDao implements AllHealthCarePlans {
 	
 	@SuppressWarnings("unchecked")
 	public List<HealthCarePlan> get() {
-		return (List<HealthCarePlan>)session.createQuery("from HealthCare hc order by name").list();
+		return (List<HealthCarePlan>)session.createQuery("from HealthCarePlan hc order by name").list();
 	}
 }

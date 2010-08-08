@@ -18,4 +18,7 @@ public class Name {
 	public String toString() {
 		return get();
 	}
+	public static Name empty() {
+		return new Name("");
+	}
 }

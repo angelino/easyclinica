@@ -17,7 +17,18 @@
 		<property name="hibernate.hbm2ddl.auto">update</property>
 		<property name="hibernate.cache.provider_class">org.hibernate.cache.HashtableCacheProvider</property>
 
- 		<mapping class="br.com.easyclinica.domain.entities.HealthCare" />
+ 		<mapping class="br.com.easyclinica.domain.entities.HealthCarePlan" />
+ 		<mapping class="br.com.easyclinica.domain.types.Address" />
+ 		<mapping class="br.com.easyclinica.domain.types.City" />
+ 		<mapping class="br.com.easyclinica.domain.types.Email" />
+ 		<mapping class="br.com.easyclinica.domain.types.Name" />
+ 		<mapping class="br.com.easyclinica.domain.types.Neighborhood" />
+ 		<mapping class="br.com.easyclinica.domain.types.Observations" />
+ 		<mapping class="br.com.easyclinica.domain.types.PostalCode" />
+ 		<mapping class="br.com.easyclinica.domain.types.State" />
+ 		<mapping class="br.com.easyclinica.domain.types.Street" />
+ 		<mapping class="br.com.easyclinica.domain.types.Telephone" />
+ 		<mapping class="br.com.easyclinica.domain.types.Website" />
 
 	</session-factory>
 
