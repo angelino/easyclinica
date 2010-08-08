@@ -15,6 +15,8 @@
 				<tr>
 					<th class="first"><input type="checkbox" class="checkbox toggle check_all" rel="chk_convenios"/></th>
 					<th>Nome</th>
+					<th>Contato</th>
+					<th>Telefone</th>
 					<th class="last">&nbsp;</th>
 				</tr>
 				
@@ -22,6 +24,8 @@
 					<tr class="${status.count % 2 == 0 ? 'odd' : 'even' }">
 						<td><input type="checkbox" class="checkbox" rel="chk_convenios" name="id" value="${healthCare.id}" /></td>
 						<td>${healthCare.name}</td>
+						<td>${healthCare.contact}</td>
+						<td>${healthCare.telephone}</td>
 						<td></td>
 					</tr>
 				</c:forEach>
