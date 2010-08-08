@@ -22,7 +22,7 @@ public class HealthCarePlanControllerTests {
 	@Before
 	public void SetUp() {
 		allHealthCares = mock(AllHealthCarePlans.class);
-		result = new MockResult();
+		result = spy(new MockResult());
 		
 		controller = new HealthCarePlanController(allHealthCares, result);
 	}
@@ -35,5 +35,13 @@ public class HealthCarePlanControllerTests {
 		controller.index();
 		
 		assertEquals(list, result.included("healthcares"));
+	}
+	
+	@Test
+	public void shouldCaptureInfoForNewHealthCarePlans() {
+		controller.newForm();
+		
+		HealthCarePlanController mockController = spy(result.redirectTo(HealthCarePlanController.class));
+		verify(mockController).newForm();
 	}
 }

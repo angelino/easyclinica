@@ -11,6 +11,14 @@
 		<param-value>br.com.easyclinica.infra.vraptor.providers.CustomProvider</param-value>
 	</context-param>
 	
+	<context-param>
+	    <param-name>br.com.caelum.vraptor.packages</param-name>
+	    <param-value> 
+	    	br.com.caelum.vraptor.util.hibernate,
+	        br.com.caelum.vraptor.http.iogi
+	    </param-value>
+	</context-param>
+	
 	<filter>
 		<filter-name>vraptor</filter-name>
 		<filter-class>br.com.caelum.vraptor.VRaptor</filter-class>

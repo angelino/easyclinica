@@ -2,12 +2,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <div class="block" id="block-tables">
-	<div class="secondary-navigation">
+	<!--  div class="secondary-navigation">
 	  <ul class="wat-cf">
 	    <li class="first"><a href="javascript:void(0);">Ativos</a></li>
 	    <li class="active"><a href="javascript:void(0);">Inativos</a></li>
 	  </ul>
-	</div>
+	</div -->
     <div class="content">
     	<h2 class="title">Listagem de Convênios</h2>
         <div class="inner">
