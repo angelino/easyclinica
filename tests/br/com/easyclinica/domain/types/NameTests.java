@@ -9,6 +9,6 @@ public class NameTests {
 	public void shouldStoreAName() {
 		Name name = new Name("John Doe");
 		
-		assertEquals("John Doe", name.get());
+		assertEquals("John Doe", name.getName());
 	}
 }

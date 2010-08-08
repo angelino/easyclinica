@@ -9,6 +9,6 @@ public class WebsiteTests {
 	public void shouldStoreAWebsite() {
 		Website website = new Website("http://somesite.com");
 		
-		assertEquals("http://somesite.com", website.get());
+		assertEquals("http://somesite.com", website.getWebsite());
 	}
 }

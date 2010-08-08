@@ -11,11 +11,11 @@ public class PostalCode {
 		this.postalCode = postalCode;
 	}
 	
-	public String get() {
+	public String getPostalCode() {
 		return postalCode;
 	}
 	
 	public String toString() {
-		return get();
+		return getPostalCode();
 	}
 }

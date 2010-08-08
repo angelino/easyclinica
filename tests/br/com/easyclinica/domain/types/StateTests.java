@@ -9,6 +9,6 @@ public class StateTests {
 	public void shouldStoreAState() {
 		State state = new State("SP");
 		
-		assertEquals("SP", state.get());
+		assertEquals("SP", state.getState());
 	}
 }

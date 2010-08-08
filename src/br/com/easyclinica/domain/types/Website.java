@@ -11,12 +11,12 @@ public class Website {
 		this.website = website;
 	}
 	
-	public String get() {
+	public String getWebsite() {
 		return website;
 	}
 	
 	public String toString() {
-		return get();
+		return getWebsite();
 	}
 	public static Website empty() {
 		return new Website("");

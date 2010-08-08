@@ -9,6 +9,6 @@ public class ObservationsTests {
 	public void shouldStoreAnObservation() {
 		Observations obs = new Observations("some obs");
 		
-		assertEquals("some obs", obs.get());
+		assertEquals("some obs", obs.getObservations());
 	}
 }

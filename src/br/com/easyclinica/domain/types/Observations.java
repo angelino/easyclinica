@@ -11,12 +11,12 @@ public class Observations {
 		this.observations = observations;
 	}
 	
-	public String get() {
+	public String getObservations() {
 		return observations;
 	}
 	
 	public String toString() {
-		return get();
+		return getObservations();
 	}
 	public static Observations empty() {
 		return new Observations("");

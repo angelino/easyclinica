@@ -11,11 +11,11 @@ public class State {
 		this.state = state;
 	}
 	
-	public String get() {
+	public String getState() {
 		return state;
 	}
 	
 	public String toString() {
-		return get();
+		return getState();
 	}
 }

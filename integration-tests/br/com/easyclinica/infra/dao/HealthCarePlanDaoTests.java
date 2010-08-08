@@ -57,16 +57,16 @@ public class HealthCarePlanDaoTests {
 		assertEquals(1, list.size());
 		
 		HealthCarePlan newOne = list.get(0);
-		assertEquals("some healthcare", newOne.getName().get());
-		assertEquals("street", newOne.getAddress().getStreet().get());
-		assertEquals("nhood", newOne.getAddress().getNeighborhood().get());
-		assertEquals("123", newOne.getAddress().getPostalCode().get());
-		assertEquals("city", newOne.getAddress().getCity().get());
-		assertEquals("ST", newOne.getAddress().getState().get());
-		assertEquals("11 223344", newOne.getTelephone().get());
-		assertEquals("email@email.com", newOne.getEmail().get());
-		assertEquals("website.com", newOne.getWebsite().get());
-		assertEquals("contact", newOne.getContact().get());
-		assertEquals("some obs", newOne.getObservations().get());
+		assertEquals("some healthcare", newOne.getName().toString());
+		assertEquals("street", newOne.getAddress().getStreet().toString());
+		assertEquals("nhood", newOne.getAddress().getNeighborhood().toString());
+		assertEquals("123", newOne.getAddress().getPostalCode().toString());
+		assertEquals("city", newOne.getAddress().getCity().toString());
+		assertEquals("ST", newOne.getAddress().getState().toString());
+		assertEquals("11 223344", newOne.getTelephone().toString());
+		assertEquals("email@email.com", newOne.getEmail().toString());
+		assertEquals("website.com", newOne.getWebsite().toString());
+		assertEquals("contact", newOne.getContact().toString());
+		assertEquals("some obs", newOne.getObservations().toString());
 	}
 }

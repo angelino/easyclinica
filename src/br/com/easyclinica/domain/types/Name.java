@@ -11,12 +11,12 @@ public class Name {
 		this.name = name;
 	}
 	
-	public String get() {
+	public String getName() {
 		return name;
 	}
 	
 	public String toString() {
-		return get();
+		return getName();
 	}
 	public static Name empty() {
 		return new Name("");

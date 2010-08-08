@@ -10,6 +10,6 @@ public class PostalCodeTests {
 	public void shouldStoreAPostalCode() {
 		PostalCode code = new PostalCode("123");
 		
-		assertEquals("123", code.get());
+		assertEquals("123", code.getPostalCode());
 	}
 }

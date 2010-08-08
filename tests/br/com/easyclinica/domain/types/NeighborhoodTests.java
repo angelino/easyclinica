@@ -9,6 +9,6 @@ public class NeighborhoodTests {
 	public void shouldStoreANeighborhood() {
 		Neighborhood nhood = new Neighborhood("St Barks");
 		
-		assertEquals("St Barks", nhood.get());
+		assertEquals("St Barks", nhood.getNeighborhood());
 	}
 }

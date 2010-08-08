@@ -11,12 +11,12 @@ public class Telephone {
 		this.telephone = telephone;
 	}
 	
-	public String get() {
+	public String getTelephone() {
 		return telephone;
 	}
 	
 	public String toString() {
-		return get();
+		return getTelephone();
 	}
 	public static Telephone empty() {
 		return new Telephone("");

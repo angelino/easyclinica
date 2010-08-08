@@ -15,10 +15,10 @@ public class AddressTests {
 				new City("Sao Paulo"), 
 				new State("SP"));
 		
-		assertEquals("street", address.getStreet().get());
-		assertEquals("Vila ABC", address.getNeighborhood().get());
-		assertEquals("123", address.getPostalCode().get());
-		assertEquals("Sao Paulo", address.getCity().get());
-		assertEquals("SP", address.getState().get());
+		assertEquals("street", address.getStreet().getStreet());
+		assertEquals("Vila ABC", address.getNeighborhood().getNeighborhood());
+		assertEquals("123", address.getPostalCode().getPostalCode());
+		assertEquals("Sao Paulo", address.getCity().getCity());
+		assertEquals("SP", address.getState().getState());
 	}
 }

@@ -9,6 +9,6 @@ public class StreetTests {
 	public void shouldStoreAStreet() {
 		Street street = new Street("123 Street");
 		
-		assertEquals("123 Street", street.get());
+		assertEquals("123 Street", street.getStreet());
 	}
 }

@@ -9,6 +9,6 @@ public class EmailTests {
 	public void shouldStoreAnEmail() {
 		Email email = new Email("some@person.com");
 		
-		assertEquals("some@person.com", email.get());
+		assertEquals("some@person.com", email.getEmail());
 	}
 }

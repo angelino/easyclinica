@@ -17,7 +17,7 @@ public class HealthCarePlanTests {
 	public void shouldHaveAName() {
 		HealthCarePlan plan = new HealthCarePlan(new Name("Amil"));
 		
-		assertEquals("Amil", plan.getName().get());
+		assertEquals("Amil", plan.getName().toString());
 	}
 	
 	@Test
@@ -32,17 +32,17 @@ public class HealthCarePlanTests {
 				new Observations("obs")
 		);
 		
-		assertEquals("Amil", plan.getName().get());
-		assertEquals("123", plan.getTelephone().get());
-		assertEquals("email@email.com", plan.getEmail().get());
-		assertEquals("website.com", plan.getWebsite().get());
-		assertEquals("contact", plan.getContact().get());
-		assertEquals("obs", plan.getObservations().get());
+		assertEquals("Amil", plan.getName().toString());
+		assertEquals("123", plan.getTelephone().toString());
+		assertEquals("email@email.com", plan.getEmail().toString());
+		assertEquals("website.com", plan.getWebsite().toString());
+		assertEquals("contact", plan.getContact().toString());
+		assertEquals("obs", plan.getObservations().toString());
 		
-		assertEquals(AnExampleOf.address().getStreet().get(), plan.getAddress().getStreet().get());
-		assertEquals(AnExampleOf.address().getCity().get(), plan.getAddress().getCity().get());
-		assertEquals(AnExampleOf.address().getNeighborhood().get(), plan.getAddress().getNeighborhood().get());
-		assertEquals(AnExampleOf.address().getPostalCode().get(), plan.getAddress().getPostalCode().get());
-		assertEquals(AnExampleOf.address().getState().get(), plan.getAddress().getState().get());
+		assertEquals(AnExampleOf.address().getStreet().toString(), plan.getAddress().getStreet().toString());
+		assertEquals(AnExampleOf.address().getCity().toString(), plan.getAddress().getCity().toString());
+		assertEquals(AnExampleOf.address().getNeighborhood().toString(), plan.getAddress().getNeighborhood().toString());
+		assertEquals(AnExampleOf.address().getPostalCode().toString(), plan.getAddress().getPostalCode().toString());
+		assertEquals(AnExampleOf.address().getState().toString(), plan.getAddress().getState().toString());
 	}
 }

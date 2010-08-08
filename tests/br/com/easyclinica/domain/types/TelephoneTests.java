@@ -9,6 +9,6 @@ public class TelephoneTests {
 	public void shouldStoreATelephone() {
 		Telephone phone = new Telephone("123");
 		
-		assertEquals("123", phone.get());
+		assertEquals("123", phone.getTelephone());
 	}
 }

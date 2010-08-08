@@ -11,11 +11,11 @@ public class City {
 		this.city = city;
 	}
 	
-	public String get() {
+	public String getCity() {
 		return city;
 	}
 	
 	public String toString() {
-		return get();
+		return getCity();
 	}
 }

@@ -11,11 +11,11 @@ public class Neighborhood {
 		this.neighborhood = neighborhood;
 	}
 	
-	public String get() {
+	public String getNeighborhood() {
 		return neighborhood;
 	}
 	
 	public String toString() {
-		return get();
+		return getNeighborhood();
 	}
 }

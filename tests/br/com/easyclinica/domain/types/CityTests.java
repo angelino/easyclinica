@@ -10,6 +10,6 @@ public class CityTests {
 	public void shouldStoreACity() {
 		City city = new City("Sao Paulo");
 		
-		assertEquals("Sao Paulo", city.get());
+		assertEquals("Sao Paulo", city.getCity());
 	}
 }

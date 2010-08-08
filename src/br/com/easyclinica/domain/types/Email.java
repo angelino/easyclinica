@@ -11,12 +11,12 @@ public class Email {
 		this.email = email;
 	}
 	
-	public String get() {
+	public String getEmail() {
 		return email;
 	}
 	
 	public String toString() {
-		return get();
+		return getEmail();
 	}
 	public static Email empty() {
 		return new Email("");
