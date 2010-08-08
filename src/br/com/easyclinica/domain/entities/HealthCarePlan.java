@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import br.com.easyclinica.domain.types.Name;
 
 @Entity
-public class HealthCare {
+public class HealthCarePlan {
 
 	@Id
 	@GeneratedValue
@@ -17,9 +17,9 @@ public class HealthCare {
 	@Embedded
 	private Name name;
 	
-	protected HealthCare() {}
+	protected HealthCarePlan() {}
 	
-	public HealthCare(Name name) {
+	public HealthCarePlan(Name name) {
 		this.name = name;
 	}
 	

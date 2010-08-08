@@ -4,15 +4,15 @@ import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
-import br.com.easyclinica.domain.repositories.AllHealthCares;
+import br.com.easyclinica.domain.repositories.AllHealthCarePlans;
 
 @Resource
-public class HealthCareController {
+public class HealthCarePlanController {
 
-	private final AllHealthCares allHealthCares;
+	private final AllHealthCarePlans allHealthCares;
 	private final Result result;
 
-	public HealthCareController(AllHealthCares allHealthCares, Result result) {
+	public HealthCarePlanController(AllHealthCarePlans allHealthCares, Result result) {
 		this.allHealthCares = allHealthCares;
 		this.result = result;
 	}

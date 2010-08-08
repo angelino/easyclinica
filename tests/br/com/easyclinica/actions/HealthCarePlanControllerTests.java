@@ -10,26 +10,26 @@ import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
 import br.com.caelum.vraptor.util.test.MockResult;
-import br.com.easyclinica.domain.entities.HealthCare;
-import br.com.easyclinica.domain.repositories.AllHealthCares;
+import br.com.easyclinica.domain.entities.HealthCarePlan;
+import br.com.easyclinica.domain.repositories.AllHealthCarePlans;
 
-public class HealthCareControllerTests {
+public class HealthCarePlanControllerTests {
 
-	private AllHealthCares allHealthCares;
+	private AllHealthCarePlans allHealthCares;
 	private MockResult result;
-	private HealthCareController controller;
+	private HealthCarePlanController controller;
 
 	@Before
 	public void SetUp() {
-		allHealthCares = mock(AllHealthCares.class);
+		allHealthCares = mock(AllHealthCarePlans.class);
 		result = new MockResult();
 		
-		controller = new HealthCareController(allHealthCares, result);
+		controller = new HealthCarePlanController(allHealthCares, result);
 	}
 	
 	@Test
 	public void shouldGetAllHealthCares() {
-		List<HealthCare> list = new ArrayList<HealthCare>();
+		List<HealthCarePlan> list = new ArrayList<HealthCarePlan>();
 		when(allHealthCares.get()).thenReturn(list);
 		
 		controller.index();

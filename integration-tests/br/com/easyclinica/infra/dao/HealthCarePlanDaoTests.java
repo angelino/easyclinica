@@ -8,19 +8,19 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.After;
 
-import br.com.easyclinica.domain.entities.HealthCare;
+import br.com.easyclinica.domain.entities.HealthCarePlan;
 import br.com.easyclinica.domain.types.Name;
 
-public class HealthCareDaoTests {
+public class HealthCarePlanDaoTests {
 
 	private Session session;
-	private HealthCareDao dao;
+	private HealthCarePlanDao dao;
 
 	@Before
 	public void setUp() {
 		session = new AnnotationConfiguration().configure().buildSessionFactory().openSession();
 		session.beginTransaction();
-		dao = new HealthCareDao(session);
+		dao = new HealthCarePlanDao(session);
 	}
 	
 	@After
@@ -31,7 +31,7 @@ public class HealthCareDaoTests {
 	
 	@Test
 	public void shouldAdd() {
-		dao.add(new HealthCare(new Name("some healthcare")));
+		dao.add(new HealthCarePlan(new Name("some healthcare")));
 		
 		assertEquals(1, dao.get().size());
 		

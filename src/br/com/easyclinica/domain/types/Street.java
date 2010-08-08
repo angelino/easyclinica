@@ -3,16 +3,16 @@ package br.com.easyclinica.domain.types;
 import javax.persistence.Embeddable;
 
 @Embeddable
-public class Name {
-	private String name;
+public class Street {
+	private String street;
 	
-	protected Name() {}
-	public Name(String name) {
-		this.name = name;
+	protected Street() {}
+	public Street(String street) {
+		this.street = street;
 	}
 	
 	public String get() {
-		return name;
+		return street;
 	}
 	
 	public String toString() {
