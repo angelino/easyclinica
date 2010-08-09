@@ -10,6 +10,7 @@ import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
 import br.com.caelum.vraptor.util.test.MockResult;
+import br.com.caelum.vraptor.util.test.MockValidator;
 import br.com.easyclinica.domain.entities.HealthCarePlan;
 import br.com.easyclinica.domain.repositories.AllHealthCarePlans;
 import br.com.easyclinica.domain.types.Name;
@@ -19,13 +20,15 @@ public class HealthCarePlanControllerTests {
 	private AllHealthCarePlans allHealthCares;
 	private MockResult result;
 	private HealthCarePlanController controller;
+	private MockValidator validator;
 
 	@Before
 	public void SetUp() {
 		allHealthCares = mock(AllHealthCarePlans.class);
 		result = spy(new MockResult());
+		validator = spy(new MockValidator());
 		
-		controller = new HealthCarePlanController(allHealthCares, result);
+		controller = new HealthCarePlanController(allHealthCares, result, validator);
 	}
 	
 	@Test

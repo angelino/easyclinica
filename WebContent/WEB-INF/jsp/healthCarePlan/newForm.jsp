@@ -7,9 +7,12 @@
    		<h2 class="title">Novo Convênio</h2>
 		<div class="inner">
 
-<form action="../" method="post">
+<form method="post">
 	
 	<!--  erros -->
+	<c:forEach var="error" items="${errors}">
+	    ${error.message}<br />
+	</c:forEach>
 
 	<fieldset class="cadastro">	
 		<label class="label">Nome*:</label>
