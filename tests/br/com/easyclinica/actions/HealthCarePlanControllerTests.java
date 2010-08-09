@@ -12,6 +12,7 @@ import static org.mockito.Mockito.*;
 import br.com.caelum.vraptor.util.test.MockResult;
 import br.com.easyclinica.domain.entities.HealthCarePlan;
 import br.com.easyclinica.domain.repositories.AllHealthCarePlans;
+import br.com.easyclinica.domain.types.Name;
 
 public class HealthCarePlanControllerTests {
 
@@ -38,10 +39,11 @@ public class HealthCarePlanControllerTests {
 	}
 	
 	@Test
-	public void shouldCaptureInfoForNewHealthCarePlans() {
-		controller.newForm();
+	public void shouldSaveANewHealthCarePlan() {
+		HealthCarePlan plan = new HealthCarePlan(new Name("Amil"));
 		
-		HealthCarePlanController mockController = spy(result.redirectTo(HealthCarePlanController.class));
-		verify(mockController).newForm();
+		controller.save(plan);
+		
+		verify(allHealthCares).add(plan);
 	}
 }

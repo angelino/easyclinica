@@ -32,6 +32,8 @@ public class HealthCarePlanController {
 	@Post
 	@Path("/convenios")
 	public void save(HealthCarePlan healthCarePlan) {
+		allHealthCares.add(healthCarePlan);
 		
+		result.redirectTo(HealthCarePlanController.class).index();
 	}
 }

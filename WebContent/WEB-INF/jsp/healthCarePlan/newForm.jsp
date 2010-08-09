@@ -7,49 +7,49 @@
    		<h2 class="title">Novo Convênio</h2>
 		<div class="inner">
 
-<form action="">
+<form action="../" method="post">
 	
 	<!--  erros -->
 
 	<fieldset class="cadastro">	
 		<label class="label">Nome*:</label>
-		<input type="text" name="healthCarePlan.name" class="text_field" />
+		<input type="text" name="healthCarePlan.name.name" class="text_field" />
     	<span class="description">Ex: 'Amil', 'Blue Life'</span>
 	
 		<label class="label">Endereço:</label>
-    	<input type="text" name="healthCarePlan.address.street" class="text_field" />
+    	<input type="text" name="healthCarePlan.address.street.street" class="text_field" />
     	<span class="description">Ex: 'Av. Paulista, 123'</span>
 		
 		<div class="agrupar_campos">
 			<label class="label">Bairro:</label>
-	    <input type="text" name="healthCarePlan.address.neighborhood" class="text_field" />
+	    <input type="text" name="healthCarePlan.address.neighborhood.neighborhood" class="text_field" />
 	    <span class="description">Ex: 'Jardins'</span>
 		</div>
 		
 		<div class="agrupar_campos">
 			<label class="label">CEP:</label>
-	    <input type="text" name="healthCarePlan.address.postalCode" class="text_field" />
+	    <input type="text" name="healthCarePlan.address.postalCode.postalCode" class="text_field" />
 	    <span class="description">Ex: '12345-789'</span>		
 		</div>
 	
 		<label class="label">Nome do Responsável:</label>
-    <input type="text" name="healthCarePlan.contact" class="text_field" />
+    <input type="text" name="healthCarePlan.contact.name" class="text_field" />
     <span class="description">Ex: 'José da Silva'</span>
 	
 		<div class="agrupar_campos">
 			<label class="label">Telefone*:</label>
-    	<input type="text" name="healthCarePlan.telephone" class="text_field" />
+    	<input type="text" name="healthCarePlan.telephone.telephone" class="text_field" />
     	<span class="description">Ex: '(11) 1111-1111'</span>
 		</div>
 		
 		<div class="agrupar_campos">
 			<label class="label">E-mail:</label>
-    	<input type="text" name="healthCarePlan.email" class="text_field" />
+    	<input type="text" name="healthCarePlan.email.email" class="text_field" />
     	<span class="description">Ex: 'pessoa@convenio.com.br'</span>
 		</div>
 		
 		<label class="label">Website:</label>
-    <input type="text" name="healthCarePlan.website" class="text_field" />
+    <input type="text" name="healthCarePlan.website.website" class="text_field" />
     <span class="description">Ex: 'http://www.convenio.com.br'</span>
 	
 	<div class="agrupar_campos">
@@ -65,7 +65,7 @@
 	</div>
 	
 		<label class="label">Observações</label>
-    <input type="text" name="healthCarePlan.observations" class="text_field" />
+    <input type="text" name="healthCarePlan.observations.observations" class="text_field" />
     <span class="description">Ex: 'só atende ortopedia'</span>
 	
 		<div class="botoes">
