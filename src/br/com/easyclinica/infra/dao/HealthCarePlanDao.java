@@ -24,4 +24,12 @@ public class HealthCarePlanDao implements AllHealthCarePlans {
 	public List<HealthCarePlan> get() {
 		return (List<HealthCarePlan>)session.createQuery("from HealthCarePlan hc order by name").list();
 	}
+
+	public HealthCarePlan getById(int id) {
+		return (HealthCarePlan)session.load(HealthCarePlan.class, id);
+	}
+
+	public void update(HealthCarePlan plan) {
+		session.merge(plan);
+	}
 }

@@ -4,10 +4,10 @@
 <div class="block" id="block">
 	
 	<div class="content">
-   		<h2 class="title">Novo Convênio</h2>
+   		<h2 class="title">Editar Convênio</h2>
 		<div class="inner">
 
-			<c:url value="/convenios" var="formAction" />
+			<c:url value="/convenios/${healthCarePlan.id}" var="formAction" />
 			<helper:healthCarePlanForm action="${formAction}" errors="${errors}" model="${healthCarePlan}" />
 		</div>
 	</div>

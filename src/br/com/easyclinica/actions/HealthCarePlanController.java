@@ -1,6 +1,5 @@
 package br.com.easyclinica.actions;
 
-import static br.com.caelum.vraptor.view.Results.page;
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
@@ -10,6 +9,7 @@ import br.com.caelum.vraptor.Validator;
 import br.com.caelum.vraptor.view.Results;
 import br.com.easyclinica.domain.entities.HealthCarePlan;
 import br.com.easyclinica.domain.repositories.AllHealthCarePlans;
+import br.com.easyclinica.domain.types.Name;
 import br.com.easyclinica.domain.validators.HealthCarePlanValidator;
 import br.com.easyclinica.infra.vraptor.validators.ErrorTranslator;
 import br.com.easyclinica.view.Messages;
@@ -40,7 +40,10 @@ public class HealthCarePlanController {
 
 	@Get
 	@Path("/convenios/novo")
-	public void newForm() {	}
+	public void newForm() {
+		HealthCarePlan emptyPlan = new HealthCarePlan(new Name(""));
+		result.include("healthCarePlan", emptyPlan);
+	}
 	
 	@Post
 	@Path("/convenios")
@@ -51,6 +54,22 @@ public class HealthCarePlanController {
 		allHealthCares.add(healthCarePlan);
 		
 		result.include("message", Messages.HEALTH_CARE_PLAN_ADDED);
+		result.redirectTo(HealthCarePlanController.class).index();
+	}
+
+	@Get
+	@Path("/convenios/{id}/editar")
+	public void edit(int id) {
+		HealthCarePlan planToBeEdited = allHealthCares.getById(id);
+		result.include("healthCarePlan", planToBeEdited);
+	}
+
+	@Post
+	@Path("convenios/{healthCarePlan.id}")
+	public void update(final HealthCarePlan healthCarePlan) {
+		allHealthCares.update(healthCarePlan);
+		
+		result.include("message", Messages.HEALTH_CARE_PLAN_UPDATED);
 		result.redirectTo(HealthCarePlanController.class).index();
 	}
 }

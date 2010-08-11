@@ -7,4 +7,6 @@ import br.com.easyclinica.domain.entities.HealthCarePlan;
 public interface AllHealthCarePlans {
 	void add(HealthCarePlan healthCare);
 	List<HealthCarePlan> get();
+	HealthCarePlan getById(int id);
+	void update(HealthCarePlan plan);
 }

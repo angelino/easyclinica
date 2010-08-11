@@ -53,6 +53,19 @@ public class HealthCarePlan {
 		this.contact = contact;
 		this.observations = observations;
 	}
+	
+	public HealthCarePlan(int id, Name name, Address address, Telephone telephone,
+			Email email, Website website, Name contact,
+			Observations observations) {
+		this.id = id;
+		this.name = name;
+		this.address = address;
+		this.telephone = telephone;
+		this.email = email;
+		this.website = website;
+		this.contact = contact;
+		this.observations = observations;
+	}
 
 	public Name getName() {
 		return name;

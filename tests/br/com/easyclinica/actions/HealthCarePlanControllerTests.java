@@ -28,7 +28,7 @@ public class HealthCarePlanControllerTests {
 	private ErrorTranslator translator;
 
 	@Before
-	public void SetUp() {
+	public void setUp() {
 		allHealthCares = mock(AllHealthCarePlans.class);
 		result = spy(new MockResult());
 		validator = spy(new MockValidator());
@@ -50,8 +50,16 @@ public class HealthCarePlanControllerTests {
 	}
 	
 	@Test
+	public void shouldHaveAnEmptyHealthCarePlanToAdd() {
+		controller.newForm();
+		
+		assertNotNull(result.included("healthCarePlan"));
+		
+	}
+	
+	@Test
 	public void shouldSaveANewHealthCarePlan() {
-		HealthCarePlan plan = new HealthCarePlan(new Name("Amil"));
+		HealthCarePlan plan = aHealthCarePlan();
 		
 		stub(healthCarePlanValidator.validate(plan)).toReturn(anEmptyErrorList());
 		controller.save(plan);
@@ -59,7 +67,29 @@ public class HealthCarePlanControllerTests {
 		verify(allHealthCares).add(plan);
 		assertEquals(Messages.HEALTH_CARE_PLAN_ADDED, result.included("message"));
 	}
+	
+	@Test
+	public void shouldLoadAHealthCarePlanToBeUpdated() {
+		HealthCarePlan plan = aHealthCarePlan();
+		when(allHealthCares.getById(1)).thenReturn(plan);
+		controller.edit(1);
+		
+		assertEquals(plan, result.included("healthCarePlan"));
+	}
+	
+	@Test
+	public void shouldSaveAnUpdatedHealthCarePlan() {
+		HealthCarePlan plan = aHealthCarePlan();
+		controller.update(plan);
+		
+		verify(allHealthCares).update(plan);
+		assertEquals(Messages.HEALTH_CARE_PLAN_UPDATED, result.included("message"));
+	}
 
+	private HealthCarePlan aHealthCarePlan() {
+		return new HealthCarePlan(new Name("Amil"));
+	}
+	
 	private ArrayList<Error> anEmptyErrorList() {
 		return new ArrayList<Error>();
 	}
