@@ -9,7 +9,7 @@ import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.Validator;
 import br.com.easyclinica.domain.entities.HealthCarePlan;
 import br.com.easyclinica.domain.repositories.AllHealthCarePlans;
-import br.com.easyclinica.domain.validators.healthCarePlan.NewHealthCarePlanValidator;
+import br.com.easyclinica.domain.validators.HealthCarePlanValidator;
 import br.com.easyclinica.infra.vraptor.validators.ErrorTranslator;
 import br.com.easyclinica.view.Messages;
 
@@ -19,11 +19,11 @@ public class HealthCarePlanController {
 	private final AllHealthCarePlans allHealthCares;
 	private final Result result;
 	private final Validator validator;
-	private final NewHealthCarePlanValidator newHealthCarePlanValidator;
+	private final HealthCarePlanValidator newHealthCarePlanValidator;
 	private final ErrorTranslator translator;
 
 	public HealthCarePlanController(AllHealthCarePlans allHealthCares, Result result, Validator validator,
-			NewHealthCarePlanValidator newHealthCarePlanValidator, ErrorTranslator translator) {
+			HealthCarePlanValidator newHealthCarePlanValidator, ErrorTranslator translator) {
 		this.allHealthCares = allHealthCares;
 		this.result = result;
 		this.validator = validator;

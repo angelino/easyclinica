@@ -1,4 +1,4 @@
-package br.com.easyclinica.domain.validators.healthCarePlan;
+package br.com.easyclinica.domain.validators;
 
 import static org.junit.Assert.assertEquals;
 
@@ -7,16 +7,17 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 import br.com.easyclinica.domain.validators.Error;
+import br.com.easyclinica.domain.validators.HealthCarePlanValidator;
 import br.com.easyclinica.domain.entities.HealthCarePlan;
 import br.com.easyclinica.domain.types.Name;
 
-public class NewHealthCarePlanValidatorTests {
+public class HealthCarePlanValidatorTests {
 
-	private NewHealthCarePlanValidator validator;
+	private HealthCarePlanValidator validator;
 
 	@Before
 	public void setUp() {
-		validator = new NewHealthCarePlanValidator();
+		validator = new HealthCarePlanValidator();
 	}
 	
 	@Test
