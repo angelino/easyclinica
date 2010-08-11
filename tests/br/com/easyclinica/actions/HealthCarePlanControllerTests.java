@@ -21,7 +21,6 @@ import br.com.easyclinica.domain.entities.HealthCarePlan;
 import br.com.easyclinica.domain.repositories.AllHealthCarePlans;
 import br.com.easyclinica.domain.types.Name;
 import br.com.easyclinica.domain.validators.EntityValidator;
-import br.com.easyclinica.domain.validators.Error;
 import br.com.easyclinica.infra.vraptor.validators.ErrorTranslator;
 import br.com.easyclinica.view.Messages;
 
