@@ -1,6 +1,6 @@
 package br.com.easyclinica.domain.validators;
 
-public class ValidationKeys {
+public class ValidationMessages {
 	public static final String INVALID_NAME = "errors.invalid_name";
 
 }

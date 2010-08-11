@@ -12,7 +12,7 @@ public class HealthCarePlanValidator implements Validator<HealthCarePlan> {
 	public List<Error> validate(HealthCarePlan obj) {
 		List<Error> errors = new ArrayList<Error>();
 		if(obj.getName().toString() == null || obj.getName().toString().length() == 0) {
-			errors.add(new Error("healthCarePlan", ValidationKeys.INVALID_NAME));
+			errors.add(new Error("healthCarePlan", ValidationMessages.INVALID_NAME));
 		}
 		
 		return errors;
