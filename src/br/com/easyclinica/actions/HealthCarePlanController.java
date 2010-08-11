@@ -43,7 +43,7 @@ public class HealthCarePlanController {
 	@Path("/convenios/novo")
 	public void newForm() {
 		HealthCarePlan emptyPlan = new HealthCarePlan(new Name(""));
-		result.include("healthCarePlan", emptyPlan);
+		include(emptyPlan);
 	}
 	
 	@Post
@@ -62,7 +62,7 @@ public class HealthCarePlanController {
 	@Path("/convenios/{id}/editar")
 	public void edit(int id) {
 		HealthCarePlan planToBeEdited = allHealthCares.getById(id);
-		result.include("healthCarePlan", planToBeEdited);
+		include(planToBeEdited);
 	}
 
 	@Put
@@ -75,5 +75,16 @@ public class HealthCarePlanController {
 		
 		result.include("message", Messages.HEALTH_CARE_PLAN_UPDATED);
 		result.redirectTo(HealthCarePlanController.class).index();
+	}
+
+	@Get
+	@Path("convenios/{id}")
+	public void show(int id) {
+		HealthCarePlan loadedPlan = allHealthCares.getById(id);
+		include(loadedPlan);
+	}
+	
+	private void include(HealthCarePlan planToBeEdited) {
+		result.include("healthCarePlan", planToBeEdited);
 	}
 }

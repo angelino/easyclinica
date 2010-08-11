@@ -113,6 +113,16 @@ public class HealthCarePlanControllerTests {
 		
 		controller.update(plan);
 	}
+	
+	@Test
+	public void shouldShowAHealthCarePlan() {
+		HealthCarePlan plan = aHealthCarePlan();
+		when(allHealthCares.getById(1)).thenReturn(plan);
+		
+		controller.show(1);
+		
+		assertEquals(plan, result.included("healthCarePlan"));
+	}
 
 	private void supposingThatValidationHasFailed() {
 		validator.add(new ValidationMessage("message", "category"));
@@ -120,9 +130,5 @@ public class HealthCarePlanControllerTests {
 
 	private HealthCarePlan aHealthCarePlan() {
 		return new HealthCarePlan(new Name("Amil"));
-	}
-	
-	private List<Error> anEmptyListOfErrors() {
-		return new ArrayList<Error>();
 	}
 }
