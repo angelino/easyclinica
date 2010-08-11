@@ -1,13 +1,17 @@
 <%@tag description="health care plan form" pageEncoding="UTF-8"%>
-<%@tag display-name="include"%>
+<%@tag display-name="healthCarePlanForm"%>
 <%@ attribute name="action" type="java.lang.String" required="true" rtexprvalue="true" %>
 <%@ attribute name="errors" type="java.util.List" required="false" rtexprvalue="true" %>
+<%@ attribute name="put" type="java.lang.Boolean" required="false" rtexprvalue="true" %>
 <%@ attribute name="model" type="br.com.easyclinica.domain.entities.HealthCarePlan" required="false" rtexprvalue="true" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <form action="${action}" method="post">
+	<c:if test="${put}">
+	<input type="hidden" name="_method" value="PUT" />
+	</c:if>
 	<input type="hidden" name="healthCarePlan.id" value="${healthCarePlan.id}" />
-	<!--  erros -->
+	
 	<c:forEach var="error" items="${errors}">
 		erros:
 	    <fmt:message key="${error.message}"/><br />
