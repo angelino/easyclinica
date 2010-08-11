@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@ taglib uri="/WEB-INF/easyclinica.tld" prefix="helper" %>
 <div class="block" id="block-tables">
 	<!--  div class="secondary-navigation">
 	  <ul class="wat-cf">
@@ -10,6 +10,9 @@
 	</div -->
     <div class="content">
     	<h2 class="title">Listagem de Convênios</h2>
+    	
+    	<helper:message messageKey="${message}" />
+    	
         <div class="inner">
 			<table class="table">
 				<tr>

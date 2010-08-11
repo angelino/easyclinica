@@ -5,6 +5,11 @@
 	id="WebApp_ID" version="2.5">
 	<display-name>easyclinica</display-name>
 	
+	<context-param>
+		<param-name>javax.servlet.jsp.jstl.fmt.localizationContext</param-name>
+		<param-value>messages</param-value>
+	</context-param>
+	
 	<!-- VRaptor 3 -->
 	<context-param>
 	    <param-name>br.com.caelum.vraptor.packages</param-name>

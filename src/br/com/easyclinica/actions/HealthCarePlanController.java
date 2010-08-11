@@ -11,6 +11,7 @@ import br.com.easyclinica.domain.entities.HealthCarePlan;
 import br.com.easyclinica.domain.repositories.AllHealthCarePlans;
 import br.com.easyclinica.domain.validators.healthCarePlan.NewHealthCarePlanValidator;
 import br.com.easyclinica.infra.vraptor.validators.ErrorTranslator;
+import br.com.easyclinica.view.Messages;
 
 @Resource
 public class HealthCarePlanController {
@@ -47,6 +48,8 @@ public class HealthCarePlanController {
 		validator.onErrorUse(page()).of(HealthCarePlanController.class).newForm();
 		
 		allHealthCares.add(healthCarePlan);
+		
+		result.include("message", Messages.HEALTH_CARE_PLAN_ADDED);
 		result.redirectTo(HealthCarePlanController.class).index();
 	}
 }

@@ -16,6 +16,7 @@ import br.com.easyclinica.domain.repositories.AllHealthCarePlans;
 import br.com.easyclinica.domain.types.Name;
 import br.com.easyclinica.domain.validators.healthCarePlan.NewHealthCarePlanValidator;
 import br.com.easyclinica.infra.vraptor.validators.ErrorTranslator;
+import br.com.easyclinica.view.Messages;
 
 public class HealthCarePlanControllerTests {
 
@@ -56,6 +57,7 @@ public class HealthCarePlanControllerTests {
 		controller.save(plan);
 		
 		verify(allHealthCares).add(plan);
+		assertEquals(Messages.HEALTH_CARE_PLAN_ADDED, result.included("message"));
 	}
 
 	private ArrayList<Error> anEmptyErrorList() {
