@@ -1,6 +1,7 @@
 package br.com.easyclinica.infra.dao;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 import java.util.List;
 
@@ -43,15 +44,7 @@ public class HealthCarePlanDaoTests {
 	
 	@Test
 	public void shouldAdd() {
-		dao.add(new HealthCarePlan(
-				new Name("some healthcare"),
-				new Address(new Street("street"), new Neighborhood("nhood"), new PostalCode("123"), new City("city"), new State("ST")),
-				new Telephone("11 223344"),
-				new Email("email@email.com"),
-				new Website("website.com"),
-				new Name("contact"),
-				new Observations("some obs")
-		));
+		dao.add(aHealthCarePlan());
 		
 		List<HealthCarePlan> list = dao.get();
 		assertEquals(1, list.size());
@@ -68,5 +61,46 @@ public class HealthCarePlanDaoTests {
 		assertEquals("website.com", newOne.getWebsite().toString());
 		assertEquals("contact", newOne.getContact().toString());
 		assertEquals("some obs", newOne.getObservations().toString());
+	}
+
+	@Test
+	public void shouldUpdate() {
+		HealthCarePlan plan = aHealthCarePlan();
+		dao.add(plan);
+		
+		HealthCarePlan updatedPlan = aHealthCarePlan(plan.getId(), "new Amil");
+		dao.update(updatedPlan);
+		
+		HealthCarePlan secondRetrievedPlan = dao.getById(plan.getId());
+		assertNotNull(secondRetrievedPlan);
+		assertEquals("new Amil", secondRetrievedPlan.getName().toString());
+	}
+	
+	@Test
+	public void shouldGetById() {
+		HealthCarePlan plan = aHealthCarePlan();
+		dao.add(plan);
+		
+		HealthCarePlan retrievedPlan = dao.getById(plan.getId());
+		
+		assertNotNull(retrievedPlan);
+		assertEquals(plan.getId(), retrievedPlan.getId());
+	}
+	
+	private HealthCarePlan aHealthCarePlan() {
+		return aHealthCarePlan(0, "some healthcare");
+	}
+	
+	private HealthCarePlan aHealthCarePlan(int id, String name) {
+		return new HealthCarePlan(
+				id,
+				new Name(name),
+				new Address(new Street("street"), new Neighborhood("nhood"), new PostalCode("123"), new City("city"), new State("ST")),
+				new Telephone("11 223344"),
+				new Email("email@email.com"),
+				new Website("website.com"),
+				new Name("contact"),
+				new Observations("some obs")
+		);
 	}
 }

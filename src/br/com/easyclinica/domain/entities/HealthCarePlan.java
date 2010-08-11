@@ -79,52 +79,24 @@ public class HealthCarePlan {
 		return address;
 	}
 
-	public void setAddress(Address address) {
-		this.address = address;
-	}
-
 	public Telephone getTelephone() {
 		return telephone;
-	}
-
-	public void setTelephone(Telephone telephone) {
-		this.telephone = telephone;
 	}
 
 	public Email getEmail() {
 		return email;
 	}
 
-	public void setEmail(Email email) {
-		this.email = email;
-	}
-
 	public Website getWebsite() {
 		return website;
-	}
-
-	public void setWebsite(Website website) {
-		this.website = website;
 	}
 
 	public Name getContact() {
 		return contact;
 	}
 
-	public void setContact(Name contact) {
-		this.contact = contact;
-	}
-
 	public Observations getObservations() {
 		return observations;
-	}
-
-	public void setObservations(Observations observations) {
-		this.observations = observations;
-	}
-
-	public void setName(Name name) {
-		this.name = name;
 	}
 	
 	
