@@ -7,7 +7,7 @@ import br.com.caelum.vraptor.ioc.Component;
 import br.com.easyclinica.domain.entities.HealthCarePlan;
 
 @Component
-public class HealthCarePlanValidator implements Validator<HealthCarePlan> {
+public class HealthCarePlanValidator implements EntityValidator<HealthCarePlan> {
 	
 	public List<Error> validate(HealthCarePlan obj) {
 		List<Error> errors = new ArrayList<Error>();

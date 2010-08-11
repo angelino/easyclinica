@@ -1,20 +1,27 @@
 package br.com.easyclinica.actions;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.spy;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-import static org.mockito.Mockito.*;
-import br.com.easyclinica.domain.validators.Error;
-import br.com.easyclinica.domain.validators.HealthCarePlanValidator;
 import br.com.caelum.vraptor.util.test.MockResult;
 import br.com.caelum.vraptor.util.test.MockValidator;
+import br.com.caelum.vraptor.validator.ValidationException;
+import br.com.caelum.vraptor.validator.ValidationMessage;
 import br.com.easyclinica.domain.entities.HealthCarePlan;
 import br.com.easyclinica.domain.repositories.AllHealthCarePlans;
 import br.com.easyclinica.domain.types.Name;
+import br.com.easyclinica.domain.validators.EntityValidator;
+import br.com.easyclinica.domain.validators.Error;
 import br.com.easyclinica.infra.vraptor.validators.ErrorTranslator;
 import br.com.easyclinica.view.Messages;
 
@@ -24,21 +31,22 @@ public class HealthCarePlanControllerTests {
 	private MockResult result;
 	private HealthCarePlanController controller;
 	private MockValidator validator;
-	private HealthCarePlanValidator healthCarePlanValidator;
+	private EntityValidator<HealthCarePlan> healthCarePlanValidator;
 	private ErrorTranslator translator;
 
+	@SuppressWarnings("unchecked")
 	@Before
 	public void setUp() {
 		allHealthCares = mock(AllHealthCarePlans.class);
 		result = spy(new MockResult());
 		validator = spy(new MockValidator());
-		healthCarePlanValidator = spy(new HealthCarePlanValidator());
+		healthCarePlanValidator = mock(EntityValidator.class);
 		translator = mock(ErrorTranslator.class);
 		
 		controller = new HealthCarePlanController(allHealthCares, result, 
 				validator, healthCarePlanValidator, translator);
 	}
-	
+
 	@Test
 	public void shouldGetAllHealthCares() {
 		List<HealthCarePlan> list = new ArrayList<HealthCarePlan>();
@@ -61,11 +69,20 @@ public class HealthCarePlanControllerTests {
 	public void shouldSaveANewHealthCarePlan() {
 		HealthCarePlan plan = aHealthCarePlan();
 		
-		stub(healthCarePlanValidator.validate(plan)).toReturn(anEmptyErrorList());
 		controller.save(plan);
 		
 		verify(allHealthCares).add(plan);
 		assertEquals(Messages.HEALTH_CARE_PLAN_ADDED, result.included("message"));
+	}
+	
+	@Test(expected=ValidationException.class)
+	public void shouldValidateBeforeSave() {
+		
+		supposingThatValidationHasFailed();
+		
+		HealthCarePlan plan = aHealthCarePlan();
+		
+		controller.save(plan);
 	}
 	
 	@Test
@@ -83,14 +100,29 @@ public class HealthCarePlanControllerTests {
 		controller.update(plan);
 		
 		verify(allHealthCares).update(plan);
+		
 		assertEquals(Messages.HEALTH_CARE_PLAN_UPDATED, result.included("message"));
+	}
+	
+	@Test(expected=ValidationException.class)
+	public void shouldValidateBeforeUpdate() {
+		
+		supposingThatValidationHasFailed();
+		
+		HealthCarePlan plan = aHealthCarePlan();
+		
+		controller.update(plan);
+	}
+
+	private void supposingThatValidationHasFailed() {
+		validator.add(new ValidationMessage("message", "category"));
 	}
 
 	private HealthCarePlan aHealthCarePlan() {
 		return new HealthCarePlan(new Name("Amil"));
 	}
 	
-	private ArrayList<Error> anEmptyErrorList() {
+	private List<Error> anEmptyListOfErrors() {
 		return new ArrayList<Error>();
 	}
 }

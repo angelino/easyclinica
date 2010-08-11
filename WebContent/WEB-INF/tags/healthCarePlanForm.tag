@@ -6,16 +6,14 @@
 <%@ attribute name="model" type="br.com.easyclinica.domain.entities.HealthCarePlan" required="false" rtexprvalue="true" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib uri="/WEB-INF/easyclinica.tld" prefix="helper" %>
 <form action="${action}" method="post">
 	<c:if test="${put}">
 	<input type="hidden" name="_method" value="PUT" />
 	</c:if>
 	<input type="hidden" name="healthCarePlan.id" value="${healthCarePlan.id}" />
 	
-	<c:forEach var="error" items="${errors}">
-		erros:
-	    <fmt:message key="${error.message}"/><br />
-	</c:forEach>
+	<helper:errors errors="${errors}" />
 
 	<fieldset class="cadastro">	
 		<label class="label">Nome*:</label>

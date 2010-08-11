@@ -11,7 +11,7 @@ import br.com.caelum.vraptor.view.Results;
 import br.com.easyclinica.domain.entities.HealthCarePlan;
 import br.com.easyclinica.domain.repositories.AllHealthCarePlans;
 import br.com.easyclinica.domain.types.Name;
-import br.com.easyclinica.domain.validators.HealthCarePlanValidator;
+import br.com.easyclinica.domain.validators.EntityValidator;
 import br.com.easyclinica.infra.vraptor.validators.ErrorTranslator;
 import br.com.easyclinica.view.Messages;
 
@@ -21,15 +21,15 @@ public class HealthCarePlanController {
 	private final AllHealthCarePlans allHealthCares;
 	private final Result result;
 	private final Validator validator;
-	private final HealthCarePlanValidator newHealthCarePlanValidator;
+	private final EntityValidator<HealthCarePlan> healthCarePlanValidator;
 	private final ErrorTranslator translator;
 
 	public HealthCarePlanController(AllHealthCarePlans allHealthCares, Result result, Validator validator,
-			HealthCarePlanValidator newHealthCarePlanValidator, ErrorTranslator translator) {
+			EntityValidator<HealthCarePlan> healthCarePlanValidator, ErrorTranslator translator) {
 		this.allHealthCares = allHealthCares;
 		this.result = result;
 		this.validator = validator;
-		this.newHealthCarePlanValidator = newHealthCarePlanValidator;
+		this.healthCarePlanValidator = healthCarePlanValidator;
 		this.translator = translator;
 	}
 	
@@ -49,7 +49,7 @@ public class HealthCarePlanController {
 	@Post
 	@Path("/convenios")
 	public void save(final HealthCarePlan healthCarePlan) {
-		translator.translate(newHealthCarePlanValidator.validate(healthCarePlan));
+		translator.translate(healthCarePlanValidator.validate(healthCarePlan));
 		validator.onErrorUse(Results.logic()).forwardTo(HealthCarePlanController.class).newForm();
 		
 		allHealthCares.add(healthCarePlan);
@@ -68,6 +68,9 @@ public class HealthCarePlanController {
 	@Put
 	@Path("convenios/{healthCarePlan.id}")
 	public void update(final HealthCarePlan healthCarePlan) {
+		translator.translate(healthCarePlanValidator.validate(healthCarePlan));
+		validator.onErrorUse(Results.logic()).forwardTo(HealthCarePlanController.class).edit(healthCarePlan.getId());
+		
 		allHealthCares.update(healthCarePlan);
 		
 		result.include("message", Messages.HEALTH_CARE_PLAN_UPDATED);
