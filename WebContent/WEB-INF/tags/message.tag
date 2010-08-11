@@ -3,6 +3,6 @@
 <%@ attribute name="messageKey" type="java.lang.String" required="true" rtexprvalue="true" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<c:if test="${messageKey ne null}">
+<c:if test="${messageKey != null}">
 	<fmt:message key="${messageKey}" />
 </c:if>

@@ -24,7 +24,7 @@ public class Migration_2 implements Migration {
 				column("name", VARCHAR, length(50), notnull()),
 				column("crm", VARCHAR, length(50), notnull()),
 				column("specialty", VARCHAR, length(150)),
-				column("phone", VARCHAR, length(50)),
+				column("telephone", VARCHAR, length(50)),
 				column("email", VARCHAR, length(100)),
 				column("observations", com.eroi.migrate.Define.DataTypes.LONGVARCHAR)
 		));

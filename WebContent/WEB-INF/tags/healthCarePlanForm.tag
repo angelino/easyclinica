@@ -32,7 +32,19 @@
 	    <input type="text" name="healthCarePlan.address.postalCode.postalCode" class="text_field" />
 	    <span class="description">Ex: '12345-789'</span>		
 		</div>
-	
+
+		<div class="agrupar_campos">
+			<label class="label">Cidade:</label>
+	    <input type="text" name="healthCarePlan.address.city.city" class="text_field" />
+	    <span class="description">Ex: 'São Paulo'</span>
+		</div>
+		
+		<div class="agrupar_campos">
+			<label class="label">Estado:</label>
+	    <input type="text" name="healthCarePlan.address.state.state" class="text_field" />
+	    <span class="description">Ex: 'SP'</span>		
+		</div>
+			
 		<label class="label">Nome do Responsável:</label>
     <input type="text" name="healthCarePlan.contact.name" class="text_field" />
     <span class="description">Ex: 'José da Silva'</span>

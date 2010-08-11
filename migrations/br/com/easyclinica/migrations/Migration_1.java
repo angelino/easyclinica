@@ -20,7 +20,7 @@ public class Migration_1 implements Migration {
 				column("postalCode", VARCHAR, length(12)),
 				column("city", VARCHAR, length(50)),
 				column("state", VARCHAR, length(2)),
-				column("phone", VARCHAR, length(50)),
+				column("telephone", VARCHAR, length(50)),
 				column("email", VARCHAR, length(100)),
 				column("website", VARCHAR, length(100)),
 				column("contact", VARCHAR, length(100)),
