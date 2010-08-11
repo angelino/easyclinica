@@ -7,6 +7,7 @@ import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.Validator;
+import br.com.caelum.vraptor.view.Results;
 import br.com.easyclinica.domain.entities.HealthCarePlan;
 import br.com.easyclinica.domain.repositories.AllHealthCarePlans;
 import br.com.easyclinica.domain.validators.HealthCarePlanValidator;
@@ -42,10 +43,10 @@ public class HealthCarePlanController {
 	public void newForm() {	}
 	
 	@Post
-	@Path("/convenios/novo")
+	@Path("/convenios")
 	public void save(final HealthCarePlan healthCarePlan) {
 		translator.translate(newHealthCarePlanValidator.validate(healthCarePlan));
-		validator.onErrorUse(page()).of(HealthCarePlanController.class).newForm();
+		validator.onErrorUse(Results.logic()).forwardTo(HealthCarePlanController.class).newForm();
 		
 		allHealthCares.add(healthCarePlan);
 		

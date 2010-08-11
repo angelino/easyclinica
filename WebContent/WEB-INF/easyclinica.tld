@@ -13,4 +13,10 @@
         <name>message</name>
         <path>/WEB-INF/tags/message.tag</path>
     </tag-file>    
+
+    <tag-file>
+        <name>healthCarePlanForm</name>
+        <path>/WEB-INF/tags/healthCarePlanForm.tag</path>
+    </tag-file>  
+    
 </taglib>
