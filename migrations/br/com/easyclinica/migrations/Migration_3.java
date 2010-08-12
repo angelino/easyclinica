@@ -13,20 +13,17 @@ import static com.eroi.migrate.Execute.dropTable;
 
 import com.eroi.migrate.Migration;
 
-public class Migration_2 implements Migration {
+public class Migration_3 implements Migration {
+
 	public void down() {
-		dropTable("doctor");
+		dropTable("servicestable");
 	}
 
 	public void up() {
-		createTable(table("doctor",
+		createTable(table("servicestable",
 				column("id", INTEGER, primarykey(), notnull(), autoincrement()),
-				column("name", VARCHAR, length(50), notnull()),
-				column("crm", VARCHAR, length(50), notnull()),
-				column("specialty", VARCHAR, length(150)),
-				column("telephone", VARCHAR, length(50)),
-				column("email", VARCHAR, length(100)),
-				column("observations", com.eroi.migrate.Define.DataTypes.LONGVARCHAR)
-		));
+				column("name", VARCHAR, length(50), notnull()))
+		);
 	}
+
 }

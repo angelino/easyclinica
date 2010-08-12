@@ -10,7 +10,6 @@ import br.com.caelum.vraptor.Validator;
 import br.com.caelum.vraptor.view.Results;
 import br.com.easyclinica.domain.entities.HealthCarePlan;
 import br.com.easyclinica.domain.repositories.AllHealthCarePlans;
-import br.com.easyclinica.domain.types.Name;
 import br.com.easyclinica.domain.validators.EntityValidator;
 import br.com.easyclinica.infra.vraptor.validators.ErrorTranslator;
 import br.com.easyclinica.view.Messages;
@@ -42,7 +41,7 @@ public class HealthCarePlanController {
 	@Get
 	@Path("/convenios/novo")
 	public void newForm() {
-		HealthCarePlan emptyPlan = new HealthCarePlan(new Name(""));
+		HealthCarePlan emptyPlan = HealthCarePlan.empty();
 		include(emptyPlan);
 	}
 	

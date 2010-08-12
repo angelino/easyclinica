@@ -8,7 +8,7 @@ import static com.eroi.migrate.Execute.*;
 public class Migration_1 implements Migration {
 
 	public void down() {
-		dropTable("healthcare");
+		dropTable("healthcareplan");
 	}
 
 	public void up() {

@@ -1,11 +1,15 @@
 package br.com.easyclinica.domain.entities;
 
 import javax.persistence.AttributeOverride;
+import javax.persistence.CascadeType;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Column;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 import br.com.easyclinica.domain.types.Address;
 import br.com.easyclinica.domain.types.Email;
@@ -29,10 +33,12 @@ public class HealthCarePlan {
 	@Embedded private Observations observations;
 	@Embedded @AttributeOverride(name="name", column = @Column(name="contact"))
 	private Name contact;
+	@OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER) @JoinColumn(name="table_fk")	
+	private ServicesTable table;
 	
 	protected HealthCarePlan() {}
 	
-	public HealthCarePlan(Name name) {
+	public HealthCarePlan(Name name, ServicesTable table) {
 		this.name = name;
 		this.address = Address.empty();
 		this.telephone = Telephone.empty();
@@ -40,11 +46,12 @@ public class HealthCarePlan {
 		this.website = Website.empty();
 		this.contact = Name.empty();
 		this.observations = Observations.empty();
+		this.table = table;
 	}
 	
 	public HealthCarePlan(Name name, Address address, Telephone telephone,
 			Email email, Website website, Name contact,
-			Observations observations) {
+			Observations observations, ServicesTable table) {
 		this.name = name;
 		this.address = address;
 		this.telephone = telephone;
@@ -52,11 +59,12 @@ public class HealthCarePlan {
 		this.website = website;
 		this.contact = contact;
 		this.observations = observations;
+		this.table = table;
 	}
-	
+
 	public HealthCarePlan(int id, Name name, Address address, Telephone telephone,
 			Email email, Website website, Name contact,
-			Observations observations) {
+			Observations observations, ServicesTable table) {
 		this.id = id;
 		this.name = name;
 		this.address = address;
@@ -65,6 +73,7 @@ public class HealthCarePlan {
 		this.website = website;
 		this.contact = contact;
 		this.observations = observations;
+		this.table = table;
 	}
 
 	public Name getName() {
@@ -99,5 +108,11 @@ public class HealthCarePlan {
 		return observations;
 	}
 	
+	public ServicesTable getTable() {
+		return table;
+	}
 	
+	public static HealthCarePlan empty() {
+		return new HealthCarePlan();
+	}
 }

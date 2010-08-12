@@ -1,6 +1,7 @@
 package br.com.easyclinica.domain.entities;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 import org.junit.Test;
 
@@ -14,10 +15,12 @@ import br.com.easyclinica.tests.helpers.AnExampleOf;
 public class HealthCarePlanTests {
 
 	@Test
-	public void shouldHaveAName() {
-		HealthCarePlan plan = new HealthCarePlan(new Name("Amil"));
+	public void shouldHaveANameAndAServicesTable() {
+		HealthCarePlan plan = new HealthCarePlan(new Name("Amil"), new ServicesTable(new Name("table")));
 		
 		assertEquals("Amil", plan.getName().toString());
+		assertNotNull(plan.getTable());
+		assertEquals("table", plan.getTable().getName().toString());
 	}
 	
 	@Test
@@ -29,7 +32,8 @@ public class HealthCarePlanTests {
 				new Email("email@email.com"),
 				new Website("website.com"),
 				new Name("contact"),
-				new Observations("obs")
+				new Observations("obs"),
+				new ServicesTable(new Name("table"))
 		);
 		
 		assertEquals("Amil", plan.getName().toString());

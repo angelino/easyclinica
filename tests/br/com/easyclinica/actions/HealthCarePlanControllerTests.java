@@ -19,7 +19,6 @@ import br.com.caelum.vraptor.validator.ValidationException;
 import br.com.caelum.vraptor.validator.ValidationMessage;
 import br.com.easyclinica.domain.entities.HealthCarePlan;
 import br.com.easyclinica.domain.repositories.AllHealthCarePlans;
-import br.com.easyclinica.domain.types.Name;
 import br.com.easyclinica.domain.validators.EntityValidator;
 import br.com.easyclinica.infra.vraptor.validators.ErrorTranslator;
 import br.com.easyclinica.view.Messages;
@@ -128,6 +127,6 @@ public class HealthCarePlanControllerTests {
 	}
 
 	private HealthCarePlan aHealthCarePlan() {
-		return new HealthCarePlan(new Name("Amil"));
+		return HealthCarePlan.empty();
 	}
 }

@@ -9,6 +9,7 @@ import org.junit.Test;
 import br.com.easyclinica.domain.validators.Error;
 import br.com.easyclinica.domain.validators.HealthCarePlanValidator;
 import br.com.easyclinica.domain.entities.HealthCarePlan;
+import br.com.easyclinica.domain.entities.ServicesTable;
 import br.com.easyclinica.domain.types.Name;
 
 public class HealthCarePlanValidatorTests {
@@ -22,7 +23,7 @@ public class HealthCarePlanValidatorTests {
 	
 	@Test
 	public void shouldNotReturnErrorsOnAValidHealthCarePlan() {
-		HealthCarePlan plan = new HealthCarePlan(new Name("amil"));
+		HealthCarePlan plan = new HealthCarePlan(new Name("amil"), new ServicesTable(new Name("table")));
 		
 		List<Error> errors = validator.validate(plan);		
 		assertEquals(0, errors.size());
@@ -31,7 +32,7 @@ public class HealthCarePlanValidatorTests {
 	
 	@Test
 	public void shouldReturnErrorsOnAnInvalidHealthCarePlan() {
-		HealthCarePlan plan = new HealthCarePlan(new Name(""));
+		HealthCarePlan plan = new HealthCarePlan(new Name(""), new ServicesTable(new Name("table")));
 		
 		List<Error> errors = validator.validate(plan);		
 		assertEquals(1, errors.size());
