@@ -14,6 +14,7 @@ import org.junit.Test;
 import br.com.easyclinica.domain.entities.HealthCarePlan;
 import br.com.easyclinica.domain.entities.ServicesTable;
 import br.com.easyclinica.domain.types.Address;
+import br.com.easyclinica.domain.types.CH;
 import br.com.easyclinica.domain.types.City;
 import br.com.easyclinica.domain.types.Email;
 import br.com.easyclinica.domain.types.Name;
@@ -64,6 +65,7 @@ public class HealthCarePlanDaoTests {
 		assertEquals("some obs", newOne.getObservations().toString());
 		assertNotNull(newOne.getTable());
 		assertEquals("table",newOne.getTable().getName().toString());
+		assertEquals(20.0, newOne.getCh().getCh(), 0.001);
 	}
 
 	@Test
@@ -104,7 +106,8 @@ public class HealthCarePlanDaoTests {
 				new Website("website.com"),
 				new Name("contact"),
 				new Observations("some obs"),
-				new ServicesTable(new Name("table"))
+				new ServicesTable(new Name("table")),
+				new CH(20)
 		);
 	}
 }

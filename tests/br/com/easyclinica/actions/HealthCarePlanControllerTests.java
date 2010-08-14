@@ -19,8 +19,10 @@ import br.com.caelum.vraptor.validator.ValidationException;
 import br.com.caelum.vraptor.validator.ValidationMessage;
 import br.com.easyclinica.domain.entities.HealthCarePlan;
 import br.com.easyclinica.domain.repositories.AllHealthCarePlans;
+import br.com.easyclinica.domain.repositories.AllServiceTables;
 import br.com.easyclinica.domain.validators.HealthCarePlanValidator;
 import br.com.easyclinica.infra.vraptor.validators.ErrorTranslator;
+import br.com.easyclinica.tests.helpers.HealthCarePlanBuilder;
 import br.com.easyclinica.view.Messages;
 
 public class HealthCarePlanControllerTests {
@@ -31,16 +33,18 @@ public class HealthCarePlanControllerTests {
 	private MockValidator validator;
 	private HealthCarePlanValidator healthCarePlanValidator;
 	private ErrorTranslator translator;
+	private AllServiceTables allServiceTables;
 
 	@Before
 	public void setUp() {
 		allHealthCares = mock(AllHealthCarePlans.class);
+		allServiceTables = mock(AllServiceTables.class);
 		result = spy(new MockResult());
 		validator = spy(new MockValidator());
 		healthCarePlanValidator = mock(HealthCarePlanValidator.class);
 		translator = mock(ErrorTranslator.class);
 		
-		controller = new HealthCarePlanController(allHealthCares, result, 
+		controller = new HealthCarePlanController(allHealthCares, allServiceTables, result, 
 				validator, healthCarePlanValidator, translator);
 	}
 
@@ -55,11 +59,12 @@ public class HealthCarePlanControllerTests {
 	}
 	
 	@Test
-	public void shouldHaveAnEmptyHealthCarePlanToAdd() {
+	public void shouldHaveEnoughInfoToAddANewHealthCarePlan() {
 		controller.newForm();
 		
 		assertNotNull(result.included("healthCarePlan"));
-		
+		assertNotNull(result.included("tables"));
+		verify(allServiceTables).get();
 	}
 	
 	@Test
@@ -126,6 +131,6 @@ public class HealthCarePlanControllerTests {
 	}
 
 	private HealthCarePlan aHealthCarePlan() {
-		return HealthCarePlan.empty();
+		return new HealthCarePlanBuilder().instance();
 	}
 }

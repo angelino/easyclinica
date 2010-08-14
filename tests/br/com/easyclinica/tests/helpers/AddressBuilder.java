@@ -7,14 +7,19 @@ import br.com.easyclinica.domain.types.PostalCode;
 import br.com.easyclinica.domain.types.State;
 import br.com.easyclinica.domain.types.Street;
 
-public class AnExampleOf {
+public class AddressBuilder {
 
-	public static Address address() {
-		return new Address(
+	private Address address;
+	
+	public AddressBuilder() {
+		address = new Address(
 				new Street("street"), 
 				new Neighborhood("neighborhood"), 
 				new PostalCode("123"), 
 				new City("city"), 
 				new State("SP"));
+	}
+	public Address instance() {
+		return address;
 	}
 }

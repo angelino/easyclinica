@@ -10,6 +10,7 @@ import br.com.caelum.vraptor.Validator;
 import br.com.caelum.vraptor.view.Results;
 import br.com.easyclinica.domain.entities.HealthCarePlan;
 import br.com.easyclinica.domain.repositories.AllHealthCarePlans;
+import br.com.easyclinica.domain.repositories.AllServiceTables;
 import br.com.easyclinica.domain.validators.HealthCarePlanValidator;
 import br.com.easyclinica.infra.vraptor.validators.ErrorTranslator;
 import br.com.easyclinica.view.Messages;
@@ -22,10 +23,13 @@ public class HealthCarePlanController {
 	private final Validator validator;
 	private final HealthCarePlanValidator healthCarePlanValidator;
 	private final ErrorTranslator translator;
+	private final AllServiceTables allServiceTables;
 
-	public HealthCarePlanController(AllHealthCarePlans allHealthCares, Result result, Validator validator,
-			HealthCarePlanValidator healthCarePlanValidator, ErrorTranslator translator) {
+	public HealthCarePlanController(AllHealthCarePlans allHealthCares, AllServiceTables allServiceTables,
+			Result result, Validator validator, HealthCarePlanValidator healthCarePlanValidator, 
+			ErrorTranslator translator) {
 		this.allHealthCares = allHealthCares;
+		this.allServiceTables = allServiceTables;
 		this.result = result;
 		this.validator = validator;
 		this.healthCarePlanValidator = healthCarePlanValidator;
@@ -42,6 +46,7 @@ public class HealthCarePlanController {
 	@Path("/convenios/novo")
 	public void newForm() {
 		HealthCarePlan emptyPlan = HealthCarePlan.empty();
+		result.include("tables", allServiceTables.get());
 		include(emptyPlan);
 	}
 	

@@ -6,11 +6,9 @@ import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
-import br.com.easyclinica.domain.validators.Error;
-import br.com.easyclinica.domain.validators.DefaultHealthCarePlanValidator;
+
 import br.com.easyclinica.domain.entities.HealthCarePlan;
-import br.com.easyclinica.domain.entities.ServicesTable;
-import br.com.easyclinica.domain.types.Name;
+import br.com.easyclinica.tests.helpers.HealthCarePlanBuilder;
 
 public class HealthCarePlanValidatorTests {
 
@@ -23,7 +21,7 @@ public class HealthCarePlanValidatorTests {
 	
 	@Test
 	public void shouldNotReturnErrorsOnAValidHealthCarePlan() {
-		HealthCarePlan plan = new HealthCarePlan(new Name("amil"), new ServicesTable(new Name("table")));
+		HealthCarePlan plan = new HealthCarePlanBuilder().instance();
 		
 		List<Error> errors = validator.validate(plan);		
 		assertEquals(0, errors.size());
@@ -31,11 +29,21 @@ public class HealthCarePlanValidatorTests {
 	}
 	
 	@Test
-	public void shouldReturnErrorsOnAnInvalidHealthCarePlan() {
-		HealthCarePlan plan = new HealthCarePlan(new Name(""), new ServicesTable(new Name("table")));
+	public void shouldReturnErrorIfNameIsNotPresent() {
+		HealthCarePlan plan = new HealthCarePlanBuilder().withName("").instance();
 		
 		List<Error> errors = validator.validate(plan);		
 		assertEquals(1, errors.size());
+		assertEquals(ValidationMessages.INVALID_NAME, errors.get(0).getKey());
 	
+	}
+	
+	@Test
+	public void shouldReturnErrorIfCHIsZeroOrNotPresent() {
+		HealthCarePlan plan = new HealthCarePlanBuilder().withCh(0).instance();
+		
+		List<Error> errors = validator.validate(plan);		
+		assertEquals(1, errors.size());
+		assertEquals(ValidationMessages.INVALID_CH, errors.get(0).getKey());
 	}
 }

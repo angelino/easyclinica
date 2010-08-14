@@ -9,6 +9,6 @@ public class CHTests {
 	public void shouldStoreACH() {
 		CH ch = new CH(12.34);
 		
-		assertEquals(12.34, ch.getCH(), 0.001);
+		assertEquals(12.34, ch.getCh(), 0.001);
 	}
 }

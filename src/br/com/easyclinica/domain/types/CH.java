@@ -11,7 +11,7 @@ public class CH {
 		this.ch = ch;
 	}
 	
-	public double getCH() {
+	public double getCh() {
 		return ch;
 	}
 	

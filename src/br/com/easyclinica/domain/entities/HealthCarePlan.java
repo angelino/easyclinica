@@ -12,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
 import br.com.easyclinica.domain.types.Address;
+import br.com.easyclinica.domain.types.CH;
 import br.com.easyclinica.domain.types.Email;
 import br.com.easyclinica.domain.types.Name;
 import br.com.easyclinica.domain.types.Observations;
@@ -33,12 +34,13 @@ public class HealthCarePlan {
 	@Embedded private Observations observations;
 	@Embedded @AttributeOverride(name="name", column = @Column(name="contact"))
 	private Name contact;
+	private CH ch;	
 	@OneToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER) @JoinColumn(name="table_fk")	
 	private ServicesTable table;
 	
 	protected HealthCarePlan() {}
 	
-	public HealthCarePlan(Name name, ServicesTable table) {
+	public HealthCarePlan(Name name, ServicesTable table, CH ch) {
 		this.name = name;
 		this.address = Address.empty();
 		this.telephone = Telephone.empty();
@@ -47,11 +49,12 @@ public class HealthCarePlan {
 		this.contact = Name.empty();
 		this.observations = Observations.empty();
 		this.table = table;
+		this.ch = ch;
 	}
 	
 	public HealthCarePlan(Name name, Address address, Telephone telephone,
 			Email email, Website website, Name contact,
-			Observations observations, ServicesTable table) {
+			Observations observations, ServicesTable table, CH ch) {
 		this.name = name;
 		this.address = address;
 		this.telephone = telephone;
@@ -60,11 +63,12 @@ public class HealthCarePlan {
 		this.contact = contact;
 		this.observations = observations;
 		this.table = table;
+		this.ch = ch;
 	}
 
 	public HealthCarePlan(int id, Name name, Address address, Telephone telephone,
 			Email email, Website website, Name contact,
-			Observations observations, ServicesTable table) {
+			Observations observations, ServicesTable table, CH ch) {
 		this.id = id;
 		this.name = name;
 		this.address = address;
@@ -74,6 +78,7 @@ public class HealthCarePlan {
 		this.contact = contact;
 		this.observations = observations;
 		this.table = table;
+		this.ch = ch;
 	}
 
 	public Name getName() {
@@ -108,6 +113,10 @@ public class HealthCarePlan {
 		return observations;
 	}
 	
+	public CH getCh() {
+		return ch;
+	}
+
 	public ServicesTable getTable() {
 		return table;
 	}
