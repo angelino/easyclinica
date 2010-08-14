@@ -22,11 +22,40 @@ public class DoctorBuilder {
 		);
 	}
 	
-	public DoctorBuilder withNameAndCRM(String name, String crm)
+	public DoctorBuilder withName(String name)
 	{
 		doctor = new Doctor(
 				new Name(name),
+				new CRM("55.555"),
+				new Specialty("pediatra"),
+				new Telephone("55 11 9999-9999"),
+				new Email("doutor@easyclinica.com.br"),
+				new Observations("")
+		);
+		
+		return this;
+	}
+	
+	public DoctorBuilder withCrm(String crm)
+	{
+		doctor = new Doctor(
+				new Name("Doutor"),
 				new CRM(crm),
+				new Specialty("pediatra"),
+				new Telephone("55 11 9999-9999"),
+				new Email("doutor@easyclinica.com.br"),
+				new Observations("")
+		);
+		
+		return this;
+	}
+	
+	public DoctorBuilder withIdAndName(int id, String name)
+	{
+		doctor = new Doctor(
+				id,
+				new Name(name),
+				new CRM("55.555"),
 				new Specialty("pediatra"),
 				new Telephone("55 11 9999-9999"),
 				new Email("doutor@easyclinica.com.br"),
