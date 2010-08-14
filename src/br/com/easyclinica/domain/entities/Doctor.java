@@ -26,6 +26,29 @@ public class Doctor {
 	@Embedded private Email email;
 	@Embedded private Observations observations;
 	
+	protected Doctor() { }
+	
+	public Doctor(Name name, CRM crm) 
+	{
+		this.name = name;
+		this.crm = crm;
+		this.specialty = Specialty.empty();
+		this.telephone = Telephone.empty();
+		this.email = Email.empty();
+		this.observations = Observations.empty();
+	}
+	
+	public Doctor(Name name, CRM crm, Specialty specialty, Telephone telephone, 
+				  Email email, Observations observations) 
+	{
+		this.name = name;
+		this.crm = crm;
+		this.specialty = specialty;
+		this.telephone = telephone;
+		this.email = email;
+		this.observations = observations;
+	}
+	
 	public void setId(int id) {
 		this.id = id;
 	}

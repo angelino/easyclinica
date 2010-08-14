@@ -18,6 +18,11 @@
 		<property name="hibernate.cache.provider_class">org.hibernate.cache.HashtableCacheProvider</property>
 
  		<mapping class="br.com.easyclinica.domain.entities.HealthCarePlan" />
+ 		<mapping class="br.com.easyclinica.domain.entities.Doctor" />
+ 		<mapping class="br.com.easyclinica.domain.entities.Material" />
+ 		<mapping class="br.com.easyclinica.domain.entities.Service" />
+ 		<mapping class="br.com.easyclinica.domain.entities.ServicesTable" />
+ 		
  		<mapping class="br.com.easyclinica.domain.types.Address" />
  		<mapping class="br.com.easyclinica.domain.types.City" />
  		<mapping class="br.com.easyclinica.domain.types.Email" />
@@ -30,10 +35,7 @@
  		<mapping class="br.com.easyclinica.domain.types.Telephone" />
  		<mapping class="br.com.easyclinica.domain.types.Website" />
  		<mapping class="br.com.easyclinica.domain.types.CH" />
- 		<mapping class="br.com.easyclinica.domain.entities.Material" />
- 		<mapping class="br.com.easyclinica.domain.entities.Service" />
- 		<mapping class="br.com.easyclinica.domain.entities.ServicesTable" />
-
+ 		
 	</session-factory>
 
 </hibernate-configuration>

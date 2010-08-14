@@ -2,6 +2,7 @@
 
 <%@ taglib uri="/WEB-INF/sitemesh-decorator.tld" prefix="decorator" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="/WEB-INF/easyclinica.tld" prefix="helper" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -10,17 +11,17 @@
 		<title>.: Easy Clínica - <decorator:title default="Bem vindo" /> :.</title>
 	    
 	    <!-- CSS -->
-	    <link rel="stylesheet" href="<%= request.getContextPath() %>/stylesheets/reset.css" type="text/css" media="screen" />
-	    <link rel="stylesheet" href="<%= request.getContextPath() %>/stylesheets/base.css" type="text/css" media="screen" />
-	    <link rel="stylesheet" href="<%= request.getContextPath() %>/stylesheets/style.css" type="text/css" media="screen" />
-	    <link rel="stylesheet" href="<%= request.getContextPath() %>/stylesheets/jquery-ui-1.8.2.custom.css" type="text/css" media="screen" />
-	    
+		<helper:include fileName="reset.css" type="css" />
+		<helper:include fileName="base.css" type="css" />
+		<helper:include fileName="style.css" type="css" />
+		<helper:include fileName="jquery-ui-1.8.2.custom.css" type="css" />
+    
 	    <!-- JAVASCRIPTS -->
-	    <script type="text/javascript" charset="utf-8" src="<%= request.getContextPath() %>/javascripts/jquery-1.4.2.min.js"></script>
-	    <script type="text/javascript" charset="utf-8" src="<%= request.getContextPath() %>/javascripts/jquery-ui-1.8.2.custom.min.js"></script>
-	    <script type="text/javascript" charset="utf-8" src="<%= request.getContextPath() %>/javascripts/jquery.maskedinput-1.2.2.min.js"></script>
-	    <script type="text/javascript" charset="utf-8" src="<%= request.getContextPath() %>/javascripts/easyclinica.js"></script>
-	   
+	    <helper:include fileName="jquery-1.4.2.min.js" type="js" />
+	    <helper:include fileName="jquery-ui-1.8.2.custom.min.js" type="js" />
+	    <helper:include fileName="jquery.maskedinput-1.2.2.min.js" type="js" />
+	    <helper:include fileName="easyclinica.js" type="js" />
+	    
 	    <decorator:head />
 	</head>
 
