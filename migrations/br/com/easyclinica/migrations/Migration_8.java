@@ -14,7 +14,7 @@ public class Migration_8 implements Migration {
 	}
 
 	public void up() {
-		addColumn(column("amount", DOUBLE, notnull()), "healthcareplan");
+		addColumn(column("ch", DOUBLE, notnull()), "healthcareplan");
 	}
 
 }
