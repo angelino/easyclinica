@@ -49,7 +49,8 @@
 								<td>
 									<form action="<c:url value="/medicos/${doctor.id}" />" method="post">
 										<input type="hidden" name="_method" value="DELETE" />
-										<a href="<c:url value="/medicos/${doctor.id}" />">exibir</a> 
+										<a href="<c:url value="/medicos/${doctor.id}/editar" />">editar</a> 
+										| <a href="<c:url value="/medicos/${doctor.id}" />">exibir</a> 
 										<c:if test="${doctor.active.active}">
 										| <a href="#" onclick="if(confirm('Você tem certeza que deseja inativar esse médico?')) { $(this).closest('form').submit(); }">inativar</a>
 										</c:if>
