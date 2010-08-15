@@ -60,3 +60,31 @@
 		</div>
 	</div>
 </div>
+
+<div>
+					<table class="table">
+						<tr>
+							<th class="first"><input type="checkbox" class="checkbox toggle check_all" rel="chk_convenios"/></th>
+							<th>Serviço</th>
+							<th>CH ou Valor</th>
+							<th class="last">&nbsp;</th>
+						</tr>
+						<c:forEach var="rule" items="${healthCarePlan.serviceRules}">
+						<tr>
+							<td></td>
+							<td>${rule.service.name}</td>
+							<td>
+								<c:choose>
+									<c:when test="${rule.rulingCh}">
+									Novo CH: ${rule.ch}
+									</c:when>
+									<c:otherwise>
+									Novo valor: R$ ${rule.value}
+									</c:otherwise>
+								</c:choose>
+							</td>
+							<td>deletar</td>
+						</tr>
+						</c:forEach>
+					</table>
+</div>

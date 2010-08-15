@@ -36,7 +36,8 @@ public class Service {
 
 	protected Service() {}
 	
-	public Service(Name name, CH ch, ServicesTable table) {
+	public Service(int id, Name name, CH ch, ServicesTable table) {
+		this.id = id;
 		this.name = name;
 		this.ch = ch;
 		this.table = table;

@@ -18,4 +18,24 @@ public class Money {
 	public String toString() {
 		return String.valueOf(money);
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if(this == obj) return true;
+		
+		if( !(obj instanceof Money) ) return false;
+		
+		Money other = (Money)obj;
+		
+		return this.getMoney() == other.getMoney();
+	}
+	
+	@Override
+	public int hashCode() {
+		return new Double(money).hashCode();
+	}
+	
+	public static Money zero() {
+		return new Money(0);
+	}
 }

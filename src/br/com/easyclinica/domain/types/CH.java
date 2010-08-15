@@ -18,4 +18,24 @@ public class CH {
 	public String toString() {
 		return String.valueOf(ch);
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if(this == obj) return true;
+		
+		if( !(obj instanceof CH) ) return false;
+		
+		CH other = (CH)obj;
+		
+		return this.getCh() == other.getCh();
+	}
+	
+	@Override
+	public int hashCode() {
+		return new Double(ch).hashCode();
+	}
+	
+	public static CH zero() {
+		return new CH(0);
+	}
 }

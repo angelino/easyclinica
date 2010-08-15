@@ -1,6 +1,11 @@
 package br.com.easyclinica.domain.entities;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 import javax.persistence.AttributeOverride;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
@@ -8,10 +13,13 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import br.com.easyclinica.domain.exceptions.InvalidServiceRuleException;
 import br.com.easyclinica.domain.types.Active;
 import br.com.easyclinica.domain.types.Address;
+import br.com.easyclinica.domain.types.CH;
 import br.com.easyclinica.domain.types.Email;
 import br.com.easyclinica.domain.types.Money;
 import br.com.easyclinica.domain.types.Name;
@@ -22,10 +30,8 @@ import br.com.easyclinica.domain.types.Website;
 @Entity
 public class HealthCarePlan {
 
-	@Id
-	@GeneratedValue
+	@Id @GeneratedValue
 	private int id;
-	
 	@Embedded private Name name;
 	@Embedded private Address address;
 	@Embedded private Telephone telephone;
@@ -40,6 +46,10 @@ public class HealthCarePlan {
 
 	@OneToOne(fetch=FetchType.EAGER) @JoinColumn(name="table_fk")	
 	private ServicesTable table;
+	
+	@OneToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+	@JoinColumn(name="healthcareplan_fk")
+	private List<ServiceRule> serviceRules;
 	
 	protected HealthCarePlan() {}
 
@@ -57,12 +67,17 @@ public class HealthCarePlan {
 		this.table = table;
 		this.ch = ch;
 		this.active = Active.active();
+		this.serviceRules = new ArrayList<ServiceRule>();
 	}
 
 	public Name getName() {
 		return name;
 	}
 	
+	public List<ServiceRule> getServiceRules() {
+		return Collections.unmodifiableList(serviceRules);
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -109,5 +124,24 @@ public class HealthCarePlan {
 	public void deactivate() {
 		active = Active.notActive();
 	}
+
+	public void addServiceRule(Service service, Money money) throws InvalidServiceRuleException {
+		if(findByService(service)!=null) throw new InvalidServiceRuleException(service);
+		
+		serviceRules.add(new ServiceRule(service, money));
+	}
+
+	public void addServiceRule(Service service, CH ch) throws InvalidServiceRuleException {
+		if(findByService(service)!=null) throw new InvalidServiceRuleException(service);
+		
+		serviceRules.add(new ServiceRule(service, ch));
+	}
 	
+	private ServiceRule findByService(Service service) {
+		for(ServiceRule rule : serviceRules) {
+			if(rule.getService().getId() == service.getId()) return rule;
+		}
+		
+		return null;
+	}
 }
