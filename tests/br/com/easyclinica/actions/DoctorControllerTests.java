@@ -6,7 +6,6 @@ import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -17,6 +16,8 @@ import br.com.easyclinica.domain.entities.Doctor;
 import br.com.easyclinica.domain.repositories.AllDoctors;
 import br.com.easyclinica.domain.validators.DoctorValidator;
 import br.com.easyclinica.infra.vraptor.validators.ErrorTranslator;
+import br.com.easyclinica.view.paginator.PaginatedResult;
+import br.com.easyclinica.view.paginator.Paginator;
 
 public class DoctorControllerTests {
 	private AllDoctors allDoctors;
@@ -25,6 +26,7 @@ public class DoctorControllerTests {
 	private MockValidator validator;
 	private DoctorValidator doctorValidator;
 	private ErrorTranslator translator;
+	private Paginator paginator;
 	
 	@Before
 	public void setUp() {
@@ -33,17 +35,18 @@ public class DoctorControllerTests {
 		validator = spy(new MockValidator());
 		doctorValidator = mock(DoctorValidator.class);
 		translator = mock(ErrorTranslator.class);
+		paginator = mock(Paginator.class);
 		
-		controller = new DoctorController(allDoctors, result,validator,doctorValidator,translator);
+		controller = new DoctorController(allDoctors, result,validator,doctorValidator,translator,paginator);
 	}
 
 	@Test
 	public void shouldGetAllDoctors() {
-		List<Doctor> list = new ArrayList<Doctor>();
-		when(allDoctors.get()).thenReturn(list);
+		PaginatedResult<Doctor> paginatedResult = new PaginatedResult<Doctor>(new ArrayList<Doctor>(), 1, 10);
+		when(paginator.paginate(allDoctors, 1)).thenReturn(paginatedResult);
 		
-		controller.index();
+		controller.index(Paginator.firstPage());
 		
-		assertEquals(list, result.included("doctors"));
+		assertEquals(paginatedResult, result.included("doctors"));
 	}
 }

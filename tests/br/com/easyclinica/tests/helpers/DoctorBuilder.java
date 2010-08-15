@@ -50,11 +50,11 @@ public class DoctorBuilder {
 		return this;
 	}
 	
-	public DoctorBuilder withIdAndName(int id, String name)
+	public DoctorBuilder withId(int id)
 	{
 		doctor = new Doctor(
 				id,
-				new Name(name),
+				new Name("Doutor"),
 				new CRM("55.555"),
 				new Specialty("pediatra"),
 				new Telephone("55 11 9999-9999"),

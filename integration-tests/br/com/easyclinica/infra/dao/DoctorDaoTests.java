@@ -76,6 +76,28 @@ public class DoctorDaoTests {
 	}
 	
 	private Doctor aDoctor(int id, String name) {
-		return new DoctorBuilder().withIdAndName(id, name).instance();
+		return new DoctorBuilder().withId(id).withName(name).instance();
+	}
+	
+	@Test
+	public void shouldCountElements() {
+		Doctor firstDoctor = new DoctorBuilder().instance();
+		Doctor secondDoctor = new DoctorBuilder().instance();
+		
+		dao.add(firstDoctor);
+		dao.add(secondDoctor);
+		
+		assertEquals(2, dao.count());
+	}
+	
+	@Test
+	public void shouldPaginate() {
+		Doctor firstDoctor = new DoctorBuilder().withName("Doutor 1").instance();
+		Doctor secondDoctor = new DoctorBuilder().withName("Doutor 2").instance();
+		
+		dao.add(firstDoctor);
+		dao.add(secondDoctor);
+		
+		assertEquals(firstDoctor.getName().toString(), dao.get(0, 1).get(0).getName().toString());
 	}
 }
