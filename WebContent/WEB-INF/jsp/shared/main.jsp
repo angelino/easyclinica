@@ -46,7 +46,10 @@
 		          	<c:url value="/convenios" var="convenios"></c:url>
 		          	<a href="${convenios}">Convênios</a>
 		          </li>
-		          <li id="menu-link-medicos"><a href="javascript:void(0);">Médicos</a></li>
+		          <li id="menu-link-medicos">
+		          	<c:url value="/medicos" var="medicos"></c:url>
+		          	<a href="${medicos}">Médicos</a>
+		          </li>
 		        </ul>
 		      </div>
 		    </div>

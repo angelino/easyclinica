@@ -1,6 +1,6 @@
 package br.com.easyclinica.domain.entities;
 
-public class ServiceTablesTest {
+public class ServiceTablesTests {
 
 	// TODO: tests!
 }

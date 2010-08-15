@@ -49,6 +49,18 @@ public class Doctor {
 		this.observations = observations;
 	}
 	
+	public Doctor(int id, Name name, CRM crm, Specialty specialty, Telephone telephone, 
+			  Email email, Observations observations) 
+	{
+		this.id = id;
+		this.name = name;
+		this.crm = crm;
+		this.specialty = specialty;
+		this.telephone = telephone;
+		this.email = email;
+		this.observations = observations;
+	}
+	
 	public void setId(int id) {
 		this.id = id;
 	}

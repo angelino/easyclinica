@@ -7,7 +7,7 @@ import org.junit.Test;
 
 import br.com.easyclinica.tests.helpers.DoctorBuilder;
 
-public class DoctorTest {
+public class DoctorTests {
 
 	@Test
 	public void shouldHaveANameAndACRM() {
