@@ -69,7 +69,7 @@ public class DoctorController {
 	}
 
 	@Put
-	@Path("convenios/{doctor.id}")
+	@Path("medicos/{doctor.id}")
 	public void update(final Doctor doctor) {
 		translator.translate(doctorValidator.validate(doctor));
 		validator.onErrorUse(Results.logic()).forwardTo(DoctorController.class).edit(doctor.getId());
