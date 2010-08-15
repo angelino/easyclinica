@@ -48,7 +48,7 @@ public class HealthCarePlan {
 	private ServicesTable table;
 	
 	@OneToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
-	@JoinColumn(name="healthcareplan_fk")
+	@JoinColumn(name="healthcareplan_fk", insertable=true)
 	private List<ServiceRule> serviceRules;
 	
 	protected HealthCarePlan() {}
@@ -128,13 +128,13 @@ public class HealthCarePlan {
 	public void addServiceRule(Service service, Money money) throws InvalidServiceRuleException {
 		if(findByService(service)!=null) throw new InvalidServiceRuleException(service);
 		
-		serviceRules.add(new ServiceRule(service, money));
+		serviceRules.add(new ServiceRule(this, service, money));
 	}
 
 	public void addServiceRule(Service service, CH ch) throws InvalidServiceRuleException {
 		if(findByService(service)!=null) throw new InvalidServiceRuleException(service);
 		
-		serviceRules.add(new ServiceRule(service, ch));
+		serviceRules.add(new ServiceRule(this, service, ch));
 	}
 	
 	private ServiceRule findByService(Service service) {

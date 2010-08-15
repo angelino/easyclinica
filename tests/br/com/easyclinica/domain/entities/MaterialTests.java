@@ -11,7 +11,8 @@ public class MaterialTests {
 
 	@Test
 	public void shouldContainNameAndCH() {
-		Material m = new Material(new Name("material"), new CH(10));
+		ServicesTable table = new ServicesTable(new Name("table"));
+		Material m = new Material(table, new Name("material"), new CH(10));
 		
 		assertEquals(new Name("material"), m.getName());
 		assertEquals(new CH(10), m.getCh());

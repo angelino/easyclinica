@@ -5,11 +5,13 @@ import java.util.List;
 
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
 import br.com.easyclinica.domain.types.CH;
 import br.com.easyclinica.domain.types.Name;
@@ -28,15 +30,24 @@ public class Service {
 	@JoinTable(name="service_materials", joinColumns=@JoinColumn(name="service_fk"), inverseJoinColumns=@JoinColumn(name="material_fk"))
 	private List<Material> materials;
 
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="table_fk")
+	private ServicesTable table;
+	
 	protected Service() {}
 
-	public Service(Name name, CH ch) {
+	public Service(int id) {
+		this.id = id;
+	}
+	public Service(ServicesTable table, Name name, CH ch) {
+		this.table = table;
 		this.id = 0;
 		this.name = name;
 		this.ch = ch;
 	}
 	
-	public Service(int id, Name name, CH ch) {
+	public Service(ServicesTable table, int id, Name name, CH ch) {
+		this.table = table;
 		this.id = id;
 		this.name = name;
 		this.ch = ch;
@@ -56,5 +67,9 @@ public class Service {
 	
 	public List<Material> getMaterials() {
 		return Collections.unmodifiableList(materials);
+	}
+
+	public ServicesTable getTable() {
+		return table;
 	}
 }

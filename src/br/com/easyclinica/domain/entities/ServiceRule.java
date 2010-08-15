@@ -8,6 +8,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 import br.com.easyclinica.domain.types.CH;
@@ -25,15 +26,25 @@ public class ServiceRule {
 	@Embedded @AttributeOverride(name="money", column = @Column(name="value")) 
 	private Money value;
 	
+	@ManyToOne
+	@JoinColumn(name="healthcareplan_fk")
+	private HealthCarePlan healthCarePlan;
+
 	protected ServiceRule() {}
 	
-	public ServiceRule(Service service, CH ch) {
+	public ServiceRule(int id) {
+		this.id = id;
+	}
+	
+	public ServiceRule(HealthCarePlan healthCarePlan, Service service, CH ch) {
+		this.healthCarePlan = healthCarePlan;
 		this.service = service;
 		this.ch = ch;
 		this.value = Money.zero();
 	}
 	
-	public ServiceRule(Service service, Money value) {
+	public ServiceRule(HealthCarePlan healthCarePlan, Service service, Money value) {
+		this.healthCarePlan = healthCarePlan;
 		this.service = service;
 		this.value = value;
 		this.ch = CH.zero();
@@ -63,5 +74,7 @@ public class ServiceRule {
 		return !value.equals(Money.zero());
 	}
 	
-	
+	public HealthCarePlan getHealthCarePlan() {
+		return healthCarePlan;
+	}	
 }

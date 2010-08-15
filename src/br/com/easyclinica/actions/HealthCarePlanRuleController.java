@@ -1,5 +1,7 @@
 package br.com.easyclinica.actions;
 
+import br.com.caelum.vraptor.Path;
+import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
 import br.com.easyclinica.domain.entities.HealthCarePlan;
@@ -9,7 +11,6 @@ import br.com.easyclinica.domain.repositories.AllHealthCarePlans;
 import br.com.easyclinica.domain.types.CH;
 import br.com.easyclinica.domain.types.Money;
 import br.com.easyclinica.view.Messages;
-import br.com.easyclinica.view.paginator.Paginator;
 
 @Resource
 public class HealthCarePlanRuleController {
@@ -21,10 +22,8 @@ public class HealthCarePlanRuleController {
 		this.result = result;
 	}
 	
-	public void index(int id) {
-		
-	}
-
+	@Post
+	@Path("/convenios/{id}/service-rules")
 	public void saveServiceRule(int id, Service service, CH ch, Money value) {
 		HealthCarePlan plan = allHealthCares.getById(id);
 		
@@ -36,9 +35,9 @@ public class HealthCarePlanRuleController {
 			result.include("message", Messages.HEALTH_CARE_PLAN_SERVICE_RULE_ADDED);
 		}
 		catch(InvalidServiceRuleException e) {
-			
+			result.include("message", Messages.HEALTH_CARE_PLAN_REPEATED_SERVICE_RULE);
 		}
 		
-		result.forwardTo(HealthCarePlanController.class).index(Paginator.firstPage());
+		result.forwardTo(HealthCarePlanController.class).show(id);
 	}
 }
