@@ -30,7 +30,7 @@
 
 		<div class="agrupar_campos">
 			<label class="label">Telefone*:</label>
-	    	<input type="text" name="doctor.telephone.telephone" class="text_field" value="${doctor.telephone}" />
+	    	<input type="text" name="doctor.telephone.telephone" class="text_field mask_telefone" value="${doctor.telephone}" />
 	    	<span class="description">Ex: '(11) 1111-1111'</span>
 		</div>
 		

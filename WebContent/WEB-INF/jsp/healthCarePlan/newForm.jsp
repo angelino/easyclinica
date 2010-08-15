@@ -8,7 +8,10 @@
 		<div class="inner">
 
 			<c:url value="/convenios" var="formAction" />
-			<helper:healthCarePlanForm action="${formAction}" errors="${errors}" model="${healthCarePlan}" tables="${tables}" />
+			
+			<jsp:include page="_form.jsp">	
+			   <jsp:param name="formAction" value="${formAction}" />			  	
+			</jsp:include>
 		</div>
 	</div>
 </div>

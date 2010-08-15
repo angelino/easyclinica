@@ -1,17 +1,13 @@
-<%@tag description="health care plan form" pageEncoding="UTF-8"%>
-<%@tag display-name="healthCarePlanForm"%>
-<%@ attribute name="action" type="java.lang.String" required="true" rtexprvalue="true" %>
-<%@ attribute name="errors" type="java.util.List" required="false" rtexprvalue="true" %>
-<%@ attribute name="tables" type="java.util.List" required="true" rtexprvalue="true" %>
-<%@ attribute name="put" type="java.lang.Boolean" required="false" rtexprvalue="true" %>
-<%@ attribute name="model" type="br.com.easyclinica.domain.entities.HealthCarePlan" required="false" rtexprvalue="true" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib uri="/WEB-INF/easyclinica.tld" prefix="helper" %>
-<form action="${action}" method="post">
-	<c:if test="${put}">
-	<input type="hidden" name="_method" value="PUT" />
-	</c:if>
+
+<form action="<%= request.getParameter("formAction") %>" method="post">
+	<% if(request.getParameter("put") != null && request.getParameter("put").equals("true")) { %>
+		<input type="hidden" name="_method" value="PUT" />
+	<% } %>
 	<input type="hidden" name="healthCarePlan.id" value="${healthCarePlan.id}" />
 	
 	<helper:errors errors="${errors}" />
