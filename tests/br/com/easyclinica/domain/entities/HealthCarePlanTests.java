@@ -1,7 +1,8 @@
 package br.com.easyclinica.domain.entities;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
@@ -11,12 +12,10 @@ import br.com.easyclinica.tests.helpers.HealthCarePlanBuilder;
 public class HealthCarePlanTests {
 
 	@Test
-	public void shouldHaveANameAndAServicesTable() {
+	public void shouldBeActive() {
 		HealthCarePlan plan = new HealthCarePlanBuilder().instance();
 		
-		assertEquals("Amil", plan.getName().toString());
-		assertNotNull(plan.getTable());
-		assertEquals("table", plan.getTable().getName().toString());
+		assertTrue(plan.getActive().isActive());
 	}
 	
 	@Test
@@ -35,5 +34,16 @@ public class HealthCarePlanTests {
 		assertEquals(new AddressBuilder().instance().getNeighborhood().toString(), plan.getAddress().getNeighborhood().toString());
 		assertEquals(new AddressBuilder().instance().getPostalCode().toString(), plan.getAddress().getPostalCode().toString());
 		assertEquals(new AddressBuilder().instance().getState().toString(), plan.getAddress().getState().toString());
+	}
+	
+	@Test
+	public void shouldBeDeactived() {
+		HealthCarePlan plan = new HealthCarePlanBuilder().instance();
+		
+		assertTrue(plan.getActive().isActive());
+		
+		plan.deactivate();
+		
+		assertFalse(plan.getActive().isActive());
 	}
 }

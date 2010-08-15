@@ -1,5 +1,6 @@
 package br.com.easyclinica.actions;
 
+import br.com.caelum.vraptor.Delete;
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
@@ -96,5 +97,17 @@ public class HealthCarePlanController {
 	
 	private void include(HealthCarePlan planToBeEdited) {
 		result.include("healthCarePlan", planToBeEdited);
+	}
+
+	@Delete
+	@Path("convenios/{id}")
+	public void deactivate(int id) {
+		HealthCarePlan plan = allHealthCares.getById(id);
+		
+		plan.deactivate();
+		allHealthCares.update(plan);
+		
+		result.include("message", Messages.HEALTH_CARE_PLAN_DEACTIVATED);
+		result.redirectTo(HealthCarePlanController.class).index(Paginator.firstPage());
 	}
 }

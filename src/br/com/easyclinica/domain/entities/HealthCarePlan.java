@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
+import br.com.easyclinica.domain.types.Active;
 import br.com.easyclinica.domain.types.Address;
 import br.com.easyclinica.domain.types.Email;
 import br.com.easyclinica.domain.types.Money;
@@ -35,6 +36,8 @@ public class HealthCarePlan {
 	private Money ch;
 	@Embedded @AttributeOverride(name="name", column = @Column(name="contact"))
 	private Name contact;
+	@Embedded private Active active;
+
 	@OneToOne(fetch=FetchType.EAGER) @JoinColumn(name="table_fk")	
 	private ServicesTable table;
 	
@@ -53,6 +56,7 @@ public class HealthCarePlan {
 		this.observations = observations;
 		this.table = table;
 		this.ch = ch;
+		this.active = Active.active();
 	}
 
 	public Name getName() {
@@ -95,7 +99,15 @@ public class HealthCarePlan {
 		return table;
 	}
 	
+	public Active getActive() {
+		return active;
+	}
 	public static HealthCarePlan empty() {
 		return new HealthCarePlan();
 	}
+
+	public void deactivate() {
+		active = Active.notActive();
+	}
+	
 }

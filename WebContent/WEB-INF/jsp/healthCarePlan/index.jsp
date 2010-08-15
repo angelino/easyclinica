@@ -31,10 +31,28 @@
 						<c:forEach var="healthCare" items="${healthcares.result}" varStatus="status">
 							<tr class="${status.count % 2 == 0 ? 'odd' : 'even' }">
 								<td><input type="checkbox" class="checkbox" rel="chk_convenios" name="id" value="${healthCare.id}" /></td>
-								<td>${healthCare.name}</td>
+								<td>
+								<c:choose>
+									<c:when test="${healthCare.active.active}">
+										${healthCare.name}
+									</c:when>
+									<c:otherwise>
+										<span class="deactivated-item">${healthCare.name}</span> (inativo)
+									</c:otherwise>
+								</c:choose>
+								
+								</td>
 								<td>${healthCare.contact}</td>
 								<td>${healthCare.telephone}</td>
-								<td></td>
+								<td>
+									<form action="<c:url value="/convenios/${healthCare.id}" />" method="post">
+										<input type="hidden" name="_method" value="DELETE" />
+										<a href="<c:url value="/convenios/${healthCare.id}" />">exibir</a> 
+										<c:if test="${healthCare.active.active}">
+										| <a href="#" onclick="if(confirm('Você tem certeza?')) { $(this).closest('form').submit(); }">inativar</a>
+										</c:if>
+									</form>
+								</td>
 							</tr>
 						</c:forEach>
 					</table>

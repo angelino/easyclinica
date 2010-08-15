@@ -61,6 +61,7 @@ public class HealthCarePlanDaoTests {
 		assertNotNull(newOne.getTable());
 		assertEquals(plan.getTable().getName().toString(),newOne.getTable().getName().toString());
 		assertEquals(plan.getCh().getMoney(), newOne.getCh().getMoney(), 0.001);
+		assertEquals(plan.getActive().isActive(), newOne.getActive().isActive());
 	}
 
 	@Test

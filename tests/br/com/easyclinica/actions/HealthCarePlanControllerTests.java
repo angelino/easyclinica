@@ -1,6 +1,7 @@
 package br.com.easyclinica.actions;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.spy;
@@ -129,6 +130,18 @@ public class HealthCarePlanControllerTests {
 		controller.show(1);
 		
 		assertEquals(plan, result.included("healthCarePlan"));
+	}
+	
+	@Test
+	public void shouldDeactivate() {
+		HealthCarePlan plan = aHealthCarePlan();
+		when(allHealthCares.getById(1)).thenReturn(plan);
+		
+		controller.deactivate(1);
+		
+		assertFalse(plan.getActive().isActive());
+		assertEquals(Messages.HEALTH_CARE_PLAN_DEACTIVATED, result.included("message"));
+		verify(allHealthCares).update(plan);
 	}
 
 	private void supposingThatValidationHasFailed() {
