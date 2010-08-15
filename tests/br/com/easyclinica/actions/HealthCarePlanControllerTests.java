@@ -94,6 +94,8 @@ public class HealthCarePlanControllerTests {
 		controller.edit(1);
 		
 		assertEquals(plan, result.included("healthCarePlan"));
+		assertNotNull(result.included("tables"));
+		verify(allServiceTables).get();
 	}
 	
 	@Test

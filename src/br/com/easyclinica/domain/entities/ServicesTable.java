@@ -39,6 +39,13 @@ public class ServicesTable {
 		this.materials = new ArrayList<Material>();
 	}
 	
+	public ServicesTable(int id) {
+		this.id = id;
+		this.name = Name.empty();
+		this.services = new ArrayList<Service>();
+		this.materials = new ArrayList<Material>();
+	}
+	
 	public ServicesTable(Name name, List<Service> services, List<Material> materials) {
 		this.name = name;
 		this.services = services;

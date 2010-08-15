@@ -2,6 +2,7 @@
 <%@tag display-name="healthCarePlanForm"%>
 <%@ attribute name="action" type="java.lang.String" required="true" rtexprvalue="true" %>
 <%@ attribute name="errors" type="java.util.List" required="false" rtexprvalue="true" %>
+<%@ attribute name="tables" type="java.util.List" required="true" rtexprvalue="true" %>
 <%@ attribute name="put" type="java.lang.Boolean" required="false" rtexprvalue="true" %>
 <%@ attribute name="model" type="br.com.easyclinica.domain.entities.HealthCarePlan" required="false" rtexprvalue="true" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -70,13 +71,17 @@
 	
 	<div class="agrupar_campos">
 		<label class="label">Tabela de Serviços*:</label>
-	
+		<select name="healthCarePlan.table.id">
+			<c:forEach var="table" items="${tables}">
+			<option value="${table.id}" <c:if test="${table.id == healthCarePlan.table.id}">selected</c:if>>${table.name}</option>
+			</c:forEach>
+		</select>
 	<span class="description">Ex: 'AMB99'</span>
 	</div>
 	
 	<div class="agrupar_campos">
 		<label class="label">Valor em R$ da CH:</label>
-	
+		<input type="text" name="healthCarePlan.ch.money" class="text_field" value="${healthCarePlan.ch}" />
 	<span class="description">Ex: 'R$ 0.15'</span>
 	</div>
 	

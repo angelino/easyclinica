@@ -66,6 +66,8 @@ public class HealthCarePlanController {
 	@Path("/convenios/{id}/editar")
 	public void edit(int id) {
 		HealthCarePlan planToBeEdited = allHealthCares.getById(id);
+		
+		result.include("tables", allServiceTables.get());
 		include(planToBeEdited);
 	}
 

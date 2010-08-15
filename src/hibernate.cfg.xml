@@ -35,6 +35,7 @@
  		<mapping class="br.com.easyclinica.domain.types.Telephone" />
  		<mapping class="br.com.easyclinica.domain.types.Website" />
  		<mapping class="br.com.easyclinica.domain.types.CH" />
+ 		<mapping class="br.com.easyclinica.domain.types.Money" />
  		
 	</session-factory>
 

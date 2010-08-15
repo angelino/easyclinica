@@ -13,29 +13,23 @@ import org.junit.Test;
 
 import br.com.easyclinica.domain.entities.HealthCarePlan;
 import br.com.easyclinica.domain.entities.ServicesTable;
-import br.com.easyclinica.domain.types.Address;
-import br.com.easyclinica.domain.types.CH;
-import br.com.easyclinica.domain.types.City;
-import br.com.easyclinica.domain.types.Email;
 import br.com.easyclinica.domain.types.Name;
-import br.com.easyclinica.domain.types.Neighborhood;
-import br.com.easyclinica.domain.types.Observations;
-import br.com.easyclinica.domain.types.PostalCode;
-import br.com.easyclinica.domain.types.State;
-import br.com.easyclinica.domain.types.Street;
-import br.com.easyclinica.domain.types.Telephone;
-import br.com.easyclinica.domain.types.Website;
+import br.com.easyclinica.tests.helpers.HealthCarePlanBuilder;
 
 public class HealthCarePlanDaoTests {
 
 	private Session session;
 	private HealthCarePlanDao dao;
+	private ServicesTable servicesTable;
 
 	@Before
 	public void setUp() {
 		session = new AnnotationConfiguration().configure("test-hibernate.cfg.xml").buildSessionFactory().openSession();
 		session.beginTransaction();
 		dao = new HealthCarePlanDao(session);
+		
+		servicesTable = new ServicesTable(new Name("table"));
+		session.persist(servicesTable);
 	}
 	
 	@After
@@ -46,34 +40,39 @@ public class HealthCarePlanDaoTests {
 	
 	@Test
 	public void shouldAdd() {
-		dao.add(aHealthCarePlan());
+		HealthCarePlan plan = new HealthCarePlanBuilder().withTable(servicesTable).instance();
+		dao.add(plan);
 		
 		List<HealthCarePlan> list = dao.get();
 		assertEquals(1, list.size());
 		
 		HealthCarePlan newOne = list.get(0);
-		assertEquals("some healthcare", newOne.getName().toString());
-		assertEquals("street", newOne.getAddress().getStreet().toString());
-		assertEquals("nhood", newOne.getAddress().getNeighborhood().toString());
-		assertEquals("123", newOne.getAddress().getPostalCode().toString());
-		assertEquals("city", newOne.getAddress().getCity().toString());
-		assertEquals("ST", newOne.getAddress().getState().toString());
-		assertEquals("11 223344", newOne.getTelephone().toString());
-		assertEquals("email@email.com", newOne.getEmail().toString());
-		assertEquals("website.com", newOne.getWebsite().toString());
-		assertEquals("contact", newOne.getContact().toString());
-		assertEquals("some obs", newOne.getObservations().toString());
+		assertEquals(plan.getName().toString(), newOne.getName().toString());
+		assertEquals(plan.getAddress().getStreet().toString(), newOne.getAddress().getStreet().toString());
+		assertEquals(plan.getAddress().getNeighborhood().toString(), newOne.getAddress().getNeighborhood().toString());
+		assertEquals(plan.getAddress().getPostalCode().toString(), newOne.getAddress().getPostalCode().toString());
+		assertEquals(plan.getAddress().getCity().toString(), newOne.getAddress().getCity().toString());
+		assertEquals(plan.getAddress().getState().toString(), newOne.getAddress().getState().toString());
+		assertEquals(plan.getTelephone().toString(), newOne.getTelephone().toString());
+		assertEquals(plan.getEmail().toString(), newOne.getEmail().toString());
+		assertEquals(plan.getWebsite().toString(), newOne.getWebsite().toString());
+		assertEquals(plan.getContact().toString(), newOne.getContact().toString());
+		assertEquals(plan.getObservations().toString(), newOne.getObservations().toString());
 		assertNotNull(newOne.getTable());
-		assertEquals("table",newOne.getTable().getName().toString());
-		assertEquals(20.0, newOne.getCh().getCh(), 0.001);
+		assertEquals(plan.getTable().getName().toString(),newOne.getTable().getName().toString());
+		assertEquals(plan.getCh().getMoney(), newOne.getCh().getMoney(), 0.001);
 	}
 
 	@Test
 	public void shouldUpdate() {
-		HealthCarePlan plan = aHealthCarePlan();
+		HealthCarePlan plan = new HealthCarePlanBuilder().withTable(servicesTable).instance();
 		dao.add(plan);
 		
-		HealthCarePlan updatedPlan = aHealthCarePlan(plan.getId(), "new Amil");
+		HealthCarePlan updatedPlan = new HealthCarePlanBuilder()
+			.withId(plan.getId())
+			.withName("new Amil")
+			.withTable(servicesTable)
+			.instance();
 		dao.update(updatedPlan);
 		
 		HealthCarePlan secondRetrievedPlan = dao.getById(plan.getId());
@@ -83,31 +82,12 @@ public class HealthCarePlanDaoTests {
 	
 	@Test
 	public void shouldGetById() {
-		HealthCarePlan plan = aHealthCarePlan();
+		HealthCarePlan plan = new HealthCarePlanBuilder().withTable(servicesTable).instance();
 		dao.add(plan);
 		
 		HealthCarePlan retrievedPlan = dao.getById(plan.getId());
 		
 		assertNotNull(retrievedPlan);
 		assertEquals(plan.getId(), retrievedPlan.getId());
-	}
-	
-	private HealthCarePlan aHealthCarePlan() {
-		return aHealthCarePlan(0, "some healthcare");
-	}
-	
-	private HealthCarePlan aHealthCarePlan(int id, String name) {
-		return new HealthCarePlan(
-				id,
-				new Name(name),
-				new Address(new Street("street"), new Neighborhood("nhood"), new PostalCode("123"), new City("city"), new State("ST")),
-				new Telephone("11 223344"),
-				new Email("email@email.com"),
-				new Website("website.com"),
-				new Name("contact"),
-				new Observations("some obs"),
-				new ServicesTable(new Name("table")),
-				new CH(20)
-		);
 	}
 }

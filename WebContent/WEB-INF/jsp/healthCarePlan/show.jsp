@@ -46,10 +46,12 @@
 	
 	<div class="agrupar_campos">
 		<label class="label">Tabela de Serviços*:</label>
+		${healthCarePlan.table.name}
 	</div>
 	
 	<div class="agrupar_campos">
 		<label class="label">Valor em R$ da CH:</label>
+		${healthCarePlan.ch.money}
 	</div>
 	
 		<label class="label">Observações</label>

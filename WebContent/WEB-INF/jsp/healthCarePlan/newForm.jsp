@@ -8,7 +8,7 @@
 		<div class="inner">
 
 			<c:url value="/convenios" var="formAction" />
-			<helper:healthCarePlanForm action="${formAction}" errors="${errors}" model="${healthCarePlan}" />
+			<helper:healthCarePlanForm action="${formAction}" errors="${errors}" model="${healthCarePlan}" tables="${tables}" />
 		</div>
 	</div>
 </div>
