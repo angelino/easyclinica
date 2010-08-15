@@ -4,7 +4,7 @@ import java.util.List;
 
 import br.com.easyclinica.domain.entities.Doctor;
 
-public interface AllDoctors {
+public interface AllDoctors extends Pagging<Doctor> {
 	List<Doctor> get();
 	Doctor getById(int id);
 	

@@ -2,7 +2,10 @@ package br.com.easyclinica.infra.dao;
 
 import java.util.List;
 
+import org.hibernate.Criteria;
+import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.criterion.Projections;
 
 import br.com.caelum.vraptor.ioc.Component;
 import br.com.easyclinica.domain.entities.Doctor;
@@ -34,4 +37,17 @@ public class DoctorDao implements AllDoctors {
 		session.merge(doctor);
 	}
 
+	@SuppressWarnings("unchecked")
+	public List<Doctor> get(int firstResult, int maxResults) {
+		Query query = session.createQuery("from Doctor doctors order by name");
+		query.setFirstResult(firstResult);
+		query.setMaxResults(maxResults);
+		
+		return query.list();
+	}
+
+	public int count() {
+		Criteria criteria = session.createCriteria(Doctor.class).setProjection(Projections.count("id"));
+		return (Integer)criteria.uniqueResult();
+	}
 }

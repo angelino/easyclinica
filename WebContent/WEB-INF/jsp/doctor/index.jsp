@@ -30,7 +30,7 @@
 							<th class="last">&nbsp;</th>
 						</tr>
 						
-						<c:forEach var="doctor" items="${doctors}" varStatus="status">
+						<c:forEach var="doctor" items="${doctors.result}" varStatus="status">
 							<tr class="${status.count % 2 == 0 ? 'odd' : 'even' }">
 								<td><input type="checkbox" class="checkbox" rel="chk_medicos" name="id" value="${doctor.id}" /></td>
 								<td>${doctor.name}</td>
@@ -42,16 +42,7 @@
 						</c:forEach>
 					</table>
 					
-		            <div class="actions-bar wat-cf">
-			             <div class="actions">
-			               <button class="button" type="submit">
-			                 <img src="images/icons/cross.png" alt="Delete" /> Delete
-			               </button>
-			             </div>
-		                 <div class="pagination">
-		                    <span class="disabled prev_page">« Previous</span><span class="current">1</span><a rel="next" href="#">2</a><a href="#">3</a><a href="#">4</a><a href="#">5</a><a href="#">6</a><a href="#">7</a><a href="#">8</a><a href="#">9</a><a href="#">10</a><a href="#">11</a><a rel="next" class="next_page" href="#">Next »</a>
-		                 </div>
-		            </div>
+		            <helper:pagging total="${doctors.totalPages}" current="${doctors.currentPage}" />
 				</div>
 			</div>
 		</div>

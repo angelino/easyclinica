@@ -7,26 +7,27 @@
 
 <div class="actions-bar wat-cf">
 
-	<div class="pagination">
-		
-		<% if(current == 1) { %>
-		<span class="disabled prev_page">« Anterior</span>
-		<% } else { %>
-		<a rel="next" class="prev_page" href="?page=<%= current - 1 %>">« Anterior</a>
-		<% } %>
-		
-		<% for(int i = 1; i <= total; i++) { %>
-			<% if (current == i) { %>
-			<span class="current"><%= i %></span>
+	<c:if test="${total > 0}">
+		<div class="pagination">
+			<% if(current == 1) { %>
+			<span class="disabled prev_page">« Anterior</span>
 			<% } else { %>
-			<a rel="next" href="?page=<%= i %>"><%= i %></a>
+			<a rel="next" class="prev_page" href="?page=<%= current - 1 %>">« Anterior</a>
 			<% } %>
-		<% } %>
-		
-		<% if(current.equals(total)) { %>
-		<span class="disabled next_page">Próxima »</span>
-		<% } else { %>
-		<a rel="next" class="next_page" href="?page=<%= current + 1 %>">Próxima »</a>
-		<% } %>
-	</div>
+			
+			<% for(int i = 1; i <= total; i++) { %>
+				<% if (current == i) { %>
+				<span class="current"><%= i %></span>
+				<% } else { %>
+				<a rel="next" href="?page=<%= i %>"><%= i %></a>
+				<% } %>
+			<% } %>
+			
+			<% if(current.equals(total)) { %>
+			<span class="disabled next_page">Próxima »</span>
+			<% } else { %>
+			<a rel="next" class="next_page" href="?page=<%= current + 1 %>">Próxima »</a>
+			<% } %>
+		</div>
+	</c:if>
 </div>
