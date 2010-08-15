@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="/WEB-INF/easyclinica.tld" prefix="helper" %>
 <div class="block" id="block">
+	
+	<helper:message messageKey="${message}" />
 	
 	<div class="content">
    		<h2 class="title">${healthCarePlan.name}</h2>
@@ -101,12 +104,15 @@
 			<tr>
 				<td></td>
 				<td>
-					<select name="">
+					<select name="service.id">
+						<c:forEach var="service" items="${healthCarePlan.table.services}">
+						<option value="${service.id}">${service.name}</option>
+						</c:forEach>
 					</select>
 				</td>
-				<td><input type="text" name="" /></td>
-				<td><input type="text" name="" /></td>
-				<td><input type="submit" name="" /></td>
+				<td><input type="text" name="ch.ch" /></td>
+				<td><input type="text" name="value.money" /></td>
+				<td><input type="submit" name="" value="Salvar" /></td>
 			</tr>
 		</table>
 	</form>

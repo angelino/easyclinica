@@ -12,9 +12,13 @@ import org.junit.Before;
 import org.junit.Test;
 
 import br.com.easyclinica.domain.entities.HealthCarePlan;
+import br.com.easyclinica.domain.entities.Service;
 import br.com.easyclinica.domain.entities.ServicesTable;
+import br.com.easyclinica.domain.exceptions.InvalidServiceRuleException;
+import br.com.easyclinica.domain.types.CH;
 import br.com.easyclinica.domain.types.Name;
 import br.com.easyclinica.tests.helpers.HealthCarePlanBuilder;
+import br.com.easyclinica.tests.helpers.ServiceBuilder;
 
 public class HealthCarePlanDaoTests {
 
@@ -112,5 +116,22 @@ public class HealthCarePlanDaoTests {
 		dao.add(secondPlan);
 		
 		assertEquals(firstPlan.getName().toString(), dao.get(0, 1).get(0).getName().toString());
+	}
+	
+	@Test
+	public void shouldSaveServiceRules() throws InvalidServiceRuleException {
+		HealthCarePlan plan = new HealthCarePlanBuilder().withName("a").withTable(servicesTable).instance();
+		Service service = new ServiceBuilder(servicesTable).instance();
+		
+		session.persist(servicesTable);
+		session.persist(service);
+		
+		plan.addServiceRule(service, new CH(10));
+		
+		session.persist(plan);
+		
+		HealthCarePlan retrievedPlan = dao.getById(plan.getId());
+		assertEquals(1, retrievedPlan.getServiceRules().size());
+		
 	}
 }
