@@ -8,7 +8,6 @@ import org.junit.Test;
 
 import br.com.easyclinica.domain.types.CH;
 import br.com.easyclinica.domain.types.Money;
-import br.com.easyclinica.domain.types.Name;
 import br.com.easyclinica.tests.helpers.ServiceBuilder;
 
 public class ServiceRuleTests {
@@ -17,8 +16,7 @@ public class ServiceRuleTests {
 	
 	@Before
 	public void setUp() {
-		ServicesTable table = new ServicesTable(new Name("table"));
-		service = new ServiceBuilder(table).instance();
+		service = new ServiceBuilder().instance();
 	}
 	
 	@Test

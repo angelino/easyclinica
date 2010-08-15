@@ -5,10 +5,10 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
+
 import br.com.easyclinica.domain.exceptions.InvalidServiceRuleException;
 import br.com.easyclinica.domain.types.CH;
 import br.com.easyclinica.domain.types.Money;
-import br.com.easyclinica.domain.types.Name;
 import br.com.easyclinica.tests.helpers.AddressBuilder;
 import br.com.easyclinica.tests.helpers.HealthCarePlanBuilder;
 import br.com.easyclinica.tests.helpers.ServiceBuilder;
@@ -54,8 +54,8 @@ public class HealthCarePlanTests {
 	@Test
 	public void shouldHaveServiceRules() throws InvalidServiceRuleException {
 		HealthCarePlan plan = new HealthCarePlanBuilder().instance();
-		Service someService = new ServiceBuilder(new ServicesTable(new Name("table"))).withId(1).instance();
-		Service someService2 = new ServiceBuilder(new ServicesTable(new Name("table"))).withId(2).instance();
+		Service someService = new ServiceBuilder().withId(1).instance();
+		Service someService2 = new ServiceBuilder().withId(2).instance();
 		
 		plan.addServiceRule(someService, new Money(10));
 		plan.addServiceRule(someService2, new CH(20));
@@ -67,7 +67,7 @@ public class HealthCarePlanTests {
 	@Test(expected=InvalidServiceRuleException.class)
 	public void shouldNotAcceptARepeatedServiceRuleForMoney() throws InvalidServiceRuleException {
 		HealthCarePlan plan = new HealthCarePlanBuilder().instance();
-		Service someService = new ServiceBuilder(new ServicesTable(new Name("table"))).instance();
+		Service someService = new ServiceBuilder().instance();
 		
 		plan.addServiceRule(someService, new Money(10));
 		plan.addServiceRule(someService, new Money(20));
@@ -76,7 +76,7 @@ public class HealthCarePlanTests {
 	@Test(expected=InvalidServiceRuleException.class)
 	public void shouldNotAcceptARepeatedServiceRuleForCHs() throws InvalidServiceRuleException {
 		HealthCarePlan plan = new HealthCarePlanBuilder().instance();
-		Service someService = new ServiceBuilder(new ServicesTable(new Name("table"))).instance();
+		Service someService = new ServiceBuilder().instance();
 		
 		plan.addServiceRule(someService, new CH(10));
 		plan.addServiceRule(someService, new CH(20));

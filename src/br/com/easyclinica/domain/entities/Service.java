@@ -5,13 +5,11 @@ import java.util.List;
 
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 
 import br.com.easyclinica.domain.types.CH;
 import br.com.easyclinica.domain.types.Name;
@@ -26,21 +24,16 @@ public class Service {
 	@Embedded private Name name;
 	@Embedded private CH ch;
 	
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="table_fk")
-	private ServicesTable table;
-	
 	@ManyToMany
 	@JoinTable(name="service_materials", joinColumns=@JoinColumn(name="service_fk"), inverseJoinColumns=@JoinColumn(name="material_fk"))
 	private List<Material> materials;
 
 	protected Service() {}
 	
-	public Service(int id, Name name, CH ch, ServicesTable table) {
+	public Service(int id, Name name, CH ch) {
 		this.id = id;
 		this.name = name;
 		this.ch = ch;
-		this.table = table;
 	}
 
 	public int getId() {
@@ -53,10 +46,6 @@ public class Service {
 
 	public CH getCh() {
 		return ch;
-	}
-
-	public ServicesTable getTable() {
-		return table;
 	}
 	
 	public List<Material> getMaterials() {
