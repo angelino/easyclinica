@@ -6,19 +6,19 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-public class NameTests {
+public class MoneyTests {
 	@Test
-	public void shouldStoreAName() {
-		Name name = new Name("John Doe");
+	public void shouldStoreAMoney() {
+		Money money = new Money(12.34);
 		
-		assertEquals("John Doe", name.getName());
+		assertEquals(12.34, money.getMoney(), 0.001);
 	}
 	
 	@Test
 	public void shouldCompare() {
-		Name one = new Name("John Doe");
-		Name two = new Name("John Doe");
-		Name three = new Name("Jane Doe");
+		Money one = new Money(12.34);
+		Money two = new Money(12.34);
+		Money three = new Money(12.35);
 		
 		assertTrue(one.equals(two));
 		assertFalse(one.equals(three));
