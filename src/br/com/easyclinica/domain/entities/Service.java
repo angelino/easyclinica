@@ -29,6 +29,12 @@ public class Service {
 	private List<Material> materials;
 
 	protected Service() {}
+
+	public Service(Name name, CH ch) {
+		this.id = 0;
+		this.name = name;
+		this.ch = ch;
+	}
 	
 	public Service(int id, Name name, CH ch) {
 		this.id = id;

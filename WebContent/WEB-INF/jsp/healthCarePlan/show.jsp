@@ -62,29 +62,52 @@
 </div>
 
 <div>
-					<table class="table">
-						<tr>
-							<th class="first"><input type="checkbox" class="checkbox toggle check_all" rel="chk_convenios"/></th>
-							<th>Serviço</th>
-							<th>CH ou Valor</th>
-							<th class="last">&nbsp;</th>
-						</tr>
-						<c:forEach var="rule" items="${healthCarePlan.serviceRules}">
-						<tr>
-							<td></td>
-							<td>${rule.service.name}</td>
-							<td>
-								<c:choose>
-									<c:when test="${rule.rulingCh}">
-									Novo CH: ${rule.ch}
-									</c:when>
-									<c:otherwise>
-									Novo valor: R$ ${rule.value}
-									</c:otherwise>
-								</c:choose>
-							</td>
-							<td>deletar</td>
-						</tr>
-						</c:forEach>
-					</table>
+	<form action="<c:url value="/convenios/${healthCarePlan.id}/service-rules" />" method="post">
+		<table class="table">
+			<tr>
+				<th class="first"><input type="checkbox" class="checkbox toggle check_all" rel="chk_convenios"/></th>
+				<th>Serviço</th>
+				<th>CH?</th>
+				<th>Valor?</th>
+				<th class="last">&nbsp;</th>
+			</tr>
+			<c:forEach var="rule" items="${healthCarePlan.serviceRules}">
+			<tr>
+				<td></td>
+				<td>${rule.service.name}</td>
+				<td>
+					<c:choose>
+						<c:when test="${rule.rulingCh}">
+						${rule.ch}
+						</c:when>
+						<c:otherwise>
+						-
+						</c:otherwise>
+					</c:choose>
+				</td>
+				<td>
+					<c:choose>
+						<c:when test="${rule.rulingValue}">
+						R$ ${rule.value}
+						</c:when>
+						<c:otherwise>
+						-
+						</c:otherwise>
+					</c:choose>
+				</td>							
+				<td>deletar</td>
+			</tr>
+			</c:forEach>
+			<tr>
+				<td></td>
+				<td>
+					<select name="">
+					</select>
+				</td>
+				<td><input type="text" name="" /></td>
+				<td><input type="text" name="" /></td>
+				<td><input type="submit" name="" /></td>
+			</tr>
+		</table>
+	</form>
 </div>

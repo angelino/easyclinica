@@ -18,7 +18,26 @@ public class Name {
 	public String toString() {
 		return getName();
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if(this == obj) return true;
+		
+		if( !(obj instanceof Name) ) return false;
+		
+		Name other = (Name)obj;
+		
+		return this.getName() == other.getName();
+	}
+	
+	@Override
+	public int hashCode() {
+		return name.hashCode();
+	}
+	
 	public static Name empty() {
 		return new Name("");
 	}
+	
+	
 }

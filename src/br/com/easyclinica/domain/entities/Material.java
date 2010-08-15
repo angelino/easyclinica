@@ -18,8 +18,15 @@ public class Material {
 	@Embedded private CH ch;
 
 	protected Material() {}
+
+	public Material(int id, Name name, CH ch) {
+		this.id = id;
+		this.name = name;
+		this.ch = ch;
+	}
 	
 	public Material(Name name, CH ch) {
+		this.id = 0;
 		this.name = name;
 		this.ch = ch;
 	}
