@@ -33,11 +33,28 @@
 						<c:forEach var="doctor" items="${doctors.result}" varStatus="status">
 							<tr class="${status.count % 2 == 0 ? 'odd' : 'even' }">
 								<td><input type="checkbox" class="checkbox" rel="chk_medicos" name="id" value="${doctor.id}" /></td>
-								<td>${doctor.name}</td>
+								<td>
+									<c:choose>
+										<c:when test="${doctor.active.active}">
+											${doctor.name}
+										</c:when>
+										<c:otherwise>
+											<span class="deactivated-item">${doctor.name}</span> (inativo)
+										</c:otherwise>
+									</c:choose>
+								</td>
 								<td>${doctor.crm}</td>
 								<td>${doctor.telephone}</td>
 								<td>${doctor.email}</td>
-								<td></td>
+								<td>
+									<form action="<c:url value="/medicos/${doctor.id}" />" method="post">
+										<input type="hidden" name="_method" value="DELETE" />
+										<a href="<c:url value="/medicos/${doctor.id}" />">exibir</a> 
+										<c:if test="${doctor.active.active}">
+										| <a href="#" onclick="if(confirm('Você tem certeza que deseja inativar esse médico?')) { $(this).closest('form').submit(); }">inativar</a>
+										</c:if>
+									</form>
+								</td>
 							</tr>
 						</c:forEach>
 					</table>

@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+import br.com.easyclinica.domain.types.Active;
 import br.com.easyclinica.domain.types.CRM;
 import br.com.easyclinica.domain.types.Email;
 import br.com.easyclinica.domain.types.Name;
@@ -25,6 +26,7 @@ public class Doctor {
 	@Embedded private Telephone telephone;
 	@Embedded private Email email;
 	@Embedded private Observations observations;
+	@Embedded private Active active;
 	
 	protected Doctor() { }
 	
@@ -36,6 +38,7 @@ public class Doctor {
 		this.telephone = Telephone.empty();
 		this.email = Email.empty();
 		this.observations = Observations.empty();
+		this.active = Active.active();
 	}
 	
 	public Doctor(Name name, CRM crm, Specialty specialty, Telephone telephone, 
@@ -47,6 +50,7 @@ public class Doctor {
 		this.telephone = telephone;
 		this.email = email;
 		this.observations = observations;
+		this.active = Active.active();
 	}
 	
 	public Doctor(int id, Name name, CRM crm, Specialty specialty, Telephone telephone, 
@@ -59,6 +63,7 @@ public class Doctor {
 		this.telephone = telephone;
 		this.email = email;
 		this.observations = observations;
+		this.active = Active.active();
 	}
 	
 	public void setId(int id) {
@@ -115,5 +120,17 @@ public class Doctor {
 	
 	public Observations getObservations() {
 		return observations;
+	}
+
+	public void setActive(Active active) {
+		this.active = active;
+	}
+
+	public Active getActive() {
+		return active;
+	}
+
+	public static Doctor empty() {
+		return new Doctor();
 	}
 }

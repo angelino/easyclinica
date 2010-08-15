@@ -12,10 +12,10 @@ public class DefaultDoctorValidator implements DoctorValidator {
 	public List<Error> validate(Doctor obj) {
 		List<Error> errors = new ArrayList<Error>();
 		
-		if(obj.getName() == null || obj.getName().toString().length() == 0) {
+		if(obj.getName().getName() == null || obj.getName().toString().length() == 0) {
 			errors.add(new Error("doctor", ValidationMessages.INVALID_NAME));
 		}
-		if(obj.getCrm() == null || obj.getCrm().toString().length() == 0) {
+		if(obj.getCrm().getCrm() == null || obj.getCrm().toString().length() == 0) {
 			errors.add(new Error("doctor", ValidationMessages.INVALID_CRM));
 		}
 		
