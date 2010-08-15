@@ -35,7 +35,7 @@ public class HealthCarePlanRuleController {
 			result.include("message", Messages.HEALTH_CARE_PLAN_SERVICE_RULE_ADDED);
 		}
 		catch(InvalidServiceRuleException e) {
-			
+			result.include("message", Messages.HEALTH_CARE_PLAN_REPEATED_SERVICE_RULE);
 		}
 		
 		result.forwardTo(HealthCarePlanController.class).show(id);

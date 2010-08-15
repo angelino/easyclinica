@@ -63,4 +63,16 @@ public class HealthCarePlanRuleControllerTest {
 		verify(allHealthCarePlans).update(plan);
 		assertEquals(Messages.HEALTH_CARE_PLAN_SERVICE_RULE_ADDED, result.included("message"));
 	}
+	
+	@Test
+	public void shouldNotAddRepeatedServiceRule() {
+		HealthCarePlan plan = new HealthCarePlanBuilder().instance();
+		when(allHealthCarePlans.getById(1)).thenReturn(plan);
+		
+		Service service = new ServiceBuilder(table).instance();
+		controller.saveServiceRule(1, service, CH.zero(), new Money(10));
+		controller.saveServiceRule(1, service, CH.zero(), new Money(10));
+		
+		assertEquals(Messages.HEALTH_CARE_PLAN_REPEATED_SERVICE_RULE, result.included("message"));
+	}
 }
