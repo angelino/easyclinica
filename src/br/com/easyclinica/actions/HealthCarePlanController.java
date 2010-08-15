@@ -14,6 +14,7 @@ import br.com.easyclinica.domain.repositories.AllServiceTables;
 import br.com.easyclinica.domain.validators.HealthCarePlanValidator;
 import br.com.easyclinica.infra.vraptor.validators.ErrorTranslator;
 import br.com.easyclinica.view.Messages;
+import br.com.easyclinica.view.paginator.Paginator;
 
 @Resource
 public class HealthCarePlanController {
@@ -24,22 +25,25 @@ public class HealthCarePlanController {
 	private final HealthCarePlanValidator healthCarePlanValidator;
 	private final ErrorTranslator translator;
 	private final AllServiceTables allServiceTables;
+	private final Paginator paginator;
 
 	public HealthCarePlanController(AllHealthCarePlans allHealthCares, AllServiceTables allServiceTables,
 			Result result, Validator validator, HealthCarePlanValidator healthCarePlanValidator, 
-			ErrorTranslator translator) {
+			ErrorTranslator translator, Paginator paginator) {
 		this.allHealthCares = allHealthCares;
 		this.allServiceTables = allServiceTables;
 		this.result = result;
 		this.validator = validator;
 		this.healthCarePlanValidator = healthCarePlanValidator;
 		this.translator = translator;
+		this.paginator = paginator;
 	}
 	
 	@Get
 	@Path("/convenios")
-	public void index() {
-		result.include("healthcares", allHealthCares.get());
+	public void index(int page) {
+		int currentPage = page == 0 ? 1 : page;
+		result.include("healthcares", paginator.paginate(allHealthCares, currentPage));
 	}
 
 	@Get
@@ -59,7 +63,7 @@ public class HealthCarePlanController {
 		allHealthCares.add(healthCarePlan);
 		
 		result.include("message", Messages.HEALTH_CARE_PLAN_ADDED);
-		result.redirectTo(HealthCarePlanController.class).index();
+		result.redirectTo(HealthCarePlanController.class).index(Paginator.firstPage());
 	}
 
 	@Get
@@ -80,7 +84,7 @@ public class HealthCarePlanController {
 		allHealthCares.update(healthCarePlan);
 		
 		result.include("message", Messages.HEALTH_CARE_PLAN_UPDATED);
-		result.redirectTo(HealthCarePlanController.class).index();
+		result.redirectTo(HealthCarePlanController.class).index(Paginator.firstPage());
 	}
 
 	@Get

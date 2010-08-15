@@ -90,4 +90,26 @@ public class HealthCarePlanDaoTests {
 		assertNotNull(retrievedPlan);
 		assertEquals(plan.getId(), retrievedPlan.getId());
 	}
+	
+	@Test
+	public void shouldCountElements() {
+		HealthCarePlan firstPlan = new HealthCarePlanBuilder().withTable(servicesTable).instance();
+		HealthCarePlan secondPlan = new HealthCarePlanBuilder().withTable(servicesTable).instance();
+		
+		dao.add(firstPlan);
+		dao.add(secondPlan);
+		
+		assertEquals(2, dao.count());
+	}
+	
+	@Test
+	public void shouldPaginate() {
+		HealthCarePlan firstPlan = new HealthCarePlanBuilder().withName("a").withTable(servicesTable).instance();
+		HealthCarePlan secondPlan = new HealthCarePlanBuilder().withName("b").withTable(servicesTable).instance();
+		
+		dao.add(firstPlan);
+		dao.add(secondPlan);
+		
+		assertEquals(firstPlan.getName().toString(), dao.get(0, 1).get(0).getName().toString());
+	}
 }

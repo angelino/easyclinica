@@ -8,7 +8,6 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -24,6 +23,8 @@ import br.com.easyclinica.domain.validators.HealthCarePlanValidator;
 import br.com.easyclinica.infra.vraptor.validators.ErrorTranslator;
 import br.com.easyclinica.tests.helpers.HealthCarePlanBuilder;
 import br.com.easyclinica.view.Messages;
+import br.com.easyclinica.view.paginator.PaginatedResult;
+import br.com.easyclinica.view.paginator.Paginator;
 
 public class HealthCarePlanControllerTests {
 
@@ -34,6 +35,7 @@ public class HealthCarePlanControllerTests {
 	private HealthCarePlanValidator healthCarePlanValidator;
 	private ErrorTranslator translator;
 	private AllServiceTables allServiceTables;
+	private Paginator paginator;
 
 	@Before
 	public void setUp() {
@@ -43,19 +45,20 @@ public class HealthCarePlanControllerTests {
 		validator = spy(new MockValidator());
 		healthCarePlanValidator = mock(HealthCarePlanValidator.class);
 		translator = mock(ErrorTranslator.class);
+		paginator = mock(Paginator.class);
 		
 		controller = new HealthCarePlanController(allHealthCares, allServiceTables, result, 
-				validator, healthCarePlanValidator, translator);
+				validator, healthCarePlanValidator, translator, paginator);
 	}
 
 	@Test
 	public void shouldGetAllHealthCares() {
-		List<HealthCarePlan> list = new ArrayList<HealthCarePlan>();
-		when(allHealthCares.get()).thenReturn(list);
+		PaginatedResult<HealthCarePlan> paginatedResult = new PaginatedResult<HealthCarePlan>(new ArrayList<HealthCarePlan>(), 1, 10);
+		when(paginator.paginate(allHealthCares, 1)).thenReturn(paginatedResult);
 		
-		controller.index();
+		controller.index(Paginator.firstPage());
 		
-		assertEquals(list, result.included("healthcares"));
+		assertEquals(paginatedResult, result.included("healthcares"));
 	}
 	
 	@Test

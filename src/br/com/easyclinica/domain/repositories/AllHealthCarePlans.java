@@ -4,7 +4,7 @@ import java.util.List;
 
 import br.com.easyclinica.domain.entities.HealthCarePlan;
 
-public interface AllHealthCarePlans {
+public interface AllHealthCarePlans extends Pagging<HealthCarePlan> {
 	void add(HealthCarePlan healthCare);
 	List<HealthCarePlan> get();
 	HealthCarePlan getById(int id);
