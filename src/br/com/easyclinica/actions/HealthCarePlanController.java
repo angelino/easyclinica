@@ -42,7 +42,7 @@ public class HealthCarePlanController {
 	@Get
 	@Path("/convenios")
 	public void index(int page) {
-		int currentPage = page == 0 ? 1 : page;
+		int currentPage = page == 0 ? Paginator.firstPage() : page;
 		result.include("healthcares", paginator.paginate(allHealthCares, currentPage));
 	}
 
