@@ -39,18 +39,6 @@ public class HealthCarePlan {
 	private ServicesTable table;
 	
 	protected HealthCarePlan() {}
-	
-	public HealthCarePlan(Name name, ServicesTable table, Money ch) {
-		this.name = name;
-		this.address = Address.empty();
-		this.telephone = Telephone.empty();
-		this.email = Email.empty();
-		this.website = Website.empty();
-		this.contact = Name.empty();
-		this.observations = Observations.empty();
-		this.table = table;
-		this.ch = ch;
-	}
 
 	public HealthCarePlan(int id, Name name, Address address, Telephone telephone,
 			Email email, Website website, Name contact,
