@@ -5,8 +5,9 @@ import static org.junit.Assert.assertNotNull;
 
 import java.util.List;
 
-import org.hibernate.Session;
-import org.hibernate.cfg.AnnotationConfiguration;
+import javax.persistence.EntityManager;
+import javax.persistence.Persistence;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -22,24 +23,24 @@ import br.com.easyclinica.tests.helpers.ServiceBuilder;
 
 public class HealthCarePlanDaoTests {
 
-	private Session session;
 	private HealthCarePlanDao dao;
 	private ServicesTable servicesTable;
-
+	private EntityManager em;
+	
 	@Before
 	public void setUp() {
-		session = new AnnotationConfiguration().configure("test-hibernate.cfg.xml").buildSessionFactory().openSession();
-		session.beginTransaction();
-		dao = new HealthCarePlanDao(session);
+		em = Persistence.createEntityManagerFactory("test").createEntityManager();
+		em.getTransaction().begin();
+		dao = new HealthCarePlanDao(em);
 		
 		servicesTable = new ServicesTable(new Name("table"));
-		session.persist(servicesTable);
+		em.persist(servicesTable);
 	}
 	
 	@After
 	public void tearDown() {
-		session.getTransaction().rollback();
-		session.close();
+		em.getTransaction().rollback();
+		em.close();
 	}
 	
 	@Test
@@ -123,15 +124,36 @@ public class HealthCarePlanDaoTests {
 		HealthCarePlan plan = new HealthCarePlanBuilder().withName("a").withTable(servicesTable).instance();
 		Service service = new ServiceBuilder(servicesTable).instance();
 		
-		session.persist(servicesTable);
-		session.persist(service);
+		em.persist(servicesTable);
+		em.persist(service);
 		
 		plan.addServiceRule(service, new CH(10));
 		
-		session.persist(plan);
+		dao.add(plan);
 		
 		HealthCarePlan retrievedPlan = dao.getById(plan.getId());
 		assertEquals(1, retrievedPlan.getServiceRules().size());
 		
+	}
+	
+	@Test
+	public void shouldPersistServiceRules() throws InvalidServiceRuleException {
+		HealthCarePlan plan = new HealthCarePlanBuilder().withName("a").withTable(servicesTable).instance();
+		Service service = new ServiceBuilder(servicesTable).instance();
+		
+		em.persist(servicesTable);
+		em.persist(service);
+		
+		plan.addServiceRule(service, new CH(10));
+		dao.add(plan);
+		
+		HealthCarePlan retrievedPlan = dao.getById(plan.getId());
+		assertEquals(1, retrievedPlan.getServiceRules().size());
+		
+		retrievedPlan.removeServiceRuleById(plan.getServiceRules().get(0).getId());
+		dao.update(retrievedPlan);
+		
+		retrievedPlan = dao.getById(plan.getId());
+		assertEquals(0, retrievedPlan.getServiceRules().size());
 	}
 }

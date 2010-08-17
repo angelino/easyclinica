@@ -28,5 +28,5 @@
                 <priority value="INFO" />
                 <appender-ref ref="stdout" />
         </category>
- 
+
 </log4j:configuration>

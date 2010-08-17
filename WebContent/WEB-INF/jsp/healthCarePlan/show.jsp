@@ -98,7 +98,13 @@
 						</c:otherwise>
 					</c:choose>
 				</td>							
-				<td>deletar</td>
+				<td>
+				
+					<form action="<c:url value="/convenios/${healthCarePlan.id}/service-rules/${rule.id}"  />" method="post">
+						<input type="hidden" name="_method" value="DELETE" /> 
+						<a href="#" onclick="if(confirm('Você tem certeza?')) { $(this).closest('form').submit(); }">deletar</a>
+					</form>
+				</td>
 			</tr>
 			</c:forEach>
 			<tr>

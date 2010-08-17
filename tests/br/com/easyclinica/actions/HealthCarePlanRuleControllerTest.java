@@ -12,6 +12,7 @@ import br.com.caelum.vraptor.util.test.MockResult;
 import br.com.easyclinica.domain.entities.HealthCarePlan;
 import br.com.easyclinica.domain.entities.Service;
 import br.com.easyclinica.domain.entities.ServicesTable;
+import br.com.easyclinica.domain.exceptions.InvalidServiceRuleException;
 import br.com.easyclinica.domain.repositories.AllHealthCarePlans;
 import br.com.easyclinica.domain.types.CH;
 import br.com.easyclinica.domain.types.Money;
@@ -74,5 +75,20 @@ public class HealthCarePlanRuleControllerTest {
 		controller.saveServiceRule(1, service, CH.zero(), new Money(10));
 		
 		assertEquals(Messages.HEALTH_CARE_PLAN_REPEATED_SERVICE_RULE, result.included("message"));
+	}
+	
+	@Test
+	public void shouldDeleteAServiceRule() throws InvalidServiceRuleException {
+		HealthCarePlan plan = new HealthCarePlanBuilder().instance();
+		Service service = new ServiceBuilder(table).instance();
+		plan.addServiceRule(service, new CH(10));
+		
+		when(allHealthCarePlans.getById(1)).thenReturn(plan);
+		
+		controller.deleteServiceRule(1, plan.getServiceRules().get(0).getId());
+		
+		assertEquals(0, plan.getServiceRules().size());
+		verify(allHealthCarePlans).update(plan);
+		assertEquals(Messages.HEALTH_CARE_PLAN_SERVICE_RULE_REMOVED, result.included("message"));
 	}
 }

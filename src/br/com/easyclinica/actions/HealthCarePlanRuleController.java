@@ -1,5 +1,6 @@
 package br.com.easyclinica.actions;
 
+import br.com.caelum.vraptor.Delete;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Resource;
@@ -39,5 +40,17 @@ public class HealthCarePlanRuleController {
 		}
 		
 		result.forwardTo(HealthCarePlanController.class).show(id);
+	}
+
+	@Delete
+	@Path("/convenios/{healthCarePlanId}/service-rules/{ruleId}")
+	public void deleteServiceRule(int healthCarePlanId, int ruleId) {
+		HealthCarePlan plan = allHealthCares.getById(healthCarePlanId);
+		plan.removeServiceRuleById(ruleId);
+		
+		allHealthCares.update(plan);
+		
+		result.include("message", Messages.HEALTH_CARE_PLAN_SERVICE_RULE_REMOVED);
+		result.forwardTo(HealthCarePlanController.class).show(healthCarePlanId);
 	}
 }

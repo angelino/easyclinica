@@ -47,8 +47,7 @@ public class HealthCarePlan {
 	@OneToOne(fetch=FetchType.EAGER) @JoinColumn(name="table_fk")	
 	private ServicesTable table;
 	
-	@OneToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
-	@JoinColumn(name="healthcareplan_fk", insertable=true)
+	@OneToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL, orphanRemoval=true, mappedBy="healthCarePlan")
 	private List<ServiceRule> serviceRules;
 	
 	protected HealthCarePlan() {}
@@ -143,5 +142,14 @@ public class HealthCarePlan {
 		}
 		
 		return null;
+	}
+
+	public void removeServiceRuleById(int ruleId) {
+		ServiceRule ruleToBeDeleted = null;
+		for(ServiceRule rule : serviceRules) {
+			if(rule.getId() == ruleId) ruleToBeDeleted = rule;
+		}
+		
+		if(ruleToBeDeleted != null) serviceRules.remove(ruleToBeDeleted);
 	}
 }

@@ -5,8 +5,9 @@ import static org.junit.Assert.assertNotNull;
 
 import java.util.List;
 
-import org.hibernate.Session;
-import org.hibernate.cfg.AnnotationConfiguration;
+import javax.persistence.EntityManager;
+import javax.persistence.Persistence;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -15,20 +16,20 @@ import br.com.easyclinica.domain.entities.Doctor;
 import br.com.easyclinica.tests.helpers.DoctorBuilder;
 
 public class DoctorDaoTests {
-	private Session session;
 	private DoctorDao dao;
+	private EntityManager em;
 
 	@Before
 	public void setUp() {
-		session = new AnnotationConfiguration().configure("test-hibernate.cfg.xml").buildSessionFactory().openSession();
-		session.beginTransaction();
-		dao = new DoctorDao(session);
+		em = Persistence.createEntityManagerFactory("test").createEntityManager();
+		em.getTransaction().begin();
+		dao = new DoctorDao(em);
 	}
 	
 	@After
 	public void tearDown() {
-		session.getTransaction().rollback();
-		session.close();
+		em.getTransaction().rollback();
+		em.close();
 	}
 	
 	@Test
