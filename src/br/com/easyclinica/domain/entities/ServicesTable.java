@@ -9,7 +9,6 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
 import br.com.easyclinica.domain.types.Name;
@@ -24,12 +23,10 @@ public class ServicesTable {
 	@Embedded 
 	private Name name;
 
-	@OneToMany(fetch=FetchType.LAZY)
-	@JoinColumn(name="table_fk")
+	@OneToMany(fetch=FetchType.LAZY, mappedBy="table")
 	private List<Service> services;
 
-	@OneToMany(fetch=FetchType.LAZY)
-	@JoinColumn(name="table_fk")	
+	@OneToMany(fetch=FetchType.LAZY, mappedBy="table")	
 	private List<Material> materials;
 	
 	protected ServicesTable() {}

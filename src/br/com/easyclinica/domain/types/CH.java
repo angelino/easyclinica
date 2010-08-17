@@ -38,4 +38,7 @@ public class CH {
 	public static CH zero() {
 		return new CH(0);
 	}
+	public boolean isZero() {
+		return this.equals(CH.zero());
+	}
 }

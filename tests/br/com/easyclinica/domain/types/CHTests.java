@@ -23,4 +23,10 @@ public class CHTests {
 		assertTrue(one.equals(two));
 		assertFalse(one.equals(three));
 	}
+	
+	@Test
+	public void shouldCompareWithZero() {
+		assertTrue(CH.zero().isZero());
+		assertFalse(new CH(10).isZero());
+	}
 }

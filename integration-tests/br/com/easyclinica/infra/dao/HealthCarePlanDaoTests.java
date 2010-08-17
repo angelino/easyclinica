@@ -13,12 +13,15 @@ import org.junit.Before;
 import org.junit.Test;
 
 import br.com.easyclinica.domain.entities.HealthCarePlan;
+import br.com.easyclinica.domain.entities.Material;
 import br.com.easyclinica.domain.entities.Service;
 import br.com.easyclinica.domain.entities.ServicesTable;
+import br.com.easyclinica.domain.exceptions.InvalidMaterialRuleException;
 import br.com.easyclinica.domain.exceptions.InvalidServiceRuleException;
 import br.com.easyclinica.domain.types.CH;
 import br.com.easyclinica.domain.types.Name;
 import br.com.easyclinica.tests.helpers.HealthCarePlanBuilder;
+import br.com.easyclinica.tests.helpers.MaterialBuilder;
 import br.com.easyclinica.tests.helpers.ServiceBuilder;
 
 public class HealthCarePlanDaoTests {
@@ -156,4 +159,43 @@ public class HealthCarePlanDaoTests {
 		retrievedPlan = dao.getById(plan.getId());
 		assertEquals(0, retrievedPlan.getServiceRules().size());
 	}
+	
+	@Test
+	public void shouldSaveMaterialRules() throws InvalidMaterialRuleException {
+		HealthCarePlan plan = new HealthCarePlanBuilder().withName("a").withTable(servicesTable).instance();
+		Material material = new MaterialBuilder(servicesTable).instance();
+		
+		em.persist(servicesTable);
+		em.persist(material);
+		
+		plan.addMaterialRule(material, new CH(10));
+		
+		dao.add(plan);
+		
+		HealthCarePlan retrievedPlan = dao.getById(plan.getId());
+		assertEquals(1, retrievedPlan.getMaterialRules().size());
+		
+	}
+	
+	@Test
+	public void shouldPersistMaterialRules() throws InvalidMaterialRuleException {
+		HealthCarePlan plan = new HealthCarePlanBuilder().withName("a").withTable(servicesTable).instance();
+		Material material = new MaterialBuilder(servicesTable).instance();
+		
+		em.persist(servicesTable);
+		em.persist(material);
+		
+		plan.addMaterialRule(material, new CH(10));
+		dao.add(plan);
+		
+		HealthCarePlan retrievedPlan = dao.getById(plan.getId());
+		assertEquals(1, retrievedPlan.getMaterialRules().size());
+		
+		retrievedPlan.removeMaterialRuleById(plan.getMaterialRules().get(0).getId());
+		dao.update(retrievedPlan);
+		
+		retrievedPlan = dao.getById(plan.getId());
+		assertEquals(0, retrievedPlan.getMaterialRules().size());
+	}
+
 }

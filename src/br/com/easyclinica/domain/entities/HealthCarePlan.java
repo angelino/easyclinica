@@ -16,6 +16,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import br.com.easyclinica.domain.exceptions.InvalidMaterialRuleException;
 import br.com.easyclinica.domain.exceptions.InvalidServiceRuleException;
 import br.com.easyclinica.domain.types.Active;
 import br.com.easyclinica.domain.types.Address;
@@ -49,6 +50,9 @@ public class HealthCarePlan {
 	
 	@OneToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL, orphanRemoval=true, mappedBy="healthCarePlan")
 	private List<ServiceRule> serviceRules;
+
+	@OneToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL, orphanRemoval=true, mappedBy="healthCarePlan")
+	private List<MaterialRule> materialRules;
 	
 	protected HealthCarePlan() {}
 
@@ -67,6 +71,7 @@ public class HealthCarePlan {
 		this.ch = ch;
 		this.active = Active.active();
 		this.serviceRules = new ArrayList<ServiceRule>();
+		this.materialRules = new ArrayList<MaterialRule>();
 	}
 
 	public Name getName() {
@@ -77,6 +82,10 @@ public class HealthCarePlan {
 		return Collections.unmodifiableList(serviceRules);
 	}
 
+	public List<MaterialRule> getMaterialRules() {
+		return Collections.unmodifiableList(materialRules);
+	}
+	
 	public int getId() {
 		return id;
 	}
@@ -125,25 +134,17 @@ public class HealthCarePlan {
 	}
 
 	public void addServiceRule(Service service, Money money) throws InvalidServiceRuleException {
-		if(findByService(service)!=null) throw new InvalidServiceRuleException(service);
+		if(findServiceRule(service)!=null) throw new InvalidServiceRuleException(service);
 		
 		serviceRules.add(new ServiceRule(this, service, money));
 	}
 
 	public void addServiceRule(Service service, CH ch) throws InvalidServiceRuleException {
-		if(findByService(service)!=null) throw new InvalidServiceRuleException(service);
+		if(findServiceRule(service)!=null) throw new InvalidServiceRuleException(service);
 		
 		serviceRules.add(new ServiceRule(this, service, ch));
 	}
 	
-	private ServiceRule findByService(Service service) {
-		for(ServiceRule rule : serviceRules) {
-			if(rule.getService().getId() == service.getId()) return rule;
-		}
-		
-		return null;
-	}
-
 	public void removeServiceRuleById(int ruleId) {
 		ServiceRule ruleToBeDeleted = null;
 		for(ServiceRule rule : serviceRules) {
@@ -152,4 +153,42 @@ public class HealthCarePlan {
 		
 		if(ruleToBeDeleted != null) serviceRules.remove(ruleToBeDeleted);
 	}
+	
+	public void addMaterialRule(Material material, Money money) throws InvalidMaterialRuleException {
+		if(findMaterialRule(material)!=null) throw new InvalidMaterialRuleException(material);
+		
+		materialRules.add(new MaterialRule(this, material, money));
+	}
+
+	public void addMaterialRule(Material material, CH ch) throws InvalidMaterialRuleException {
+		if(findMaterialRule(material)!=null) throw new InvalidMaterialRuleException(material);
+		
+		materialRules.add(new MaterialRule(this, material, ch));
+	}
+
+	public void removeMaterialRuleById(int ruleId) {
+		MaterialRule ruleToBeDeleted = null;
+		for(MaterialRule rule : materialRules) {
+			if(rule.getId() == ruleId) ruleToBeDeleted = rule;
+		}
+		
+		if(ruleToBeDeleted != null) materialRules.remove(ruleToBeDeleted);
+	}
+	
+	private MaterialRule findMaterialRule(Material material) {
+		for(MaterialRule rule : materialRules) {
+			if(rule.getMaterial().getId() == material.getId()) return rule;
+		}
+		
+		return null;
+	}
+	
+	private ServiceRule findServiceRule(Service service) {
+		for(ServiceRule rule : serviceRules) {
+			if(rule.getService().getId() == service.getId()) return rule;
+		}
+		
+		return null;
+	}
+
 }
