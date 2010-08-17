@@ -5,8 +5,8 @@
 
 	<tlibversion>1.0</tlibversion>
 	<jspversion>1.1</jspversion>
-	<shortname>SiteMesh Decorator Tags</shortname>
-	<uri>sitemesh-decorator</uri>
+	<shortname>sitemesh-decorator-tags</shortname>
+	<uri>http://www.opensymphony.com/sitemesh/decorator</uri>
 
 	<tag>
 		<name>head</name>
@@ -50,7 +50,28 @@
 			<required>false</required>
 			<rtexprvalue>true</rtexprvalue>
 		</attribute>
-	</tag>
+    </tag>
+
+	<tag>
+		<name>extractProperty</name>
+		<tagclass>com.opensymphony.module.sitemesh.multipass.ExtractPropertyTag</tagclass>
+		<bodycontent>JSP</bodycontent>
+		<attribute>
+			<name>property</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>default</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>writeEntireProperty</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+    </tag>
 
 	<tag>
 		<name>usePage</name>
