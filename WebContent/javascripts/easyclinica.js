@@ -55,8 +55,7 @@ function check_all_checkboxes(main_selector) {
 		var rel = $(pai).attr('rel');
 		
 		$(main_selector).find("input[rel='" + rel + "']").each(function(index){
-				$(this).attr('checked', $(pai).attr('checked'));
-		});	
-		
+			$(this).attr('checked', $(pai).attr('checked'));
+		});
 	});
 }

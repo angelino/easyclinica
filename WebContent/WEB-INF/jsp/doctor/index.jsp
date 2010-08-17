@@ -2,7 +2,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="/WEB-INF/easyclinica.tld" prefix="helper" %>
 
-<html>
+
+<%@page import="br.com.easyclinica.view.Link"%>
+<%@page import="java.util.LinkedList"%><html>
 	<head>
 		<title>.: EasyClinica - Listagem de Médicos :.</title>
 	</head>
@@ -73,7 +75,14 @@
 			
 		<!-- INÍCIO SIDEBAR -->
 		<div id="sidebar">
-			Murilo		        
+			
+			<% 
+				java.util.List<Link> links = new LinkedList<Link>();  
+				links.add(new Link("/medicos/novo","Criar novo médico"));
+			%>
+			<helper:navigation links="${links}"></helper:navigation>
+		
+			<helper:notice notice="Titulo" title="Loren ipson dolar demet"></helper:notice>	        
 	    </div>
 		<!-- FIM SIDEBAR -->
 	</body>
