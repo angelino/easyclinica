@@ -32,7 +32,6 @@ public class HealthCarePlanRuleController {
 			if(!ch.equals(CH.zero())) plan.addServiceRule(service, ch);
 			else plan.addServiceRule(service, value);
 			
-			allHealthCares.update(plan);
 			result.include("message", Messages.HEALTH_CARE_PLAN_SERVICE_RULE_ADDED);
 		}
 		catch(InvalidServiceRuleException e) {

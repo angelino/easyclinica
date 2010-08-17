@@ -47,7 +47,6 @@ public class HealthCarePlanRuleControllerTest {
 		
 		assertEquals(new CH(10), plan.getServiceRules().get(0).getCh());
 		assertEquals(service.getName(), plan.getServiceRules().get(0).getService().getName());
-		verify(allHealthCarePlans).update(plan);
 		assertEquals(Messages.HEALTH_CARE_PLAN_SERVICE_RULE_ADDED, result.included("message"));
 	}
 	
@@ -61,7 +60,6 @@ public class HealthCarePlanRuleControllerTest {
 		
 		assertEquals(new Money(10), plan.getServiceRules().get(0).getValue());
 		assertEquals(service.getName(), plan.getServiceRules().get(0).getService().getName());
-		verify(allHealthCarePlans).update(plan);
 		assertEquals(Messages.HEALTH_CARE_PLAN_SERVICE_RULE_ADDED, result.included("message"));
 	}
 	
