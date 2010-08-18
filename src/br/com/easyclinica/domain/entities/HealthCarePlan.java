@@ -191,4 +191,24 @@ public class HealthCarePlan {
 		return null;
 	}
 
+	public List<Service> getServicesWithNoRules() {
+		List<Service> services = new ArrayList<Service>();
+		
+		for(Service service : getTable().getServices()) {
+			if(findServiceRule(service)==null) services.add(service);
+		}
+		
+		return services;
+	}
+
+	public List<Material> getMaterialsWithNoRules() {
+		List<Material> materials = new ArrayList<Material>();
+		
+		for(Material material : getTable().getMaterials()) {
+			if(findMaterialRule(material)==null) materials.add(material);
+		}
+		
+		return materials;
+	}
+
 }

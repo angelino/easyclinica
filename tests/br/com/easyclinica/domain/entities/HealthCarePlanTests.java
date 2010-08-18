@@ -2,7 +2,13 @@ package br.com.easyclinica.domain.entities;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -128,4 +134,45 @@ public class HealthCarePlanTests {
 		assertEquals(0, plan.getMaterialRules().size());		
 	}
 
+	@Test
+	public void shouldListServicesWithNoRules() throws InvalidServiceRuleException {
+		List<Service> services = new ArrayList<Service>();
+		table = mock(ServicesTable.class);
+		when(table.getServices()).thenReturn(services);
+		
+		Service s1 = new ServiceBuilder(table).withId(1).instance();
+		Service s2 = new ServiceBuilder(table).withId(2).instance();
+		services.add(s1);
+		services.add(s2);
+		
+		HealthCarePlan plan = new HealthCarePlanBuilder().withTable(table).instance();
+		
+		assertEquals(2, plan.getServicesWithNoRules().size());
+		
+		plan.addServiceRule(s1, new CH(10));
+		
+		assertEquals(1, plan.getServicesWithNoRules().size());
+		assertSame(s2, plan.getServicesWithNoRules().get(0));
+	}
+	
+	@Test
+	public void shouldListMaterialsWithNoRules() throws InvalidMaterialRuleException {
+		List<Material> materials = new ArrayList<Material>();
+		table = mock(ServicesTable.class);
+		when(table.getMaterials()).thenReturn(materials);
+		
+		Material m1 = new MaterialBuilder(table).withId(1).instance();
+		Material m2 = new MaterialBuilder(table).withId(2).instance();
+		materials.add(m1);
+		materials.add(m2);
+		
+		HealthCarePlan plan = new HealthCarePlanBuilder().withTable(table).instance();
+		
+		assertEquals(2, plan.getMaterialsWithNoRules().size());
+		
+		plan.addMaterialRule(m1, new CH(10));
+		
+		assertEquals(1, plan.getMaterialsWithNoRules().size());
+		assertSame(m2, plan.getMaterialsWithNoRules().get(0));
+	}
 }

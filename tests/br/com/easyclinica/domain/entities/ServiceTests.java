@@ -11,7 +11,7 @@ public class ServiceTests {
 	@Test
 	public void shouldContainNameAndCH() {
 		ServicesTable table = new ServicesTable(new Name("table"));
-		Service m = new Service(table, new Name("service"), new CH(10));
+		Service m = new Service(0, table, new Name("service"), new CH(10));
 		
 		assertEquals(new Name("service"), m.getName());
 		assertEquals(new CH(10), m.getCh());
