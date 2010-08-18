@@ -13,6 +13,7 @@ public class DoctorBuilder {
 	
 	public DoctorBuilder() {
 		doctor = new Doctor(
+				0,
 				new Name("Doutor"),
 				new CRM("55.555"),
 				new Specialty("pediatra"),
@@ -25,12 +26,13 @@ public class DoctorBuilder {
 	public DoctorBuilder withName(String name)
 	{
 		doctor = new Doctor(
+				doctor.getId(),
 				new Name(name),
-				new CRM("55.555"),
-				new Specialty("pediatra"),
-				new Telephone("55 11 9999-9999"),
-				new Email("doutor@easyclinica.com.br"),
-				new Observations("")
+				doctor.getCrm(),
+				doctor.getSpecialty(),
+				doctor.getTelephone(),
+				doctor.getEmail(),
+				doctor.getObservations()
 		);
 		
 		return this;
@@ -39,12 +41,13 @@ public class DoctorBuilder {
 	public DoctorBuilder withCrm(String crm)
 	{
 		doctor = new Doctor(
-				new Name("Doutor"),
+				doctor.getId(),
+				doctor.getName(),
 				new CRM(crm),
-				new Specialty("pediatra"),
-				new Telephone("55 11 9999-9999"),
-				new Email("doutor@easyclinica.com.br"),
-				new Observations("")
+				doctor.getSpecialty(),
+				doctor.getTelephone(),
+				doctor.getEmail(),
+				doctor.getObservations()
 		);
 		
 		return this;
@@ -54,12 +57,12 @@ public class DoctorBuilder {
 	{
 		doctor = new Doctor(
 				id,
-				new Name("Doutor"),
-				new CRM("55.555"),
-				new Specialty("pediatra"),
-				new Telephone("55 11 9999-9999"),
-				new Email("doutor@easyclinica.com.br"),
-				new Observations("")
+				doctor.getName(),
+				doctor.getCrm(),
+				doctor.getSpecialty(),
+				doctor.getTelephone(),
+				doctor.getEmail(),
+				doctor.getObservations()
 		);
 		
 		return this;

@@ -41,18 +41,6 @@ public class Doctor {
 		this.active = Active.active();
 	}
 	
-	public Doctor(Name name, CRM crm, Specialty specialty, Telephone telephone, 
-				  Email email, Observations observations) 
-	{
-		this.name = name;
-		this.crm = crm;
-		this.specialty = specialty;
-		this.telephone = telephone;
-		this.email = email;
-		this.observations = observations;
-		this.active = Active.active();
-	}
-	
 	public Doctor(int id, Name name, CRM crm, Specialty specialty, Telephone telephone, 
 			  Email email, Observations observations) 
 	{
