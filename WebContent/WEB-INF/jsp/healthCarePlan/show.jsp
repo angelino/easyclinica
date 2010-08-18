@@ -3,7 +3,7 @@
 <%@ taglib uri="/WEB-INF/easyclinica.tld" prefix="helper" %>
 <div class="block" id="block">
 	
-	<helper:message messageKey="${message}" />
+	<helper:message messageKey="${successKey}" errorKey="${errorKey}" />
 	
 	<div class="content">
    		<h2 class="title">${healthCarePlan.name}</h2>

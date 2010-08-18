@@ -18,10 +18,9 @@ import br.com.easyclinica.view.Messages;
 import br.com.easyclinica.view.paginator.Paginator;
 
 @Resource
-public class HealthCarePlanController {
+public class HealthCarePlanController extends BaseController {
 
 	private final AllHealthCarePlans allHealthCares;
-	private final Result result;
 	private final Validator validator;
 	private final HealthCarePlanValidator healthCarePlanValidator;
 	private final ErrorTranslator translator;
@@ -31,6 +30,7 @@ public class HealthCarePlanController {
 	public HealthCarePlanController(AllHealthCarePlans allHealthCares, AllServiceTables allServiceTables,
 			Result result, Validator validator, HealthCarePlanValidator healthCarePlanValidator, 
 			ErrorTranslator translator, Paginator paginator) {
+		super(result);
 		this.allHealthCares = allHealthCares;
 		this.allServiceTables = allServiceTables;
 		this.result = result;
@@ -63,7 +63,7 @@ public class HealthCarePlanController {
 		
 		allHealthCares.add(healthCarePlan);
 		
-		result.include("message", Messages.HEALTH_CARE_PLAN_ADDED);
+		successMsg(Messages.HEALTH_CARE_PLAN_ADDED);
 		result.redirectTo(HealthCarePlanController.class).index(Paginator.firstPage());
 	}
 
@@ -84,7 +84,7 @@ public class HealthCarePlanController {
 		
 		allHealthCares.update(healthCarePlan);
 		
-		result.include("message", Messages.HEALTH_CARE_PLAN_UPDATED);
+		successMsg(Messages.HEALTH_CARE_PLAN_UPDATED);
 		result.redirectTo(HealthCarePlanController.class).index(Paginator.firstPage());
 	}
 
@@ -107,7 +107,7 @@ public class HealthCarePlanController {
 		plan.deactivate();
 		allHealthCares.update(plan);
 		
-		result.include("message", Messages.HEALTH_CARE_PLAN_DEACTIVATED);
+		successMsg(Messages.HEALTH_CARE_PLAN_DEACTIVATED);
 		result.redirectTo(HealthCarePlanController.class).index(Paginator.firstPage());
 	}
 }

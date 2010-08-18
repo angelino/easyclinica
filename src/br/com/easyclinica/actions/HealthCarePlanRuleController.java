@@ -17,11 +17,11 @@ import br.com.easyclinica.domain.types.Money;
 import br.com.easyclinica.view.Messages;
 
 @Resource
-public class HealthCarePlanRuleController {
-	private Result result;
+public class HealthCarePlanRuleController extends BaseController {
 	private AllHealthCarePlans allHealthCares;
 
 	public HealthCarePlanRuleController(AllHealthCarePlans allHealthCares, Result result) {
+		super(result);
 		this.allHealthCares = allHealthCares;
 		this.result = result;
 	}
@@ -35,10 +35,10 @@ public class HealthCarePlanRuleController {
 			if(!ch.isZero()) plan.addServiceRule(service, ch);
 			else plan.addServiceRule(service, value);
 			
-			result.include("message", Messages.HEALTH_CARE_PLAN_SERVICE_RULE_ADDED);
+			successMsg(Messages.HEALTH_CARE_PLAN_SERVICE_RULE_ADDED);
 		}
 		catch(InvalidServiceRuleException e) {
-			result.include("message", Messages.HEALTH_CARE_PLAN_REPEATED_SERVICE_RULE);
+			errorMsg(Messages.HEALTH_CARE_PLAN_REPEATED_SERVICE_RULE);
 		}
 		
 		result.redirectTo(HealthCarePlanController.class).show(id);
@@ -53,7 +53,7 @@ public class HealthCarePlanRuleController {
 		
 		allHealthCares.update(plan);
 		
-		result.include("message", Messages.HEALTH_CARE_PLAN_SERVICE_RULE_REMOVED);
+		successMsg(Messages.HEALTH_CARE_PLAN_SERVICE_RULE_REMOVED);
 		result.redirectTo(HealthCarePlanController.class).show(healthCarePlanId);
 	}
 	
@@ -66,10 +66,10 @@ public class HealthCarePlanRuleController {
 			if(!ch.isZero()) plan.addMaterialRule(material, ch);
 			else plan.addMaterialRule(material, value);
 			
-			result.include("message", Messages.HEALTH_CARE_PLAN_MATERIAL_RULE_ADDED);
+			successMsg(Messages.HEALTH_CARE_PLAN_MATERIAL_RULE_ADDED);
 		}
 		catch(InvalidMaterialRuleException e) {
-			result.include("message", Messages.HEALTH_CARE_PLAN_REPEATED_MATERIAL_RULE);
+			errorMsg(Messages.HEALTH_CARE_PLAN_REPEATED_MATERIAL_RULE);
 		}
 		
 		result.redirectTo(HealthCarePlanController.class).show(id);
@@ -82,7 +82,7 @@ public class HealthCarePlanRuleController {
 		HealthCarePlan plan = allHealthCares.getById(healthCarePlanId);
 		plan.removeMaterialRuleById(ruleId);
 		
-		result.include("message", Messages.HEALTH_CARE_PLAN_MATERIAL_RULE_REMOVED);
+		successMsg(Messages.HEALTH_CARE_PLAN_MATERIAL_RULE_REMOVED);
 		result.redirectTo(HealthCarePlanController.class).show(healthCarePlanId);
 	}
 
