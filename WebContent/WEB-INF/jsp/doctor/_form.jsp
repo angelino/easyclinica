@@ -48,9 +48,15 @@
 	
 		<div class="botoes">
 			<button class="button" type="submit">
-				<c:url value="/images/tick.png" var="img_salvar"/>
+				<c:url value="/images/icons/tick.png" var="img_salvar"/>
 				<img src="${img_salvar}" alt="Salvar" />Salvar
 			</button>
+			
+			<c:url value="/medicos" var="cancelar"/>
+			<a class="button" href="${cancelar}">
+				<c:url value="/images/icons/cross.png" var="img_cancelar"/>
+				<img src="${img_cancelar}" alt="Cancelar" />Cancelar
+			</a>
 		</div>
 	
 	</fieldset>

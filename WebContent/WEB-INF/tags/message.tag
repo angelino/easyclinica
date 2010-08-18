@@ -6,12 +6,17 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <c:if test="${not empty successKey}">
-<div class="message">
-		<fmt:message key="${successKey}" />
-</div>
+	<div class="flash">
+		<div class="message notice">
+			<fmt:message key="${successKey}" />
+		</div>
+	</div>
 </c:if>
+
 <c:if test="${not empty errorKey}">
-<div class="message error">
-		<fmt:message key="${errorKey}" />
-</div>
+	<div class="flash">
+		<div class="message error">
+			<fmt:message key="${errorKey}" />
+		</div>
+	</div>
 </c:if>

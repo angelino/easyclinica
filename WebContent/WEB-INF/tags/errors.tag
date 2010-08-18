@@ -4,9 +4,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<div class="message notice">
-	<c:forEach var="error" items="${errors}">
-			erros:
-		    <fmt:message key="${error.message}"/><br />
-	</c:forEach>
-</div>
+<c:if test="${not empty errors}"> 
+	<div class="flash">
+		<div class="message error">
+			<c:forEach var="error" items="${errors}">
+					<p><fmt:message key="${error.message}"/></p>
+			</c:forEach>
+		</div>
+	</div>
+</c:if>
