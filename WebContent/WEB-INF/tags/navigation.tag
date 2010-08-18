@@ -9,9 +9,9 @@
 	<h3>Navegação</h3>
 	<ul class="navigation">
 		<c:forEach items="${links}" var="link">
-			<c:url value="${link.Href}" var="url"/>
+			<c:url value="${link.href}" var="url"/>
 		
-		    <li><a href="${url}" target="${link.Target}" class="links">${link.Description}</a></li>
+		    <li><a href="${url}" target="${link.target}" class="links">${link.description}</a></li>
 		</c:forEach>
 	</ul>
 </div>

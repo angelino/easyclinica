@@ -1,44 +1,44 @@
 package br.com.easyclinica.view;
 
 public class Link {
-	private String Href;
-	private String Description;
-	private String Target;
+	private String href;
+	private String description;
+	private String target;
 	
 	public Link(){ }
 	
-	public Link(String Href, String Description)
+	public Link(String href, String description)
 	{
-		this.Href = Href;
-		this.Description = Description;
-		this.Target = "_self";
+		this.href = href;
+		this.description = description;
+		this.target = "_self";
 	}
 	
-	public Link(String Href, String Description, String Target) 
+	public Link(String href, String description, String target) 
 	{
-		this.Href = Href;
-		this.Description = Description;
-		this.Target = Target;
+		this.href = href;
+		this.description = description;
+		this.target = target;
 	}
 	
 	public void setHref(String href) {
-		Href = href;
+		this.href = href;
 	}
 	public String getHref() {
-		return Href;
+		return href;
 	}
 	
 	public void setDescription(String description) {
-		Description = description;
+		this.description = description;
 	}
 	public String getDescription() {
-		return Description;
+		return description;
 	}
 	
 	public void setTarget(String target) {
-		Target = target;
+		this.target = target;
 	}
 	public String getTarget() {
-		return Target;
+		return target;
 	}
 }
