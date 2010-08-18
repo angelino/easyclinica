@@ -16,7 +16,7 @@
 		    <div class="content">
 		    	<h2 class="title">Listagem de Convênios</h2>
 		    	
-		    	<helper:message messageKey="${successKey}" errorKey="${errorKey}" />
+		    	<helper:message successKey="${successKey}" errorKey="${errorKey}" />
 		    	
 		        <div class="inner">
 					<table class="table">
