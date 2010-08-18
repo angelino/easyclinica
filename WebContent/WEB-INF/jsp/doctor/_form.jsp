@@ -41,9 +41,7 @@
 		</div>
 		
 		<label class="label">Observações</label>
-		<textarea rows="5" cols="60" name="doctor.observations.observations" class="text_field">
-			${doctor.observations}
-		</textarea>
+		<textarea rows="5" cols="60" name="doctor.observations.observations" class="text_field">${doctor.observations}</textarea>
 	    <span class="description">Ex: 'só atende ortopedia'</span>
 	
 		<div class="botoes">

@@ -89,9 +89,7 @@
 	</div>
 	
 		<label class="label">Observações</label>
-		<textarea rows="5" cols="60" name="healthCarePlan.observations.observations" class="textfield">
-			${healthCarePlan.observations}
-		</textarea>
+		<textarea rows="5" cols="60" name="healthCarePlan.observations.observations" class="textfield">${healthCarePlan.observations}</textarea>
     <span class="description">Ex: 'só atende ortopedia'</span>
 	
 		<div class="botoes">
