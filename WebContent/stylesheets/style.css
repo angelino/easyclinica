@@ -400,8 +400,8 @@ ul.list li .left  {
 	clear: both;
 	display: block;
 	font-size: 1.2em;
-  padding: 5px 0 2px;  
-  font-weight: bold;
+  	padding: 5px 0 2px;  
+  	font-weight: bold;
 }
 
 .cadastro input {
@@ -419,7 +419,8 @@ ul.list li .left  {
 
 .agrupar_campos {
 	float: left;
-	width: 48%;	
+	width: 48%;
+	margin: 3px 0;
 }
 
 .agrupar_campos input {
@@ -435,4 +436,21 @@ ul.list li .left  {
 	display:block;
   color:#aaa;
   font-family:Georgia, serif;
+}
+
+.label {
+	font-size: 1.0em;
+	font-weight: bold;
+	margin: 0 5px 2px 0;
+}
+
+label.observacoes {
+	display: block;
+	width: 100%;
+}
+
+p.info {
+	float: left;
+	margin: 3px 0;
+	width: 100%;
 }

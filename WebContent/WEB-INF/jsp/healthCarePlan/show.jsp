@@ -19,58 +19,55 @@
 				<div class="content tables">
 			   		<h2 class="title">${healthCarePlan.name}</h2>
 					
-					<div class="inner">
+					<div class="inner full">
 				
-						<label class="label">Endereço:</label> 	${healthCarePlan.address.street}
+						<p class="info">
+							<label class="label">Endereço:</label> ${healthCarePlan.address.street}
+						</p>
 						
 						<div class="agrupar_campos">
-							<label class="label">Bairro:</label>
-					    ${healthCarePlan.address.neighborhood}
-						</div>
-						
-						<div class="agrupar_campos">
-							<label class="label">CEP:</label>
-					    ${healthCarePlan.address.postalCode}
-						</div>
-				
-						<div class="agrupar_campos">
-							<label class="label">Cidade:</label>
-					    ${healthCarePlan.address.city}
+							<label class="label">CEP:</label>  ${healthCarePlan.address.postalCode}
 						</div>
 						
 						<div class="agrupar_campos">
-							<label class="label">Estado:</label>
-					    ${healthCarePlan.address.state}
-						</div>
-							
-						<label class="label">Nome do Responsável:</label>
-				    	${healthCarePlan.contact}	
-						<div class="agrupar_campos">
-							<label class="label">Telefone*:</label>
-				    	${healthCarePlan.telephone}
+							<label class="label">Bairro:</label> ${healthCarePlan.address.neighborhood}
 						</div>
 						
 						<div class="agrupar_campos">
-							<label class="label">E-mail:</label>
-				    	${healthCarePlan.email}
+							<label class="label">Cidade:</label> ${healthCarePlan.address.city}
 						</div>
 						
-						<label class="label">Website:</label>
-				    ${healthCarePlan.website}
+						<div class="agrupar_campos">
+							<label class="label">Estado:</label> ${healthCarePlan.address.state}
+						</div>
+						
+						<p class="info">	
+							<label class="label">Nome do Responsável:</label> ${healthCarePlan.contact}	
+						</p>
+						
+						<div class="agrupar_campos">
+							<label class="label">Telefone*:</label> ${healthCarePlan.telephone}
+						</div>
+						
+						<div class="agrupar_campos">
+							<label class="label">E-mail:</label> ${healthCarePlan.email}
+						</div>
+						
+						<p class="info">
+							<label class="label">Website:</label> ${healthCarePlan.website}
+						</p>
 					
-					<div class="agrupar_campos">
-						<label class="label">Tabela de Serviços*:</label>
-						${healthCarePlan.table.name}
-					</div>
+						<div class="agrupar_campos">
+							<label class="label">Tabela de Serviços*:</label> ${healthCarePlan.table.name}
+						</div>
 					
-					<div class="agrupar_campos">
-						<label class="label">Valor em R$ da CH:</label>
-						${healthCarePlan.ch.money}
-					</div>
+						<div class="agrupar_campos">
+							<label class="label">Valor em R$ da CH:</label> ${healthCarePlan.ch.money}
+						</div>
 					
-						<label class="label">Observações</label>
-				    ${healthCarePlan.observations}
-					
+						<p class="info">
+							<label class="label observacoes">Observações</label> ${healthCarePlan.observations}
+						</p>
 					</div>
 					
 					<div class="service-rules">

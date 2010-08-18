@@ -29,7 +29,7 @@
 		
 		<div class="agrupar_campos">
 			<label class="label">CEP:</label>
-	    <input type="text" name="healthCarePlan.address.postalCode.postalCode" class="text_field" maxlength="12" value="${healthCarePlan.address.postalCode}" />
+	    <input type="text" name="healthCarePlan.address.postalCode.postalCode" class="text_field mask_cep" maxlength="12" value="${healthCarePlan.address.postalCode}" />
 	    <span class="description">Ex: '12345-789'</span>		
 		</div>
 
@@ -51,7 +51,7 @@
 	
 		<div class="agrupar_campos">
 			<label class="label">Telefone*:</label>
-    	<input type="text" name="healthCarePlan.telephone.telephone" class="text_field" maxlength="50" value="${healthCarePlan.telephone}" />
+    	<input type="text" name="healthCarePlan.telephone.telephone" class="text_field mask_telefone" maxlength="50" value="${healthCarePlan.telephone}" />
     	<span class="description">Ex: '(11) 1111-1111'</span>
 		</div>
 		
