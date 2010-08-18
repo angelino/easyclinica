@@ -4,10 +4,10 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib uri="/WEB-INF/easyclinica.tld" prefix="helper" %>
 
-<form action="<%= request.getParameter("formAction") %>" method="post">
-	<% if(request.getParameter("put") != null && request.getParameter("put").equals("true")) { %>
+<form action="${param.formAction}" method="post">
+	<c:if test="${param.put == true}">
 		<input type="hidden" name="_method" value="PUT" />
-	<% } %>
+	</c:if>
 	<input type="hidden" name="healthCarePlan.id" value="${healthCarePlan.id}" />
 	
 	<helper:errors errors="${errors}" />
@@ -67,12 +67,19 @@
 	
 	<div class="agrupar_campos">
 		<label class="label">Tabela de Serviços*:</label>
-		<select name="healthCarePlan.table.id">
-			<c:forEach var="table" items="${tables}">
-			<option value="${table.id}" <c:if test="${table.id == healthCarePlan.table.id}">selected</c:if>>${table.name}</option>
-			</c:forEach>
-		</select>
-	<span class="description">Ex: 'AMB99'</span>
+		<c:choose>
+			<c:when test="${param.edit == true}">
+				${healthCarePlan.table.name}
+			</c:when>
+			<c:otherwise>
+				<select name="healthCarePlan.table.id">
+					<c:forEach var="table" items="${tables}">
+					<option value="${table.id}" <c:if test="${table.id == healthCarePlan.table.id}">selected</c:if>>${table.name}</option>
+					</c:forEach>
+				</select>
+			<span class="description">Ex: 'AMB99'</span>
+			</c:otherwise>
+		</c:choose>
 	</div>
 	
 	<div class="agrupar_campos">

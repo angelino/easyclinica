@@ -11,7 +11,8 @@
 			
 			<jsp:include page="_form.jsp">	
 			   <jsp:param name="formAction" value="${formAction}" />
-			   <jsp:param name="put" value="true"/>			  	
+			   <jsp:param name="put" value="true"/>	
+			   <jsp:param name="edit" value="true"/>			  	
 			</jsp:include>
 		</div>
 	</div>

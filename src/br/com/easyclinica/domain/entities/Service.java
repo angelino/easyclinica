@@ -39,14 +39,8 @@ public class Service {
 	public Service(int id) {
 		this.id = id;
 	}
-	public Service(ServicesTable table, Name name, CH ch) {
-		this.table = table;
-		this.id = 0;
-		this.name = name;
-		this.ch = ch;
-	}
 	
-	public Service(ServicesTable table, int id, Name name, CH ch) {
+	public Service(int id, ServicesTable table, Name name, CH ch) {
 		this.table = table;
 		this.id = id;
 		this.name = name;

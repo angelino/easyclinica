@@ -10,7 +10,7 @@ public class ServiceBuilder {
 	private Service service;
 	
 	public ServiceBuilder(ServicesTable table) {
-		service = new Service(table, 0, new Name("some service"), new CH(10));
+		service = new Service(0, table, new Name("some service"), new CH(10));
 	}
 	
 	public Service instance() {
@@ -18,7 +18,7 @@ public class ServiceBuilder {
 	}
 
 	public ServiceBuilder withId(int id) {
-		service = new Service(service.getTable(), id, service.getName(), service.getCh());
+		service = new Service(id, service.getTable(), service.getName(), service.getCh());
 		return this;
 	}
 }

@@ -107,7 +107,7 @@
 				<td></td>
 				<td>
 					<select name="service.id">
-						<c:forEach var="service" items="${healthCarePlan.table.services}">
+						<c:forEach var="service" items="${healthCarePlan.servicesWithNoRules}">
 						<option value="${service.id}">${service.name}</option>
 						</c:forEach>
 					</select>
@@ -163,7 +163,7 @@
 				<td></td>
 				<td>
 					<select name="material.id">
-						<c:forEach var="material" items="${healthCarePlan.table.materials}">
+						<c:forEach var="material" items="${healthCarePlan.materialsWithNoRules}">
 						<option value="${material.id}">${material.name}</option>
 						</c:forEach>
 					</select>
