@@ -80,6 +80,7 @@
 			<% 
 				java.util.List<Link> links = new LinkedList<Link>();  
 				links.add(new Link("/medicos/novo","Criar novo médico"));
+				pageContext.setAttribute("links",links);
 			%>
 			<helper:navigation links="${links}"></helper:navigation>
 		
