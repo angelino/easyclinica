@@ -49,7 +49,7 @@ public class HealthCarePlanRuleControllerTest {
 		
 		assertEquals(new CH(10), plan.getServiceRules().get(0).getCh());
 		assertEquals(service.getName(), plan.getServiceRules().get(0).getService().getName());
-		assertEquals(Messages.HEALTH_CARE_PLAN_SERVICE_RULE_ADDED, result.included("message"));
+		assertEquals(Messages.HEALTH_CARE_PLAN_SERVICE_RULE_ADDED, result.included(BaseController.SUCCESS_KEY));
 	}
 	
 	@Test
@@ -62,7 +62,7 @@ public class HealthCarePlanRuleControllerTest {
 		
 		assertEquals(new Money(10), plan.getServiceRules().get(0).getValue());
 		assertEquals(service.getName(), plan.getServiceRules().get(0).getService().getName());
-		assertEquals(Messages.HEALTH_CARE_PLAN_SERVICE_RULE_ADDED, result.included("message"));
+		assertEquals(Messages.HEALTH_CARE_PLAN_SERVICE_RULE_ADDED, result.included(BaseController.SUCCESS_KEY));
 	}
 	
 	@Test
@@ -74,7 +74,7 @@ public class HealthCarePlanRuleControllerTest {
 		controller.saveServiceRule(1, service, CH.zero(), new Money(10));
 		controller.saveServiceRule(1, service, CH.zero(), new Money(10));
 		
-		assertEquals(Messages.HEALTH_CARE_PLAN_REPEATED_SERVICE_RULE, result.included("message"));
+		assertEquals(Messages.HEALTH_CARE_PLAN_REPEATED_SERVICE_RULE, result.included(BaseController.ERROR_KEY));
 	}
 	
 	@Test
@@ -88,7 +88,7 @@ public class HealthCarePlanRuleControllerTest {
 		controller.deleteServiceRule(1, plan.getServiceRules().get(0).getId());
 		
 		assertEquals(0, plan.getServiceRules().size());
-		assertEquals(Messages.HEALTH_CARE_PLAN_SERVICE_RULE_REMOVED, result.included("message"));
+		assertEquals(Messages.HEALTH_CARE_PLAN_SERVICE_RULE_REMOVED, result.included(BaseController.SUCCESS_KEY));
 	}
 	
 	@Test
@@ -101,7 +101,7 @@ public class HealthCarePlanRuleControllerTest {
 		
 		assertEquals(new CH(10), plan.getMaterialRules().get(0).getCh());
 		assertEquals(material.getName(), plan.getMaterialRules().get(0).getMaterial().getName());
-		assertEquals(Messages.HEALTH_CARE_PLAN_MATERIAL_RULE_ADDED, result.included("message"));
+		assertEquals(Messages.HEALTH_CARE_PLAN_MATERIAL_RULE_ADDED, result.included(BaseController.SUCCESS_KEY));
 	}
 	
 	@Test
@@ -114,7 +114,7 @@ public class HealthCarePlanRuleControllerTest {
 		
 		assertEquals(new Money(10), plan.getMaterialRules().get(0).getValue());
 		assertEquals(material.getName(), plan.getMaterialRules().get(0).getMaterial().getName());
-		assertEquals(Messages.HEALTH_CARE_PLAN_MATERIAL_RULE_ADDED, result.included("message"));
+		assertEquals(Messages.HEALTH_CARE_PLAN_MATERIAL_RULE_ADDED, result.included(BaseController.SUCCESS_KEY));
 	}
 	
 	@Test
@@ -126,7 +126,7 @@ public class HealthCarePlanRuleControllerTest {
 		controller.saveMaterialRule(1, material, CH.zero(), new Money(10));
 		controller.saveMaterialRule(1, material, CH.zero(), new Money(10));
 		
-		assertEquals(Messages.HEALTH_CARE_PLAN_REPEATED_MATERIAL_RULE, result.included("message"));
+		assertEquals(Messages.HEALTH_CARE_PLAN_REPEATED_MATERIAL_RULE, result.included(BaseController.ERROR_KEY));
 	}
 	
 	@Test
@@ -140,7 +140,7 @@ public class HealthCarePlanRuleControllerTest {
 		controller.deleteMaterialRule(1, plan.getMaterialRules().get(0).getId());
 		
 		assertEquals(0, plan.getMaterialRules().size());
-		assertEquals(Messages.HEALTH_CARE_PLAN_MATERIAL_RULE_REMOVED, result.included("message"));
+		assertEquals(Messages.HEALTH_CARE_PLAN_MATERIAL_RULE_REMOVED, result.included(BaseController.SUCCESS_KEY));
 	}
 
 }

@@ -23,7 +23,7 @@
 			    <div class="content">
 			    	<h2 class="title">Listagem de Médicos</h2>
 			    	
-			    	<helper:message messageKey="${message}" />
+			    	<helper:message successKey="${successKey}" errorKey="${errorKey}" />
 			    	
 			        <div class="inner">
 						<table class="table">

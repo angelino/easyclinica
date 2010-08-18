@@ -78,7 +78,7 @@ public class HealthCarePlanControllerTests {
 		controller.save(plan);
 		
 		verify(allHealthCares).add(plan);
-		assertEquals(Messages.HEALTH_CARE_PLAN_ADDED, result.included("message"));
+		assertEquals(Messages.HEALTH_CARE_PLAN_ADDED, result.included(BaseController.SUCCESS_KEY));
 	}
 	
 	@Test(expected=ValidationException.class)
@@ -109,7 +109,7 @@ public class HealthCarePlanControllerTests {
 		
 		verify(allHealthCares).update(plan);
 		
-		assertEquals(Messages.HEALTH_CARE_PLAN_UPDATED, result.included("message"));
+		assertEquals(Messages.HEALTH_CARE_PLAN_UPDATED, result.included(BaseController.SUCCESS_KEY));
 	}
 	
 	@Test(expected=ValidationException.class)
@@ -140,7 +140,7 @@ public class HealthCarePlanControllerTests {
 		controller.deactivate(1);
 		
 		assertFalse(plan.getActive().isActive());
-		assertEquals(Messages.HEALTH_CARE_PLAN_DEACTIVATED, result.included("message"));
+		assertEquals(Messages.HEALTH_CARE_PLAN_DEACTIVATED, result.included(BaseController.SUCCESS_KEY));
 		verify(allHealthCares).update(plan);
 	}
 

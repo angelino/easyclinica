@@ -16,10 +16,9 @@ import br.com.easyclinica.view.Messages;
 import br.com.easyclinica.view.paginator.Paginator;
 
 @Resource
-public class DoctorController {
+public class DoctorController extends BaseController {
 	
 	private final AllDoctors allDoctors;
-	private final Result result;
 	private final Validator validator;
 	private final DoctorValidator doctorValidator;
 	private final ErrorTranslator translator;
@@ -27,8 +26,8 @@ public class DoctorController {
 	
 	public DoctorController(AllDoctors allDoctors, Result result, Validator validator, 
 							DoctorValidator doctorValidator, ErrorTranslator translator, Paginator paginator) {
+		super(result);
 		this.allDoctors = allDoctors;
-		this.result = result;
 		this.validator = validator;
 		this.doctorValidator = doctorValidator;
 		this.translator = translator;
@@ -57,7 +56,7 @@ public class DoctorController {
 		
 		allDoctors.add(doctor);
 		
-		result.include("message", Messages.DOCTOR_ADDED);
+		successMsg(Messages.DOCTOR_ADDED);
 		result.redirectTo(DoctorController.class).index(Paginator.firstPage());
 	}
 
@@ -76,7 +75,7 @@ public class DoctorController {
 		
 		allDoctors.update(doctor);
 		
-		result.include("message", Messages.DOCTOR_UPDATED);
+		successMsg(Messages.DOCTOR_UPDATED);
 		result.redirectTo(DoctorController.class).index(Paginator.firstPage());
 	}
 

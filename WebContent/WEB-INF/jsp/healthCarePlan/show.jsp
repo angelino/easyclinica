@@ -13,7 +13,7 @@
 
 			<div class="block" id="block">
 				
-				<helper:message messageKey="${message}" />
+				<helper:message successKey="${successKey}" errorKey="${errorKey}" />
 				
 				<div class="content">
 			   		<h2 class="title">${healthCarePlan.name}</h2>
