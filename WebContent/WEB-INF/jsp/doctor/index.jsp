@@ -2,9 +2,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="/WEB-INF/easyclinica.tld" prefix="helper" %>
 
-
 <%@page import="br.com.easyclinica.view.Link"%>
-<%@page import="java.util.LinkedList"%><html>
+<%@page import="java.util.LinkedList"%>
+
+<html>
 	<head>
 		<title>.: EasyClinica - Listagem de Médicos :.</title>
 	</head>

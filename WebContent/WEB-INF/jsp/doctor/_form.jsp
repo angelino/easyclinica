@@ -18,14 +18,14 @@
 	
 		<div class="agrupar_campos">
 			<label class="label">CRM:</label>
-	    <input type="text" name="doctor.crm.crm" class="text_field" value="${doctor.crm}" />
-	    <span class="description">Ex: '55.555'</span>
+		    <input type="text" name="doctor.crm.crm" class="text_field" value="${doctor.crm}" />
+		    <span class="description">Ex: '55.555'</span>
 		</div>
 		
 		<div class="agrupar_campos">
 			<label class="label">Especialidade:</label>
-	    <input type="text" name="doctor.specialty.specialty" class="text_field" value="${doctor.specialty}" />
-	    <span class="description">Ex: 'Pediatra', 'Psicólogo'</span>		
+		    <input type="text" name="doctor.specialty.specialty" class="text_field" value="${doctor.specialty}" />
+		    <span class="description">Ex: 'Pediatra', 'Psicólogo'</span>		
 		</div>
 
 		<div class="agrupar_campos">

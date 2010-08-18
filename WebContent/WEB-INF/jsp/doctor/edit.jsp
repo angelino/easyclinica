@@ -3,30 +3,38 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="/WEB-INF/easyclinica.tld" prefix="helper" %>
 
-<!-- INÍCIO MAIN -->
-<div id="main">
+<html>
+	<head>
+		<title>.: EasyClinica - Editar Médico :.</title>
+	</head>
+	<body>
 
-	<div class="block" id="block">
+		<!-- INÍCIO MAIN -->
+		<div id="main">
 		
-		<div class="content">
-	   		<h2 class="title">Editar Médico</h2>
-			<div class="inner">
-	
-				<c:url value="/medicos/${doctor.id}" var="formAction" />
-			
-				<jsp:include page="_form.jsp">	
-				   <jsp:param name="formAction" value="${formAction}" />
-				   <jsp:param name="put" value="true"/>			  	
-				</jsp:include>
+			<div class="block" id="block">
 				
+				<div class="content">
+			   		<h2 class="title">Editar Médico</h2>
+					<div class="inner">
+			
+						<c:url value="/medicos/${doctor.id}" var="formAction" />
+					
+						<jsp:include page="_form.jsp">	
+						   <jsp:param name="formAction" value="${formAction}" />
+						   <jsp:param name="put" value="true"/>			  	
+						</jsp:include>
+						
+					</div>
+				</div>
 			</div>
 		</div>
-	</div>
-</div>
-<!-- FIM MAIN -->
-	
-<!-- INÍCIO SIDEBAR -->
-<div id="sidebar">
-
-</div>
-<!-- FIM SIDEBAR -->
+		<!-- FIM MAIN -->
+			
+		<!-- INÍCIO SIDEBAR -->
+		<div id="sidebar">
+		
+		</div>
+		<!-- FIM SIDEBAR -->
+	</body>
+</html>
