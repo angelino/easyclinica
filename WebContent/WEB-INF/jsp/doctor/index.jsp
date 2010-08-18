@@ -75,16 +75,13 @@
 		<!-- FIM MAIN -->
 			
 		<!-- INÍCIO SIDEBAR -->
-		<div id="sidebar">
-			
+		<div id="sidebar">			
 			<% 
 				java.util.List<Link> links = new LinkedList<Link>();  
 				links.add(new Link("/medicos/novo","Criar novo médico"));
 				pageContext.setAttribute("links",links);
 			%>
-			<helper:navigation links="${links}"></helper:navigation>
-		
-			<helper:notice notice="Titulo" title="Loren ipson dolar demet"></helper:notice>	        
+			<helper:navigation links="${links}"></helper:navigation>   
 	    </div>
 		<!-- FIM SIDEBAR -->
 	</body>
