@@ -12,11 +12,18 @@
 
 		<div id="main">
 
-			<div class="block" id="block">
+			<div class="secondary-navigation"> 
+	            <ul class="wat-cf abas"> 
+	              <li class="first"><a href="#dados-gerais">Dados Gerais</a></li> 
+	              <li><a href="#servicos">Serviços</a></li> 
+	            </ul> 
+	        </div>
+
+			<div class="block" id="dados-gerais">
 				
 				<helper:message successKey="${successKey}" errorKey="${errorKey}" />
 				
-				<div class="content tables">
+				<div class="content dados">
 			   		<h2 class="title">${healthCarePlan.name}</h2>
 					
 					<div class="inner full">
@@ -57,6 +64,18 @@
 							<label class="label">Website:</label> ${healthCarePlan.website}
 						</p>
 					
+						<p class="info">
+							<label class="label observacoes">Observações</label> ${healthCarePlan.observations}
+						</p>
+					</div>
+				</div>
+			</div>
+			
+			<div class="block" id="servicos">
+				<div class="content tables">
+					<h2 class="title">${healthCarePlan.name}</h2>
+				
+					<div class="inner">
 						<div class="agrupar_campos">
 							<label class="label">Tabela de Serviços*:</label> ${healthCarePlan.table.name}
 						</div>
@@ -64,10 +83,6 @@
 						<div class="agrupar_campos">
 							<label class="label">Valor em R$ da CH:</label> ${healthCarePlan.ch.money}
 						</div>
-					
-						<p class="info">
-							<label class="label observacoes">Observações</label> ${healthCarePlan.observations}
-						</p>
 					</div>
 					
 					<div class="service-rules">

@@ -1,5 +1,6 @@
 package br.com.easyclinica.actions;
 
+import br.com.caelum.vraptor.Delete;
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
@@ -84,6 +85,18 @@ public class DoctorController extends BaseController {
 	public void show(int id) {
 		Doctor loadedDoctor = allDoctors.getById(id);
 		include(loadedDoctor);
+	}
+	
+	@Delete
+	@Path("medicos/{id}")
+	public void deactivate(int id) {
+		Doctor doctor = allDoctors.getById(id);
+		
+		doctor.deactivate();
+		allDoctors.update(doctor);
+		
+		successMsg(Messages.DOCTOR_DEACTIVATED);
+		result.use(Results.json()).from(doctor).serialize();
 	}
 	
 	private void include(Doctor emptyDoctor) {

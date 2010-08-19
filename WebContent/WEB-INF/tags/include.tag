@@ -15,5 +15,5 @@
 
 <c:if test="${type == 'js'}">
 <c:url value="/javascripts/${fileName}" var="js"></c:url>
-<script type="text/javascript" charset="utf-8" src="${js}"></script>
+<script type="text/javascript" language="javascript" src="${js}" charset="iso-8859-1"></script>
 </c:if>

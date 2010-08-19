@@ -119,7 +119,7 @@ body {
   padding: 0 15px 15px; 
 }
 
-.tables .inner{float: left;}
+.tables .inner{ float:left; width:100%; }
 
 .inner .full { width: 100%; }
 

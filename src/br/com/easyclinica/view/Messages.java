@@ -14,5 +14,6 @@ public class Messages {
 	
 	public static final String DOCTOR_ADDED = "doctor.added";
 	public static final String DOCTOR_UPDATED = "doctor.updated";
+	public static final String DOCTOR_DEACTIVATED = "doctor.deactivated";
 
 }

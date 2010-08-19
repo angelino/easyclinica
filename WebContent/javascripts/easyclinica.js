@@ -9,6 +9,10 @@ function setup(main_selector){
 	check_all_checkboxes(main_selector);
 	
 	ativar_opcao_menu_principal();
+	
+	gerenciar_abas(main_selector);
+	
+	deletar_registros(main_selector);
 }
 
 /* 
@@ -31,6 +35,37 @@ function ativar_opcao_menu_principal() {
 			break;
 		}
 	}	
+}
+
+/* 
+  	Método responsável pelo mecanismo de abas
+*/
+function gerenciar_abas(main_selector) {
+	$('.abas li:first-child').addClass('active');
+	
+	$('.abas li a').each(function(index){
+		var div_conteudo = $(this).attr('href');
+		if(index == 0) $(div_conteudo).show();
+		else $(div_conteudo).hide();
+	});
+	
+	$(main_selector).find('.abas li a').click(function() {
+		var a = $(this);
+		var li = $(a).parent();
+		var abas = $(li).parent(); // ul - li - a		
+
+		// esconde todos os divs e retira active dos li
+		$(abas).find('li a').each(function(index){
+			var div_conteudo = $(this).attr('href');
+			$(div_conteudo).hide();
+			
+			$(this).parent().removeClass('active');
+		});
+		
+		$(li).addClass('active');
+		
+		$($(a).attr('href')).show();
+	});
 }
 
 /*
@@ -57,5 +92,46 @@ function check_all_checkboxes(main_selector) {
 		$(main_selector).find("input[rel='" + rel + "']").each(function(index){
 			$(this).attr('checked', $(pai).attr('checked'));
 		});
+	});
+}
+
+/*
+ * Método ajax para deletar registros.
+ * Colocar a class 'delete' e o href deve ser a url a ser chamada. O link deve estar dentro de uma tag span
+ */
+function deletar_registros(main_selector) {
+	$(main_selector).find(".delete").click(function(event) {
+		
+		var ok = confirm('Você tem certeza que deseja inativar esse médico?');		
+		if(!ok) return false;
+		
+		var a = $(this);
+		var url = $(a).attr('href');
+		
+		var span = $(this).parent();
+		$(span).html("<img src='/easyclinica/images/loading.gif' />");		
+		
+		$.ajax({
+			type: 'POST',
+			url: url,
+			data: '_method=DELETE',
+			cache: false,
+			dataType: 'json',
+			success: function(data) {
+				var td = $('#name_' + data.doctor.id);
+				var name = $(td).html();
+				var new_name_value = "<span class='deactivated-item'>" + name + "</span> (inativo)";
+				
+				$(td).html(new_name_value);
+				
+				$(span).hide();
+			},
+			error: function(xhr, ajaxOptions, thrownError){
+                alert(xhr.status);
+                alert(thrownError);				
+			}
+		});
+		
+		return false;
 	});
 }

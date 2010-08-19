@@ -14,13 +14,8 @@
    		<div id="main">
 		
 			<div class="block" id="block-tables">
-				<!--  div class="secondary-navigation">
-				  <ul class="wat-cf">
-				    <li class="first"><a href="javascript:void(0);">Ativos</a></li>
-				    <li class="active"><a href="javascript:void(0);">Inativos</a></li>
-				  </ul>
-				</div -->
-			    <div class="content">
+			
+				<div class="content">
 			    	<h2 class="title">Listagem de Médicos</h2>
 			    	
 			    	<helper:message successKey="${successKey}" errorKey="${errorKey}" />
@@ -39,7 +34,7 @@
 							<c:forEach var="doctor" items="${doctors.result}" varStatus="status">
 								<tr class="${status.count % 2 == 0 ? 'odd' : 'even' }">
 									<td><input type="checkbox" class="checkbox" rel="chk_medicos" name="id" value="${doctor.id}" /></td>
-									<td>
+									<td id="name_${doctor.id}">
 										<c:choose>
 											<c:when test="${doctor.active.active}">
 												${doctor.name}
@@ -53,14 +48,11 @@
 									<td>${doctor.telephone}</td>
 									<td>${doctor.email}</td>
 									<td>
-										<form action="<c:url value="/medicos/${doctor.id}" />" method="post">
-											<input type="hidden" name="_method" value="DELETE" />
-											<a href="<c:url value="/medicos/${doctor.id}/editar" />">editar</a> 
-											| <a href="<c:url value="/medicos/${doctor.id}" />">exibir</a> 
-											<c:if test="${doctor.active.active}">
-											| <a href="#" onclick="if(confirm('Você tem certeza que deseja inativar esse médico?')) { $(this).closest('form').submit(); }">inativar</a>
-											</c:if>
-										</form>
+										<a href="<c:url value="/medicos/${doctor.id}/editar" />">editar</a> 
+										| <a href="<c:url value="/medicos/${doctor.id}" />">exibir</a> 
+										<c:if test="${doctor.active.active}">
+										<span>| <a href="<c:url value="/medicos/${doctor.id}" />" class="delete">inativar</a></span>
+										</c:if>
 									</td>
 								</tr>
 							</c:forEach>

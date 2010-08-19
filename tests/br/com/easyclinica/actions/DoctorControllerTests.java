@@ -1,6 +1,7 @@
 package br.com.easyclinica.actions;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.spy;
@@ -120,6 +121,18 @@ public class DoctorControllerTests {
 		controller.show(1);
 		
 		assertEquals(doctor, result.included("doctor"));
+	}
+	
+	@Test
+	public void shouldDeactivate() {
+		Doctor doctor = aDoctor();
+		when(allDoctors.getById(1)).thenReturn(doctor);
+		
+		controller.deactivate(1);
+		
+		assertFalse(doctor.getActive().isActive());
+		assertEquals(Messages.DOCTOR_DEACTIVATED, result.included(BaseController.SUCCESS_KEY));
+		verify(allDoctors).update(doctor);
 	}
 	
 	private void supposingThatValidationHasFailed() {
