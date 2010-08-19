@@ -51,7 +51,7 @@
 										<a href="<c:url value="/medicos/${doctor.id}/editar" />">editar</a> 
 										| <a href="<c:url value="/medicos/${doctor.id}" />">exibir</a> 
 										<c:if test="${doctor.active.active}">
-										<span>| <a href="<c:url value="/medicos/${doctor.id}" />" class="delete">inativar</a></span>
+										<span>| <a href="<c:url value="/medicos/${doctor.id}" />" rel="doctor" class="delete">inativar</a></span>
 										</c:if>
 									</td>
 								</tr>

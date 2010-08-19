@@ -108,6 +108,6 @@ public class HealthCarePlanController extends BaseController {
 		allHealthCares.update(plan);
 		
 		successMsg(Messages.HEALTH_CARE_PLAN_DEACTIVATED);
-		result.redirectTo(HealthCarePlanController.class).index(Paginator.firstPage());
+		result.use(Results.json()).from(plan).serialize();
 	}
 }

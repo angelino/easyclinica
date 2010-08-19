@@ -102,10 +102,16 @@ function check_all_checkboxes(main_selector) {
 function deletar_registros(main_selector) {
 	$(main_selector).find(".delete").click(function(event) {
 		
-		var ok = confirm('Você tem certeza que deseja inativar esse médico?');		
-		if(!ok) return false;
-		
 		var a = $(this);
+		var rel = $(a).attr('rel');
+		
+		var mensagem = "";
+		if(rel == 'doctor') mensagem = 'Você tem certeza que deseja inativar esse médico?';
+		else if(rel == 'healthcare') mensagem = 'Você tem certeza que deseja inativar esse convênio?';
+		
+		var ok = confirm(mensagem);		
+		if(!ok) return false;		
+		
 		var url = $(a).attr('href');
 		
 		var span = $(this).parent();
@@ -118,7 +124,11 @@ function deletar_registros(main_selector) {
 			cache: false,
 			dataType: 'json',
 			success: function(data) {
-				var td = $('#name_' + data.doctor.id);
+				var id = 0;
+				if(rel == 'doctor') id = data.doctor.id;
+				else if(rel == 'healthcare') id = data.healthCarePlan.id;
+			
+				var td = $('#name_' + id);
 				var name = $(td).html();
 				var new_name_value = "<span class='deactivated-item'>" + name + "</span> (inativo)";
 				
