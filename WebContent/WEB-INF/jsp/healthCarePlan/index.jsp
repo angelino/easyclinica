@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib uri="/WEB-INF/easyclinica.tld" prefix="helper" %>
 <%@page import="br.com.easyclinica.view.Link"%>
 <%@page import="java.util.LinkedList"%>
@@ -16,7 +17,14 @@
 			    	<h2 class="title">Listagem de Convênios</h2>
 			    	
 			    	<helper:message successKey="${successKey}" errorKey="${errorKey}" />
-			    	
+			 			    	
+			    	<c:choose>
+			    		<c:when test="${fn:length(healthcares.result) == 0}">
+			    			<div class="inner">
+			    			Não há convênios cadastrados! <a href='<c:url value="/convenios/novo" />'>Clique aqui</a> para adicionar o primeiro!
+			    			</div>
+			    		</c:when>
+			    		<c:otherwise>   	
 			        <div class="inner">
 						<table class="table">
 							<tr>
@@ -55,6 +63,9 @@
 						
 			            <helper:pagging total="${healthcares.totalPages}" current="${healthcares.currentPage}" />
 					</div>
+				
+					</c:otherwise>
+				</c:choose>
 				</div>
 			</div>
 	
