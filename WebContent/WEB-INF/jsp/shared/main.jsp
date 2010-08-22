@@ -10,13 +10,11 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>.: Easy Clínica - <decorator:title default="Bem vindo" /> :.</title>
 	    
-	    <!-- CSS -->
 		<helper:include fileName="reset.css" type="css" />
 		<helper:include fileName="base.css" type="css" />
 		<helper:include fileName="style.css" type="css" />
 		<helper:include fileName="jquery-ui-1.8.2.custom.css" type="css" />
     
-	    <!-- JAVASCRIPTS -->
 	    <helper:include fileName="jquery-1.4.2.min.js" type="js" />
 	    <helper:include fileName="jquery-ui-1.8.2.custom.min.js" type="js" />
 	    <helper:include fileName="jquery.maskedinput-1.2.2.min.js" type="js" />
@@ -26,7 +24,6 @@
 	</head>
 
     <body>
-    	<!-- INÍCIO CONTAINER -->
 		<div id="container">
 		    <div id="header">
 		      <h1><a href="index.html">.: Easy Clínica :.</a></h1>
@@ -41,7 +38,10 @@
 		      <div id="main-navigation">	
 		        <ul class="wat-cf" id="menu-principal">
 		          <li class="first" id="menu-link-dashboard"><a href="javascript:void(0);">Dashboard</a></li>
-		          <li id="menu-link-pacientes"><a href="javascript:void(0);">Pacientes</a></li>
+		          <li id="menu-link-pacientes">
+		          	<c:url value="/pacientes" var="pacientes"></c:url>
+		          	<a href="${pacientes}">Pacientes</a>
+		          </li>
 		          <li id="menu-link-convenios">
 		          	<c:url value="/convenios" var="convenios"></c:url>
 		          	<a href="${convenios}">Convênios</a>
@@ -54,20 +54,15 @@
 		      </div>
 		    </div>
 	    	
-	    	<!-- INÍCIO WRAPPER -->
 	    	<div id="wrapper" class="wat-cf">
     			<decorator:body />    			
 			</div>
-			<!-- FIM WRAPPER -->
-		
-			<!-- INÍCIO FOOTER -->
+			
 			<div id="footer">
 				Copyright &copy; 2010 EasyClinica.
 		    </div>
-		    <!-- FIM FOOTER -->
 			
 		</div>
-		<!-- FIM CONTAINER  -->
-    
+	
     </body>
 </html>

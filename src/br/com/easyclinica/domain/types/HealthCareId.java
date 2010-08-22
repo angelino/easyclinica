@@ -1,5 +1,6 @@
 package br.com.easyclinica.domain.types;
 
+
 public class HealthCareId {
 
 	private String healthCareId;
@@ -31,6 +32,9 @@ public class HealthCareId {
 	
 	public String toString() {
 		return getHealthCareId();
+	}
+	public static HealthCareId empty() {
+		return new HealthCareId("");
 	}
 
 

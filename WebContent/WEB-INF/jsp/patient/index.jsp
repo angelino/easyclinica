@@ -29,7 +29,6 @@
 			        <div class="inner">
 						<table class="table">
 							<tr>
-								<th class="first"><input type="checkbox" class="checkbox toggle check_all" rel="chk_convenios"/></th>
 								<th>Nome</th>
 								<th>Convênio</th>
 								<th>Número no Convênio</th>
@@ -40,7 +39,6 @@
 							
 							<c:forEach var="patient" items="${patients.result}" varStatus="status">
 								<tr class="${status.count % 2 == 0 ? 'odd' : 'even' }">
-									<td><input type="checkbox" class="checkbox" rel="chk_convenios" name="id" value="${healthCare.id}" /></td>
 									<td id="name_${patient.id}">${patient.name}</td>
 									<td>${patient.healthCarePlan.name}</td>
 									<td>${patient.healthCareId}</td>

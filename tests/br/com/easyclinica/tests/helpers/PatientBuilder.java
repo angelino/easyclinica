@@ -61,4 +61,36 @@ public class PatientBuilder {
 		
 		return this;
 	}
+
+	public PatientBuilder withTelephone(String phone) {
+		instance = new Patient(
+				instance.getId(),
+				instance.getName(),
+				instance.getAddress(),
+				new Telephone(phone),
+				instance.getCellphone(),
+				instance.getEmail(),
+				instance.getHealthCarePlan(),
+				instance.getHealthCareId(),
+				instance.getObservations()
+				); 
+		
+		return this;
+	}
+
+	public PatientBuilder withId(int id) {
+		instance = new Patient(
+				id,
+				instance.getName(),
+				instance.getAddress(),
+				instance.getTelephone(),
+				instance.getCellphone(),
+				instance.getEmail(),
+				instance.getHealthCarePlan(),
+				instance.getHealthCareId(),
+				instance.getObservations()
+				); 
+		
+		return this;
+	}
 }

@@ -21,4 +21,21 @@ public class Email {
 	public static Email empty() {
 		return new Email("");
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if(this == obj) return true;
+		
+		if( !(obj instanceof Email) ) return false;
+		
+		Email other = (Email)obj;
+		
+		return this.getEmail() == other.getEmail();
+	}
+	
+	@Override
+	public int hashCode() {
+		return email.hashCode();
+	}
+
 }

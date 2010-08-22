@@ -95,8 +95,8 @@ public class HealthCarePlanController extends BaseController {
 		include(loadedPlan);
 	}
 	
-	private void include(HealthCarePlan planToBeEdited) {
-		result.include("healthCarePlan", planToBeEdited);
+	private void include(HealthCarePlan plan) {
+		result.include("healthCarePlan", plan);
 	}
 
 	@Delete

@@ -35,4 +35,12 @@ public class PatientDao implements AllPatients {
 		
 		return query.getResultList();
 	}
+
+	public Patient getById(int id) {
+		return (Patient)em.find(Patient.class, id);
+	}
+
+	public void update(Patient patient) {
+		em.merge(patient);
+	}
 }

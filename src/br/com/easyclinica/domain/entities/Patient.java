@@ -1,7 +1,6 @@
 package br.com.easyclinica.domain.entities;
 
 import javax.persistence.AttributeOverride;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
@@ -25,13 +24,13 @@ public class Patient {
 	private int id;
 	@Embedded private Name name;
 	@Embedded private Address address;
-	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER) @JoinColumn(name="healthcareplan_fk")
+	@ManyToOne(fetch=FetchType.EAGER) @JoinColumn(name="healthcareplan_fk")
 	private HealthCarePlan healthCarePlan;
 	@Embedded private HealthCareId healthCareId;
 	@Embedded private Observations observations;
-	@Embedded private Telephone cellphone;
-	@Embedded @AttributeOverride(name="telephone", column = @Column(name="cellphone")) 
-	private Telephone telephone;
+	@Embedded @AttributeOverride(name="telephone", column = @Column(name="cellphone"))
+	private Telephone cellphone;
+	@Embedded private Telephone telephone;
 	@Embedded private Email email;
 
 	protected Patient() {}
@@ -82,6 +81,19 @@ public class Patient {
 	
 	public Email getEmail() {
 		return email;
+	}
+	public static Patient empty() {
+		return new Patient(
+				0,
+				Name.empty(),
+				Address.empty(),
+				Telephone.empty(),
+				Telephone.empty(),
+				Email.empty(),
+				new HealthCarePlan(),
+				HealthCareId.empty(),
+				Observations.empty()
+		);
 	}
 
 }
