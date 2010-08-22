@@ -2,8 +2,9 @@ package br.com.easyclinica.domain.types;
 
 public class HealthCareId {
 
-	private final String healthCareId;
+	private String healthCareId;
 
+	protected HealthCareId() {}
 	public HealthCareId(String healthCareId) {
 		this.healthCareId = healthCareId;
 	}
@@ -26,6 +27,10 @@ public class HealthCareId {
 	@Override
 	public int hashCode() {
 		return healthCareId.hashCode();
+	}
+	
+	public String toString() {
+		return getHealthCareId();
 	}
 
 
