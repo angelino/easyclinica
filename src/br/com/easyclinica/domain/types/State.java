@@ -18,4 +18,21 @@ public class State {
 	public String toString() {
 		return getState();
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if(this == obj) return true;
+		
+		if( !(obj instanceof State) ) return false;
+		
+		State other = (State)obj;
+		
+		return this.getState() == other.getState();
+	}
+	
+	@Override
+	public int hashCode() {
+		return state.hashCode();
+	}
+
 }

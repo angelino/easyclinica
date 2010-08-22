@@ -18,4 +18,22 @@ public class Street {
 	public String toString() {
 		return getStreet();
 	}
+	
+
+	@Override
+	public boolean equals(Object obj) {
+		if(this == obj) return true;
+		
+		if( !(obj instanceof Street) ) return false;
+		
+		Street other = (Street)obj;
+		
+		return this.getStreet() == other.getStreet();
+	}
+	
+	@Override
+	public int hashCode() {
+		return street.hashCode();
+	}
+
 }
