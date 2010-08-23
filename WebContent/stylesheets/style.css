@@ -460,3 +460,63 @@ p.info {
 	margin: 3px 0;
 	width: 100%;
 }
+
+/* INÍCIO AGENDA */
+.agenda {
+	min-height: 400px;
+}
+
+.agenda .topo {
+	width: 100%;
+	float: left;
+	margin-bottom: 10px;
+}
+
+.agenda .topo .hoje, .agenda .topo .filtros {
+	float: left;
+}
+
+.agenda .topo .hoje {
+	width: 10%;	
+}
+
+.agenda .topo .hoje .mes {
+	background-color: #576C82;
+	color: #fff;
+	font-weight: bold;
+	-moz-border-radius:5px;
+	text-align: center;
+	padding: 2px;
+}
+
+.agenda .topo .hoje .dia {
+	text-align: center;
+	padding: 10px;
+	font-size: 30px;
+	font-weight: bold;
+	-moz-border-radius-bottomleft: 4px;
+  	-moz-border-radius-bottomright: 4px;
+  	background-color: #F2F5F7;
+}
+
+.agenda .topo .filtros {
+	margin-left: 5px;
+}
+
+.agenda .compromissos, .agenda .calendario {
+	float: left;
+}
+
+.agenda .compromissos {
+	width: 75%;
+}
+
+.agenda .compromissos .table {
+	width: 95%;
+}
+
+.agenda .calendario {
+	width: 25%;
+}
+/* FIM AGENDA */
+
