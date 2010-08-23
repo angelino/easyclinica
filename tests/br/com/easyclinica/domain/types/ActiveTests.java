@@ -19,4 +19,14 @@ public class ActiveTests {
 		
 		assertFalse(status.isActive());
 	}
+	
+	@Test
+	public void shouldCompare() {
+		Active one = Active.active();
+		Active two = Active.active();
+		Active three = Active.notActive();
+		
+		assertTrue(one.equals(two));
+		assertFalse(one.equals(three));
+	}
 }

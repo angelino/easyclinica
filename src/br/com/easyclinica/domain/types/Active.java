@@ -26,4 +26,21 @@ public class Active {
 	public static Active notActive() {
 		return new Active(false);
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if(this == obj) return true;
+		
+		if( !(obj instanceof Active) ) return false;
+		
+		Active other = (Active)obj;
+		
+		return this.isActive() == other.isActive();
+	}
+	
+	@Override
+	public int hashCode() {
+		return active ? 1 : 0;
+	}
+
 }

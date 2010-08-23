@@ -22,4 +22,14 @@ public class AddressBuilder {
 	public Address instance() {
 		return address;
 	}
+	public AddressBuilder withStreet(String street) {
+		address = new Address(
+				new Street(street), 
+				address.getNeighborhood(), 
+				address.getPostalCode(), 
+				address.getCity(), 
+				address.getState());
+		
+		return this;
+	}
 }
