@@ -8,7 +8,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<title>.: Easy Clínica - <decorator:title default="Bem vindo" /> :.</title>
+		<title><decorator:title default="Bem vindo" /></title>
 	    
 		<helper:include fileName="reset.css" type="css" />
 		<helper:include fileName="base.css" type="css" />
