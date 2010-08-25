@@ -545,7 +545,7 @@ tr.disponivel {
 }
 
 tr.indisponivel {
-	background-color: #FF575A;
+	background-color: #FFA7AA;
 }
 
 tr.current {
@@ -564,7 +564,7 @@ tr.current {
 }
 
 .legenda li .vermelho {
-	background-color: #FF575A;
+	background-color: #FFA7AA;
 }
 
 .legenda li .azul {

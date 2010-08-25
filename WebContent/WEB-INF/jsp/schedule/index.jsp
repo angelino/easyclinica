@@ -37,7 +37,7 @@
 				<label>Paciente*:</label>
 				<input type="text" name="paciente" />			
 				<button class="button" type="submit">
-					<c:url value="/images/icons/search.png" var="img_buscar"/>
+					<c:url value="/images/icons/schedule/search.png" var="img_buscar"/>
 					<img src="${img_buscar}" alt="Buscar" />
 				</button>
 			</div>
@@ -114,7 +114,7 @@
    								</select>
    								
    								<button class="button" type="submit">
-									<c:url value="/images/icons/search.png" var="img_buscar"/>
+									<c:url value="/images/icons/schedule/search.png" var="img_buscar"/>
 									<img src="${img_buscar}" alt="Buscar" />Buscar
 								</button>
    							</fieldset>
@@ -125,8 +125,8 @@
    						<ul class="acoes">
    							<li>
    								<a class="button" href="javascript:open_modal()">
-									<c:url value="/images/icons/add.png" var="img_add"/>
-									<img src="${img_add}" alt="Novo" width="20" height="20" />Novo
+									<c:url value="/images/icons/schedule/add.png" var="img_add"/>
+									<img src="${img_add}" alt="Novo" />Novo
 								</a>
    							</li>
    						</ul>
@@ -146,8 +146,15 @@
 								<td>Nome do Paciente</td>
 								<td>11 3361 7001</td>
 								<td>
-									<a href="javascript:open_modal()">editar</a>
-									| <a href="">excluir</a>
+									<a href="javascript:open_modal()" title="Editar">
+										<c:url value="/images/icons/schedule/alterar.png" var="img_alterar"/>
+										<img src="${img_alterar}" alt="Editar" width="20" height="20" />
+									</a>
+									&nbsp;
+									<a href="#" title="Excluir">
+										<c:url value="/images/icons/schedule/deletar.png" var="img_deletar"/>
+										<img src="${img_deletar}" alt="Excluir" width="20" height="20" />
+									</a>
 								</td>
 							</tr>
 							<tr class="current">
