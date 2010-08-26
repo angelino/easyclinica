@@ -14,12 +14,11 @@
 		<helper:include fileName="base.css" type="css" />
 		<helper:include fileName="style.css" type="css" />
 		<helper:include fileName="jquery-ui-1.8.2.custom.css" type="css" />
-    
-	    <helper:include fileName="jquery-1.4.2.min.js" type="js" />
-	    <helper:include fileName="jquery-ui-1.8.2.custom.min.js" type="js" />
+		
+		<helper:include fileName="jquery-1.4.2.min.js" type="js" />
+		<helper:include fileName="jquery-ui-1.8.4.custom.min.js" type="js" />
 	    <helper:include fileName="jquery.maskedinput-1.2.2.min.js" type="js" />
 	    <helper:include fileName="easyclinica.js" type="js" />
-	    
 	    <decorator:head />
 	</head>
 
