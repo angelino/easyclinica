@@ -42,6 +42,14 @@
 			
 					</div>
 				</div>
+				
+				<div class="botoes">
+					<c:url value="/medicos" var="voltar"/>
+					<a class="button" href="${voltar}">
+						<c:url value="/images/icons/cross.png" var="img_voltar"/>
+						<img src="${img_voltar}" alt="Voltar" />Voltar
+					</a>
+				</div>
 			</div>
 
 		</div>
