@@ -11,7 +11,7 @@ public class Paginator {
 	private final int elementsPerPage;
 	
 	public Paginator(Config config) {
-		elementsPerPage = Integer.parseInt(config.get(ConfigKeys.ELEMENTS_PER_PAGE));
+		elementsPerPage = Integer.parseInt(config.get(ConfigKeys.ELEMENTS_PER_PAGE).toString());
 	}
 	
 	public <T> PaginatedResult<T> paginate(Pagging<T> repository, int currentPage) {

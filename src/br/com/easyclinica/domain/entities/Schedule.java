@@ -1,5 +1,7 @@
 package br.com.easyclinica.domain.entities;
 
+import java.util.Date;
+
 import javax.persistence.AttributeOverride;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
@@ -9,12 +11,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.Transient;
 
 import br.com.easyclinica.domain.types.Day;
 import br.com.easyclinica.domain.types.Description;
 import br.com.easyclinica.domain.types.Hour;
 import br.com.easyclinica.domain.types.Reason;
-import br.com.easyclinica.domain.types.Status;
+import br.com.easyclinica.domain.types.Telephone;
 
 @Entity
 public class Schedule {
@@ -29,8 +32,8 @@ public class Schedule {
 	@OneToOne(fetch=FetchType.EAGER) @JoinColumn(name="patient_fk")
 	private Patient patient;
 	
+	@Embedded private Telephone telephone;
 	@Embedded private Description description;
-	@Embedded private Status status;
 	@Embedded private Reason reason;
 	@Embedded private Day day;
 	
@@ -39,6 +42,14 @@ public class Schedule {
 	
 	@Embedded @AttributeOverride(name="hour", column = @Column(name="end"))
 	private Hour end;
+	
+	@Transient
+	private boolean available;
+	
+	public Schedule(Date start, Date end){
+		this.start = new Hour(start);
+		this.end = new Hour(end);
+	}
 	
 	public void setId(int id) {
 		this.id = id;
@@ -61,18 +72,19 @@ public class Schedule {
 		return patient;
 	}
 	
+	public void setTelephone(Telephone telephone) {
+		this.telephone = telephone;
+	}
+
+	public Telephone getTelephone() {
+		return telephone;
+	}
+
 	public void setDescription(Description description) {
 		this.description = description;
 	}
 	public Description getDescription() {
 		return description;
-	}
-	
-	public void setStatus(Status status) {
-		this.status = status;
-	}
-	public Status getStatus() {
-		return status;
 	}
 	
 	public void setReason(Reason reason) {
@@ -101,5 +113,13 @@ public class Schedule {
 	}
 	public Hour getEnd() {
 		return end;
+	}
+
+	public void setAvailable(boolean available) {
+		this.available = available;
+	}
+
+	public boolean isAvailable() {
+		return available;
 	}
 }

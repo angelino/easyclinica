@@ -3,7 +3,7 @@ package br.com.easyclinica.domain.types;
 import javax.persistence.Embeddable;
 
 @Embeddable
-public class Money {
+public class Money implements GeneralType{
 	private double money;
 	
 	protected Money() {}
@@ -37,5 +37,11 @@ public class Money {
 	
 	public static Money zero() {
 		return new Money(0);
+	}
+	
+	public boolean isValid() {		
+		if(this.money <= 0) return false;
+		
+		return true;
 	}
 }

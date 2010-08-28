@@ -36,7 +36,7 @@ public class Patient {
 	protected Patient() {}
 	public Patient(int id, Name name, Address address, Telephone telephone, Telephone cellphone, Email email, HealthCarePlan healthCarePlan,
 			HealthCareId healthCareId, Observations observations) {
-		this.id = id;
+		this.setId(id);
 		this.name = name;
 		this.address = address;
 		this.telephone = telephone;
@@ -47,10 +47,12 @@ public class Patient {
 		this.observations = observations;
 	}
 	
+	public void setId(int id) {
+		this.id = id;
+	}
 	public int getId() {
 		return id;
 	}
-
 	public Name getName() {
 		return name;
 	}

@@ -11,6 +11,8 @@ public class Hour {
 	protected Hour() {}
 	public Hour(Date hour) {
 		this.hour = hour;
+		
+		if(this.hour == null) this.hour = new Date();
 	}
 	
 	public Date getHour() {
@@ -25,6 +27,6 @@ public class Hour {
 		
 		Hour other = (Hour)obj;
 		
-		return this.getHour() == other.getHour();
+		return this.getHour().equals(other.getHour());
 	}
 }

@@ -7,17 +7,23 @@ import org.junit.Before;
 
 import br.com.caelum.vraptor.util.test.MockResult;
 import br.com.caelum.vraptor.util.test.MockValidator;
+import br.com.easyclinica.domain.repositories.AllDoctors;
+import br.com.easyclinica.domain.repositories.AllPatients;
 import br.com.easyclinica.domain.repositories.AllSchedule;
 import br.com.easyclinica.domain.validators.ScheduleValidator;
 import br.com.easyclinica.infra.vraptor.validators.ErrorTranslator;
+import br.com.easyclinica.services.GetDoctorSchedule;
 
 public class ScheduleControllerTests {
 	private AllSchedule allSchedule;
+	private AllDoctors allDoctors;
+	private AllPatients allPatients;
 	private MockResult result;
 	private ScheduleController controller;
 	private MockValidator validator;
 	private ScheduleValidator scheduleValidator;
 	private ErrorTranslator translator;
+	private GetDoctorSchedule doctorSchedule;
 	
 	@Before
 	public void setUp() {
@@ -26,8 +32,11 @@ public class ScheduleControllerTests {
 		validator = spy(new MockValidator());
 		scheduleValidator = mock(ScheduleValidator.class);
 		translator = mock(ErrorTranslator.class);
+		allDoctors = mock(AllDoctors.class);
+		allPatients = mock(AllPatients.class);
+		doctorSchedule = mock(GetDoctorSchedule.class);
 		
-		controller = new ScheduleController(result, validator, allSchedule, scheduleValidator, translator);
+		controller = new ScheduleController(result, validator, allSchedule, scheduleValidator, translator, allDoctors, doctorSchedule, allPatients);
 	}
 	
 }

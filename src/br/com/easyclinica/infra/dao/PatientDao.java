@@ -43,4 +43,10 @@ public class PatientDao implements AllPatients {
 	public void update(Patient patient) {
 		em.merge(patient);
 	}
+
+	@SuppressWarnings("unchecked")
+	public List<Patient> getAll() {
+		Query query = em.createQuery("from Patient p order by name");
+		return query.getResultList();
+	}
 }

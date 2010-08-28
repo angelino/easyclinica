@@ -3,7 +3,7 @@ package br.com.easyclinica.domain.types;
 import javax.persistence.Embeddable;
 
 @Embeddable
-public class Name {
+public class Name implements GeneralType {
 	private String name;
 	
 	protected Name() {}
@@ -39,5 +39,10 @@ public class Name {
 		return new Name("");
 	}
 	
-	
+	public boolean isValid() {
+		
+		if(this.name == null || this.name.length() == 0) return false;
+		
+		return true;
+	}
 }

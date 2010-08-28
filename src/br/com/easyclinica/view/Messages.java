@@ -19,4 +19,6 @@ public class Messages {
 	public static final String PATIENT_UPDATED = "patient.updated";
 	public static final String PATIENT_ADDED = "patient.added";
 
+	public static final String SCHEDULE_UPDATED = "schedule.updated";
+	public static final String SCHEDULE_ADDED = "schedule.added";
 }

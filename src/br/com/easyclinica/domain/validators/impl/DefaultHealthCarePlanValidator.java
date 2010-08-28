@@ -14,10 +14,10 @@ public class DefaultHealthCarePlanValidator implements HealthCarePlanValidator {
 	
 	public List<Error> validate(HealthCarePlan obj) {
 		List<Error> errors = new ArrayList<Error>();
-		if(obj.getName() == null || obj.getName().toString().length() == 0) {
+		if(!obj.getName().isValid()) {
 			errors.add(new Error("healthCarePlan", ValidationMessages.INVALID_NAME));
 		}
-		if(obj.getCh() == null || obj.getCh().getMoney() <= 0) {
+		if(!obj.getCh().isValid()) {
 			errors.add(new Error("healthCarePlan", ValidationMessages.INVALID_CH));
 		}
 		

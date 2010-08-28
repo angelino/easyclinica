@@ -3,7 +3,7 @@ package br.com.easyclinica.domain.types;
 import javax.persistence.Embeddable;
 
 @Embeddable
-public class CH {
+public class CH implements GeneralType {
 	private double ch;
 	
 	protected CH() {}
@@ -40,5 +40,11 @@ public class CH {
 	}
 	public boolean isZero() {
 		return this.equals(CH.zero());
+	}
+	
+	public boolean isValid() {		
+		if(this.isZero()) return false;
+		
+		return true;
 	}
 }

@@ -25,7 +25,6 @@ public class Migration_13 implements Migration  {
 				column("doctor_fk", INTEGER, notnull()),
 				column("patient_fk", INTEGER, notnull()),
 				column("description", com.eroi.migrate.Define.DataTypes.LONGVARCHAR),
-				column("status", INTEGER, notnull(), defaultValue(1)),
 				column("reason", INTEGER, notnull(), defaultValue(1)),
 				column("day", com.eroi.migrate.Define.DataTypes.DATE),
 				column("start", com.eroi.migrate.Define.DataTypes.TIME),

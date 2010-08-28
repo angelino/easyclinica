@@ -1,7 +1,6 @@
 package br.com.easyclinica.domain.validators.impl;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 import br.com.caelum.vraptor.ioc.Component;
@@ -24,7 +23,7 @@ public class DefaultScheduleValidator implements ScheduleValidator {
 			errors.add(new Error("schedule", ValidationMessages.INVALID_PATIENT));
 		}
 		
-		if(obj.getDay() == null || obj.getDay().getDay().before(Calendar.getInstance().getTime())) {
+		if(obj.getDay() == null) {
 			errors.add(new Error("schedule", ValidationMessages.INVALID_DAY));
 		}
 		

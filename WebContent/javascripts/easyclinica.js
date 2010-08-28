@@ -13,6 +13,8 @@ function setup(main_selector){
 	gerenciar_abas(main_selector);
 	
 	deletar_registros(main_selector);
+	
+	salvar_compromisso_agenda(main_selector);
 }
 
 /* 
@@ -135,6 +137,40 @@ function deletar_registros(main_selector) {
 				$(td).html(new_name_value);
 				
 				$(span).hide();
+			},
+			error: function(xhr, ajaxOptions, thrownError){
+                alert(xhr.status);
+                alert(thrownError);				
+			}
+		});
+		
+		return false;
+	});
+}
+
+/* Método ajax para adicionar compromissos na agenda do médico */
+function salvar_compromisso_agenda(main_selector) {
+	$(main_selector).find("#salvar_compromisso").click(function(event) {
+		
+		var url = $(this).attr('url');
+		
+		alert(url);
+		
+		//var span = $(this).parent();
+		//$(span).html("<img src='/easyclinica/images/loading.gif' />");		
+		
+		var dados = $('#frm_agendamento').serialize();
+		alert(dados);
+		
+		$.ajax({
+			type: 'POST',
+			url: url,
+			data: dados,
+			cache: false,
+			success: function(data) {
+				alert(data);
+				
+				$('#medical-appointments').html(data);
 			},
 			error: function(xhr, ajaxOptions, thrownError){
                 alert(xhr.status);
