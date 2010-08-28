@@ -7,7 +7,7 @@
 
 <div class="actions-bar wat-cf">
 
-	<c:if test="${total > 0}">
+	<c:if test="${total > 1}">
 		<div class="pagination">
 			<% if(current == 1) { %>
 			<span class="disabled prev_page">« Anterior</span>

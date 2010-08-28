@@ -1,4 +1,4 @@
-package br.com.easyclinica.domain.validators;
+package br.com.easyclinica.domain.validators.impl;
 
 import static org.junit.Assert.assertEquals;
 
@@ -8,6 +8,9 @@ import org.junit.Before;
 import org.junit.Test;
 
 import br.com.easyclinica.domain.entities.HealthCarePlan;
+import br.com.easyclinica.domain.validators.Error;
+import br.com.easyclinica.domain.validators.ValidationMessages;
+import br.com.easyclinica.domain.validators.impl.DefaultHealthCarePlanValidator;
 import br.com.easyclinica.tests.helpers.HealthCarePlanBuilder;
 
 public class HealthCarePlanValidatorTests {

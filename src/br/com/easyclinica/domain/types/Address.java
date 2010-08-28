@@ -51,6 +51,29 @@ public class Address {
 	public void setState(State state) {
 		this.state = state;
 	}
+	
+
+	@Override
+	public boolean equals(Object obj) {
+		if(this == obj) return true;
+		
+		if( !(obj instanceof Address) ) return false;
+		
+		Address other = (Address)obj;
+		
+		return this.getCity().equals(other.getCity()) &&
+			getNeighborhood().equals(other.getNeighborhood()) &&
+			getState().equals(other.getState()) &&
+			getPostalCode().equals(other.getPostalCode()) &&
+			getStreet().equals(other.getStreet());
+	}
+	
+	@Override
+	public int hashCode() {
+		return getCity().hashCode() * getNeighborhood().hashCode() *
+			getState().hashCode() * getPostalCode().hashCode() * getStreet().hashCode();
+	}
+	
 	public static Address empty() {
 		return new Address(new Street(""), new Neighborhood(""), new PostalCode(""), new City(""), new State(""));
 	}

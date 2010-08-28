@@ -18,4 +18,21 @@ public class Neighborhood {
 	public String toString() {
 		return getNeighborhood();
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if(this == obj) return true;
+		
+		if( !(obj instanceof Neighborhood) ) return false;
+		
+		Neighborhood other = (Neighborhood)obj;
+		
+		return this.getNeighborhood() == other.getNeighborhood();
+	}
+	
+	@Override
+	public int hashCode() {
+		return neighborhood.hashCode();
+	}
+
 }

@@ -4,6 +4,7 @@
 
 <%@page import="br.com.easyclinica.view.Link"%>
 <%@page import="java.util.LinkedList"%>
+<%@page import="br.com.easyclinica.domain.entities.Doctor"%>
 
 <html>
 	<head>
@@ -20,26 +21,24 @@
 				
 				<div class="content">
 			   		<h2 class="title">${doctor.name}</h2>
-					<div class="inner">
+					<div class="inner full">
+						<div class="agrupar_campos">
+							<label class="label">CRM:</label>${doctor.crm}
+						</div>
+						
+						<div class="agrupar_campos">
+							<label class="label">Espeialidade:</label>${doctor.specialty}
+						</div>
 				
-					<div class="agrupar_campos">
-						<label class="label">CRM:</label>${doctor.crm}
-					</div>
-					
-					<div class="agrupar_campos">
-						<label class="label">Espeialidade:</label>${doctor.specialty}
-					</div>
-			
-					<div class="agrupar_campos">
-						<label class="label">Telefone*:</label>${doctor.telephone}
-					</div>
-					
-					<div class="agrupar_campos">
-						<label class="label">E-mail:</label>${doctor.email}
-					</div>
-					
-					<label class="label">Observações</label>${doctor.observations}
-			
+						<div class="agrupar_campos">
+							<label class="label">Telefone*:</label>${doctor.telephone}
+						</div>
+						
+						<div class="agrupar_campos">
+							<label class="label">E-mail:</label>${doctor.email}
+						</div>
+						
+						<label class="label observacoes">Observações:</label>${doctor.observations}
 					</div>
 				</div>
 				
@@ -60,6 +59,7 @@
 			<% 
 				java.util.List<Link> links = new LinkedList<Link>();  
 				links.add(new Link("/medicos/novo","Criar novo médico"));
+				links.add(new Link("/medicos/" + ((Doctor)request.getAttribute("doctor")).getId()+"/editar","Editar o médico"));
 				links.add(new Link("/medicos","Voltar para listagem"));
 				pageContext.setAttribute("links",links);
 			%>

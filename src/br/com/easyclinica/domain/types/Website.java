@@ -21,4 +21,21 @@ public class Website {
 	public static Website empty() {
 		return new Website("");
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if(this == obj) return true;
+		
+		if( !(obj instanceof Website) ) return false;
+		
+		Website other = (Website)obj;
+		
+		return this.getWebsite() == other.getWebsite();
+	}
+	
+	@Override
+	public int hashCode() {
+		return website.hashCode();
+	}
+
 }

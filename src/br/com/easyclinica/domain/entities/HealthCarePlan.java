@@ -56,6 +56,10 @@ public class HealthCarePlan {
 	
 	protected HealthCarePlan() {}
 
+	public HealthCarePlan(int id) {
+		this.id = id;
+	}
+	
 	public HealthCarePlan(int id, Name name, Address address, Telephone telephone,
 			Email email, Website website, Name contact,
 			Observations observations, ServicesTable table, Money ch) {

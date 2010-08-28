@@ -95,8 +95,8 @@ public class HealthCarePlanController extends BaseController {
 		include(loadedPlan);
 	}
 	
-	private void include(HealthCarePlan planToBeEdited) {
-		result.include("healthCarePlan", planToBeEdited);
+	private void include(HealthCarePlan plan) {
+		result.include("healthCarePlan", plan);
 	}
 
 	@Delete
@@ -108,6 +108,6 @@ public class HealthCarePlanController extends BaseController {
 		allHealthCares.update(plan);
 		
 		successMsg(Messages.HEALTH_CARE_PLAN_DEACTIVATED);
-		result.redirectTo(HealthCarePlanController.class).index(Paginator.firstPage());
+		result.use(Results.json()).from(plan).serialize();
 	}
 }

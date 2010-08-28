@@ -121,4 +121,8 @@ public class Doctor {
 	public static Doctor empty() {
 		return new Doctor();
 	}
+
+	public void deactivate() {
+		this.active = Active.notActive();
+	}
 }

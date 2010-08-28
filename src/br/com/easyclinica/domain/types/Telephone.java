@@ -21,4 +21,21 @@ public class Telephone {
 	public static Telephone empty() {
 		return new Telephone("");
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if(this == obj) return true;
+		
+		if( !(obj instanceof Telephone) ) return false;
+		
+		Telephone other = (Telephone)obj;
+		
+		return this.getTelephone() == other.getTelephone();
+	}
+	
+	@Override
+	public int hashCode() {
+		return telephone.hashCode();
+	}
+
 }
