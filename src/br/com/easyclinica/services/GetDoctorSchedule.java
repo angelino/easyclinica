@@ -1,5 +1,6 @@
 package br.com.easyclinica.services;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.LinkedList;
@@ -45,18 +46,20 @@ public class GetDoctorSchedule {
 		List<Schedule> scheduleOfThisDate = new LinkedList<Schedule>();
 		for(Calendar timeToBeAnalysed = clinicStartOperation; timeToBeAnalysed.before(clinicEndOperation); timeToBeAnalysed.add(Calendar.MINUTE, medicalTime))
 		{
+			SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
+			
 			Calendar appointmentEnd = (Calendar) timeToBeAnalysed.clone();
 			appointmentEnd.add(Calendar.MINUTE, medicalTime);
-			Schedule schedule = new Schedule(timeToBeAnalysed.getTime(), appointmentEnd.getTime());
+			Schedule schedule = new Schedule(this.date, timeFormat.format(timeToBeAnalysed.getTime()), timeFormat.format(appointmentEnd.getTime()));
 						
 			for(Schedule s : appointments) {
-				if(s.getStart().getHour().equals(timeToBeAnalysed.getTime())) {
+				if(s.getFullStartHour().equals(timeToBeAnalysed.getTime())) {
 					schedule = s;
 					break;
 				}
 			}
 			
-			schedule.setAvailable((schedule.getStart().getHour().after(new Date()) && schedule.getId() == 0));
+			schedule.setAvailable((schedule.getFullStartHour().after(new Date()) && schedule.getId() == 0));
 			
 			scheduleOfThisDate.add(schedule);
 		}

@@ -45,10 +45,10 @@ public class ScheduleController extends BaseController {
 	}
 
 	@Get
-	@Path("/agenda")
-	public void index(int doctor_id) 
+	@Path("/agenda/{id}")
+	public void index(int id) 
 	{
-		Doctor doctor = allDoctors.getById(doctor_id);
+		Doctor doctor = allDoctors.getById(id);
 				
 		result.include("doctor", doctor);
 		result.include("doctors", allDoctors.get());
@@ -65,10 +65,10 @@ public class ScheduleController extends BaseController {
 			
 		successMsg(Messages.SCHEDULE_ADDED);
 		
-		result.redirectTo(ScheduleController.class)._medical_appointments(schedule.getDoctor().getId());
+		result.redirectTo(ScheduleController.class).medicalAppointments(schedule.getDoctor().getId());
 	}
 	
-	public void _medical_appointments(int doctor_id)
+	public void medicalAppointments(int doctor_id)
 	{
 		Doctor doctor = allDoctors.getById(doctor_id);
 		result.include("appointments", doctorSchedule.from(doctor).at(new Date()).build());

@@ -170,7 +170,7 @@
    						</ul>
    						
    						<div id="medical-appointments">
-   							<jsp:include page="_medical-appointments.jsp"/>
+   							<jsp:include page="medicalAppointments.jsp"/>
    						</div>
    						
    					</div>

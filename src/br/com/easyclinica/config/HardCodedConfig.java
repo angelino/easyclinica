@@ -19,12 +19,14 @@ public class HardCodedConfig implements Config {
 		start.set(Calendar.HOUR_OF_DAY, 6);
 		start.set(Calendar.MINUTE, 0);
 		start.set(Calendar.SECOND, 0);
+		start.set(Calendar.MILLISECOND, 0);
 		configs.put(ConfigKeys.CLINIC_START_OPERATION, start);
 		
 		Calendar end = new GregorianCalendar();
 		end.set(Calendar.HOUR_OF_DAY, 21);
 		end.set(Calendar.MINUTE, 0);
 		end.set(Calendar.SECOND, 0);
+		end.set(Calendar.MILLISECOND, 0);
 		configs.put(ConfigKeys.CLINIC_END_OPERATION, end);
 		
 		configs.put(ConfigKeys.MEDICAL_TIME, 15);

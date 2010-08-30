@@ -27,10 +27,6 @@ public class DefaultScheduleValidator implements ScheduleValidator {
 			errors.add(new Error("schedule", ValidationMessages.INVALID_DAY));
 		}
 		
-		if(obj.getEnd().getHour().after(obj.getStart().getHour())) {
-			errors.add(new Error("schedule", ValidationMessages.INVALID_HOUR));
-		}
-		
 		return errors;
 	}
 

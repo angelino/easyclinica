@@ -9,6 +9,7 @@ public class Day {
 	private Date day;
 
 	protected Day() {}
+	
 	public Day(Date day) {
 		this.day = day;
 	}

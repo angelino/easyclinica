@@ -1,21 +1,17 @@
 package br.com.easyclinica.domain.types;
 
-import java.util.Date;
-
 import javax.persistence.Embeddable;
 
 @Embeddable
 public class Hour {
-	private Date hour;
+	private String hour;
 	
 	protected Hour() {}
-	public Hour(Date hour) {
+	public Hour(String hour) {
 		this.hour = hour;
-		
-		if(this.hour == null) this.hour = new Date();
 	}
 	
-	public Date getHour() {
+	public String getHour() {
 		return hour;
 	}
 	

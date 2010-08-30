@@ -44,8 +44,8 @@ public class ScheduleDao implements AllSchedule {
 		hql.append(" from Schedule schedule ");
 		hql.append(" where ");
 		hql.append(" schedule.doctor.id = :doctor_id ");
-		hql.append(" and :date between schedule.start.hour and schedule.end.hour ");
-		hql.append(" order by schedule.start ");
+		hql.append(" and BuildScheduleTime(schedule.day.day, schedule.start.hour) between date_format(:date, '%Y-%m-%d 00:00:00') and date_format(:date, '%Y-%m-%d 23:59:59') ");
+		hql.append(" order by schedule.start.hour ");
 		
 		Query query = em.createQuery(hql.toString());
 		query.setParameter("doctor_id", doctor.getId());

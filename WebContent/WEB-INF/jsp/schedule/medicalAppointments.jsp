@@ -27,9 +27,7 @@
 		<tr class="${appointment_class}">
 			<td></td>
 			<td> 
-				<fmt:formatDate value="${appointment.start.hour}" type="both" pattern="HH:mm"/>
-				-
-				<fmt:formatDate value="${appointment.end.hour}" type="both" pattern="HH:mm"/>
+				${appointment.start.hour} - ${appointment.end.hour}
 			</td>
 			<td>
 				<c:if test="${appointment.id != 0}">

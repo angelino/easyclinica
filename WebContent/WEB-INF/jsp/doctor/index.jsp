@@ -55,7 +55,7 @@
 									<td>${doctor.telephone}</td>
 									<td>${doctor.email}</td>
 									<td>
-										<a href="<c:url value="/agenda?doctor_id=${doctor.id}" />">ver agenda</a>
+										<a href="<c:url value="/agenda/${doctor.id}" />">ver agenda</a>
 										| <a href="<c:url value="/medicos/${doctor.id}/editar" />">editar</a> 
 										| <a href="<c:url value="/medicos/${doctor.id}" />">exibir</a> 
 										<c:if test="${doctor.active.active}">

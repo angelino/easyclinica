@@ -1,6 +1,8 @@
 package br.com.easyclinica.domain.entities;
 
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 import javax.persistence.AttributeOverride;
 import javax.persistence.Column;
@@ -46,7 +48,10 @@ public class Schedule {
 	@Transient
 	private boolean available;
 	
-	public Schedule(Date start, Date end){
+	protected Schedule() {}
+	
+	public Schedule(Date day, String start, String end){
+		this.day = new Day(day);
 		this.start = new Hour(start);
 		this.end = new Hour(end);
 	}
@@ -121,5 +126,17 @@ public class Schedule {
 
 	public boolean isAvailable() {
 		return available;
+	}
+	
+	public Date getFullStartHour() {
+		Calendar c = new GregorianCalendar();
+		c.setTime(this.day.getDay());
+		
+		String[] startPieces = this.start.getHour().split(":");
+		c.set(Calendar.HOUR_OF_DAY, Integer.parseInt(startPieces[0]));
+		c.set(Calendar.MINUTE, Integer.parseInt(startPieces[1]));
+		c.set(Calendar.MILLISECOND, 0);
+		
+		return c.getTime();
 	}
 }

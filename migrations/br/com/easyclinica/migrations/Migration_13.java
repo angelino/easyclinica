@@ -27,8 +27,8 @@ public class Migration_13 implements Migration  {
 				column("description", com.eroi.migrate.Define.DataTypes.LONGVARCHAR),
 				column("reason", INTEGER, notnull(), defaultValue(1)),
 				column("day", com.eroi.migrate.Define.DataTypes.DATE),
-				column("start", com.eroi.migrate.Define.DataTypes.TIME),
-				column("end", com.eroi.migrate.Define.DataTypes.TIME),
+				column("start", VARCHAR, length(6), defaultValue("00:00")),
+				column("end", VARCHAR, length(6), defaultValue("00:00")),
 				column("telephone", VARCHAR, length(50))
 		));
 	}
