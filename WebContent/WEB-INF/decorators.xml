@@ -1,4 +1,8 @@
 <decorators defaultdir="/WEB-INF/jsp/shared">
+    <excludes>
+        <pattern>/*/_*</pattern>
+    </excludes>
+    
     <decorator name="main" page="main.jsp">
         <pattern>*</pattern>
     </decorator>

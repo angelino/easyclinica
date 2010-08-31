@@ -153,14 +153,7 @@ function salvar_compromisso_agenda(main_selector) {
 	$(main_selector).find("#salvar_compromisso").click(function(event) {
 		
 		var url = $(this).attr('url');
-		
-		alert(url);
-		
-		//var span = $(this).parent();
-		//$(span).html("<img src='/easyclinica/images/loading.gif' />");		
-		
 		var dados = $('#frm_agendamento').serialize();
-		alert(dados);
 		
 		$.ajax({
 			type: 'POST',
@@ -168,8 +161,6 @@ function salvar_compromisso_agenda(main_selector) {
 			data: dados,
 			cache: false,
 			success: function(data) {
-				alert(data);
-				
 				$('#medical-appointments').html(data);
 			},
 			error: function(xhr, ajaxOptions, thrownError){
