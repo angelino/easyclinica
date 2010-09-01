@@ -8,6 +8,8 @@
 <%@page import="br.com.easyclinica.view.Link"%>
 <%@page import="java.util.LinkedList"%>
 
+<c:url value="/search" var="search_url"></c:url>
+
 <html>
 <head>
 	<title>.: EasyClinica - Agenda :.</title>
@@ -30,8 +32,43 @@
 			});
 
 			change_highlight_date(new Date());
-		});
 
+
+			$("#patientAutoComplete").autocomplete({
+				source: function(request, response) {
+					$.ajax({
+						url: "${search_url}",
+						dataType: "json",
+						data: {
+							featureClass: "P",
+							style: "full",
+							maxRows: 12,
+							term: request.term
+						},
+						success: function(data) {
+							response($.map(data.list, function(item) {
+								return {
+									label: item.name.name,
+									value: item.name.name,
+									id: item.id
+								};
+							}));
+						}
+					});
+				},
+				minLength: 2,
+				select: function(event, ui) {
+					$('#patientAutoCompleteResult').val(ui.item.id);
+				},
+				open: function() {
+					$(this).removeClass("ui-corner-all").addClass("ui-corner-top");
+				},
+				close: function() {
+					$(this).removeClass("ui-corner-top").addClass("ui-corner-all");
+				}
+	        });
+		});
+		
 		function open_modal() {
 			$("#agendamento").modal();
 		}
@@ -43,6 +80,8 @@
 			var month = months_array[date.getMonth()] + "/" + date.getFullYear();
 			$('.mes').html(month);
 		}
+
+		
 	</script>
 </head>
 <body>
@@ -60,11 +99,13 @@
 				
 				<div class="paciente">
 					<label>Paciente*:</label>
-					<input type="text" name="schedule.patient.id" />			
+					<input type="text" id="patientAutoComplete"/>			
 					<button class="button" type="submit">
 						<c:url value="/images/icons/schedule/search.png" var="img_buscar"/>
 						<img src="${img_buscar}" alt="Buscar" />
 					</button>
+					
+					<input type="hidden" name="schedule.patient.id" id="patientAutoCompleteResult" />
 				</div>
 				
 				<div class="agrupar_campos">

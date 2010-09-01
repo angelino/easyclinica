@@ -1,6 +1,7 @@
 package br.com.easyclinica.actions;
 
 import java.util.Date;
+import java.util.List;
 
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
@@ -10,6 +11,7 @@ import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.Validator;
 import br.com.caelum.vraptor.view.Results;
 import br.com.easyclinica.domain.entities.Doctor;
+import br.com.easyclinica.domain.entities.Patient;
 import br.com.easyclinica.domain.entities.Schedule;
 import br.com.easyclinica.domain.repositories.AllDoctors;
 import br.com.easyclinica.domain.repositories.AllPatients;
@@ -18,7 +20,6 @@ import br.com.easyclinica.domain.validators.ScheduleValidator;
 import br.com.easyclinica.infra.vraptor.validators.ErrorTranslator;
 import br.com.easyclinica.services.GetDoctorSchedule;
 import br.com.easyclinica.view.Messages;
-import br.com.easyclinica.view.paginator.Paginator;
 
 @Resource
 public class ScheduleController extends BaseController {
@@ -72,5 +73,14 @@ public class ScheduleController extends BaseController {
 	{
 		Doctor doctor = allDoctors.getById(doctorId);
 		result.include("appointments", doctorSchedule.from(doctor).at(new Date()).build());
+	}
+	
+	@Get
+	@Path("/search")
+	public void _searchPatient(String term)
+	{
+		List<Patient> patients = allPatients.getAll();
+		
+		result.use(Results.json()).from(patients).include("name").serialize();  
 	}
 }
