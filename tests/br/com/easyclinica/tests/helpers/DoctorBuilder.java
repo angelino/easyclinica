@@ -1,5 +1,6 @@
 package br.com.easyclinica.tests.helpers;
 
+import br.com.easyclinica.domain.entities.Clinic;
 import br.com.easyclinica.domain.entities.Doctor;
 import br.com.easyclinica.domain.types.CRM;
 import br.com.easyclinica.domain.types.Email;
@@ -14,6 +15,7 @@ public class DoctorBuilder {
 	public DoctorBuilder() {
 		doctor = new Doctor(
 				0,
+				new ClinicBuilder().instance(),
 				new Name("Doutor"),
 				new CRM("55.555"),
 				new Specialty("pediatra"),
@@ -27,6 +29,7 @@ public class DoctorBuilder {
 	{
 		doctor = new Doctor(
 				doctor.getId(),
+				doctor.getClinic(),
 				new Name(name),
 				doctor.getCrm(),
 				doctor.getSpecialty(),
@@ -42,6 +45,7 @@ public class DoctorBuilder {
 	{
 		doctor = new Doctor(
 				doctor.getId(),
+				doctor.getClinic(),
 				doctor.getName(),
 				new CRM(crm),
 				doctor.getSpecialty(),
@@ -57,6 +61,23 @@ public class DoctorBuilder {
 	{
 		doctor = new Doctor(
 				id,
+				doctor.getClinic(),
+				doctor.getName(),
+				doctor.getCrm(),
+				doctor.getSpecialty(),
+				doctor.getTelephone(),
+				doctor.getEmail(),
+				doctor.getObservations()
+		);
+		
+		return this;
+	}
+	
+	public DoctorBuilder ofTheClinic(Clinic clinic)
+	{
+		doctor = new Doctor(
+				doctor.getId(),
+				clinic,
 				doctor.getName(),
 				doctor.getCrm(),
 				doctor.getSpecialty(),

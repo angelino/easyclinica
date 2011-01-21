@@ -2,8 +2,11 @@ package br.com.easyclinica.domain.entities;
 
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import br.com.easyclinica.domain.types.Active;
 import br.com.easyclinica.domain.types.CRM;
@@ -20,6 +23,9 @@ public class Doctor {
 	@GeneratedValue
 	private int id;
 	
+	@ManyToOne(fetch=FetchType.EAGER) @JoinColumn(name="clinic_fk")
+	private Clinic clinic;
+	
 	@Embedded private Name name;
 	@Embedded private CRM crm;
 	@Embedded private Specialty specialty;
@@ -30,8 +36,9 @@ public class Doctor {
 	
 	protected Doctor() { }
 	
-	public Doctor(Name name, CRM crm) 
+	public Doctor(Clinic clinic, Name name, CRM crm) 
 	{
+		this.clinic = clinic;
 		this.name = name;
 		this.crm = crm;
 		this.specialty = Specialty.empty();
@@ -41,10 +48,11 @@ public class Doctor {
 		this.active = Active.active();
 	}
 	
-	public Doctor(int id, Name name, CRM crm, Specialty specialty, Telephone telephone, 
+	public Doctor(int id, Clinic clinic, Name name, CRM crm, Specialty specialty, Telephone telephone, 
 			  Email email, Observations observations) 
 	{
 		this.id = id;
+		this.clinic = clinic;
 		this.name = name;
 		this.crm = crm;
 		this.specialty = specialty;
@@ -62,6 +70,14 @@ public class Doctor {
 		return id;
 	}
 	
+	public void setClinic(Clinic clinic) {
+		this.clinic = clinic;
+	}
+
+	public Clinic getClinic() {
+		return clinic;
+	}
+
 	public void setName(Name name) {
 		this.name = name;
 	}

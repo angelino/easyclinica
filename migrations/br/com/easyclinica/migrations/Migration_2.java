@@ -23,6 +23,7 @@ public class Migration_2 implements Migration {
 	public void up() {
 		createTable(table("doctor",
 				column("id", INTEGER, primarykey(), notnull(), autoincrement()),
+				column("clinic_fk", INTEGER, notnull()),
 				column("name", VARCHAR, length(50), notnull()),
 				column("crm", VARCHAR, length(50), notnull()),
 				column("specialty", VARCHAR, length(150)),

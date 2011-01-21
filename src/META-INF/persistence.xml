@@ -6,8 +6,8 @@
 
 		<properties>
 			<property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>
-			<property name="hibernate.connection.username" value="root"/>
-			<property name="hibernate.connection.password" value="root"/>
+			<property name="hibernate.connection.username" value="easyclinica"/>
+			<property name="hibernate.connection.password" value="3@sycl1n1c@"/>
 			<property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/easyclinica"/>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
 
@@ -19,8 +19,8 @@
 
 		<properties>
 			<property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>
-			<property name="hibernate.connection.username" value="root"/>
-			<property name="hibernate.connection.password" value="root"/>
+			<property name="hibernate.connection.username" value="easyclinica"/>
+			<property name="hibernate.connection.password" value="3@sycl1n1c@"/>
 			<property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/easyclinicatest"/>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
 

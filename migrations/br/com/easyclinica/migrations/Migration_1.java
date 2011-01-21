@@ -1,31 +1,34 @@
 package br.com.easyclinica.migrations;
 
+import static com.eroi.migrate.Define.autoincrement;
+import static com.eroi.migrate.Define.column;
+import static com.eroi.migrate.Define.defaultValue;
+import static com.eroi.migrate.Define.length;
+import static com.eroi.migrate.Define.notnull;
+import static com.eroi.migrate.Define.primarykey;
+import static com.eroi.migrate.Define.table;
+import static com.eroi.migrate.Define.DataTypes.BOOLEAN;
+import static com.eroi.migrate.Define.DataTypes.INTEGER;
+import static com.eroi.migrate.Define.DataTypes.VARCHAR;
+import static com.eroi.migrate.Execute.createTable;
+import static com.eroi.migrate.Execute.dropTable;
+
 import com.eroi.migrate.Migration;
-import static com.eroi.migrate.Define.*;
-import static com.eroi.migrate.Define.DataTypes.*;
-import static com.eroi.migrate.Execute.*; 
 
 public class Migration_1 implements Migration {
 
 	public void down() {
-		dropTable("healthcareplan");
+		dropTable("clinic");		
 	}
 
 	public void up() {
-		createTable(table("healthcareplan",
+		createTable(table("clinic",
 				column("id", INTEGER, primarykey(), notnull(), autoincrement()),
-				column("name", VARCHAR, length(50), notnull()),
-				column("street", VARCHAR, length(150)),
-				column("neighborhood", VARCHAR, length(100)),
-				column("postalCode", VARCHAR, length(12)),
-				column("city", VARCHAR, length(50)),
-				column("state", VARCHAR, length(2)),
-				column("telephone", VARCHAR, length(50)),
-				column("email", VARCHAR, length(100)),
-				column("website", VARCHAR, length(100)),
-				column("contact", VARCHAR, length(100)),
-				column("observations", com.eroi.migrate.Define.DataTypes.LONGVARCHAR)
+				column("name", VARCHAR, length(100), notnull()),
+				column("domain", VARCHAR, length(100), notnull()),
+				column("active", BOOLEAN, notnull(), defaultValue(1))
 		));
+		
 	}
 
 }

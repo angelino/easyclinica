@@ -1,7 +1,7 @@
 package br.com.easyclinica.tests.helpers;
 
+import br.com.easyclinica.domain.entities.Clinic;
 import br.com.easyclinica.domain.entities.HealthCarePlan;
-import br.com.easyclinica.domain.entities.ServicesTable;
 import br.com.easyclinica.domain.types.Email;
 import br.com.easyclinica.domain.types.Money;
 import br.com.easyclinica.domain.types.Name;
@@ -16,6 +16,7 @@ public class HealthCarePlanBuilder {
 	public HealthCarePlanBuilder() {
 		plan = new HealthCarePlan(
 				0,
+				new ClinicBuilder().instance(),
 				new Name("Amil"),
 				new AddressBuilder().instance(),
 				new Telephone("123"),
@@ -23,7 +24,6 @@ public class HealthCarePlanBuilder {
 				new Website("website.com"),
 				new Name("contact"),
 				new Observations("obs"),
-				new ServicesTable(new Name("table")),
 				new Money(20)
 		);
 	}
@@ -31,6 +31,7 @@ public class HealthCarePlanBuilder {
 	public HealthCarePlanBuilder withName(String name) {
 		plan = new HealthCarePlan(
 				plan.getId(),
+				plan.getClinic(),
 				new Name(name),
 				plan.getAddress(),
 				plan.getTelephone(),
@@ -38,7 +39,6 @@ public class HealthCarePlanBuilder {
 				plan.getWebsite(),
 				plan.getContact(),
 				plan.getObservations(),
-				plan.getTable(),
 				plan.getCh()
 		);
 		
@@ -48,6 +48,7 @@ public class HealthCarePlanBuilder {
 	public HealthCarePlanBuilder withCh(double ch) {
 		plan = new HealthCarePlan(
 				plan.getId(),
+				plan.getClinic(),
 				plan.getName(),
 				plan.getAddress(),
 				plan.getTelephone(),
@@ -55,7 +56,6 @@ public class HealthCarePlanBuilder {
 				plan.getWebsite(),
 				plan.getContact(),
 				plan.getObservations(),
-				plan.getTable(),
 				new Money(ch)
 		);
 		return this;
@@ -65,9 +65,10 @@ public class HealthCarePlanBuilder {
 		return plan;
 	}
 
-	public HealthCarePlanBuilder withTable(ServicesTable servicesTable) {
+	public HealthCarePlanBuilder withId(int id) {
 		plan = new HealthCarePlan(
-				plan.getId(),
+				id,
+				plan.getClinic(),
 				plan.getName(),
 				plan.getAddress(),
 				plan.getTelephone(),
@@ -75,15 +76,15 @@ public class HealthCarePlanBuilder {
 				plan.getWebsite(),
 				plan.getContact(),
 				plan.getObservations(),
-				servicesTable,
 				plan.getCh()
 		);
 		return this;
 	}
-
-	public HealthCarePlanBuilder withId(int id) {
+	
+	public HealthCarePlanBuilder ofTheClinic(Clinic clinic) {
 		plan = new HealthCarePlan(
-				id,
+				plan.getId(),
+				clinic,
 				plan.getName(),
 				plan.getAddress(),
 				plan.getTelephone(),
@@ -91,7 +92,6 @@ public class HealthCarePlanBuilder {
 				plan.getWebsite(),
 				plan.getContact(),
 				plan.getObservations(),
-				plan.getTable(),
 				plan.getCh()
 		);
 		return this;

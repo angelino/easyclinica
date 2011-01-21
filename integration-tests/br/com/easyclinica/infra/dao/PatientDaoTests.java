@@ -12,10 +12,10 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import br.com.easyclinica.domain.entities.Clinic;
 import br.com.easyclinica.domain.entities.HealthCarePlan;
 import br.com.easyclinica.domain.entities.Patient;
-import br.com.easyclinica.domain.entities.ServicesTable;
-import br.com.easyclinica.domain.types.Name;
+import br.com.easyclinica.tests.helpers.ClinicBuilder;
 import br.com.easyclinica.tests.helpers.HealthCarePlanBuilder;
 import br.com.easyclinica.tests.helpers.PatientBuilder;
 
@@ -23,6 +23,7 @@ public class PatientDaoTests {
 	private PatientDao dao;
 	private EntityManager em;
 	private HealthCarePlan plan;
+	private Clinic clinic;
 	
 	@Before
 	public void setUp() {
@@ -30,9 +31,11 @@ public class PatientDaoTests {
 		em.getTransaction().begin();
 		dao = new PatientDao(em);
 		
-		ServicesTable servicesTable = new ServicesTable(new Name("table"));
-		em.persist(servicesTable);
-		plan = new HealthCarePlanBuilder().withTable(servicesTable).instance();
+		ClinicDao clinicDao = new ClinicDao(em);
+		clinic = new ClinicBuilder().withName("EasyClinica").withDomain("easyclinica").instance();
+		clinicDao.add(clinic);
+		
+		plan = new HealthCarePlanBuilder().ofTheClinic(clinic).instance();
 		em.persist(plan);
 	}
 	
@@ -44,8 +47,8 @@ public class PatientDaoTests {
 
 	@Test
 	public void shouldCountElements() {
-		Patient firstPatient = new PatientBuilder().withHealthCarePlan(plan).instance();
-		Patient secondPatient = new PatientBuilder().withHealthCarePlan(plan).instance();
+		Patient firstPatient = new PatientBuilder().ofTheClinic(clinic).withHealthCarePlan(plan).instance();
+		Patient secondPatient = new PatientBuilder().ofTheClinic(clinic).withHealthCarePlan(plan).instance();
 		
 		dao.add(firstPatient);
 		dao.add(secondPatient);
@@ -55,8 +58,8 @@ public class PatientDaoTests {
 	
 	@Test
 	public void shouldPaginate() {
-		Patient firstPatient = new PatientBuilder().withName("a").withHealthCarePlan(plan).instance();
-		Patient secondPatient = new PatientBuilder().withName("b").withHealthCarePlan(plan).instance();
+		Patient firstPatient = new PatientBuilder().ofTheClinic(clinic).withName("a").withHealthCarePlan(plan).instance();
+		Patient secondPatient = new PatientBuilder().ofTheClinic(clinic).withName("b").withHealthCarePlan(plan).instance();
 		
 		dao.add(firstPatient);
 		dao.add(secondPatient);
@@ -66,13 +69,14 @@ public class PatientDaoTests {
 	
 	@Test
 	public void shouldAdd() {
-		Patient patient = new PatientBuilder().withHealthCarePlan(plan).instance();
+		Patient patient = new PatientBuilder().ofTheClinic(clinic).withHealthCarePlan(plan).instance();
 		dao.add(patient);
 		
 		List<Patient> list = dao.get(0, 1);
 		assertEquals(1, list.size());
 		
 		Patient newOne = list.get(0);
+		assertEquals(patient.getClinic().getName().toString(), newOne.getClinic().getName().toString());
 		assertEquals(patient.getName().toString(), newOne.getName().toString());
 		assertEquals(patient.getAddress().getStreet().toString(), newOne.getAddress().getStreet().toString());
 		assertEquals(patient.getAddress().getNeighborhood().toString(), newOne.getAddress().getNeighborhood().toString());
@@ -90,10 +94,11 @@ public class PatientDaoTests {
 
 	@Test
 	public void shouldUpdate() {
-		Patient patient = new PatientBuilder().withHealthCarePlan(plan).instance();
+		Patient patient = new PatientBuilder().ofTheClinic(clinic).withHealthCarePlan(plan).instance();
 		dao.add(patient);
 		
 		Patient updatedPatient = new PatientBuilder()
+			.ofTheClinic(clinic)
 			.withId(patient.getId())
 			.withName("new Patient")
 			.withHealthCarePlan(plan)
@@ -107,7 +112,7 @@ public class PatientDaoTests {
 	
 	@Test
 	public void shouldGetById() {
-		Patient patient = new PatientBuilder().withHealthCarePlan(plan).instance();
+		Patient patient = new PatientBuilder().ofTheClinic(clinic).withHealthCarePlan(plan).instance();
 		dao.add(patient);
 		
 		Patient retrievedPatient = dao.getById(patient.getId());

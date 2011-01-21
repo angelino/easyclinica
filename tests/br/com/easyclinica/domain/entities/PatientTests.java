@@ -10,6 +10,7 @@ import br.com.easyclinica.domain.types.Name;
 import br.com.easyclinica.domain.types.Observations;
 import br.com.easyclinica.domain.types.Telephone;
 import br.com.easyclinica.tests.helpers.AddressBuilder;
+import br.com.easyclinica.tests.helpers.ClinicBuilder;
 import br.com.easyclinica.tests.helpers.HealthCarePlanBuilder;
 
 public class PatientTests {
@@ -18,6 +19,7 @@ public class PatientTests {
 	public void shouldHaveCompleteInformation() {
 		Patient sickGuy = new Patient(
 				1,
+				new ClinicBuilder().withName("EasyClinica").instance(),
 				new Name("John Doe"),
 				new AddressBuilder().instance(),
 				new Telephone("1234"),
@@ -30,6 +32,7 @@ public class PatientTests {
 		
 		assertNotNull(sickGuy);
 		assertEquals(1, sickGuy.getId());
+		assertEquals(new Name("EasyClinica"), sickGuy.getClinic().getName());
 		assertEquals(new Name("John Doe"), sickGuy.getName());
 		assertEquals(new AddressBuilder().instance(), sickGuy.getAddress());
 		assertEquals(new Telephone("1234"), sickGuy.getTelephone());

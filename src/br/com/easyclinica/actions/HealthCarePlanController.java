@@ -11,7 +11,6 @@ import br.com.caelum.vraptor.Validator;
 import br.com.caelum.vraptor.view.Results;
 import br.com.easyclinica.domain.entities.HealthCarePlan;
 import br.com.easyclinica.domain.repositories.AllHealthCarePlans;
-import br.com.easyclinica.domain.repositories.AllServiceTables;
 import br.com.easyclinica.domain.validators.HealthCarePlanValidator;
 import br.com.easyclinica.infra.vraptor.validators.ErrorTranslator;
 import br.com.easyclinica.view.Messages;
@@ -24,15 +23,13 @@ public class HealthCarePlanController extends BaseController {
 	private final Validator validator;
 	private final HealthCarePlanValidator healthCarePlanValidator;
 	private final ErrorTranslator translator;
-	private final AllServiceTables allServiceTables;
 	private final Paginator paginator;
 
-	public HealthCarePlanController(AllHealthCarePlans allHealthCares, AllServiceTables allServiceTables,
+	public HealthCarePlanController(AllHealthCarePlans allHealthCares, 
 			Result result, Validator validator, HealthCarePlanValidator healthCarePlanValidator, 
 			ErrorTranslator translator, Paginator paginator) {
 		super(result);
 		this.allHealthCares = allHealthCares;
-		this.allServiceTables = allServiceTables;
 		this.result = result;
 		this.validator = validator;
 		this.healthCarePlanValidator = healthCarePlanValidator;
@@ -51,7 +48,6 @@ public class HealthCarePlanController extends BaseController {
 	@Path("/convenios/novo")
 	public void newForm() {
 		HealthCarePlan emptyPlan = HealthCarePlan.empty();
-		result.include("tables", allServiceTables.get());
 		include(emptyPlan);
 	}
 	
@@ -71,8 +67,6 @@ public class HealthCarePlanController extends BaseController {
 	@Path("/convenios/{id}/editar")
 	public void edit(int id) {
 		HealthCarePlan planToBeEdited = allHealthCares.getById(id);
-		
-		result.include("tables", allServiceTables.get());
 		include(planToBeEdited);
 	}
 

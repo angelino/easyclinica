@@ -147,28 +147,3 @@ function deletar_registros(main_selector) {
 		return false;
 	});
 }
-
-/* Método ajax para adicionar compromissos na agenda do médico */
-function salvar_compromisso_agenda(main_selector) {
-	$(main_selector).find("#salvar_compromisso").click(function(event) {
-		
-		var url = $(this).attr('url');
-		var dados = $('#frm_agendamento').serialize();
-		
-		$.ajax({
-			type: 'POST',
-			url: url,
-			data: dados,
-			cache: false,
-			success: function(data) {
-				$('#medical-appointments').html(data);
-			},
-			error: function(xhr, ajaxOptions, thrownError){
-                alert(xhr.status);
-                alert(thrownError);				
-			}
-		});
-		
-		return false;
-	});
-}

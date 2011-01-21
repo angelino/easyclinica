@@ -1,5 +1,6 @@
 package br.com.easyclinica.tests.helpers;
 
+import br.com.easyclinica.domain.entities.Clinic;
 import br.com.easyclinica.domain.entities.HealthCarePlan;
 import br.com.easyclinica.domain.entities.Patient;
 import br.com.easyclinica.domain.types.Email;
@@ -15,6 +16,7 @@ public class PatientBuilder {
 	public PatientBuilder() {
 		instance = new Patient(
 				0,
+				new ClinicBuilder().instance(),
 				new Name("John Doe"),
 				new AddressBuilder().instance(),
 				new Telephone("1234"),
@@ -33,6 +35,7 @@ public class PatientBuilder {
 	public PatientBuilder withHealthCarePlan(HealthCarePlan plan) {
 		instance = new Patient(
 				instance.getId(),
+				instance.getClinic(),
 				instance.getName(),
 				instance.getAddress(),
 				instance.getTelephone(),
@@ -49,6 +52,7 @@ public class PatientBuilder {
 	public PatientBuilder withName(String name) {
 		instance = new Patient(
 				instance.getId(),
+				instance.getClinic(),
 				new Name(name),
 				instance.getAddress(),
 				instance.getTelephone(),
@@ -65,6 +69,7 @@ public class PatientBuilder {
 	public PatientBuilder withTelephone(String phone) {
 		instance = new Patient(
 				instance.getId(),
+				instance.getClinic(),
 				instance.getName(),
 				instance.getAddress(),
 				new Telephone(phone),
@@ -81,6 +86,24 @@ public class PatientBuilder {
 	public PatientBuilder withId(int id) {
 		instance = new Patient(
 				id,
+				instance.getClinic(),
+				instance.getName(),
+				instance.getAddress(),
+				instance.getTelephone(),
+				instance.getCellphone(),
+				instance.getEmail(),
+				instance.getHealthCarePlan(),
+				instance.getHealthCareId(),
+				instance.getObservations()
+				); 
+		
+		return this;
+	}
+	
+	public PatientBuilder ofTheClinic(Clinic clinic) {
+		instance = new Patient(
+				instance.getId(),
+				clinic,
 				instance.getName(),
 				instance.getAddress(),
 				instance.getTelephone(),

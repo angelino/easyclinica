@@ -24,6 +24,8 @@ public class Patient {
 	private int id;
 	@Embedded private Name name;
 	@Embedded private Address address;
+	@ManyToOne(fetch=FetchType.EAGER) @JoinColumn(name="clinic_fk")
+	private Clinic clinic;	
 	@ManyToOne(fetch=FetchType.EAGER) @JoinColumn(name="healthcareplan_fk")
 	private HealthCarePlan healthCarePlan;
 	@Embedded private HealthCareId healthCareId;
@@ -34,9 +36,10 @@ public class Patient {
 	@Embedded private Email email;
 
 	protected Patient() {}
-	public Patient(int id, Name name, Address address, Telephone telephone, Telephone cellphone, Email email, HealthCarePlan healthCarePlan,
+	public Patient(int id, Clinic clinic, Name name, Address address, Telephone telephone, Telephone cellphone, Email email, HealthCarePlan healthCarePlan,
 			HealthCareId healthCareId, Observations observations) {
 		this.setId(id);
+		this.clinic = clinic;
 		this.name = name;
 		this.address = address;
 		this.telephone = telephone;
@@ -53,6 +56,14 @@ public class Patient {
 	public int getId() {
 		return id;
 	}
+	
+	public void setClinic(Clinic clinic) {
+		this.clinic = clinic;
+	}
+	public Clinic getClinic() {
+		return clinic;
+	}
+	
 	public Name getName() {
 		return name;
 	}
@@ -87,6 +98,7 @@ public class Patient {
 	public static Patient empty() {
 		return new Patient(
 				0,
+				new Clinic(),
 				Name.empty(),
 				Address.empty(),
 				Telephone.empty(),
