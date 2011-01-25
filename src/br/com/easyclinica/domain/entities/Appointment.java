@@ -1,5 +1,6 @@
 package br.com.easyclinica.domain.entities;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.List;
@@ -36,6 +37,10 @@ public class Appointment {
 	
 	@OneToMany private List<AppointmentProcedure> procedures;
 
+	public Appointment() {
+		procedures = new ArrayList<AppointmentProcedure>();
+	}
+	
 	public int getId() {
 		return id;
 	}
@@ -130,6 +135,10 @@ public class Appointment {
 
 	public List<AppointmentProcedure> getProcedures() {
 		return Collections.unmodifiableList(procedures);
+	}
+
+	public void addProcedure(AppointmentProcedure procedure) {
+		procedures.add(procedure);
 	}	
 	
 }

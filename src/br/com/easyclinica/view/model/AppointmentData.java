@@ -1,5 +1,6 @@
 package br.com.easyclinica.view.model;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -9,9 +10,22 @@ public class AppointmentData {
 	private int doctor;
 	private int healthCarePlan;
 	private int specialty;
+	private int patient;
 	private boolean isReturn;
 	
 	private List<ProcedureData> procedures;
+
+	public AppointmentData() {
+		procedures = new ArrayList<ProcedureData>();	
+	}
+	
+	public int getPatient() {
+		return patient;
+	}
+
+	public void setPatient(int patient) {
+		this.patient = patient;
+	}
 
 	public Calendar getDate() {
 		return date;

@@ -26,6 +26,10 @@ public class Procedure {
 	@ManyToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
 	private List<Medicine> medicine;
 	
+	public Procedure() {}
+	public Procedure(int id) {
+		this.id = id;
+	}
 	public int getId() {
 		return id;
 	}
