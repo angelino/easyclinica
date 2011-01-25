@@ -3,3 +3,4 @@ build
 target
 classes
 *.class
+.DS_Store

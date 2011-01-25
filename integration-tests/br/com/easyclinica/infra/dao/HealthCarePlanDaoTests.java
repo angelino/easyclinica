@@ -5,38 +5,18 @@ import static org.junit.Assert.assertNotNull;
 
 import java.util.List;
 
-import javax.persistence.EntityManager;
-import javax.persistence.Persistence;
-
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import br.com.easyclinica.domain.entities.Clinic;
 import br.com.easyclinica.domain.entities.HealthCarePlan;
-import br.com.easyclinica.tests.helpers.ClinicBuilder;
 import br.com.easyclinica.tests.helpers.HealthCarePlanBuilder;
 
-public class HealthCarePlanDaoTests {
+public class HealthCarePlanDaoTests extends BaseIntegrationTests {
 	private HealthCarePlanDao dao;
-	private EntityManager em;
-	private Clinic clinic;
 	
 	@Before
 	public void setUp() {
-		em = Persistence.createEntityManagerFactory("test").createEntityManager();
-		em.getTransaction().begin();
 		dao = new HealthCarePlanDao(em);
-		
-		ClinicDao clinicDao = new ClinicDao(em);
-		clinic = new ClinicBuilder().withName("EasyClinica").withDomain("easyclinica").instance();
-		clinicDao.add(clinic);
-	}
-	
-	@After
-	public void tearDown() {
-		em.getTransaction().rollback();
-		em.close();
 	}
 	
 	@Test
