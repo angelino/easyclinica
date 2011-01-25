@@ -12,18 +12,19 @@ public class AddressTests {
 
 	@Test
 	public void shouldHaveFullAddress() {
-		Address address = new Address(
-				new Street("street"), 
-				new Neighborhood("Vila ABC"), 
-				new PostalCode("123"), 
-				new City("Sao Paulo"), 
-				new State("SP"));
-		
-		assertEquals("street", address.getStreet().getStreet());
-		assertEquals("Vila ABC", address.getNeighborhood().getNeighborhood());
-		assertEquals("123", address.getPostalCode().getPostalCode());
-		assertEquals("Sao Paulo", address.getCity().getCity());
-		assertEquals("SP", address.getState().getState());
+		Address address = new AddressBuilder()
+								.withStreet("street")
+								.withNeighborhood("Vila ABC")
+								.withPostalCode("123")
+								.withCity("São Paulo")
+								.withState("SP")
+								.instance();
+				
+		assertEquals("street", address.getStreet());
+		assertEquals("Vila ABC", address.getNeighborhood());
+		assertEquals("123", address.getPostalCode());
+		assertEquals("Sao Paulo", address.getCity());
+		assertEquals("SP", address.getState());
 	}
 	
 	@Test
