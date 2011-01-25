@@ -26,6 +26,12 @@ public class Doctor {
 	private String observations;
 	private boolean active;
 	
+	public Doctor() { }
+	
+	public Doctor(int id) {
+		this.id = id;
+	}
+	
 	public static Doctor empty() {
 		return new Doctor();
 	}

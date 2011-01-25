@@ -2,90 +2,47 @@ package br.com.easyclinica.tests.helpers;
 
 import br.com.easyclinica.domain.entities.Clinic;
 import br.com.easyclinica.domain.entities.Doctor;
-import br.com.easyclinica.domain.types.CRM;
-import br.com.easyclinica.domain.types.Email;
-import br.com.easyclinica.domain.types.Name;
-import br.com.easyclinica.domain.types.Observations;
-import br.com.easyclinica.domain.types.Specialty;
-import br.com.easyclinica.domain.types.Telephone;
+import br.com.easyclinica.domain.entities.Specialty;
 
 public class DoctorBuilder {
 	private Doctor doctor;
 	
 	public DoctorBuilder() {
-		doctor = new Doctor(
-				0,
-				new ClinicBuilder().instance(),
-				new Name("Doutor"),
-				new CRM("55.555"),
-				new Specialty("pediatra"),
-				new Telephone("55 11 9999-9999"),
-				new Email("doutor@easyclinica.com.br"),
-				new Observations("")
-		);
+		this(0);
+	}
+	public DoctorBuilder(int id) {
+		doctor = new Doctor(id);
+		doctor.setName("Doutor");
+		doctor.setCrm("55.555");
+		doctor.setSpecialty(aSpecialty("pediatra"));
+		doctor.setClinic(new ClinicBuilder().instance());
+		doctor.setTelephone("55 11 9999-9999");
+		doctor.setEmail("doutor@easyclinica.com.br");
+		doctor.setObservations("");
+	}
+	
+	private Specialty aSpecialty(String name) {
+		Specialty specialty = new Specialty();
+		specialty.setName(name);
+		return specialty;
 	}
 	
 	public DoctorBuilder withName(String name)
 	{
-		doctor = new Doctor(
-				doctor.getId(),
-				doctor.getClinic(),
-				new Name(name),
-				doctor.getCrm(),
-				doctor.getSpecialty(),
-				doctor.getTelephone(),
-				doctor.getEmail(),
-				doctor.getObservations()
-		);
+		doctor.setName(name);
 		
 		return this;
 	}
 	
 	public DoctorBuilder withCrm(String crm)
 	{
-		doctor = new Doctor(
-				doctor.getId(),
-				doctor.getClinic(),
-				doctor.getName(),
-				new CRM(crm),
-				doctor.getSpecialty(),
-				doctor.getTelephone(),
-				doctor.getEmail(),
-				doctor.getObservations()
-		);
-		
-		return this;
-	}
-	
-	public DoctorBuilder withId(int id)
-	{
-		doctor = new Doctor(
-				id,
-				doctor.getClinic(),
-				doctor.getName(),
-				doctor.getCrm(),
-				doctor.getSpecialty(),
-				doctor.getTelephone(),
-				doctor.getEmail(),
-				doctor.getObservations()
-		);
-		
+		doctor.setCrm(crm);
 		return this;
 	}
 	
 	public DoctorBuilder ofTheClinic(Clinic clinic)
 	{
-		doctor = new Doctor(
-				doctor.getId(),
-				clinic,
-				doctor.getName(),
-				doctor.getCrm(),
-				doctor.getSpecialty(),
-				doctor.getTelephone(),
-				doctor.getEmail(),
-				doctor.getObservations()
-		);
-		
+		doctor.setClinic(clinic);
 		return this;
 	}
 	

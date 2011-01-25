@@ -41,8 +41,7 @@ public class DoctorDaoTests extends BaseIntegrationTests {
 		Doctor doctor = aDoctor();
 		dao.add(doctor);
 		
-		Doctor updatedDoctor = new DoctorBuilder()
-			.withId(doctor.getId())
+		Doctor updatedDoctor = new DoctorBuilder(doctor.getId())
 			.withName("new Doctor")
 			.ofTheClinic(clinic)
 			.instance();
