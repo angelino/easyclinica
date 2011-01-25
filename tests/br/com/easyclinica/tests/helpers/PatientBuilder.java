@@ -4,7 +4,6 @@ import br.com.easyclinica.domain.entities.Clinic;
 import br.com.easyclinica.domain.entities.HealthCarePlan;
 import br.com.easyclinica.domain.entities.Patient;
 import br.com.easyclinica.domain.types.Email;
-import br.com.easyclinica.domain.types.HealthCareId;
 import br.com.easyclinica.domain.types.Name;
 import br.com.easyclinica.domain.types.Observations;
 import br.com.easyclinica.domain.types.Telephone;
@@ -23,7 +22,6 @@ public class PatientBuilder {
 				new Telephone("4567"),
 				new Email("some@email.com"),
 				new HealthCarePlanBuilder().instance(),
-				new HealthCareId("123"),
 				new Observations("some obs")
 				); 
 	}
@@ -42,7 +40,6 @@ public class PatientBuilder {
 				instance.getCellphone(),
 				instance.getEmail(),
 				plan,
-				instance.getHealthCareId(),
 				instance.getObservations()
 				); 
 		
@@ -59,7 +56,6 @@ public class PatientBuilder {
 				instance.getCellphone(),
 				instance.getEmail(),
 				instance.getHealthCarePlan(),
-				instance.getHealthCareId(),
 				instance.getObservations()
 				); 
 		
@@ -76,7 +72,6 @@ public class PatientBuilder {
 				instance.getCellphone(),
 				instance.getEmail(),
 				instance.getHealthCarePlan(),
-				instance.getHealthCareId(),
 				instance.getObservations()
 				); 
 		
@@ -93,7 +88,6 @@ public class PatientBuilder {
 				instance.getCellphone(),
 				instance.getEmail(),
 				instance.getHealthCarePlan(),
-				instance.getHealthCareId(),
 				instance.getObservations()
 				); 
 		
@@ -110,7 +104,6 @@ public class PatientBuilder {
 				instance.getCellphone(),
 				instance.getEmail(),
 				instance.getHealthCarePlan(),
-				instance.getHealthCareId(),
 				instance.getObservations()
 				); 
 		

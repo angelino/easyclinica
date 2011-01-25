@@ -1,11 +1,11 @@
 package br.com.easyclinica.domain.entities;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 import org.junit.Test;
 
 import br.com.easyclinica.domain.types.Email;
-import br.com.easyclinica.domain.types.HealthCareId;
 import br.com.easyclinica.domain.types.Name;
 import br.com.easyclinica.domain.types.Observations;
 import br.com.easyclinica.domain.types.Telephone;
@@ -26,7 +26,6 @@ public class PatientTests {
 				new Telephone("4567"),
 				new Email("patient@sick.com"),
 				new HealthCarePlanBuilder().instance(),
-				new HealthCareId("123"),
 				new Observations("some obs")
 				); 
 		
@@ -39,7 +38,6 @@ public class PatientTests {
 		assertEquals(new Telephone("4567"), sickGuy.getCellphone());
 		assertEquals(new Email("patient@sick.com"), sickGuy.getEmail());
 		assertEquals(new HealthCarePlanBuilder().instance().getId(), sickGuy.getHealthCarePlan().getId());
-		assertEquals(new HealthCareId("123"), sickGuy.getHealthCareId());
 		assertEquals(new Observations("some obs"), sickGuy.getObservations());
 	}
 }

@@ -1,20 +1,11 @@
 package br.com.easyclinica.domain.entities;
 
-import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-
-import br.com.easyclinica.domain.types.Active;
-import br.com.easyclinica.domain.types.CRM;
-import br.com.easyclinica.domain.types.Email;
-import br.com.easyclinica.domain.types.Name;
-import br.com.easyclinica.domain.types.Observations;
-import br.com.easyclinica.domain.types.Specialty;
-import br.com.easyclinica.domain.types.Telephone;
 
 @Entity
 public class Doctor {
@@ -26,119 +17,90 @@ public class Doctor {
 	@ManyToOne(fetch=FetchType.EAGER) @JoinColumn(name="clinic_fk")
 	private Clinic clinic;
 	
-	@Embedded private Name name;
-	@Embedded private CRM crm;
-	@Embedded private Specialty specialty;
-	@Embedded private Telephone telephone;
-	@Embedded private Email email;
-	@Embedded private Observations observations;
-	@Embedded private Active active;
+	private String name;
+	private String crm;
+	@ManyToOne(fetch=FetchType.EAGER) @JoinColumn(name="specialty_fk")
+	private Specialty specialty;
+	private String telephone;
+	private String email;
+	private String observations;
+	private boolean active;
 	
-	protected Doctor() { }
-	
-	public Doctor(Clinic clinic, Name name, CRM crm) 
-	{
-		this.clinic = clinic;
-		this.name = name;
-		this.crm = crm;
-		this.specialty = Specialty.empty();
-		this.telephone = Telephone.empty();
-		this.email = Email.empty();
-		this.observations = Observations.empty();
-		this.active = Active.active();
+	public static Doctor empty() {
+		return new Doctor();
 	}
-	
-	public Doctor(int id, Clinic clinic, Name name, CRM crm, Specialty specialty, Telephone telephone, 
-			  Email email, Observations observations) 
-	{
-		this.id = id;
-		this.clinic = clinic;
-		this.name = name;
-		this.crm = crm;
-		this.specialty = specialty;
-		this.telephone = telephone;
-		this.email = email;
-		this.observations = observations;
-		this.active = Active.active();
-	}
-	
-	public void setId(int id) {
-		this.id = id;
-	}
-	
-	public int getId() {
-		return id;
-	}
-	
-	public void setClinic(Clinic clinic) {
-		this.clinic = clinic;
+
+	public void deactivate() {
+		this.active = false;
 	}
 
 	public Clinic getClinic() {
 		return clinic;
 	}
 
-	public void setName(Name name) {
-		this.name = name;
+	public void setClinic(Clinic clinic) {
+		this.clinic = clinic;
 	}
-	
-	public Name getName() {
+
+	public String getName() {
 		return name;
 	}
-	
-	public void setCrm(CRM crm) {
-		this.crm = crm;
+
+	public void setName(String name) {
+		this.name = name;
 	}
-	
-	public CRM getCrm() {
+
+	public String getCrm() {
 		return crm;
 	}
-	
-	public void setSpecialty(Specialty specialty) {
-		this.specialty = specialty;
+
+	public void setCrm(String crm) {
+		this.crm = crm;
 	}
 
 	public Specialty getSpecialty() {
 		return specialty;
 	}
 
-	public void setTelephone(Telephone telephone) {
-		this.telephone = telephone;
+	public void setSpecialty(Specialty specialty) {
+		this.specialty = specialty;
 	}
-	
-	public Telephone getTelephone() {
+
+	public String getTelephone() {
 		return telephone;
 	}
 
-	public void setEmail(Email email) {
-		this.email = email;
+	public void setTelephone(String telephone) {
+		this.telephone = telephone;
 	}
-	
-	public Email getEmail() {
+
+	public String getEmail() {
 		return email;
 	}
-	
-	public void setObservations(Observations observations) {
-		this.observations = observations;
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
-	
-	public Observations getObservations() {
+
+	public String getObservations() {
 		return observations;
 	}
 
-	public void setActive(Active active) {
-		this.active = active;
+	public void setObservations(String observations) {
+		this.observations = observations;
 	}
 
-	public Active getActive() {
+	public boolean isActive() {
 		return active;
 	}
 
-	public static Doctor empty() {
-		return new Doctor();
+	public void setActive(boolean active) {
+		this.active = active;
 	}
 
-	public void deactivate() {
-		this.active = Active.notActive();
+	public int getId() {
+		return id;
 	}
+	
+	
 }

@@ -1,7 +1,5 @@
 package br.com.easyclinica.domain.entities;
 
-import javax.persistence.AttributeOverride;
-import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -11,103 +9,95 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import br.com.easyclinica.domain.types.Address;
-import br.com.easyclinica.domain.types.Email;
-import br.com.easyclinica.domain.types.HealthCareId;
-import br.com.easyclinica.domain.types.Name;
-import br.com.easyclinica.domain.types.Observations;
-import br.com.easyclinica.domain.types.Telephone;
 
 @Entity
 public class Patient {
 
 	@Id @GeneratedValue
 	private int id;
-	@Embedded private Name name;
+	private String name;
 	@Embedded private Address address;
 	@ManyToOne(fetch=FetchType.EAGER) @JoinColumn(name="clinic_fk")
 	private Clinic clinic;	
 	@ManyToOne(fetch=FetchType.EAGER) @JoinColumn(name="healthcareplan_fk")
 	private HealthCarePlan healthCarePlan;
-	@Embedded private HealthCareId healthCareId;
-	@Embedded private Observations observations;
-	@Embedded @AttributeOverride(name="telephone", column = @Column(name="cellphone"))
-	private Telephone cellphone;
-	@Embedded private Telephone telephone;
-	@Embedded private Email email;
+	private String observations;
+	private String cellphone;
+	private String telephone;
+	private String email;
+	
+	public static Patient empty() {
+		return new Patient();
+	}
 
-	protected Patient() {}
-	public Patient(int id, Clinic clinic, Name name, Address address, Telephone telephone, Telephone cellphone, Email email, HealthCarePlan healthCarePlan,
-			HealthCareId healthCareId, Observations observations) {
-		this.setId(id);
-		this.clinic = clinic;
-		this.name = name;
-		this.address = address;
-		this.telephone = telephone;
-		this.cellphone = cellphone;
-		this.email = email;
-		this.healthCarePlan = healthCarePlan;
-		this.healthCareId = healthCareId;
-		this.observations = observations;
-	}
-	
-	public void setId(int id) {
-		this.id = id;
-	}
-	public int getId() {
-		return id;
-	}
-	
-	public void setClinic(Clinic clinic) {
-		this.clinic = clinic;
-	}
-	public Clinic getClinic() {
-		return clinic;
-	}
-	
-	public Name getName() {
+	public String getName() {
 		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public Address getAddress() {
 		return address;
 	}
 
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+
+	public Clinic getClinic() {
+		return clinic;
+	}
+
+	public void setClinic(Clinic clinic) {
+		this.clinic = clinic;
+	}
+
 	public HealthCarePlan getHealthCarePlan() {
 		return healthCarePlan;
 	}
 
-	public HealthCareId getHealthCareId() {
-		return healthCareId;
+	public void setHealthCarePlan(HealthCarePlan healthCarePlan) {
+		this.healthCarePlan = healthCarePlan;
 	}
 
-	public Observations getObservations() {
+	public String getObservations() {
 		return observations;
 	}
 
-	public Telephone getCellphone() {
+	public void setObservations(String observations) {
+		this.observations = observations;
+	}
+
+	public String getCellphone() {
 		return cellphone;
 	}
 
-	public Telephone getTelephone() {
+	public void setCellphone(String cellphone) {
+		this.cellphone = cellphone;
+	}
+
+	public String getTelephone() {
 		return telephone;
 	}
-	
-	public Email getEmail() {
+
+	public void setTelephone(String telephone) {
+		this.telephone = telephone;
+	}
+
+	public String getEmail() {
 		return email;
 	}
-	public static Patient empty() {
-		return new Patient(
-				0,
-				new Clinic(),
-				Name.empty(),
-				Address.empty(),
-				Telephone.empty(),
-				Telephone.empty(),
-				Email.empty(),
-				new HealthCarePlan(),
-				HealthCareId.empty(),
-				Observations.empty()
-		);
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
+
+	public int getId() {
+		return id;
+	}
+	
+	
 
 }

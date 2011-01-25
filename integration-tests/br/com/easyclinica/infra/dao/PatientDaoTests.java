@@ -66,7 +66,6 @@ public class PatientDaoTests extends BaseIntegrationTests {
 		assertEquals(patient.getTelephone().toString(), newOne.getTelephone().toString());
 		assertEquals(patient.getCellphone().toString(), newOne.getCellphone().toString());
 		assertEquals(patient.getEmail().toString(), newOne.getEmail().toString());
-		assertEquals(patient.getHealthCareId().toString(), newOne.getHealthCareId().toString());
 		assertEquals(patient.getObservations().toString(), newOne.getObservations().toString());
 		assertNotNull(newOne.getHealthCarePlan());
 		assertEquals(patient.getHealthCarePlan().getName().toString(),newOne.getHealthCarePlan().getName().toString());

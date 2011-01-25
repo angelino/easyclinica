@@ -1,7 +1,9 @@
 package br.com.easyclinica.domain.entities;
 
-import javax.persistence.AttributeOverride;
-import javax.persistence.Column;
+import java.util.Collections;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -9,15 +11,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
-import br.com.easyclinica.domain.types.Active;
 import br.com.easyclinica.domain.types.Address;
-import br.com.easyclinica.domain.types.Email;
-import br.com.easyclinica.domain.types.Money;
-import br.com.easyclinica.domain.types.Name;
-import br.com.easyclinica.domain.types.Observations;
-import br.com.easyclinica.domain.types.Telephone;
-import br.com.easyclinica.domain.types.Website;
 
 @Entity
 public class HealthCarePlan {
@@ -28,93 +24,127 @@ public class HealthCarePlan {
 	@ManyToOne(fetch=FetchType.EAGER) @JoinColumn(name="clinic_fk")
 	private Clinic clinic;
 	
-	@Embedded private Name name;
+	private String name;
 	@Embedded private Address address;
-	@Embedded private Telephone telephone;
-	@Embedded private Email email;
-	@Embedded private Website website;
-	@Embedded private Observations observations;
-	@Embedded @AttributeOverride(name="money", column = @Column(name="ch"))
-	private Money ch;
-	@Embedded @AttributeOverride(name="name", column = @Column(name="contact"))
-	private Name contact;
-	@Embedded private Active active;
+	private String telephone;
+	private String email;
+	private String website;
+	private String observations;
+	private double ch;
+	private String contact;
+	private boolean active;
 	
-	protected HealthCarePlan() {}
+	@OneToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL, orphanRemoval=true, mappedBy="healthCarePlan") 
+	private List<PrecifiedMaterial> precifiedMaterials;
+	@OneToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL, orphanRemoval=true, mappedBy="healthCarePlan")
+	private List<PrecifiedMedicine> precifiedMedicines;
+	@OneToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL, orphanRemoval=true, mappedBy="healthCarePlan")
+	private List<PrecifiedProcedure> precifiedProcedures;
+	
 
-	public HealthCarePlan(int id) {
-		this.id = id;
-	}
-	
-	public HealthCarePlan(int id, Clinic clinic, Name name, Address address, Telephone telephone,
-			Email email, Website website, Name contact,
-			Observations observations, Money ch) {
-		this.id = id;
-		this.clinic = clinic;
-		this.name = name;
-		this.address = address;
-		this.telephone = telephone;
-		this.email = email;
-		this.website = website;
-		this.contact = contact;
-		this.observations = observations;
-		this.ch = ch;
-		this.active = Active.active();
+	public static HealthCarePlan empty() {
+		return new HealthCarePlan();
 	}
 
-	public Name getName() {
-		return name;
+	public void deactivate() {
+		active = false;
 	}
-		
-	public int getId() {
-		return id;
+
+	
+	public Clinic getClinic() {
+		return clinic;
 	}
 
 	public void setClinic(Clinic clinic) {
 		this.clinic = clinic;
 	}
 
-	public Clinic getClinic() {
-		return clinic;
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public Address getAddress() {
 		return address;
 	}
 
-	public Telephone getTelephone() {
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+
+	public String getTelephone() {
 		return telephone;
 	}
 
-	public Email getEmail() {
+	public void setTelephone(String telephone) {
+		this.telephone = telephone;
+	}
+
+	public String getEmail() {
 		return email;
 	}
 
-	public Website getWebsite() {
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getWebsite() {
 		return website;
 	}
 
-	public Name getContact() {
-		return contact;
+	public void setWebsite(String website) {
+		this.website = website;
 	}
 
-	public Observations getObservations() {
+	public String getObservations() {
 		return observations;
 	}
-	
-	public Money getCh() {
+
+	public void setObservations(String observations) {
+		this.observations = observations;
+	}
+
+	public double getCh() {
 		return ch;
 	}
 
-	public Active getActive() {
-		return active;
-	}
-	public static HealthCarePlan empty() {
-		return new HealthCarePlan();
+	public void setCh(double ch) {
+		this.ch = ch;
 	}
 
-	public void deactivate() {
-		active = Active.notActive();
+	public String getContact() {
+		return contact;
+	}
+
+	public void setContact(String contact) {
+		this.contact = contact;
+	}
+
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public List<PrecifiedMaterial> getPrecifiedMaterials() {
+		return Collections.unmodifiableList(precifiedMaterials);
+	}
+
+	public List<PrecifiedMedicine> getPrecifiedMedicines() {
+		return Collections.unmodifiableList(precifiedMedicines);
+	}
+
+	public List<PrecifiedProcedure> getPrecifiedProcedures() {
+		return Collections.unmodifiableList(precifiedProcedures);
 	}
 
 }
