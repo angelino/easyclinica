@@ -26,7 +26,8 @@ public class Migration_3 implements Migration {
 				column("website", VARCHAR, length(100)),
 				column("contact", VARCHAR, length(100)),
 				column("ch", DOUBLE, notnull()),
-				column("observations", com.eroi.migrate.Define.DataTypes.LONGVARCHAR),
+				column("observations", LONGVARCHAR),
+				column("daysToComeBack", INTEGER, defaultValue(0)),
 				column("active", BOOLEAN, notnull(), defaultValue(1))
 		));
 	}
