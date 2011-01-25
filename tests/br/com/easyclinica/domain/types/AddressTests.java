@@ -16,7 +16,7 @@ public class AddressTests {
 								.withStreet("street")
 								.withNeighborhood("Vila ABC")
 								.withPostalCode("123")
-								.withCity("São Paulo")
+								.withCity("Sao Paulo")
 								.withState("SP")
 								.instance();
 				
