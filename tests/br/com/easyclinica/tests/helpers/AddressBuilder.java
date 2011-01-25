@@ -18,6 +18,7 @@ public class AddressBuilder {
 	public Address instance() {
 		return address;
 	}
+	
 	public AddressBuilder withStreet(String street) {
 		address.setStreet(street);
 		
