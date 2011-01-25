@@ -26,6 +26,11 @@ public class Patient {
 	private String telephone;
 	private String email;
 	
+	public Patient() {}
+	public Patient(int id) {
+		this.id = id;
+	}
+	
 	public static Patient empty() {
 		return new Patient();
 	}

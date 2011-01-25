@@ -3,27 +3,26 @@ package br.com.easyclinica.tests.helpers;
 import br.com.easyclinica.domain.entities.Clinic;
 import br.com.easyclinica.domain.entities.HealthCarePlan;
 import br.com.easyclinica.domain.entities.Patient;
-import br.com.easyclinica.domain.types.Email;
-import br.com.easyclinica.domain.types.Name;
-import br.com.easyclinica.domain.types.Observations;
-import br.com.easyclinica.domain.types.Telephone;
+import br.com.easyclinica.domain.types.Address;
 
 public class PatientBuilder {
 
 	private Patient instance;
 	
 	public PatientBuilder() {
-		instance = new Patient(
-				0,
-				new ClinicBuilder().instance(),
-				new Name("John Doe"),
-				new AddressBuilder().instance(),
-				new Telephone("1234"),
-				new Telephone("4567"),
-				new Email("some@email.com"),
-				new HealthCarePlanBuilder().instance(),
-				new Observations("some obs")
-				); 
+		this(0);
+	}
+	
+	public PatientBuilder(int id) {
+		instance = new Patient(id);
+		instance.setClinic(new ClinicBuilder().instance());
+		instance.setName("John Doe");
+		instance.setAddress(new AddressBuilder().instance());
+		instance.setTelephone("1234");
+		instance.setCellphone("1234");
+		instance.setEmail("some@email.com");
+		instance.setHealthCarePlan(new HealthCarePlanBuilder().instance());
+		instance.setObservations("some obs");
 	}
 	
 	public Patient instance() {
@@ -31,82 +30,43 @@ public class PatientBuilder {
 	}
 
 	public PatientBuilder withHealthCarePlan(HealthCarePlan plan) {
-		instance = new Patient(
-				instance.getId(),
-				instance.getClinic(),
-				instance.getName(),
-				instance.getAddress(),
-				instance.getTelephone(),
-				instance.getCellphone(),
-				instance.getEmail(),
-				plan,
-				instance.getObservations()
-				); 
+		instance.setHealthCarePlan(plan); 
 		
 		return this;
 	}
 
 	public PatientBuilder withName(String name) {
-		instance = new Patient(
-				instance.getId(),
-				instance.getClinic(),
-				new Name(name),
-				instance.getAddress(),
-				instance.getTelephone(),
-				instance.getCellphone(),
-				instance.getEmail(),
-				instance.getHealthCarePlan(),
-				instance.getObservations()
-				); 
-		
+		instance.setName(name);
 		return this;
 	}
 
 	public PatientBuilder withTelephone(String phone) {
-		instance = new Patient(
-				instance.getId(),
-				instance.getClinic(),
-				instance.getName(),
-				instance.getAddress(),
-				new Telephone(phone),
-				instance.getCellphone(),
-				instance.getEmail(),
-				instance.getHealthCarePlan(),
-				instance.getObservations()
-				); 
-		
+		instance.setTelephone(phone);
 		return this;
 	}
 
-	public PatientBuilder withId(int id) {
-		instance = new Patient(
-				id,
-				instance.getClinic(),
-				instance.getName(),
-				instance.getAddress(),
-				instance.getTelephone(),
-				instance.getCellphone(),
-				instance.getEmail(),
-				instance.getHealthCarePlan(),
-				instance.getObservations()
-				); 
-		
+	public PatientBuilder ofTheClinic(Clinic clinic) {
+		instance.setClinic(clinic);
 		return this;
 	}
-	
-	public PatientBuilder ofTheClinic(Clinic clinic) {
-		instance = new Patient(
-				instance.getId(),
-				clinic,
-				instance.getName(),
-				instance.getAddress(),
-				instance.getTelephone(),
-				instance.getCellphone(),
-				instance.getEmail(),
-				instance.getHealthCarePlan(),
-				instance.getObservations()
-				); 
-		
+
+	public PatientBuilder withAddress(Address address) {
+		instance.setAddress(address);
+		return this;
+	}
+
+	public PatientBuilder withCellphone(String cellphone) {
+		instance.setCellphone(cellphone);
+		return this;
+	}
+
+	public PatientBuilder withEmail(String email) {
+		instance.setEmail(email);
+		return this;
+	}
+
+	public PatientBuilder withObservations(String observations) {
+		instance.setObservations(observations);
 		return this;
 	}
 }

@@ -5,39 +5,35 @@ import static org.junit.Assert.assertNotNull;
 
 import org.junit.Test;
 
-import br.com.easyclinica.domain.types.Email;
-import br.com.easyclinica.domain.types.Name;
-import br.com.easyclinica.domain.types.Observations;
-import br.com.easyclinica.domain.types.Telephone;
 import br.com.easyclinica.tests.helpers.AddressBuilder;
 import br.com.easyclinica.tests.helpers.ClinicBuilder;
 import br.com.easyclinica.tests.helpers.HealthCarePlanBuilder;
+import br.com.easyclinica.tests.helpers.PatientBuilder;
 
 public class PatientTests {
 
 	@Test
 	public void shouldHaveCompleteInformation() {
-		Patient sickGuy = new Patient(
-				1,
-				new ClinicBuilder().withName("EasyClinica").instance(),
-				new Name("John Doe"),
-				new AddressBuilder().instance(),
-				new Telephone("1234"),
-				new Telephone("4567"),
-				new Email("patient@sick.com"),
-				new HealthCarePlanBuilder().instance(),
-				new Observations("some obs")
-				); 
+		Patient sickGuy = new PatientBuilder(1)
+			.ofTheClinic(new ClinicBuilder().withName("EasyClinica").instance())
+			.withName("John Doe")
+			.withAddress(new AddressBuilder().instance())
+			.withTelephone("1234")
+			.withCellphone("4567")
+			.withEmail("patient@sick.com")
+			.withHealthCarePlan(new HealthCarePlanBuilder().instance())
+			.withObservations("some obs")
+			.instance();
 		
 		assertNotNull(sickGuy);
 		assertEquals(1, sickGuy.getId());
-		assertEquals(new Name("EasyClinica"), sickGuy.getClinic().getName());
-		assertEquals(new Name("John Doe"), sickGuy.getName());
+		assertEquals("EasyClinica", sickGuy.getClinic().getName());
+		assertEquals("John Doe", sickGuy.getName());
 		assertEquals(new AddressBuilder().instance(), sickGuy.getAddress());
-		assertEquals(new Telephone("1234"), sickGuy.getTelephone());
-		assertEquals(new Telephone("4567"), sickGuy.getCellphone());
-		assertEquals(new Email("patient@sick.com"), sickGuy.getEmail());
+		assertEquals("1234", sickGuy.getTelephone());
+		assertEquals("4567", sickGuy.getCellphone());
+		assertEquals("patient@sick.com", sickGuy.getEmail());
 		assertEquals(new HealthCarePlanBuilder().instance().getId(), sickGuy.getHealthCarePlan().getId());
-		assertEquals(new Observations("some obs"), sickGuy.getObservations());
+		assertEquals("some obs", sickGuy.getObservations());
 	}
 }
