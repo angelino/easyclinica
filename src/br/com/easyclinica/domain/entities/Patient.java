@@ -5,7 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import br.com.easyclinica.domain.types.Address;
@@ -17,9 +16,9 @@ public class Patient {
 	private int id;
 	private String name;
 	@Embedded private Address address;
-	@ManyToOne(fetch=FetchType.EAGER) @JoinColumn(name="clinic_fk")
+	@ManyToOne(fetch=FetchType.EAGER)
 	private Clinic clinic;	
-	@ManyToOne(fetch=FetchType.EAGER) @JoinColumn(name="healthcareplan_fk")
+	@ManyToOne(fetch=FetchType.EAGER)
 	private HealthCarePlan healthCarePlan;
 	private String observations;
 	private String cellphone;

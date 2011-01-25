@@ -9,7 +9,6 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
@@ -21,7 +20,7 @@ public class HealthCarePlan {
 	@Id @GeneratedValue
 	private int id;
 	
-	@ManyToOne(fetch=FetchType.EAGER) @JoinColumn(name="clinic_fk")
+	@ManyToOne(fetch=FetchType.EAGER)
 	private Clinic clinic;
 	
 	private String name;

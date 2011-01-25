@@ -8,7 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
@@ -18,15 +17,15 @@ public class Appointment {
 	@Id @GeneratedValue
 	private int id;
 	
-	@ManyToOne(fetch=FetchType.LAZY) @JoinColumn(name="clinic_fk") 
+	@ManyToOne(fetch=FetchType.LAZY) 
 	private Clinic clinic;
-	@ManyToOne(fetch=FetchType.EAGER) @JoinColumn(name="healthcareplan_fk")
+	@ManyToOne(fetch=FetchType.EAGER)
 	private HealthCarePlan healthCarePlan;
-	@ManyToOne(fetch=FetchType.EAGER) @JoinColumn(name="doctor_fk")
+	@ManyToOne(fetch=FetchType.EAGER)
 	private Doctor doctor;
-	@ManyToOne(fetch=FetchType.EAGER) @JoinColumn(name="patient_fk")
+	@ManyToOne(fetch=FetchType.EAGER)
 	private Patient patient;
-	@ManyToOne(fetch=FetchType.EAGER) @JoinColumn(name="specialty_fk")
+	@ManyToOne(fetch=FetchType.EAGER)
 	private Specialty specialty;
 	private boolean isReturn;
 	private Calendar appointmentDate;

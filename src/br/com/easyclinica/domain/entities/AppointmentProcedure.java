@@ -8,7 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
@@ -17,9 +16,9 @@ public class AppointmentProcedure {
 
 	@Id @GeneratedValue
 	private int id;
-	@ManyToOne(fetch=FetchType.LAZY) @JoinColumn(name="appointment_fk") 
+	@ManyToOne(fetch=FetchType.LAZY) 
 	private Appointment appointment;
-	@ManyToOne(fetch=FetchType.LAZY) @JoinColumn(name="procedure_fk") 
+	@ManyToOne(fetch=FetchType.LAZY) 
 	private Procedure procedure;
 	private double amount;
 	private boolean isFixedAmount;

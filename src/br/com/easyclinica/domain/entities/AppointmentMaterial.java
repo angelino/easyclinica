@@ -4,7 +4,6 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -13,11 +12,11 @@ public class AppointmentMaterial {
 	@Id @GeneratedValue
 	private int id;
 	private double unitAmount;
-	@ManyToOne(fetch=FetchType.LAZY) @JoinColumn(name="appointmentProcedure_fk") 
+	@ManyToOne(fetch=FetchType.LAZY) 
 	private AppointmentProcedure procedure;
 	private double totalAmount;
 	private float qty;
-	@ManyToOne(fetch=FetchType.LAZY) @JoinColumn(name="material_fk")
+	@ManyToOne(fetch=FetchType.LAZY)
 	private Material material;
 	
 	public int getId() {

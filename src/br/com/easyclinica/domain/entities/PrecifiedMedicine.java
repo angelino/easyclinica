@@ -4,7 +4,6 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -12,9 +11,9 @@ public class PrecifiedMedicine {
 
 	@Id @GeneratedValue
 	private int id;
-	@ManyToOne(fetch=FetchType.LAZY) @JoinColumn(name="healthcareplan_fk") 
+	@ManyToOne(fetch=FetchType.LAZY) 
 	private HealthCarePlan healthCarePlan;
-	@ManyToOne(fetch=FetchType.LAZY) @JoinColumn(name="medicine_fk")
+	@ManyToOne(fetch=FetchType.LAZY)
 	private Medicine medicine;
 	private double amount;
 	
