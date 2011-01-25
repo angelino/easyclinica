@@ -13,6 +13,16 @@ public class Clinic {
 	private String name;
 	private String domain;
 	private boolean active;
+	
+	public Clinic() {
+		
+	}
+	
+	public Clinic(int id)
+	{
+		this.id = id;
+	}
+	
 	public String getName() {
 		return name;
 	}
