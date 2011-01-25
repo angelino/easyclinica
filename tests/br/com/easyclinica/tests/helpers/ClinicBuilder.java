@@ -1,50 +1,29 @@
 package br.com.easyclinica.tests.helpers;
 
 import br.com.easyclinica.domain.entities.Clinic;
-import br.com.easyclinica.domain.types.Domain;
-import br.com.easyclinica.domain.types.Name;
 
 public class ClinicBuilder {
 
 	private Clinic clinic;
 	
 	public ClinicBuilder() {
-		clinic = new Clinic(
-				0,
-				new Name("EasyClinica"),
-				new Domain("easyclinica")
-		);
+		clinic = new Clinic();
+	}
+	
+	public ClinicBuilder(int id) {
+		clinic = new Clinic(id);
 	}
 	
 	public ClinicBuilder withName(String name)
 	{
-		clinic = new Clinic(
-				clinic.getId(),
-				new Name(name),
-				clinic.getDomain()
-		);
+		clinic.setName(name);
 		
 		return this;
 	}
 	
 	public ClinicBuilder withDomain(String domain)
 	{
-		clinic = new Clinic(
-				clinic.getId(),
-				clinic.getName(),
-				new Domain(domain)
-		);
-		
-		return this;
-	}
-	
-	public ClinicBuilder withId(int id)
-	{
-		clinic = new Clinic(
-				id,
-				clinic.getName(),
-				clinic.getDomain()
-		);
+		clinic.setDomain(domain);
 		
 		return this;
 	}
