@@ -28,10 +28,15 @@ public class Procedure {
 	private List<Medicine> medicine;
 	
 	public Procedure() {
+		this(0);
+	}
+	
+	public Procedure(int id) {
+		this.id = id;
 		this.materials = new LinkedList<Material>();
 		this.medicine = new LinkedList<Medicine>();
 	}
-	
+
 	public int getId() {
 		return id;
 	}
