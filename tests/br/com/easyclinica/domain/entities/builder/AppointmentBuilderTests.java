@@ -13,7 +13,6 @@ import br.com.easyclinica.domain.entities.Appointment;
 import br.com.easyclinica.domain.entities.Doctor;
 import br.com.easyclinica.domain.entities.HealthCarePlan;
 import br.com.easyclinica.domain.entities.Patient;
-import br.com.easyclinica.domain.entities.Procedure;
 import br.com.easyclinica.domain.entities.Specialty;
 import br.com.easyclinica.domain.repositories.AllDoctors;
 import br.com.easyclinica.domain.repositories.AllHealthCarePlans;
@@ -108,10 +107,8 @@ public class AppointmentBuilderTests {
 		secondProcedureData.setId(456);
 		data.getProcedures().add(secondProcedureData);
 		
-		Procedure firstProcedure = new ProcedureBuilder(123).instance();
-		Procedure secondProcedure = new ProcedureBuilder(456).instance();
-		when(allProcedures.getById(firstProcedure.getId())).thenReturn(firstProcedure);
-		when(allProcedures.getById(secondProcedure.getId())).thenReturn(secondProcedure);
+		when(allProcedures.getById(123)).thenReturn(new ProcedureBuilder(123).instance());
+		when(allProcedures.getById(456)).thenReturn(new ProcedureBuilder(456).instance());
 		
 		Appointment a = builder.basedOn(data);
 		assertEquals(123, a.getProcedures().get(0).getProcedure().getId());
