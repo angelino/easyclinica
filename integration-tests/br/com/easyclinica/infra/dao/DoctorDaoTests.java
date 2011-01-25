@@ -9,14 +9,20 @@ import org.junit.Before;
 import org.junit.Test;
 
 import br.com.easyclinica.domain.entities.Doctor;
+import br.com.easyclinica.domain.entities.Specialty;
 import br.com.easyclinica.tests.helpers.DoctorBuilder;
 
 public class DoctorDaoTests extends BaseIntegrationTests {
 	private DoctorDao dao;
+	private Specialty specialty;
 	
 	@Before
 	public void setUp() {
 		dao = new DoctorDao(em);
+		
+		specialty = new Specialty();
+		specialty.setName("pediatra");
+		em.persist(specialty);
 	}
 		
 	@Test
@@ -30,7 +36,7 @@ public class DoctorDaoTests extends BaseIntegrationTests {
 		assertEquals("EasyClinica", newOne.getClinic().getName().toString());
 		assertEquals("Doutor", newOne.getName().toString());
 		assertEquals("55.555", newOne.getCrm().toString());
-		assertEquals("pediatra", newOne.getSpecialty().toString());
+		assertEquals("pediatra", newOne.getSpecialty().getName());
 		assertEquals("55 11 9999-9999", newOne.getTelephone().toString());
 		assertEquals("doutor@easyclinica.com.br", newOne.getEmail().toString());
 		assertEquals("", newOne.getObservations().toString());
@@ -44,6 +50,7 @@ public class DoctorDaoTests extends BaseIntegrationTests {
 		Doctor updatedDoctor = new DoctorBuilder(doctor.getId())
 			.withName("new Doctor")
 			.ofTheClinic(clinic)
+			.withSpecialty(specialty)
 			.instance();
 		dao.update(updatedDoctor);
 		
@@ -64,13 +71,13 @@ public class DoctorDaoTests extends BaseIntegrationTests {
 	}
 	
 	private Doctor aDoctor() {
-		return new DoctorBuilder().ofTheClinic(clinic).instance();
+		return new DoctorBuilder().ofTheClinic(clinic).withSpecialty(specialty).instance();
 	}
 	
 	@Test
 	public void shouldCountElements() {
-		Doctor firstDoctor = new DoctorBuilder().ofTheClinic(clinic).instance();
-		Doctor secondDoctor = new DoctorBuilder().ofTheClinic(clinic).instance();
+		Doctor firstDoctor = new DoctorBuilder().ofTheClinic(clinic).withSpecialty(specialty).instance();
+		Doctor secondDoctor = new DoctorBuilder().ofTheClinic(clinic).withSpecialty(specialty).instance();
 		
 		dao.add(firstDoctor);
 		dao.add(secondDoctor);
@@ -80,8 +87,17 @@ public class DoctorDaoTests extends BaseIntegrationTests {
 	
 	@Test
 	public void shouldPaginate() {
-		Doctor firstDoctor = new DoctorBuilder().ofTheClinic(clinic).withName("Doutor 1").instance();
-		Doctor secondDoctor = new DoctorBuilder().ofTheClinic(clinic).withName("Doutor 2").instance();
+		Doctor firstDoctor = new DoctorBuilder()
+								.ofTheClinic(clinic)
+								.withSpecialty(specialty)
+								.withName("Doutor 1")
+								.instance();
+		
+		Doctor secondDoctor = new DoctorBuilder()
+								.ofTheClinic(clinic)
+								.withSpecialty(specialty)
+								.withName("Doutor 2")
+								.instance();
 		
 		dao.add(firstDoctor);
 		dao.add(secondDoctor);

@@ -49,4 +49,8 @@ public class DoctorBuilder {
 	public Doctor instance() {
 		return doctor;
 	}
+	public DoctorBuilder withSpecialty(Specialty specialty) {
+		doctor.setSpecialty(specialty);
+		return this;
+	}
 }

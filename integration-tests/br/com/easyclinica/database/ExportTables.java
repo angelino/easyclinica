@@ -2,6 +2,7 @@ package br.com.easyclinica.database;
 
 import org.hibernate.cfg.AnnotationConfiguration;
 import org.hibernate.tool.hbm2ddl.SchemaExport;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import br.com.easyclinica.domain.entities.Appointment;
@@ -23,7 +24,7 @@ import br.com.easyclinica.domain.entities.Specialty;
 
 public class ExportTables {
 
-	@Test
+	@Test @Ignore
 	public void exportDatabase() {
 		AnnotationConfiguration cfg = new AnnotationConfiguration();
 		cfg.addAnnotatedClass(Appointment.class);
@@ -44,7 +45,7 @@ public class ExportTables {
 		cfg.setProperty("hibernate.connection.driver_class", "com.mysql.jdbc.Driver");
 		cfg.setProperty("hibernate.connection.username", "easyclinica");
 		cfg.setProperty("hibernate.connection.password", "3@sycl1n1c@");
-		cfg.setProperty("hibernate.connection.url", "jdbc:mysql://localhost:3306/easyclinicatest");
+		cfg.setProperty("hibernate.connection.url", "jdbc:mysql://localhost:3306/easyclinica");
 		cfg.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
 		
 		
