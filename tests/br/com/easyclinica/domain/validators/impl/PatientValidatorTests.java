@@ -23,7 +23,7 @@ public class PatientValidatorTests {
 	public void setUp() {
 		validator = new DefaultPatientValidator();
 		
-		plan = new HealthCarePlanBuilder().withId(123).instance();
+		plan = new HealthCarePlanBuilder(123).instance();
 	}
 	
 	@Test
@@ -55,7 +55,7 @@ public class PatientValidatorTests {
 	@Test
 	public void shouldReturnErrorIfHealthCareIsNotPresent() {
 		Patient patient = new PatientBuilder()
-			.withHealthCarePlan(new HealthCarePlanBuilder().withId(0).instance()).instance();
+			.withHealthCarePlan(new HealthCarePlanBuilder(0).instance()).instance();
 		
 		List<Error> errors = validator.validate(patient);		
 		assertEquals(1, errors.size());
