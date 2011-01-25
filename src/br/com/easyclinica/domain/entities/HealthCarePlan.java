@@ -41,6 +41,10 @@ public class HealthCarePlan {
 	@OneToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL, orphanRemoval=true, mappedBy="healthCarePlan")
 	private List<PrecifiedProcedure> precifiedProcedures;
 	
+	public HealthCarePlan() {}
+	public HealthCarePlan(int id) {
+		this.id = id;
+	}
 
 	public static HealthCarePlan empty() {
 		return new HealthCarePlan();

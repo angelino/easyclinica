@@ -76,9 +76,8 @@ public class PatientDaoTests extends BaseIntegrationTests {
 		Patient patient = new PatientBuilder().ofTheClinic(clinic).withHealthCarePlan(plan).instance();
 		dao.add(patient);
 		
-		Patient updatedPatient = new PatientBuilder()
+		Patient updatedPatient = new PatientBuilder(patient.getId())
 			.ofTheClinic(clinic)
-			.withId(patient.getId())
 			.withName("new Patient")
 			.withHealthCarePlan(plan)
 			.instance();

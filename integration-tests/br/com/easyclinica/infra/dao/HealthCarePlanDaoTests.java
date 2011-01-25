@@ -28,20 +28,20 @@ public class HealthCarePlanDaoTests extends BaseIntegrationTests {
 		assertEquals(1, list.size());
 		
 		HealthCarePlan newOne = list.get(0);
-		assertEquals(plan.getClinic().getName().toString(), newOne.getClinic().getName().toString());
-		assertEquals(plan.getName().toString(), newOne.getName().toString());
-		assertEquals(plan.getAddress().getStreet().toString(), newOne.getAddress().getStreet().toString());
-		assertEquals(plan.getAddress().getNeighborhood().toString(), newOne.getAddress().getNeighborhood().toString());
-		assertEquals(plan.getAddress().getPostalCode().toString(), newOne.getAddress().getPostalCode().toString());
-		assertEquals(plan.getAddress().getCity().toString(), newOne.getAddress().getCity().toString());
-		assertEquals(plan.getAddress().getState().toString(), newOne.getAddress().getState().toString());
-		assertEquals(plan.getTelephone().toString(), newOne.getTelephone().toString());
-		assertEquals(plan.getEmail().toString(), newOne.getEmail().toString());
-		assertEquals(plan.getWebsite().toString(), newOne.getWebsite().toString());
-		assertEquals(plan.getContact().toString(), newOne.getContact().toString());
-		assertEquals(plan.getObservations().toString(), newOne.getObservations().toString());
-		assertEquals(plan.getCh().getMoney(), newOne.getCh().getMoney(), 0.001);
-		assertEquals(plan.getActive().isActive(), newOne.getActive().isActive());
+		assertEquals(plan.getClinic().getName(), newOne.getClinic().getName());
+		assertEquals(plan.getName(), newOne.getName());
+		assertEquals(plan.getAddress().getStreet(), newOne.getAddress().getStreet());
+		assertEquals(plan.getAddress().getNeighborhood(), newOne.getAddress().getNeighborhood());
+		assertEquals(plan.getAddress().getPostalCode(), newOne.getAddress().getPostalCode());
+		assertEquals(plan.getAddress().getCity(), newOne.getAddress().getCity());
+		assertEquals(plan.getAddress().getState(), newOne.getAddress().getState());
+		assertEquals(plan.getTelephone(), newOne.getTelephone());
+		assertEquals(plan.getEmail(), newOne.getEmail());
+		assertEquals(plan.getWebsite(), newOne.getWebsite());
+		assertEquals(plan.getContact(), newOne.getContact());
+		assertEquals(plan.getObservations(), newOne.getObservations());
+		assertEquals(plan.getCh(), newOne.getCh(), 0.001);
+		assertEquals(plan.isActive(), newOne.isActive());
 	}
 
 	@Test
@@ -49,8 +49,7 @@ public class HealthCarePlanDaoTests extends BaseIntegrationTests {
 		HealthCarePlan plan = new HealthCarePlanBuilder().ofTheClinic(clinic).instance();
 		dao.add(plan);
 		
-		HealthCarePlan updatedPlan = new HealthCarePlanBuilder()
-			.withId(plan.getId())
+		HealthCarePlan updatedPlan = new HealthCarePlanBuilder(plan.getId())
 			.withName("new Amil")
 			.ofTheClinic(clinic)
 			.instance();
@@ -58,7 +57,7 @@ public class HealthCarePlanDaoTests extends BaseIntegrationTests {
 		
 		HealthCarePlan secondRetrievedPlan = dao.getById(plan.getId());
 		assertNotNull(secondRetrievedPlan);
-		assertEquals("new Amil", secondRetrievedPlan.getName().toString());
+		assertEquals("new Amil", secondRetrievedPlan.getName());
 	}
 	
 	@Test
@@ -91,6 +90,6 @@ public class HealthCarePlanDaoTests extends BaseIntegrationTests {
 		dao.add(firstPlan);
 		dao.add(secondPlan);
 		
-		assertEquals(firstPlan.getName().toString(), dao.get(0, 1).get(0).getName().toString());
+		assertEquals(firstPlan.getName(), dao.get(0, 1).get(0).getName());
 	}
 }
