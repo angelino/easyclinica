@@ -24,18 +24,11 @@
 	
 	<input type="hidden" name="patient" value="123" />
 	
-	Procedimento: <input type="text" name="procedure" />
+	Procedimento: <input type="text"  id="txt_search_procedure"/> <input type="button" value="ok" id="btn_search_procedure"/>
 	
-	<table>
-		<tr>
-			<td>Código</td>
-			<td>Procedimento</td>
-			<td>Preço Unitário</td>
-			<td>Preço Total</td>
-			<td>Ações</td>
-		</tr>
-		
-	</table>
+	<div id="procedures">
+	
+	</div>
 	
 	Observações:
 	<textarea name="observations">

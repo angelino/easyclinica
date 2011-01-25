@@ -1,6 +1,7 @@
 package br.com.easyclinica.domain.entities;
 
 import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -25,6 +26,11 @@ public class Procedure {
 	private List<Material> materials;
 	@ManyToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
 	private List<Medicine> medicine;
+	
+	public Procedure() {
+		this.materials = new LinkedList<Material>();
+		this.medicine = new LinkedList<Medicine>();
+	}
 	
 	public int getId() {
 		return id;
@@ -58,6 +64,14 @@ public class Procedure {
 	}
 	public List<Medicine> getMedicine() {
 		return Collections.unmodifiableList(medicine);
+	}
+	
+	public void addMaterial(Material material){
+		this.materials.add(material);
+	}
+	
+	public void addMedicine(Medicine medicine){
+		this.medicine.add(medicine);
 	}
 	
 }
