@@ -11,6 +11,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 public class Appointment {
@@ -27,7 +29,9 @@ public class Appointment {
 	@ManyToOne(fetch=FetchType.EAGER)
 	private Specialty specialty;
 	private boolean isReturn;
+	@Temporal(TemporalType.DATE)
 	private Calendar appointmentDate;
+	@Temporal(TemporalType.TIMESTAMP)
 	private Calendar date;
 	private double appointmentAmount;
 	private double procedureAmount;

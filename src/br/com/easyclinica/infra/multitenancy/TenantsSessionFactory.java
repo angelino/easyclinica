@@ -12,6 +12,7 @@ import br.com.easyclinica.domain.entities.AppointmentMedicine;
 import br.com.easyclinica.domain.entities.AppointmentProcedure;
 import br.com.easyclinica.domain.entities.Clinic;
 import br.com.easyclinica.domain.entities.Doctor;
+import br.com.easyclinica.domain.entities.Employee;
 import br.com.easyclinica.domain.entities.HealthCarePlan;
 import br.com.easyclinica.domain.entities.Material;
 import br.com.easyclinica.domain.entities.Medicine;
@@ -48,7 +49,7 @@ public class TenantsSessionFactory implements ComponentFactory<Session> {
 		// TODO: pegar url do banco de algum arquivo de config
 		Configuration configuration = new Configuration();
 		configuration.setProperty("hibernate.connection.driver_class", "com.mysql.jdbc.Driver");
-		configuration.setProperty("hibernate.connection.url", "jdbc:mysql://localhost:3306/" + tenant.getUser());
+		configuration.setProperty("hibernate.connection.url", "jdbc:mysql://localhost:3306/" + tenant.getDomain());
 		configuration.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
 		configuration.setProperty("hibernate.connection.username", "easyclinica");
 		configuration.setProperty("hibernate.connection.password", "3@sycl1n1c@");
@@ -71,6 +72,7 @@ public class TenantsSessionFactory implements ComponentFactory<Session> {
 		configuration.addAnnotatedClass(PrecifiedProcedure.class);
 		configuration.addAnnotatedClass(Procedure.class);
 		configuration.addAnnotatedClass(Specialty.class);
+		configuration.addAnnotatedClass(Employee.class);
 		
 		// TODO: Colocar c3p0
 //			hibernate.c3p0.min_size=5
