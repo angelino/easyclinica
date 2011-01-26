@@ -1,7 +1,7 @@
 package br.com.easyclinica.infra.dao;
 
-import javax.persistence.EntityManager;
-import javax.persistence.Query;
+import org.hibernate.Query;
+import org.hibernate.Session;
 
 import br.com.caelum.vraptor.ioc.Component;
 import br.com.easyclinica.domain.entities.HealthCarePlan;
@@ -12,10 +12,10 @@ import br.com.easyclinica.domain.repositories.PrecifiedThings;
 @Component
 public class PrecifiedThingsDao implements PrecifiedThings {
 
-	private final EntityManager em;
+	private final Session session;
 
-	public PrecifiedThingsDao(EntityManager em) {
-		this.em = em;
+	public PrecifiedThingsDao(Session session) {
+		this.session = session;
 	}
 	
 	public PrecifiedProcedure getPrice(Procedure procedure, HealthCarePlan healthCarePlan) {
@@ -26,10 +26,10 @@ public class PrecifiedThingsDao implements PrecifiedThings {
 		sql.append(" where h.id = :healthCarePlanId ");
 		sql.append(" and proc.id = :procedureId ");
 		
-		Query query = em.createQuery(sql.toString())
+		Query query = session.createQuery(sql.toString())
 						.setParameter("healthCarePlan", healthCarePlan.getId())
 						.setParameter("procedureId", procedure.getId());
-		return (PrecifiedProcedure) query.getSingleResult();
+		return (PrecifiedProcedure) query.uniqueResult();
 	}
 
 }

@@ -2,8 +2,8 @@ package br.com.easyclinica.infra.dao;
 
 import java.util.List;
 
-import javax.persistence.EntityManager;
-import javax.persistence.Query;
+import org.hibernate.Query;
+import org.hibernate.Session;
 
 import br.com.caelum.vraptor.ioc.Component;
 import br.com.easyclinica.domain.entities.HealthCarePlan;
@@ -12,40 +12,40 @@ import br.com.easyclinica.domain.repositories.AllHealthCarePlans;
 @Component
 public class HealthCarePlanDao implements AllHealthCarePlans {
 
-	private final EntityManager em;
+	private final Session session;
 
-	public HealthCarePlanDao(EntityManager em) {
-		this.em = em;
+	public HealthCarePlanDao(Session session) {
+		this.session = session;
 	}
 	
 	public void add(HealthCarePlan healthCare) {
-		em.persist(healthCare);
+		session.save(healthCare);
 	}
 	
 	@SuppressWarnings("unchecked")
 	public List<HealthCarePlan> get() {
-		return (List<HealthCarePlan>)em.createQuery("from HealthCarePlan hc order by name").getResultList();
+		return (List<HealthCarePlan>)session.createQuery("from HealthCarePlan hc order by name").list();
 	}
 
 	public HealthCarePlan getById(int id) {
-		return (HealthCarePlan)em.find(HealthCarePlan.class, id);
+		return (HealthCarePlan)session.load(HealthCarePlan.class, id);
 	}
 
 	public void update(HealthCarePlan plan) {
-		em.merge(plan);
+		session.merge(plan);
 	}
 
 	@SuppressWarnings("unchecked")
 	public List<HealthCarePlan> get(int firstResult, int maxResults) {
-		Query query = em.createQuery("from HealthCarePlan hc order by name");
+		Query query = session.createQuery("from HealthCarePlan hc order by name");
 		query.setFirstResult(firstResult);
 		query.setMaxResults(maxResults);
 		
-		return query.getResultList();
+		return query.list();
 	}
 
 	public int count() {
-		Query query = em.createQuery("select count(*) from HealthCarePlan");
-		return ((Long) query.getSingleResult()).intValue();
+		Query query = session.createQuery("select count(*) from HealthCarePlan");
+		return ((Long) query.uniqueResult()).intValue();
 	}
 }

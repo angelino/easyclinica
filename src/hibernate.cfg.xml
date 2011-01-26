@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+"-//Hibernate/Hibernate Configuration DTD//EN"
+"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+		
+<hibernate-configuration>
+	<session-factory>
+		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/easyclinica</property>
+		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+
+		<property name="hibernate.connection.username">easyclinica</property>
+		<property name="hibernate.connection.password">3@sycl1n1c@</property>
+
+		<property name="hibernate.hbm2ddl.auto">true</property>
+		<property name="hibernate.show_sql">true</property>
+		<property name="hibernate.format_sql">true</property>
+
+		<mapping class="br.com.easyclinica.domain.entities.Appointment" />
+		<mapping class="br.com.easyclinica.domain.entities.AppointmentMaterial" />
+		<mapping class="br.com.easyclinica.domain.entities.AppointmentMedicine" />
+		<mapping class="br.com.easyclinica.domain.entities.AppointmentProcedure" />
+		<mapping class="br.com.easyclinica.domain.entities.Clinic" />
+		<mapping class="br.com.easyclinica.domain.entities.Doctor" />
+		<mapping class="br.com.easyclinica.domain.entities.HealthCarePlan" />
+		<mapping class="br.com.easyclinica.domain.entities.Material" />
+		<mapping class="br.com.easyclinica.domain.entities.Medicine" />
+		<mapping class="br.com.easyclinica.domain.entities.Patient" />
+		<mapping class="br.com.easyclinica.domain.entities.PrecifiedMaterial" />
+		<mapping class="br.com.easyclinica.domain.entities.PrecifiedMedicine" />
+		<mapping class="br.com.easyclinica.domain.entities.PrecifiedProcedure" />
+		<mapping class="br.com.easyclinica.domain.entities.Procedure" />
+		<mapping class="br.com.easyclinica.domain.entities.Specialty" />
+
+	</session-factory>
+</hibernate-configuration>

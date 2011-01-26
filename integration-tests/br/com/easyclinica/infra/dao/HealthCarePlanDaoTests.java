@@ -16,7 +16,7 @@ public class HealthCarePlanDaoTests extends BaseIntegrationTests {
 	
 	@Before
 	public void setUp() {
-		dao = new HealthCarePlanDao(em);
+		dao = new HealthCarePlanDao(session);
 	}
 	
 	@Test

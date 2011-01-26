@@ -2,8 +2,8 @@ package br.com.easyclinica.infra.dao;
 
 import java.util.List;
 
-import javax.persistence.EntityManager;
-import javax.persistence.Query;
+import org.hibernate.Query;
+import org.hibernate.Session;
 
 import br.com.caelum.vraptor.ioc.Component;
 import br.com.easyclinica.domain.entities.Clinic;
@@ -11,41 +11,41 @@ import br.com.easyclinica.domain.repositories.AllClinics;
 
 @Component
 public class ClinicDao implements AllClinics {
-	private final EntityManager em;
+	private final Session session;
 	
-	public ClinicDao(EntityManager em) {
-		this.em = em;
+	public ClinicDao(Session session) {
+		this.session = session;
 	}
 	
 	@SuppressWarnings("unchecked")
 	public List<Clinic> get(int firstResult, int maxResults) {
-		Query query = em.createQuery("from Clinic order by name");
+		Query query = session.createQuery("from Clinic order by name");
 		query.setFirstResult(firstResult);
 		query.setMaxResults(maxResults);
 		
-		return query.getResultList();
+		return query.list();
 	}
 
 	public int count() {
-		Query query = em.createQuery("select count(1) from Clinic");
-		return ((Long)query.getSingleResult()).intValue();
+		Query query = session.createQuery("select count(1) from Clinic");
+		return ((Long)query.uniqueResult()).intValue();
 	}
 
 	@SuppressWarnings("unchecked")
 	public List<Clinic> get() {
-		return (List<Clinic>)em.createQuery("from Clinic clinics order by name").getResultList();
+		return (List<Clinic>)session.createQuery("from Clinic clinics order by name").list();
 	}
 
 	public Clinic getById(int id) {
-		return (Clinic)em.find(Clinic.class, id);
+		return (Clinic)session.load(Clinic.class, id);
 	}
 
 	public void add(Clinic clinic) {
-		em.persist(clinic);	
+		session.save(clinic);	
 	}
 
 	public void update(Clinic clinic) {
-		em.merge(clinic);
+		session.merge(clinic);
 	}
 
 }

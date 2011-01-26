@@ -2,8 +2,8 @@ package br.com.easyclinica.infra.dao;
 
 import java.util.List;
 
-import javax.persistence.EntityManager;
-import javax.persistence.Query;
+import org.hibernate.Query;
+import org.hibernate.Session;
 
 import br.com.caelum.vraptor.ioc.Component;
 import br.com.easyclinica.domain.entities.Doctor;
@@ -12,40 +12,40 @@ import br.com.easyclinica.domain.repositories.AllDoctors;
 @Component
 public class DoctorDao implements AllDoctors {
 
-	private final EntityManager em;
+	private final Session session;
 
-	public DoctorDao(EntityManager em) {
-		this.em = em;
+	public DoctorDao(Session session) {
+		this.session = session;
 	}
 	
 	@SuppressWarnings("unchecked")
 	public List<Doctor> get() {
-		return (List<Doctor>)em.createQuery("from Doctor doctors order by name").getResultList();
+		return (List<Doctor>)session.createQuery("from Doctor doctors order by name").list();
 	}
 
 	public void add(Doctor doctor) {
-		em.persist(doctor);		
+		session.save(doctor);		
 	}
 
 	public Doctor getById(int id) {
-		return (Doctor)em.find(Doctor.class, id);
+		return (Doctor)session.load(Doctor.class, id);
 	}
 
 	public void update(Doctor doctor) {
-		em.merge(doctor);
+		session.merge(doctor);
 	}
 
 	@SuppressWarnings("unchecked")
 	public List<Doctor> get(int firstResult, int maxResults) {
-		Query query = em.createQuery("from Doctor order by name");
+		Query query = session.createQuery("from Doctor order by name");
 		query.setFirstResult(firstResult);
 		query.setMaxResults(maxResults);
 		
-		return query.getResultList();
+		return query.list();
 	}
 
 	public int count() {
-		Query query = em.createQuery("select count(*) from Doctor");
-		return ((Long)query.getSingleResult()).intValue();
+		Query query = session.createQuery("select count(*) from Doctor");
+		return ((Long)query.uniqueResult()).intValue();
 	}
 }

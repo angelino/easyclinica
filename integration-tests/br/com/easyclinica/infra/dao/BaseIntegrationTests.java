@@ -1,8 +1,7 @@
 package br.com.easyclinica.infra.dao;
 
-import javax.persistence.EntityManager;
-import javax.persistence.Persistence;
-
+import org.hibernate.Session;
+import org.hibernate.cfg.Configuration;
 import org.junit.After;
 import org.junit.Before;
 
@@ -12,22 +11,22 @@ import br.com.easyclinica.tests.helpers.ClinicBuilder;
 public abstract class BaseIntegrationTests {
 
 	protected Clinic clinic;
-	protected EntityManager em;
+	protected Session session;
 
 	@Before
 	public void createEMandDefaultClinic() {
-		em = Persistence.createEntityManagerFactory("test").createEntityManager();
-		em.getTransaction().begin();
+		session = new Configuration().configure("hibernate-test.cfg.xml").buildSessionFactory().openSession();
+		session.getTransaction().begin();
 		
-		ClinicDao clinicDao = new ClinicDao(em);
+		ClinicDao clinicDao = new ClinicDao(session);
 		clinic = new ClinicBuilder().withName("EasyClinica").withDomain("easyclinica").instance();
 		clinicDao.add(clinic);
 	}
 	
 	@After
 	public void rollbackDatabaseChanges() {
-		em.getTransaction().rollback();
-		em.close();
+		session.getTransaction().rollback();
+		session.close();
 	}
 	
 }

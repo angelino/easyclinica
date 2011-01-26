@@ -18,11 +18,11 @@ public class DoctorDaoTests extends BaseIntegrationTests {
 	
 	@Before
 	public void setUp() {
-		dao = new DoctorDao(em);
+		dao = new DoctorDao(session);
 		
 		specialty = new Specialty();
 		specialty.setName("pediatra");
-		em.persist(specialty);
+		session.save(specialty);
 	}
 		
 	@Test

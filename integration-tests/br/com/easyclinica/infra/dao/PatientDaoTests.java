@@ -19,10 +19,10 @@ public class PatientDaoTests extends BaseIntegrationTests {
 	
 	@Before
 	public void setUp() {
-		dao = new PatientDao(em);
+		dao = new PatientDao(session);
 		
 		plan = new HealthCarePlanBuilder().ofTheClinic(clinic).instance();
-		em.persist(plan);
+		session.save(plan);
 	}
 
 	@Test
