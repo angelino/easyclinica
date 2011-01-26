@@ -33,7 +33,6 @@ public class DoctorDaoTests extends BaseIntegrationTests {
 		assertEquals(1, list.size());
 		
 		Doctor newOne = list.get(0);
-		assertEquals("EasyClinica", newOne.getClinic().getName().toString());
 		assertEquals("Doutor", newOne.getName().toString());
 		assertEquals("55.555", newOne.getCrm().toString());
 		assertEquals("pediatra", newOne.getSpecialty().getName());
@@ -49,7 +48,6 @@ public class DoctorDaoTests extends BaseIntegrationTests {
 		
 		Doctor updatedDoctor = new DoctorBuilder(doctor.getId())
 			.withName("new Doctor")
-			.ofTheClinic(clinic)
 			.withSpecialty(specialty)
 			.instance();
 		dao.update(updatedDoctor);
@@ -71,13 +69,13 @@ public class DoctorDaoTests extends BaseIntegrationTests {
 	}
 	
 	private Doctor aDoctor() {
-		return new DoctorBuilder().ofTheClinic(clinic).withSpecialty(specialty).instance();
+		return new DoctorBuilder().withSpecialty(specialty).instance();
 	}
 	
 	@Test
 	public void shouldCountElements() {
-		Doctor firstDoctor = new DoctorBuilder().ofTheClinic(clinic).withSpecialty(specialty).instance();
-		Doctor secondDoctor = new DoctorBuilder().ofTheClinic(clinic).withSpecialty(specialty).instance();
+		Doctor firstDoctor = new DoctorBuilder().withSpecialty(specialty).instance();
+		Doctor secondDoctor = new DoctorBuilder().withSpecialty(specialty).instance();
 		
 		dao.add(firstDoctor);
 		dao.add(secondDoctor);
@@ -88,13 +86,11 @@ public class DoctorDaoTests extends BaseIntegrationTests {
 	@Test
 	public void shouldPaginate() {
 		Doctor firstDoctor = new DoctorBuilder()
-								.ofTheClinic(clinic)
 								.withSpecialty(specialty)
 								.withName("Doutor 1")
 								.instance();
 		
 		Doctor secondDoctor = new DoctorBuilder()
-								.ofTheClinic(clinic)
 								.withSpecialty(specialty)
 								.withName("Doutor 2")
 								.instance();

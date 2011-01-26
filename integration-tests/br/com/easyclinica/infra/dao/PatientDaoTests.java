@@ -21,14 +21,14 @@ public class PatientDaoTests extends BaseIntegrationTests {
 	public void setUp() {
 		dao = new PatientDao(session);
 		
-		plan = new HealthCarePlanBuilder().ofTheClinic(clinic).instance();
+		plan = new HealthCarePlanBuilder().instance();
 		session.save(plan);
 	}
 
 	@Test
 	public void shouldCountElements() {
-		Patient firstPatient = new PatientBuilder().ofTheClinic(clinic).withHealthCarePlan(plan).instance();
-		Patient secondPatient = new PatientBuilder().ofTheClinic(clinic).withHealthCarePlan(plan).instance();
+		Patient firstPatient = new PatientBuilder().withHealthCarePlan(plan).instance();
+		Patient secondPatient = new PatientBuilder().withHealthCarePlan(plan).instance();
 		
 		dao.add(firstPatient);
 		dao.add(secondPatient);
@@ -38,8 +38,8 @@ public class PatientDaoTests extends BaseIntegrationTests {
 	
 	@Test
 	public void shouldPaginate() {
-		Patient firstPatient = new PatientBuilder().ofTheClinic(clinic).withName("a").withHealthCarePlan(plan).instance();
-		Patient secondPatient = new PatientBuilder().ofTheClinic(clinic).withName("b").withHealthCarePlan(plan).instance();
+		Patient firstPatient = new PatientBuilder().withName("a").withHealthCarePlan(plan).instance();
+		Patient secondPatient = new PatientBuilder().withName("b").withHealthCarePlan(plan).instance();
 		
 		dao.add(firstPatient);
 		dao.add(secondPatient);
@@ -49,14 +49,13 @@ public class PatientDaoTests extends BaseIntegrationTests {
 	
 	@Test
 	public void shouldAdd() {
-		Patient patient = new PatientBuilder().ofTheClinic(clinic).withHealthCarePlan(plan).instance();
+		Patient patient = new PatientBuilder().withHealthCarePlan(plan).instance();
 		dao.add(patient);
 		
 		List<Patient> list = dao.get(0, 1);
 		assertEquals(1, list.size());
 		
 		Patient newOne = list.get(0);
-		assertEquals(patient.getClinic().getName().toString(), newOne.getClinic().getName().toString());
 		assertEquals(patient.getName().toString(), newOne.getName().toString());
 		assertEquals(patient.getAddress().getStreet().toString(), newOne.getAddress().getStreet().toString());
 		assertEquals(patient.getAddress().getNeighborhood().toString(), newOne.getAddress().getNeighborhood().toString());
@@ -73,11 +72,10 @@ public class PatientDaoTests extends BaseIntegrationTests {
 
 	@Test
 	public void shouldUpdate() {
-		Patient patient = new PatientBuilder().ofTheClinic(clinic).withHealthCarePlan(plan).instance();
+		Patient patient = new PatientBuilder().withHealthCarePlan(plan).instance();
 		dao.add(patient);
 		
 		Patient updatedPatient = new PatientBuilder(patient.getId())
-			.ofTheClinic(clinic)
 			.withName("new Patient")
 			.withHealthCarePlan(plan)
 			.instance();
@@ -90,7 +88,7 @@ public class PatientDaoTests extends BaseIntegrationTests {
 	
 	@Test
 	public void shouldGetById() {
-		Patient patient = new PatientBuilder().ofTheClinic(clinic).withHealthCarePlan(plan).instance();
+		Patient patient = new PatientBuilder().withHealthCarePlan(plan).instance();
 		dao.add(patient);
 		
 		Patient retrievedPatient = dao.getById(patient.getId());

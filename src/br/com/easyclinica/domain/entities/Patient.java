@@ -17,8 +17,6 @@ public class Patient {
 	private String name;
 	@Embedded private Address address;
 	@ManyToOne(fetch=FetchType.EAGER)
-	private Clinic clinic;	
-	@ManyToOne(fetch=FetchType.EAGER)
 	private HealthCarePlan healthCarePlan;
 	private String observations;
 	private String cellphone;
@@ -48,14 +46,6 @@ public class Patient {
 
 	public void setAddress(Address address) {
 		this.address = address;
-	}
-
-	public Clinic getClinic() {
-		return clinic;
-	}
-
-	public void setClinic(Clinic clinic) {
-		this.clinic = clinic;
 	}
 
 	public HealthCarePlan getHealthCarePlan() {

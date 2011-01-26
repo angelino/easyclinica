@@ -1,6 +1,5 @@
 package br.com.easyclinica.tests.helpers;
 
-import br.com.easyclinica.domain.entities.Clinic;
 import br.com.easyclinica.domain.entities.Doctor;
 import br.com.easyclinica.domain.entities.Specialty;
 
@@ -15,7 +14,6 @@ public class DoctorBuilder {
 		doctor.setName("Doutor");
 		doctor.setCrm("55.555");
 		doctor.setSpecialty(aSpecialty("pediatra"));
-		doctor.setClinic(new ClinicBuilder().instance());
 		doctor.setTelephone("55 11 9999-9999");
 		doctor.setEmail("doutor@easyclinica.com.br");
 		doctor.setObservations("");
@@ -37,12 +35,6 @@ public class DoctorBuilder {
 	public DoctorBuilder withCrm(String crm)
 	{
 		doctor.setCrm(crm);
-		return this;
-	}
-	
-	public DoctorBuilder ofTheClinic(Clinic clinic)
-	{
-		doctor.setClinic(clinic);
 		return this;
 	}
 	

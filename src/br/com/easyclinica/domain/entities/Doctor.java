@@ -13,9 +13,6 @@ public class Doctor {
 	@GeneratedValue
 	private int id;
 	
-	@ManyToOne(fetch=FetchType.EAGER)
-	private Clinic clinic;
-	
 	private String name;
 	private String crm;
 	@ManyToOne(fetch=FetchType.EAGER)
@@ -37,14 +34,6 @@ public class Doctor {
 
 	public void deactivate() {
 		this.active = false;
-	}
-
-	public Clinic getClinic() {
-		return clinic;
-	}
-
-	public void setClinic(Clinic clinic) {
-		this.clinic = clinic;
 	}
 
 	public String getName() {

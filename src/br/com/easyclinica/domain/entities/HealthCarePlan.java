@@ -9,7 +9,6 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import br.com.easyclinica.domain.types.Address;
@@ -19,9 +18,6 @@ public class HealthCarePlan {
 
 	@Id @GeneratedValue
 	private int id;
-	
-	@ManyToOne(fetch=FetchType.EAGER)
-	private Clinic clinic;
 	
 	private String name;
 	@Embedded private Address address;
@@ -51,15 +47,6 @@ public class HealthCarePlan {
 
 	public void deactivate() {
 		active = false;
-	}
-
-	
-	public Clinic getClinic() {
-		return clinic;
-	}
-
-	public void setClinic(Clinic clinic) {
-		this.clinic = clinic;
 	}
 
 	public String getName() {

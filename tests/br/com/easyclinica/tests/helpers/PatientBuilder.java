@@ -1,6 +1,5 @@
 package br.com.easyclinica.tests.helpers;
 
-import br.com.easyclinica.domain.entities.Clinic;
 import br.com.easyclinica.domain.entities.HealthCarePlan;
 import br.com.easyclinica.domain.entities.Patient;
 import br.com.easyclinica.domain.types.Address;
@@ -15,7 +14,6 @@ public class PatientBuilder {
 	
 	public PatientBuilder(int id) {
 		instance = new Patient(id);
-		instance.setClinic(new ClinicBuilder().instance());
 		instance.setName("John Doe");
 		instance.setAddress(new AddressBuilder().instance());
 		instance.setTelephone("1234");
@@ -42,11 +40,6 @@ public class PatientBuilder {
 
 	public PatientBuilder withTelephone(String phone) {
 		instance.setTelephone(phone);
-		return this;
-	}
-
-	public PatientBuilder ofTheClinic(Clinic clinic) {
-		instance.setClinic(clinic);
 		return this;
 	}
 

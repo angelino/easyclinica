@@ -6,7 +6,6 @@ import static org.junit.Assert.assertNotNull;
 import org.junit.Test;
 
 import br.com.easyclinica.tests.helpers.AddressBuilder;
-import br.com.easyclinica.tests.helpers.ClinicBuilder;
 import br.com.easyclinica.tests.helpers.HealthCarePlanBuilder;
 import br.com.easyclinica.tests.helpers.PatientBuilder;
 
@@ -15,7 +14,6 @@ public class PatientTests {
 	@Test
 	public void shouldHaveCompleteInformation() {
 		Patient sickGuy = new PatientBuilder(1)
-			.ofTheClinic(new ClinicBuilder().withName("EasyClinica").instance())
 			.withName("John Doe")
 			.withAddress(new AddressBuilder().instance())
 			.withTelephone("1234")
@@ -27,7 +25,6 @@ public class PatientTests {
 		
 		assertNotNull(sickGuy);
 		assertEquals(1, sickGuy.getId());
-		assertEquals("EasyClinica", sickGuy.getClinic().getName());
 		assertEquals("John Doe", sickGuy.getName());
 		assertEquals(new AddressBuilder().instance(), sickGuy.getAddress());
 		assertEquals("1234", sickGuy.getTelephone());

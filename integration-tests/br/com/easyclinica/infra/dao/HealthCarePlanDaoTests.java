@@ -21,14 +21,13 @@ public class HealthCarePlanDaoTests extends BaseIntegrationTests {
 	
 	@Test
 	public void shouldAdd() {
-		HealthCarePlan plan = new HealthCarePlanBuilder().ofTheClinic(clinic).instance();
+		HealthCarePlan plan = new HealthCarePlanBuilder().instance();
 		dao.add(plan);
 		
 		List<HealthCarePlan> list = dao.get();
 		assertEquals(1, list.size());
 		
 		HealthCarePlan newOne = list.get(0);
-		assertEquals(plan.getClinic().getName(), newOne.getClinic().getName());
 		assertEquals(plan.getName(), newOne.getName());
 		assertEquals(plan.getAddress().getStreet(), newOne.getAddress().getStreet());
 		assertEquals(plan.getAddress().getNeighborhood(), newOne.getAddress().getNeighborhood());
@@ -46,12 +45,11 @@ public class HealthCarePlanDaoTests extends BaseIntegrationTests {
 
 	@Test
 	public void shouldUpdate() {
-		HealthCarePlan plan = new HealthCarePlanBuilder().ofTheClinic(clinic).instance();
+		HealthCarePlan plan = new HealthCarePlanBuilder().instance();
 		dao.add(plan);
 		
 		HealthCarePlan updatedPlan = new HealthCarePlanBuilder(plan.getId())
 			.withName("new Amil")
-			.ofTheClinic(clinic)
 			.instance();
 		dao.update(updatedPlan);
 		
@@ -62,7 +60,7 @@ public class HealthCarePlanDaoTests extends BaseIntegrationTests {
 	
 	@Test
 	public void shouldGetById() {
-		HealthCarePlan plan = new HealthCarePlanBuilder().ofTheClinic(clinic).instance();
+		HealthCarePlan plan = new HealthCarePlanBuilder().instance();
 		dao.add(plan);
 		
 		HealthCarePlan retrievedPlan = dao.getById(plan.getId());
@@ -73,8 +71,8 @@ public class HealthCarePlanDaoTests extends BaseIntegrationTests {
 	
 	@Test
 	public void shouldCountElements() {
-		HealthCarePlan firstPlan = new HealthCarePlanBuilder().ofTheClinic(clinic).instance();
-		HealthCarePlan secondPlan = new HealthCarePlanBuilder().ofTheClinic(clinic).instance();
+		HealthCarePlan firstPlan = new HealthCarePlanBuilder().instance();
+		HealthCarePlan secondPlan = new HealthCarePlanBuilder().instance();
 		
 		dao.add(firstPlan);
 		dao.add(secondPlan);
@@ -84,8 +82,8 @@ public class HealthCarePlanDaoTests extends BaseIntegrationTests {
 	
 	@Test
 	public void shouldPaginate() {
-		HealthCarePlan firstPlan = new HealthCarePlanBuilder().ofTheClinic(clinic).withName("a").instance();
-		HealthCarePlan secondPlan = new HealthCarePlanBuilder().ofTheClinic(clinic).withName("b").instance();
+		HealthCarePlan firstPlan = new HealthCarePlanBuilder().withName("a").instance();
+		HealthCarePlan secondPlan = new HealthCarePlanBuilder().withName("b").instance();
 		
 		dao.add(firstPlan);
 		dao.add(secondPlan);

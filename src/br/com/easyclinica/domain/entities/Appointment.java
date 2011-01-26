@@ -18,8 +18,6 @@ public class Appointment {
 	@Id @GeneratedValue
 	private int id;
 	
-	@ManyToOne(fetch=FetchType.LAZY) 
-	private Clinic clinic;
 	@ManyToOne(fetch=FetchType.EAGER)
 	private HealthCarePlan healthCarePlan;
 	@ManyToOne(fetch=FetchType.EAGER)
@@ -43,14 +41,6 @@ public class Appointment {
 	
 	public int getId() {
 		return id;
-	}
-
-	public Clinic getClinic() {
-		return clinic;
-	}
-
-	public void setClinic(Clinic clinic) {
-		this.clinic = clinic;
 	}
 
 	public HealthCarePlan getHealthCarePlan() {
