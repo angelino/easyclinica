@@ -1,6 +1,5 @@
 package br.com.easyclinica.infra.multitenancy;
 
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
@@ -26,23 +25,23 @@ import br.com.easyclinica.domain.entities.Specialty;
 
 @Component
 @RequestScoped
-public class SessionComponentFactory implements ComponentFactory<Session> {
+public class SessionFactoryCreator implements ComponentFactory<SessionFactory> {
 
 	private final SessionFactoryStore store;
 	private final Tenant tenant;
 
-	public SessionComponentFactory(Tenant tenant, SessionFactoryStore store) {
+	public SessionFactoryCreator(Tenant tenant, SessionFactoryStore store) {
 		this.tenant = tenant;
 		this.store = store;
 	}
 	
-	public Session getInstance() {
+	public SessionFactory getInstance() {
 		if(!store.contains(tenant.getDomain())) {
 			SessionFactory sf = createSessionFactoryForTenant(tenant.getDomain());
 			store.add(tenant.getDomain(), sf);		
 		}
 		
-		return store.get(tenant.getDomain()).openSession();
+		return store.get(tenant.getDomain());
 	}
 	
 	private SessionFactory createSessionFactoryForTenant(String tenant) {
