@@ -1,6 +1,5 @@
 package br.com.easyclinica.domain.entities;
 
-import java.util.Collections;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -51,14 +50,26 @@ public class AppointmentProcedure {
 	}
 	
 	public List<AppointmentMaterial> getMaterials() {
-		return Collections.unmodifiableList(materials);
+		return materials;
 	}
 	public List<AppointmentMedicine> getMedicines() {
-		return Collections.unmodifiableList(medicines);
+		return medicines;
 	}
 	
 	public int getId() {
 		return id;
+	}
+	public void setFixedAmount(boolean isFixedAmount) {
+		this.isFixedAmount = isFixedAmount;
+	}
+	public void setMaterials(List<AppointmentMaterial> materials) {
+		this.materials = materials;
+	}
+	public void setMedicines(List<AppointmentMedicine> medicines) {
+		this.medicines = medicines;
+	}
+	public void setId(int id) {
+		this.id = id;
 	}
 	
 	

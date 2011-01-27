@@ -7,16 +7,16 @@ import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
 import br.com.easyclinica.domain.entities.Clinic;
 import br.com.easyclinica.domain.entities.Employee;
-import br.com.easyclinica.infra.multitenancy.Tenant;
+import br.com.easyclinica.infra.multitenancy.LoggedUser;
 
 @Resource
 public class LoginController {
 
-	private final Tenant tenant;
 	private final Result result;
+	private final LoggedUser loggedUser;
 
-	public LoginController(Tenant tenant, Result result) {
-		this.tenant = tenant;
+	public LoginController(LoggedUser loggedUser, Result result) {
+		this.loggedUser = loggedUser;
 		this.result = result;
 	}
 	
@@ -33,7 +33,7 @@ public class LoginController {
 		Employee employee = new Employee();
 		employee.setUser("x");
 		
-		tenant.set(clinic, employee);
+		loggedUser.set(clinic, employee);
 		
 		result.redirectTo(HomeController.class).dashboard();
 	}

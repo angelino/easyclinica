@@ -2,9 +2,9 @@ package br.com.easyclinica.domain.entities;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Collections;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -37,7 +37,8 @@ public class Appointment {
 	private double procedureAmount;
 	private String observations;
 	
-	@OneToMany private List<AppointmentProcedure> procedures;
+	@OneToMany(cascade=CascadeType.ALL, mappedBy="appointment", orphanRemoval=true, fetch=FetchType.EAGER) 
+	private List<AppointmentProcedure> procedures;
 
 	public Appointment() {
 		procedures = new ArrayList<AppointmentProcedure>();
@@ -128,11 +129,20 @@ public class Appointment {
 	}
 
 	public List<AppointmentProcedure> getProcedures() {
-		return Collections.unmodifiableList(procedures);
+		return procedures;
 	}
 
 	public void addProcedure(AppointmentProcedure procedure) {
 		procedures.add(procedure);
+	}
+
+	public void setProcedures(List<AppointmentProcedure> procedures) {
+		this.procedures = procedures;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}	
+
 	
 }

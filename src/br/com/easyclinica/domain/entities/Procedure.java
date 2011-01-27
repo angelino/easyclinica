@@ -78,5 +78,9 @@ public class Procedure {
 	public void addMedicine(Medicine medicine){
 		this.medicine.add(medicine);
 	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 	
 }

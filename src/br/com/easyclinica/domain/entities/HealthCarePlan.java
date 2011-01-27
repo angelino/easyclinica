@@ -121,6 +121,9 @@ public class HealthCarePlan {
 		this.active = active;
 	}
 
+	public void setId(int id) {
+		this.id = id;
+	}
 	public int getId() {
 		return id;
 	}

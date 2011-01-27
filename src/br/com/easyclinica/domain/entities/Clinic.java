@@ -41,7 +41,16 @@ public class Clinic {
 	public boolean isActive() {
 		return active;
 	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
+	}
 	
+
 	
 	
 }

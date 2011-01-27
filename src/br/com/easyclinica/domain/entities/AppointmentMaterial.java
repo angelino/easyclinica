@@ -14,7 +14,6 @@ public class AppointmentMaterial {
 	private double unitAmount;
 	@ManyToOne(fetch=FetchType.LAZY) 
 	private AppointmentProcedure procedure;
-	private double totalAmount;
 	private float qty;
 	@ManyToOne(fetch=FetchType.LAZY)
 	private Material material;
@@ -35,10 +34,7 @@ public class AppointmentMaterial {
 		this.procedure = procedure;
 	}
 	public double getTotalAmount() {
-		return totalAmount;
-	}
-	public void setTotalAmount(double totalAmount) {
-		this.totalAmount = totalAmount;
+		return unitAmount*qty;
 	}
 	public float getQty() {
 		return qty;
@@ -51,6 +47,9 @@ public class AppointmentMaterial {
 	}
 	public void setMaterial(Material material) {
 		this.material = material;
+	}
+	public void setId(int id) {
+		this.id = id;
 	}
 	
 	

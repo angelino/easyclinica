@@ -5,10 +5,11 @@ import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
+import br.com.easyclinica.domain.entities.Appointment;
 import br.com.easyclinica.domain.entities.Material;
 import br.com.easyclinica.domain.entities.Medicine;
 import br.com.easyclinica.domain.entities.Procedure;
-import br.com.easyclinica.view.model.AppointmentData;
+
 
 @Resource
 public class AppointmentsController extends BaseController {
@@ -23,10 +24,13 @@ public class AppointmentsController extends BaseController {
 		
 	}
 	
+	@Path("/teste")
+	public void teste() {}
+	
 	@Post
-	@Path("/pacientes/{patient}/consultas/novo")
-	public void saveNewAppointment(int patient, AppointmentData appointment) {
-		
+	@Path("/pacientes/{appointment.patient.id}/consultas/novo")
+	public void saveNewAppointment(Appointment appointment) {
+		System.out.println(appointment);
 	}
 	
 	@Post
