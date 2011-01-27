@@ -6,6 +6,7 @@ import org.hibernate.cfg.Configuration;
 
 import br.com.caelum.vraptor.ioc.Component;
 import br.com.caelum.vraptor.ioc.ComponentFactory;
+import br.com.caelum.vraptor.ioc.RequestScoped;
 import br.com.easyclinica.domain.entities.Appointment;
 import br.com.easyclinica.domain.entities.AppointmentMaterial;
 import br.com.easyclinica.domain.entities.AppointmentMedicine;
@@ -24,6 +25,7 @@ import br.com.easyclinica.domain.entities.Procedure;
 import br.com.easyclinica.domain.entities.Specialty;
 
 @Component
+@RequestScoped
 public class SessionComponentFactory implements ComponentFactory<Session> {
 
 	private final SessionFactoryStore store;

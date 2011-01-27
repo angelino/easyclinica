@@ -27,6 +27,8 @@ public class HibernateTransactionInterceptor implements Interceptor {
 			if (transaction != null && transaction.isActive()) {
 				transaction.rollback();
 			}
+			
+			session.close();
 		}
 	}
 
