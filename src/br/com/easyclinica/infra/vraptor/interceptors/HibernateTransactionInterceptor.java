@@ -3,13 +3,11 @@ package br.com.easyclinica.infra.vraptor.interceptors;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import br.com.caelum.vraptor.Intercepts;
 import br.com.caelum.vraptor.core.InterceptorStack;
 import br.com.caelum.vraptor.interceptor.Interceptor;
 import br.com.caelum.vraptor.ioc.RequestScoped;
 import br.com.caelum.vraptor.resource.ResourceMethod;
 
-@Intercepts
 @RequestScoped
 public class HibernateTransactionInterceptor implements Interceptor {
 

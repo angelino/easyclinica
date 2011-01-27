@@ -1,9 +1,8 @@
 package br.com.easyclinica.infra.multitenancy;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertSame;
-import static org.junit.Assert.assertTrue;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -15,53 +14,33 @@ import br.com.easyclinica.tests.helpers.EmployeeBuilder;
 
 public class TenantTests {
 
+	private LoggedUser loggedUser;
+	private TenantUrlParser parser;
 	private Tenant tenant;
-	private Clinic clinic;
-	private Employee employee;
 
 	@Before
 	public void setUp() {
 		
-		tenant = new Tenant();
-		
-		clinic = new ClinicBuilder().withDomain("clinicadavila").instance();
-		employee = new EmployeeBuilder().instance();
-	}
-	
-	@Test
-	public void shouldAcceptATemporaryDomain() {
-		tenant.setTempDomain("clinicadavila");
-		assertEquals("clinicadavila", tenant.getDomain());
-	}
-	
-	@Test
-	public void shouldLogATenant() {
-		tenant.set(clinic, employee);
-		
-		assertSame(clinic, tenant.getClinic());
-		assertSame(employee, tenant.getEmployee());
-	}
-	
-	@Test
-	public void shouldNotGetDomainFromUserIfIsAlreadyLogged() {
-		tenant.setTempDomain("clinicadavila");
-		assertEquals("clinicadavila", tenant.getDomain());
+		loggedUser = new LoggedUser();
+		parser = mock(TenantUrlParser.class);
+		tenant = new Tenant(parser, loggedUser);
 
-		tenant.setTempDomain("clinicadavila");
-		assertEquals("clinicadavila", tenant.getDomain());
-
-		tenant.set(clinic, employee);
-
-		tenant.setTempDomain("xyz");
-		assertEquals("clinicadavila", tenant.getDomain());
+		when(parser.parse()).thenReturn("fromUrl");
 	}
 	
 	@Test
-	public void shouldBeLogged() {
-		assertFalse(tenant.isLogged());
+	public void shouldGetDomainFromUrlIfUserIsNotLogged() {
+		assertEquals("fromUrl", tenant.getDomain());
+	}
+	
+	@Test
+	public void shouldGetFromLoggedClinic() {
 		
-		tenant.set(clinic, employee);
+		Clinic clinic = new ClinicBuilder().withDomain("fromClinic").instance();
+		Employee employee = new EmployeeBuilder().instance();
 		
-		assertTrue(tenant.isLogged());
+		loggedUser.set(clinic, employee);
+		
+		assertEquals("fromClinic", tenant.getDomain());
 	}
 }

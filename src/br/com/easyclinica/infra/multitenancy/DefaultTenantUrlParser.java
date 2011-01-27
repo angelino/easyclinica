@@ -15,6 +15,10 @@ public class DefaultTenantUrlParser implements TenantUrlParser {
 	}
 	
 	public String parse() {
-		return request.getUrl().replace("http://", "").replace("www.", "").split("\\.")[0];
+		return url().replace("http://", "").replace("www.", "").split("\\.")[0];
+	}
+
+	private String url() {
+		return request.getUrl();
 	}
 }

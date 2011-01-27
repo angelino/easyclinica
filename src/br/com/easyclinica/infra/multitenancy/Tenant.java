@@ -1,55 +1,23 @@
 package br.com.easyclinica.infra.multitenancy;
 
-import org.apache.log4j.Logger;
-
 import br.com.caelum.vraptor.ioc.Component;
-import br.com.caelum.vraptor.ioc.SessionScoped;
-import br.com.easyclinica.domain.entities.Clinic;
-import br.com.easyclinica.domain.entities.Employee;
+import br.com.caelum.vraptor.ioc.RequestScoped;
 
 @Component
-@SessionScoped
+@RequestScoped
 public class Tenant {
 
-	private static Logger logger = Logger.getLogger(Tenant.class);
-	
-	private String tempDomain;
-	private Clinic clinic;
-	private Employee employee;
+	private final TenantUrlParser parser;
+	private final LoggedUser loggedUser;
 
-	public Tenant() {
-	}
-	
-	public void setTempDomain(String domain) {
-		if(!isLogged()) {
-			this.tempDomain = domain;
-		}
+	public Tenant(TenantUrlParser parser, LoggedUser loggedUser) {
+		this.parser = parser;
+		this.loggedUser = loggedUser;
 	}
 	
 	public String getDomain() {
-		if(!isLogged()) return tempDomain;
-		return clinic.getDomain();
+		if(!loggedUser.isLogged()) return parser.parse();
+		return loggedUser.getClinic().getDomain();
 	}
 
-	public Clinic getClinic() {
-		return clinic;
-	}
-
-	public Employee getEmployee() {
-		return employee;
-	}
-
-	public void set(Clinic clinic, Employee employee) {
-		this.clinic = clinic;
-		this.employee = employee;
-		
-		logger.info("Logged user: " + employee.getUser() + "("+ clinic.getDomain() +")");
-	}
-
-	public boolean isLogged() {
-		return clinic != null && employee != null;
-	}
-	
-	
-	
 }
