@@ -24,32 +24,30 @@ import br.com.easyclinica.domain.entities.Procedure;
 import br.com.easyclinica.domain.entities.Specialty;
 
 @Component
-public class TenantsSessionFactory implements ComponentFactory<Session> {
+public class SessionComponentFactory implements ComponentFactory<Session> {
 
 	private final SessionFactoryStore store;
 	private final Tenant tenant;
 
-	public TenantsSessionFactory(Tenant tenant, SessionFactoryStore store) {
+	public SessionComponentFactory(Tenant tenant, SessionFactoryStore store) {
 		this.tenant = tenant;
 		this.store = store;
 	}
 	
 	public Session getInstance() {
-		SessionFactory sf;
-		sf = store.get(tenant);
-		if(sf == null) {
-			sf = createSessionFactoryForTenant();
-			store.add(tenant, sf);		
+		if(!store.contains(tenant.getDomain())) {
+			SessionFactory sf = createSessionFactoryForTenant(tenant.getDomain());
+			store.add(tenant.getDomain(), sf);		
 		}
 		
-		return sf.openSession();
+		return store.get(tenant.getDomain()).openSession();
 	}
-
-	private SessionFactory createSessionFactoryForTenant() {
+	
+	private SessionFactory createSessionFactoryForTenant(String tenant) {
 		// TODO: pegar url do banco de algum arquivo de config
 		Configuration configuration = new Configuration();
 		configuration.setProperty("hibernate.connection.driver_class", "com.mysql.jdbc.Driver");
-		configuration.setProperty("hibernate.connection.url", "jdbc:mysql://localhost:3306/" + tenant.getDomain());
+		configuration.setProperty("hibernate.connection.url", "jdbc:mysql://localhost:3306/" + tenant);
 		configuration.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
 		configuration.setProperty("hibernate.connection.username", "easyclinica");
 		configuration.setProperty("hibernate.connection.password", "3@sycl1n1c@");
