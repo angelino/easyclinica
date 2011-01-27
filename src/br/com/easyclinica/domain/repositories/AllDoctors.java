@@ -6,6 +6,7 @@ import br.com.easyclinica.domain.entities.Doctor;
 
 public interface AllDoctors extends Pagging<Doctor> {
 	List<Doctor> get();
+	List<Doctor> getActivated();
 	Doctor getById(int id);
 	
 	void add(Doctor doctor);

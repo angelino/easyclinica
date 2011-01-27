@@ -9,19 +9,22 @@ import br.com.easyclinica.domain.entities.Appointment;
 import br.com.easyclinica.domain.entities.Material;
 import br.com.easyclinica.domain.entities.Medicine;
 import br.com.easyclinica.domain.entities.Procedure;
-
+import br.com.easyclinica.domain.repositories.AllDoctors;
 
 @Resource
 public class AppointmentsController extends BaseController {
-
-	public AppointmentsController(Result result) {
+	private final AllDoctors allDoctors;
+	
+	public AppointmentsController(AllDoctors allDoctors, Result result) {
 		super(result);
+		this.allDoctors = allDoctors;
 	}
 
 	@Get
 	@Path("/pacientes/{patient}/consultas/novo")
 	public void newAppointment(int patient) {
 		
+		result.include("doctors", allDoctors.getActivated());
 	}
 	
 	@Path("/teste")

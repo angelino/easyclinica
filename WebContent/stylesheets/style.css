@@ -621,3 +621,21 @@ fieldset.cadastro .paciente .button {
 #simplemodal-overlay{background-color:#000;z-index:9999px!important;}
 .simplemodal-container{top:150px!important;}
 /* FIM MODAL */
+
+/* INÍCIO APPOINTMENT */
+
+.procedure {float:left;width:100%;}
+.procedure .procedure-title{float:left; width:100%;margin: 10px 0;}
+.procedure .procedure-title p{float:left;margin: 0 10px 0 0;}
+.procedure .procedure-title a{float:left;}
+
+.procedure ul{float:left;width:100%;}
+.procedure ul li{float:left;width:100%;margin:0 0 10px 0;}
+.procedure ul li input{float:left;}
+.procedure ul li input.qty{width:30px;}
+.procedure ul li input.amount{width:100px;}
+.procedure ul li p{float:left;margin:0;padding:0 30px;}
+.procedure ul li p.name{width:40%;}
+.procedure ul li a{float:left;}
+
+/* FIM APPOINTMENT */
