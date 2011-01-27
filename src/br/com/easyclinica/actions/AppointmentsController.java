@@ -4,10 +4,18 @@ import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Resource;
+import br.com.caelum.vraptor.Result;
+import br.com.easyclinica.domain.entities.Material;
+import br.com.easyclinica.domain.entities.Medicine;
+import br.com.easyclinica.domain.entities.Procedure;
 import br.com.easyclinica.view.model.AppointmentData;
 
 @Resource
-public class AppointmentsController {
+public class AppointmentsController extends BaseController {
+
+	public AppointmentsController(Result result) {
+		super(result);
+	}
 
 	@Get
 	@Path("/pacientes/{patient}/consultas/novo")
@@ -19,5 +27,28 @@ public class AppointmentsController {
 	@Path("/pacientes/{patient}/consultas/novo")
 	public void saveNewAppointment(int patient, AppointmentData appointment) {
 		
+	}
+	
+	@Post
+	public void _newProcedureToAppointment(String value, int convenioId) {
+		Procedure procedure = new Procedure();
+		
+		procedure.setName(value);
+		procedure.setAmbCode("00.000.00.0");
+		procedure.setCh(20);
+		
+		Material material1 = new Material();
+		material1.setName("Material 1");
+		procedure.addMaterial(material1);
+		
+		Material material2 = new Material();
+		material1.setName("Material 2");
+		procedure.addMaterial(material2);
+		
+		Medicine medicine1 = new Medicine();
+		medicine1.setName("Dorflex");
+		procedure.addMedicine(medicine1);
+		
+		result.include("procedure", procedure);		
 	}
 }
