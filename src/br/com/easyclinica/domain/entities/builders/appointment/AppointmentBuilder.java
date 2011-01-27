@@ -1,4 +1,4 @@
-package br.com.easyclinica.domain.entities.builder;
+package br.com.easyclinica.domain.entities.builders.appointment;
 
 import br.com.easyclinica.domain.entities.Appointment;
 import br.com.easyclinica.domain.entities.AppointmentProcedure;
@@ -17,8 +17,9 @@ public class AppointmentBuilder {
 	private final AllHealthCarePlans allHealthCarePlans;
 	private final AllDoctors allDoctors;
 	private final AllSpecialties allSpecialties;
-	private Appointment a;
+	private Appointment appointment;
 	private final AllProcedures allProcedures;
+	private AppointmentData data;
 
 	public AppointmentBuilder(AllPatients allPatients, AllHealthCarePlans allHealthCarePlans, AllDoctors allDoctors, AllSpecialties allSpecialties, AllProcedures allProcedures) {
 		this.allPatients = allPatients;
@@ -28,31 +29,40 @@ public class AppointmentBuilder {
 		this.allProcedures = allProcedures;
 	}
 	
-	public Appointment basedOn(AppointmentData data) {
-		a = new Appointment();
+	public AppointmentBuilder basedOn(AppointmentData data) {
+		this.data = data;
+		appointment = new Appointment();
 		
-		getBasicInfo(data);
-		
+		return this;
+	}
+	
+	public Appointment build() {
+		return appointment;
+	}
+
+	public AppointmentBuilder withProcedures() {
 		for(ProcedureData procedureData : data.getProcedures()) {
 			Procedure procedure = allProcedures.getById(procedureData.getId());
 			
 			AppointmentProcedure appointmentProcedure = new AppointmentProcedure();
 			appointmentProcedure.setProcedure(procedure);
 			
-			a.addProcedure(appointmentProcedure);
+			appointment.addProcedure(appointmentProcedure);
 			
 		}
 		
-		return a;
+		return this;
 	}
-
-	private void getBasicInfo(AppointmentData data) {
-		a.setPatient(allPatients.getById(data.getPatient()));
-		a.setHealthCarePlan(allHealthCarePlans.getById(data.getHealthCarePlan()));
-		a.setDoctor(allDoctors.getById(data.getDoctor()));
-		a.setSpecialty(allSpecialties.getById(data.getSpecialty()));
-		a.setDate(data.getDate());
-		a.setReturn(data.isReturn());
+	
+	public AppointmentBuilder withBasicInfo() {
+		appointment.setPatient(allPatients.getById(data.getPatient()));
+		appointment.setHealthCarePlan(allHealthCarePlans.getById(data.getHealthCarePlan()));
+		appointment.setDoctor(allDoctors.getById(data.getDoctor()));
+		appointment.setSpecialty(allSpecialties.getById(data.getSpecialty()));
+		appointment.setDate(data.getDate());
+		appointment.setReturn(data.isReturn());
+		
+		return this;
 	}
 
 }

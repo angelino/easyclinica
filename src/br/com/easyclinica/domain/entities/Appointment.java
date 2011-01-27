@@ -5,6 +5,7 @@ import java.util.Calendar;
 import java.util.Collections;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -37,7 +38,8 @@ public class Appointment {
 	private double procedureAmount;
 	private String observations;
 	
-	@OneToMany private List<AppointmentProcedure> procedures;
+	@OneToMany(cascade=CascadeType.ALL, mappedBy="appointment", orphanRemoval=true, fetch=FetchType.EAGER) 
+	private List<AppointmentProcedure> procedures;
 
 	public Appointment() {
 		procedures = new ArrayList<AppointmentProcedure>();

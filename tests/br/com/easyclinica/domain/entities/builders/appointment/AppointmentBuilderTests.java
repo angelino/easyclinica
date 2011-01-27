@@ -1,4 +1,4 @@
-package br.com.easyclinica.domain.entities.builder;
+package br.com.easyclinica.domain.entities.builders.appointment;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
@@ -14,6 +14,7 @@ import br.com.easyclinica.domain.entities.Doctor;
 import br.com.easyclinica.domain.entities.HealthCarePlan;
 import br.com.easyclinica.domain.entities.Patient;
 import br.com.easyclinica.domain.entities.Specialty;
+import br.com.easyclinica.domain.entities.builders.appointment.AppointmentBuilder;
 import br.com.easyclinica.domain.repositories.AllDoctors;
 import br.com.easyclinica.domain.repositories.AllHealthCarePlans;
 import br.com.easyclinica.domain.repositories.AllPatients;
@@ -65,38 +66,18 @@ public class AppointmentBuilderTests {
 	}
 	
 	@Test
-	public void shouldGetPatient() {
-		Appointment a = builder.basedOn(aFormData());
+	public void shouldFillBasicInfo() {
+		Appointment a = builder.basedOn(aFormData()).withBasicInfo().build();
 		assertEquals(patient, a.getPatient());
-	}
-	
-	@Test
-	public void shouldGetHealthCarePlan() {
-		Appointment a = builder.basedOn(aFormData());
 		assertEquals(healthCarePlan, a.getHealthCarePlan());
-	}
-	
-	@Test
-	public void shouldGetDoctor() {
-		Appointment a = builder.basedOn(aFormData());
 		assertEquals(doctor, a.getDoctor());		
-	}
-
-	@Test
-	public void shouldGetSpecialty() {
-		Appointment a = builder.basedOn(aFormData());
 		assertEquals(specialty, a.getSpecialty());		
-	}
-	
-	@Test
-	public void shouldGetAppointmentBasicInfo() {
-		Appointment a = builder.basedOn(aFormData());
 		assertEquals(appointmentDate, a.getDate());
 		assertEquals(false, a.isReturn());
 	}
 	
 	@Test
-	public void shouldGetAllProcedures() {
+	public void shouldFillAllProcedures() {
 		AppointmentData data = aFormData();
 		
 		ProcedureData firstProcedureData = new ProcedureData();
@@ -110,7 +91,7 @@ public class AppointmentBuilderTests {
 		when(allProcedures.getById(123)).thenReturn(new ProcedureBuilder(123).instance());
 		when(allProcedures.getById(456)).thenReturn(new ProcedureBuilder(456).instance());
 		
-		Appointment a = builder.basedOn(data);
+		Appointment a = builder.basedOn(data).withProcedures().build();
 		assertEquals(123, a.getProcedures().get(0).getProcedure().getId());
 		assertEquals(456, a.getProcedures().get(1).getProcedure().getId());
 		
