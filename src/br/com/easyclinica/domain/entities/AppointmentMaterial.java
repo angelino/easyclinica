@@ -52,6 +52,9 @@ public class AppointmentMaterial {
 	public void setMaterial(Material material) {
 		this.material = material;
 	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	
 	
 }

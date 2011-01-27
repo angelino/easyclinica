@@ -16,7 +16,7 @@
 		Id convenio <input type="text" name="appointment.healthCarePlan.id" /><br/>
 		id doutor <input type="text" name="appointment.doctor.id" /><br/>
 		Id especialidade <input type="text" name="appointment.specialty.id" /><br/>
-		retorno? <input type="text" name="appointment.isReturn" /><br/>
+		retorno? <input type="text" name="appointment.return" /><br/>
 		data da consulta <input type="text" name="appointment.appointmentDate" /><br/>
 		data de insercao <input type="text" name="appointment.date" /><br/>
 		obs <input type="text" name="appointment.observations" /><br/>
@@ -27,7 +27,7 @@
 		<br/>
 		id do procedimento <input type="text" name="appointment.procedures[0].procedure.id" /><br/>
 		valor do procedimento <input type="text" name="appointment.procedures[0].procedure.amount" /><br/>
-		eh fixo? <input type="text" name="appointment.procedures[0].procedure.isFixedAmount" /><br/>
+		eh fixo? <input type="text" name="appointment.procedures[0].procedure.fixedAmount" /><br/>
 		
 		material 1<br/> 
 		id <input type="text" name="appointment.procedures[0].materials[0].material.id" /><br/>

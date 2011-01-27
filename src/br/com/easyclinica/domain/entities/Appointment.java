@@ -2,7 +2,6 @@ package br.com.easyclinica.domain.entities;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Collections;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -130,11 +129,20 @@ public class Appointment {
 	}
 
 	public List<AppointmentProcedure> getProcedures() {
-		return Collections.unmodifiableList(procedures);
+		return procedures;
 	}
 
 	public void addProcedure(AppointmentProcedure procedure) {
 		procedures.add(procedure);
+	}
+
+	public void setProcedures(List<AppointmentProcedure> procedures) {
+		this.procedures = procedures;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}	
+
 	
 }

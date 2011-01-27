@@ -52,6 +52,9 @@ public class AppointmentMedicine {
 	public void setMedicine(Medicine medicine) {
 		this.medicine = medicine;
 	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	
 	
 }

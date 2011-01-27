@@ -38,6 +38,9 @@ public class PrecifiedMedicine {
 	public void setMedicine(Medicine medicine) {
 		this.medicine = medicine;
 	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	
 	
 }
