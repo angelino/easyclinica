@@ -14,7 +14,6 @@ public class AppointmentMedicine {
 	private double unitAmount;
 	@ManyToOne(fetch=FetchType.LAZY) 
 	private AppointmentProcedure procedure;
-	private double totalAmount;
 	private float qty;
 	@ManyToOne(fetch=FetchType.LAZY) 
 	private Medicine medicine;
@@ -35,10 +34,7 @@ public class AppointmentMedicine {
 		this.procedure = procedure;
 	}
 	public double getTotalAmount() {
-		return totalAmount;
-	}
-	public void setTotalAmount(double totalAmount) {
-		this.totalAmount = totalAmount;
+		return unitAmount*qty;
 	}
 	public float getQty() {
 		return qty;
