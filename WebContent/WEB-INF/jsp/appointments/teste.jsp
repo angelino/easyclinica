@@ -33,26 +33,22 @@
 		id <input type="text" name="appointment.procedures[0].materials[0].material.id" /><br/>
 		valor unitario <input type="text" name="appointment.procedures[0].materials[0].unitAmount" /><br/>
 		qty <input type="text" name="appointment.procedures[0].materials[0].qty" /><br/>
-		valor total <input type="text" name="appointment.procedures[0].materials[0].totalAmount" /><br/>
 		
 		material 2<br/> 
 		id <input type="text" name="appointment.procedures[0].materials[1].material.id" /><br/>
 		valor unitario <input type="text" name="appointment.procedures[0].materials[1].unitAmount" /><br/>
 		qty <input type="text" name="appointment.procedures[0].materials[1].qty" /><br/>
-		valor total <input type="text" name="appointment.procedures[0].materials[1].totalAmount" /><br/>		 
 
 
 		remedio 1<br/> 
 		id <input type="text" name="appointment.procedures[0].medicines[0].medicine.id" /><br/>
 		valor unitario <input type="text" name="appointment.procedures[0].medicines[0].unitAmount" /><br/>
 		qty <input type="text" name="appointment.procedures[0].medicines[0].qty" /><br/>
-		valor total <input type="text" name="appointment.procedures[0].medicines[0].totalAmount" /><br/>
 		
 		remedio 2<br/> 
 		id <input type="text" name="appointment.procedures[0].medicines[1].medicine.id" /><br/>
 		valor unitario <input type="text" name="appointment.procedures[0].medicines[1].unitAmount" /><br/>
 		qty <input type="text" name="appointment.procedures[0].medicines[1].qty" /><br/>
-		valor total <input type="text" name="appointment.procedures[0].medicines[1].totalAmount" /><br/>		 
 		
 		
 		<input type="submit" />
