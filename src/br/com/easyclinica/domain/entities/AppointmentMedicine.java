@@ -15,7 +15,7 @@ public class AppointmentMedicine {
 	@ManyToOne(fetch=FetchType.LAZY) 
 	private AppointmentProcedure procedure;
 	private float qty;
-	@ManyToOne(fetch=FetchType.LAZY) 
+	@ManyToOne(fetch=FetchType.EAGER) 
 	private Medicine medicine;
 	
 	public int getId() {

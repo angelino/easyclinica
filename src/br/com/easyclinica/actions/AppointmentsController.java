@@ -9,15 +9,18 @@ import br.com.easyclinica.domain.entities.Appointment;
 import br.com.easyclinica.domain.entities.Material;
 import br.com.easyclinica.domain.entities.Medicine;
 import br.com.easyclinica.domain.entities.Procedure;
+import br.com.easyclinica.domain.repositories.AllAppointments;
 import br.com.easyclinica.domain.repositories.AllDoctors;
 
 @Resource
 public class AppointmentsController extends BaseController {
 	private final AllDoctors allDoctors;
+	private final AllAppointments allAppointments;
 	
-	public AppointmentsController(AllDoctors allDoctors, Result result) {
+	public AppointmentsController(AllDoctors allDoctors, AllAppointments allAppointments, Result result) {
 		super(result);
 		this.allDoctors = allDoctors;
+		this.allAppointments = allAppointments;
 	}
 
 	@Get
@@ -25,6 +28,12 @@ public class AppointmentsController extends BaseController {
 	public void newAppointment(int patient) {
 		
 		result.include("doctors", allDoctors.getActivated());
+	}
+	
+	@Get
+	@Path("/pacientes/{patient}/consultas/{appointment}")
+	public Appointment show(int patient, int appointment) {
+		return allAppointments.getById(appointment);
 	}
 	
 	@Path("/teste")

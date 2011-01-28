@@ -17,7 +17,7 @@ public class AppointmentProcedure {
 	private int id;
 	@ManyToOne(fetch=FetchType.LAZY) 
 	private Appointment appointment;
-	@ManyToOne(fetch=FetchType.LAZY) 
+	@ManyToOne(fetch=FetchType.EAGER) 
 	private Procedure procedure;
 	private double amount;
 	private boolean isFixedAmount;

@@ -15,7 +15,7 @@ public class AppointmentMaterial {
 	@ManyToOne(fetch=FetchType.LAZY) 
 	private AppointmentProcedure procedure;
 	private float qty;
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.EAGER)
 	private Material material;
 	
 	public int getId() {

@@ -83,4 +83,9 @@ public class Procedure {
 		this.id = id;
 	}
 	
+	@Override
+	public String toString() {
+		return this.name;
+	}
+	
 }

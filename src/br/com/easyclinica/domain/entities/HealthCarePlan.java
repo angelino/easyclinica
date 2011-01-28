@@ -139,5 +139,10 @@ public class HealthCarePlan {
 	public List<PrecifiedProcedure> getPrecifiedProcedures() {
 		return Collections.unmodifiableList(precifiedProcedures);
 	}
+	
+	@Override
+	public String toString() {
+		return this.name;
+	}
 
 }

@@ -19,4 +19,9 @@ public class SpecialtyBuilder {
 	public Specialty instance() {
 		return instance;
 	}
+
+	public SpecialtyBuilder withName(String name) {
+		instance.setName(name);
+		return this;
+	}
 }
