@@ -85,7 +85,7 @@ public class Appointment {
 		return isReturn;
 	}
 
-	public void setReturn(boolean isReturn) {
+	protected void setReturn(boolean isReturn) {
 		this.isReturn = isReturn;
 	}
 

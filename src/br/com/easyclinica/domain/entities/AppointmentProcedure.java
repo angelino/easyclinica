@@ -62,13 +62,13 @@ public class AppointmentProcedure {
 	public void setFixedAmount(boolean isFixedAmount) {
 		this.isFixedAmount = isFixedAmount;
 	}
-	public void setMaterials(List<AppointmentMaterial> materials) {
+	protected void setMaterials(List<AppointmentMaterial> materials) {
 		this.materials = materials;
 	}
-	public void setMedicines(List<AppointmentMedicine> medicines) {
+	protected void setMedicines(List<AppointmentMedicine> medicines) {
 		this.medicines = medicines;
 	}
-	public void setId(int id) {
+	protected void setId(int id) {
 		this.id = id;
 	}
 	

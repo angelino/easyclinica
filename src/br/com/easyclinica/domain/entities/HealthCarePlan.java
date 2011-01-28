@@ -117,26 +117,26 @@ public class HealthCarePlan {
 		return active;
 	}
 
-	public void setActive(boolean active) {
+	protected void setActive(boolean active) {
 		this.active = active;
 	}
 
-	public void setId(int id) {
+	protected void setId(int id) {
 		this.id = id;
 	}
 	public int getId() {
 		return id;
 	}
 
-	public List<PrecifiedMaterial> getPrecifiedMaterials() {
+	protected List<PrecifiedMaterial> getPrecifiedMaterials() {
 		return Collections.unmodifiableList(precifiedMaterials);
 	}
 
-	public List<PrecifiedMedicine> getPrecifiedMedicines() {
+	protected List<PrecifiedMedicine> getPrecifiedMedicines() {
 		return Collections.unmodifiableList(precifiedMedicines);
 	}
 
-	public List<PrecifiedProcedure> getPrecifiedProcedures() {
+	protected List<PrecifiedProcedure> getPrecifiedProcedures() {
 		return Collections.unmodifiableList(precifiedProcedures);
 	}
 	

@@ -79,7 +79,7 @@ public class Procedure {
 		this.medicine.add(medicine);
 	}
 
-	public void setId(int id) {
+	protected void setId(int id) {
 		this.id = id;
 	}
 	

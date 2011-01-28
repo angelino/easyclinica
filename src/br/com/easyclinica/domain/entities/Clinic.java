@@ -42,11 +42,11 @@ public class Clinic {
 		return active;
 	}
 
-	public void setId(int id) {
+	protected void setId(int id) {
 		this.id = id;
 	}
 
-	public void setActive(boolean active) {
+	protected void setActive(boolean active) {
 		this.active = active;
 	}
 	
