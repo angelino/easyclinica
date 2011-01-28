@@ -88,7 +88,7 @@ public class Doctor {
 		return active;
 	}
 
-	public void setActive(boolean active) {
+	protected void setActive(boolean active) {
 		this.active = active;
 	}
 
@@ -96,9 +96,12 @@ public class Doctor {
 		return id;
 	}
 
-	public void setId(int id) {
+	protected void setId(int id) {
 		this.id = id;
 	}
 	
-	
+	@Override
+	public String toString() {
+		return this.name;
+	}	
 }

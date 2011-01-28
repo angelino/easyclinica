@@ -25,7 +25,9 @@ public abstract class BaseIntegrationTests {
 	
 	@After
 	public void rollbackDatabaseChanges() {
+		// TODO: o melhor aqui eh commitar e truncar todos os dados
 		session.getTransaction().rollback();
+		
 		session.close();
 	}
 	

@@ -7,11 +7,10 @@ import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
 import br.com.easyclinica.domain.entities.Appointment;
 import br.com.easyclinica.domain.entities.HealthCarePlan;
-import br.com.easyclinica.domain.entities.Material;
-import br.com.easyclinica.domain.entities.Medicine;
 import br.com.easyclinica.domain.entities.Patient;
 import br.com.easyclinica.domain.entities.PrecifiedProcedure;
 import br.com.easyclinica.domain.entities.Procedure;
+import br.com.easyclinica.domain.repositories.AllAppointments;
 import br.com.easyclinica.domain.repositories.AllDoctors;
 import br.com.easyclinica.domain.repositories.AllHealthCarePlans;
 import br.com.easyclinica.domain.repositories.AllPatients;
@@ -23,22 +22,27 @@ import br.com.easyclinica.domain.repositories.PrecifiedThings;
 public class AppointmentsController extends BaseController {
 	private final AllDoctors allDoctors;
 	private final AllSpecialties allSpecialties;
-	private final AllPatients allPatients;
 	private final AllProcedures allProcedures;
 	private final AllHealthCarePlans allHealthCarePlans;
 	private final PrecifiedThings precifiedThings;
+	private final AllAppointments allAppointments;
+	private final AllPatients allPatients;
 	
 	public AppointmentsController(AllDoctors allDoctors, AllSpecialties allSpecialties, AllPatients allPatients, 
 								AllProcedures allProcedures, AllHealthCarePlans allHealthCarePlans, 
-								PrecifiedThings precifiedThings, Result result) {
+								PrecifiedThings precifiedThings, AllAppointments allAppointments, Result result) {
+
+	
 		super(result);
 		
 		this.allDoctors = allDoctors;
+
 		this.allSpecialties = allSpecialties;
 		this.allPatients = allPatients;
 		this.allProcedures = allProcedures;
 		this.allHealthCarePlans = allHealthCarePlans;
 		this.precifiedThings = precifiedThings;
+		this.allAppointments = allAppointments;	
 	}
 
 	@Get
@@ -50,6 +54,18 @@ public class AppointmentsController extends BaseController {
 		result.include("doctors", allDoctors.getActivated());
 		result.include("specialties", allSpecialties.getAll());
 		result.include("patients", allPatients.getAll());
+	}
+	
+	@Get
+	@Path("/pacientes/{patient}/consultas/{appointment}")
+	public Appointment show(int patient, int appointment) {
+		return allAppointments.getById(appointment);
+	}
+	
+	@Get
+	@Path("/pacientes/{patient}/consultas")
+	public Patient list(int patient) {
+		return allPatients.getById(patient);
 	}
 	
 	@Path("/teste")

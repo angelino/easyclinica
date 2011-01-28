@@ -13,7 +13,7 @@ public class Medicine {
 	public int getId() {
 		return id;
 	}
-	public void setId(int id) {
+	protected void setId(int id) {
 		this.id = id;
 	}
 	public String getName() {
@@ -23,6 +23,10 @@ public class Medicine {
 		this.name = name;
 	}
 
+	@Override
+	public String toString() {
+		return this.name;
+	}
 
 
 }

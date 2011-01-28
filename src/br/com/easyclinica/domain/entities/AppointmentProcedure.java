@@ -17,7 +17,7 @@ public class AppointmentProcedure {
 	private int id;
 	@ManyToOne(fetch=FetchType.LAZY) 
 	private Appointment appointment;
-	@ManyToOne(fetch=FetchType.LAZY) 
+	@ManyToOne(fetch=FetchType.EAGER) 
 	private Procedure procedure;
 	private double amount;
 	private boolean isFixedAmount;
@@ -62,13 +62,13 @@ public class AppointmentProcedure {
 	public void setFixedAmount(boolean isFixedAmount) {
 		this.isFixedAmount = isFixedAmount;
 	}
-	public void setMaterials(List<AppointmentMaterial> materials) {
+	protected void setMaterials(List<AppointmentMaterial> materials) {
 		this.materials = materials;
 	}
-	public void setMedicines(List<AppointmentMedicine> medicines) {
+	protected void setMedicines(List<AppointmentMedicine> medicines) {
 		this.medicines = medicines;
 	}
-	public void setId(int id) {
+	protected void setId(int id) {
 		this.id = id;
 	}
 	

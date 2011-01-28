@@ -1,11 +1,14 @@
 package br.com.easyclinica.domain.entities;
 
+import java.util.List;
+
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import br.com.easyclinica.domain.types.Address;
 
@@ -22,6 +25,8 @@ public class Patient {
 	private String cellphone;
 	private String telephone;
 	private String email;
+	@OneToMany(fetch=FetchType.LAZY, mappedBy="patient")
+	private List<Appointment> appointments;
 	
 	public Patient() {}
 	public Patient(int id) {
@@ -91,8 +96,14 @@ public class Patient {
 	public int getId() {
 		return id;
 	}
-	public void setId(int id) {
+	protected void setId(int id) {
 		this.id = id;
+	}
+	public List<Appointment> getAppointments() {
+		return appointments;
+	}
+	protected void setAppointments(List<Appointment> appointments) {
+		this.appointments = appointments;
 	}
 	
 	

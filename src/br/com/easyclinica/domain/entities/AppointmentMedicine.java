@@ -15,7 +15,7 @@ public class AppointmentMedicine {
 	@ManyToOne(fetch=FetchType.LAZY) 
 	private AppointmentProcedure procedure;
 	private float qty;
-	@ManyToOne(fetch=FetchType.LAZY) 
+	@ManyToOne(fetch=FetchType.EAGER) 
 	private Medicine medicine;
 	
 	public int getId() {
@@ -48,7 +48,7 @@ public class AppointmentMedicine {
 	public void setMedicine(Medicine medicine) {
 		this.medicine = medicine;
 	}
-	public void setId(int id) {
+	protected void setId(int id) {
 		this.id = id;
 	}
 	

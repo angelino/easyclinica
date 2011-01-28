@@ -15,7 +15,7 @@ public class AppointmentMaterial {
 	@ManyToOne(fetch=FetchType.LAZY) 
 	private AppointmentProcedure procedure;
 	private float qty;
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.EAGER)
 	private Material material;
 	
 	public int getId() {
@@ -48,7 +48,7 @@ public class AppointmentMaterial {
 	public void setMaterial(Material material) {
 		this.material = material;
 	}
-	public void setId(int id) {
+	protected void setId(int id) {
 		this.id = id;
 	}
 	

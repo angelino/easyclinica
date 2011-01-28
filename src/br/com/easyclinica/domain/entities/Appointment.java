@@ -42,6 +42,7 @@ public class Appointment {
 
 	public Appointment() {
 		procedures = new ArrayList<AppointmentProcedure>();
+		date = Calendar.getInstance();
 	}
 	
 	public int getId() {
@@ -84,7 +85,7 @@ public class Appointment {
 		return isReturn;
 	}
 
-	public void setReturn(boolean isReturn) {
+	protected void setReturn(boolean isReturn) {
 		this.isReturn = isReturn;
 	}
 
@@ -108,16 +109,8 @@ public class Appointment {
 		return appointmentAmount;
 	}
 
-	public void setAppointmentAmount(double appointmentAmount) {
-		this.appointmentAmount = appointmentAmount;
-	}
-
 	public double getProcedureAmount() {
 		return procedureAmount;
-	}
-
-	public void setProcedureAmount(double procedureAmount) {
-		this.procedureAmount = procedureAmount;
 	}
 
 	public String getObservations() {
@@ -136,12 +129,16 @@ public class Appointment {
 		procedures.add(procedure);
 	}
 
-	public void setProcedures(List<AppointmentProcedure> procedures) {
+	protected void setProcedures(List<AppointmentProcedure> procedures) {
 		this.procedures = procedures;
 	}
 
-	public void setId(int id) {
+	protected void setId(int id) {
 		this.id = id;
+	}
+
+	public void markAsReturn() {
+		this.isReturn = true;
 	}	
 
 	

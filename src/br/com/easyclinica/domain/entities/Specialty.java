@@ -11,7 +11,10 @@ public class Specialty {
 	private int id;
 	private String name;
 	
-	
+	public Specialty(){}
+	public Specialty(int id) {
+		this.id = id;
+	}
 	public String getName() {
 		return name;
 	}
@@ -21,8 +24,12 @@ public class Specialty {
 	public int getId() {
 		return id;
 	}
-	public void setId(int id) {
+	protected void setId(int id) {
 		this.id = id;
 	}
-	
+
+	@Override
+	public String toString() {
+		return this.name;
+	}
 }
