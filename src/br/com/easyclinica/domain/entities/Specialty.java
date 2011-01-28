@@ -11,7 +11,10 @@ public class Specialty {
 	private int id;
 	private String name;
 	
-	
+	public Specialty(){}
+	public Specialty(int id) {
+		this.id = id;
+	}
 	public String getName() {
 		return name;
 	}

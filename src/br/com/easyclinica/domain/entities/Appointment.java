@@ -135,6 +135,10 @@ public class Appointment {
 
 	protected void setId(int id) {
 		this.id = id;
+	}
+
+	public void markAsReturn() {
+		this.isReturn = true;
 	}	
 
 	

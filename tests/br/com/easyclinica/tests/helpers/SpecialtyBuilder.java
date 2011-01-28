@@ -11,9 +11,8 @@ public class SpecialtyBuilder {
 	}
 	
 	public SpecialtyBuilder(int id) {
-		instance = new Specialty();
+		instance = new Specialty(id);
 		instance.setName("pediatra");
-		instance.setId(id);
 	}
 
 	public Specialty instance() {

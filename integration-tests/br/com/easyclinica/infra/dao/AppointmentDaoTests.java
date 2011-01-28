@@ -40,7 +40,7 @@ public class AppointmentDaoTests extends BaseIntegrationTests {
 		newAppointment.setSpecialty(specialty);
 		newAppointment.setObservations("obs");
 		newAppointment.setPatient(patient);
-		newAppointment.setReturn(true);
+		newAppointment.markAsReturn();
 		Calendar appointmentDate = Calendar.getInstance();
 		newAppointment.setAppointmentDate(appointmentDate);
 		
