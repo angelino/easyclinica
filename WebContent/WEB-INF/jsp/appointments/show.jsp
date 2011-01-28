@@ -19,15 +19,7 @@
 			
 				<h2>Paciente: ${appointment.patient.name}</h2>
 				
-				<div class="secondary-navigation"> 
-		            <ul class="wat-cf"> 
-		              <li><a href="#">Paciente</a></li> 
-		              <li><a href="#">Anamnese</a></li> 
-		              <li class="active first"><a href="#">Consultas</a></li> 
-		              <li><a href="#">Impressos</a></li> 
-		            </ul> 
-          		</div> 
-          
+				<helper:patientMenu patient="${appointment.patient}" selected="Consultas" /> 
 				
 				<helper:message successKey="${successKey}" errorKey="${errorKey}" />
 				
