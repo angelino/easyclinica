@@ -8,19 +8,23 @@ import br.com.caelum.vraptor.Result;
 import br.com.easyclinica.domain.entities.Appointment;
 import br.com.easyclinica.domain.entities.Material;
 import br.com.easyclinica.domain.entities.Medicine;
+import br.com.easyclinica.domain.entities.Patient;
 import br.com.easyclinica.domain.entities.Procedure;
 import br.com.easyclinica.domain.repositories.AllAppointments;
 import br.com.easyclinica.domain.repositories.AllDoctors;
+import br.com.easyclinica.domain.repositories.AllPatients;
 
 @Resource
 public class AppointmentsController extends BaseController {
 	private final AllDoctors allDoctors;
 	private final AllAppointments allAppointments;
+	private final AllPatients allPatients;
 	
-	public AppointmentsController(AllDoctors allDoctors, AllAppointments allAppointments, Result result) {
+	public AppointmentsController(AllDoctors allDoctors, AllAppointments allAppointments, AllPatients allPatients, Result result) {
 		super(result);
 		this.allDoctors = allDoctors;
 		this.allAppointments = allAppointments;
+		this.allPatients = allPatients;
 	}
 
 	@Get
@@ -34,6 +38,12 @@ public class AppointmentsController extends BaseController {
 	@Path("/pacientes/{patient}/consultas/{appointment}")
 	public Appointment show(int patient, int appointment) {
 		return allAppointments.getById(appointment);
+	}
+	
+	@Get
+	@Path("/pacientes/{patient}/consultas")
+	public Patient list(int patient) {
+		return allPatients.getById(patient);
 	}
 	
 	@Path("/teste")

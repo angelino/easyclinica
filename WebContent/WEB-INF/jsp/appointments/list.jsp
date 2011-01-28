@@ -5,11 +5,11 @@
 
 <%@page import="br.com.easyclinica.view.Link"%>
 <%@page import="java.util.LinkedList"%>
-<%@page import="br.com.easyclinica.domain.entities.Appointment"%>
+<%@page import="br.com.easyclinica.domain.entities.Patient"%>
 
 <html>
 	<head>
-		<title>.: EasyClinica - Visualizar Consulta :.</title>
+		<title>.: EasyClinica - Listagem de Consultas :.</title>
 	</head>
 	<body>
 
@@ -17,7 +17,7 @@
 
 			<div class="block" id="block">
 			
-				<h2>Paciente: ${appointment.patient.name}</h2>
+				<h2>Paciente: ${patient.name}</h2>
 				
 				<div class="secondary-navigation"> 
 		            <ul class="wat-cf"> 
@@ -33,32 +33,14 @@
 				
 				<div class="content">
 				
-					Data da consulta: <fmt:formatDate value="${appointment.appointmentDate.time}" pattern="dd/MM/yyyy" /> 
-					Convênio: ${appointment.healthCarePlan}
-					Doutor: ${appointment.doctor}
-					Especialidade: ${appointment.specialty}
-					Retorno? ${appointment.return}
-					Observacoes: ${appointment.observations}
-					
-					<c:forEach items="${appointment.procedures}" var="procedure">
-					
-						Procedimento: ${procedure.procedure}
-						Valor: ${procedure.amount}
-						Fixo? ${procedure.fixedAmount}
+					<c:forEach items="${patient.appointments}" var="appointment">
+						<fmt:formatDate value="${appointment.appointmentDate.time}" pattern="dd/MM/yyyy" /> - 
+						${appointment.healthCarePlan.name} - 
+						${appointment.return} (colocar label)
 						
-						Materiais
-						<c:forEach items="${procedure.materials}" var="material">
-							${material.material} - qtd: ${material.qty} a R$ = ${material.unitAmount} = ${material.qty * material.unitAmount}   
-						</c:forEach>
-						
-						<c:forEach items="${procedure.medicines}" var="medicine">
-							${medicine.medicine} - qtd: ${medicine.qty} a R$ = ${medicine.unitAmount} = ${medicine.qty * medicine.unitAmount}   
-						</c:forEach>
+						<c:url value="/pacientes/${patient.id}/consultas/${appointment.id}" var="detailedUrl" />
+						<a href="${detailedUrl}">Ver</a>
 					</c:forEach>
-					
-					Total do procedimento: ${appointment.procedureAmount}
-					Valor da consulta: ${appointment.appointmentAmount}
-					Total: ${appointment.appointmentAmount + appointment.procedureAmount}
 					
 				</div>
 				
@@ -76,7 +58,7 @@
 		<div id="sidebar">
 			<% 
 				java.util.List<Link> links = new LinkedList<Link>();  
-				links.add(new Link("/pacientes/" + ((Appointment)request.getAttribute("appointment")).getPatient().getId()+"/consultas","Voltar para listagem"));
+				links.add(new Link("/pacientes/" + ((Patient)request.getAttribute("patient")).getId(),"Perfil do paciente"));
 				pageContext.setAttribute("links",links);
 			%>
 			<helper:navigation links="${links}"></helper:navigation>
