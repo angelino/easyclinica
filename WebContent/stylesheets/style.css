@@ -617,9 +617,43 @@ fieldset.cadastro .paciente .button {
 /* FIM AGENDA */
 
 /* INÍCIO MODAL */
-.modal{display:none;}
+/* .modal{display:none;}
 #simplemodal-overlay{background-color:#000;z-index:9999px!important;}
-.simplemodal-container{top:150px!important;}
+.simplemodal-container{top:150px!important;} */
+
+.modal-background {
+	background-color:#000;
+	filter:alpha(opacity=70);
+	width: 100%;
+	height: 100%;
+	position: fixed; top: 0; left: 0;
+	z-index: 9900;
+	opacity:0.7;
+}
+
+.modal-popup {
+	background-color:#fff;
+	border: #000 solid 1px; 
+	padding:15px;
+	position:absolute;
+	left:50%;
+	top:50%;
+	width:600px;
+	z-index: 9999;
+	margin: -250px 0 100px -300px;
+}
+
+.modal-close{
+	position: absolute;right:2px;top:2px;
+	cursor: pointer;
+	padding: 5px;
+	font-size: 14px;
+	font-weight: bold;
+	color: #fff;
+	background: #14143F;
+	text-decoration: none;
+}
+
 /* FIM MODAL */
 
 /* INÍCIO APPOINTMENT */

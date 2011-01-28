@@ -49,4 +49,5 @@ public class PatientDao implements AllPatients {
 		Query query = session.createQuery("from Patient p order by name");
 		return query.list();
 	}
+		
 }
