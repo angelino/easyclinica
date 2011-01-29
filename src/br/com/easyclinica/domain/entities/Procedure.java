@@ -87,5 +87,4 @@ public class Procedure {
 	public String toString() {
 		return this.name;
 	}
-	
 }

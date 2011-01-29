@@ -93,6 +93,14 @@ public class PatientController extends BaseController {
 		
 	}
 	
+	@Get
+	@Path("/pacientes/{id}/convenio")
+	public void getHealthCarePlan(int id) {
+		Patient patient = allPatients.getById(id);
+		
+		result.use(Results.json()).from(patient.getHealthCarePlan()).serialize();  
+	}
+	
 	private void include(Patient patient) {
 		result.include("patient", patient);
 	}
