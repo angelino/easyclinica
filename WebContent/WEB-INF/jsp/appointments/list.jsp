@@ -25,15 +25,28 @@
 				
 				<div class="content">
 				
-					<c:forEach items="${patient.appointments}" var="appointment">
-						<fmt:formatDate value="${appointment.appointmentDate.time}" pattern="dd/MM/yyyy" /> - 
-						${appointment.healthCarePlan.name} - 
-						${appointment.return} (colocar label)
-						
+				<table class="table"> 
+                  <tr> 
+                    <th width="15%">Data</th> 
+                    <th width="25%">Convênio</th>
+                    <th width="25%">Médico</th>
+                    <th width="20%">Especialidade</th> 
+                    <th width="15%">&nbsp;</th> 
+                  </tr> 
+                  
+					<c:forEach items="${patient.appointments}" var="appointment" varStatus="st">
+					<tr class="${st.count%2==0?'odd':'even'}"> 
+						<td><fmt:formatDate value="${appointment.appointmentDate.time}" pattern="dd/MM/yyyy" /></td> 
+						<td>${appointment.healthCarePlan.name} ${appointment.return}</td>
+						<td>${appointment.doctor.name}</td>
+						<td>${appointment.specialty.name}</td>
+						<td class="last" style="text-align: left;"> 
 						<c:url value="/pacientes/${patient.id}/consultas/${appointment.id}" var="detailedUrl" />
 						<a href="${detailedUrl}">Ver</a>
+						</td>
+					</tr>
 					</c:forEach>
-					
+				  </table>
 				</div>
 				
 				<div class="botoes">
