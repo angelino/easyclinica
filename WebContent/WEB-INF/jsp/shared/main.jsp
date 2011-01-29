@@ -8,10 +8,11 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<title><decorator:title default="Bem vindo" /></title>
+		<title><decorator:title default="Easy Clinica" /></title>
 	    
 		<helper:include fileName="reset.css" type="css" />
 		<helper:include fileName="base.css" type="css" />
+		<helper:include fileName="base2.css" type="css" />
 		<helper:include fileName="style.css" type="css" />
 		<helper:include fileName="jquery-ui-1.8.2.custom.css" type="css" />
 		
@@ -23,7 +24,6 @@
 	</head>
 
     <body>
-		<div id="container">
 		    <div id="header">
 		      <h1><a href="index.html">.: Easy Clínica :.</a></h1>
 		      <div id="user-navigation">
@@ -60,8 +60,6 @@
 			<div id="footer">
 				Copyright &copy; 2010 EasyClinica.
 		    </div>
-			
-		</div>
-	
+				
     </body>
 </html>

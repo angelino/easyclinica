@@ -22,7 +22,8 @@ public class LoginController {
 	
 	@Get
 	@Path("/login")
-	public void login() { }
+	public void login() { 
+	}
 	
 	@Post
 	@Path("/login")
