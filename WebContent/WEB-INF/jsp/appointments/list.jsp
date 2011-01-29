@@ -27,17 +27,23 @@
 				
 				<table class="table"> 
                   <tr> 
-                    <th width="15%">Data</th> 
+                    <th width="20%">Data</th> 
                     <th width="25%">Convênio</th>
                     <th width="25%">Médico</th>
                     <th width="20%">Especialidade</th> 
-                    <th width="15%">&nbsp;</th> 
+                    <th width="10%">&nbsp;</th> 
                   </tr> 
                   
 					<c:forEach items="${patient.appointments}" var="appointment" varStatus="st">
 					<tr class="${st.count%2==0?'odd':'even'}"> 
-						<td><fmt:formatDate value="${appointment.appointmentDate.time}" pattern="dd/MM/yyyy" /></td> 
-						<td>${appointment.healthCarePlan.name} ${appointment.return}</td>
+						<td><fmt:formatDate value="${appointment.appointmentDate.time}" pattern="dd/MM/yyyy" />
+								<c:if test="${appointment.return eq true}">
+									<span class="label-retorno">
+										RETORNO
+									</span>
+								</c:if>
+						</td> 
+						<td>${appointment.healthCarePlan.name}</td>
 						<td>${appointment.doctor.name}</td>
 						<td>${appointment.specialty.name}</td>
 						<td class="last" style="text-align: left;"> 
