@@ -19,6 +19,8 @@
 		<helper:include fileName="jquery-1.4.2.min.js" type="js" />
 		<helper:include fileName="jquery-ui-1.8.4.custom.min.js" type="js" />
 	    <helper:include fileName="jquery.maskedinput-1.2.2.min.js" type="js" />
+	    <helper:include fileName="currency/jquery.formatCurrency-1.4.0.min.js" type="js" />
+	    <helper:include fileName="currency/i18n/jquery.formatCurrency.all.js" type="js"/>
 	    <helper:include fileName="easyclinica_scripts.js" type="js" />
 	    <decorator:head />
 	</head>

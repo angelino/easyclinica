@@ -1,5 +1,7 @@
 package br.com.easyclinica.actions;
 
+import java.util.List;
+
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
@@ -8,6 +10,8 @@ import br.com.caelum.vraptor.Result;
 import br.com.easyclinica.domain.entities.Appointment;
 import br.com.easyclinica.domain.entities.HealthCarePlan;
 import br.com.easyclinica.domain.entities.Patient;
+import br.com.easyclinica.domain.entities.PrecifiedMaterial;
+import br.com.easyclinica.domain.entities.PrecifiedMedicine;
 import br.com.easyclinica.domain.entities.PrecifiedProcedure;
 import br.com.easyclinica.domain.entities.Procedure;
 import br.com.easyclinica.domain.repositories.AllAppointments;
@@ -83,9 +87,13 @@ public class AppointmentsController extends BaseController {
 		 	HealthCarePlan healthCarePlan = allHealthCarePlans.getById(convenioId);
 		 	
 		 	PrecifiedProcedure precifiedProcedure = precifiedThings.getPrice(procedure, healthCarePlan);
-		 	
+		 	List<PrecifiedMaterial> materials = precifiedThings.getMaterialsPrice(procedure, healthCarePlan);
+		 	List<PrecifiedMedicine> medicine = precifiedThings.getMedicinePrice(procedure, healthCarePlan);
+ 		 	
 		 	result.include("procedure", procedure);
 		 	result.include("healthCarePlan", healthCarePlan);
 		 	result.include("precifiedProcedure", precifiedProcedure);
+		 	result.include("materials", materials);
+		 	result.include("medicine", medicine);
 	}
 }

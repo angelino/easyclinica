@@ -45,7 +45,7 @@ public class ExportTables {
 		cfg.setProperty("hibernate.connection.driver_class", "com.mysql.jdbc.Driver");
 		cfg.setProperty("hibernate.connection.username", "easyclinica");
 		cfg.setProperty("hibernate.connection.password", "3@sycl1n1c@");
-		cfg.setProperty("hibernate.connection.url", "jdbc:mysql://localhost:3306/easyclinica");
+		cfg.setProperty("hibernate.connection.url", "jdbc:mysql://localhost:3306/easyclinicatest");
 		cfg.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
 		
 		

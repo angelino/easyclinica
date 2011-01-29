@@ -19,52 +19,49 @@
 			<input type="hidden" name="appointment.procedures[#index#].procedure.id" value="${procedure.id}"/>
 		</p>
 		<p>${procedure.ch} CH</p>
-		<p>
-			<!-- Pensar forma melhor de pegar o preço -->
+		<p class="procedure-total currency">
 			<c:choose>
 				<c:when test="${precifiedProcedure != null }">
-					<fmt:formatNumber value="${precifiedProcedure.fixedAmount}" type="currency"/> 
+					${precifiedProcedure.fixedAmount} 
 				</c:when>
 				<c:otherwise>
-					<fmt:formatNumber value="${procedure.ch * healthCarePlan.ch}" type="currency"/>
+					${procedure.ch * healthCarePlan.ch}
 				</c:otherwise>
 			</c:choose>			
 		</p>
-		<a href="#">Novo Material</a>		
+		<a href="#">Novo Material</a>
+		<a href="#" class="remove-procedure">excluir</a>		
 	</div>
 	
-	<ul class="material">	
-		<li>
-			<input type="hidden" name="appointment.procedures[#index#].materials[0].material.id" value="" />
-			<input type="text" class="qty" name="appointment.procedures[#index#].materials[0].qty" value="1" />
-			<p class="name">Material 1</p>
-			<input type="text" class="amount" name="appointment.procedures[#index#].materials[0].unitAmount" value="R$ 100,00" />
-			<p>R$ 100,00</p>
-			<a href="#">excluir</a>			
-		</li>
+	<ul class="material">
+	
+		<c:forEach items="${materials}" var="precifiedMaterial" varStatus="status">			
+			<li>
+				<input type="hidden" name="appointment.procedures[#index#].materials[${status.count-1}].material.id" value="${precifiedMaterial.material.id}" />
+				<input type="text" class="qty" name="appointment.procedures[#index#].materials[${status.count-1}].qty" value="1" />
+				<p class="name">${precifiedMaterial.material.name}</p>
+				<input type="text" class="amount currency" name="appointment.procedures[#index#].materials[${status.count-1}].unitAmount" value="${precifiedMaterial.amount}" />
+				<p class="total currency">${precifiedMaterial.amount}</p>
+				<a href="#" class="remove-material">excluir</a>			
+			</li> 
+		</c:forEach>
 		
-		<li>
-			<input type="hidden" name="appointment.procedures[#index#].materials[1].material.id" value="" />
-			<input type="text" class="qty" name="appointment.procedures[#index#].materials[1].qty" value="1" />
-			<p class="name">Material 2</p>
-			<input type="text" class="amount" name="appointment.procedures[#index#].materials[1].unitAmount" value="R$ 100,00" />
-			<p>R$ 100,00</p>
-			<a href="#">excluir</a>			
-		</li>
 	</ul>
 	
-	<ul class="medicine">	
-		<li>
-			<input type="hidden" name="appointment.procedures[#index#].medicines[0].medicine.id" value="" />
-			<input type="text" class="qty" name="appointment.procedures[#index#].medicines[0].qty" value="1" />
-			<p class="name">Medicamento 1</p>
-			<input type="text" class="amount" name="appointment.procedures[#index#].medicines[0].unitAmount" value="R$ 100,00" />
-			<p>R$ 100,00</p>
-			<a href="#">excluir</a>			
-		</li>
+	<ul class="medicine">
+		<c:forEach items="${medicine}" var="precifiedMedicine" varStatus="status">	
+			<li>
+				<input type="hidden" name="appointment.procedures[#index#].medicines[${status.count-1}].medicine.id" value="${precifiedMedicine.medicine.id}" />
+				<input type="text" class="qty" name="appointment.procedures[#index#].medicines[${status.count-1}].qty" value="1" />
+				<p class="name">${precifiedMedicine.medicine.name}</p>
+				<input type="text" class="amount currency" name="appointment.procedures[#index#].medicines[${status.count-1}].unitAmount" value="${precifiedMedicine.amount}" />
+				<p class="total currency">${precifiedMedicine.amount}</p>
+				<a href="#" class="remove-medicine">excluir</a>			
+			</li>
+		</c:forEach>
 	</ul>
 	
-	<p>TOTAL DO PROCEDIMENTO: R$ 300,00</p>
+	<p>TOTAL DO PROCEDIMENTO: <span class="procedure-amount currency"></span></p>
 	
 </div>
 
