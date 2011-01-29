@@ -545,6 +545,27 @@ tr.procedimento-title td {
 	margin-top: 15px;
 }
 
+.appointment-amount {
+	width: 100%;
+	font-size: 14px;
+	margin: 10px 0;
+}
+
+.appointment-amount table {
+	float:right;
+	margin-right:9%;
+	padding:2px;
+	width:17%;
+}
+
+.appointment-amount .title {
+	font-weight: bold;
+}
+
+.appointment-amount .valor {
+	text-align: right;
+}
+
 /* FIM APPOINTMENT */
 span.label-retorno {
 	background-color: #6492AC;

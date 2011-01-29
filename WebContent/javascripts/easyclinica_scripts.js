@@ -134,7 +134,7 @@ EasyClinica.pages['consultas'] = function(){
 					configureAmountManager();
 					configureRemoveActions();
 					EasyClinica.common.generalFunctions();
-					refreshProceduresValue();
+					refreshAppointentValue();
 				});		
 			});			
 		});
@@ -145,7 +145,7 @@ EasyClinica.pages['consultas'] = function(){
 				
 				var procedure = findRecursiveParent($(this),'.procedure');				
 				procedure.remove();				
-				refreshProceduresValue();
+				refreshAppointentValue();
 			});
 			
 			$('.remove-material, .remove-medicine').click(function(e){
@@ -155,11 +155,21 @@ EasyClinica.pages['consultas'] = function(){
 				var element = findRecursiveParent($(this),selector);				
 				element.remove();
 				
-				refreshProceduresValue();
+				refreshAppointentValue();
 			});
 		};
 		
+		var refreshAppointentValue = function() {
+			refreshProceduresValue();
+			
+			var valor_consulta = convertCurrencyToFloat($('#valor-consulta'));
+			var valor_procedimentos = convertCurrencyToFloat($('#appointment-procedure-amount'));
+			
+			$('#appointment-amount').html(valor_consulta + valor_procedimentos).formatCurrency(EasyClinica.cfg.currency);
+		};
+		
 		var refreshProceduresValue = function() {
+			var appointment_procedure_amount = 0;
 			
 			$('.procedure').each(function(index){
 				var procedure_total = convertCurrencyToFloat($(this).find('.procedure-total'));
@@ -175,8 +185,11 @@ EasyClinica.pages['consultas'] = function(){
 				});
 				
 				$(this).find('.procedure-amount').html(procedure_total).formatCurrency(EasyClinica.cfg.currency);
+				
+				appointment_procedure_amount += procedure_total;
 			});
 			
+			$('#appointment-procedure-amount').html(appointment_procedure_amount).formatCurrency(EasyClinica.cfg.currency);
 		};
 		
 		var configureAmountManager = function() {

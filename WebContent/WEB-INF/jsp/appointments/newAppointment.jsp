@@ -77,6 +77,36 @@
 						<div id="procedures"></div>
 						<!-- FIM PROCEDIMENTOS -->	
 					
+						<div class="appointment-amount">
+							<table>
+								<tr>
+									<td class="title">Consulta:</td>
+									<td class="valor currency" id="valor-consulta">10</td>
+								</tr>
+								<tr>
+									<td class="title">Procedimentos:</td>
+									<td class="valor currency" id="appointment-procedure-amount"></td>
+								</tr>
+								<tr>
+									<td class="title">Total:</td>
+									<td class="valor currency" id="appointment-amount"></td>
+								</tr>
+							</table>
+						</div>
+					
+						<div class="botoes">
+							<button class="button" type="submit">
+								<c:url value="/images/icons/tick.png" var="img_salvar"/>
+								<img src="${img_salvar}" alt="Salvar" />Salvar
+							</button>
+							
+							<c:url value="/pacientes" var="cancelar"/>
+							<a class="button" href="${cancelar}">
+								<c:url value="/images/icons/cross.png" var="img_cancelar"/>
+								<img src="${img_cancelar}" alt="Cancelar" />Cancelar
+							</a>
+						</div>
+					
 					</form>
 				</div>
 				<!-- FIM INNER -->

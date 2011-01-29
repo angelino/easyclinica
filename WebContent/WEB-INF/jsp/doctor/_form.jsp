@@ -50,7 +50,7 @@
 				<img src="${img_salvar}" alt="Salvar" />Salvar
 			</button>
 			
-			<c:url value="/medicos" var="cancelar"/>
+			<c:url value="/pacientes" var="cancelar"/>
 			<a class="button" href="${cancelar}">
 				<c:url value="/images/icons/cross.png" var="img_cancelar"/>
 				<img src="${img_cancelar}" alt="Cancelar" />Cancelar
