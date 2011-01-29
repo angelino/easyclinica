@@ -5,63 +5,99 @@
 
 <div class="procedure">
 
-	<div class="procedure-title">
-		<p>
-			<c:if test="${procedure.ambCode != ''}">
-				${procedure.ambCode}(AMB)
-			</c:if>
-			<c:if test="${procedure.tussCode != ''}">
-				${procedure.tussCode}(TUSS)
-			</c:if>
-		</p>
-		<p>
-			${procedure.name}
-			<input type="hidden" name="appointment.procedures[#index#].procedure.id" value="${procedure.id}"/>
-		</p>
-		<p>${procedure.ch} CH</p>
-		<p class="procedure-total currency">
-			<c:choose>
-				<c:when test="${precifiedProcedure != null }">
-					${precifiedProcedure.fixedAmount} 
-				</c:when>
-				<c:otherwise>
-					${procedure.ch * healthCarePlan.ch}
-				</c:otherwise>
-			</c:choose>			
-		</p>
-		<a href="#">Novo Material</a>
-		<a href="#" class="remove-procedure">excluir</a>		
-	</div>
+	<table class="table">
 	
-	<ul class="material">
+		<!-- INICIO PROCEDURE -->
+		<tr class="procedimento-title">
+			<td>
+				<c:if test="${procedure.ambCode != ''}">
+					${procedure.ambCode}(AMB)
+				</c:if>
+				<c:if test="${procedure.tussCode != ''}">
+					${procedure.tussCode}(TUSS)
+				</c:if>
+			</td>
+			<td>
+				${procedure.name}
+				<input type="hidden" name="appointment.procedures[#index#].procedure.id" value="${procedure.id}"/>
+			</td>
+			<td>${procedure.ch} CH</td>
+			<td></td>
+			<td class="procedure-total currency">
+				<c:choose>
+					<c:when test="${precifiedProcedure != null }">
+						${precifiedProcedure.fixedAmount} 
+					</c:when>
+					<c:otherwise>
+						${procedure.ch * healthCarePlan.ch}
+					</c:otherwise>
+				</c:choose>
+			</td>
+			<td>
+				<a href="#">novo material</a> |
+				<a href="#" class="remove-procedure">excluir</a>
+			</td>
+		</tr>
+		<!-- FIM PROCEDURE -->
 	
-		<c:forEach items="${materials}" var="precifiedMaterial" varStatus="status">			
-			<li>
-				<input type="hidden" name="appointment.procedures[#index#].materials[${status.count-1}].material.id" value="${precifiedMaterial.material.id}" />
-				<input type="text" class="qty" name="appointment.procedures[#index#].materials[${status.count-1}].qty" value="1" />
-				<p class="name">${precifiedMaterial.material.name}</p>
-				<input type="text" class="amount currency" name="appointment.procedures[#index#].materials[${status.count-1}].unitAmount" value="${precifiedMaterial.amount}" />
-				<p class="total currency">${precifiedMaterial.amount}</p>
-				<a href="#" class="remove-material">excluir</a>			
-			</li> 
+		<tr>
+			<th></th>
+			<th>Material / Medicamento</th>
+			<th>Quantidade</th>
+			<th>Valor Unitário</th>
+			<th>Total</th>
+			<th class="last">&nbsp;</th>
+		</tr>
+		
+		<!-- MATERIAIS -->	
+		<c:forEach items="${materials}" var="precifiedMaterial" varStatus="status">	
+			<tr class="${status.count % 2 == 0 ? 'odd' : 'even' } material">
+				<td>
+					<input type="hidden" name="appointment.procedures[#index#].materials[${status.count-1}].material.id" value="${precifiedMaterial.material.id}" />
+				</td>
+				<td>${precifiedMaterial.material.name}</td>
+				<td>
+					<input type="text" class="qty" name="appointment.procedures[#index#].materials[${status.count-1}].qty" value="1" />
+				</td>
+				<td>
+					<input type="text" class="amount currency" name="appointment.procedures[#index#].materials[${status.count-1}].unitAmount" value="${precifiedMaterial.amount}" />
+				</td>
+				<td class="total currency">${precifiedMaterial.amount}</td>
+				<td>
+					<a href="#" class="remove-material">excluir</a>
+				</td>
+			</tr>
 		</c:forEach>
 		
-	</ul>
-	
-	<ul class="medicine">
-		<c:forEach items="${medicine}" var="precifiedMedicine" varStatus="status">	
-			<li>
-				<input type="hidden" name="appointment.procedures[#index#].medicines[${status.count-1}].medicine.id" value="${precifiedMedicine.medicine.id}" />
-				<input type="text" class="qty" name="appointment.procedures[#index#].medicines[${status.count-1}].qty" value="1" />
-				<p class="name">${precifiedMedicine.medicine.name}</p>
-				<input type="text" class="amount currency" name="appointment.procedures[#index#].medicines[${status.count-1}].unitAmount" value="${precifiedMedicine.amount}" />
-				<p class="total currency">${precifiedMedicine.amount}</p>
-				<a href="#" class="remove-medicine">excluir</a>			
-			</li>
+		<!-- MEDICAMENTOS -->
+		<c:forEach items="${medicine}" var="precifiedMedicine" varStatus="status">
+			<tr class="${status.count % 2 == 0 ? 'odd' : 'even' } medicine">
+				<td>
+					<input type="hidden" name="appointment.procedures[#index#].medicines[${status.count-1}].medicine.id" value="${precifiedMedicine.medicine.id}" />
+				</td>
+				<td>${precifiedMedicine.medicine.name}</td>
+				<td>
+					<input type="text" class="qty" name="appointment.procedures[#index#].medicines[${status.count-1}].qty" value="1" />
+				</td>
+				<td>
+					<input type="text" class="amount currency" name="appointment.procedures[#index#].medicines[${status.count-1}].unitAmount" value="${precifiedMedicine.amount}" />
+				</td>
+				<td class="total currency">${precifiedMedicine.amount}</td>
+				<td>
+					<a href="#" class="remove-medicine">excluir</a>
+				</td>
+			</tr>
 		</c:forEach>
-	</ul>
-	
-	<p>TOTAL DO PROCEDIMENTO: <span class="procedure-amount currency"></span></p>
+		
+		<tr class="total">
+			<td></td>
+			<td>TOTAL DO PROCEDIMENTO</td>
+			<td colspan="2"></td>
+			<td class="procedure-amount currency"></td>
+			<td></td>
+		</tr>
+		
+	</table>
 	
 </div>
 

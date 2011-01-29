@@ -530,20 +530,20 @@ p.info {
 /* FIM MODAL */
 
 /* INÍCIO APPOINTMENT */
+.procedure input.qty{width:30px;}
+.procedure input.amount{width:100px;}
 
-.procedure {float:left;width:100%;}
-.procedure .procedure-title{float:left; width:100%;margin: 10px 0;}
-.procedure .procedure-title p{float:left;margin: 0 10px 0 0;}
-.procedure .procedure-title a{float:left;}
+tr.total td, tr.procedimento-title td {
+	font-weight: bold;
+}
 
-.procedure ul{float:left;width:100%;}
-.procedure ul li{float:left;width:100%;margin:0 0 10px 0;}
-.procedure ul li input{float:left;}
-.procedure ul li input.qty{width:30px;}
-.procedure ul li input.amount{width:100px;}
-.procedure ul li p{float:left;margin:0;padding:0 30px;}
-.procedure ul li p.name{width:40%;}
-.procedure ul li a{float:left;}
+tr.procedimento-title td {
+	font-size: 12px;
+}
+
+.procedure {
+	margin-top: 15px;
+}
 
 /* FIM APPOINTMENT */
 span.label-retorno {

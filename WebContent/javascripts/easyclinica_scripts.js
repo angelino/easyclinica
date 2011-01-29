@@ -151,7 +151,10 @@ EasyClinica.pages['consultas'] = function(){
 			$('.remove-material, .remove-medicine').click(function(e){
 				e.preventDefault();
 				
-				$(this).parent().remove();				
+				selector = '.' + $(this).attr('class').replace(/remove-/g, '');
+				var element = findRecursiveParent($(this),selector);				
+				element.remove();
+				
 				refreshProceduresValue();
 			});
 		};
@@ -161,7 +164,7 @@ EasyClinica.pages['consultas'] = function(){
 			$('.procedure').each(function(index){
 				var procedure_total = convertCurrencyToFloat($(this).find('.procedure-total'));
 								
-				$(this).find('.material li, .medicine li').each(function(material_index){
+				$(this).find('.material, .medicine').each(function(material_index){
 					var qty = $(this).find('.qty').val();
 					var amount = convertCurrencyToFloat($(this).find('.amount'));					
 					var total = EasyClinica.lib.calculateAmount(qty,amount);
