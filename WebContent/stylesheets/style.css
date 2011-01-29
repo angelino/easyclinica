@@ -408,10 +408,11 @@ ul.list li .left  {
 	font-size: 1.2em;
   	padding: 5px 0 2px;  
   	font-weight: bold;
+  	width: 100%;
 }
 
 .cadastro input {
-	width: 91.5%!important;
+	width: 91.5%;
 }
 
 .cadastro textarea {
@@ -427,6 +428,11 @@ ul.list li .left  {
 	float: left;
 	width: 48%;
 	margin: 3px 0;
+}
+
+.full {
+	float:left;
+	width: 100%;
 }
 
 .agrupar_campos input, .agrupar_campos select {
@@ -461,166 +467,33 @@ p.info {
 	width: 100%;
 }
 
-/* INÍCIO AGENDA */
-.agenda {
-	min-height: 400px;
+.datepicker {
+	width: 100px!important;
 }
 
-.agenda .topo {
-	width: 100%;
+.consulta textarea {
+	height: 150px;
+}
+
+.consulta .agrupar_campos input[type=radio] {
+	width: 20px!important;
+}
+
+.search-procedure .busca {
+	float:left;
+	width: 29%;
+}
+
+.search-procedure .busca input {
+	width: 99%;
+}
+
+.search-procedure img {
 	float: left;
-	margin-bottom: 10px;
+	cursor: pointer;
 }
-
-.agenda .topo .hoje {
-	width: 10%;
-	float: left;
-}
-
-.agenda .topo .hoje .mes {
-	background-color: #576C82;
-	color: #fff;
-	font-weight: bold;
-	-moz-border-radius:5px;
-	text-align: center;
-	padding: 2px;
-}
-
-.agenda .topo .hoje .dia {
-	text-align: center;
-	padding: 10px;
-	font-size: 30px;
-	font-weight: bold;
-	-moz-border-radius-bottomleft: 4px;
-  	-moz-border-radius-bottomright: 4px;
-  	background-color: #F2F5F7;
-}
-
-.agenda .topo .filtros {
-	margin-left: 5px;
-	width: 63%;
-	float: right;
-}
-
-.agenda .compromissos, .agenda .calendario {
-	float: left;
-}
-
-.agenda .compromissos {
-	width: 75%;
-}
-
-.agenda .compromissos .acoes {
-	float:right;
-	margin:0 34px;
-	padding:5px;
-}
-
-.agenda .compromissos .table {
-	width: 95%;
-}
-
-.agenda .calendario {
-	width: 25%;
-}
-
-fieldset.busca label {
-	padding: 0 0 2px;
-	font-size: 12px;
-	font-weight: normal;
-}
-
-fieldset.busca input, fieldset.busca select {
-	width: 42% !important;
-	float: left;
-	margin-right: 5px;
-}
-
-fieldset.busca .button {
-	margin: -5px 0 0;
-}
-
-tr.disponivel {
-	background-color: #9CEDAC;
-}
-
-tr.indisponivel {
-	background-color: #FFA7AA;
-}
-
-tr.current {
-	background-color: #A3AFBB;
-}
-
-.legenda li {
-	font-size: 11px;
-}
-
-.legenda li span {
-	display: inline-block;
-	height: 6px;
-	width: 6px;
-	margin-right: 5px;
-}
-
-.legenda li .vermelho {
-	background-color: #FFA7AA;
-}
-
-.legenda li .azul {
-	background-color: #A3AFBB;
-}
-
-.legenda li .verde {
-	background-color: #9CEDAC;
-}
-
-div.compromissos .filtros {
-	margin: 5px 0;
-}
-
-div.agendamento {
-	background-color: #ffffff;
-	padding: 15px 20px;
-	position: relative;
-	width: 400px;
-}
-
-.btn_fechar {
-	position: absolute;
-	top: 3px;
-	right: 3px;
-	padding: 5px 8px;
-	background: #576C82;
-	color: #ffffff!important;
-	font-weight: bold;
-	text-decoration: none;
-}
-
-fieldset.cadastro .paciente {
-	width: 100%;
-	float: left;
-}
-
-fieldset.cadastro .paciente input {
-	float: left;
-}
-
-fieldset.cadastro .paciente input[type='text'] {
-	width: 80%!important;
-	margin-right: 5px;
-}
-
-fieldset.cadastro .paciente .button {
-	margin: -5px 0 0;
-}
-/* FIM AGENDA */
 
 /* INÍCIO MODAL */
-/* .modal{display:none;}
-#simplemodal-overlay{background-color:#000;z-index:9999px!important;}
-.simplemodal-container{top:150px!important;} */
-
 .modal-background {
 	background-color:#000;
 	filter:alpha(opacity=70);

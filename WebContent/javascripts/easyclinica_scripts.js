@@ -55,7 +55,7 @@ EasyClinica.cfg.currency = {
 	decimalSymbol: ',',
 	digitGroupSymbol: '.',
 	groupDigits: true,
-	symbol: 'R$',
+	symbol: 'R$ ',
 	roundToDecimalPlace: 2
 };
 
@@ -97,6 +97,17 @@ EasyClinica.common.generalFunctions = function(){
 		}
 	});
 	
+	// Máscaras
+	$('.mask_telefone').mask('(99) 9999-9999');
+	$('.mask_cep').mask('99999-999');
+	
+	// Datepicker
+	$('.datepicker').datepicker({
+		dateFormat: 'dd/mm/yy',
+		showOtherMonths: true,
+		selectOtherMonths: true,
+		showAnim: 'drop'
+	});
 };
 
 /* PAGES */
