@@ -126,7 +126,9 @@ EasyClinica.pages['consultas'] = function(){
 				$.post(EasyClinica.cfg.services.newProcedureToAppointment, { procedureId: procedureId, convenioId: convenioId }, function(data){
 					var index = $('#procedures .procedure').size();
 					if(index == "") index = 0;
-					data = data.replace(/#index#/i, index);
+					data = data.replace(/#index#/g, index);
+					
+					alert(data);
 					
 					$('#procedures').append(data);
 					$('.modal').remove();
