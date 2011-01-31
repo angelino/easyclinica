@@ -20,6 +20,7 @@ import br.com.easyclinica.domain.entities.Patient;
 import br.com.easyclinica.domain.entities.PrecifiedMaterial;
 import br.com.easyclinica.domain.entities.PrecifiedMedicine;
 import br.com.easyclinica.domain.entities.PrecifiedProcedure;
+import br.com.easyclinica.domain.entities.PrecifiedSpecialty;
 import br.com.easyclinica.domain.entities.Procedure;
 import br.com.easyclinica.domain.entities.Specialty;
 
@@ -69,6 +70,7 @@ public class SessionFactoryCreator implements ComponentFactory<SessionFactory> {
 		configuration.addAnnotatedClass(PrecifiedMaterial.class);
 		configuration.addAnnotatedClass(PrecifiedMedicine.class);
 		configuration.addAnnotatedClass(PrecifiedProcedure.class);
+		configuration.addAnnotatedClass(PrecifiedSpecialty.class);
 		configuration.addAnnotatedClass(Procedure.class);
 		configuration.addAnnotatedClass(Specialty.class);
 		configuration.addAnnotatedClass(Employee.class);

@@ -29,6 +29,7 @@
 		<mapping class="br.com.easyclinica.domain.entities.PrecifiedMaterial" />
 		<mapping class="br.com.easyclinica.domain.entities.PrecifiedMedicine" />
 		<mapping class="br.com.easyclinica.domain.entities.PrecifiedProcedure" />
+		<mapping class="br.com.easyclinica.domain.entities.PrecifiedSpecialty" />
 		<mapping class="br.com.easyclinica.domain.entities.Procedure" />
 		<mapping class="br.com.easyclinica.domain.entities.Specialty" />
 

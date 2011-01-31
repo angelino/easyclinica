@@ -18,6 +18,7 @@ import br.com.easyclinica.domain.entities.Patient;
 import br.com.easyclinica.domain.entities.PrecifiedMaterial;
 import br.com.easyclinica.domain.entities.PrecifiedMedicine;
 import br.com.easyclinica.domain.entities.PrecifiedProcedure;
+import br.com.easyclinica.domain.entities.PrecifiedSpecialty;
 import br.com.easyclinica.domain.entities.Procedure;
 import br.com.easyclinica.domain.entities.Specialty;
 
@@ -40,12 +41,13 @@ public class ExportTables {
 		cfg.addAnnotatedClass(PrecifiedMaterial.class);
 		cfg.addAnnotatedClass(PrecifiedMedicine.class);
 		cfg.addAnnotatedClass(PrecifiedProcedure.class);
+		cfg.addAnnotatedClass(PrecifiedSpecialty.class);
 		cfg.addAnnotatedClass(Procedure.class);
 		cfg.addAnnotatedClass(Specialty.class);
 		cfg.setProperty("hibernate.connection.driver_class", "com.mysql.jdbc.Driver");
 		cfg.setProperty("hibernate.connection.username", "easyclinica");
 		cfg.setProperty("hibernate.connection.password", "3@sycl1n1c@");
-		cfg.setProperty("hibernate.connection.url", "jdbc:mysql://localhost:3306/easyclinicatest");
+		cfg.setProperty("hibernate.connection.url", "jdbc:mysql://localhost:3306/easyclinica");
 		cfg.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
 		
 		
