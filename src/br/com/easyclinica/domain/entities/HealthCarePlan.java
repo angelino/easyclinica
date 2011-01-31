@@ -35,6 +35,8 @@ public class HealthCarePlan {
 	private List<PrecifiedMedicine> precifiedMedicines;
 	@OneToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL, orphanRemoval=true, mappedBy="healthCarePlan")
 	private List<PrecifiedProcedure> precifiedProcedures;
+	@OneToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL, orphanRemoval=true, mappedBy="healthCarePlan")
+	private List<PrecifiedSpecialty> precifiedSpecialties;
 	
 	public HealthCarePlan() {}
 	public HealthCarePlan(int id) {
@@ -138,6 +140,15 @@ public class HealthCarePlan {
 
 	protected List<PrecifiedProcedure> getPrecifiedProcedures() {
 		return Collections.unmodifiableList(precifiedProcedures);
+	}
+
+	public List<PrecifiedSpecialty> getPrecifiedSpecialties() {
+		return precifiedSpecialties;
+	}
+	
+	protected void setPrecifiedSpecialties(
+			List<PrecifiedSpecialty> precifiedSpecialties) {
+		this.precifiedSpecialties = precifiedSpecialties;
 	}
 	
 	@Override
