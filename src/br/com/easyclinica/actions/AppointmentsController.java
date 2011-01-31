@@ -21,8 +21,8 @@ import br.com.easyclinica.domain.repositories.AllPatients;
 import br.com.easyclinica.domain.repositories.AllProcedures;
 import br.com.easyclinica.domain.repositories.AllSpecialties;
 import br.com.easyclinica.domain.repositories.PrecifiedThings;
-import br.com.easyclinica.services.MaterialWithPriceAndQuantityBuilder;
-import br.com.easyclinica.services.MedicineWithPriceAndQuantityBuilder;
+import br.com.easyclinica.domain.services.MaterialWithPriceAndQuantityBuilder;
+import br.com.easyclinica.domain.services.MedicineWithPriceAndQuantityBuilder;
 
 @Resource
 public class AppointmentsController extends BaseController {
