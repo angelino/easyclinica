@@ -10,7 +10,9 @@ import br.com.easyclinica.domain.entities.HealthCarePlan;
 import br.com.easyclinica.domain.entities.PrecifiedMaterial;
 import br.com.easyclinica.domain.entities.PrecifiedMedicine;
 import br.com.easyclinica.domain.entities.PrecifiedProcedure;
+import br.com.easyclinica.domain.entities.PrecifiedSpecialty;
 import br.com.easyclinica.domain.entities.Procedure;
+import br.com.easyclinica.domain.entities.Specialty;
 import br.com.easyclinica.domain.repositories.PrecifiedThings;
 
 @Component
@@ -25,10 +27,8 @@ public class PrecifiedThingsDao implements PrecifiedThings {
 	public PrecifiedProcedure getPrice(Procedure procedure, HealthCarePlan healthCarePlan) {
 		StringBuilder sql = new StringBuilder();
 		sql.append(" from PrecifiedProcedure p ");
-		sql.append(" inner join fetch p.healthCarePlan h ");
-		sql.append(" inner join fetch p.procedure proc ");
-		sql.append(" where h.id = :healthCarePlanId ");
-		sql.append(" and proc.id = :procedureId ");
+		sql.append(" where p.healthCarePlan.id = :healthCarePlanId ");
+		sql.append(" and p.procedure.id = :procedureId ");
 		
 		Query query = session.createQuery(sql.toString())
 						.setParameter("healthCarePlanId", healthCarePlan.getId())
@@ -37,8 +37,7 @@ public class PrecifiedThingsDao implements PrecifiedThings {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<PrecifiedMaterial> getMaterialsPrice(Procedure procedure, HealthCarePlan healthCarePlan)
-	{
+	public List<PrecifiedMaterial> getMaterialsPrice(Procedure procedure, HealthCarePlan healthCarePlan) {
 		StringBuilder sql = new StringBuilder();
 		sql.append(" from PrecifiedMaterial pm ");
 		sql.append(" where pm.healthCarePlan.id = :healthCarePlanId ");
@@ -55,8 +54,7 @@ public class PrecifiedThingsDao implements PrecifiedThings {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<PrecifiedMedicine> getMedicinePrice(Procedure procedure, HealthCarePlan healthCarePlan)
-	{
+	public List<PrecifiedMedicine> getMedicinePrice(Procedure procedure, HealthCarePlan healthCarePlan) {
 		StringBuilder sql = new StringBuilder();
 		sql.append(" from PrecifiedMedicine pm ");
 		sql.append(" where pm.healthCarePlan.id = :healthCarePlanId ");
@@ -70,5 +68,18 @@ public class PrecifiedThingsDao implements PrecifiedThings {
 						.setParameter("healthCarePlanId", healthCarePlan.getId())
 						.setParameter("procedureId", procedure.getId());
 		return (List<PrecifiedMedicine>) query.list();
+	}
+	
+	public PrecifiedSpecialty getMedicalAppointmentPrice(Specialty specialty, HealthCarePlan healthCarePlan) {
+		
+		StringBuilder sql = new StringBuilder();
+		sql.append(" from PrecifiedSpecialty ps ");
+		sql.append(" where ps.healthCarePlan.id = :healthCarePlanId ");
+		sql.append(" and ps.specialty.id = :specialtyId ");
+		
+		Query query = session.createQuery(sql.toString())
+						.setParameter("healthCarePlanId", healthCarePlan.getId())
+						.setParameter("specialtyId", specialty.getId());
+		return (PrecifiedSpecialty) query.uniqueResult();
 	}
 }

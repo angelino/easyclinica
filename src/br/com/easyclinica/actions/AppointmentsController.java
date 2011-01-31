@@ -7,11 +7,11 @@ import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
+import br.com.easyclinica.domain.dto.MaterialWithPriceAndQuantity;
+import br.com.easyclinica.domain.dto.MedicineWithPriceAndQuantity;
 import br.com.easyclinica.domain.entities.Appointment;
 import br.com.easyclinica.domain.entities.HealthCarePlan;
 import br.com.easyclinica.domain.entities.Patient;
-import br.com.easyclinica.domain.entities.PrecifiedMaterial;
-import br.com.easyclinica.domain.entities.PrecifiedMedicine;
 import br.com.easyclinica.domain.entities.PrecifiedProcedure;
 import br.com.easyclinica.domain.entities.Procedure;
 import br.com.easyclinica.domain.repositories.AllAppointments;
@@ -21,6 +21,8 @@ import br.com.easyclinica.domain.repositories.AllPatients;
 import br.com.easyclinica.domain.repositories.AllProcedures;
 import br.com.easyclinica.domain.repositories.AllSpecialties;
 import br.com.easyclinica.domain.repositories.PrecifiedThings;
+import br.com.easyclinica.services.MaterialWithPriceAndQuantityBuilder;
+import br.com.easyclinica.services.MedicineWithPriceAndQuantityBuilder;
 
 @Resource
 public class AppointmentsController extends BaseController {
@@ -31,10 +33,14 @@ public class AppointmentsController extends BaseController {
 	private final PrecifiedThings precifiedThings;
 	private final AllAppointments allAppointments;
 	private final AllPatients allPatients;
+	private final MaterialWithPriceAndQuantityBuilder materialWithPriceAndQuantityBuilder;
+	private final MedicineWithPriceAndQuantityBuilder medicineWithPriceAndQuantityBuilder;
 	
 	public AppointmentsController(AllDoctors allDoctors, AllSpecialties allSpecialties, AllPatients allPatients, 
 								AllProcedures allProcedures, AllHealthCarePlans allHealthCarePlans, 
-								PrecifiedThings precifiedThings, AllAppointments allAppointments, Result result) {
+								PrecifiedThings precifiedThings, AllAppointments allAppointments, 
+								MaterialWithPriceAndQuantityBuilder materialWithPriceAndQuantityBuilder, 
+								MedicineWithPriceAndQuantityBuilder medicineWithPriceAndQuantityBuilder, Result result) {
 
 	
 		super(result);
@@ -46,7 +52,9 @@ public class AppointmentsController extends BaseController {
 		this.allProcedures = allProcedures;
 		this.allHealthCarePlans = allHealthCarePlans;
 		this.precifiedThings = precifiedThings;
-		this.allAppointments = allAppointments;	
+		this.allAppointments = allAppointments;
+		this.materialWithPriceAndQuantityBuilder = materialWithPriceAndQuantityBuilder;
+		this.medicineWithPriceAndQuantityBuilder = medicineWithPriceAndQuantityBuilder;
 	}
 
 	@Get
@@ -57,7 +65,6 @@ public class AppointmentsController extends BaseController {
 		result.include("patient", patient);
 		result.include("doctors", allDoctors.getActivated());
 		result.include("specialties", allSpecialties.getAll());
-		result.include("patients", allPatients.getAll());
 	}
 	
 	@Get
@@ -87,13 +94,18 @@ public class AppointmentsController extends BaseController {
 		 	HealthCarePlan healthCarePlan = allHealthCarePlans.getById(convenioId);
 		 	
 		 	PrecifiedProcedure precifiedProcedure = precifiedThings.getPrice(procedure, healthCarePlan);
-		 	List<PrecifiedMaterial> materials = precifiedThings.getMaterialsPrice(procedure, healthCarePlan);
-		 	List<PrecifiedMedicine> medicine = precifiedThings.getMedicinePrice(procedure, healthCarePlan);
- 		 	
+		 	List<MaterialWithPriceAndQuantity> materials = materialWithPriceAndQuantityBuilder.ofTheProcedure(procedure)
+		 																					  .inTheHealthCarePlan(healthCarePlan)
+		 																					  .execute();
+		 	
+		 	List<MedicineWithPriceAndQuantity> medicines = medicineWithPriceAndQuantityBuilder.ofTheProcedure(procedure)
+																							  .inTheHealthCarePlan(healthCarePlan)
+																							  .execute();
+ 		 			 	
 		 	result.include("procedure", procedure);
 		 	result.include("healthCarePlan", healthCarePlan);
 		 	result.include("precifiedProcedure", precifiedProcedure);
 		 	result.include("materials", materials);
-		 	result.include("medicine", medicine);
+		 	result.include("medicines", medicines);
 	}
 }

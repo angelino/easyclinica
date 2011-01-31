@@ -50,19 +50,19 @@
 		</tr>
 		
 		<!-- MATERIAIS -->	
-		<c:forEach items="${materials}" var="precifiedMaterial" varStatus="status">	
+		<c:forEach items="${materials}" var="material" varStatus="status">	
 			<tr class="${status.count % 2 == 0 ? 'odd' : 'even' } material">
 				<td>
-					<input type="hidden" name="appointment.procedures[#index#].materials[${status.count-1}].material.id" value="${precifiedMaterial.material.id}" />
+					<input type="hidden" name="appointment.procedures[#index#].materials[${status.count-1}].material.id" value="${material.materialId}" />
 				</td>
-				<td>${precifiedMaterial.material.name}</td>
+				<td>${material.materialName}</td>
 				<td>
-					<input type="text" class="qty" name="appointment.procedures[#index#].materials[${status.count-1}].qty" value="1" />
+					<input type="text" class="qty" name="appointment.procedures[#index#].materials[${status.count-1}].qty" value="${material.qty}" />
 				</td>
 				<td>
-					<input type="text" class="amount currency" name="appointment.procedures[#index#].materials[${status.count-1}].unitAmount" value="${precifiedMaterial.amount}" />
+					<input type="text" class="amount currency" name="appointment.procedures[#index#].materials[${status.count-1}].unitAmount" value="${material.amount}" />
 				</td>
-				<td class="total currency">${precifiedMaterial.amount}</td>
+				<td class="total currency">${material.qty * material.amount}</td>
 				<td>
 					<a href="#" class="remove-material">excluir</a>
 				</td>
@@ -70,19 +70,19 @@
 		</c:forEach>
 		
 		<!-- MEDICAMENTOS -->
-		<c:forEach items="${medicine}" var="precifiedMedicine" varStatus="status">
+		<c:forEach items="${medicines}" var="medicine" varStatus="status">
 			<tr class="${status.count % 2 == 0 ? 'odd' : 'even' } medicine">
 				<td>
-					<input type="hidden" name="appointment.procedures[#index#].medicines[${status.count-1}].medicine.id" value="${precifiedMedicine.medicine.id}" />
+					<input type="hidden" name="appointment.procedures[#index#].medicines[${status.count-1}].medicine.id" value="${medicine.medicineId}" />
 				</td>
-				<td>${precifiedMedicine.medicine.name}</td>
+				<td>${medicine.medicineName}</td>
 				<td>
-					<input type="text" class="qty" name="appointment.procedures[#index#].medicines[${status.count-1}].qty" value="1" />
+					<input type="text" class="qty" name="appointment.procedures[#index#].medicines[${status.count-1}].qty" value="${medicine.qty}" />
 				</td>
 				<td>
-					<input type="text" class="amount currency" name="appointment.procedures[#index#].medicines[${status.count-1}].unitAmount" value="${precifiedMedicine.amount}" />
+					<input type="text" class="amount currency" name="appointment.procedures[#index#].medicines[${status.count-1}].unitAmount" value="${medicine.amount}" />
 				</td>
-				<td class="total currency">${precifiedMedicine.amount}</td>
+				<td class="total currency">${medicine.qty * medicine.amount}</td>
 				<td>
 					<a href="#" class="remove-medicine">excluir</a>
 				</td>

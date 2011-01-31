@@ -1,7 +1,6 @@
 package br.com.easyclinica.domain.entities;
 
 import java.util.Collections;
-import java.util.LinkedList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -9,7 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -22,10 +21,12 @@ public class Procedure {
 	private int ch;
 	private String ambCode;
 	private String tussCode;
-	@ManyToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY) 
-	private List<Material> materials;
-	@ManyToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
-	private List<Medicine> medicine;
+	
+	@OneToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL, orphanRemoval=true, mappedBy="procedure")
+	private List<MaterialInProcedure> materials;
+	
+	@OneToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL, orphanRemoval=true, mappedBy="procedure")
+	private List<MedicineInProcedure> medicine;
 	
 	public Procedure() {
 		this(0);
@@ -33,8 +34,6 @@ public class Procedure {
 	
 	public Procedure(int id) {
 		this.id = id;
-		this.materials = new LinkedList<Material>();
-		this.medicine = new LinkedList<Medicine>();
 	}
 
 	public int getId() {
@@ -64,23 +63,25 @@ public class Procedure {
 	public void setTussCode(String tussCode) {
 		this.tussCode = tussCode;
 	}
-	public List<Material> getMaterials() {
-		return Collections.unmodifiableList(materials);
-	}
-	public List<Medicine> getMedicine() {
-		return Collections.unmodifiableList(medicine);
-	}
 	
-	public void addMaterial(Material material){
-		this.materials.add(material);
-	}
-	
-	public void addMedicine(Medicine medicine){
-		this.medicine.add(medicine);
-	}
-
 	protected void setId(int id) {
 		this.id = id;
+	}
+	
+	public void setMaterials(List<MaterialInProcedure> materials) {
+		this.materials = materials;
+	}
+	
+	public List<MaterialInProcedure> getMaterials() {
+		return Collections.unmodifiableList(materials);
+	}
+
+	public void setMedicines(List<MedicineInProcedure> medicine) {
+		this.medicine = medicine;
+	}
+
+	public List<MedicineInProcedure> getMedicines() {
+		return Collections.unmodifiableList(medicine);
 	}
 	
 	@Override
