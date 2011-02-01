@@ -96,7 +96,7 @@ public class Patient {
 	public int getId() {
 		return id;
 	}
-	protected void setId(int id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	public List<Appointment> getAppointments() {

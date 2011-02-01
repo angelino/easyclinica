@@ -21,6 +21,8 @@ public class MaterialDao implements AllMaterials {
 		this.session = session;
 	}
 	
+	// TODO: rever essa query para voltar object
+
 	@SuppressWarnings("unchecked")
 	public List<MaterialWithPriceAndQuantity> getMaterialsWithPriceAndQuantity(
 			Procedure procedure, HealthCarePlan healthCarePlan) {

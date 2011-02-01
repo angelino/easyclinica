@@ -52,10 +52,10 @@ EasyClinica.cfg.services = {
 EasyClinica.cfg.currency = { 
 	colorize:true, 
 	region: 'pt-BR',
-	decimalSymbol: ',',
-	digitGroupSymbol: '.',
+	decimalSymbol: '.',
+	digitGroupSymbol: '',
 	groupDigits: true,
-	symbol: 'R$ ',
+	symbol: '',
 	roundToDecimalPlace: 2
 };
 

@@ -64,7 +64,7 @@ public class Procedure {
 		this.tussCode = tussCode;
 	}
 	
-	protected void setId(int id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	

@@ -38,7 +38,7 @@ public class PrecifiedMedicine {
 	public void setMedicine(Medicine medicine) {
 		this.medicine = medicine;
 	}
-	protected void setId(int id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	

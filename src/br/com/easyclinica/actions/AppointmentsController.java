@@ -23,6 +23,7 @@ import br.com.easyclinica.domain.repositories.AllSpecialties;
 import br.com.easyclinica.domain.repositories.PrecifiedThings;
 import br.com.easyclinica.domain.services.MaterialWithPriceAndQuantityBuilder;
 import br.com.easyclinica.domain.services.MedicineWithPriceAndQuantityBuilder;
+import br.com.easyclinica.view.Messages;
 
 @Resource
 public class AppointmentsController extends BaseController {
@@ -79,13 +80,16 @@ public class AppointmentsController extends BaseController {
 		return allPatients.getById(patient);
 	}
 	
-	@Path("/teste")
-	public void teste() {}
-	
 	@Post
 	@Path("/pacientes/{appointment.patient.id}/consultas/novo")
 	public void saveNewAppointment(Appointment appointment) {
-		System.out.println(appointment);
+		appointment.recalculate();
+		appointment.setAllParents();
+		
+		allAppointments.save(appointment);
+		
+		successMsg(Messages.APPOINTMENT_ADDED);
+		result.redirectTo(AppointmentsController.class).list(appointment.getPatient().getId());
 	}
 	
 	@Post

@@ -21,4 +21,6 @@ public class Messages {
 
 	public static final String SCHEDULE_UPDATED = "schedule.updated";
 	public static final String SCHEDULE_ADDED = "schedule.added";
+
+	public static final String APPOINTMENT_ADDED = "appointments.added";
 }

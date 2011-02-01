@@ -48,7 +48,7 @@ public class AppointmentMedicine {
 	public void setMedicine(Medicine medicine) {
 		this.medicine = medicine;
 	}
-	protected void setId(int id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	

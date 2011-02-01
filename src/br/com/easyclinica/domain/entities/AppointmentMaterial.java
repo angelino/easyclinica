@@ -48,7 +48,7 @@ public class AppointmentMaterial {
 	public void setMaterial(Material material) {
 		this.material = material;
 	}
-	protected void setId(int id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	

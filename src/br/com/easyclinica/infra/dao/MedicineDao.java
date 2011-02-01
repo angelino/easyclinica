@@ -21,6 +21,7 @@ public class MedicineDao implements AllMedicines {
 		this.session = session;
 	}
 	
+	// TODO: rever essa query para voltar object
 	@SuppressWarnings("unchecked")
 	public List<MedicineWithPriceAndQuantity> getMedicinesWithPriceAndQuantity(
 			Procedure procedure, HealthCarePlan healthCarePlan) {

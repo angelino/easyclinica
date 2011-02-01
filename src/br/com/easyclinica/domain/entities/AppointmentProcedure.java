@@ -73,7 +73,7 @@ public class AppointmentProcedure {
 	protected void setMedicines(List<AppointmentMedicine> medicines) {
 		this.medicines = medicines;
 	}
-	protected void setId(int id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	public void addMaterial(AppointmentMaterial material) {

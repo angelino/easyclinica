@@ -133,7 +133,7 @@ public class Appointment {
 		this.procedures = procedures;
 	}
 
-	protected void setId(int id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -148,6 +148,19 @@ public class Appointment {
 			procedureAmount += procedure.getTotalAmount();
 		}
 	}	
-
+	
+	public void setAllParents() {
+		for(AppointmentProcedure procedure : procedures) {
+			procedure.setAppointment(this);
+			
+			for(AppointmentMaterial material :  procedure.getMaterials()) {
+				material.setProcedure(procedure);
+			}
+			
+			for(AppointmentMedicine medicine :  procedure.getMedicines()) {
+				medicine.setProcedure(procedure);
+			}
+		}
+	}
 	
 }
