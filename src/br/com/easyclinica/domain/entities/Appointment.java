@@ -127,10 +127,12 @@ public class Appointment {
 
 	public void addProcedure(AppointmentProcedure procedure) {
 		procedures.add(procedure);
+		recalculate();
 	}
 
 	protected void setProcedures(List<AppointmentProcedure> procedures) {
 		this.procedures = procedures;
+		recalculate();
 	}
 
 	public void setId(int id) {
