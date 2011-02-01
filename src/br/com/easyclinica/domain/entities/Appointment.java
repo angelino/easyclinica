@@ -139,6 +139,14 @@ public class Appointment {
 
 	public void markAsReturn() {
 		this.isReturn = true;
+	}
+
+	public void recalculate() {
+		procedureAmount = 0;
+		
+		for(AppointmentProcedure procedure : procedures) {
+			procedureAmount += procedure.getTotalAmount();
+		}
 	}	
 
 	

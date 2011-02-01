@@ -1,5 +1,6 @@
 package br.com.easyclinica.domain.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -27,6 +28,10 @@ public class AppointmentProcedure {
 	@OneToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL, orphanRemoval=true, mappedBy="procedure")
 	private List<AppointmentMedicine> medicines;
 	
+	public AppointmentProcedure() {
+		materials = new ArrayList<AppointmentMaterial>();
+		medicines = new ArrayList<AppointmentMedicine>();
+	}
 	public Appointment getAppointment() {
 		return appointment;
 	}
@@ -70,6 +75,24 @@ public class AppointmentProcedure {
 	}
 	protected void setId(int id) {
 		this.id = id;
+	}
+	public void addMaterial(AppointmentMaterial material) {
+		materials.add(material);
+		
+	}
+	public void addMedicine(AppointmentMedicine medicine) {
+		medicines.add(medicine);
+		
+	}
+	public double getTotalAmount() {
+		double total = 0;
+		for(AppointmentMaterial material : materials) {
+			total += material.getTotalAmount();
+		}
+		for(AppointmentMedicine medicine : medicines) {
+			total += medicine.getTotalAmount();
+		}		
+		return total;
 	}
 	
 	
