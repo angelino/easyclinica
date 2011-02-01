@@ -22,6 +22,7 @@
 	    <helper:include fileName="currency/jquery.formatCurrency-1.4.0.min.js" type="js" />
 	    <helper:include fileName="currency/i18n/jquery.formatCurrency.all.js" type="js"/>
 	    <helper:include fileName="easyclinica_scripts.js" type="js" />
+	    <helper:include fileName="consultas.js" type="js" />
 	    <decorator:head />
 	</head>
 
