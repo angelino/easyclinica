@@ -23,12 +23,14 @@
 			</td>
 			<td>${procedure.ch} CH</td>
 			<td></td>
-			<td class="procedure-total currency">
+			<td class="procedure-total">
 				<c:choose>
 					<c:when test="${precifiedProcedure != null }">
+						<input type="hidden" name="appointment.procedures[#index#].amount" value="${precifiedProcedure.fixedAmount}"/>
 						${precifiedProcedure.fixedAmount} 
 					</c:when>
 					<c:otherwise>
+						<input type="hidden" name="appointment.procedures[#index#].amount" value="${procedure.ch * healthCarePlan.ch}"/>
 						${procedure.ch * healthCarePlan.ch}
 					</c:otherwise>
 				</c:choose>
