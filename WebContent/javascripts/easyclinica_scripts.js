@@ -33,7 +33,7 @@ var EasyClinica = {
 		}
 	},
 	getPageName: function() {
-		return $('.main').attr('id') || 'home';
+		return $('#main').attr('tela') || 'home';
 	},
 	runPage: function() {
 		var pageName = EasyClinica.getPageName();
