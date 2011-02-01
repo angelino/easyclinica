@@ -1,25 +1,29 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib uri="/WEB-INF/easyclinica.tld" prefix="helper" %>
+
+<%@page import="br.com.easyclinica.view.Link"%>
+<%@page import="java.util.LinkedList"%>
+<%@page import="br.com.easyclinica.domain.entities.Patient"%>
+
 <html>
 <head>
 	<title>.: EasyClinica - Nova Consulta :.</title>
 </head>
 <body>
-	<!-- INÍCIO MAIN -->
-	<div class="main" id="consultas">
+	<div id="main" tela="consultas">
 		
-		<div class="block" id="block-tables">
+		<div class="block" id="block">
+		
+			<h2>Paciente: ${patient.name}</h2>
+		
+			<helper:patientMenu patient="${patient}" selected="Consultas" />
+			
 			<div class="content">
-				
-				<!-- INÍCIO INNER -->
 				<div class="inner">
 					<c:url value="/pacientes/${patient.id}/consultas/novo" var="action" />
 					<form action="${action}" method="post">
 						
-						<h3>Paciente: ${patient.name}</h3>
-						
-						<!-- INÍCIO CADASTRO CONSULTA -->
 						<fieldset class="cadastro consulta">
 							<div class="full">
 								<label class="label">Data*:</label>
@@ -34,8 +38,8 @@
 							
 							<div class="agrupar_campos">
 								<label class="label">Retorno?</label>
-								<input type="radio" name="appointment.return" value="1"> Sim
-								<input type="radio" name="appointment.return" value="0" checked="checked""> Não
+								<input type="radio" name="appointment.return" value="true"> Sim
+								<input type="radio" name="appointment.return" value="false" checked="checked""> Não
 							</div>
 							
 							<div class="agrupar_campos">
@@ -60,9 +64,7 @@
 							<textarea name="appointment.observations" class="text_field"></textarea>
 							
 						</fieldset>
-						<!-- FIM CADASTRO CONSULTA -->
-					
-						<!-- INÍCIO PROCEDIMENTOS -->
+						
 						<h3>Procedimentos</h3>
 						<fieldset class="search-procedure cadastro">
 							<div class="busca">
@@ -75,7 +77,6 @@
 						</fieldset>
 						
 						<div id="procedures"></div>
-						<!-- FIM PROCEDIMENTOS -->	
 					
 						<div class="appointment-amount">
 							<table>
@@ -109,11 +110,19 @@
 					
 					</form>
 				</div>
-				<!-- FIM INNER -->
 			</div>
 		</div>
 			
 	</div>
-	<!-- FIM MAIN -->
+	
+	<div id="sidebar">
+		<% 
+			java.util.List<Link> links = new LinkedList<Link>();  
+			links.add(new Link("/pacientes/" + ((Patient)request.getAttribute("patient")).getId()+"/consultas","Voltar para listagem"));
+			pageContext.setAttribute("links",links);
+		%>
+		<helper:navigation links="${links}"></helper:navigation>
+	</div>
+	
 </body>
 </html>
