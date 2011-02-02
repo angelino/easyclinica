@@ -151,18 +151,4 @@ public class Appointment {
 		}
 	}	
 	
-	public void setAllParents() {
-		for(AppointmentProcedure procedure : procedures) {
-			procedure.setAppointment(this);
-			
-			for(AppointmentMaterial material :  procedure.getMaterials()) {
-				material.setProcedure(procedure);
-			}
-			
-			for(AppointmentMedicine medicine :  procedure.getMedicines()) {
-				medicine.setProcedure(procedure);
-			}
-		}
-	}
-	
 }

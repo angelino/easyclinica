@@ -83,9 +83,6 @@ public class AppointmentsController extends BaseController {
 	@Post
 	@Path("/pacientes/{appointment.patient.id}/consultas/novo")
 	public void saveNewAppointment(Appointment appointment) {
-		appointment.recalculate();
-		appointment.setAllParents();
-		
 		allAppointments.save(appointment);
 		
 		successMsg(Messages.APPOINTMENT_ADDED);

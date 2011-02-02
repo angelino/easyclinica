@@ -30,9 +30,8 @@
 	<context-param>
 		<param-name>br.com.caelum.vraptor.packages</param-name>
 		<param-value>
-        br.com.caelum.vraptor.http.iogi,
-        br.com.caelum.vraptor.converter.l10n
-    </param-value>
+        	br.com.caelum.vraptor.converter.l10n
+    	</param-value>
 	</context-param>
 
 	<filter-mapping>
