@@ -7,13 +7,15 @@ import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
-import br.com.easyclinica.domain.dto.MaterialWithPriceAndQuantity;
-import br.com.easyclinica.domain.dto.MedicineWithPriceAndQuantity;
 import br.com.easyclinica.domain.entities.Appointment;
 import br.com.easyclinica.domain.entities.HealthCarePlan;
+import br.com.easyclinica.domain.entities.MaterialWithPriceAndQuantity;
+import br.com.easyclinica.domain.entities.MedicineWithPriceAndQuantity;
 import br.com.easyclinica.domain.entities.Patient;
 import br.com.easyclinica.domain.entities.PrecifiedProcedure;
 import br.com.easyclinica.domain.entities.Procedure;
+import br.com.easyclinica.domain.entities.builders.MaterialWithPriceAndQuantityBuilder;
+import br.com.easyclinica.domain.entities.builders.MedicineWithPriceAndQuantityBuilder;
 import br.com.easyclinica.domain.repositories.AllAppointments;
 import br.com.easyclinica.domain.repositories.AllDoctors;
 import br.com.easyclinica.domain.repositories.AllHealthCarePlans;
@@ -21,8 +23,6 @@ import br.com.easyclinica.domain.repositories.AllPatients;
 import br.com.easyclinica.domain.repositories.AllProcedures;
 import br.com.easyclinica.domain.repositories.AllSpecialties;
 import br.com.easyclinica.domain.repositories.PrecifiedThings;
-import br.com.easyclinica.domain.services.MaterialWithPriceAndQuantityBuilder;
-import br.com.easyclinica.domain.services.MedicineWithPriceAndQuantityBuilder;
 import br.com.easyclinica.view.Messages;
 
 @Resource

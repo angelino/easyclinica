@@ -1,10 +1,10 @@
-package br.com.easyclinica.domain.services;
+package br.com.easyclinica.domain.entities.builders;
 
 import java.util.List;
 
 import br.com.caelum.vraptor.ioc.Component;
-import br.com.easyclinica.domain.dto.MaterialWithPriceAndQuantity;
 import br.com.easyclinica.domain.entities.HealthCarePlan;
+import br.com.easyclinica.domain.entities.MaterialWithPriceAndQuantity;
 import br.com.easyclinica.domain.entities.Procedure;
 import br.com.easyclinica.domain.repositories.AllMaterials;
 

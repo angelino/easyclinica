@@ -1,4 +1,4 @@
-package br.com.easyclinica.domain.dto;
+package br.com.easyclinica.domain.entities;
 
 
 public class MaterialWithPriceAndQuantity {

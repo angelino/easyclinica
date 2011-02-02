@@ -43,7 +43,7 @@
 									<td><input type="checkbox" class="checkbox" rel="chk_medicos" name="id" value="${doctor.id}" /></td>
 									<td id="name_${doctor.id}">
 										<c:choose>
-											<c:when test="${doctor.active.active}">
+											<c:when test="${doctor.active}">
 												${doctor.name}
 											</c:when>
 											<c:otherwise>
@@ -58,7 +58,7 @@
 										<a href="<c:url value="/agenda/${doctor.id}" />">ver agenda</a>
 										| <a href="<c:url value="/medicos/${doctor.id}/editar" />">editar</a> 
 										| <a href="<c:url value="/medicos/${doctor.id}" />">exibir</a> 
-										<c:if test="${doctor.active.active}">
+										<c:if test="${doctor.active}">
 										<span>| <a href="<c:url value="/medicos/${doctor.id}" />" rel="doctor" class="delete">inativar</a></span>
 										</c:if>
 									</td>
