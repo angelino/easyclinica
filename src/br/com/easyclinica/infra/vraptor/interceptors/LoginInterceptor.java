@@ -3,6 +3,7 @@ package br.com.easyclinica.infra.vraptor.interceptors;
 import java.util.Arrays;
 
 import br.com.caelum.vraptor.InterceptionException;
+import br.com.caelum.vraptor.Intercepts;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.core.InterceptorStack;
 import br.com.caelum.vraptor.interceptor.Interceptor;
@@ -12,6 +13,7 @@ import br.com.easyclinica.actions.LoginController;
 import br.com.easyclinica.infra.multitenancy.LoggedUser;
 
 @RequestScoped
+@Intercepts
 public class LoginInterceptor implements Interceptor {
 
 	private final Result result;
