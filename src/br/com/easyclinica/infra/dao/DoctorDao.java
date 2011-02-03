@@ -20,7 +20,7 @@ public class DoctorDao implements AllDoctors {
 	
 	@SuppressWarnings("unchecked")
 	public List<Doctor> get() {
-		return (List<Doctor>)session.createQuery("from Doctor doctors order by name").list();
+		return (List<Doctor>)session.createQuery("from Doctor doctors order by active desc, name").list();
 	}
 
 	@SuppressWarnings("unchecked")
@@ -42,7 +42,7 @@ public class DoctorDao implements AllDoctors {
 
 	@SuppressWarnings("unchecked")
 	public List<Doctor> get(int firstResult, int maxResults) {
-		Query query = session.createQuery("from Doctor order by name");
+		Query query = session.createQuery("from Doctor order by active desc, name");
 		query.setFirstResult(firstResult);
 		query.setMaxResults(maxResults);
 		

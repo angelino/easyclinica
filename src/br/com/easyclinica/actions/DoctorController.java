@@ -11,6 +11,7 @@ import br.com.caelum.vraptor.Validator;
 import br.com.caelum.vraptor.view.Results;
 import br.com.easyclinica.domain.entities.Doctor;
 import br.com.easyclinica.domain.repositories.AllDoctors;
+import br.com.easyclinica.domain.repositories.AllSpecialties;
 import br.com.easyclinica.domain.validators.DoctorValidator;
 import br.com.easyclinica.infra.vraptor.validators.ErrorTranslator;
 import br.com.easyclinica.view.Messages;
@@ -24,15 +25,17 @@ public class DoctorController extends BaseController {
 	private final DoctorValidator doctorValidator;
 	private final ErrorTranslator translator;
 	private final Paginator paginator;
+	private final AllSpecialties allSpecialties;
 	
 	public DoctorController(AllDoctors allDoctors, Result result, Validator validator, 
-							DoctorValidator doctorValidator, ErrorTranslator translator, Paginator paginator) {
+							DoctorValidator doctorValidator, AllSpecialties allSpecialties, ErrorTranslator translator, Paginator paginator) {
 		super(result);
 		this.allDoctors = allDoctors;
 		this.validator = validator;
 		this.doctorValidator = doctorValidator;
 		this.translator = translator;
 		this.paginator = paginator;
+		this.allSpecialties = allSpecialties;
 	}
 	
 	@Get
@@ -46,7 +49,9 @@ public class DoctorController extends BaseController {
 	@Path("/medicos/novo")
 	public void newForm() {
 		Doctor emptyDoctor = Doctor.empty();
+		
 		include(emptyDoctor);
+		result.include("specialties", allSpecialties.getAll());
 	}
 	
 	@Post
@@ -66,6 +71,8 @@ public class DoctorController extends BaseController {
 	public void edit(int id) {
 		Doctor doctorToBeEdited = allDoctors.getById(id);
 		include(doctorToBeEdited);
+		
+		result.include("specialties", allSpecialties.getAll());
 	}
 
 	@Put

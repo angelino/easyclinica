@@ -30,7 +30,7 @@
 			        <div class="inner">
 						<table class="table">
 							<tr>
-								<th class="first"><input type="checkbox" class="checkbox toggle check_all" rel="chk_medicos"/></th>
+								<th class="first"></th>
 								<th>Nome</th>
 								<th>CRM</th>
 								<th>Telefone</th>
@@ -40,7 +40,7 @@
 							
 							<c:forEach var="doctor" items="${doctors.result}" varStatus="status">
 								<tr class="${status.count % 2 == 0 ? 'odd' : 'even' }">
-									<td><input type="checkbox" class="checkbox" rel="chk_medicos" name="id" value="${doctor.id}" /></td>
+									<td></td>
 									<td id="name_${doctor.id}">
 										<c:choose>
 											<c:when test="${doctor.active}">
@@ -55,12 +55,8 @@
 									<td>${doctor.telephone}</td>
 									<td>${doctor.email}</td>
 									<td>
-										<a href="<c:url value="/agenda/${doctor.id}" />">ver agenda</a>
-										| <a href="<c:url value="/medicos/${doctor.id}/editar" />">editar</a> 
+										<a href="<c:url value="/medicos/${doctor.id}/editar" />">editar</a> 
 										| <a href="<c:url value="/medicos/${doctor.id}" />">exibir</a> 
-										<c:if test="${doctor.active}">
-										<span>| <a href="<c:url value="/medicos/${doctor.id}" />" rel="doctor" class="delete">inativar</a></span>
-										</c:if>
 									</td>
 								</tr>
 							</c:forEach>

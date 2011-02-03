@@ -13,36 +13,59 @@
 
 	<fieldset class="cadastro">	
 		<label class="label">Nome*:</label>
-		<input type="text" name="doctor.name.name" maxlength="50" class="text_field" value="${doctor.name}" />
+		<input type="text" name="doctor.name" maxlength="50" class="text_field" value="${doctor.name}" />
     	<span class="description">Ex: 'Amil', 'Blue Life'</span>
 	
 		<div class="agrupar_campos">
 			<label class="label">CRM:</label>
-		    <input type="text" name="doctor.crm.crm" class="text_field" maxlength="50" value="${doctor.crm}" />
+		    <input type="text" name="doctor.crm" class="text_field" maxlength="50" value="${doctor.crm}" />
 		    <span class="description">Ex: '55.555'</span>
 		</div>
 		
 		<div class="agrupar_campos">
 			<label class="label">Especialidade:</label>
-		    <input type="text" name="doctor.specialty.specialty" class="text_field" maxlength="150" value="${doctor.specialty}" />
+		    <select name="doctor.specialty.id">
+		    	<option value="0">Selecione uma especialidade</option>
+		    	<c:forEach items="${specialties}" var="specialty">
+		    		<c:choose> 
+		    			<c:when test="${specialty.id == doctor.specialty.id}">
+		    				<option value="${specialty.id}" selected="selected">${specialty.name}</option>
+		    			</c:when>
+		    			<c:otherwise>
+		    				<option value="${specialty.id}">${specialty.name}</option>
+		    			</c:otherwise>
+		    		</c:choose>
+		    	</c:forEach>
+		    </select>
 		    <span class="description">Ex: 'Pediatra', 'Psicólogo'</span>		
 		</div>
 
 		<div class="agrupar_campos">
 			<label class="label">Telefone*:</label>
-	    	<input type="text" name="doctor.telephone.telephone" class="text_field mask_telefone" maxlength="50" value="${doctor.telephone}" />
+	    	<input type="text" name="doctor.telephone" class="text_field mask_telefone" maxlength="50" value="${doctor.telephone}" />
 	    	<span class="description">Ex: '(11) 1111-1111'</span>
 		</div>
 		
 		<div class="agrupar_campos">
 			<label class="label">E-mail:</label>
-	    	<input type="text" name="doctor.email.email" class="text_field" value="${doctor.email}" maxlength="100" />
+	    	<input type="text" name="doctor.email" class="text_field" value="${doctor.email}" maxlength="100" />
 	    	<span class="description">Ex: 'pessoa@convenio.com.br'</span>
 		</div>
 		
 		<label class="label">Observações</label>
-		<textarea rows="5" cols="60" name="doctor.observations.observations" class="text_field">${doctor.observations}</textarea>
+		<textarea rows="5" cols="60" name="doctor.observations" class="text_field">${doctor.observations}</textarea>
 	    <span class="description">Ex: 'só atende ortopedia'</span>
+	
+		<label class="label">Ativo?</label>
+		<c:choose>
+			<c:when test="${doctor.active || doctor.id == 0}">
+				<input type="checkbox" name="doctor.active" value="1" checked="checked"/>
+			</c:when>
+			<c:otherwise>
+				<input type="checkbox" name="doctor.active" value="1"/>
+			</c:otherwise>
+		</c:choose>
+		
 	
 		<div class="botoes">
 			<button class="button" type="submit">

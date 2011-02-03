@@ -31,7 +31,7 @@
 						</div>
 				
 						<div class="agrupar_campos">
-							<label class="label">Telefone*:</label>${doctor.telephone}
+							<label class="label">Telefone:</label>${doctor.telephone}
 						</div>
 						
 						<div class="agrupar_campos">

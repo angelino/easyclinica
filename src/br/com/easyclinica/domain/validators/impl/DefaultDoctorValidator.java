@@ -22,6 +22,9 @@ public class DefaultDoctorValidator implements DoctorValidator {
 		if(ValidatorUtils.isNullOrEmpty(obj.getCrm())) {
 			errors.add(new Error("doctor", ValidationMessages.INVALID_CRM));
 		}
+		if(obj.getSpecialty().getId() == 0) {
+			errors.add(new Error("doctor", ValidationMessages.INVALID_SPECIALTY));
+		}
 		
 		return errors;
 	}

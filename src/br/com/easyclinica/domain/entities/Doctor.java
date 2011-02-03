@@ -29,7 +29,10 @@ public class Doctor {
 	}
 	
 	public static Doctor empty() {
-		return new Doctor();
+		Doctor empty = new Doctor();
+		empty.setActive(true);
+		
+		return empty;
 	}
 
 	public void deactivate() {
@@ -88,7 +91,7 @@ public class Doctor {
 		return active;
 	}
 
-	protected void setActive(boolean active) {
+	public void setActive(boolean active) {
 		this.active = active;
 	}
 
