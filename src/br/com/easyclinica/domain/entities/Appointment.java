@@ -85,7 +85,7 @@ public class Appointment {
 		return isReturn;
 	}
 
-	public void setReturn(boolean isReturn) {
+	protected void setReturn(boolean isReturn) {
 		this.isReturn = isReturn;
 	}
 
@@ -135,7 +135,7 @@ public class Appointment {
 		recalculate();
 	}
 
-	public void setId(int id) {
+	protected void setId(int id) {
 		this.id = id;
 	}
 

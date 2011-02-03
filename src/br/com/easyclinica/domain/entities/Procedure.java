@@ -64,11 +64,11 @@ public class Procedure {
 		this.tussCode = tussCode;
 	}
 	
-	public void setId(int id) {
+	protected void setId(int id) {
 		this.id = id;
 	}
 	
-	public void setMaterials(List<MaterialInProcedure> materials) {
+	protected void setMaterials(List<MaterialInProcedure> materials) {
 		this.materials = materials;
 	}
 	
@@ -76,7 +76,7 @@ public class Procedure {
 		return Collections.unmodifiableList(materials);
 	}
 
-	public void setMedicines(List<MedicineInProcedure> medicine) {
+	protected void setMedicines(List<MedicineInProcedure> medicine) {
 		this.medicine = medicine;
 	}
 

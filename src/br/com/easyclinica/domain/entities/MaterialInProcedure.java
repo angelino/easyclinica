@@ -20,7 +20,7 @@ public class MaterialInProcedure {
 	
 	private float qty;
 
-	public void setId(int id) {
+	protected void setId(int id) {
 		this.id = id;
 	}
 

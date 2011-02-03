@@ -131,11 +131,11 @@ public class HealthCarePlan {
 		return active;
 	}
 
-	public void setActive(boolean active) {
+	protected void setActive(boolean active) {
 		this.active = active;
 	}
 
-	public void setId(int id) {
+	protected void setId(int id) {
 		this.id = id;
 	}
 	public int getId() {
