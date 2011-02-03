@@ -46,54 +46,32 @@ var EasyClinica = {
 /* CONFIG */
 EasyClinica.cfg.services = {
 		searchProcedure: '/easyclinica/procedures/_searchProcedure',
-		newProcedureToAppointment: '/easyclinica/appointments/_newProcedureToAppointment'
-};
-
-EasyClinica.cfg.currency = { 
-	colorize:true, 
-	region: 'pt-BR',
-	decimalSymbol: '.',
-	digitGroupSymbol: '',
-	groupDigits: true,
-	symbol: '',
-	roundToDecimalPlace: 2
+		newProcedureToAppointment: '/easyclinica/appointments/_newProcedureToAppointment',
+		getSpecialtyPrice: '/easyclinica/especialidades/{0}/{1}'
 };
 
 /* COMMON */
 EasyClinica.common.generalFunctions = function(){
 	
-	//Currency: formatar campo como moeda, basta colocar class="currency"
-	$('.currency').formatCurrency(EasyClinica.cfg.currency);	
-	
-	$('.currency').blur(function() {
-		var parameters = clone(EasyClinica.cfg.currency);
-		parameters.roundToDecimalPlace = -1;
-		$(this).formatCurrency(parameters);
-	}).keyup(function(e) {
-		var e = window.event || e;
-		var keyUnicode = e.charCode || e.keyCode;
-		if (e !== undefined) {
-			switch (keyUnicode) {
-				case 16: break; // Shift
-				case 17: break; // Ctrl
-				case 18: break; // Alt
-				case 27: this.value = ''; break; // Esc: clear entry
-				case 35: break; // End
-				case 36: break; // Home
-				case 37: break; // cursor left
-				case 38: break; // cursor up
-				case 39: break; // cursor right
-				case 40: break; // cursor down
-				case 78: break; // N (Opera 9.63+ maps the "." from the number key section to the "N" key too!) (See: http://unixpapa.com/js/key.html search for ". Del")
-				case 110: break; // . number block (Opera 9.63+ maps the "." from the number block to the "N" key (78) !!!)
-				case 190: break; // .
-
-				default: 
-					var parameters = clone(EasyClinica.cfg.currency);
-					parameters.roundToDecimalPlace = -1;
-					$(this).formatCurrency(parameters);
-					break;
-			}
+	// Currency
+	$('.currency').each(function(index){
+		var element = $(this);
+		var isInput = element.is('input');
+		
+		var valor = (isInput ? element.val() : element.html());
+		valor = valor.convertToFloat();
+		
+		if(isInput) element.val(valor.toString().formatCurrency());
+		else element.html(valor.toString().formatCurrency(true));
+	});
+	$('input.currency').keyup(function(key){
+		if(key.keyCode == '13') key.preventDefault();
+		
+		var texto = $(this).val();
+		var floatingPointregExp = new RegExp('^[-+]?[0-9]*\,?[0-9]*$');
+		if(!floatingPointregExp.test(texto)) {
+			texto = texto.substring(0,texto.length -1);
+			$(this).val(texto);
 		}
 	});
 	
@@ -107,6 +85,17 @@ EasyClinica.common.generalFunctions = function(){
 		showOtherMonths: true,
 		selectOtherMonths: true,
 		showAnim: 'drop'
+	});
+	
+	$('.submit').click(function(e){
+		var form = findRecursiveParent($(this),'form');
+		form.submit();
+	});
+};
+
+EasyClinica.common.disableSubmitButtonAfterSubmit = function() {
+	$('form').submit(function(){
+	    $('input[type=submit]', this).attr('disabled', 'disabled');
 	});
 };
 
@@ -147,10 +136,10 @@ EasyClinica.lib.openModal = function (contentUrl, type, parameters, onCreate) {
 };
 
 EasyClinica.lib.calculateAmount = function(qty, amount) {
-	qty = parseFloat(qty);
-	amount = parseFloat(amount);
+	qty = qty.convertToFloat();
+	amount = amount.convertToFloat();
 	
-	return qty * amount;
+	return (qty * amount).toString().convertToFloat();
 };
 
 /* Other functions */
@@ -161,18 +150,46 @@ findRecursiveParent = function(element, selector) {
 	return findRecursiveParent(parent, selector);
 };
 
-convertCurrencyToFloat = function(element) {
-	return element.asNumber({
-		region: 'pt-BR' 
-	})/100;
-};
-
 String.prototype.format = function(){
     var pattern = /\{\d+\}/g;
     var args = arguments;
     return this.replace(pattern, function(capture){ return args[capture.match(/\d+/)]; });
 };
 
+String.prototype.convertToFloat = function(){
+	var valor = this;
+	
+	if(!isFloat(valor)) {
+		valor = "0";	
+		var regexCurrency = new RegExp(/(\d|,)/g);
+		var matched = this.match(regexCurrency);
+		if(matched != null) {
+			valor = "";
+			for (i = 0; i < matched.length; i++) {
+				valor += (matched[i] == '' ? ',' : matched[i]);
+			}
+		}	
+		valor = valor.replace(/,/g, '.');
+	}
+	
+	return parseFloat(valor);
+};
+
+String.prototype.formatCurrency = function(putSymbol, decimalPlaces){
+	if (putSymbol === undefined) putSymbol = false;
+	if (decimalPlaces === undefined) decimalPlaces = 2;
+	
+	var valor = this.convertToFloat();
+	valor = valor.toFixed(decimalPlaces).toString().replace(/[.]/g, ',');
+    
+	return (putSymbol ? 'R$ ' : '') + valor;
+};
+
 clone = function(o) {
 	return eval(uneval(o));
+};
+
+isFloat = function(s)
+{
+	return s.length>0 && !(/[^0-9.]/).test(s) && (/\.\d/).test(s);
 };

@@ -45,6 +45,7 @@
 							<div class="agrupar_campos">
 								<label class="label">Médico*:</label>
 								<select name="appointment.doctor.id">
+									<option value="0">Selecione um médico</option>
 									<c:forEach var="doctor" items="${doctors}" varStatus="status">
 										<option value="${doctor.id}">${doctor.name}</option>
 									</c:forEach>
@@ -54,6 +55,7 @@
 							<div class="agrupar_campos">
 								<label class="label">Especialidade*:</label>
 								<select name="appointment.specialty.id">
+									<option value="0">Selecione uma Especialidade</option>
 									<c:forEach var="specialty" items="${specialties}" varStatus="status">
 										<option value="${specialty.id}">${specialty.name}</option>
 									</c:forEach>
@@ -82,21 +84,21 @@
 							<table>
 								<tr>
 									<td class="title">Consulta:</td>
-									<td class="valor currency" id="valor-consulta">10</td>
+									<td class="valor currency" id="valor-consulta">0</td>
 								</tr>
 								<tr>
 									<td class="title">Procedimentos:</td>
-									<td class="valor currency" id="appointment-procedure-amount"></td>
+									<td class="valor currency" id="appointment-procedure-amount">0</td>
 								</tr>
 								<tr>
 									<td class="title">Total:</td>
-									<td class="valor currency" id="appointment-amount"></td>
+									<td class="valor currency" id="appointment-amount">0</td>
 								</tr>
 							</table>
 						</div>
 					
 						<div class="botoes">
-							<button class="button" type="submit">
+							<button class="button submit" type="button">
 								<c:url value="/images/icons/tick.png" var="img_salvar"/>
 								<img src="${img_salvar}" alt="Salvar" />Salvar
 							</button>

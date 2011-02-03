@@ -64,6 +64,9 @@ input.checkbox {
   border-bottom: 1px solid #ccc;
   border-right: 1px solid #ccc;
   background: #fff;
+  float:left;
+  width:100%;
+  margin:0 0 20px 0;
 }
 
 .dados {
@@ -289,6 +292,24 @@ input.checkbox {
   padding:3px;
 }
 
+.table .sub-table th {
+	background: #A4AAAF;
+}
+
+.table .procedure-table th {
+	border: none;
+	font-weight: bold;
+}
+
+table .procedure-table th a {
+	color: #fff;
+	font-weight: bold;
+}
+
+table .procedure-table th a:hover {
+	color: #d30;
+}
+
 .table th a.toggle {
   display: block;
   width: 12px;
@@ -440,7 +461,8 @@ ul.list li .left  {
 }
 
 .botoes {
-	margin: 20px 0 0;
+	margin: 20px 0 20px 0;
+	float:left;
 }
 
 .description {
@@ -530,6 +552,7 @@ p.info {
 /* FIM MODAL */
 
 /* INÍCIO APPOINTMENT */
+.procedure table tr td.nostyle, .procedure table tr th.nostyle{background:none;border:none;}
 .procedure input.qty{width:30px;}
 .procedure input.amount{width:100px;}
 
@@ -549,13 +572,11 @@ tr.procedimento-title td {
 	width: 100%;
 	font-size: 14px;
 	margin: 10px 0;
+	float:left;
 }
 
 .appointment-amount table {
-	float:right;
-	margin-right:9%;
-	padding:2px;
-	width:23%;
+	float:left;
 }
 
 .appointment-amount .title {

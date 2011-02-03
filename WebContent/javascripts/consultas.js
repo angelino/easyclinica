@@ -50,40 +50,52 @@ EasyClinica.pages['consultas'] = function(){
 	var refreshAppointentValue = function() {
 		refreshProceduresValue();
 		
-		var valor_consulta = convertCurrencyToFloat($('#valor-consulta'));
-		var valor_procedimentos = convertCurrencyToFloat($('#appointment-procedure-amount'));
+		var valor_consulta = $('#valor-consulta').html().convertToFloat();
+		var valor_procedimentos = $('#appointment-procedure-amount').html().convertToFloat();
+		var appointment_amount = valor_consulta + valor_procedimentos;
 		
-		$('#appointment-amount').html(valor_consulta + valor_procedimentos).formatCurrency(EasyClinica.cfg.currency);
+		$('#appointment-amount').html(appointment_amount.toString().formatCurrency(true));
 	};
 	
 	var refreshProceduresValue = function() {
 		var appointment_procedure_amount = 0;
 		
 		$('.procedure').each(function(index){
-			var procedure_total = convertCurrencyToFloat($(this).find('.procedure-total'));
+			var procedure_total = $(this).find('.procedure-total').html().convertToFloat();
 							
 			$(this).find('.material, .medicine').each(function(material_index){
 				var qty = $(this).find('.qty').val();
-				var amount = convertCurrencyToFloat($(this).find('.amount'));					
+				var amount = $(this).find('.amount').val();					
 				var total = EasyClinica.lib.calculateAmount(qty,amount);
 				
-				$(this).find('.total').html(total).formatCurrency(EasyClinica.cfg.currency);
+				$(this).find('.total').html(total.toString().formatCurrency(true));
 				
-				procedure_total += total;
+				procedure_total += total.toString().convertToFloat();
 			});
 			
-			$(this).find('.procedure-amount').html(procedure_total).formatCurrency(EasyClinica.cfg.currency);
+			$(this).find('.procedure-amount').html(procedure_total.toString().formatCurrency(true));
 			
-			appointment_procedure_amount += procedure_total;
+			appointment_procedure_amount += procedure_total.toString().convertToFloat();
 		});
 		
-		$('#appointment-procedure-amount').html(appointment_procedure_amount).formatCurrency(EasyClinica.cfg.currency);
+		$('#appointment-procedure-amount').html(appointment_procedure_amount.toString().formatCurrency(true));
 	};
 	
 	var configureAmountManager = function() {
 		$('.qty, .amount').change(function(){
-			refreshProceduresValue();
+			refreshAppointentValue();
 		});
 	};
 
+	$('select[name=appointment.specialty.id]').change(function(){
+		var specialtyId = $(this).val();
+		var convenioId = $('input[name=appointment.healthCarePlan.id]:checked').val();
+		
+		var url = EasyClinica.cfg.services.getSpecialtyPrice.format(specialtyId, convenioId);		
+		$.get(url, function(data) {
+			var amount = data.precifiedSpecialty.amount;
+			$('#valor-consulta').html(amount.toString().formatCurrency(true));
+		});
+	});
+	
 };
