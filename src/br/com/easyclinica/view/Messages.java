@@ -10,6 +10,7 @@ public class Messages {
 	public static final String DOCTOR_ADDED = "doctor.added";
 	public static final String DOCTOR_UPDATED = "doctor.updated";
 	public static final String DOCTOR_DEACTIVATED = "doctor.deactivated";
+	public static final String DOCTOR_ACTIVATED = "doctor.activated";
 	
 	public static final String PATIENT_UPDATED = "patient.updated";
 	public static final String PATIENT_ADDED = "patient.added";

@@ -56,17 +56,6 @@
 		<textarea rows="5" cols="60" name="doctor.observations" class="text_field">${doctor.observations}</textarea>
 	    <span class="description">Ex: 'só atende ortopedia'</span>
 	
-		<label class="label">Ativo?</label>
-		<c:choose>
-			<c:when test="${doctor.active || doctor.id == 0}">
-				<input type="checkbox" name="doctor.active" value="1" checked="checked"/>
-			</c:when>
-			<c:otherwise>
-				<input type="checkbox" name="doctor.active" value="1"/>
-			</c:otherwise>
-		</c:choose>
-		
-	
 		<div class="botoes">
 			<button class="button" type="submit">
 				<c:url value="/images/icons/tick.png" var="img_salvar"/>

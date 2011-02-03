@@ -38,6 +38,10 @@ public class Doctor {
 	public void deactivate() {
 		this.active = false;
 	}
+	
+	public void activate() {
+		this.active = true;
+	}
 
 	public String getName() {
 		return name;

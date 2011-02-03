@@ -48,10 +48,10 @@
 									<td>
 										<a href="<c:url value="/convenios/${healthCare.id}/editar" />">editar</a> 
 										<c:if test="${healthCare.active}">
-										<span>| <a href="<c:url value="/convenios/${healthCare.id}/deactivate" />" rel="healthcare" class="delete">inativar</a></span>
+										<span>| <a href="<c:url value="/convenios/${healthCare.id}/deactivate" />">inativar</a></span>
 										</c:if>
 										<c:if test="${not healthCare.active}">
-										<span>| <a href="<c:url value="/convenios/${healthCare.id}/activate" />" rel="healthcare" class="delete">ativar</a></span>
+										<span>| <a href="<c:url value="/convenios/${healthCare.id}/activate" />">ativar</a></span>
 										</c:if>
 									</td>
 								</tr>

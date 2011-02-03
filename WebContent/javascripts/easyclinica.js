@@ -1,149 +1,195 @@
-//processada assim que a renderização da página é concluída
-$(document).ready(function(){
-		setup(document);
+$(function(){
+	EasyClinica.activeMenuOption();
+	
+	EasyClinica.runPage();
+	EasyClinica.runCommon();	
 });
 
-function setup(main_selector){
-	criar_mascaras_campos(main_selector);
+var EasyClinica = { 
+	common: {}, pages: {}, page: {}, cfg: {}, lib: {}, registry: {},
 	
-	check_all_checkboxes(main_selector);
-	
-	ativar_opcao_menu_principal();
-	
-	gerenciar_abas(main_selector);
-	
-	deletar_registros(main_selector);
-	
-	salvar_compromisso_agenda(main_selector);
-}
-
-/* 
-	Método responsável por ativas a opção selecionada no menu active
-*/
-function ativar_opcao_menu_principal() {
-	//desativar todas as opções do menu
-	$('#menu-principal li').each(function(index){
-		$(this).removeClass('active');
-	});
-	
-	var url = document.location.href;
-	var partes = url.split('/');
-	
-	for(var i = partes.length - 1; i >= 0; i--)
-	{
-		var opcao = $('#menu-link-' + partes[i]);
-		if($(opcao).length) {
-			$(opcao).addClass('active');
-			break;
+	getMenuOption: function() {
+		var url = document.location.href;
+		var partes = url.split('/');
+		
+		for(var i = partes.length - 1; i >= 0; i--)
+		{
+			var opcao = $('#menu-link-' + partes[i]);
+			if($(opcao).length) return $(opcao);
 		}
+		return null;
+	},
+	activeMenuOption: function() {
+		$('#menu-principal li').each(function(index){
+			$(this).removeClass('active');
+		});
+		
+		var opcaoMenu = EasyClinica.getMenuOption();
+		if(opcaoMenu != null) opcaoMenu.addClass('active');
+	},
+	runCommon: function() {
+		for (var c in EasyClinica.common) {
+			EasyClinica.common[c]();
+		}
+	},
+	getPageName: function() {
+		return $('#main').attr('tela') || 'home';
+	},
+	runPage: function() {
+		var pageName = EasyClinica.getPageName();
+		if (EasyClinica.pages[pageName]) {
+			EasyClinica.page = EasyClinica.pages[pageName]();
+		}
+	}
+};
+
+/* CONFIG */
+EasyClinica.cfg.services = {
+		searchProcedure: '/easyclinica/procedures/_searchProcedure',
+		newProcedureToAppointment: '/easyclinica/appointments/_newProcedureToAppointment',
+		getSpecialtyPrice: '/easyclinica/especialidades/{0}/{1}'
+};
+
+/* COMMON */
+EasyClinica.common.generalFunctions = function(){
+	
+	// Currency
+	$('.currency').each(function(index){
+		var element = $(this);
+		var isInput = element.is('input');
+		
+		var valor = (isInput ? element.val() : element.html());
+		valor = valor.convertToFloat();
+		
+		if(isInput) element.val(valor.toString().formatCurrency());
+		else element.html(valor.toString().formatCurrency(true));
+	});
+	$('input.currency').keyup(function(key){
+		if(key.keyCode == '13') key.preventDefault();
+		
+		var texto = $(this).val();
+		var floatingPointregExp = new RegExp('^[-+]?[0-9]*\,?[0-9]*$');
+		if(!floatingPointregExp.test(texto)) {
+			texto = texto.substring(0,texto.length -1);
+			$(this).val(texto);
+		}
+	});
+	
+	// Máscaras
+	$('.mask_telefone').mask('(99) 9999-9999');
+	$('.mask_cep').mask('99999-999');
+	
+	// Datepicker
+	$('.datepicker').datepicker({
+		dateFormat: 'dd/mm/yy',
+		showOtherMonths: true,
+		selectOtherMonths: true,
+		showAnim: 'drop'
+	});
+	
+	$('.submit').click(function(e){
+		var form = findRecursiveParent($(this),'form');
+		form.submit();
+	});
+};
+
+EasyClinica.common.disableSubmitButtonAfterSubmit = function() {
+	$('form').submit(function(){
+	    $('input[type=submit]', this).attr('disabled', 'disabled');
+	});
+};
+
+/* LIB */
+EasyClinica.lib.openModal = function (contentUrl, type, parameters, onCreate) {
+	var today = new Date();
+	var id_modal = today.getDate() + today.getDay() + today.getHours() + today.getMinutes() + today.getSeconds() + today.getMilliseconds();
+
+	var conteudo_modal = "<div id='" + id_modal + "' class='modal'>";
+		conteudo_modal += "<div class='modal-background'></div>";
+			conteudo_modal += "<div class='modal-popup'>";
+			conteudo_modal += "<a class='modal-close' rel='" + id_modal + "' href=''>X</a>";
+			conteudo_modal += "<div id='conteudo-modal'>";	
+			conteudo_modal += "</div>";
+		conteudo_modal += "</div>";
+	conteudo_modal += "</div>";
+	
+	$('body').append(conteudo_modal);
+	
+	if(type == 'POST') {
+		$.post(contentUrl, parameters, function(html){
+			$('#conteudo-modal').html(html);
+			onCreate();
+		});
+	}
+	else {
+		$.get(contentUrl, function(html) {
+			$('#conteudo-modal').html(html);
+			onCreate();
+		});
 	}	
-}
-
-/* 
-  	Método responsável pelo mecanismo de abas
-*/
-function gerenciar_abas(main_selector) {
-	$('.abas li:first-child').addClass('active');
 	
-	$('.abas li a').each(function(index){
-		var div_conteudo = $(this).attr('href');
-		if(index == 0) $(div_conteudo).show();
-		else $(div_conteudo).hide();
+	$('.modal-close').click(function(e){
+		e.preventDefault();
+		var rel = $(this).attr('rel');
+		$('#' + rel).remove();
 	});
+};
+
+EasyClinica.lib.calculateAmount = function(qty, amount) {
+	qty = qty.convertToFloat();
+	amount = amount.convertToFloat();
 	
-	$(main_selector).find('.abas li a').click(function() {
-		var a = $(this);
-		var li = $(a).parent();
-		var abas = $(li).parent(); // ul - li - a		
+	return (qty * amount).toString().convertToFloat();
+};
 
-		// esconde todos os divs e retira active dos li
-		$(abas).find('li a').each(function(index){
-			var div_conteudo = $(this).attr('href');
-			$(div_conteudo).hide();
-			
-			$(this).parent().removeClass('active');
-		});
-		
-		$(li).addClass('active');
-		
-		$($(a).attr('href')).show();
-	});
-}
-
-/*
-	Para adicionar máscara para determinado campo, adicionar as seguintes class no mesmo.
+/* Other functions */
+findRecursiveParent = function(element, selector) {
+	var parent = element.parent();
+	if(parent.is(selector)) return parent;
 	
-	mask_telefone: (99) 9999-9999
-	mask_cep:			 99999-999
-*/
-function criar_mascaras_campos(main_selector){
-	$(main_selector).find('.mask_telefone').mask('(99) 9999-9999');
-	$(main_selector).find('.mask_cep').mask('99999-999');
-}
+	return findRecursiveParent(parent, selector);
+};
 
-/*
-	mecanismo de seleção multipla de checkbox. Exemplo:
-	defina para o checkbox que ativará a seleção multipla a classe check_all e na propriedade rel defina
-	o rel dos checkboxes que serão controlados.
-*/
-function check_all_checkboxes(main_selector) {
-	$(main_selector).find('.check_all').change(function() {
-		var pai = $(this);
-		var rel = $(pai).attr('rel');
-		
-		$(main_selector).find("input[rel='" + rel + "']").each(function(index){
-			$(this).attr('checked', $(pai).attr('checked'));
-		});
-	});
-}
+String.prototype.format = function(){
+    var pattern = /\{\d+\}/g;
+    var args = arguments;
+    return this.replace(pattern, function(capture){ return args[capture.match(/\d+/)]; });
+};
 
-/*
- * Método ajax para deletar registros.
- * Colocar a class 'delete' e o href deve ser a url a ser chamada. O link deve estar dentro de uma tag span
- */
-function deletar_registros(main_selector) {
-	$(main_selector).find(".delete").click(function(event) {
-		
-		var a = $(this);
-		var rel = $(a).attr('rel');
-		
-		var mensagem = "";
-		if(rel == 'doctor') mensagem = 'Você tem certeza que deseja inativar esse médico?';
-		else if(rel == 'healthcare') mensagem = 'Você tem certeza que deseja inativar esse convênio?';
-		
-		var ok = confirm(mensagem);		
-		if(!ok) return false;		
-		
-		var url = $(a).attr('href');
-		
-		var span = $(this).parent();
-		$(span).html("<img src='/easyclinica/images/loading.gif' />");		
-		
-		$.ajax({
-			type: 'POST',
-			url: url,
-			data: '_method=DELETE',
-			cache: false,
-			dataType: 'json',
-			success: function(data) {
-				var id = 0;
-				if(rel == 'doctor') id = data.doctor.id;
-				else if(rel == 'healthcare') id = data.healthCarePlan.id;
-			
-				var td = $('#name_' + id);
-				var name = $(td).html();
-				var new_name_value = "<span class='deactivated-item'>" + name + "</span> (inativo)";
-				
-				$(td).html(new_name_value);
-				
-				$(span).hide();
-			},
-			error: function(xhr, ajaxOptions, thrownError){
-                alert(xhr.status);
-                alert(thrownError);				
+String.prototype.convertToFloat = function(){
+	var valor = this;
+	
+	if(!isFloat(valor)) {
+		valor = "0";	
+		var regexCurrency = new RegExp(/(\d|,)/g);
+		var matched = this.match(regexCurrency);
+		if(matched != null) {
+			valor = "";
+			for (i = 0; i < matched.length; i++) {
+				valor += (matched[i] == '' ? ',' : matched[i]);
 			}
-		});
-		
-		return false;
-	});
-}
+		}	
+		valor = valor.replace(/,/g, '.');
+	}
+	
+	return parseFloat(valor);
+};
+
+String.prototype.formatCurrency = function(putSymbol, decimalPlaces){
+	if (putSymbol === undefined) putSymbol = false;
+	if (decimalPlaces === undefined) decimalPlaces = 2;
+	
+	var valor = this.convertToFloat();
+	valor = valor.toFixed(decimalPlaces).toString().replace(/[.]/g, ',');
+    
+	return (putSymbol ? 'R$ ' : '') + valor;
+};
+
+clone = function(o) {
+	return eval(uneval(o));
+};
+
+isFloat = function(s)
+{
+	return s.length>0 && !(/[^0-9.]/).test(s) && (/\.\d/).test(s);
+};

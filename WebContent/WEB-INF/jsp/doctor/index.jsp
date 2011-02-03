@@ -57,6 +57,12 @@
 									<td>
 										<a href="<c:url value="/medicos/${doctor.id}/editar" />">editar</a> 
 										| <a href="<c:url value="/medicos/${doctor.id}" />">exibir</a> 
+										<c:if test="${doctor.active}">
+											<span>| <a href="<c:url value="/medicos/${doctor.id}/deactivate" />">inativar</a></span>
+										</c:if>
+										<c:if test="${not doctor.active}">
+											<span>| <a href="<c:url value="/medicos/${doctor.id}/activate" />">ativar</a></span>
+										</c:if>
 									</td>
 								</tr>
 							</c:forEach>
