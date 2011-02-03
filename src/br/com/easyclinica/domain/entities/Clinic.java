@@ -17,9 +17,7 @@ public class Clinic {
 	@ManyToOne
 	private HealthCarePlan privatePlan;
 	
-	public Clinic() {
-		
-	}
+	public Clinic() {}
 	
 	public Clinic(int id)
 	{
@@ -45,7 +43,7 @@ public class Clinic {
 		return active;
 	}
 
-	public void setId(int id) {
+	protected void setId(int id) {
 		this.id = id;
 	}
 
