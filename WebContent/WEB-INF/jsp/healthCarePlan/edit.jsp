@@ -41,7 +41,7 @@
 			%>
 			<helper:navigation links="${links}"></helper:navigation>
 			
-			<helper:notice title="Atenção!" notice="Não é possível alterar a tabela de serviços vinculada ao convênio. Caso isso seja necessário, crie um outro convênio e inative esse."></helper:notice>
+			<helper:notice title="Atenção!" notice="Não esqueça de preencher os dados financeiros do convênio!"></helper:notice>
 		</div>
 	</body>
 </html>

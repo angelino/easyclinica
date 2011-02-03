@@ -36,4 +36,14 @@ public class HealthCarePlanBuilder {
 		return plan;
 	}
 
+	public HealthCarePlanBuilder notActive() {
+		plan.deactivate();
+		return this;
+	}
+
+	public HealthCarePlanBuilder active() {
+		plan.activate();
+		return this;
+	}
+
 }

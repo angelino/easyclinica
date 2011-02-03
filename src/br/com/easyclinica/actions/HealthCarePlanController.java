@@ -1,6 +1,5 @@
 package br.com.easyclinica.actions;
 
-import br.com.caelum.vraptor.Delete;
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
@@ -82,19 +81,12 @@ public class HealthCarePlanController extends BaseController {
 		result.redirectTo(HealthCarePlanController.class).index(Paginator.firstPage());
 	}
 
-	@Get
-	@Path("convenios/{id}")
-	public void show(int id) {
-		HealthCarePlan loadedPlan = allHealthCares.getById(id);
-		include(loadedPlan);
-	}
-	
 	private void include(HealthCarePlan plan) {
 		result.include("healthCarePlan", plan);
 	}
 
-	@Delete
-	@Path("convenios/{id}")
+	@Get
+	@Path("convenios/{id}/deactivate")
 	public void deactivate(int id) {
 		HealthCarePlan plan = allHealthCares.getById(id);
 		
@@ -102,6 +94,19 @@ public class HealthCarePlanController extends BaseController {
 		allHealthCares.update(plan);
 		
 		successMsg(Messages.HEALTH_CARE_PLAN_DEACTIVATED);
-		result.use(Results.json()).from(plan).serialize();
+		result.redirectTo(HealthCarePlanController.class).index(Paginator.firstPage());
 	}
+	
+	@Get
+	@Path("convenios/{id}/activate")
+	public void activate(int id) {
+		HealthCarePlan plan = allHealthCares.getById(id);
+		
+		plan.activate();
+		allHealthCares.update(plan);
+		
+		successMsg(Messages.HEALTH_CARE_PLAN_ACTIVATED);
+		result.redirectTo(HealthCarePlanController.class).index(Paginator.firstPage());
+	}
+
 }

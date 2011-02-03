@@ -28,33 +28,30 @@
 			        <div class="inner">
 						<table class="table">
 							<tr>
-								<th class="first"><input type="checkbox" class="checkbox toggle check_all" rel="chk_convenios"/></th>
-								<th>Nome</th>
-								<th>Contato</th>
-								<th>Telefone</th>
-								<th class="last">&nbsp;</th>
+								<th class="first" witdh="40%">Nome</th>
+								<th width="20%">Contato</th>
+								<th width="20%">Telefone</th>
+								<th width="20%" class="last">&nbsp;</th>
 							</tr>
 							
 							<c:forEach var="healthCare" items="${healthcares.result}" varStatus="status">
 								<tr class="${status.count % 2 == 0 ? 'odd' : 'even' }">
-									<td><input type="checkbox" class="checkbox" rel="chk_convenios" name="id" value="${healthCare.id}" /></td>
-									<td id="name_${healthCare.id}">
+									<td id="name_${healthCare.id}">${healthCare.name}
 										<c:choose>
-											<c:when test="${healthCare.active.active}">
-												${healthCare.name}
+											<c:when test="${not healthCare.active}">
+												<span class="label-inativo">INATIVO</span>
 											</c:when>
-											<c:otherwise>
-												<span class="deactivated-item">${healthCare.name}</span> (inativo)
-											</c:otherwise>
 										</c:choose>									
 									</td>
 									<td>${healthCare.contact}</td>
 									<td>${healthCare.telephone}</td>
 									<td>
 										<a href="<c:url value="/convenios/${healthCare.id}/editar" />">editar</a> 
-										| <a href="<c:url value="/convenios/${healthCare.id}" />">exibir</a> 
-										<c:if test="${healthCare.active.active}">
-										<span>| <a href="<c:url value="/convenios/${healthCare.id}" />" rel="healthcare" class="delete">inativar</a></span>
+										<c:if test="${healthCare.active}">
+										<span>| <a href="<c:url value="/convenios/${healthCare.id}/deactivate" />" rel="healthcare" class="delete">inativar</a></span>
+										</c:if>
+										<c:if test="${not healthCare.active}">
+										<span>| <a href="<c:url value="/convenios/${healthCare.id}/activate" />" rel="healthcare" class="delete">ativar</a></span>
 										</c:if>
 									</td>
 								</tr>

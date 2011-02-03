@@ -1,9 +1,9 @@
 package br.com.easyclinica.domain.entities;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -29,28 +29,40 @@ public class HealthCarePlan {
 	private String contact;
 	private boolean active;
 	
-	@OneToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL, orphanRemoval=true, mappedBy="healthCarePlan") 
+	@OneToMany(fetch=FetchType.LAZY, mappedBy="healthCarePlan") 
 	private List<PrecifiedMaterial> precifiedMaterials;
-	@OneToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL, orphanRemoval=true, mappedBy="healthCarePlan")
+	@OneToMany(fetch=FetchType.LAZY, mappedBy="healthCarePlan")
 	private List<PrecifiedMedicine> precifiedMedicines;
-	@OneToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL, orphanRemoval=true, mappedBy="healthCarePlan")
+	@OneToMany(fetch=FetchType.LAZY, mappedBy="healthCarePlan")
 	private List<PrecifiedProcedure> precifiedProcedures;
-	@OneToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL, orphanRemoval=true, mappedBy="healthCarePlan")
+	@OneToMany(fetch=FetchType.LAZY, mappedBy="healthCarePlan")
 	private List<PrecifiedSpecialty> precifiedSpecialties;
 	
-	public HealthCarePlan() {}
+	public HealthCarePlan() {
+		precifiedMaterials = new ArrayList<PrecifiedMaterial>();
+		precifiedMedicines = new ArrayList<PrecifiedMedicine>();
+		precifiedProcedures = new ArrayList<PrecifiedProcedure>();
+		precifiedSpecialties = new ArrayList<PrecifiedSpecialty>();
+	}
 	public HealthCarePlan(int id) {
+		this();
 		this.id = id;
 	}
 
 	public static HealthCarePlan empty() {
-		return new HealthCarePlan();
+		HealthCarePlan emptyPlan = new HealthCarePlan();
+		emptyPlan.activate();
+		return emptyPlan;
 	}
 
 	public void deactivate() {
 		active = false;
 	}
 
+	public void activate() {
+		active = true;
+	}
+	
 	public String getName() {
 		return name;
 	}
@@ -119,7 +131,7 @@ public class HealthCarePlan {
 		return active;
 	}
 
-	protected void setActive(boolean active) {
+	public void setActive(boolean active) {
 		this.active = active;
 	}
 
