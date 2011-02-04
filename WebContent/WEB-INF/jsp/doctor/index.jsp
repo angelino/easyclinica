@@ -33,6 +33,7 @@
 								<th class="first"></th>
 								<th>Nome</th>
 								<th>CRM</th>
+								<th>Especialidade</th>
 								<th>Telefone</th>
 								<th>E-mail</th>
 								<th class="last">&nbsp;</th>
@@ -52,6 +53,7 @@
 										</c:choose>
 									</td>
 									<td>${doctor.crm}</td>
+									<td>${doctor.specialty.name}</td>
 									<td>${doctor.telephone}</td>
 									<td>${doctor.email}</td>
 									<td>
