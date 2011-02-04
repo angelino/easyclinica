@@ -10,6 +10,12 @@ public class Medicine {
 	private int id;
 	private String name;
 	
+	public Medicine() {
+		this(0);
+	}
+	public Medicine(int id) {
+		this.id = id;
+	}
 	public int getId() {
 		return id;
 	}

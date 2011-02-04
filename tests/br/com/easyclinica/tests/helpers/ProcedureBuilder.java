@@ -6,8 +6,16 @@ public class ProcedureBuilder {
 
 	private Procedure instance;
 
+	public ProcedureBuilder() {
+		this(0);
+	}
+	
 	public ProcedureBuilder(int id) {
 		instance = new Procedure(id);
+		instance.setAmbCode("AMB");
+		instance.setCh(10);
+		instance.setName("Procedure");
+		instance.setTussCode("TUSS");
 	}
 	
 	public Procedure instance() {

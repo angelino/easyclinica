@@ -10,6 +10,10 @@ public class Material {
 	private int id;
 	private String name;
 	
+	public Material() {}
+	public Material(int id) {
+		this.id = id;
+	}
 	public int getId() {
 		return id;
 	}

@@ -1,6 +1,7 @@
 package br.com.easyclinica.domain.entities;
 
 import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -34,6 +35,9 @@ public class Procedure {
 	
 	public Procedure(int id) {
 		this.id = id;
+		
+		materials = new LinkedList<MaterialInProcedure>();
+		medicine = new LinkedList<MedicineInProcedure>();
 	}
 
 	public int getId() {
@@ -87,5 +91,23 @@ public class Procedure {
 	@Override
 	public String toString() {
 		return this.name;
+	}
+	
+	public void addMaterial(Material material, float qty) {
+		MaterialInProcedure materialInProcedure = new MaterialInProcedure();
+		materialInProcedure.setMaterial(material);
+		materialInProcedure.setProcedure(this);
+		materialInProcedure.setQty(qty);
+		
+		this.materials.add(materialInProcedure);
+	}
+	
+	public void addMedicine(Medicine medicine, float qty) {
+		MedicineInProcedure medicineInProcedure = new MedicineInProcedure();
+		medicineInProcedure.setMedicine(medicine);
+		medicineInProcedure.setProcedure(this);
+		medicineInProcedure.setQty(qty);
+		
+		this.medicine.add(medicineInProcedure);
 	}
 }
