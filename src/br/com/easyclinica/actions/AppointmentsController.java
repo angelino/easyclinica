@@ -90,9 +90,9 @@ public class AppointmentsController extends BaseController {
 	}
 	
 	@Post
-	public void _newProcedureToAppointment(int procedureId, int convenioId) {
+	public void _newProcedureToAppointment(int procedureId, int healthCarePlanId) {
 		 	Procedure procedure = allProcedures.getById(procedureId);
-		 	HealthCarePlan healthCarePlan = allHealthCarePlans.getById(convenioId);
+		 	HealthCarePlan healthCarePlan = allHealthCarePlans.getById(healthCarePlanId);
 		 	
 		 	PrecifiedProcedure precifiedProcedure = precifiedThings.getPrice(procedure, healthCarePlan);
 		 	List<MaterialWithPriceAndQuantity> materials = materialWithPriceAndQuantityBuilder.ofTheProcedure(procedure)
