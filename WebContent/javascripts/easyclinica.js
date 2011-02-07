@@ -88,11 +88,36 @@ EasyClinica.common.generalFunctions = function(){
 		selectOtherMonths: true,
 		showAnim: 'drop'
 	});
+};
+
+EasyClinica.common.formValidation = function () {	
+	$('form').validator({
+		lang: 'pt',
+		position: 'center right'
+	});	
 	
-	$('.submit').click(function(e){
-		var form = findRecursiveParent($(this),'form');
-		form.submit();
-	});
+    $.tools.validator.localize('pt', {
+        '[required]': 'Ítem obrigatório'
+    });
+
+    $.tools.validator.fn("[shouldNotBeZero=true]", function (input, value) {
+    	var mensagem_erro = input.attr('title');
+        return (value != 0 ? true : { pt: mensagem_erro });
+    });
+    
+    $('input[type=submit], .submit').click(function (e) {
+        e.preventDefault();
+        
+        var validator = $('form').data('validator');
+        if (validator && validator.checkValidity()) {
+            validator.destroy();
+        }
+
+        $('form').submit();
+    });
+    
+    //messages
+    $('input.currency').attr('data-message','valor inválido');
 };
 
 EasyClinica.common.disableSubmitButtonAfterSubmit = function() {

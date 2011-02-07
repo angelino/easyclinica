@@ -58,10 +58,10 @@
 				</td>
 				<td>${material.materialName}</td>
 				<td>
-					<input type="text" class="qty currency" name="appointment.procedures[#index#].materials[${status.count-1}].qty" value="${material.qty}" />
+					<input type="text" class="qty currency" pattern="^[0-9]+(\,\d{1,2})?$" name="appointment.procedures[#index#].materials[${status.count-1}].qty" value="${material.qty}" />
 				</td>
 				<td>
-					<input type="text" class="amount currency" name="appointment.procedures[#index#].materials[${status.count-1}].unitAmount" value="${material.amount}" />
+					<input type="text" class="amount currency" pattern="^[0-9]+(\,\d{1,2})?$" name="appointment.procedures[#index#].materials[${status.count-1}].unitAmount" value="${material.amount}" />
 				</td>
 				<td class="total currency">${material.qty * material.amount}</td>
 				<td>
@@ -78,10 +78,10 @@
 				</td>
 				<td>${medicine.medicineName}</td>
 				<td>
-					<input type="text" class="qty currency" name="appointment.procedures[#index#].medicines[${status.count-1}].qty" value="${medicine.qty}" />
+					<input type="text" class="qty currency" pattern="^[0-9]+(\,\d{1,2})?$" name="appointment.procedures[#index#].medicines[${status.count-1}].qty" value="${medicine.qty}" />
 				</td>
 				<td>
-					<input type="text" class="amount currency" name="appointment.procedures[#index#].medicines[${status.count-1}].unitAmount" value="${medicine.amount}" />
+					<input type="text" class="amount currency" pattern="^[0-9]+(\,\d{1,2})?$" name="appointment.procedures[#index#].medicines[${status.count-1}].unitAmount" value="${medicine.amount}" />
 				</td>
 				<td class="total currency">${medicine.qty * medicine.amount}</td>
 				<td>

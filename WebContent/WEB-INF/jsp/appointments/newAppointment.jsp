@@ -36,7 +36,7 @@
 						<fieldset class="cadastro consulta">
 							<div class="full">
 								<label class="label">Data*:</label>
-								<input type="text" name="appointment.appointmentDate" class="datepicker text_field" />
+								<input type="text" name="appointment.appointmentDate" required="required" class="datepicker text_field" />
 							</div>
 							
 							<div class="agrupar_campos">
@@ -53,7 +53,7 @@
 							
 							<div class="agrupar_campos">
 								<label class="label">Médico*:</label>
-								<select name="appointment.doctor.id">
+								<select name="appointment.doctor.id" shouldNotBeZero="true" title="Selecione um médico.">
 									<option value="0">Selecione um médico</option>
 									<c:forEach var="doctor" items="${doctors}" varStatus="status">
 										<option value="${doctor.id}">${doctor.name}</option>
@@ -63,7 +63,7 @@
 							
 							<div class="agrupar_campos">
 								<label class="label">Especialidade*:</label>
-								<select name="appointment.specialty.id">
+								<select name="appointment.specialty.id" shouldNotBeZero="true" title="Selecione uma especialidade.">
 									<option value="0">Selecione uma Especialidade</option>
 									<c:forEach var="specialty" items="${specialties}" varStatus="status">
 										<option value="${specialty.id}">${specialty.name}</option>

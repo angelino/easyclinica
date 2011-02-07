@@ -20,8 +20,9 @@ EasyClinica.pages['consultas'] = function(){
 					
 					configureAmountManager();
 					configureRemoveActions();
-					EasyClinica.common.generalFunctions();
 					refreshAppointentValue();
+					EasyClinica.common.generalFunctions();
+					EasyClinica.common.formValidation();
 				});		
 			});			
 		});
@@ -88,13 +89,18 @@ EasyClinica.pages['consultas'] = function(){
 	};
 
 	$('select[name=appointment.specialty.id]').change(function(){
-		var specialty_id = $(this).val();		
+		var specialty_id = $(this).val();
+		
+		if(specialty_id == 0) return;
+		
 		refreshMedicalAppointmentAmount(specialty_id);
 		isReturn();
 	});
 	
 	$('select[name=appointment.doctor.id]').change(function(){
 		var doctorId = $(this).val();
+		
+		if(doctorId == 0) return;
 		
 		var url = EasyClinica.cfg.services.getDoctorSpecialty.format(doctorId);		
 		$.get(url, function(data) {
