@@ -41,6 +41,11 @@ public class HealthCarePlanBuilder {
 		return this;
 	}
 
+	public HealthCarePlanBuilder withPeriodToReturn(int periodToReturn) {
+		plan.setPeriodToReturn(periodToReturn);
+		return this;
+	}
+	
 	public HealthCarePlanBuilder active() {
 		plan.activate();
 		return this;

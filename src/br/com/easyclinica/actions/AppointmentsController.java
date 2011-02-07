@@ -7,6 +7,8 @@ import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
+import br.com.caelum.vraptor.Validator;
+import br.com.caelum.vraptor.view.Results;
 import br.com.easyclinica.domain.entities.Appointment;
 import br.com.easyclinica.domain.entities.HealthCarePlan;
 import br.com.easyclinica.domain.entities.MaterialWithPriceAndQuantity;
@@ -23,6 +25,9 @@ import br.com.easyclinica.domain.repositories.AllPatients;
 import br.com.easyclinica.domain.repositories.AllProcedures;
 import br.com.easyclinica.domain.repositories.AllSpecialties;
 import br.com.easyclinica.domain.repositories.PrecifiedThings;
+import br.com.easyclinica.domain.services.VerifyIfAnAppointmentIsReturnService;
+import br.com.easyclinica.domain.validators.AppointmentValidator;
+import br.com.easyclinica.infra.vraptor.validators.ErrorTranslator;
 import br.com.easyclinica.view.Messages;
 
 @Resource
@@ -36,12 +41,19 @@ public class AppointmentsController extends BaseController {
 	private final AllPatients allPatients;
 	private final MaterialWithPriceAndQuantityBuilder materialWithPriceAndQuantityBuilder;
 	private final MedicineWithPriceAndQuantityBuilder medicineWithPriceAndQuantityBuilder;
+	private final Validator validator;
+	private final AppointmentValidator appointmentValidator;
+	private final ErrorTranslator translator;
+	private final VerifyIfAnAppointmentIsReturnService verifyIfAnAppointmentIsReturnService;
 	
 	public AppointmentsController(AllDoctors allDoctors, AllSpecialties allSpecialties, AllPatients allPatients, 
 								AllProcedures allProcedures, AllHealthCarePlans allHealthCarePlans, 
 								PrecifiedThings precifiedThings, AllAppointments allAppointments, 
 								MaterialWithPriceAndQuantityBuilder materialWithPriceAndQuantityBuilder, 
-								MedicineWithPriceAndQuantityBuilder medicineWithPriceAndQuantityBuilder, Result result) {
+								MedicineWithPriceAndQuantityBuilder medicineWithPriceAndQuantityBuilder, 
+								Validator validator, AppointmentValidator appointmentValidator, ErrorTranslator translator,
+								VerifyIfAnAppointmentIsReturnService verifyIfAnAppointmentIsReturnService,
+								Result result) {
 
 	
 		super(result);
@@ -56,6 +68,10 @@ public class AppointmentsController extends BaseController {
 		this.allAppointments = allAppointments;
 		this.materialWithPriceAndQuantityBuilder = materialWithPriceAndQuantityBuilder;
 		this.medicineWithPriceAndQuantityBuilder = medicineWithPriceAndQuantityBuilder;
+		this.validator = validator;
+		this.appointmentValidator = appointmentValidator;
+		this.translator = translator;
+		this.verifyIfAnAppointmentIsReturnService = verifyIfAnAppointmentIsReturnService;
 	}
 
 	@Get
@@ -83,6 +99,9 @@ public class AppointmentsController extends BaseController {
 	@Post
 	@Path("/pacientes/{appointment.patient.id}/consultas/novo")
 	public void saveNewAppointment(Appointment appointment) {
+		translator.translate(appointmentValidator.validate(appointment));
+		validator.onErrorUse(Results.logic()).forwardTo(AppointmentsController.class).newAppointment(appointment.getPatient().getId());		
+		
 		allAppointments.save(appointment);
 		
 		successMsg(Messages.APPOINTMENT_ADDED);
@@ -108,5 +127,13 @@ public class AppointmentsController extends BaseController {
 		 	result.include("precifiedProcedure", precifiedProcedure);
 		 	result.include("materials", materials);
 		 	result.include("medicines", medicines);
+	}
+	
+	@Get
+	@Path("/pacientes/{patientId}/{specialtyId}/{healthCarePlanId}/isReturn")
+	public void isReturn(int patientId, int specialtyId, int healthCarePlanId) {
+		boolean isReturn = verifyIfAnAppointmentIsReturnService.check(patientId, specialtyId, healthCarePlanId);
+		
+		result.use(Results.json()).from(isReturn).serialize();
 	}
 }

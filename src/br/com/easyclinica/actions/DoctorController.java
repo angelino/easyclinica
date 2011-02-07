@@ -113,8 +113,16 @@ public class DoctorController extends BaseController {
 		doctor.activate();
 		allDoctors.update(doctor);
 		
-		successMsg(Messages.HEALTH_CARE_PLAN_ACTIVATED);
-		result.redirectTo(HealthCarePlanController.class).index(Paginator.firstPage());
+		successMsg(Messages.DOCTOR_ACTIVATED);
+		result.redirectTo(DoctorController.class).index(Paginator.firstPage());
+	}
+	
+	@Get
+	@Path("medicos/{id}/especialidade")
+	public void getSpecialty(int id) {
+		Doctor doctor = allDoctors.getById(id);
+		
+		result.use(Results.json()).from(doctor.getSpecialty()).serialize();
 	}
 	
 	private void include(Doctor emptyDoctor) {

@@ -11,6 +11,12 @@
 	<title>.: EasyClinica - Nova Consulta :.</title>
 </head>
 <body>
+	<script type="text/javascript" language="javascript">
+		$(function(){
+			$('#aviso-retorno').hide();
+		});
+	</script>
+	
 	<div id="main" tela="consultas">
 		
 		<div class="block" id="block">
@@ -23,6 +29,9 @@
 				<div class="inner">
 					<c:url value="/pacientes/${patient.id}/consultas/novo" var="action" />
 					<form action="${action}" method="post">
+						<input type="hidden" value="${patient.id}" name="appointment.patient.id"/>
+						
+						<helper:errors errors="${errors}" />
 						
 						<fieldset class="cadastro consulta">
 							<div class="full">
@@ -120,10 +129,12 @@
 	<div id="sidebar">
 		<% 
 			java.util.List<Link> links = new LinkedList<Link>();  
-			links.add(new Link("/pacientes/" + ((Patient)request.getAttribute("patient")).getId()+"/consultas","Voltar para listagem"));
+			links.add(new Link("/pacientes/" + ((Patient)request.getAttribute("patient")).getId() + "/consultas","Voltar para listagem"));
 			pageContext.setAttribute("links",links);
 		%>
 		<helper:navigation links="${links}"></helper:navigation>
+		
+		<helper:notice id="aviso-retorno" notice="Essa consulta pode ser um retorno." title="Retorno" />
 	</div>
 	
 </body>
