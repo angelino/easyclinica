@@ -9,14 +9,14 @@
 <html>
 <head>
 	<title>.: EasyClinica - Nova Consulta :.</title>
-</head>
-<body>
+	
 	<script type="text/javascript" language="javascript">
 		$(function(){
 			$('#aviso-retorno').hide();
 		});
 	</script>
-	
+</head>
+<body>
 	<div id="main" tela="consultas">
 		
 		<div class="block" id="block">
@@ -112,7 +112,7 @@
 								<img src="${img_salvar}" alt="Salvar" />Salvar
 							</button>
 							
-							<c:url value="/pacientes" var="cancelar"/>
+							<c:url value="/pacientes/${patient.id}/consultas" var="cancelar"/>
 							<a class="button" href="${cancelar}">
 								<c:url value="/images/icons/cross.png" var="img_cancelar"/>
 								<img src="${img_cancelar}" alt="Cancelar" />Cancelar

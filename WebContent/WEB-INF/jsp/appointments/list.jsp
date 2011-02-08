@@ -70,6 +70,7 @@
 			<% 
 				java.util.List<Link> links = new LinkedList<Link>();  
 				links.add(new Link("/pacientes/" + ((Patient)request.getAttribute("patient")).getId(),"Perfil do paciente"));
+				links.add(new Link("/pacientes/" + ((Patient)request.getAttribute("patient")).getId() + "/consultas/novo","Nova Consulta"));
 				pageContext.setAttribute("links",links);
 			%>
 			<helper:navigation links="${links}"></helper:navigation>
