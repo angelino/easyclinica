@@ -53,7 +53,7 @@
 							
 							<div class="agrupar_campos">
 								<label class="label">Médico*:</label>
-								<select name="appointment.doctor.id" shouldNotBeZero="true" title="Selecione um médico.">
+								<select name="appointment.doctor.id" min="1" data-message="Selecione um médico.">
 									<option value="0">Selecione um médico</option>
 									<c:forEach var="doctor" items="${doctors}" varStatus="status">
 										<option value="${doctor.id}">${doctor.name}</option>
@@ -63,7 +63,7 @@
 							
 							<div class="agrupar_campos">
 								<label class="label">Especialidade*:</label>
-								<select name="appointment.specialty.id" shouldNotBeZero="true" title="Selecione uma especialidade.">
+								<select name="appointment.specialty.id" min="1" data-message="Selecione uma especialidade.">
 									<option value="0">Selecione uma Especialidade</option>
 									<c:forEach var="specialty" items="${specialties}" varStatus="status">
 										<option value="${specialty.id}">${specialty.name}</option>

@@ -7,40 +7,14 @@
 <html>
 	<head>
 		<title>.: EasyClinica - Visualizar Paciente :.</title>
-		<script type="text/javascript" language="javascript">
-			$(function(){
-				$('#novaConsulta').dialog({
-					autoOpen: false,
-					height: 400,
-					width: 650,
-					modal: true
-				});
-
-				$('#btnNovaConsulta').click(function() {
-					$('#novaConsulta').dialog('open');
-				});
-
-				$('#btnSalvarConsulta').click(function() {
-					$('#novaConsulta').dialog('close');
-				});
-
-				$('#data-consulta').datepicker();
-
-			});
-		</script>
 	</head>
 	<body>
 
 		<div id="main">
 
-			<div class="secondary-navigation"> 
-	            <ul class="wat-cf abas"> 
-	              <li class="first"><a href="#dados-gerais">Dados Gerais</a></li> 
-	              <li><a href="#consultas">Consultas</a></li> 
-	            </ul> 
-	        </div>
-
 			<div class="block" id="dados-gerais">
+				
+				<helper:patientMenu patient="${patient}" selected="Paciente" />
 				
 				<helper:message successKey="${successKey}" errorKey="${errorKey}" />
 				
@@ -82,7 +56,7 @@
 						</div>
 						
 						<div class="agrupar_campos">
-							<label class="label">Número da carteirinha:</label> ${patient.healthCareId}
+							<label class="label">Número da carteirinha:</label> ${patient.healthCarePlanCode}
 						</div>
 						
 						<p class="info">
@@ -96,88 +70,7 @@
 				</div>
 			</div>
 			
-			<div class="block" id="consultas">
-				<div class="content tables">
-					<h2 class="title">${patient.name}</h2>
-				
-					<div class="botoes">
-						<button class="button" id="btnNovaConsulta">
-							<c:url value="/images/icons/tick.png" var="img_salvar"/>
-							<img src="${img_salvar}" alt="Nova consulta" />Nova consulta
-						</button>
-					</div>
-
-						<table class="table">
-							<tr>
-								<th>Data</th>
-								<th>Convênio</th>
-								<th>Observações</th>
-								<th class="last">&nbsp;</th>
-							</tr>
-							<tr class="odd">
-								<td>10/10/2010</td>
-								<td>Amil</td>
-								<td>Paciente apresentou febre e ...</td>
-								<td>exibir | apagar</td>
-							</tr>
-							<tr class="even">
-								<td>10/10/2010</td>
-								<td>Amil</td>
-								<td>Paciente apresentou febre e ...</td>
-								<td>exibir | apagar</td>
-							</tr>
-						</table>
-				</div>
-				
-			</div>
 		</div>
-		
-		<div id="novaConsulta" title="Nova consulta">
-			<div>
-				Médico:
-				<select name="medico">
-					<option value="1">Dr. X</option>
-					<option value="1">Dr. Y</option>
-				</select>
-			</div>		
-			<div>
-				Convênio:
-				<select name="convenio">
-					<option value="1">amil</option>
-					<option value="1">amil</option>
-				</select>
-			</div>	
-			<div>Data: <input type="text" name="data" id="data-consulta" /></div>
-			<table class="table">
-				<tr>
-					<th>Qtd.</th>
-					<th>Procedimento/Material</th>
-					<th>&nbsp;</th>
-				</tr>
-				<tr>
-					<td>1</td>
-					<td>Raio X (cód 1234-5)</td>
-					<td>X</td>
-				</tr>
-				<tr>
-					<td>1</td>
-					<td>Gesso (cód 1234-6)</td>
-					<td>X</td>
-				</tr>
-				<tr>
-					<td><input type="text" name="qtd" style="width:30px" /></td>
-					<td><input type="text" name="procedimento" style="width:350px;" /></td>
-					<td>Salvar</td>
-				</tr>
-			</table>
-			
-			<div>
-				<button class="button" id="btnSalvarConsulta">
-					<c:url value="/images/icons/tick.png" var="img_salvar"/>
-					<img src="${img_salvar}" alt="Concluir consulta" />Concluir consulta
-				</button>
-			</div>
-		</div>	
 		
 		<div id="sidebar">
 			<% 

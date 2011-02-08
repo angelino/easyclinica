@@ -14,6 +14,8 @@
 
 			<div class="block" id="block">
 				
+				<helper:patientMenu patient="${patient}" selected="Paciente" />
+				
 				<div class="content">
 			   		<h2 class="title">Editar Paciente</h2>
 					<div class="inner">

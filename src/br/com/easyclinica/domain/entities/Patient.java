@@ -25,6 +25,7 @@ public class Patient {
 	private String cellphone;
 	private String telephone;
 	private String email;
+	private String healthCarePlanCode;
 	@OneToMany(fetch=FetchType.LAZY, mappedBy="patient")
 	private List<Appointment> appointments;
 	
@@ -104,6 +105,12 @@ public class Patient {
 	}
 	protected void setAppointments(List<Appointment> appointments) {
 		this.appointments = appointments;
+	}
+	public void setHealthCarePlanCode(String healthCarePlanCode) {
+		this.healthCarePlanCode = healthCarePlanCode;
+	}
+	public String getHealthCarePlanCode() {
+		return healthCarePlanCode;
 	}
 	
 	

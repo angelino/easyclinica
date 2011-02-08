@@ -14,6 +14,7 @@
 		
 			<div class="block" id="block-tables">
 			    <div class="content">
+			    
 			    	<h2 class="title">Listagem de Pacientes</h2>
 			    	
 			    	<helper:message successKey="${successKey}" errorKey="${errorKey}" />
@@ -41,7 +42,7 @@
 								<tr class="${status.count % 2 == 0 ? 'odd' : 'even' }">
 									<td id="name_${patient.id}">${patient.name}</td>
 									<td>${patient.healthCarePlan.name}</td>
-									<td>${patient.healthCareId}</td>
+									<td>${patient.healthCarePlanCode}</td>
 									<td>${patient.telephone}</td>
 									<td>${patient.cellphone}</td>
 									<td>

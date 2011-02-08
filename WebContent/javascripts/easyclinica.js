@@ -99,11 +99,6 @@ EasyClinica.common.formValidation = function () {
     $.tools.validator.localize('pt', {
         '[required]': 'Ítem obrigatório'
     });
-
-    $.tools.validator.fn("[shouldNotBeZero=true]", function (input, value) {
-    	var mensagem_erro = input.attr('title');
-        return (value != 0 ? true : { pt: mensagem_erro });
-    });
     
     $('input[type=submit], .submit').click(function (e) {
         e.preventDefault();
@@ -208,7 +203,7 @@ String.prototype.formatCurrency = function(putSymbol, decimalPlaces){
 	
 	var valor = this.convertToFloat();
 	valor = valor.toFixed(decimalPlaces).toString().replace(/[.]/g, ',');
-    
+	
 	return (putSymbol ? 'R$ ' : '') + valor;
 };
 
