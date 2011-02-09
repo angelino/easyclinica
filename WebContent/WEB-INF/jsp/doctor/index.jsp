@@ -10,79 +10,75 @@
 		<title>.: EasyClinica - Listagem de Médicos :.</title>
 	</head>
 	<body>
-		<!-- INÍCIO MAIN -->
-   		<div id="main">
 		
-			<div class="block" id="block-tables">
-			
-				<div class="content">
-			    	<h2 class="title">Listagem de Médicos</h2>
+   		<div class="box" id="medicos">
+		
+			<div class="boxcontent">
+				<h2>Listagem de Médicos</h2>
 			    	
-			    	<helper:message successKey="${successKey}" errorKey="${errorKey}" />
+			    <helper:message successKey="${successKey}" errorKey="${errorKey}" />
 			    	
-			    	<c:choose>
-			    		<c:when test="${fn:length(doctors.result) == 0}">
-			    			<div class="inner">
-			    			Não há médicos cadastrados! <a href='<c:url value="/medicos/novo" />'>Clique aqui</a> para adicionar o primeiro!
-			    			</div>
-			    		</c:when>
-			    		<c:otherwise>
-			        <div class="inner">
-						<table class="table">
-							<tr>
-								<th class="first"></th>
-								<th>Nome</th>
-								<th>CRM</th>
-								<th>Especialidade</th>
-								<th>Telefone</th>
-								<th>E-mail</th>
-								<th class="last">&nbsp;</th>
+		    	<c:choose>
+		    		<c:when test="${fn:length(doctors.result) == 0}">
+		    			<p class="messengernotice">
+		    				Não há médicos cadastrados! <a href='<c:url value="/medicos/novo" />'>Clique aqui</a> para adicionar o primeiro!
+		    			</p>
+		    		</c:when>
+		    		<c:otherwise>
+			        	<table border="0">
+							<tr class="tableheader">
+								<th width="65px">Status:</th>
+								<th>Nome:</th>
+								<th>CRM:</th>
+								<th>Especialidade:</th>
+								<th>Telefone:</th>
+								<th>E-mail:</th>
+								<th width="145px">&nbsp;</th>
 							</tr>
 							
 							<c:forEach var="doctor" items="${doctors.result}" varStatus="status">
 								<tr class="${status.count % 2 == 0 ? 'odd' : 'even' }">
-									<td></td>
-									<td id="name_${doctor.id}">
-										<c:choose>
-											<c:when test="${doctor.active}">
-												${doctor.name}
-											</c:when>
-											<c:otherwise>
-												<span class="deactivated-item">${doctor.name}</span> (inativo)
-											</c:otherwise>
-										</c:choose>
-									</td>
+									
+									<c:choose>
+										<c:when test="${doctor.active}">
+											<td class="statusenable">Ativo</td>
+                                    		<td>${doctor.name}</td>
+										</c:when>
+										<c:otherwise>
+											<td class="statusdisable">Inativo</td>
+                                    		<td class="namedisable">${doctor.name}</td>
+										</c:otherwise>
+									</c:choose>
 									<td>${doctor.crm}</td>
 									<td>${doctor.specialty.name}</td>
 									<td>${doctor.telephone}</td>
 									<td>${doctor.email}</td>
-									<td>
-										<a href="<c:url value="/medicos/${doctor.id}/editar" />">editar</a> 
-										| <a href="<c:url value="/medicos/${doctor.id}" />">exibir</a> 
-										<c:if test="${doctor.active}">
-											<span>| <a href="<c:url value="/medicos/${doctor.id}/deactivate" />">inativar</a></span>
-										</c:if>
-										<c:if test="${not doctor.active}">
-											<span>| <a href="<c:url value="/medicos/${doctor.id}/activate" />">ativar</a></span>
-										</c:if>
-									</td>
+									<td class="buttons">
+										<a class="btnpeopleedit" title="Editar" href="<c:url value="/medicos/${doctor.id}/editar" />">&nbsp;</a>
+                                        <a class="btnpeopleshow exibir" title="Exibir" doctor_id="${doctor.id}">&nbsp;</a>
+                                        
+                                        <c:choose>
+											<c:when test="${doctor.active}">
+												<a class="btnpeopledisable last" title="Desativar" href="<c:url value="/medicos/${doctor.id}/deactivate" />">&nbsp;</a>
+											</c:when>
+											<c:otherwise>
+												<a class="btnpeopleenable last" title="Ativar" href="<c:url value="/medicos/${doctor.id}/activate" />">&nbsp;</a>
+											</c:otherwise>
+										</c:choose>
+                                    </td>
 								</tr>
 							</c:forEach>
 						</table>
 						
 			            <helper:pagging total="${doctors.totalPages}" current="${doctors.currentPage}" />
-					</div>
-				
-						</c:otherwise>
-					</c:choose>
-				</div>
+					
+					</c:otherwise>
+				</c:choose>
 			</div>
 			
 		</div>
-		<!-- FIM MAIN -->
-			
-		<!-- INÍCIO SIDEBAR -->
-		<div id="sidebar">			
+					
+		<div class="boxright">			
 			<% 
 				java.util.List<Link> links = new LinkedList<Link>();  
 				links.add(new Link("/medicos/novo","Criar novo médico"));
@@ -90,6 +86,5 @@
 			%>
 			<helper:navigation links="${links}"></helper:navigation>   
 	    </div>
-		<!-- FIM SIDEBAR -->
 	</body>
 </html>

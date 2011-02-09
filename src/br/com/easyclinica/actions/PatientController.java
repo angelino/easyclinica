@@ -52,9 +52,8 @@ public class PatientController extends BaseController {
 		include(emptyPatient);
 	}
 
-	@Get
-	@Path("pacientes/{id}")
-	public void show(int id) {
+	@Post
+	public void _show(int id) {
 		Patient loadedPatient = allPatients.getById(id);
 		include(loadedPatient);
 	}
@@ -91,6 +90,30 @@ public class PatientController extends BaseController {
 		successMsg(Messages.PATIENT_ADDED);
 		result.redirectTo(PatientController.class).index(Paginator.firstPage());
 		
+	}
+	
+	@Get
+	@Path("/pacientes/{id}/deactivate")
+	public void deactivate(int id) {
+		Patient patient = allPatients.getById(id);
+		
+		patient.deactivate();
+		allPatients.update(patient);
+		
+		successMsg(Messages.PATIENT_DEACTIVATED);
+		result.redirectTo(PatientController.class).index(Paginator.firstPage());
+	}
+	
+	@Get
+	@Path("/pacientes/{id}/activate")
+	public void activate(int id) {
+		Patient patient = allPatients.getById(id);
+		
+		patient.activate();
+		allPatients.update(patient);
+		
+		successMsg(Messages.PATIENT_ACTIVATED);
+		result.redirectTo(PatientController.class).index(Paginator.firstPage());
 	}
 	
 	@Get

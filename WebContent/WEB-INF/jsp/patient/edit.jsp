@@ -10,39 +10,29 @@
 	</head>
 	<body>
 
-		<div id="main">
-
-			<div class="block" id="block">
-				
-				<helper:patientMenu patient="${patient}" selected="Paciente" />
-				
-				<div class="content">
-			   		<h2 class="title">Editar Paciente</h2>
-					<div class="inner">
+		<div class="box" id="pacientes">
+			<helper:patientMenu patient="${patient}" selected="Paciente" />
 			
-						<c:url value="/pacientes/${patient.id}" var="formAction" />
-						
-						<jsp:include page="_form.jsp">	
-						   <jsp:param name="formAction" value="${formAction}" />
-						   <jsp:param name="put" value="true"/>	
-						   <jsp:param name="edit" value="true"/>			  	
-						</jsp:include>
-					</div>
-				</div>
+			<div class="boxcontent">
+				<h2>Editar Paciente</h2>
+					
+				<c:url value="/pacientes/${patient.id}" var="formAction" />
+				<jsp:include page="_form.jsp">	
+				   <jsp:param name="formAction" value="${formAction}" />
+				   <jsp:param name="put" value="true"/>	
+				   <jsp:param name="edit" value="true"/>			  	
+				</jsp:include>
 			</div>
-			
 		</div>
 			
-		<div id="sidebar">
+		<div class="boxright">
 			<% 
 				java.util.List<Link> links = new LinkedList<Link>();  
 				links.add(new Link("/pacientes","Voltar para listagem"));
-				links.add(new Link("/pacientes/"+ ((Patient)request.getAttribute("patient")).getId(),"Exibir o paciente"));
 				links.add(new Link("/pacientes/novo","Adicionar novo paciente"));
 				pageContext.setAttribute("links",links);
 			%>
-			<helper:navigation links="${links}"></helper:navigation>
-			
+			<helper:navigation links="${links}"></helper:navigation>			
 		</div>
 	</body>
 </html>

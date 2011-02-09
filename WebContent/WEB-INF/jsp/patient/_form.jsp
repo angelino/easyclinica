@@ -9,90 +9,85 @@
 		<input type="hidden" name="_method" value="PUT" />
 	</c:if>
 	<input type="hidden" name="patient.id" value="${patient.id}" />
+	<input type="hidden" name="patient.active" value="${patient.active}" />
 	
 	<helper:errors errors="${errors}" />
 
-	<fieldset class="cadastro">	
-		<label class="label">Nome*:</label>
-		<input type="text" name="patient.name" maxlength="50" class="text_field" value="${patient.name}" />
-    	<span class="description">Ex: 'José da Silva'</span>
-	
-		<label class="label">Endereço:</label>
-    	<input type="text" name="patient.address.street" maxlength="150" class="text_field" value="${patient.address.street}" />
-    	<span class="description">Ex: 'Av. Paulista, 123'</span>
-		
-		<div class="agrupar_campos">
-			<label class="label">Bairro:</label>
-	    <input type="text" name="patient.address.neighborhood" maxlength="100" class="text_field" value="${patient.address.neighborhood}" />
-	    <span class="description">Ex: 'Jardins'</span>
-		</div>
-		
-		<div class="agrupar_campos">
-			<label class="label">CEP:</label>
-	    <input type="text" name="patient.address.postalCode" class="text_field mask_cep" maxlength="12" value="${patient.address.postalCode}" />
-	    <span class="description">Ex: '12345-789'</span>		
-		</div>
+	<p class="required"><span>*</span> campos obrigatórios</p>
 
-		<div class="agrupar_campos">
-			<label class="label">Cidade:</label>
-	    <input type="text" name="patient.address.city" class="text_field" maxlength="50" value="${patient.address.city}" />
-	    <span class="description">Ex: 'São Paulo'</span>
+	<fieldset>
+		<div>
+			<label class="title">Nome:<span>*</span></label>
+			<input type="text" name="patient.name" maxlength="50" required="required" value="${patient.name}" />
 		</div>
 		
-		<div class="agrupar_campos">
-			<label class="label">Estado:</label>
-	    <input type="text" name="patient.address.state" class="text_field" maxlength="2" value="${patient.address.state}" />
-	    <span class="description">Ex: 'SP'</span>		
-		</div>
-	
-		<div class="agrupar_campos">
-			<label class="label">Telefone*:</label>
-    	<input type="text" name="patient.telephone" class="text_field mask_telefone" maxlength="50" value="${patient.telephone}" />
-    	<span class="description">Ex: '(11) 1111-1111'</span>
+		<div class="telephone">
+			<label class="title">Telefone:<span>*</span></label>
+    		<input type="text" name="patient.telephone" class="mask_telefone" required="required" maxlength="50" value="${patient.telephone}" />
+    	</div>
+		
+		<div class="telephone">
+			<label class="title">Celular:</label>
+    		<input type="text" name="patient.cellphone" class="mask_telefone" maxlength="50" value="${patient.cellphone}" />
+    	</div>
+		
+		<div>
+			<label class="title">E-mail:</label>
+			<input type="text" name="patient.email" maxlength="100" value="${patient.email}" />
 		</div>
 		
-		<div class="agrupar_campos">
-			<label class="label">Celular:</label>
-    	<input type="text" name="patient.cellphone" class="text_field mask_telefone" maxlength="50" value="${patient.cellphone}" />
-    	<span class="description">Ex: '(11) 1111-1111'</span>
-		</div>
-		
-		<label class="label">E-mail:</label>
-    <input type="text" name="patient.email" class="text_field" maxlength="100" value="${patient.email}" />
-    <span class="description">Ex: 'joao@dasilva.com.br'</span>
-	
-	<div class="agrupar_campos">
-		<label class="label">Convênio*:</label>
-				<select name="patient.healthCarePlan.id">
-					<c:forEach var="plan" items="${healthCarePlans}">
+		<div>
+			<label class="title">Convênio:<span>*</span></label>
+			<select name="patient.healthCarePlan.id" min="1" data-message="Selecione um convênio.">
+				<option value="0">Selecione um convênio</option>
+				<c:forEach var="plan" items="${healthCarePlans}">
 					<option value="${plan.id}" <c:if test="${plan.id == patient.healthCarePlan.id}">selected</c:if>>${plan.name}</option>
-					</c:forEach>
-				</select>
-	</div>
-	
-		<div class="agrupar_campos">
-			<label class="label">Número da carteirinha:</label>
-    	<input type="text" name="patient.healthCarePlanCode" class="text_field" maxlength="100" value="${patient.healthCarePlanCode}" />
-    	<span class="description">Ex: '1234-ABC'</span>
+				</c:forEach>
+			</select>
 		</div>
 	
-		<label class="label">Observações</label>
-		<textarea rows="5" cols="60" name="patient.observations" class="textfield">${patient.observations}</textarea>
-    <span class="description">Ex: 'alérgico a buscopan'</span>
-	
-		<div class="botoes">
-			<button class="button" type="submit">
-				<c:url value="/images/icons/tick.png" var="img_salvar"/>
-				<img src="${img_salvar}" alt="Salvar" />Salvar
-			</button>
-			
-			<c:url value="/pacientes" var="cancelar"/>
-			<a class="button" href="${cancelar}">
-				<c:url value="/images/icons/cross.png" var="img_cancelar"/>
-				<img src="${img_cancelar}" alt="Cancelar" />Cancelar
-			</a>
-		</div>
+		<div>
+			<label class="title">Número da carteirinha:</label>
+    		<input type="text" name="patient.healthCarePlanCode" maxlength="100" value="${patient.healthCarePlanCode}" />
+    	</div>
 	
 	</fieldset>
+	
+	<fieldset>	
+		<div class="cep">
+			<label class="title">CEP:</label>
+			<input type="text" name="patient.address.postalCode" class="mask_cep" maxlength="12" value="${patient.address.postalCode}" />
+		</div>
+		
+		<div>
+			<label class="title">Endereço:</label>
+	    	<input type="text" name="patient.address.street" maxlength="150" value="${patient.address.street}" />
+	    </div>
+		
+		<div>
+			<label class="title">Bairro:</label>
+			<input type="text" name="patient.address.neighborhood" maxlength="100" value="${patient.address.neighborhood}" />
+		</div>
+		
+		<div>
+			<label class="title">Cidade:</label>
+			<input type="text" name="patient.address.city" maxlength="50" value="${patient.address.city}" />
+		</div>
+		
+		<div>
+			<label class="title">Estado:</label>
+	    	<input type="text" name="patient.address.state" maxlength="2" value="${patient.address.state}" />
+	    </div>
+	
+   		<div class="remarks">
+       		<label class="title">Observações:</label>
+        	<textarea name="patient.observations">${patient.observations}</textarea>
+      	</div>
+    </fieldset>
+    
+    <div class="boxactions">
+		<input type="submit" class="btnsave" value="Salvar" />
+        <input type="button" class="btncancel" value="Cancelar" redirect_to="<c:url value="/pacientes"/>"/>
+    </div>
   
 </form>

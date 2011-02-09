@@ -86,9 +86,8 @@ public class DoctorController extends BaseController {
 		result.redirectTo(DoctorController.class).index(Paginator.firstPage());
 	}
 
-	@Get
-	@Path("medicos/{id}")
-	public void show(int id) {
+	@Post
+	public void _show(int id) {
 		Doctor loadedDoctor = allDoctors.getById(id);
 		include(loadedDoctor);
 	}
