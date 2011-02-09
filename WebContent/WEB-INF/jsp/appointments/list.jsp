@@ -29,7 +29,7 @@
 		    			</p>
 		    		</c:when>
 		    		<c:otherwise>				
-						<table border="0">
+						<table border="0" class="easy">
 							<tr class="tableheader">
 			                    <th>Data</th> 
 			                    <th>Convênio</th>

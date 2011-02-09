@@ -7,7 +7,7 @@
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<div class="block notice" id="${id}">
+<div class="postit" id="${id}">
   <h4><c:out value="${title}"/></h4>
   <p><c:out value="${notice}"/></p>
 </div>

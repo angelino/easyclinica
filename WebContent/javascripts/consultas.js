@@ -100,7 +100,10 @@ EasyClinica.pages['consultas'] = function(){
 	$('select[name=appointment.specialty.id]').change(function(){
 		var specialty_id = $(this).val();
 		
-		if(specialty_id == 0) return;
+		if(specialty_id == 0) {
+			$('#valor-consulta').html('0.00'.formatCurrency(true));
+			return;
+		}
 		
 		refreshMedicalAppointmentAmount(specialty_id);
 		isReturn();

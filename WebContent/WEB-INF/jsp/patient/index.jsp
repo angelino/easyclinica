@@ -23,7 +23,7 @@
 		    			</p>
 		    		</c:when>
 		    		<c:otherwise>
-			    		<table border="0">
+			    		<table border="0" class="easy">
 							<tr class="tableheader">
 								<th width="65px">Status:</th>
 								<th>Nome</th>

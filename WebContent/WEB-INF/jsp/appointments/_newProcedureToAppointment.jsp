@@ -24,16 +24,16 @@
      	${procedure.name}
      	<input type="hidden" class="procedure-id" name="appointment.procedures[#index#].procedure.id" value="${procedure.id}"/>
      </td>
-     <td colspan="2">${procedure.ch} CH</td>
+     <td colspan="2" class="center">${procedure.ch} CH</td>
      <td>
      	<c:choose>
 			<c:when test="${precifiedProcedure != null }">
 				<input type="hidden" name="appointment.procedures[#index#].amount" value="${precifiedProcedure.fixedAmount}"/>
-				<span class="procedure-total-${procedure.id}">${precifiedProcedure.fixedAmount}</span> 
+				<span class="procedure-total-${procedure.id} currency">${precifiedProcedure.fixedAmount}</span> 
 			</c:when>
 			<c:otherwise>
 				<input type="hidden" name="appointment.procedures[#index#].amount" value="${procedure.ch * healthCarePlan.ch}"/>
-				<span class="procedure-total-${procedure.id}">${procedure.ch * healthCarePlan.ch}</span>
+				<span class="procedure-total-${procedure.id} currency">${procedure.ch * healthCarePlan.ch}</span>
 			</c:otherwise>
 		</c:choose>
      </td>
