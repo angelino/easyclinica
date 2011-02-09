@@ -11,14 +11,13 @@
 	</head>
 	<body>
 		
-   		<div class="box" id="medicos">
-		
+   		<div class="box" id="medicos">		
 			<div class="boxcontent">
 				<h2>Listagem de Médicos</h2>
 			    	
 			    <helper:message successKey="${successKey}" errorKey="${errorKey}" />
-			    	
-		    	<c:choose>
+			    
+			    <c:choose>
 		    		<c:when test="${fn:length(doctors.result) == 0}">
 		    			<p class="messengernotice">
 		    				Não há médicos cadastrados! <a href='<c:url value="/medicos/novo" />'>Clique aqui</a> para adicionar o primeiro!

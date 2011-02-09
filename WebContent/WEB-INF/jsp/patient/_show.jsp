@@ -55,6 +55,7 @@
 		
 		<div class="boxactions">
 			<a class="btnedit" href="<c:url value="/pacientes/${patient.id}/editar"/>">Editar</a>
+			<a class="btnappointments" href="<c:url value="/pacientes/${patient.id}/consultas"/>">Consultas</a>
 			<a class="btnclose modal-close">Fechar</a>
 	    </div>
    	</div>

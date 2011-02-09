@@ -156,6 +156,8 @@ table tr td.tablenostyle{background:#ffffff!important;border:none;}
 .boxactions input.btnedit{background-image:url(/easyclinica/images/icons/pencil.png);}
 .boxactions a.btnclose{background-image:url(/easyclinica/images/icons/cross.png);}
 .boxactions input.btnclose{background-image:url(/easyclinica/images/icons/cross.png);}
+.boxactions a.btnappointments{background-image:url(/easyclinica/images/icons/vcard.png);}
+.boxactions input.btnappointments{background-image:url(/easyclinica/images/icons/vcard.png);}
 
 /*BOX PAGINACAO ######################################################################################################################*/
 .boxpagination{float:left;width:100%;background-color:#EEEEEE;border:#EEEEEE 1px solid;font-size:14px;padding:10px 0;margin:10px 0 20px 0;text-align:center;}

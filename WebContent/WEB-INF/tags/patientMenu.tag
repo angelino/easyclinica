@@ -9,7 +9,7 @@
 
 <ul class="boxmenu">
 	<li ${selected=='Paciente' ? 'class="active first"' : ''}>
-		<a href="<c:url value="/pacientes/${patient.id}"/>">Paciente</a>
+		<a href="<c:url value="/pacientes/${patient.id}/editar"/>">Paciente</a>
 	</li>
 	<li ${selected=='Anamnese' ? 'class="active first"' : ''}><a href="#">Anamnese</a></li>
 	<li ${selected=='Consultas' ? 'class="active first"' : ''}>

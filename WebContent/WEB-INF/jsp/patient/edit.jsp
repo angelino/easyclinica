@@ -30,6 +30,7 @@
 				java.util.List<Link> links = new LinkedList<Link>();  
 				links.add(new Link("/pacientes","Voltar para listagem"));
 				links.add(new Link("/pacientes/novo","Adicionar novo paciente"));
+				links.add(new Link("/pacientes/" + ((Patient)request.getAttribute("patient")).getId() + "/consultas/novo","Adicionar nova consulta"));
 				pageContext.setAttribute("links",links);
 			%>
 			<helper:navigation links="${links}"></helper:navigation>			

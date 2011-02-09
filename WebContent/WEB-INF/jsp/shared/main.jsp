@@ -57,9 +57,9 @@
             <!-- END CONTENT -->
             
             <!-- START FOOTER -->
-            <div class="footer">
+            <!--div class="footer">
             	<p>Copyright &copy; 2011 Easy Clínica.</p>
-            </div>
+            </div-->
             <!-- END FOOTER -->
             
         </div>
