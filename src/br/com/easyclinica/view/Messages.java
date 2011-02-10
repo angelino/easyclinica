@@ -14,9 +14,12 @@ public class Messages {
 	
 	public static final String PATIENT_UPDATED = "patient.updated";
 	public static final String PATIENT_ADDED = "patient.added";
-
+	public static final String PATIENT_DEACTIVATED = "patient.deactivated";
+	public static final String PATIENT_ACTIVATED = "patient.activated";
+	
 	public static final String SCHEDULE_UPDATED = "schedule.updated";
 	public static final String SCHEDULE_ADDED = "schedule.added";
 
 	public static final String APPOINTMENT_ADDED = "appointments.added";
+	
 }

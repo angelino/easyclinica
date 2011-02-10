@@ -12,30 +12,19 @@
 	</head>
 	<body>
 
-		<!-- INÍCIO MAIN -->
-		<div id="main">
+		<div class="box" id="medicos">
+			<div class="boxcontent">
+		   		<h2>Editar Médico</h2>				
 		
-			<div class="block" id="block">
-				
-				<div class="content">
-			   		<h2 class="title">Editar Médico</h2>
-					<div class="inner">
-			
-						<c:url value="/medicos/${doctor.id}" var="formAction" />
-					
-						<jsp:include page="_form.jsp">	
-						   <jsp:param name="formAction" value="${formAction}" />
-						   <jsp:param name="put" value="true"/>			  	
-						</jsp:include>
-						
-					</div>
-				</div>
-			</div>
+				<c:url value="/medicos/${doctor.id}" var="formAction" />			
+				<jsp:include page="_form.jsp">	
+				   <jsp:param name="formAction" value="${formAction}" />
+				   <jsp:param name="put" value="true"/>			  	
+				</jsp:include>
+			</div>			
 		</div>
-		<!-- FIM MAIN -->
 			
-		<!-- INÍCIO SIDEBAR -->
-		<div id="sidebar">
+		<div class="boxright">
 			<% 
 				java.util.List<Link> links = new LinkedList<Link>(); 
 				links.add(new Link("/medicos/novo","Criar novo médico"));
@@ -44,6 +33,6 @@
 			%>
 			<helper:navigation links="${links}"></helper:navigation>
 		</div>
-		<!-- FIM SIDEBAR -->
+	
 	</body>
 </html>

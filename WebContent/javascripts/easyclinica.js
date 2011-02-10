@@ -9,14 +9,9 @@ var EasyClinica = {
 	common: {}, pages: {}, page: {}, cfg: {}, lib: {}, registry: {},
 	
 	getMenuOption: function() {
-		var url = document.location.href;
-		var partes = url.split('/');
+		var opcao = $('#menu-link-' + EasyClinica.getPageName());
+		if($(opcao).length) return $(opcao);
 		
-		for(var i = partes.length - 1; i >= 0; i--)
-		{
-			var opcao = $('#menu-link-' + partes[i]);
-			if($(opcao).length) return $(opcao);
-		}
 		return null;
 	},
 	activeMenuOption: function() {
@@ -33,7 +28,7 @@ var EasyClinica = {
 		}
 	},
 	getPageName: function() {
-		return $('#main').attr('tela') || 'home';
+		return $('.box').attr('id') || 'dashboard';
 	},
 	runPage: function() {
 		var pageName = EasyClinica.getPageName();
@@ -47,7 +42,17 @@ var EasyClinica = {
 EasyClinica.cfg.services = {
 		searchProcedure: '/easyclinica/procedures/_searchProcedure',
 		newProcedureToAppointment: '/easyclinica/appointments/_newProcedureToAppointment',
-		getSpecialtyPrice: '/easyclinica/especialidades/{0}/{1}'
+		getSpecialtyPrice: '/easyclinica/especialidades/{0}/{1}',
+		getDoctorSpecialty: '/easyclinica/medicos/{0}/especialidade',
+		verifyIfAppointmentIsReturn: '/easyclinica/pacientes/{0}/{1}/{2}/isReturn',
+		
+		showDoctorDetails: '/easyclinica/doctor/_show',
+		showHealthCarePlanDetails: '/easyclinica/healthCarePlan/_show',
+		showPatientDetails: '/easyclinica/patient/_show'
+};
+
+EasyClinica.cfg.images = {
+	loading: '/easyclinica/images/loading.gif'
 };
 
 /* COMMON */
@@ -87,16 +92,44 @@ EasyClinica.common.generalFunctions = function(){
 		showAnim: 'drop'
 	});
 	
-	$('.submit').click(function(e){
-		var form = findRecursiveParent($(this),'form');
-		form.submit();
+	// botão voltar
+	$('.btnback').click(function(e){
+		e.preventDefault();
+		var redirect_to = $(this).attr('redirect_to');
+		document.location.href = redirect_to;
+	});
+	
+	// botão cancelar
+	$('.btncancel').click(function(e) {
+		e.preventDefault();
+		var redirect_to = $(this).attr('redirect_to');
+		document.location.href = redirect_to;
 	});
 };
 
-EasyClinica.common.disableSubmitButtonAfterSubmit = function() {
-	$('form').submit(function(){
-	    $('input[type=submit]', this).attr('disabled', 'disabled');
-	});
+EasyClinica.common.formValidation = function () {	
+	$('form').validator({
+		lang: 'pt',
+		position: 'center right'		
+	});	
+	
+    $.tools.validator.localize('pt', {
+        '[required]': 'campo obrigatório'
+    });
+    
+    $('input[type=submit], .submit').click(function (e) {
+        if($(this).is('a')) e.preventDefault();
+        
+        var validator = $('form').data('validator');
+        if (validator && validator.checkValidity()) {
+            validator.destroy();
+        } 
+
+        $('form').submit();
+    });
+    
+    //messages
+    $('input.currency').attr('data-message','valor inválido');
 };
 
 /* LIB */
@@ -106,9 +139,10 @@ EasyClinica.lib.openModal = function (contentUrl, type, parameters, onCreate) {
 
 	var conteudo_modal = "<div id='" + id_modal + "' class='modal'>";
 		conteudo_modal += "<div class='modal-background'></div>";
-			conteudo_modal += "<div class='modal-popup'>";
-			conteudo_modal += "<a class='modal-close' rel='" + id_modal + "' href=''>X</a>";
-			conteudo_modal += "<div id='conteudo-modal'>";	
+		conteudo_modal += "<div class='modal-popup'>";
+			conteudo_modal += "<div id='conteudo-modal'>";
+				conteudo_modal += "<h2>Carregando...</h2>";
+				conteudo_modal += "<img class='loading' alt='carregando...' src='" + EasyClinica.cfg.images.loading + "' />";
 			conteudo_modal += "</div>";
 		conteudo_modal += "</div>";
 	conteudo_modal += "</div>";
@@ -119,20 +153,24 @@ EasyClinica.lib.openModal = function (contentUrl, type, parameters, onCreate) {
 		$.post(contentUrl, parameters, function(html){
 			$('#conteudo-modal').html(html);
 			onCreate();
+			configureCloseModal();
 		});
 	}
 	else {
 		$.get(contentUrl, function(html) {
 			$('#conteudo-modal').html(html);
 			onCreate();
+			configureCloseModal();
 		});
 	}	
 	
-	$('.modal-close').click(function(e){
-		e.preventDefault();
-		var rel = $(this).attr('rel');
-		$('#' + rel).remove();
-	});
+	var configureCloseModal = function() {
+		$('.modal-close').click(function(e){
+			e.preventDefault();
+			var modal = findRecursiveParent($(this), '.modal');
+			modal.remove();
+		});
+	};
 };
 
 EasyClinica.lib.calculateAmount = function(qty, amount) {
@@ -148,6 +186,13 @@ findRecursiveParent = function(element, selector) {
 	if(parent.is(selector)) return parent;
 	
 	return findRecursiveParent(parent, selector);
+};
+
+findRecursiveChild = function(element, selector) {
+	var child = element.child();
+	if(child.is(selector)) return child;
+	
+	return findRecursiveChild(child, selector);
 };
 
 String.prototype.format = function(){
@@ -181,7 +226,7 @@ String.prototype.formatCurrency = function(putSymbol, decimalPlaces){
 	
 	var valor = this.convertToFloat();
 	valor = valor.toFixed(decimalPlaces).toString().replace(/[.]/g, ',');
-    
+	
 	return (putSymbol ? 'R$ ' : '') + valor;
 };
 

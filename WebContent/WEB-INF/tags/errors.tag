@@ -5,11 +5,9 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <c:if test="${not empty errors}"> 
-	<div class="flash">
-		<div class="message error">
-			<c:forEach var="error" items="${errors}">
-					<p><fmt:message key="${error.message}"/></p>
-			</c:forEach>
-		</div>
-	</div>
+	<ul class="errors">
+		<c:forEach var="error" items="${errors}">
+			<li><fmt:message key="${error.message}"/></li>
+		</c:forEach>		
+	</ul>
 </c:if>

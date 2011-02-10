@@ -10,67 +10,79 @@
 	</head>
 	<body>
 
-		<div id="main">
-		
-			<div class="block" id="block-tables">
-			    <div class="content">
-			    	<h2 class="title">Listagem de Pacientes</h2>
+		<div class="box" id="pacientes">
+			<div class="boxcontent">
+			    <h2>Listagem de Pacientes</h2>
 			    	
-			    	<helper:message successKey="${successKey}" errorKey="${errorKey}" />
+			    <helper:message successKey="${successKey}" errorKey="${errorKey}" />
 			    	
-			    	<c:choose>
-			    		<c:when test="${fn:length(patients.result) == 0}">
-			    			<div class="inner">
-			    			Não há pacientes cadastrados! <a href='<c:url value="/pacientes/novo" />'>Clique aqui</a> para adicionar o primeiro!
-			    			</div>
-			    		</c:when>
-			    		<c:otherwise>
-			    					    	
-			        <div class="inner">
-						<table class="table">
-							<tr>
+		    	<c:choose>
+		    		<c:when test="${fn:length(patients.result) == 0}">
+		    			<p class="messengernotice">
+		    				Não há pacientes cadastrados! <a href='<c:url value="/pacientes/novo" />'>Clique aqui</a> para adicionar o primeiro!
+		    			</p>
+		    		</c:when>
+		    		<c:otherwise>
+			    		<table border="0" class="easy">
+							<tr class="tableheader">
+								<th width="65px">Status:</th>
 								<th>Nome</th>
 								<th>Convênio</th>
 								<th>Número no Convênio</th>
 								<th>Telefone</th>
 								<th>Celular</th>
-								<th class="last">&nbsp;</th>
+								<th width="145px">&nbsp;</th>
 							</tr>
 							
 							<c:forEach var="patient" items="${patients.result}" varStatus="status">
 								<tr class="${status.count % 2 == 0 ? 'odd' : 'even' }">
-									<td id="name_${patient.id}">${patient.name}</td>
+									<c:choose>
+										<c:when test="${patient.active}">
+											<td class="statusenable">Ativo</td>
+                                    		<td>${patient.name}</td>
+										</c:when>
+										<c:otherwise>
+											<td class="statusdisable">Inativo</td>
+                                    		<td class="namedisable">${patient.name}</td>
+										</c:otherwise>
+									</c:choose>
+									
 									<td>${patient.healthCarePlan.name}</td>
-									<td>${patient.healthCareId}</td>
+									<td>${patient.healthCarePlanCode}</td>
 									<td>${patient.telephone}</td>
 									<td>${patient.cellphone}</td>
-									<td>
-										<a href="<c:url value="/pacientes/${patient.id}/editar" />">editar</a> 
-										| <a href="<c:url value="/pacientes/${patient.id}" />">exibir</a> 
-									</td>
+									
+									<td class="buttons">
+										<a class="btnpeopleedit" title="Editar" href="<c:url value="/pacientes/${patient.id}/editar" />">&nbsp;</a>
+                                        <a class="btnpeopleshow exibir" title="Exibir" patient_id="${patient.id}">&nbsp;</a>
+                                        
+                                        <c:choose>
+											<c:when test="${patient.active}">
+												<a class="btnpeopledisable last" title="Desativar" href="<c:url value="/pacientes/${patient.id}/deactivate" />">&nbsp;</a>
+											</c:when>
+											<c:otherwise>
+												<a class="btnpeopleenable last" title="Ativar" href="<c:url value="/pacientes/${patient.id}/activate" />">&nbsp;</a>
+											</c:otherwise>
+										</c:choose>
+                                    </td>
 								</tr>
 							</c:forEach>
 						</table>
 						
 			            <helper:pagging total="${patients.totalPages}" current="${patients.currentPage}" />
-					</div>
-
-			    		</c:otherwise>
-			    	</c:choose>
-
-				</div>
-			</div>
-	
+					
+		    		</c:otherwise>
+		    	</c:choose>
+			</div>	
 		</div>
 			
-		<div id="sidebar">
+		<div class="boxright">	
 			<% 
 				java.util.List<Link> links = new LinkedList<Link>();  
 				links.add(new Link("/pacientes/novo","Criar novo paciente"));
 				pageContext.setAttribute("links",links);
 			%>
 			<helper:navigation links="${links}"></helper:navigation>
-
 		</div>
 	</body>
 </html>

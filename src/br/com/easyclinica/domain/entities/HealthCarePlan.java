@@ -28,6 +28,7 @@ public class HealthCarePlan {
 	private double ch;
 	private String contact;
 	private boolean active;
+	private int periodToReturn;
 	
 	@OneToMany(fetch=FetchType.LAZY, mappedBy="healthCarePlan") 
 	private List<PrecifiedMaterial> precifiedMaterials;
@@ -161,6 +162,13 @@ public class HealthCarePlan {
 	protected void setPrecifiedSpecialties(
 			List<PrecifiedSpecialty> precifiedSpecialties) {
 		this.precifiedSpecialties = precifiedSpecialties;
+	}
+	
+	public void setPeriodToReturn(int periodToReturn) {
+		this.periodToReturn = periodToReturn;
+	}
+	public int getPeriodToReturn() {
+		return periodToReturn;
 	}
 	
 	@Override

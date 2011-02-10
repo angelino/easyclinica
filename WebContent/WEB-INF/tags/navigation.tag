@@ -5,13 +5,11 @@
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<div class="block">
-	<h3>Navegação</h3>
-	<ul class="navigation">
+<div class="simpleboxlink">
+	<h4>Navegação</h4>
+	<ul>
 		<c:forEach items="${links}" var="link">
-			<c:url value="${link.href}" var="url"/>
-		
-		    <li><a href="${url}" target="${link.target}" class="links">${link.description}</a></li>
+			<li><a href="<c:url value="${link.href}"/>" target="${link.target}">${link.description}</a></li>
 		</c:forEach>
 	</ul>
 </div>

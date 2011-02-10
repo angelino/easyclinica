@@ -13,82 +13,81 @@
 	
 	<helper:errors errors="${errors}" />
 
-	<fieldset class="cadastro">	
-		<label class="label">Nome*:</label>
-		<input type="text" name="healthCarePlan.name" maxlength="50" class="text_field" value="${healthCarePlan.name}" />
-    	<span class="description">Ex: 'Amil', 'Blue Life'</span>
-	
-		<label class="label">Endereço:</label>
-    	<input type="text" name="healthCarePlan.address.street" maxlength="150" class="text_field" value="${healthCarePlan.address.street}" />
-    	<span class="description">Ex: 'Av. Paulista, 123'</span>
-		
-		<div class="agrupar_campos">
-			<label class="label">Bairro:</label>
-	    <input type="text" name="healthCarePlan.address.neighborhood" maxlength="100" class="text_field" value="${healthCarePlan.address.neighborhood}" />
-	    <span class="description">Ex: 'Jardins'</span>
-		</div>
-		
-		<div class="agrupar_campos">
-			<label class="label">CEP:</label>
-	    <input type="text" name="healthCarePlan.address.postalCode" class="text_field mask_cep" maxlength="12" value="${healthCarePlan.address.postalCode}" />
-	    <span class="description">Ex: '12345-789'</span>		
-		</div>
+	<p class="required"><span>*</span> campos obrigatórios</p>
 
-		<div class="agrupar_campos">
-			<label class="label">Cidade:</label>
-	    <input type="text" name="healthCarePlan.address.city" class="text_field" maxlength="50" value="${healthCarePlan.address.city}" />
-	    <span class="description">Ex: 'São Paulo'</span>
-		</div>
-		
-		<div class="agrupar_campos">
-			<label class="label">Estado:</label>
-	    <input type="text" name="healthCarePlan.address.state" class="text_field" maxlength="2" value="${healthCarePlan.address.state}" />
-	    <span class="description">Ex: 'SP'</span>		
-		</div>
-			
-		<label class="label">Nome do Responsável:</label>
-    <input type="text" name="healthCarePlan.contact" class="text_field" maxlength="100" value="${healthCarePlan.contact}" />
-    <span class="description">Ex: 'José da Silva'</span>
+	<fieldset>
+		<div>	
+			<label class="title">Nome:<span>*</span></label>
+			<input type="text" name="healthCarePlan.name" maxlength="50" required="required" value="${healthCarePlan.name}" />
+    	</div>
 	
-		<div class="agrupar_campos">
-			<label class="label">Telefone*:</label>
-    	<input type="text" name="healthCarePlan.telephone" class="text_field mask_telefone" maxlength="50" value="${healthCarePlan.telephone}" />
-    	<span class="description">Ex: '(11) 1111-1111'</span>
+		<div>
+			<label class="title">Nome do Responsável:</label>
+			<input type="text" name="healthCarePlan.contact" maxlength="100" value="${healthCarePlan.contact}" />
 		</div>
+	
+		<div class="telephone">
+			<label class="title">Telefone:<span>*</span></label>
+    		<input type="text" name="healthCarePlan.telephone" class="mask_telefone" required="required" maxlength="50" value="${healthCarePlan.telephone}" />
+    	</div>
 		
-		<div class="agrupar_campos">
-			<label class="label">E-mail:</label>
-    	<input type="text" name="healthCarePlan.email" class="text_field" maxlength="100" value="${healthCarePlan.email}" />
-    	<span class="description">Ex: 'pessoa@convenio.com.br'</span>
+		<div>
+			<label class="title">E-mail:</label>
+    		<input type="text" name="healthCarePlan.email" maxlength="100" value="${healthCarePlan.email}" />
+    	</div>
+		
+		<div>
+			<label class="title">Website:</label>
+			<input type="text" name="healthCarePlan.website" maxlength="100" value="${healthCarePlan.website}" />
+    	</div>
+		
+		<div>
+			<label class="title">Valor em R$ da CH:<span>*</span></label>
+			<input type="text" name="healthCarePlan.ch" class="currency" required="required" value="${healthCarePlan.ch}" />
 		</div>
-		
-		<label class="label">Website:</label>
-    <input type="text" name="healthCarePlan.website" class="text_field" maxlength="100" value="${healthCarePlan.website}" />
-    <span class="description">Ex: 'http://www.convenio.com.br'</span>
-		
-	<div class="agrupar_campos">
-		<label class="label">Valor em R$ da CH:</label>
-		<input type="text" name="healthCarePlan.ch" class="text_field" value="${healthCarePlan.ch}" />
-	<span class="description">Ex: 'R$ 0.15'</span>
-	</div>
 	
-		<label class="label">Observações</label>
-		<textarea rows="5" cols="60" name="healthCarePlan.observations" class="textfield">${healthCarePlan.observations}</textarea>
-    <span class="description">Ex: 'só atende ortopedia'</span>
-	
-		<div class="botoes">
-			<button class="button" type="submit">
-				<c:url value="/images/icons/tick.png" var="img_salvar"/>
-				<img src="${img_salvar}" alt="Salvar" />Salvar
-			</button>
-			
-			<c:url value="/convenios" var="cancelar"/>
-			<a class="button" href="${cancelar}">
-				<c:url value="/images/icons/cross.png" var="img_cancelar"/>
-				<img src="${img_cancelar}" alt="Cancelar" />Cancelar
-			</a>
+		<div>
+			<label class="title">Período para retorno (em dias):<span>*</span></label>
+			<input type="text" name="healthCarePlan.periodToReturn" min="0" required="required" data-message="campo obrigatório" value="${healthCarePlan.periodToReturn}" />
 		</div>
 	
 	</fieldset>
+	
+	<fieldset>	
+		<div class="cep">
+			<label class="title">CEP:</label>
+			<input type="text" name="healthCarePlan.address.postalCode" class="mask_cep" maxlength="12" value="${healthCarePlan.address.postalCode}" />
+		</div>
+		
+		<div>
+			<label class="title">Endereço:</label>
+	    	<input type="text" name="healthCarePlan.address.street" maxlength="150" value="${healthCarePlan.address.street}" />
+	    </div>
+		
+		<div>
+			<label class="title">Bairro:</label>
+			<input type="text" name="healthCarePlan.address.neighborhood" maxlength="100" value="${healthCarePlan.address.neighborhood}" />
+		</div>
+		
+		<div>
+			<label class="title">Cidade:</label>
+			<input type="text" name="healthCarePlan.address.city" maxlength="50" value="${healthCarePlan.address.city}" />
+		</div>
+		
+		<div>
+			<label class="title">Estado:</label>
+	    	<input type="text" name="healthCarePlan.address.state" maxlength="2" value="${healthCarePlan.address.state}" />
+	    </div>
+	
+   		<div class="remarks">
+       		<label class="title">Observações:</label>
+        	<textarea name="healthCarePlan.observations">${healthCarePlan.observations}</textarea>
+      	</div>
+    </fieldset>
+    
+    <div class="boxactions">
+		<input type="submit" class="btnsave" value="Salvar" />
+        <input type="button" class="btncancel" value="Cancelar" redirect_to="<c:url value="/convenios"/>"/>
+    </div>
   
 </form>
