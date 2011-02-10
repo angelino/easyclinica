@@ -9,7 +9,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title><decorator:title default="Easy Clinica" /></title>
-	    
+			    
 		<helper:include fileName="reset.css" type="css" />
 		<helper:include fileName="base.css" type="css" />
 		<helper:include fileName="base2.css" type="css" />

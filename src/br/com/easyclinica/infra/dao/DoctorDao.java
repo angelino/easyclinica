@@ -18,6 +18,7 @@ public class DoctorDao implements AllDoctors {
 		this.session = session;
 	}
 	
+	
 	@SuppressWarnings("unchecked")
 	public List<Doctor> get() {
 		return (List<Doctor>)session.createQuery("from Doctor doctors order by active desc, name").list();
