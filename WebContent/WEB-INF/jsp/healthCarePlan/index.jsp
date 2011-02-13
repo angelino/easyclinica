@@ -29,6 +29,7 @@
 								<th>Nome:</th>
 								<th>Contato:</th>
 								<th>Telefone:</th>
+								<th>Valor CH (R$):</th>
 								<th width="145px">&nbsp;</th>
 							</tr>
 							
@@ -48,6 +49,7 @@
 									
 									<td>${healthCare.contact}</td>
 									<td>${healthCare.telephone}</td>
+									<td class="currency">${healthCare.ch.amount}</td>
 									<td class="buttons">
 										<a class="btnpeopleedit" title="Editar" href="<c:url value="/convenios/${healthCare.id}/editar" />">&nbsp;</a>
                                         <a class="btnpeopleshow exibir" title="Exibir" healthCarePlan_id="${healthCare.id}">&nbsp;</a>

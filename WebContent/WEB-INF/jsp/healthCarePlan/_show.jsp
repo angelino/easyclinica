@@ -8,7 +8,7 @@
 	<div class="modal-content">
 		<div>
 			<p>Valor em R$ da CH:</p>
-			<span class="currency">${healthCarePlan.ch}</span>
+			<span class="currency">${healthCarePlan.ch.amount}</span>
 		</div>
 	
 		<div>

@@ -1,5 +1,9 @@
 package br.com.easyclinica.domain.validators;
 
+import java.math.BigDecimal;
+
+import br.com.easyclinica.domain.types.Money;
+
 public class ValidatorUtils {
 	
 	public static boolean isNullOrEmpty(String value) 
@@ -11,6 +15,13 @@ public class ValidatorUtils {
 	public static boolean isMoreThanZero(double value)
 	{
 		if(value > 0) return true;
+		
+		return false;
+	}
+	
+	public static boolean isMoreThanZero(Money value)
+	{
+		if(value.getAmount().compareTo(new BigDecimal(0.0)) > 0 ) return true;
 		
 		return false;
 	}

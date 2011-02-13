@@ -1,6 +1,7 @@
 package br.com.easyclinica.tests.helpers;
 
 import br.com.easyclinica.domain.entities.HealthCarePlan;
+import br.com.easyclinica.domain.types.Money;
 
 public class HealthCarePlanBuilder {
 
@@ -19,7 +20,7 @@ public class HealthCarePlanBuilder {
 		plan.setWebsite("website.com");
 		plan.setContact("contact");
 		plan.setObservations("obs");
-		plan.setCh(20);
+		plan.setCh(new Money(20.0));
 	}
 	
 	public HealthCarePlanBuilder withName(String name) {
@@ -28,7 +29,7 @@ public class HealthCarePlanBuilder {
 	}
 
 	public HealthCarePlanBuilder withCh(double ch) {
-		plan.setCh(ch);
+		plan.setCh(new Money(ch));
 		return this;
 	}
 	

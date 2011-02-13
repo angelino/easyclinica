@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 import br.com.easyclinica.domain.types.Address;
+import br.com.easyclinica.domain.types.Money;
 
 @Entity
 public class HealthCarePlan {
@@ -25,7 +26,7 @@ public class HealthCarePlan {
 	private String email;
 	private String website;
 	private String observations;
-	private double ch;
+	@Embedded private Money ch;
 	private String contact;
 	private boolean active;
 	private int periodToReturn;
@@ -112,14 +113,6 @@ public class HealthCarePlan {
 		this.observations = observations;
 	}
 
-	public double getCh() {
-		return ch;
-	}
-
-	public void setCh(double ch) {
-		this.ch = ch;
-	}
-
 	public String getContact() {
 		return contact;
 	}
@@ -171,6 +164,12 @@ public class HealthCarePlan {
 		return periodToReturn;
 	}
 	
+	public void setCh(Money ch) {
+		this.ch = ch;
+	}
+	public Money getCh() {
+		return ch;
+	}
 	@Override
 	public String toString() {
 		return this.name;
