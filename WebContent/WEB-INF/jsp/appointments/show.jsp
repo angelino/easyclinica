@@ -14,7 +14,7 @@
 	<body>
 
 		<div class="box" id="consultas">
-			<helper:patientMenu patient="${patient}" selected="Consultas" />
+			<helper:patientMenu patient="${appointment.patient}" selected="Consultas" />
 			
 			<div class="boxcontent">
 			
@@ -48,7 +48,7 @@
 				Total: ${appointment.appointmentAmount.amount + appointment.procedureAmount.amount}
 					
 				<div class="boxactions">
-					<a class="btnback" href="<c:url value="/pacientes/${appointment.patient.id}/consultas"/>">Voltar</a>
+					<a class="btnback" href="<c:url value="/pacientes/${appointment.patient.id}/consultas" />">Voltar</a>
 			    </div>
 			</div>
 
