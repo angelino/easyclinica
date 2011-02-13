@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
-import org.hibernate.transform.Transformers;
 
 import br.com.caelum.vraptor.ioc.Component;
 import br.com.easyclinica.domain.entities.HealthCarePlan;
@@ -21,32 +20,26 @@ public class MaterialDao implements AllMaterials {
 		this.session = session;
 	}
 	
-	// TODO: rever essa query para voltar object
-
 	@SuppressWarnings("unchecked")
 	public List<MaterialWithPriceAndQuantity> getMaterialsWithPriceAndQuantity(
 			Procedure procedure, HealthCarePlan healthCarePlan) {
 		
-		StringBuilder sql = new StringBuilder();
-		sql.append(" select ");
-			sql.append(" material.id as materialId, ");
-			sql.append(" material.name as materialName, ");
-			sql.append(" materialinprocedure.qty as qty, ");
-			sql.append(" precifiedmaterial.amount as amount ");
-		sql.append(" FROM precifiedmaterial ");
-		sql.append(" INNER JOIN materialinprocedure ON materialinprocedure.material_id = precifiedmaterial.material_id ");
-		sql.append(" INNER JOIN material ON material.id = precifiedmaterial.material_id ");
-		sql.append(" where precifiedmaterial.healthCarePlan_id = :healthCarePlanId ");
-		sql.append(" and materialinprocedure.procedure_id = :procedureId ");
+		StringBuilder hql = new StringBuilder();
+		hql.append(" select new br.com.easyclinica.domain.entities.MaterialWithPriceAndQuantity( ");
+			hql.append(" m.material, ");
+			hql.append(" m.qty.qty, ");
+			hql.append(" pm.amount.amount ");
+		hql.append(" ) ");
+		hql.append(" from PrecifiedMaterial as pm, MaterialInProcedure as m ");
+		hql.append(" where ");
+		hql.append(" pm.material.id = m.material.id ");
+		hql.append(" and pm.healthCarePlan.id = :healthCarePlanId ");
+		hql.append(" and m.procedure.id = :procedureId ");
 		
-		Query query = session.createSQLQuery(sql.toString())
-						.addScalar("materialId")
-						.addScalar("materialName")
-						.addScalar("qty")
-						.addScalar("amount")
-						.setResultTransformer(Transformers.aliasToBean(MaterialWithPriceAndQuantity.class))
-						.setParameter("healthCarePlanId", healthCarePlan.getId())
-						.setParameter("procedureId", procedure.getId());
+		Query query = session.createQuery(hql.toString())
+							 .setParameter("healthCarePlanId", healthCarePlan.getId())
+							 .setParameter("procedureId", procedure.getId());
+		
 		return (List<MaterialWithPriceAndQuantity>) query.list();
 	}
 

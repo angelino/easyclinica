@@ -7,6 +7,9 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
+import br.com.easyclinica.domain.types.Money;
+import br.com.easyclinica.domain.types.Quantity;
+
 public class AppointmentTests {
 
 	private Appointment appointment;
@@ -34,13 +37,13 @@ public class AppointmentTests {
 		
 		appointment.recalculate();
 		
-		assertEquals(10, appointment.getProcedureAmount(), 0.000001);
+		assertEquals(new Money(10), appointment.getProcedureAmount());
 	}
 
 	private AppointmentMaterial aMaterial() {
 		AppointmentMaterial material = new AppointmentMaterial();
-		material.setQty(1);
-		material.setUnitAmount(10.0);
+		material.setQty(new Quantity(1));
+		material.setUnitAmount(new Money(10.0));
 		return material;
 	}
 }

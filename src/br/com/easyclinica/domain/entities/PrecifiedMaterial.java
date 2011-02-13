@@ -1,10 +1,13 @@
 package br.com.easyclinica.domain.entities;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+
+import br.com.easyclinica.domain.types.Money;
 
 @Entity
 public class PrecifiedMaterial {
@@ -15,7 +18,7 @@ public class PrecifiedMaterial {
 	private HealthCarePlan healthCarePlan;
 	@ManyToOne(fetch=FetchType.LAZY) 
 	private Material material;
-	private double amount;
+	@Embedded private Money amount;
 	
 	public HealthCarePlan getHealthCarePlan() {
 		return healthCarePlan;
@@ -29,17 +32,18 @@ public class PrecifiedMaterial {
 	public void setMaterial(Material material) {
 		this.material = material;
 	}
-	public double getAmount() {
-		return amount;
-	}
-	public void setAmount(double amount) {
-		this.amount = amount;
-	}
+	
 	public int getId() {
 		return id;
 	}
 	protected void setId(int id) {
 		this.id = id;
+	}
+	public void setAmount(Money amount) {
+		this.amount = amount;
+	}
+	public Money getAmount() {
+		return amount;
 	}
 	
 	

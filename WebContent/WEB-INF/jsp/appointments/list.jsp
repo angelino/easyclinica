@@ -51,7 +51,7 @@
 									<td>${appointment.specialty.name}</td>
 									
 									<td class="buttons">
-										<a class="btnpeopleshow exibir" title="Exibir" appointment_id="${appointment.id}">&nbsp;</a>
+										<a class="btnpeopleshow" title="Exibir" href="<c:url value="/pacientes/${patient.id}/consultas/${appointment.id}"/>">&nbsp;</a>
                                     </td>
 								</tr>
 							</c:forEach>

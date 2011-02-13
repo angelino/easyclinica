@@ -6,6 +6,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import br.com.easyclinica.domain.types.Quantity;
+
 @Entity
 public class MedicineInProcedure {
 	
@@ -18,7 +20,7 @@ public class MedicineInProcedure {
 	@ManyToOne(fetch=FetchType.LAZY)
 	private Procedure procedure;
 	
-	private float qty;
+	private Quantity qty;
 	
 	public int getId() {
 		return id;
@@ -44,11 +46,11 @@ public class MedicineInProcedure {
 		this.procedure = procedure;
 	}
 
-	public float getQty() {
+	public Quantity getQty() {
 		return qty;
 	}
 
-	public void setQty(float qty) {
+	public void setQty(Quantity qty) {
 		this.qty = qty;
 	}
 }

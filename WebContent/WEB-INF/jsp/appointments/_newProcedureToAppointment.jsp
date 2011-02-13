@@ -28,12 +28,12 @@
      <td>
      	<c:choose>
 			<c:when test="${precifiedProcedure != null }">
-				<input type="hidden" name="appointment.procedures[#index#].amount" value="${precifiedProcedure.fixedAmount}"/>
-				<span class="procedure-total-${procedure.id} currency">${precifiedProcedure.fixedAmount}</span> 
+				<input type="hidden" name="appointment.procedures[#index#].amount.amount" value="${precifiedProcedure.fixedAmount.amount}"/>
+				<span class="procedure-total-${procedure.id} currency">${precifiedProcedure.fixedAmount.amount}</span> 
 			</c:when>
 			<c:otherwise>
-				<input type="hidden" name="appointment.procedures[#index#].amount" value="${procedure.ch * healthCarePlan.ch}"/>
-				<span class="procedure-total-${procedure.id} currency">${procedure.ch * healthCarePlan.ch}</span>
+				<input type="hidden" name="appointment.procedures[#index#].amount.amount" value="${procedure.ch * healthCarePlan.ch.amount}"/>
+				<span class="procedure-total-${procedure.id} currency">${procedure.ch * healthCarePlan.ch.amount}</span>
 			</c:otherwise>
 		</c:choose>
      </td>
@@ -53,16 +53,16 @@
 <c:forEach items="${materials}" var="material" varStatus="status">	
 	<tr class="${status.count % 2 == 0 ? 'odd' : 'even' } material-${procedure.id}" procedure_id="${procedure.id}">
 		<td>
-			<input type="hidden" name="appointment.procedures[#index#].materials[${status.count-1}].material.id" value="${material.materialId}" />
-			${material.materialName}
+			<input type="hidden" name="appointment.procedures[#index#].materials[${status.count-1}].material.id" value="${material.material.id}" />
+			${material.material.name}
 		</td>
 		<td>
-			<input type="text" class="qty currency" pattern="^[0-9]+(\,\d{1,2})?$" name="appointment.procedures[#index#].materials[${status.count-1}].qty" value="${material.qty}" />
+			<input type="text" class="qty currency" pattern="^[0-9]+(\,\d{1,2})?$" name="appointment.procedures[#index#].materials[${status.count-1}].qty.qty" value="${material.qty.qty}" />
 		</td>
 		<td>
-			<input type="text" class="amount currency" pattern="^[0-9]+(\,\d{1,2})?$" name="appointment.procedures[#index#].materials[${status.count-1}].unitAmount" value="${material.amount}" />
+			<input type="text" class="amount currency" pattern="^[0-9]+(\,\d{1,2})?$" name="appointment.procedures[#index#].materials[${status.count-1}].unitAmount.amount" value="${material.amount.amount}" />
 		</td>
-		<td class="total currency">${material.qty * material.amount}</td>
+		<td class="total currency">${material.qty.qty * material.amount.amount}</td>
 		<td>
 			<a href="#" class="remove-material btndelete last" procedure_id="${procedure.id}">Excluir</a>
 		</td>
@@ -73,16 +73,16 @@
 <c:forEach items="${medicines}" var="medicine" varStatus="status">
 	<tr class="${status.count % 2 == 0 ? 'odd' : 'even' } medicine-${procedure.id}" procedure_id="${procedure.id}">
 		<td>
-			<input type="hidden" name="appointment.procedures[#index#].medicines[${status.count-1}].medicine.id" value="${medicine.medicineId}" />
-			${medicine.medicineName}
+			<input type="hidden" name="appointment.procedures[#index#].medicines[${status.count-1}].medicine.id" value="${medicine.medicine.id}" />
+			${medicine.medicine.name}
 		</td>
 		<td>
-			<input type="text" class="qty currency" pattern="^[0-9]+(\,\d{1,2})?$" name="appointment.procedures[#index#].medicines[${status.count-1}].qty" value="${medicine.qty}" />
+			<input type="text" class="qty currency" pattern="^[0-9]+(\,\d{1,2})?$" name="appointment.procedures[#index#].medicines[${status.count-1}].qty.qty" value="${medicine.qty.qty}" />
 		</td>
 		<td>
-			<input type="text" class="amount currency" pattern="^[0-9]+(\,\d{1,2})?$" name="appointment.procedures[#index#].medicines[${status.count-1}].unitAmount" value="${medicine.amount}" />
+			<input type="text" class="amount currency" pattern="^[0-9]+(\,\d{1,2})?$" name="appointment.procedures[#index#].medicines[${status.count-1}].unitAmount.amount" value="${medicine.amount.amount}" />
 		</td>
-		<td class="total currency">${medicine.qty * medicine.amount}</td>
+		<td class="total currency">${medicine.qty.qty * medicine.amount.amount}</td>
 		<td>
 			<a href="#" class="remove-medicine btndelete last" procedure_id="${procedure.id}">Excluir</a>
 		</td>

@@ -13,59 +13,48 @@
 	</head>
 	<body>
 
-		<div id="main">
-
-			<div class="block" id="block">
+		<div class="box" id="consultas">
+			<helper:patientMenu patient="${patient}" selected="Consultas" />
+			
+			<div class="boxcontent">
 			
 				<h2>Paciente: ${appointment.patient.name}</h2>
+								
+				Data da consulta: <fmt:formatDate value="${appointment.appointmentDate.time}" pattern="dd/MM/yyyy" /> 
+				Convênio: ${appointment.healthCarePlan}
+				Doutor: ${appointment.doctor}
+				Especialidade: ${appointment.specialty}
+				Retorno? ${appointment.return}
+				Observacoes: ${appointment.observations}
 				
-				<helper:patientMenu patient="${appointment.patient}" selected="Consultas" /> 
+				<c:forEach items="${appointment.procedures}" var="procedure">
 				
-				<helper:message successKey="${successKey}" errorKey="${errorKey}" />
-				
-				<div class="content">
-				
-					Data da consulta: <fmt:formatDate value="${appointment.appointmentDate.time}" pattern="dd/MM/yyyy" /> 
-					Convênio: ${appointment.healthCarePlan}
-					Doutor: ${appointment.doctor}
-					Especialidade: ${appointment.specialty}
-					Retorno? ${appointment.return}
-					Observacoes: ${appointment.observations}
+					Procedimento: ${procedure.procedure}
+					Valor: ${procedure.amount}
+					Fixo? ${procedure.fixedAmount}
 					
-					<c:forEach items="${appointment.procedures}" var="procedure">
-					
-						Procedimento: ${procedure.procedure}
-						Valor: ${procedure.amount}
-						Fixo? ${procedure.fixedAmount}
-						
-						Materiais
-						<c:forEach items="${procedure.materials}" var="material">
-							${material.material} - qtd: ${material.qty} a R$ = ${material.unitAmount} = ${material.qty * material.unitAmount}   
-						</c:forEach>
-						
-						<c:forEach items="${procedure.medicines}" var="medicine">
-							${medicine.medicine} - qtd: ${medicine.qty} a R$ = ${medicine.unitAmount} = ${medicine.qty * medicine.unitAmount}   
-						</c:forEach>
+					Materiais
+					<c:forEach items="${procedure.materials}" var="material">
+						${material.material} - qtd: ${material.qty.qty} a R$ = ${material.unitAmount.amount} = ${material.qty.qty * material.unitAmount.amount}   
 					</c:forEach>
 					
-					Total do procedimento: ${appointment.procedureAmount}
-					Valor da consulta: ${appointment.appointmentAmount}
-					Total: ${appointment.appointmentAmount + appointment.procedureAmount}
-					
-				</div>
+					<c:forEach items="${procedure.medicines}" var="medicine">
+						${medicine.medicine} - qtd: ${medicine.qty.qty} a R$ = ${medicine.unitAmount.amount} = ${medicine.qty.qty * medicine.unitAmount.amount}   
+					</c:forEach>
+				</c:forEach>
 				
-				<div class="botoes">
-					<c:url value="/pacientes/${appointment.patient.id}/consultas" var="voltar"/>
-					<a class="button" href="${voltar}">
-						<c:url value="/images/icons/cross.png" var="img_voltar"/>
-						<img src="${img_voltar}" alt="Voltar" />Voltar
-					</a>
-				</div>
+				Total do procedimento: ${appointment.procedureAmount.amount}
+				Valor da consulta: ${appointment.appointmentAmount.amount}
+				Total: ${appointment.appointmentAmount.amount + appointment.procedureAmount.amount}
+					
+				<div class="boxactions">
+					<a class="btnback" href="<c:url value="/pacientes/${appointment.patient.id}/consultas"/>">Voltar</a>
+			    </div>
 			</div>
 
 		</div>
 			
-		<div id="sidebar">
+		<div class="boxright">	
 			<% 
 				java.util.List<Link> links = new LinkedList<Link>();  
 				links.add(new Link("/pacientes/" + ((Appointment)request.getAttribute("appointment")).getPatient().getId()+"/consultas","Voltar para listagem"));

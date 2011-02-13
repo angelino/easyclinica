@@ -10,6 +10,9 @@ public class Money {
 	private BigDecimal amount;
 
 	public Money(){}
+	public Money(BigDecimal amount){
+		this.amount = amount;
+	}
 	public Money(double amount) {
 		this.amount = new BigDecimal(amount);
 	}
@@ -23,7 +26,11 @@ public class Money {
 	}
 	
 	public static Money empty() {
-		return new Money();
+		return new Money(0.0);
+	}
+	
+	public void addValueToAmount(BigDecimal value) {
+		this.amount = this.amount.add(value);
 	}
 
 	@Override

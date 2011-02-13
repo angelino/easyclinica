@@ -13,6 +13,8 @@ import br.com.easyclinica.domain.entities.Medicine;
 import br.com.easyclinica.domain.entities.MedicineWithPriceAndQuantity;
 import br.com.easyclinica.domain.entities.PrecifiedMedicine;
 import br.com.easyclinica.domain.entities.Procedure;
+import br.com.easyclinica.domain.types.Money;
+import br.com.easyclinica.domain.types.Quantity;
 import br.com.easyclinica.infra.dao.BaseIntegrationTests;
 import br.com.easyclinica.infra.dao.MedicineDao;
 import br.com.easyclinica.tests.helpers.HealthCarePlanBuilder;
@@ -33,19 +35,19 @@ public class MedicineWithPriceAndQuantityBuilderTests extends BaseIntegrationTes
 		HealthCarePlan healthCarePlan = aSavedHealthCarePlan();
 		
 		Medicine medicine1 = aSavedMedicine();
-		procedure.addMedicine(medicine1, 1);
+		procedure.addMedicine(medicine1, new Quantity(1));
 		Medicine medicine2 = aSavedMedicine();
-		procedure.addMedicine(medicine2, 2);
+		procedure.addMedicine(medicine2, new Quantity(2));
 		session.save(procedure);
 		
 		PrecifiedMedicine precifiedMedicine1 = new PrecifiedMedicine();
-		precifiedMedicine1.setAmount(10.20);
+		precifiedMedicine1.setAmount(new Money(10.20));
 		precifiedMedicine1.setHealthCarePlan(healthCarePlan);
 		precifiedMedicine1.setMedicine(medicine1);
 		session.save(precifiedMedicine1);
 		
 		PrecifiedMedicine precifiedMedicine2 = new PrecifiedMedicine();
-		precifiedMedicine2.setAmount(10.30);
+		precifiedMedicine2.setAmount(new Money(10.30));
 		precifiedMedicine2.setHealthCarePlan(healthCarePlan);
 		precifiedMedicine2.setMedicine(medicine2);
 		session.save(precifiedMedicine2);
@@ -53,10 +55,10 @@ public class MedicineWithPriceAndQuantityBuilderTests extends BaseIntegrationTes
 		List<MedicineWithPriceAndQuantity> medicine = dao.getMedicinesWithPriceAndQuantity(procedure, healthCarePlan);
 		
 		assertEquals(medicine.size(), 2);
-		assertTrue(medicine.get(0).getAmount() == precifiedMedicine1.getAmount());
-		assertTrue(medicine.get(1).getAmount() == precifiedMedicine2.getAmount());
-		assertTrue(medicine.get(0).getQty() == procedure.getMedicines().get(0).getQty());
-		assertTrue(medicine.get(1).getQty() == procedure.getMedicines().get(1).getQty());
+		assertTrue(medicine.get(0).getAmount().getAmount().doubleValue() == precifiedMedicine1.getAmount().getAmount().doubleValue());
+		assertTrue(medicine.get(1).getAmount().getAmount().doubleValue() == precifiedMedicine2.getAmount().getAmount().doubleValue());
+		assertTrue(medicine.get(0).getQty().getQty().doubleValue() == procedure.getMedicines().get(0).getQty().getQty().doubleValue());
+		assertTrue(medicine.get(1).getQty().getQty().doubleValue() == procedure.getMedicines().get(1).getQty().getQty().doubleValue());
 	}
 	
 	private Procedure aSavedProcedure() {

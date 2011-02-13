@@ -4,7 +4,11 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import javax.persistence.AttributeOverride;
+import javax.persistence.AttributeOverrides;
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -13,6 +17,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import br.com.easyclinica.domain.types.Money;
 
 @Entity
 public class Appointment {
@@ -33,8 +39,19 @@ public class Appointment {
 	private Calendar appointmentDate;
 	@Temporal(TemporalType.TIMESTAMP)
 	private Calendar date;
-	private double appointmentAmount;
-	private double procedureAmount;
+	
+	@Embedded
+	@AttributeOverrides({ 
+			@AttributeOverride(name="amount", column=@Column(name="appointmentAmount"))
+	}) 
+	private Money appointmentAmount;
+	
+	@Embedded 
+	@AttributeOverrides({ 
+		@AttributeOverride(name="amount", column=@Column(name="procedureAmount"))
+	}) 
+	private Money procedureAmount;
+	
 	private String observations;
 	
 	@OneToMany(cascade=CascadeType.ALL, mappedBy="appointment", orphanRemoval=true, fetch=FetchType.EAGER) 
@@ -105,14 +122,6 @@ public class Appointment {
 		this.date = date;
 	}
 
-	public double getAppointmentAmount() {
-		return appointmentAmount;
-	}
-
-	public double getProcedureAmount() {
-		return procedureAmount;
-	}
-
 	public String getObservations() {
 		return observations;
 	}
@@ -139,15 +148,27 @@ public class Appointment {
 		this.id = id;
 	}
 
+	public void setAppointmentAmount(Money appointmentAmount) {
+		this.appointmentAmount = appointmentAmount;
+	}
+
+	public Money getAppointmentAmount() {
+		return appointmentAmount;
+	}
+
+	public Money getProcedureAmount() {
+		return procedureAmount;
+	}
+	
 	public void markAsReturn() {
 		this.isReturn = true;
 	}
 
 	public void recalculate() {
-		procedureAmount = 0;
+		procedureAmount = Money.empty();
 		
 		for(AppointmentProcedure procedure : procedures) {
-			procedureAmount += procedure.getTotalAmount();
+			procedureAmount.addValueToAmount(procedure.getTotalAmount().getAmount());
 		}
 	}	
 	

@@ -1,8 +1,11 @@
 package br.com.easyclinica.domain.entities;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
+
+import br.com.easyclinica.domain.types.Money;
+import br.com.easyclinica.domain.types.Quantity;
 
 public class AppointmentProcedureTests {
 
@@ -15,21 +18,20 @@ public class AppointmentProcedureTests {
 		proc.addMedicine(aMedicine(3, 30.0));
 		
 		double total = 2*10 + 100 + 2*20 + 3*30;
-		assertEquals(total, proc.getTotalAmount(), 0.0000001);
-		
+		assertTrue(new Money(total).getAmount().doubleValue() == proc.getTotalAmount().getAmount().doubleValue());
 	}
 
 	private AppointmentMaterial aMaterial(int qty, double amount) {
 		AppointmentMaterial m = new AppointmentMaterial();
-		m.setQty(qty);
-		m.setUnitAmount(amount);
+		m.setQty(new Quantity(qty));
+		m.setUnitAmount(new Money(amount));
 		return m;
 	}
 	
 	private AppointmentMedicine aMedicine(int qty, double amount) {
 		AppointmentMedicine m = new AppointmentMedicine();
-		m.setQty(qty);
-		m.setUnitAmount(amount);
+		m.setQty(new Quantity(qty));
+		m.setUnitAmount(new Money(amount));
 		return m;
 	}
 
