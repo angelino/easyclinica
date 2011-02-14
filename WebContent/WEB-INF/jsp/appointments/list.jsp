@@ -25,7 +25,7 @@
 				<c:choose>
 		    		<c:when test="${fn:length(patient.appointments) == 0}">
 		    			<p class="messengernotice">
-		    				Não há consultas registradas para esse paciente! <a href='<c:url value="/medicos/novo" />'>Clique aqui</a> para cadastrar uma consulta!
+		    				Não há consultas registradas para esse paciente! <a href='<c:url value="/pacientes/${patient.id}/consultas/novo" />'>Clique aqui</a> para cadastrar uma consulta!
 		    			</p>
 		    		</c:when>
 		    		<c:otherwise>				
