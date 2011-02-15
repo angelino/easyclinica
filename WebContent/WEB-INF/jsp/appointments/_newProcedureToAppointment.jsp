@@ -29,10 +29,11 @@
      	<c:choose>
 			<c:when test="${precifiedProcedure != null }">
 				<input type="hidden" name="appointment.procedures[#index#].amount.amount" value="${precifiedProcedure.fixedAmount.amount}"/>
-				<input type="hidden" name="appointment.procedures[#index#].isFixedAmount" value="true"/>
+				<input type="hidden" name="appointment.procedures[#index#].fixedAmount" value="1"/>
 				<span class="procedure-total-${procedure.id} currency">${precifiedProcedure.fixedAmount.amount}</span> 
 			</c:when>
 			<c:otherwise>
+				<input type="hidden" name="appointment.procedures[#index#].fixedAmount" value="0"/>
 				<input type="hidden" name="appointment.procedures[#index#].amount.amount" value="${procedure.ch * healthCarePlan.ch.amount}"/>
 				<span class="procedure-total-${procedure.id} currency">${procedure.ch * healthCarePlan.ch.amount}</span>
 			</c:otherwise>

@@ -9,4 +9,5 @@ public interface AllAppointments {
 	void save(Appointment appointment);
 	Appointment getById(int id);
 	Appointment getLastFromPatientAndSpecialty(Patient patient,	Specialty specialty);
+	void delete(Appointment appointment);
 }

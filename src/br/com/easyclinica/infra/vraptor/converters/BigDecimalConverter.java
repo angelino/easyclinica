@@ -1,6 +1,7 @@
 package br.com.easyclinica.infra.vraptor.converters;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ResourceBundle;
 
 import br.com.caelum.vraptor.Convert;
@@ -14,10 +15,13 @@ public class BigDecimalConverter implements Converter<BigDecimal> {
 		
 		value = value.replace(',', '.');		
 		if(value == null || value.equals("")) {  
-            value = "0.00";  
+            return BigDecimal.ZERO;  
         }  
-         
-		return new BigDecimal(value);
+        
+		BigDecimal converted = new BigDecimal(value);  
+		converted.setScale(2, RoundingMode.CEILING);
+		
+		return converted;
 	}
 
 }

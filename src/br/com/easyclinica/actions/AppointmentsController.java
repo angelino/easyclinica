@@ -2,6 +2,7 @@ package br.com.easyclinica.actions;
 
 import java.util.List;
 
+import br.com.caelum.vraptor.Delete;
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
@@ -135,5 +136,16 @@ public class AppointmentsController extends BaseController {
 		boolean isReturn = verifyIfAnAppointmentIsReturnService.check(patientId, specialtyId, healthCarePlanId);
 		
 		result.use(Results.json()).from(isReturn).serialize();
+	}
+	
+	@Delete
+	@Path("/pacientes/{patientId}/consultas/{appointmentId}")
+	public void delete(int patientId, int appointmentId) {
+		Appointment appointment = allAppointments.getById(appointmentId);
+		
+		allAppointments.delete(appointment);
+		
+		successMsg(Messages.APPOINTMENT_DELETED);
+		result.redirectTo(AppointmentsController.class).list(patientId);
 	}
 }

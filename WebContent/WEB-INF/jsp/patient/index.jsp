@@ -31,7 +31,7 @@
 								<th>Número no Convênio</th>
 								<th>Telefone</th>
 								<th>Celular</th>
-								<th width="145px">&nbsp;</th>
+								<th width="191px">&nbsp;</th>
 							</tr>
 							
 							<c:forEach var="patient" items="${patients.result}" varStatus="status">
@@ -55,6 +55,7 @@
 									<td class="buttons">
 										<a class="btnpeopleedit" title="Editar" href="<c:url value="/pacientes/${patient.id}/editar" />">&nbsp;</a>
                                         <a class="btnpeopleshow exibir" title="Exibir" patient_id="${patient.id}">&nbsp;</a>
+                                        <a class="btnappointments" title="Consultas" href="<c:url value="/pacientes/${patient.id}/consultas" />">&nbsp;</a>
                                         
                                         <c:choose>
 											<c:when test="${patient.active}">

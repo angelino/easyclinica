@@ -206,7 +206,7 @@ String.prototype.convertToFloat = function(){
 	
 	if(!isFloat(valor)) {
 		valor = "0";	
-		var regexCurrency = new RegExp(/(\d|,)/g);
+		var regexCurrency = new RegExp(/(\d|,|\.)/g);
 		var matched = this.match(regexCurrency);
 		if(matched != null) {
 			valor = "";

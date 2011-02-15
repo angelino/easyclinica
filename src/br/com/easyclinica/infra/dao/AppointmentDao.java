@@ -40,4 +40,8 @@ public class AppointmentDao implements AllAppointments {
 		return (Appointment) query.uniqueResult();
 	}
 
+	public void delete(Appointment appointment) {
+		session.delete(appointment);		
+	}
+
 }

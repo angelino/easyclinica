@@ -110,6 +110,12 @@ table.easy tr td a.btnpeopleedit{background-image:url(/easyclinica/images/icons/
 table.easy tr td a.btnpeopleshow{background-image:url(/easyclinica/images/icons/vcard.png);}
 table.easy tr td a.btnpeopleenable{background-image:url(/easyclinica/images/icons/user_green.png);}
 table.easy tr td a.btnpeopledisable{background-image:url(/easyclinica/images/icons/user_grayoff.png);}
+table.easy tr td a.btnappointments{background-image:url(/easyclinica/images/icons/appointments.png);}
+
+table.easy tr td form{width:50px!important;}
+table.easy tr td input{background-color:#EEEEEE;background-repeat:no-repeat;background-position:10px 5px;border:1px solid #BFBFBF;color:#222222;cursor:pointer;float:left;font-size:1em;font-weight:bold;line-height:1.3em;margin:0 0 0 10px;padding:5px 10px 5px 25px;text-decoration:none;}
+table.easy tr td input:hover{background-color:#dfdfde;}
+table.easy tr td input.btndelete{background-image:url(/easyclinica/images/icons/delete.png);}
 
 table.easy tr td.statusenable{background:transparent url(/easyclinica/images/icons/user_green.png) center no-repeat;text-indent:-9999px;}
 table.easy tr td.statusdisable{background:transparent url(/easyclinica/images/icons/user_grayoff.png) center no-repeat;text-indent:-9999px;}
@@ -160,8 +166,8 @@ table.easy tr td.tablenostyle{background:#ffffff!important;border:none;}
 .boxactions input.btnedit{background-image:url(/easyclinica/images/icons/pencil.png);}
 .boxactions a.btnclose{background-image:url(/easyclinica/images/icons/cross.png);}
 .boxactions input.btnclose{background-image:url(/easyclinica/images/icons/cross.png);}
-.boxactions a.btnappointments{background-image:url(/easyclinica/images/icons/vcard.png);}
-.boxactions input.btnappointments{background-image:url(/easyclinica/images/icons/vcard.png);}
+.boxactions a.btnappointments{background-image:url(/easyclinica/images/icons/appointments.png);}
+.boxactions input.btnappointments{background-image:url(/easyclinica/images/icons/appointments.png);}
 
 /*BOX PAGINACAO ######################################################################################################################*/
 .boxpagination{float:left;width:100%;background-color:#EEEEEE;border:#EEEEEE 1px solid;font-size:14px;padding:10px 0;margin:10px 0 20px 0;text-align:center;}
@@ -252,7 +258,10 @@ table.easy tr td.tablenostyle{background:#ffffff!important;border:none;}
 /*MESAGEM ERRO/AVISOS/NOTICIAS ######################################################################################################################*/
 p.messengererror{float:left;width:99.2%;background:#FFDDDD;border:1px solid #FFBBBB;text-align:center;padding:10px 0;}
 p.messengerwarning{float:left;width:99.2%;background:#FFFFCC;border:1px solid #FFFAAA;text-align:center;padding:10px 0;}
+
 p.messengernotice{float:left;width:99.2%;background:#EEEEFF;border:1px solid #DDDDFF;text-align:center;padding:10px 0;}
+p.messengernotice a{color: #364B69;padding: 5px 5px;text-decoration: none;}
+p.messengernotice a:hover{background-color:#445566; color: #FFFFFF;}
 
 ul.errors {float:left;width:99.2%;background:#FFDDDD;border:1px solid #FFBBBB;text-align:left;padding:10px 0;}
 ul.errors li {width:100%;margin:0 10px;}

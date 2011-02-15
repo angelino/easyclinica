@@ -52,6 +52,11 @@
 									
 									<td class="buttons">
 										<a class="btnpeopleshow" title="Exibir" href="<c:url value="/pacientes/${patient.id}/consultas/${appointment.id}"/>">&nbsp;</a>
+                                    	
+                                    	<form action="<c:url value="/pacientes/${patient.id}/consultas/${appointment.id}"/>" method="post">
+									        <input type="hidden" name="_method" value="delete"/>
+									        <input type="submit" class="btndelete" title="Excluir Consulta" value="" onclick="return confirm('Deseja realmente deletar essa consulta?');"/>
+									    </form>
                                     </td>
 								</tr>
 							</c:forEach>
