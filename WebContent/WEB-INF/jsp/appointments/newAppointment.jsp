@@ -100,8 +100,10 @@
                         <td rowspan="3">&nbsp;</td>
                     </tr>
                     <tr class="boxtotal">
-                        <td colspan="1">Consulta:</td>
-                        <td class="valor currency" id="valor-consulta"></td>
+                        <td colspan="1">Consulta:
+                        	<input type="hidden" name="appointment.appointmentAmount.amount" />
+                        </td>
+                        <td class="valor currency" id="valor-consulta"></td>                        
                     </tr>
                     <tr class="boxtotal">
                         <td colspan="1">Total:</td>

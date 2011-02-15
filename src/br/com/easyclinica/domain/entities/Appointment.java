@@ -165,7 +165,7 @@ public class Appointment {
 	}
 
 	public void recalculate() {
-		procedureAmount = Money.empty();
+		if(procedureAmount == null) procedureAmount = Money.empty();
 		
 		for(AppointmentProcedure procedure : procedures) {
 			procedureAmount.addValueToAmount(procedure.getTotalAmount().getAmount());

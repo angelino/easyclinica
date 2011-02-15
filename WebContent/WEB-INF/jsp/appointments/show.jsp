@@ -61,6 +61,7 @@
 			
 			<div class="boxcontent">	
 				<table class="tableprocedures" border="0">
+					<c:set var="totalProcedures" value="${0}"/>
 					<c:forEach items="${appointment.procedures}" var="procedure">
 						<tr class="tableheader">
 						    <th>Código:</th>
@@ -81,7 +82,9 @@
 							
 						    <td>${procedure.procedure.name}</td>
 						    <td colspan="2" class="center">${procedure.procedure.ch} CH</td>
-						    <td class="currency">${procedure.amount.amount}</td>
+						    <td class="currency">
+						    	${procedure.procedure.ch * appointment.healthCarePlan.ch.amount}
+						    </td>
 						    <td>&nbsp;</td>
 						</tr>
 						<tr class="tableheader">
@@ -92,22 +95,25 @@
 						    <td>Total:</td>
 						    <td>&nbsp;</td>
 						</tr>
+						
 						<c:forEach items="${procedure.materials}" var="material">
+							<c:set var="materialAmount" value="${material.qty.qty * material.unitAmount.amount}" />
 							<tr>
 	                            <td>${material.material}</td>
 	                            <td>${material.qty.qty}</td>
 	                            <td class="currency">${material.unitAmount.amount}</td>
-	                            <td class="currency">${material.qty.qty * material.unitAmount.amount}</td>
+	                            <td class="currency">${materialAmount}</td>
 	                            <td>&nbsp;</td>
 	                        </tr>
 						</c:forEach>
 					
 						<c:forEach items="${procedure.medicines}" var="medicine">
+							<c:set var="medicineAmount" value="${medicine.qty.qty * medicine.unitAmount.amount}" />
 							<tr>
 	                            <td>${medicine.medicine}</td>
 	                            <td>${medicine.qty.qty}</td>
 	                            <td class="currency">${medicine.unitAmount.amount}</td>
-	                            <td class="currency">${medicine.qty.qty * medicine.unitAmount.amount}</td>
+	                            <td class="currency">${medicineAmount}</td>
 	                            <td>&nbsp;</td>
 	                        </tr>
 						</c:forEach>					
@@ -115,6 +121,7 @@
 						    <td colspan="3">Total do procedimento:</td>
 						    <td class="currency">${procedure.amount.amount}</td>
 						    <td>&nbsp;</td>
+						    <c:set var="totalProcedures" value="${totalProcedures + procedure.amount.amount}"/>
 						</tr>
 						<tr class="boxdivisortable">
 							<td colspan="5">&nbsp;</td>
@@ -125,7 +132,7 @@
 						<td colspan="1" rowspan="3" class="tablenostyle">&nbsp;</td>
 						<th colspan="2" rowspan="3">&nbsp;</th>
 						<td colspan="1">Procedimentos</td>
-						<td class="currency">${appointment.procedureAmount.amount}</td>
+						<td class="currency">${totalProcedures}</td>
 						<td rowspan="3">&nbsp;</td>
 					</tr>
 					<tr class="boxtotal">
@@ -134,7 +141,7 @@
 					</tr>
 					<tr class="boxtotal">
 						<td colspan="1">Total:</td>
-						<td class="currency">${appointment.appointmentAmount.amount + appointment.procedureAmount.amount}</td>
+						<td class="currency">${appointment.appointmentAmount.amount + totalProcedures}</td>
 					</tr>
 				</table>
 					

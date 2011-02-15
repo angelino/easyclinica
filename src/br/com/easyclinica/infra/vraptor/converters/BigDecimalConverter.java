@@ -17,8 +17,7 @@ public class BigDecimalConverter implements Converter<BigDecimal> {
             value = "0.00";  
         }  
          
-		double valor = Double.parseDouble(value);		
-		return new BigDecimal(valor);  
+		return new BigDecimal(value);
 	}
 
 }

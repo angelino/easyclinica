@@ -130,6 +130,7 @@ EasyClinica.pages['consultas'] = function(){
 		$.get(url, function(data) {
 			var amount = data.precifiedSpecialty.amount;
 			$('#valor-consulta').html(amount.toString().formatCurrency(true));
+			$('input[name=appointment.appointmentAmount.amount]').val(amount);
 		});
 	};
 	

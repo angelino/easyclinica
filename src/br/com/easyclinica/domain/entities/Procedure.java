@@ -111,5 +111,5 @@ public class Procedure {
 		medicineInProcedure.setQty(qty);
 		
 		this.medicine.add(medicineInProcedure);
-	}
+	}	
 }

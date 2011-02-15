@@ -26,7 +26,7 @@ public class Money {
 	}
 	
 	public static Money empty() {
-		return new Money(0.0);
+		return new Money(BigDecimal.ZERO);
 	}
 	
 	public void addValueToAmount(BigDecimal value) {

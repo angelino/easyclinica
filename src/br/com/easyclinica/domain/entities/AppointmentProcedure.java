@@ -84,11 +84,12 @@ public class AppointmentProcedure {
 		
 	}
 	public void addMedicine(AppointmentMedicine medicine) {
-		medicines.add(medicine);
-		
+		medicines.add(medicine);		
 	}
+	
 	public Money getTotalAmount() {
-		Money total = Money.empty();
+		Money total = (this.amount == null ? Money.empty() : this.amount);
+		
 		for(AppointmentMaterial material : materials) {
 			total.addValueToAmount(material.getTotalAmount().getAmount());
 		}
