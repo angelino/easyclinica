@@ -25,8 +25,11 @@ public class Patient {
 	private String cellphone;
 	private String telephone;
 	private String email;
+	private String healthCarePlanCode;
 	@OneToMany(fetch=FetchType.LAZY, mappedBy="patient")
 	private List<Appointment> appointments;
+	
+	private boolean active;
 	
 	public Patient() {}
 	public Patient(int id) {
@@ -34,7 +37,9 @@ public class Patient {
 	}
 	
 	public static Patient empty() {
-		return new Patient();
+		Patient empty = new Patient();
+		empty.setActive(true);
+		return empty;
 	}
 
 	public String getName() {
@@ -104,6 +109,26 @@ public class Patient {
 	}
 	protected void setAppointments(List<Appointment> appointments) {
 		this.appointments = appointments;
+	}
+	public void setHealthCarePlanCode(String healthCarePlanCode) {
+		this.healthCarePlanCode = healthCarePlanCode;
+	}
+	public String getHealthCarePlanCode() {
+		return healthCarePlanCode;
+	}
+	
+	public void setActive(boolean active) {
+		this.active = active;
+	}
+	public boolean isActive() {
+		return active;
+	}
+	
+	public void deactivate() {
+		this.setActive(false);		
+	}
+	public void activate() {
+		this.setActive(true);		
 	}
 	
 	

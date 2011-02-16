@@ -8,23 +8,25 @@
 		<input type="hidden" name="_method" value="PUT" />
 	<% } %>
 	<input type="hidden" name="doctor.id" value="${doctor.id}" />
+	<input type="hidden" name="doctor.active" value="${doctor.active}" />
 	
 	<helper:errors errors="${errors}" />
 
-	<fieldset class="cadastro">	
-		<label class="label">Nome*:</label>
-		<input type="text" name="doctor.name" maxlength="50" class="text_field" value="${doctor.name}" />
-    	<span class="description">Ex: 'Amil', 'Blue Life'</span>
-	
-		<div class="agrupar_campos">
-			<label class="label">CRM:</label>
-		    <input type="text" name="doctor.crm" class="text_field" maxlength="50" value="${doctor.crm}" />
-		    <span class="description">Ex: '55.555'</span>
+	<p class="required"><span>*</span> campos obrigatórios</p>
+
+	<fieldset>
+      	<div>
+			<label class="title">Nome:<span>*</span></label>
+			<input type="text" name="doctor.name" maxlength="50" required="required" value="${doctor.name}" />
 		</div>
-		
-		<div class="agrupar_campos">
-			<label class="label">Especialidade:</label>
-		    <select name="doctor.specialty.id">
+      	<div class="crm">
+          	<label class="title">CRM:<span>*</span></label>
+            <input type="text" name="doctor.crm" maxlength="50" required="required" value="${doctor.crm}" />
+        </div>
+      	
+      	<div class="specialty">
+          	<label class="title">Especialidade:<span>*</span></label>
+            <select name="doctor.specialty.id" min="1" data-message="Selecione uma especialidade">
 		    	<option value="0">Selecione uma especialidade</option>
 		    	<c:forEach items="${specialties}" var="specialty">
 		    		<c:choose> 
@@ -37,38 +39,29 @@
 		    		</c:choose>
 		    	</c:forEach>
 		    </select>
-		    <span class="description">Ex: 'Pediatra', 'Psicólogo'</span>		
-		</div>
-
-		<div class="agrupar_campos">
-			<label class="label">Telefone*:</label>
-	    	<input type="text" name="doctor.telephone" class="text_field mask_telefone" maxlength="50" value="${doctor.telephone}" />
-	    	<span class="description">Ex: '(11) 1111-1111'</span>
-		</div>
-		
-		<div class="agrupar_campos">
-			<label class="label">E-mail:</label>
-	    	<input type="text" name="doctor.email" class="text_field" value="${doctor.email}" maxlength="100" />
-	    	<span class="description">Ex: 'pessoa@convenio.com.br'</span>
-		</div>
-		
-		<label class="label">Observações</label>
-		<textarea rows="5" cols="60" name="doctor.observations" class="text_field">${doctor.observations}</textarea>
-	    <span class="description">Ex: 'só atende ortopedia'</span>
-	
-		<div class="botoes">
-			<button class="button" type="submit">
-				<c:url value="/images/icons/tick.png" var="img_salvar"/>
-				<img src="${img_salvar}" alt="Salvar" />Salvar
-			</button>
-			
-			<c:url value="/pacientes" var="cancelar"/>
-			<a class="button" href="${cancelar}">
-				<c:url value="/images/icons/cross.png" var="img_cancelar"/>
-				<img src="${img_cancelar}" alt="Cancelar" />Cancelar
-			</a>
-		</div>
-	
-	</fieldset>
+         </div>
+         
+         <div class="telephone">
+         	<label class="title">Telefone:</label>
+         	<input type="text" name="doctor.telephone" class="mask_telefone" maxlength="50" value="${doctor.telephone}" />
+         </div>
+         
+         <div>
+         	<label class="title">E-mail:</label>
+         	<input type="text" name="doctor.email" value="${doctor.email}" maxlength="100" />
+         </div>
+      </fieldset>
+      
+      <fieldset>
+      	<div class="remarks">
+          	<label class="title">Observações:</label>
+            <textarea name="doctor.observations">${doctor.observations}</textarea>
+        </div>
+      </fieldset>
+      
+      <div class="boxactions">
+			<input type="submit" class="btnsave" value="Salvar" />
+          	<input type="button" class="btncancel" value="Cancelar" redirect_to="<c:url value="/medicos"/>"/>
+      </div>
   
 </form>

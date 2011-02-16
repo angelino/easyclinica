@@ -1,37 +1,41 @@
 package br.com.easyclinica.domain.entities;
 
+import java.math.BigDecimal;
+
+import br.com.easyclinica.domain.types.Money;
+import br.com.easyclinica.domain.types.Quantity;
+
 public class MedicineWithPriceAndQuantity {
 
-	private int medicineId;
-	private String medicineName;
-	private float qty;
-	private double amount;
+	private Medicine medicine;
+	private Quantity qty;
+	private Money amount;
 	
-	public void setQty(float qty) {
+	public MedicineWithPriceAndQuantity(){}
+	public MedicineWithPriceAndQuantity(Medicine medicine, BigDecimal qty, BigDecimal amount) {
+		this.medicine = medicine;
+		this.qty = new Quantity(qty);
+		this.amount = new Money(amount);
+	}
+	
+	public void setQty(Quantity qty) {
 		this.qty = qty;
 	}
-	public float getQty() {
+	public Quantity getQty() {
 		return qty;
 	}
 	
-	public void setAmount(double amount) {
+	public void setAmount(Money amount) {
 		this.amount = amount;
 	}
-	public double getAmount() {
+	public Money getAmount() {
 		return amount;
 	}
 	
-	public void setMedicineId(int medicineId) {
-		this.medicineId = medicineId;
+	public void setMedicine(Medicine medicine) {
+		this.medicine = medicine;
 	}
-	public int getMedicineId() {
-		return medicineId;
-	}
-	
-	public void setMedicineName(String medicineName) {
-		this.medicineName = medicineName;
-	}
-	public String getMedicineName() {
-		return medicineName;
+	public Medicine getMedicine() {
+		return medicine;
 	}
 }

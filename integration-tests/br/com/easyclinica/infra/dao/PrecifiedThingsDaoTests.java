@@ -17,6 +17,8 @@ import br.com.easyclinica.domain.entities.PrecifiedProcedure;
 import br.com.easyclinica.domain.entities.PrecifiedSpecialty;
 import br.com.easyclinica.domain.entities.Procedure;
 import br.com.easyclinica.domain.entities.Specialty;
+import br.com.easyclinica.domain.types.Money;
+import br.com.easyclinica.domain.types.Quantity;
 import br.com.easyclinica.tests.helpers.HealthCarePlanBuilder;
 import br.com.easyclinica.tests.helpers.MaterialBuilder;
 import br.com.easyclinica.tests.helpers.MedicineBuilder;
@@ -38,7 +40,7 @@ public class PrecifiedThingsDaoTests extends BaseIntegrationTests {
 		HealthCarePlan healthCarePlan = aSavedHealthCarePlan();
 		
 		PrecifiedProcedure precifiedProcedure = new PrecifiedProcedure();
-		precifiedProcedure.setFixedAmount(10.67);
+		precifiedProcedure.setFixedAmount(new Money(10.67));
 		precifiedProcedure.setProcedure(procedure);
 		precifiedProcedure.setHealthCarePlan(healthCarePlan);
 		session.save(precifiedProcedure);
@@ -54,19 +56,19 @@ public class PrecifiedThingsDaoTests extends BaseIntegrationTests {
 		HealthCarePlan healthCarePlan = aSavedHealthCarePlan();
 		
 		Material material1 = aSavedMaterial();
-		procedure.addMaterial(material1, 1);
+		procedure.addMaterial(material1, new Quantity(1));
 		Material material2 = aSavedMaterial();
-		procedure.addMaterial(material2, 2);
+		procedure.addMaterial(material2, new Quantity(2));
 		session.save(procedure);
 		
 		PrecifiedMaterial precifiedMaterial1 = new PrecifiedMaterial();
-		precifiedMaterial1.setAmount(10.20);
+		precifiedMaterial1.setAmount(new Money(10.20));
 		precifiedMaterial1.setHealthCarePlan(healthCarePlan);
 		precifiedMaterial1.setMaterial(material1);
 		session.save(precifiedMaterial1);
 		
 		PrecifiedMaterial precifiedMaterial2 = new PrecifiedMaterial();
-		precifiedMaterial2.setAmount(10.30);
+		precifiedMaterial2.setAmount(new Money(10.30));
 		precifiedMaterial2.setHealthCarePlan(healthCarePlan);
 		precifiedMaterial2.setMaterial(material2);
 		session.save(precifiedMaterial2);
@@ -84,19 +86,19 @@ public class PrecifiedThingsDaoTests extends BaseIntegrationTests {
 		HealthCarePlan healthCarePlan = aSavedHealthCarePlan();
 		
 		Medicine medicine1 = aSavedMedicine();
-		procedure.addMedicine(medicine1, 1);
+		procedure.addMedicine(medicine1, new Quantity(1));
 		Medicine medicine2 = aSavedMedicine();
-		procedure.addMedicine(medicine2, 2);
+		procedure.addMedicine(medicine2, new Quantity(2));
 		session.save(procedure);
 		
 		PrecifiedMedicine precifiedMedicine1 = new PrecifiedMedicine();
-		precifiedMedicine1.setAmount(10.20);
+		precifiedMedicine1.setAmount(new Money(10.20));
 		precifiedMedicine1.setHealthCarePlan(healthCarePlan);
 		precifiedMedicine1.setMedicine(medicine1);
 		session.save(precifiedMedicine1);
 		
 		PrecifiedMedicine precifiedMedicine2 = new PrecifiedMedicine();
-		precifiedMedicine2.setAmount(10.30);
+		precifiedMedicine2.setAmount(new Money(10.30));
 		precifiedMedicine2.setHealthCarePlan(healthCarePlan);
 		precifiedMedicine2.setMedicine(medicine2);
 		session.save(precifiedMedicine2);
@@ -104,8 +106,8 @@ public class PrecifiedThingsDaoTests extends BaseIntegrationTests {
 		List<PrecifiedMedicine> medicine = dao.getMedicinePrice(procedure, healthCarePlan);
 		
 		assertEquals(medicine.size(), 2);
-		assertTrue(medicine.get(0).getAmount() == precifiedMedicine1.getAmount());
-		assertTrue(medicine.get(1).getAmount() == precifiedMedicine2.getAmount());
+		assertTrue(medicine.get(0).getAmount().getAmount().doubleValue() == precifiedMedicine1.getAmount().getAmount().doubleValue());
+		assertTrue(medicine.get(1).getAmount().getAmount().doubleValue() == precifiedMedicine2.getAmount().getAmount().doubleValue());
 	}
 	
 	@Test

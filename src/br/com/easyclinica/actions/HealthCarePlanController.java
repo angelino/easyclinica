@@ -62,6 +62,12 @@ public class HealthCarePlanController extends BaseController {
 		result.redirectTo(HealthCarePlanController.class).index(Paginator.firstPage());
 	}
 
+	@Post
+	public void _show(int id) {
+		HealthCarePlan loadedPlan = allHealthCares.getById(id);
+		include(loadedPlan);
+	}
+	
 	@Get
 	@Path("/convenios/{id}/editar")
 	public void edit(int id) {

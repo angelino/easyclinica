@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import br.com.easyclinica.domain.types.Quantity;
+
 @Entity
 @Table(name="medical_procedures")
 public class Procedure {
@@ -93,7 +95,7 @@ public class Procedure {
 		return this.name;
 	}
 	
-	public void addMaterial(Material material, float qty) {
+	public void addMaterial(Material material, Quantity qty) {
 		MaterialInProcedure materialInProcedure = new MaterialInProcedure();
 		materialInProcedure.setMaterial(material);
 		materialInProcedure.setProcedure(this);
@@ -102,12 +104,12 @@ public class Procedure {
 		this.materials.add(materialInProcedure);
 	}
 	
-	public void addMedicine(Medicine medicine, float qty) {
+	public void addMedicine(Medicine medicine, Quantity qty) {
 		MedicineInProcedure medicineInProcedure = new MedicineInProcedure();
 		medicineInProcedure.setMedicine(medicine);
 		medicineInProcedure.setProcedure(this);
 		medicineInProcedure.setQty(qty);
 		
 		this.medicine.add(medicineInProcedure);
-	}
+	}	
 }

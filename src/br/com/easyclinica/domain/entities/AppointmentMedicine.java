@@ -1,30 +1,36 @@
 package br.com.easyclinica.domain.entities;
 
+import java.math.BigDecimal;
+
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import br.com.easyclinica.domain.types.Money;
+import br.com.easyclinica.domain.types.Quantity;
+
 @Entity
 public class AppointmentMedicine {
 
 	@Id @GeneratedValue
 	private int id;
-	private double unitAmount;
+	@Embedded private Money unitAmount;
 	@ManyToOne(fetch=FetchType.LAZY) 
 	private AppointmentProcedure procedure;
-	private float qty;
+	@Embedded private Quantity qty;
 	@ManyToOne(fetch=FetchType.EAGER) 
 	private Medicine medicine;
 	
 	public int getId() {
 		return id;
 	}
-	public double getUnitAmount() {
+	public Money getUnitAmount() {
 		return unitAmount;
 	}
-	public void setUnitAmount(double unitAmount) {
+	public void setUnitAmount(Money unitAmount) {
 		this.unitAmount = unitAmount;
 	}
 	public AppointmentProcedure getProcedure() {
@@ -33,13 +39,15 @@ public class AppointmentMedicine {
 	public void setProcedure(AppointmentProcedure procedure) {
 		this.procedure = procedure;
 	}
-	public double getTotalAmount() {
-		return unitAmount*qty;
+	public Money getTotalAmount() {
+		BigDecimal total = unitAmount.getAmount().multiply(qty.getQty());
+		
+		return new Money(total);
 	}
-	public float getQty() {
+	public Quantity getQty() {
 		return qty;
 	}
-	public void setQty(float qty) {
+	public void setQty(Quantity qty) {
 		this.qty = qty;
 	}
 	public Medicine getMedicine() {

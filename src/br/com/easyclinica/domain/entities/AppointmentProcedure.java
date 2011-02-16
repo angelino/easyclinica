@@ -4,12 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+
+import br.com.easyclinica.domain.types.Money;
 
 @Entity
 public class AppointmentProcedure {
@@ -20,7 +23,7 @@ public class AppointmentProcedure {
 	private Appointment appointment;
 	@ManyToOne(fetch=FetchType.EAGER) 
 	private Procedure procedure;
-	private double amount;
+	@Embedded private Money amount;
 	private boolean isFixedAmount;
 	
 	@OneToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL, orphanRemoval=true, mappedBy="procedure") 
@@ -44,10 +47,10 @@ public class AppointmentProcedure {
 	public void setProcedure(Procedure procedure) {
 		this.procedure = procedure;
 	}
-	public double getAmount() {
+	public Money getAmount() {
 		return amount;
 	}
-	public void setAmount(double amount) {
+	public void setAmount(Money amount) {
 		this.amount = amount;
 	}
 	public boolean isFixedAmount() {
@@ -81,16 +84,17 @@ public class AppointmentProcedure {
 		
 	}
 	public void addMedicine(AppointmentMedicine medicine) {
-		medicines.add(medicine);
-		
+		medicines.add(medicine);		
 	}
-	public double getTotalAmount() {
-		double total = 0;
+	
+	public Money getTotalAmount() {
+		Money total = (this.amount == null ? Money.empty() : this.amount);
+		
 		for(AppointmentMaterial material : materials) {
-			total += material.getTotalAmount();
+			total.addValueToAmount(material.getTotalAmount().getAmount());
 		}
 		for(AppointmentMedicine medicine : medicines) {
-			total += medicine.getTotalAmount();
+			total.addValueToAmount(medicine.getTotalAmount().getAmount());
 		}		
 		return total;
 	}

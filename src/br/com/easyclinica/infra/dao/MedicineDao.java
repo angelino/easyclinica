@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
-import org.hibernate.transform.Transformers;
 
 import br.com.caelum.vraptor.ioc.Component;
 import br.com.easyclinica.domain.entities.HealthCarePlan;
@@ -21,30 +20,26 @@ public class MedicineDao implements AllMedicines {
 		this.session = session;
 	}
 	
-	// TODO: rever essa query para voltar object
 	@SuppressWarnings("unchecked")
 	public List<MedicineWithPriceAndQuantity> getMedicinesWithPriceAndQuantity(
 			Procedure procedure, HealthCarePlan healthCarePlan) {
-		StringBuilder sql = new StringBuilder();
-		sql.append(" select ");
-			sql.append(" medicine.id as medicineId, ");
-			sql.append(" medicine.name as medicineName, ");
-			sql.append(" medicineinprocedure.qty as qty, ");
-			sql.append(" precifiedmedicine.amount as amount ");
-		sql.append(" FROM precifiedmedicine ");
-		sql.append(" INNER JOIN medicineinprocedure ON medicineinprocedure.medicine_id = precifiedmedicine.medicine_id ");
-		sql.append(" INNER JOIN medicine ON medicine.id = precifiedmedicine.medicine_id ");
-		sql.append(" where precifiedmedicine.healthCarePlan_id = :healthCarePlanId ");
-		sql.append(" and medicineinprocedure.procedure_id = :procedureId ");
 		
-		Query query = session.createSQLQuery(sql.toString())
-						.addScalar("medicineId")
-						.addScalar("medicineName")
-						.addScalar("qty")
-						.addScalar("amount")
-						.setResultTransformer(Transformers.aliasToBean(MedicineWithPriceAndQuantity.class))
-						.setParameter("healthCarePlanId", healthCarePlan.getId())
-						.setParameter("procedureId", procedure.getId());
+		StringBuilder hql = new StringBuilder();
+		hql.append(" select new br.com.easyclinica.domain.entities.MedicineWithPriceAndQuantity( ");
+			hql.append(" m.medicine, ");
+			hql.append(" m.qty.qty, ");
+			hql.append(" pm.amount.amount ");
+		hql.append(" ) ");
+		hql.append(" from PrecifiedMedicine as pm, MedicineInProcedure as m ");
+		hql.append(" where ");
+		hql.append(" pm.medicine.id = m.medicine.id ");
+		hql.append(" and pm.healthCarePlan.id = :healthCarePlanId ");
+		hql.append(" and m.procedure.id = :procedureId ");
+		
+		Query query = session.createQuery(hql.toString())
+							 .setParameter("healthCarePlanId", healthCarePlan.getId())
+							 .setParameter("procedureId", procedure.getId());
+		
 		return (List<MedicineWithPriceAndQuantity>) query.list();
 	}
 

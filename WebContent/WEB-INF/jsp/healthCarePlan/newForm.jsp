@@ -9,26 +9,18 @@
 	</head>
 	<body>
 
-		<div id="main">
-
-			<div class="block" id="block">
-				
-				<div class="content">
-			   		<h2 class="title">Novo Convênio</h2>
-					<div class="inner">
-			
-						<c:url value="/convenios" var="formAction" />
-						
-						<jsp:include page="_form.jsp">	
-						   <jsp:param name="formAction" value="${formAction}" />
-						</jsp:include>
-					</div>
-				</div>
+		<div class="box" id="convenios">
+			<div class="boxcontent">
+			   	<h2>Novo Convênio</h2>
+								
+				<c:url value="/convenios" var="formAction" />
+				<jsp:include page="_form.jsp">	
+				   <jsp:param name="formAction" value="${formAction}" />
+				</jsp:include>
 			</div>
-			
 		</div>
 			
-		<div id="sidebar">
+		<div class="boxright">
 			<% 
 				java.util.List<Link> links = new LinkedList<Link>();  
 				links.add(new Link("/convenios","Voltar para listagem"));

@@ -1,6 +1,7 @@
 package br.com.easyclinica.domain.entities;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
@@ -14,7 +15,8 @@ public class Clinic {
 	private String name;
 	private String domain;
 	private boolean active;
-	@ManyToOne
+	
+	@ManyToOne(fetch=FetchType.EAGER)
 	private HealthCarePlan privatePlan;
 	
 	public Clinic() {}

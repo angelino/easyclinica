@@ -10,65 +10,72 @@
 	</head>
 	<body>
 
-		<div id="main">
-		
-			<div class="block" id="block-tables">
-			    <div class="content">
-			    	<h2 class="title">Listagem de Convênios</h2>
+		<div class="box" id="convenios">
+			<div class="boxcontent">
+				<h2>Listagem de Convênios</h2>
 			    	
-			    	<helper:message successKey="${successKey}" errorKey="${errorKey}" />
+			    <helper:message successKey="${successKey}" errorKey="${errorKey}" />
 			 			    	
-			    	<c:choose>
-			    		<c:when test="${fn:length(healthcares.result) == 0}">
-			    			<div class="inner">
-			    			Não há convênios cadastrados! <a href='<c:url value="/convenios/novo" />'>Clique aqui</a> para adicionar o primeiro!
-			    			</div>
-			    		</c:when>
-			    		<c:otherwise>   	
-			        <div class="inner">
-						<table class="table">
-							<tr>
-								<th class="first" witdh="40%">Nome</th>
-								<th width="20%">Contato</th>
-								<th width="20%">Telefone</th>
-								<th width="20%" class="last">&nbsp;</th>
+		    	<c:choose>
+		    		<c:when test="${fn:length(healthcares.result) == 0}">
+		    			<p class="messengernotice">
+		    				Não há convênios cadastrados! <a href="<c:url value="/convenios/novo" />">Clique aqui</a> para adicionar o primeiro!
+		    			</p>
+		    		</c:when>
+		    		<c:otherwise>   	
+			       		<table border="0" class="easy">
+							<tr class="tableheader">
+								<th width="65px">Status:</th>
+								<th>Nome:</th>
+								<th>Contato:</th>
+								<th>Telefone:</th>
+								<th>Valor CH (R$):</th>
+								<th width="145px">&nbsp;</th>
 							</tr>
 							
 							<c:forEach var="healthCare" items="${healthcares.result}" varStatus="status">
 								<tr class="${status.count % 2 == 0 ? 'odd' : 'even' }">
-									<td id="name_${healthCare.id}">${healthCare.name}
-										<c:choose>
-											<c:when test="${not healthCare.active}">
-												<span class="label-inativo">INATIVO</span>
-											</c:when>
-										</c:choose>									
-									</td>
+									
+									<c:choose>
+										<c:when test="${healthCare.active}">
+											<td class="statusenable">Ativo</td>
+                                    		<td>${healthCare.name}</td>
+										</c:when>
+										<c:otherwise>
+											<td class="statusdisable">Inativo</td>
+                                    		<td class="namedisable">${healthCare.name}</td>
+										</c:otherwise>
+									</c:choose>
+									
 									<td>${healthCare.contact}</td>
 									<td>${healthCare.telephone}</td>
-									<td>
-										<a href="<c:url value="/convenios/${healthCare.id}/editar" />">editar</a> 
-										<c:if test="${healthCare.active}">
-										<span>| <a href="<c:url value="/convenios/${healthCare.id}/deactivate" />">inativar</a></span>
-										</c:if>
-										<c:if test="${not healthCare.active}">
-										<span>| <a href="<c:url value="/convenios/${healthCare.id}/activate" />">ativar</a></span>
-										</c:if>
-									</td>
+									<td class="currency">${healthCare.ch.amount}</td>
+									<td class="buttons">
+										<a class="btnpeopleedit" title="Editar" href="<c:url value="/convenios/${healthCare.id}/editar" />">&nbsp;</a>
+                                        <a class="btnpeopleshow exibir" title="Exibir" healthCarePlan_id="${healthCare.id}">&nbsp;</a>
+                                        
+                                        <c:choose>
+											<c:when test="${healthCare.active}">
+												<a class="btnpeopledisable last" title="Desativar" href="<c:url value="/convenios/${healthCare.id}/deactivate" />">&nbsp;</a>
+											</c:when>
+											<c:otherwise>
+												<a class="btnpeopleenable last" title="Ativar" href="<c:url value="/convenios/${healthCare.id}/activate" />">&nbsp;</a>
+											</c:otherwise>
+										</c:choose>
+                                    </td>
 								</tr>
 							</c:forEach>
 						</table>
 						
 			            <helper:pagging total="${healthcares.totalPages}" current="${healthcares.currentPage}" />
-					</div>
-				
+					
 					</c:otherwise>
 				</c:choose>
-				</div>
+				
 			</div>
-	
 		</div>
 			
-		<div id="sidebar">
+		<div class="boxright">
 			<% 
 				java.util.List<Link> links = new LinkedList<Link>();  
 				links.add(new Link("/convenios/novo","Criar novo convênio"));

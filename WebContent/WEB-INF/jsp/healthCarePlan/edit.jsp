@@ -10,38 +10,27 @@
 	</head>
 	<body>
 
-		<div id="main">
-
-			<div class="block" id="block">
+		<div class="box" id="convenios">
+			<div class="boxcontent">
+		   		<h2>Editar Convênio</h2>
 				
-				<div class="content">
-			   		<h2 class="title">Editar Convênio</h2>
-					<div class="inner">
-			
-						<c:url value="/convenios/${healthCarePlan.id}" var="formAction" />
-						
-						<jsp:include page="_form.jsp">	
-						   <jsp:param name="formAction" value="${formAction}" />
-						   <jsp:param name="put" value="true"/>	
-						   <jsp:param name="edit" value="true"/>			  	
-						</jsp:include>
-					</div>
-				</div>
-			</div>
-			
+				<c:url value="/convenios/${healthCarePlan.id}" var="formAction" />
+				<jsp:include page="_form.jsp">	
+				   <jsp:param name="formAction" value="${formAction}" />
+				   <jsp:param name="put" value="true"/>	
+				   <jsp:param name="edit" value="true"/>			  	
+				</jsp:include>
+			</div>			
 		</div>
 			
-		<div id="sidebar">
+		<div class="boxright">
 			<% 
 				java.util.List<Link> links = new LinkedList<Link>();  
 				links.add(new Link("/convenios","Voltar para listagem"));
-				links.add(new Link("/convenios/"+ ((HealthCarePlan)request.getAttribute("healthCarePlan")).getId(),"Exibir o convênio"));
 				links.add(new Link("/convenios/novo","Adicionar novo convênio"));
 				pageContext.setAttribute("links",links);
 			%>
 			<helper:navigation links="${links}"></helper:navigation>
-			
-			<helper:notice title="Atenção!" notice="Não esqueça de preencher os dados financeiros do convênio!"></helper:notice>
 		</div>
 	</body>
 </html>

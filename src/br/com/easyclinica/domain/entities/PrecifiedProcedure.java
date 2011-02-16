@@ -1,10 +1,13 @@
 package br.com.easyclinica.domain.entities;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+
+import br.com.easyclinica.domain.types.Money;
 
 @Entity
 public class PrecifiedProcedure {
@@ -14,7 +17,7 @@ public class PrecifiedProcedure {
 	private HealthCarePlan healthCarePlan;
 	@ManyToOne(fetch=FetchType.LAZY) 
 	private Procedure procedure;
-	private double fixedAmount;
+	@Embedded private Money fixedAmount;
 	
 	public HealthCarePlan getHealthCarePlan() {
 		return healthCarePlan;
@@ -28,17 +31,18 @@ public class PrecifiedProcedure {
 	public void setProcedure(Procedure procedure) {
 		this.procedure = procedure;
 	}
-	public double getFixedAmount() {
-		return fixedAmount;
-	}
-	public void setFixedAmount(double fixedAmount) {
-		this.fixedAmount = fixedAmount;
-	}
+	
 	public int getId() {
 		return id;
 	}
 	protected void setId(int id) {
 		this.id = id;
+	}
+	public void setFixedAmount(Money fixedAmount) {
+		this.fixedAmount = fixedAmount;
+	}
+	public Money getFixedAmount() {
+		return fixedAmount;
 	}
 	
 	

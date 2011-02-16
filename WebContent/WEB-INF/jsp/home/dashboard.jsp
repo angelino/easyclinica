@@ -6,15 +6,10 @@
 		<title>.: EasyClinica :.</title>
 	</head>
 	<body>
-
-		<div id="main">
-		
-			dashboard
-	
-		</div>
-			
-		<div id="sidebar">
-
+		<div class="box" id="dashboard">		
+			<div class="boxcontent">
+				<h2>Dashboard</h2>				
+			</div>
 		</div>
 	</body>
 </html>

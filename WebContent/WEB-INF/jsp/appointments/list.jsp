@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib uri="/WEB-INF/easyclinica.tld" prefix="helper" %>
 
 <%@page import="br.com.easyclinica.view.Link"%>
@@ -13,63 +14,63 @@
 	</head>
 	<body>
 
-		<div id="main">
-
-			<div class="block" id="block">
+		<div class="box" id="consultas">
+			<helper:patientMenu patient="${patient}" selected="Consultas" />
 			
-				<h2>Paciente: ${patient.name}</h2>
-				
-				<helper:patientMenu patient="${patient}" selected="Consultas" />
+			<div class="boxcontent">			
+				<h2>Listagem de Consultas - ${patient.name}</h2>
 				
 				<helper:message successKey="${successKey}" errorKey="${errorKey}" />
 				
-				<div class="content">
-				
-				<table class="table"> 
-                  <tr> 
-                    <th width="20%">Data</th> 
-                    <th width="25%">Convênio</th>
-                    <th width="25%">Médico</th>
-                    <th width="20%">Especialidade</th> 
-                    <th width="10%">&nbsp;</th> 
-                  </tr> 
+				<c:choose>
+		    		<c:when test="${fn:length(patient.appointments) == 0}">
+		    			<p class="messengernotice">
+		    				Não há consultas registradas para esse paciente! <a href='<c:url value="/pacientes/${patient.id}/consultas/novo" />'>Clique aqui</a> para cadastrar uma consulta!
+		    			</p>
+		    		</c:when>
+		    		<c:otherwise>				
+						<table border="0" class="easy">
+							<tr class="tableheader">
+			                    <th>Data</th> 
+			                    <th>Convênio</th>
+			                    <th>Médico</th>
+			                    <th>Especialidade</th> 
+			                    <th width="145px">&nbsp;</th>
+			                </tr> 
                   
-					<c:forEach items="${patient.appointments}" var="appointment" varStatus="st">
-					<tr class="${st.count%2==0?'odd':'even'}"> 
-						<td><fmt:formatDate value="${appointment.appointmentDate.time}" pattern="dd/MM/yyyy" />
-								<c:if test="${appointment.return eq true}">
-									<span class="label-retorno">
-										RETORNO
-									</span>
-								</c:if>
-						</td> 
-						<td>${appointment.healthCarePlan.name}</td>
-						<td>${appointment.doctor.name}</td>
-						<td>${appointment.specialty.name}</td>
-						<td class="last" style="text-align: left;"> 
-						<c:url value="/pacientes/${patient.id}/consultas/${appointment.id}" var="detailedUrl" />
-						<a href="${detailedUrl}">Ver</a>
-						</td>
-					</tr>
-					</c:forEach>
-				  </table>
-				</div>
-				
-				<div class="botoes">
-					<c:url value="/pacientes/${appointment.patient.id}/consultas" var="voltar"/>
-					<a class="button" href="${voltar}">
-						<c:url value="/images/icons/cross.png" var="img_voltar"/>
-						<img src="${img_voltar}" alt="Voltar" />Voltar
-					</a>
-				</div>
+							<c:forEach items="${patient.appointments}" var="appointment" varStatus="st">
+								<tr class="${st.count%2==0?'odd':'even'}"> 
+									<td>
+										<fmt:formatDate value="${appointment.appointmentDate.time}" pattern="dd/MM/yyyy" />
+										<c:if test="${appointment.return eq true}">
+											<span class="retorno">RETORNO</span>
+										</c:if>
+									</td> 
+									<td>${appointment.healthCarePlan.name}</td>
+									<td>${appointment.doctor.name}</td>
+									<td>${appointment.specialty.name}</td>
+									
+									<td class="buttons">
+										<a class="btnpeopleshow" title="Exibir" href="<c:url value="/pacientes/${patient.id}/consultas/${appointment.id}"/>">&nbsp;</a>
+                                    	
+                                    	<form action="<c:url value="/pacientes/${patient.id}/consultas/${appointment.id}"/>" method="post">
+									        <input type="hidden" name="_method" value="delete"/>
+									        <input type="submit" class="btndelete" title="Excluir Consulta" value="" onclick="return confirm('Deseja realmente deletar essa consulta?');"/>
+									    </form>
+                                    </td>
+								</tr>
+							</c:forEach>
+				  		</table>
+					</c:otherwise>
+				</c:choose>
 			</div>
-
 		</div>
 			
-		<div id="sidebar">
+		<div class="boxright">	
 			<% 
 				java.util.List<Link> links = new LinkedList<Link>();  
-				links.add(new Link("/pacientes/" + ((Patient)request.getAttribute("patient")).getId(),"Perfil do paciente"));
+				links.add(new Link("/pacientes/" + ((Patient)request.getAttribute("patient")).getId() + "/editar","Perfil do paciente"));
+				links.add(new Link("/pacientes/" + ((Patient)request.getAttribute("patient")).getId() + "/consultas/novo","Nova consulta"));
 				pageContext.setAttribute("links",links);
 			%>
 			<helper:navigation links="${links}"></helper:navigation>

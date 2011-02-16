@@ -1,11 +1,13 @@
 package br.com.easyclinica.domain.entities;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import br.com.easyclinica.domain.types.Money;
+import br.com.easyclinica.domain.types.Quantity;
 
 public class AppointmentTests {
 
@@ -32,15 +34,13 @@ public class AppointmentTests {
 		procedure.addMaterial(aMaterial());
 		appointment.addProcedure(procedure);
 		
-		appointment.recalculate();
-		
-		assertEquals(10, appointment.getProcedureAmount(), 0.000001);
+		assertTrue(new Money(10).getAmount().doubleValue() == appointment.getProcedureAmount().getAmount().doubleValue());
 	}
 
 	private AppointmentMaterial aMaterial() {
 		AppointmentMaterial material = new AppointmentMaterial();
-		material.setQty(1);
-		material.setUnitAmount(10.0);
+		material.setQty(new Quantity(1));
+		material.setUnitAmount(new Money(10.0));
 		return material;
 	}
 }

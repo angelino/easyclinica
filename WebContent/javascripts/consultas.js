@@ -1,29 +1,42 @@
 EasyClinica.pages['consultas'] = function(){
 	
-	$('#btn_search_procedure').click(function(e){
-		var text = $('#txt_search_procedure').val();
+	$('#informe-procedimento-message').hide();
 		
-		EasyClinica.lib.openModal(EasyClinica.cfg.services.searchProcedure, 'POST', { text: text }, function(){			
-			$('.add-procedure').click(function(e){
-				e.preventDefault();
-				
-				var procedureId = $(this).attr('procedure_id');
-				var convenioId = $("input[name=appointment.healthCarePlan.id]:checked").val();
-				
-				$.post(EasyClinica.cfg.services.newProcedureToAppointment, { procedureId: procedureId, convenioId: convenioId }, function(data){
-					var index = $('#procedures .procedure').size();
-					if(index == "") index = 0;
-					data = data.replace(/#index#/g, index);
-					
-					$('#procedures').append(data);
-					$('.modal').remove();
-					
-					configureAmountManager();
-					configureRemoveActions();
-					EasyClinica.common.generalFunctions();
-					refreshAppointentValue();
-				});		
-			});			
+	$("#txt_search_procedure").autocomplete(EasyClinica.cfg.services.searchProcedure, {
+		autoFill: true
+	}).result(function(event, item) {
+		$('#selected_procedure_id').val(item[1]);
+	});
+	
+	$('#btn_search_procedure').click(function(e){		
+		e.preventDefault();
+		
+		var procedureId = $('#selected_procedure_id').val();
+		
+		if(procedureId == 0) {
+			$('#informe-procedimento-message').show('slow');
+			return;
+		}
+		
+		var convenioId = $("input[name=appointment.healthCarePlan.id]:checked").val();
+		
+		$.post(EasyClinica.cfg.services.newProcedureToAppointment, { procedureId: procedureId, convenioId: convenioId }, function(data){
+			var index = $('.procedure-id').size();
+			if(index == "") index = 0;
+			data = data.replace(/#index#/g, index);
+			
+			$('.boxtotal').first().before(data);
+			$('.modal').remove();
+			
+			configureAmountManager();
+			configureRemoveActions();
+			refreshAppointentValue();
+			EasyClinica.common.generalFunctions();
+			EasyClinica.common.formValidation();
+			
+			$("#txt_search_procedure").val("");
+			$('#selected_procedure_id').val(0);
+			$('#informe-procedimento-message').hide();
 		});
 	});
 	
@@ -31,17 +44,23 @@ EasyClinica.pages['consultas'] = function(){
 		$('.remove-procedure').click(function(e){
 			e.preventDefault();
 			
-			var procedure = findRecursiveParent($(this),'.procedure');				
-			procedure.remove();				
+			var procedure_id = $(this).attr('procedure_id');				
+			$('tr[procedure_id=' + procedure_id + ']').remove();			
 			refreshAppointentValue();
 		});
 		
 		$('.remove-material, .remove-medicine').click(function(e){
-			e.preventDefault();
+			e.preventDefault();			
+			var procedure_id = $(this).attr('procedure_id');
 			
-			selector = '.' + $(this).attr('class').replace(/remove-/g, '');
+			selector = ($(this).hasClass('remove-material') ? '.material' : '.medicine') + '-' + procedure_id;
 			var element = findRecursiveParent($(this),selector);				
 			element.remove();
+			
+			var table_space = $('#table-space-' + procedure_id);
+			var rowspan = table_space.attr('rowspan');
+			rowspan -= 1;
+			table_space.attr('rowspan',rowspan);
 			
 			refreshAppointentValue();
 		});
@@ -60,10 +79,12 @@ EasyClinica.pages['consultas'] = function(){
 	var refreshProceduresValue = function() {
 		var appointment_procedure_amount = 0;
 		
-		$('.procedure').each(function(index){
-			var procedure_total = $(this).find('.procedure-total').html().convertToFloat();
-							
-			$(this).find('.material, .medicine').each(function(material_index){
+		$('.procedure-id').each(function(index){
+			var procedure_id = $(this).val();
+			
+			var procedure_total = $('.procedure-total-' + procedure_id).html().convertToFloat();
+			
+			$('.material-' + procedure_id + ', .medicine-' + procedure_id).each(function(material_index){
 				var qty = $(this).find('.qty').val();
 				var amount = $(this).find('.amount').val();					
 				var total = EasyClinica.lib.calculateAmount(qty,amount);
@@ -73,7 +94,7 @@ EasyClinica.pages['consultas'] = function(){
 				procedure_total += total.toString().convertToFloat();
 			});
 			
-			$(this).find('.procedure-amount').html(procedure_total.toString().formatCurrency(true));
+			$('.procedure-amount-' + procedure_id).html(procedure_total.toString().formatCurrency(true));
 			
 			appointment_procedure_amount += procedure_total.toString().convertToFloat();
 		});
@@ -88,14 +109,51 @@ EasyClinica.pages['consultas'] = function(){
 	};
 
 	$('select[name=appointment.specialty.id]').change(function(){
-		var specialtyId = $(this).val();
-		var convenioId = $('input[name=appointment.healthCarePlan.id]:checked').val();
+		var specialty_id = $(this).val();
 		
-		var url = EasyClinica.cfg.services.getSpecialtyPrice.format(specialtyId, convenioId);		
+		if(specialty_id == 0) {
+			$('#valor-consulta').html('0.00'.formatCurrency(true));
+			return;
+		}
+		
+		refreshMedicalAppointmentAmount(specialty_id);
+		isReturn();
+	});
+	
+	$('select[name=appointment.doctor.id]').change(function(){
+		var doctorId = $(this).val();
+		
+		if(doctorId == 0) return;
+		
+		var url = EasyClinica.cfg.services.getDoctorSpecialty.format(doctorId);		
 		$.get(url, function(data) {
-			var amount = data.precifiedSpecialty.amount;
-			$('#valor-consulta').html(amount.toString().formatCurrency(true));
+			var specialty_id = data.specialty.id;
+			$('select[name=appointment.specialty.id]').val(specialty_id);
+			refreshMedicalAppointmentAmount(specialty_id);
+			isReturn();
 		});
 	});
 	
+	var refreshMedicalAppointmentAmount = function(specialty_id) {
+		var convenioId = $('input[name=appointment.healthCarePlan.id]:checked').val();
+		
+		var url = EasyClinica.cfg.services.getSpecialtyPrice.format(specialty_id, convenioId);		
+		$.get(url, function(data) {
+			var amount = data.precifiedSpecialty.amount;
+			$('#valor-consulta').html(amount.toString().formatCurrency(true));
+			$('input[name=appointment.appointmentAmount.amount]').val(amount);
+		});
+	};
+	
+	var isReturn = function() {
+		var specialty_id = $('select[name=appointment.specialty.id]').val();
+		var patient_id = $('input[name=appointment.patient.id]').val();
+		var convenio_id = $('input[name=appointment.healthCarePlan.id]:checked').val();
+		
+		var url = EasyClinica.cfg.services.verifyIfAppointmentIsReturn.format(patient_id, specialty_id, convenio_id);		
+		$.get(url, function(data) {
+			if(data.boolean) $('#aviso-retorno').show();
+			else $('#aviso-retorno').hide();
+		});
+	};
 };

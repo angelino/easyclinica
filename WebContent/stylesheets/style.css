@@ -1,521 +1,302 @@
-a:link, a:visited { color: #07b; text-decoration: none; }
-a, a:hover, a:active { color: #d30; }
-h1, h2, h3 {color: #444}
-
-body {
-  color: #333;
-  background: #EBEBEB;
-  font: normal 12px/1.5em "Lucida Grande", "Helvetica Neue", Arial, sans-serif;
-}
-
-hr {
-  background: #aaa; 
-}
-
-p {
-  font-size: 12px;
-  line-height: 20px;
-}
-
-input.checkbox {
-  vertical-align:middle;
-}
-
-#header h1 {
-  font-size: 28px;
-  padding: 5px 0;
-  margin: 5px 0;
-}
-
-.hightlight {
-  background-color: #ffc;
-}
-.small {
-  font-size: 11px;
-}
-.gray {
-  color: #999;
-}
-#header {
-  background: #232C30;
-}
-
-#header h1 a:link, #header h1 a:active, #header h1 a:hover, #header h1 a:visited {
-  color: #eaeaea;
-}
-
-#main {
-  background: #EBEBEB;
-  width: 73%;
-}
-
-#main .block {
-  -moz-border-radius-topleft: 4px;
-  -moz-border-radius-topright: 4px;
-  padding: 0;
-  margin-bottom:20px;
-  padding-bottom: 20px;
-  background: transparent;
-}
-
-#main .block .content {
-  border-left: 1px solid #ddd;
-  border-top: 1px solid #ddd;
-  border-bottom: 1px solid #ccc;
-  border-right: 1px solid #ccc;
-  background: #fff;
-  float:left;
-  width:100%;
-  margin:0 0 20px 0;
-}
-
-.dados {
-	float:left;
-	padding:0 20px 10px 0;
-	width:980px;
-}
-
-#main .block h2.title {
-  margin: 10px 0 5px 0;
-  background-color: none;
-  padding: 5px 5px 5px 15px;
-  font-size:18px;
-  color: #456;
-}
-
-.main_container {
-  padding:10px;
-}
-
-#footer {
-  background-color: #ddd;
-  border-top: 1px solid #bbb;
-}
-
-#footer .block {
-  font-size:11px;
-  background-color: #ddd;
-  padding: 0 10px;
-  text-align: right;
-}
-
-/* #sidebar .block { background: #FFF; padding-bottom:0px; } */
-
-#sidebar .notice {
-  background-color: #ffc;
-  padding: 0 10px;
-  border-bottom:1px solid #ddd;
-  border-right:1px solid #ddd;
-  border-top:1px solid #fff;
-  border-left:1px solid #fff;
-}
-#sidebar .notice h2 {
-  font-size:16px;
-  margin: 5px 0;
-  border-bottom:1px solid #456;
-}
-#sidebar .notice p {
-  font-size:12px;
-}
-
-#sidebar .block {
-  padding-bottom: 0;
-}
-
-#sidebar .block .content {
-  padding: 0 10px;
-}
-
-
-#sidebar h3 {  
-  background: #fff;
-  border-bottom:1px solid #ccc;
-  border-right:1px solid #ccc;
-  border-left:1px solid #ddd;
-  border-top:1px solid #ddd;
-  padding: 5px 10px;
-  color: #333;
-  font-weight: bold;
-}
-
-#sidebar ul li a:link, #sidebar ul li a:visited {
-  font-size:12px;
-}
-
-#sidebar ul li a:hover, #sidebar ul li a:active {
-  background: none;
-  color: #444;
-  font-size:12px;
-  text-decoration:underline;
-}
-#sidebar ul.navigation li.last a {
-  border-bottom: none;
-}
-
-#sidebar ul.navigation li a:link,#sidebar ul.navigation li a:visited {
-  padding: 5px 10px;
-  color:#6a6a6a;
-  text-decoration: none;
-}
-#sidebar ul.navigation li a:hover {
-  text-decoration:underline;
-}
-#sidebar .block .sidebar-block h4 {
-  border-bottom: 1px dotted #aaa;
-}
-#main-navigation ul li {
-  background: #456;
-  border-top: 1px solid #5C738A;
-  color: #eee;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-}
-
-#main-navigation ul li:hover {
-  border-top-color: #7593B0;
-  background-color: #576C82 !important;
-  color: #fff;
-}
-
-#main-navigation ul li.active {
-  border-top: 1px solid #fff;
-  background-color: #eee !important;
-  color: #333;
-}
-
-#main-navigation ul li a:link, #main-navigation ul li a:visited, #main-navigation ul li a:hover, #main-navigation ul li a:active,
-.secondary-navigation ul li a:link, .secondary-navigation ul li a:visited, .secondary-navigation ul li a:hover, .secondary-navigation ul li a:active,
-#user-navigation ul li a:link, #user-navigation ul li a:visited, #user-navigation ul li a:hover, #user-navigation ul li a:active {
-  text-decoration: none;
-  color: #FFF;
-}
-
-#user-navigation ul li a:link, #user-navigation ul li a:visited {
-  color: #CDE;
-  border-bottom: 1px dotted #345;
-}
-
-#user-navigation ul li a:hover {
-  color: #fff;
-  border-bottom: 1px dotted #CDE;
-  text-decoration: none;
-}
-
-#main-navigation ul li a {
-  font-size: 12px;
-  padding: 3px 10px;
-}
-
-#main-navigation ul li.active a:link, #main-navigation ul li.active a:visited, #main-navigation ul li.active a:hover, #main-navigation ul li.active a:active {
-  color: #364b69;
-}
-
-.secondary-navigation {
-  background: #eaeaea;
-  border-bottom: 0px;
-}
-
-.secondary-navigation ul li {
-  background: #456;
-  border-top: 1px solid #5C738A;
-  color: #eee;
-  margin-right: 5px;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-}
-
-.secondary-navigation ul li a {
-  padding: 3px 10px;
-}
-
-.secondary-navigation ul li.active:hover {
-  background: #fff !important;
-  border-top: 1px solid #ccc;
-  border-right: 1px solid #ccc;
-}
-
-.secondary-navigation ul li.active {
-  border-top: 1px solid #ddd;
-  border-left: 1px solid #ddd;
-  border-right: 1px solid #ccc;
-  border-bottom: 1px solid #fff;
-  margin-bottom: -1px;
-  background-color: #fff !important;
-  color: #333;
-}
-
-.secondary-navigation ul li.active a {
-  color: #333;
-}
-
-.secondary-navigation ul li:hover {
-  border-top-color: #7593B0;
-  background-color: #576C82 !important;
-  color: #fff;
-}
-
-/* pagination */
-
-.pagination span.current {
-  background: #576C82;
-  color: #FFF;
-  border: 1px solid #7593B0;
-  -moz-border-radius:5px;
-}
-
-.pagination span.disabled {
-  background: #eee;
-  color: #aaa;
-  border: 1px solid #ddd;
-  -moz-border-radius:5px;
-}
-
-.pagination a {
-  color: #364B69;
-  border: 1px solid #ddd;
-  -moz-border-radius:5px;
-  font-size:11px;
-}
-
-.pagination a:hover {
-  color: #444;
-  background: #eaeaea;
-  border: 1px solid #576C82;
-}
-
-/* tables */
-
-.table th {
-  background: #576C82;
-  color: #FFF;
-  font-weight:normal;
-  padding:3px;
-}
-
-.table .sub-table th {
-	background: #A4AAAF;
-}
-
-.table .procedure-table th {
-	border: none;
-	font-weight: bold;
-}
-
-table .procedure-table th a {
-	color: #fff;
-	font-weight: bold;
-}
-
-table .procedure-table th a:hover {
-	color: #d30;
-}
-
-.table th a.toggle {
-  display: block;
-  width: 12px;
-  height: 12px;
-  background: transparent url('../images/tick.png') center no-repeat;
-  text-indent: -9999px;
-  -moz-outline: none;
-}
-
-.table th.first {
-  width: 30px;
-  text-align: center;
-}
-
-.table td {
-  border-bottom: 1px solid #AAA;
-}
-
-/* forms */
-
-.form input.text, .form textarea.textarea {
-  border: 1px solid #ddd;
-  padding: 5px;
-  width:99%;
-}
-
-.form input.text_field, .form textarea.text_area {
-  border-right: 1px solid #ddd;
-  border-bottom: 1px solid #ddd;
-  border-top: 2px solid #ccc;
-  border-left: 2px solid #ccc;
-  width:99%;
-}
-
-.form .navform {
-  padding:10px;
-  background-color: #eee;
-  font-size:14px;
-  border-bottom:1px solid #ddd;
-  border-right:1px solid #ddd;
-  border-top:1px solid #eee;
-  border-left:1px solid #eee;
-}
-
-.form .navform input {
-  font-size:14px;
-}
-
-.description {
-  color:#aaa;
-  font-family:Georgia, serif;
-}
-
-/* flash-messages */
-.flash .message {
-  -moz-border-radius: 3px;
-  -webkit-border-radius: 3px;
-  text-align:center;
-  margin:0 auto 5px;
-  width:80%;
-}
-.flash .message p {
-  margin:8px;
-}
-.flash .error {
-  border: 1px solid #fbb;
-  background-color: #fdd;
-}
-.flash .warning {
-  border: 1px solid #fffaaa;
-  background-color: #ffffcc;
-}
-.flash .notice {
-  border: 1px solid #ddf;
-  background-color: #eef;
-}
-
-/* lists */
-
-ul.list li {
-  border-bottom-color: #F0F0EE;
-}
-
-ul.list li .item .avatar {
-  border-color: #F0F0EE;
-  margin: 3px 10px 0 0;
-}
-
-ul.list li .left  {
-  padding: 5px 5px;
-}
-
-/* box */
-
-#box .block {
-  background: #FFF;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-}
-
-#box .block h2 {
-  background: #576C82;  
-  color: #FFF;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-}
-
-.deactivated-item {
-	text-decoration: line-through;
-}
-
-/* fieldsets */
-
-.cadastro label {
-	clear: both;
-	display: block;
-	font-size: 1.2em;
-  	padding: 5px 0 2px;  
-  	font-weight: bold;
-  	width: 100%;
-}
-
-.cadastro input {
-	width: 91.5%;
-}
-
-.cadastro textarea {
-	width: 91.5%!important;
-	height: 200px;
-} 
-
-.cadastro input.medio {
-	width: 48%!important;
-}
-
-.agrupar_campos {
-	float: left;
-	width: 48%;
-	margin: 3px 0;
-}
-
-.full {
-	float:left;
-	width: 100%;
-}
-
-.agrupar_campos input, .agrupar_campos select {
-	width: 90%!important;
-}
-
-.botoes {
-	margin: 20px 0 20px 0;
-	float:left;
-}
-
-.description {
-	clear:both;
-	display:block;
-  color:#aaa;
-  font-family:Georgia, serif;
-}
-
-.label {
-	font-size: 1.0em;
-	font-weight: bold;
-	margin: 0 5px 2px 0;
-}
-
-label.observacoes {
-	display: block;
-	width: 100%;
-}
-
-p.info {
-	float: left;
-	margin: 3px 0;
-	width: 100%;
-}
-
-.datepicker {
-	width: 100px!important;
-}
-
-.consulta textarea {
-	height: 150px;
-}
-
-.consulta .agrupar_campos input[type=radio] {
-	width: 20px!important;
-}
-
-.search-procedure .busca {
-	float:left;
-	width: 38%;
-}
-
-.search-procedure .busca input {
-	width: 99%;
-}
-
-.search-procedure img {
-	float: left;
-	cursor: pointer;
-}
+/* 
+	Theme Name: Layout - Murilo
+	Description: CSS desenvolvido para Murilo pela SÃ³ Gringagem Web Lab
+	Author: Willian Siqueira
+	Empresa: SÃ³ Gringagem
+	Author URI: http://www.sogringagem.com.br
+	Version: 1.0
+*/	
+
+/*RESET ########################################################################################################################*/
+html, body, div, span, applet, object, iframe, table, caption, tbody, tfoot, thead, tr, th, td, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, dl, dt, dd, ol, ul, li, fieldset, fieldset, label, legend {
+border:0 none inherit;
+font-family:inherit;
+font-size:100%;
+font-style:inherit;
+font-weight:inherit;
+margin-left:0;
+margin-right:0;
+margin-top:0;
+margin-bottom:0;
+outline-color:-moz-use-text-color;
+outline-style:none;
+outline-width:0;
+padding:0;s
+vertical-align:baseline;}
+:focus{outline-color:-moz-use-text-color;outline-style:none;outline-width:0;}
+body{-moz-background-clip:border;-moz-background-inline-policy:continuous;-moz-background-origin:padding;background:#FFFFFF none repeat scroll 0 0;margin:0 auto;}
+ol, ul {list-style-image:none;list-style-position:outside;list-style-type:none;}
+table{border-collapse:separate;border-spacing:0;}
+caption, th, td {font-weight:normal;text-align:center;}
+blockquote:before, blockquote:after, q:before, q:after {content:"";}
+blockquote, q {quotes:"" "";}
+form, fieldset, input{border:0;}
+img{border:none;}
+/* clearfix */
+.clearfix:after { visibility: hidden; display: block; font-size: 0; content: " "; clear: both; height: 0; }
+* html .clearfix { zoom: 1; } /* IE6 */
+*:first-child+html .clearfix { zoom: 1; } /* IE7 */
+/* classes reutilizaveis */
+.nb,.bt{border:none!important;background:transparent!important;}
+.fl{float:left;display:inline;}
+.fr{float:right;display:inline;}
+.cb{clear: both;}
+/*FIM RESET ########################################################################################################################*/
+
+body{font:12px/1.5em "Lucida Grande","Helvetica Neue",Arial,sans-serif;background:#EBEBEB;}
+.main{float:left;width:100%;}
+
+/*START LOGIN ######################################################################################################################*/
+.main .boxlogin{float:left;width:300px;background:#ffffff;position:absolute;top:50%;left:50%;margin:-160px 0 0 -150px;}
+.main .boxlogin h1{float:left;width:290px;font-size:28px;margin:0;padding:20px 0 20px 10px;color:#444444;background:#EBEBEB;}
+.main .boxlogin h2{float:left;width:290px;font-size:28px;margin:0;padding:20px 0 20px 10px;color:#EAEAEA;background:#242d31;}
+.main .boxlogin form{float:left;width:260px;margin:0 0 0 20px;}
+.main .boxlogin form fieldset{float:left;margin:10px 0 0 0;}
+.main .boxlogin form fieldset label{float:left;width:35px;margin:5px 0 0 0;padding:0 10px 0 0;font-weight:bold;text-align:right;}
+.main .boxlogin form fieldset input, .main .boxlogin form fieldset select, .main .boxlogin form fieldset textarea{float:left;width:200px;padding:4px 6px;border-color:#CCCCCC #DDDDDD #DDDDDD #CCCCCC;border-right:1px solid #DDDDDD;border-style:solid;border-width:2px 1px 1px 2px;}
+.main .boxlogin form fieldset.boxactions{float:left;width:100%;margin:10px 0 20px 0;}
+.main .boxlogin form fieldset.boxactions input{float:left;width:auto;background-color:#EEEEEE;background-repeat:no-repeat;background-position:10px 5px;border:1px solid #BFBFBF;color:#222222;cursor:pointer;float:left;font-size:1em;font-weight:bold;line-height:1.3em;margin:0 0 0 10px;padding:5px 10px 5px 35px;text-decoration:none;}
+.main .boxlogin form fieldset.boxactions input:hover{background-color:#dfdfde;}
+/*END LOGIN ######################################################################################################################*/
+
+
+/*START HEADER ######################################################################################################################*/
+.main .header{float:left;width:96.9%;padding:0 20px;background:#242d31;position:relative;}
+.main .header h1{float:left;width:100%;font-size:28px;margin:5px 0;padding:8px 0;}
+.main .header h1 a{float:left;color:#EAEAEA;text-decoration:none;}
+
+.main ul.menulogin{float:left;position:absolute;top:0;right:20px;}
+.main ul.menulogin li{float:left;}
+.main ul.menulogin li a{float:left;padding:5px 10px;color:#CCDDEE;border-bottom:1px dotted #334455;text-decoration:none;}
+.main ul.menulogin li a:hover{float:left;padding:5px 10px;text-decoration:underline;}
+
+.main ul.menu{float:left;}
+.main ul.menu li{float:left;margin:0 5px 0 0;border-top:1px solid #5C738A;color:#333333;}
+.main ul.menu li a{float:left;background:#445566;padding:3px 10px;color:#FFFFFF;text-decoration:none;}
+.main ul.menu li a:hover{background:#576c82;}
+.main ul.menu li.active{border-top:1px solid #FFFFFF;color:#333333;}
+.main ul.menu li.active a{background:#EEEEEE;color:#364B69;cursor:default;}
+/*END HEADER ######################################################################################################################*/
+
+/*START CONTENT ######################################################################################################################*/
+/*BOX SUBMENU ######################################################################################################################*/
+.main .content{float:left;width:96.9%;padding:0 20px;background:#efefef;}
+.main .content p.required span {color:#ff0000;}
+.main .content .box{float:left;width:73%;margin:30px 0 20px 0;padding: 0 0 20px 0;}
+.main .content .box ul.boxmenu{float:left;width:100%;}
+.main .content .box ul.boxmenu li{float:left;color:#FFFFFF;text-decoration:none;}
+.main .content .box ul.boxmenu li a{float:left;background:#445566;padding:3px 10px;margin:0 5px 0 0;color:#FFFFFF;text-decoration:none;}
+.main .content .box ul.boxmenu li a:hover{background:#576c82;}
+.main .content .box ul.boxmenu li.active{border-top:1px solid #FFFFFF;color:#333333;}
+.main .content .box ul.boxmenu li.active a{background:#FFFFFF;color:#364B69;cursor:default;}
+
+/*BOX CONTEUDO GERAL ######################################################################################################################*/
+.main .content .box .boxcontent{float:left;width:95.5%;padding:0 20px;background:#FFFFFF;color:#333333;}
+.main .content .box .boxcontent h2{float:left;width:100%;color:#445566;font-size:18px;margin:10px 0 5px 0;}
+.main .content .box .boxcontent p{float:left;width:100%;font-size:12px;line-height:20px;margin:15px 0;}
+.main .content .box .boxcontent p span.small{font-size:11px;}
+.main .content .box .boxcontent p span.gray{color:#999999;}
+.main .content .box .boxcontent p span.hightlight{background:#FFFFCC;}
+.main .content .box .boxcontent hr{background:#AAAAAA;border:0 none;height:1px;}
+
+/*BOX TABELA GERAL ######################################################################################################################*/
+table.easy{float:left;width:100%;border:none; margin-top: 10px;}
+table.easy tr.tableheader th, .main .content .box form table tr.tableheader td{background:#576C82;color:#FFFFFF;font-weight:bold;padding:3px;text-align:center;text-transform:uppercase;}
+table.easy tr td{text-align:left;padding:8px; border-bottom:#efefef 1px solid;}
+table.easy tr.boxdivisortable td{padding:0;border:none;}
+table.easy tr td a{background-color:#EEEEEE;background-repeat:no-repeat;background-position:10px 5px;border:1px solid #BFBFBF;color:#222222;cursor:pointer;float:left;font-size:1em;font-weight:bold;line-height:1.3em;margin:0 7px 0 0;padding:5px 10px 5px 25px;text-decoration:none;}
+table.easy tr td a:hover{background-color:#dfdfde;}
+table.easy tr td a.btnpeopleedit{background-image:url(/easyclinica/images/icons/pencil.png);}
+table.easy tr td a.btnpeopleshow{background-image:url(/easyclinica/images/icons/vcard.png);}
+table.easy tr td a.btnpeopleenable{background-image:url(/easyclinica/images/icons/user_green.png);}
+table.easy tr td a.btnpeopledisable{background-image:url(/easyclinica/images/icons/user_grayoff.png);}
+table.easy tr td a.btnappointments{background-image:url(/easyclinica/images/icons/appointments.png);}
+
+table.easy tr td form{width:50px!important;}
+table.easy tr td input{background-color:#EEEEEE;background-repeat:no-repeat;background-position:10px 5px;border:1px solid #BFBFBF;color:#222222;cursor:pointer;float:left;font-size:1em;font-weight:bold;line-height:1.3em;margin:0 0 0 10px;padding:5px 10px 5px 25px;text-decoration:none;}
+table.easy tr td input:hover{background-color:#dfdfde;}
+table.easy tr td input.btndelete{background-image:url(/easyclinica/images/icons/delete.png);}
+
+table.easy tr td.statusenable{background:transparent url(/easyclinica/images/icons/user_green.png) center no-repeat;text-indent:-9999px;}
+table.easy tr td.statusdisable{background:transparent url(/easyclinica/images/icons/user_grayoff.png) center no-repeat;text-indent:-9999px;}
+table.easy tr td.namedisable{text-decoration:line-through;}
+table.easy tr td a.last{margin:0;}
+table.easy tr td.tablenostyle{background:#ffffff!important;border:none;}
+
+/*BOX TABELA PROCEDIMENTOS ######################################################################################################################*/
+.main .content .box form{float:left;width:100%;}
+.main .content .box table.tableprocedures{float:left;width:100%;border:none;}
+.main .content .box table.tableprocedures tr.tableheader th, .main .content .box table.tableprocedures tr.tableheader td{background:#576C82;color:#FFFFFF;font-weight:bold;padding:3px;text-align:center;text-transform:uppercase;}
+.main .content .box table.tableprocedures tr td{text-align:left;padding:8px; border-bottom:#efefef 1px solid;}
+.main .content .box table.tableprocedures tr td.center{text-align:center;}
+.main .content .box table.tableprocedures tr.boxsubtotal td{background:#efefef;font-weight:bold;padding:0 8px;text-transform:uppercase;border:none;}
+.main .content .box table.tableprocedures tr.boxdivisortable td{padding:0;border:none;}
+.main .content .box table.tableprocedures tr.boxtotal{padding:20px 0 0 0;}
+.main .content .box table.tableprocedures tr.boxtotal td{padding:0 8px;border:none;text-transform:uppercase;font-weight:bold;}
+.main .content .box table.tableprocedures tr td a{background-color:#EEEEEE;background-repeat:no-repeat;background-position:10px 5px;border:1px solid #BFBFBF;color:#222222;cursor:pointer;float:left;font-size:1em;font-weight:bold;line-height:1.3em;margin:0 7px 0 0;padding:5px 10px 5px 35px;text-decoration:none;}
+.main .content .box table.tableprocedures tr td a:hover{background-color:#dfdfde;}
+.main .content .box table.tableprocedures tr td a.btndelete{background-image:url(/easyclinica/images/icons/delete.png);}
+.main .content .box table.tableprocedures tr td a.last{margin:0;}
+.main .content .box table.tableprocedures tr td input{float:left;width:200px;padding:4px 6px;border-color:#CCCCCC #DDDDDD #DDDDDD #CCCCCC;border-right:1px solid #DDDDDD;border-style:solid;border-width:2px 1px 1px 2px;}
+.main .content .box table.tableprocedures tr td input.qty{width:33px}
+.main .content .box table.tableprocedures tr td input.amount{width:60px}
+.main .content .box table tr td.tablenostyle{background:#ffffff!important;border:none;}
+
+/*BOX BOTOES ######################################################################################################################*/
+.boxactions{float:left;width:100%;background-color:#EEEEEE; border:#EEEEEE 1px solid;font-size:14px;padding:10px 0;margin:10px 0;}
+.boxactions a{background-color:#EEEEEE;background-repeat:no-repeat;background-position:10px 5px;border:1px solid #BFBFBF;color:#222222;cursor:pointer;float:left;font-size:1em;font-weight:bold;line-height:1.3em;margin:0 0 0 10px;padding:5px 10px 5px 35px;text-decoration:none;}
+.boxactions a:hover{background-color:#dfdfde;}
+.boxactions input{background-color:#EEEEEE;background-repeat:no-repeat;background-position:10px 5px;border:1px solid #BFBFBF;color:#222222;cursor:pointer;float:left;font-size:1em;font-weight:bold;line-height:1.3em;margin:0 0 0 10px;padding:5px 10px 5px 35px;text-decoration:none;}
+.boxactions input:hover{background-color:#dfdfde;}
+.boxactions a.btnsave{background-image:url(/easyclinica/images/icons/disk.png);}
+.boxactions input.btnsave{background-image:url(/easyclinica/images/icons/disk.png);}
+.boxactions a.btncancel{background-image:url(/easyclinica/images/icons/cancel.png);}
+.boxactions input.btncancel{background-image:url(/easyclinica/images/icons/cancel.png);}
+.boxactions a.btnadd{background-image:url(/easyclinica/images/icons/add.png);}
+.boxactions input.btnadd{background-image:url(/easyclinica/images/icons/add.png);}
+.boxactions a.btnaccept{background-image:url(/easyclinica/images/icons/accept.png);}
+.boxactions input.btnaccept{background-image:url(/easyclinica/images/icons/accept.png);}
+.boxactions a.btndelete{background-image:url(/easyclinica/images/icons/delete.png);}
+.boxactions input.btndelete{background-image:url(/easyclinica/images/icons/delete.png);}
+.boxactions a.btnlogin{background-image:url(/easyclinica/images/icons/key.png);}
+.boxactions input.btnlogin{background-image:url(/easyclinica/images/icons/key.png);}
+.boxactions a.btnback{background-image:url(/easyclinica/images/icons/resultset_previous.png);}
+.boxactions input.btnback{background-image:url(/easyclinica/images/icons/resultset_previous.png);}
+.boxactions a.btnedit{background-image:url(/easyclinica/images/icons/pencil.png);}
+.boxactions input.btnedit{background-image:url(/easyclinica/images/icons/pencil.png);}
+.boxactions a.btnclose{background-image:url(/easyclinica/images/icons/cross.png);}
+.boxactions input.btnclose{background-image:url(/easyclinica/images/icons/cross.png);}
+.boxactions a.btnappointments{background-image:url(/easyclinica/images/icons/appointments.png);}
+.boxactions input.btnappointments{background-image:url(/easyclinica/images/icons/appointments.png);}
+
+/*BOX PAGINACAO ######################################################################################################################*/
+.boxpagination{float:left;width:100%;background-color:#EEEEEE;border:#EEEEEE 1px solid;font-size:14px;padding:10px 0;margin:10px 0 20px 0;text-align:center;}
+.boxpagination a{color:#999999;cursor:pointer;font-size:1em;font-weight:bold;line-height:1.3em;margin:0 2px 0 0;padding:0px 7px;text-decoration:none;}
+.boxpagination a.active, .boxpagination a:hover{text-decoration:underline;color:#222222;}
+.boxpagination a.first, .boxpagination a.previous, .boxpagination a.next, .boxpagination a.last{display:inline-block;height:13px;margin:0;padding:0;}
+.boxpagination a.first img, .boxpagination a.previous img, .boxpagination a.next img, .boxpagination a.last img{float:left;margin:0;padding:0;}
+
+/*BOX FORMULARIO ######################################################################################################################*/
+.main .content .box fieldset{float:left;width:50%;}
+.main .content .box fieldset.procedures{float:left;width:100%;}
+.main .content .box fieldset label{float:left;width:100%;}
+.main .content .box fieldset label.title{float:left;font-weight:bold;margin:10px 0 2px 0;}
+.main .content .box fieldset label.title span{color:#F00;}
+.main .content .box fieldset input, .main .content .box fieldset select, .main .content .box fieldset textarea{float:left;width:200px;padding:4px 6px;border-color:#CCCCCC #DDDDDD #DDDDDD #CCCCCC;border-right:1px solid #DDDDDD;border-style:solid;border-width:2px 1px 1px 2px;}
+.main .content .box fieldset input.radio{float:left;width:auto;margin:0;padding:0;}
+
+.main .content .box fieldset div{float:left;width:100%;}
+.main .content .box fieldset div label.title{width:100%;}
+.main .content .box fieldset div input{width:90%;}
+.main .content .box fieldset div select{width:90%;}
+.main .content .box fieldset div textarea{width:97%;height:100px;}
+.main .content .box fieldset div input.radio{margin:2px 5px 0 5px;border:none;}
+
+.main .content .box fieldset .date{float:left;width:100%;}
+.main .content .box fieldset .date label.title{width:100%;}
+.main .content .box fieldset .date input{width:68px;}
+.main .content .box fieldset .date a{float:left;width:25px;height:25px;background:url(/easyclinica/images/icons/calendar_view_week.png) center no-repeat;text-indent:-9999px;}
+
+.main .content .box fieldset .healthcare{float:left;width:100%;}
+.main .content .box fieldset .healthcare label{width:auto;}
+.main .content .box fieldset .healthcare label.title{width:100%;}
+.main .content .box fieldset .healthcare input.radio{margin:2px 5px 0 5px;border:none;}
+
+.main .content .box fieldset .returning{float:left;}
+.main .content .box fieldset .returning label{width:auto;}
+.main .content .box fieldset .returning label.title{width:100%;}
+.main .content .box fieldset .returning input.radio{margin:2px 5px 0 5px;border:none;}
+
+.main .content .box fieldset .medical{float:left;width:100%;}
+.main .content .box fieldset .medical label{width:100%;}
+.main .content .box fieldset .medical select{width:90%;}
+
+.main .content .box fieldset .specialty{float:left;width:100%;}
+.main .content .box fieldset .specialty label{width:100%;}
+.main .content .box fieldset .specialty select{width:90%;}
+
+.main .content .box fieldset .remarks{float:left;width:100%;}
+.main .content .box fieldset .remarks label{width:100%;}
+.main .content .box fieldset .remarks textarea{width:97%;height:100px;}
+
+.main .content .box fieldset .telephone{float:left;width:100%;}
+.main .content .box fieldset .telephone label.title{width:100%;}
+.main .content .box fieldset .telephone input{width:200px;}
+
+.main .content .box fieldset .crm{float:left;width:100%;}
+.main .content .box fieldset .crm label.title{width:100%;}
+.main .content .box fieldset .crm input{width:200px;}
+
+.main .content .box fieldset .cep input{width:100px;}
+
+.main .content .box fieldset .procedures{float:left;width:100%;}
+.main .content .box fieldset .procedures label{width:100%;}
+.main .content .box fieldset .procedures input{width:43%;}
+.main .content .box fieldset .procedures a{background-color:#EEEEEE;background-repeat:no-repeat;background-position:10px 5px;border:1px solid #BFBFBF;color:#222222;cursor:pointer;float:left;font-size:1em;font-weight:bold;line-height:1.3em;margin:0 0 0 10px;padding:5px 10px 5px 35px;text-decoration:none;}
+.main .content .box fieldset .procedures a:hover{background-color:#dfdfde;}
+.main .content .box fieldset .procedures a{background-image:url(/easyclinica/images/icons/add.png);}
+.main .content .box fieldset .procedures p{float:left;width:100%;color:#999999;margin:0 0 5px 0;}
+
+/*BOX DIREITO ######################################################################################################################*/
+.main .content .boxright{float:left;width:27%;margin:30px 0 0 0;}
+/*BOX DIREITO TEXTOSIMPLES ######################################################################################################################*/
+.main .content .boxright .simplebox{float:left;width:91%;margin:0 0 10px 30px;}
+.main .content .boxright .simplebox h4{background:#FFFFFF;border-color:#DDDDDD #CCCCCC #CCCCCC #DDDDDD;border-style:solid;border-width:1px;color:#333333;font-weight:bold;padding:5px 10px;margin:0 0 10px 0;}
+.main .content .boxright .simplebox p{margin:0 0 10px 10px;}
+/*BOX DIREITO POSTIT ######################################################################################################################*/
+.main .content .boxright .postit{float:left;margin:0 0 10px 30px;background-color:#FFFFCC;border-color:#FFFFFF #DDDDDD #DDDDDD #FFFFFF;border-style:solid;border-width:1px;padding:0 10px;}
+.main .content .boxright .postit h4{font-size:16px;font-weight:normal;margin:10px 0;}
+.main .content .boxright .postit p{margin:0 0 10px 0;}
+/*BOX DIREITO LINKS ######################################################################################################################*/
+.main .content .boxright .simpleboxlink{float:left;width:91%;margin:0 0 10px 30px;}
+.main .content .boxright .simpleboxlink h4{background:#FFFFFF;border-color:#DDDDDD #CCCCCC #CCCCCC #DDDDDD;border-style:solid;border-width:1px;color:#333333;font-weight:bold;padding:5px 10px;margin:0 0 10px 0;}
+.main .content .boxright .simpleboxlink ul{float:left;}
+.main .content .boxright .simpleboxlink ul li{float:left;width:100%;}
+.main .content .boxright .simpleboxlink ul li a{float:left;color:#6A6A6A;padding:5px 10px;text-decoration:none;}
+.main .content .boxright .simpleboxlink ul li a:hover{text-decoration:underline;}
+
+/*MESAGEM ERRO/AVISOS/NOTICIAS ######################################################################################################################*/
+p.messengererror{float:left;width:99.2%;background:#FFDDDD;border:1px solid #FFBBBB;text-align:center;padding:10px 0;}
+p.messengerwarning{float:left;width:99.2%;background:#FFFFCC;border:1px solid #FFFAAA;text-align:center;padding:10px 0;}
+
+p.messengernotice{float:left;width:99.2%;background:#EEEEFF;border:1px solid #DDDDFF;text-align:center;padding:10px 0;}
+p.messengernotice a{color: #364B69;padding: 5px 5px;text-decoration: none;}
+p.messengernotice a:hover{background-color:#445566; color: #FFFFFF;}
+
+ul.errors {float:left;width:99.2%;background:#FFDDDD;border:1px solid #FFBBBB;text-align:left;padding:10px 0;}
+ul.errors li {width:100%;margin:0 10px;}
+
+div.error {
+	 background: url("/easyclinica/images/icons/error.png") no-repeat scroll 3px 5px #FFFFCC;
+    border: 1px solid #FFFAAA;
+    color: #000000;
+    font-size: 11px;
+    margin-left: 5px;
+    padding: 4px 10px 4px 25px;
+}
+
+.procedures div.error {
+	left: 533px;
+    position: absolute;
+    top: 457px;
+    width: 255px!important;
+}
+
+.procedures div.error p {
+	color: #000000!important;
+    font-size: 11px!important;
+}
+
+/*END CONTENT ######################################################################################################################*/
+
+/*START FOOTER ######################################################################################################################*/
+.main .footer{float:left;width:96.9%;background:#DDDDDD;padding:0 20px;border-top:1px solid #BBBBBB;position:absolute;bottom:0;}
+.main .footer p{float:left;width:100%;text-align:center;padding:10px 0;}
+/*END FOTTER ######################################################################################################################*/
+
+/*START MODAL ######################################################################################################################*/
+.modal h2{font-size:28px;margin:0;padding:20px 0 20px 10px;color:#EAEAEA;background:#242d31;text-align:left;}
 
-/* INÍCIO MODAL */
 .modal-background {
 	background-color:#000;
 	filter:alpha(opacity=70);
@@ -529,81 +310,42 @@ p.info {
 .modal-popup {
 	background-color:#fff;
 	border: #000 solid 1px; 
-	padding:15px;
 	position:absolute;
 	left:50%;
 	top:50%;
-	width:600px;
 	z-index: 9999;
 	margin: -250px 0 100px -300px;
+	width: 40%;
 }
 
-.modal-close{
-	position: absolute;right:2px;top:2px;
-	cursor: pointer;
-	padding: 5px;
-	font-size: 14px;
-	font-weight: bold;
-	color: #fff;
-	background: #14143F;
-	text-decoration: none;
-}
+#conteudo-modal {text-align:center;}
 
-/* FIM MODAL */
+.modal-popup img.loading{margin: 15px;}
+/*END MODAL ######################################################################################################################*/
 
-/* INÍCIO APPOINTMENT */
-.procedure table tr td.nostyle, .procedure table tr th.nostyle{background:none;border:none;}
-.procedure input.qty{width:30px;}
-.procedure input.amount{width:100px;}
+/*CONTEUDO MODAL ######################################################################################################################*/
+.modal-medicos .modal-content{padding:0 20px;text-align:left;}
+.modal-medicos .modal-content div {float:left; width: 100%;margin-top:5px;}
+.modal-medicos .modal-content p{float:left;width:90px;font-weight: bold;}
+.modal-medicos .modal-content span{float:left;}
+.modal-medicos .modal-content div.observations p {width: 100%;}
 
-tr.total td, tr.procedimento-title td {
-	font-weight: bold;
-}
+.modal-convenios .modal-content{padding:0 20px;text-align:left;}
+.modal-convenios .modal-content div {float:left; width: 100%;margin-top:5px;}
+.modal-convenios .modal-content p{float:left;width:189px;font-weight: bold;}
+.modal-convenios .modal-content span{float:left;}
+.modal-convenios .modal-content div.observations p {width: 100%;}
 
-tr.procedimento-title td {
-	font-size: 12px;
-}
+.modal-pacientes .modal-content{padding:0 20px;text-align:left;}
+.modal-pacientes .modal-content div {float:left; width: 100%;margin-top:5px;}
+.modal-pacientes .modal-content p{float:left;width:143px;font-weight: bold;}
+.modal-pacientes .modal-content span{float:left;}
+.modal-pacientes .modal-content div.observations p {width: 100%;}
 
-.procedure {
-	margin-top: 15px;
-}
+.dados-consulta{float:left;padding:0 20px;text-align:left;margin-bottom: 15px;}
+.dados-consulta div {float:left; width: 100%;margin-top:5px;}
+.dados-consulta p{float:left;width:135px!important;margin:0!important;font-weight: bold;}
+.dados-consulta span{float:left;}
+.dados-consulta div.observations p {width: 100%;}
+/*END MODAL ######################################################################################################################*/
 
-.appointment-amount {
-	width: 100%;
-	font-size: 14px;
-	margin: 10px 0;
-	float:left;
-}
-
-.appointment-amount table {
-	float:left;
-}
-
-.appointment-amount .title {
-	font-weight: bold;
-}
-
-.appointment-amount .valor {
-	text-align: right;
-}
-
-/* FIM APPOINTMENT */
-span.label-retorno {
-	background-color: #6492AC;
-	color: white;
-	display: inline;
-	font-size: 10px;
-	padding: 3px 4px;
-	white-space: nowrap;
-	width: 50px;
-}
-
-span.label-inativo {
-	background-color: #6492AC;
-	color: white;
-	display: inline;
-	font-size: 10px;
-	padding: 3px 4px;
-	white-space: nowrap;
-	width: 50px;
-}

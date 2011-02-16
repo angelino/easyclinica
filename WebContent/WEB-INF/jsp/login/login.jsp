@@ -7,52 +7,31 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>Easy Clínica</title>
 	    
-		<helper:include fileName="reset.css" type="css" />
-		<helper:include fileName="base.css" type="css" />
 		<helper:include fileName="style.css" type="css" />
-		<helper:include fileName="jquery-ui-1.8.2.custom.css" type="css" />
 	</head>
-
 	<body>
-	<c:url value="/login" var="loginUrl" />		
- <div id="box"> 
-      <h1>Easy Cl&iacute;nica</h1>
-      <div class="block" id="block-login"> 
-        <h2>Login</h2> 
-        <div class="content login"> 
-          <div class="flash"> 
-            <div class="message notice"> 
-              <p>Usu&aacute;rio e/ou senha inv&aacute;lidos</p> 
-            </div> 
-          </div> 
-          <form action="${loginUrl}" class="form login" method="post"> 
-            <div class="group wat-cf"> 
-              <div class="left"> 
-                <label class="label right">Login</label> 
-              </div> 
-              <div class="right"> 
-                <input type="text" class="text_field" name="login"/> 
-              </div> 
-            </div> 
-            <div class="group wat-cf"> 
-              <div class="left"> 
-                <label class="label right">Senha</label> 
-              </div> 
-              <div class="right"> 
-                <input type="password" class="text_field" name="password"/> 
-              </div> 
-            </div> 
-            <div class="group navform wat-cf"> 
-              <div class="right"> 
-                <button class="button" type="submit"> 
-                  <img src="images/icons/key.png" alt="Save" /> Logar!
-                </button> 
-              </div> 
-            </div> 
-          </form> 
-        </div> 
-      </div> 
-	</div>
+	
+		<div class="main">
+		    <div class="boxlogin">
+				<h1>Easy Clínica</h1>
+			    <h2>Login:</h2>
+			    <p class="messengererror">Error message</p>
+			    
+			    <form action="<c:url value="/login" />" class="form login" method="post"> 
+			    	<fieldset>
+			        	<label>Nome:</label>
+			            <input type="text" />
+			        </fieldset>
+			    	<fieldset>
+			        	<label>Senha:</label>
+			            <input type="text" />
+			        </fieldset>
+			        <fieldset class="boxactions">
+			            <input type="submit" class="btnlogin" value="Login" />
+			        </fieldset>
+			    </form>
+			</div>
+		</div>
 	
 	</body>
 </html>
