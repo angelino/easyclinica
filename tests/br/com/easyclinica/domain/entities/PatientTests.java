@@ -2,6 +2,7 @@ package br.com.easyclinica.domain.entities;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertSame;
 
 import org.junit.Test;
 
@@ -32,5 +33,15 @@ public class PatientTests {
 		assertEquals("patient@sick.com", sickGuy.getEmail());
 		assertEquals(new HealthCarePlanBuilder().instance().getId(), sickGuy.getHealthCarePlan().getId());
 		assertEquals("some obs", sickGuy.getObservations());
+	}
+	
+	@Test
+	public void shouldHaveAnamneseData() {
+		Patient sickGuy = new PatientBuilder(1).instance();
+		
+		Anamnese anamnese = new Anamnese();
+		sickGuy.addAnamnese(anamnese);
+		
+		assertSame(anamnese, sickGuy.getAnamneses().get(0));
 	}
 }

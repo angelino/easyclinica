@@ -1,5 +1,6 @@
 package br.com.easyclinica.domain.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Embedded;
@@ -28,12 +29,16 @@ public class Patient {
 	private String healthCarePlanCode;
 	@OneToMany(fetch=FetchType.LAZY, mappedBy="patient")
 	private List<Appointment> appointments;
+	@OneToMany(fetch=FetchType.LAZY, mappedBy="patient")
+	private List<Anamnese> anamneses;
 	
 	private boolean active;
 	
 	public Patient() {}
 	public Patient(int id) {
 		this.id = id;
+		appointments = new ArrayList<Appointment>();
+		anamneses = new ArrayList<Anamnese>();
 	}
 	
 	public static Patient empty() {
@@ -131,6 +136,16 @@ public class Patient {
 		this.setActive(true);		
 	}
 	
+	public List<Anamnese> getAnamneses() {
+		return anamneses;
+	}
 	
+	protected void setAnamneses(List<Anamnese> anamneses) {
+		this.anamneses = anamneses;
+	}
+	
+	public void addAnamnese(Anamnese a) {
+		anamneses.add(a);
+	}
 
 }

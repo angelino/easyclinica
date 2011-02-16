@@ -56,6 +56,6 @@ public class ExportTables {
 		
 		
 		SchemaExport se = new SchemaExport(cfg);
-		se.execute(true, true, false, false);
+		se.create(true, true);
 	}
 }
