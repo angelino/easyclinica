@@ -2,7 +2,7 @@ package br.com.easyclinica.actions;
 
 import java.util.List;
 
-import br.com.caelum.vraptor.Post;
+import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
 import br.com.easyclinica.domain.entities.Procedure;
@@ -18,9 +18,9 @@ public class ProceduresController extends BaseController {
 		this.allProcedures = allProcedures;
 	}
 	
-	@Post
-	public void _searchProcedure(String text) {
-		List<Procedure> procedures = allProcedures.search(text);
+	@Get
+	public void _search(String q) {
+		List<Procedure> procedures = allProcedures.search(q);
 		
 		result.include("procedures", procedures);
 	}

@@ -83,6 +83,7 @@
 	            <fieldset class="procedures">
 	            	<div class="procedures">
 	                    <input type="text"  id="txt_search_procedure" />
+	                    <input type="hidden" id="selected_procedure_id" value="0" />
 	                    <a href="#" id="btn_search_procedure">Adicionar</a>
 	                    <p>Digite o código "AMB" ou "TUSS" ou o nome do procedimento.</p>
 	                </div>

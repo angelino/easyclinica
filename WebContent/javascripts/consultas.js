@@ -1,31 +1,36 @@
 EasyClinica.pages['consultas'] = function(){
 	
-	$('#btn_search_procedure').click(function(e){
+	$("#txt_search_procedure").autocomplete(EasyClinica.cfg.services.searchProcedure, {
+		autoFill: true
+	}).result(function(event, item) {
+		$('#selected_procedure_id').val(item[1]);
+	});
+	
+	$('#btn_search_procedure').click(function(e){		
 		e.preventDefault();
-		var text = $('#txt_search_procedure').val();
 		
-		EasyClinica.lib.openModal(EasyClinica.cfg.services.searchProcedure, 'POST', { text: text }, function(){			
-			$('.add-procedure').click(function(e){
-				e.preventDefault();
-				
-				var procedureId = $(this).attr('procedure_id');
-				var convenioId = $("input[name=appointment.healthCarePlan.id]:checked").val();
-				
-				$.post(EasyClinica.cfg.services.newProcedureToAppointment, { procedureId: procedureId, convenioId: convenioId }, function(data){
-					var index = $('.procedure-id').size();
-					if(index == "") index = 0;
-					data = data.replace(/#index#/g, index);
-					
-					$('.boxtotal').first().before(data);
-					$('.modal').remove();
-					
-					configureAmountManager();
-					configureRemoveActions();
-					refreshAppointentValue();
-					EasyClinica.common.generalFunctions();
-					EasyClinica.common.formValidation();
-				});		
-			});			
+		var procedureId = $('#selected_procedure_id').val();
+		
+		if(procedureId == 0) return;
+		
+		var convenioId = $("input[name=appointment.healthCarePlan.id]:checked").val();
+		
+		$.post(EasyClinica.cfg.services.newProcedureToAppointment, { procedureId: procedureId, convenioId: convenioId }, function(data){
+			var index = $('.procedure-id').size();
+			if(index == "") index = 0;
+			data = data.replace(/#index#/g, index);
+			
+			$('.boxtotal').first().before(data);
+			$('.modal').remove();
+			
+			configureAmountManager();
+			configureRemoveActions();
+			refreshAppointentValue();
+			EasyClinica.common.generalFunctions();
+			EasyClinica.common.formValidation();
+			
+			$("#txt_search_procedure").val("");
+			$('#selected_procedure_id').val(0);
 		});
 	});
 	

@@ -40,11 +40,11 @@ var EasyClinica = {
 
 /* CONFIG */
 EasyClinica.cfg.services = {
-		searchProcedure: '/easyclinica/procedures/_searchProcedure',
 		newProcedureToAppointment: '/easyclinica/appointments/_newProcedureToAppointment',
 		getSpecialtyPrice: '/easyclinica/especialidades/{0}/{1}',
 		getDoctorSpecialty: '/easyclinica/medicos/{0}/especialidade',
 		verifyIfAppointmentIsReturn: '/easyclinica/pacientes/{0}/{1}/{2}/isReturn',
+		searchProcedure: '/easyclinica/procedures/_search',
 		
 		showDoctorDetails: '/easyclinica/doctor/_show',
 		showHealthCarePlanDetails: '/easyclinica/healthCarePlan/_show',

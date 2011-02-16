@@ -18,6 +18,8 @@ public class BigDecimalConverter implements Converter<BigDecimal> {
             return BigDecimal.ZERO;  
         }  
         
+		System.out.println("Vamos converter o valor: " + value);
+		
 		BigDecimal converted = new BigDecimal(value);  
 		converted.setScale(2, RoundingMode.CEILING);
 		
