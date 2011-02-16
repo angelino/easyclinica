@@ -40,7 +40,7 @@
 	                   	<label>${patient.healthCarePlan.name}:</label>
 	                       <input type="radio" class="radio" name="appointment.healthCarePlan.id" value="${patient.healthCarePlan.id}" checked="checked" />
 						<label>Particular:</label>
-	                       <input type="radio" class="radio" name="appointment.healthCarePlan.id" value="0" />
+	                       <input type="radio" class="radio" name="appointment.healthCarePlan.id" value="${clinic.privatePlan.id}" />
 	                   </div>
 	               	<div class="returning">
 	                   	<label class="title">Retorno:<span>*</span></label>

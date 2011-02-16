@@ -28,6 +28,7 @@ import br.com.easyclinica.domain.repositories.AllSpecialties;
 import br.com.easyclinica.domain.repositories.PrecifiedThings;
 import br.com.easyclinica.domain.services.VerifyIfAnAppointmentIsReturnService;
 import br.com.easyclinica.domain.validators.AppointmentValidator;
+import br.com.easyclinica.infra.multitenancy.LoggedUser;
 import br.com.easyclinica.infra.vraptor.validators.ErrorTranslator;
 import br.com.easyclinica.view.Messages;
 
@@ -46,6 +47,7 @@ public class AppointmentsController extends BaseController {
 	private final AppointmentValidator appointmentValidator;
 	private final ErrorTranslator translator;
 	private final VerifyIfAnAppointmentIsReturnService verifyIfAnAppointmentIsReturnService;
+	private final LoggedUser loggedUser;
 	
 	public AppointmentsController(AllDoctors allDoctors, AllSpecialties allSpecialties, AllPatients allPatients, 
 								AllProcedures allProcedures, AllHealthCarePlans allHealthCarePlans, 
@@ -54,7 +56,7 @@ public class AppointmentsController extends BaseController {
 								MedicineWithPriceAndQuantityBuilder medicineWithPriceAndQuantityBuilder, 
 								Validator validator, AppointmentValidator appointmentValidator, ErrorTranslator translator,
 								VerifyIfAnAppointmentIsReturnService verifyIfAnAppointmentIsReturnService,
-								Result result) {
+								LoggedUser loggedUser, Result result) {
 
 	
 		super(result);
@@ -73,6 +75,7 @@ public class AppointmentsController extends BaseController {
 		this.appointmentValidator = appointmentValidator;
 		this.translator = translator;
 		this.verifyIfAnAppointmentIsReturnService = verifyIfAnAppointmentIsReturnService;
+		this.loggedUser = loggedUser;
 	}
 
 	@Get
@@ -83,6 +86,7 @@ public class AppointmentsController extends BaseController {
 		result.include("patient", patient);
 		result.include("doctors", allDoctors.getActivated());
 		result.include("specialties", allSpecialties.getAll());
+		result.include("clinic", loggedUser.getClinic());
 	}
 	
 	@Get
