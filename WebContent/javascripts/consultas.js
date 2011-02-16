@@ -1,5 +1,7 @@
 EasyClinica.pages['consultas'] = function(){
 	
+	$('#informe-procedimento-message').hide();
+		
 	$("#txt_search_procedure").autocomplete(EasyClinica.cfg.services.searchProcedure, {
 		autoFill: true
 	}).result(function(event, item) {
@@ -11,7 +13,10 @@ EasyClinica.pages['consultas'] = function(){
 		
 		var procedureId = $('#selected_procedure_id').val();
 		
-		if(procedureId == 0) return;
+		if(procedureId == 0) {
+			$('#informe-procedimento-message').show('slow');
+			return;
+		}
 		
 		var convenioId = $("input[name=appointment.healthCarePlan.id]:checked").val();
 		
@@ -31,6 +36,7 @@ EasyClinica.pages['consultas'] = function(){
 			
 			$("#txt_search_procedure").val("");
 			$('#selected_procedure_id').val(0);
+			$('#informe-procedimento-message').hide();
 		});
 	});
 	

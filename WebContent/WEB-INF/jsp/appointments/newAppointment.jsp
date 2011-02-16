@@ -85,6 +85,9 @@
 	                    <input type="text"  id="txt_search_procedure" />
 	                    <input type="hidden" id="selected_procedure_id" value="0" />
 	                    <a href="#" id="btn_search_procedure">Adicionar</a>
+	                    <div class="error" id="informe-procedimento-message">
+	                    	<p>Informe o procedimento que deseja adicionar.</p>
+	                    </div>
 	                    <p>Digite o código "AMB" ou "TUSS" ou o nome do procedimento.</p>
 	                </div>
 	            </fieldset>
