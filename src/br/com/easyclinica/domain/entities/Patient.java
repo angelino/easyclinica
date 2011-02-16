@@ -145,6 +145,7 @@ public class Patient {
 	}
 	
 	public void addAnamnese(Anamnese a) {
+		a.setPatient(this);
 		anamneses.add(a);
 	}
 

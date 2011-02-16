@@ -6,6 +6,7 @@ import org.hibernate.cfg.Configuration;
 import br.com.caelum.vraptor.ioc.Component;
 import br.com.caelum.vraptor.ioc.ComponentFactory;
 import br.com.caelum.vraptor.ioc.RequestScoped;
+import br.com.easyclinica.domain.entities.Anamnese;
 import br.com.easyclinica.domain.entities.Appointment;
 import br.com.easyclinica.domain.entities.AppointmentMaterial;
 import br.com.easyclinica.domain.entities.AppointmentMedicine;
@@ -78,6 +79,7 @@ public class SessionFactoryCreator implements ComponentFactory<SessionFactory> {
 		configuration.addAnnotatedClass(Procedure.class);
 		configuration.addAnnotatedClass(Specialty.class);
 		configuration.addAnnotatedClass(Employee.class);
+		configuration.addAnnotatedClass(Anamnese.class);
 		
 		// TODO: Colocar c3p0
 //			hibernate.c3p0.min_size=5

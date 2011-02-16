@@ -17,6 +17,8 @@ public class Anamnese {
 	private String text;
 	@ManyToOne(fetch=FetchType.EAGER)
 	private Doctor doctor;
+	@ManyToOne(fetch=FetchType.LAZY)
+	private Patient patient;
 	
 	public int getId() {
 		return id;
@@ -41,6 +43,13 @@ public class Anamnese {
 	}
 	public void setDoctor(Doctor doctor) {
 		this.doctor = doctor;
+	}
+	
+	public Patient getPatient() {
+		return patient;
+	}
+	public void setPatient(Patient patient) {
+		this.patient = patient;
 	}
 	
 	

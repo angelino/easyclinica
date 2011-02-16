@@ -5,12 +5,14 @@ import org.hibernate.tool.hbm2ddl.SchemaExport;
 import org.junit.Ignore;
 import org.junit.Test;
 
+import br.com.easyclinica.domain.entities.Anamnese;
 import br.com.easyclinica.domain.entities.Appointment;
 import br.com.easyclinica.domain.entities.AppointmentMaterial;
 import br.com.easyclinica.domain.entities.AppointmentMedicine;
 import br.com.easyclinica.domain.entities.AppointmentProcedure;
 import br.com.easyclinica.domain.entities.Clinic;
 import br.com.easyclinica.domain.entities.Doctor;
+import br.com.easyclinica.domain.entities.Employee;
 import br.com.easyclinica.domain.entities.HealthCarePlan;
 import br.com.easyclinica.domain.entities.Material;
 import br.com.easyclinica.domain.entities.MaterialInProcedure;
@@ -48,6 +50,8 @@ public class ExportTables {
 		cfg.addAnnotatedClass(MedicineInProcedure.class);
 		cfg.addAnnotatedClass(Procedure.class);
 		cfg.addAnnotatedClass(Specialty.class);
+		cfg.addAnnotatedClass(Anamnese.class);
+		cfg.addAnnotatedClass(Employee.class);
 		cfg.setProperty("hibernate.connection.driver_class", "com.mysql.jdbc.Driver");
 		cfg.setProperty("hibernate.connection.username", "easyclinica");
 		cfg.setProperty("hibernate.connection.password", "3@sycl1n1c@");

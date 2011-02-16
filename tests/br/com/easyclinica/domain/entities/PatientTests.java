@@ -43,5 +43,6 @@ public class PatientTests {
 		sickGuy.addAnamnese(anamnese);
 		
 		assertSame(anamnese, sickGuy.getAnamneses().get(0));
+		assertSame(sickGuy, sickGuy.getAnamneses().get(0).getPatient());
 	}
 }

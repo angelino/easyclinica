@@ -11,7 +11,7 @@
 	<li ${selected=='Paciente' ? 'class="active first"' : ''}>
 		<a href="<c:url value="/pacientes/${patient.id}/editar"/>">Paciente</a>
 	</li>
-	<li ${selected=='Anamnese' ? 'class="active first"' : ''}><a href="#">Anamnese</a></li>
+	<li ${selected=='Anamnese' ? 'class="active first"' : ''}><a href="<c:url value="/pacientes/${patient.id}/anamneses"/>">Anamnese</a></li>
 	<li ${selected=='Consultas' ? 'class="active first"' : ''}>
 		<a href="<c:url value="/pacientes/${patient.id}/consultas"/>">Consultas</a>
 	</li>
