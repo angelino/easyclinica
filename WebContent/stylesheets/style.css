@@ -47,7 +47,7 @@ body{font:12px/1.5em "Lucida Grande","Helvetica Neue",Arial,sans-serif;backgroun
 .main{float:left;width:100%;}
 
 /*START LOGIN ######################################################################################################################*/
-.main .boxlogin{float:left;width:300px;background:#ffffff;position:absolute;top:50%;left:50%;margin:-160px 0 0 -150px;}
+.main .boxlogin{float:left;width:300px;background:#ffffff;position:absolute;top:30%;left:50%;margin:-160px 0 0 -150px;}
 .main .boxlogin h1{float:left;width:290px;font-size:28px;margin:0;padding:20px 0 20px 10px;color:#444444;background:#EBEBEB;}
 .main .boxlogin h2{float:left;width:290px;font-size:28px;margin:0;padding:20px 0 20px 10px;color:#EAEAEA;background:#242d31;}
 .main .boxlogin form{float:left;width:260px;margin:0 0 0 20px;}

@@ -3,7 +3,7 @@ EasyClinica.pages['consultas'] = function(){
 	$('#informe-procedimento-message').hide();
 		
 	$("#txt_search_procedure").autocomplete(EasyClinica.cfg.services.searchProcedure, {
-		autoFill: true
+		autoFill: false
 	}).result(function(event, item) {
 		$('#selected_procedure_id').val(item[1]);
 	});

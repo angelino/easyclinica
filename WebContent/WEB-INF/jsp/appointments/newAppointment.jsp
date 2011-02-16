@@ -97,9 +97,9 @@
 				<table class="tableprocedures" border="0">
 				
 					<tr class="boxtotal">
-                        <td colspan="1" rowspan="3" class="tablenostyle">&nbsp;</td>
-                        <th colspan="2" rowspan="3">&nbsp;</th>
-                        <td colspan="1">Procedimentos</td>
+                        <td colspan="1" rowspan="3" class="tablenostyle" width="200">&nbsp;</td>
+                        <th colspan="2" rowspan="3" width="95">&nbsp;</th>
+                        <td colspan="1" width="100">Procedimentos</td>
                         <td class="valor currency" id="appointment-procedure-amount"></td>
                         <td rowspan="3">&nbsp;</td>
                     </tr>

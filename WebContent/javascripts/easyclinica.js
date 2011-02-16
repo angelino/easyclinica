@@ -1,4 +1,5 @@
 $(function(){
+	EasyClinica.setup();
 	EasyClinica.activeMenuOption();
 	
 	EasyClinica.runPage();
@@ -35,6 +36,12 @@ var EasyClinica = {
 		if (EasyClinica.pages[pageName]) {
 			EasyClinica.page = EasyClinica.pages[pageName]();
 		}
+	},
+	setup: function() {
+		// alinhamento do box lateral direito
+		if($('.boxmenu').length > 0) {
+			$('.boxright').css('margin-top', '55px');
+		} 
 	}
 };
 
