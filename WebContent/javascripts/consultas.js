@@ -18,9 +18,9 @@ EasyClinica.pages['consultas'] = function(){
 			return;
 		}
 		
-		var convenioId = $("input[name=appointment.healthCarePlan.id]:checked").val();
+		var healthCarePlanId = $("input[name=appointment.healthCarePlan.id]:checked").val();
 		
-		$.post(EasyClinica.cfg.services.newProcedureToAppointment, { procedureId: procedureId, convenioId: convenioId }, function(data){
+		$.post(EasyClinica.cfg.services.newProcedureToAppointment, { procedureId: procedureId, healthCarePlanId: healthCarePlanId }, function(data){
 			var index = $('.procedure-id').size();
 			if(index == "") index = 0;
 			data = data.replace(/#index#/g, index);
