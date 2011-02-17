@@ -13,6 +13,8 @@ public class ValidationMessages {
 	public static final String INVALID_PATIENT = "errors.invalid_patient";
 	public static final String INVALID_HOUR = "errors.invalid_hour";
 	public static final String INVALID_DAY = "errors.invalid_day";
+
+	public static final String INVALID_ANAMNESE = "errors.invalid_anamnese";
 	
 	public static final String INVALID_APPOINTMENT_DATE = "errors.invalid_appointment_date";
 }

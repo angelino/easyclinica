@@ -8,17 +8,28 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import org.hibernate.annotations.Type;
+
 @Entity
 public class Anamnese {
 
 	@Id @GeneratedValue
 	private int id;
 	private Calendar date;
+	@Type(type="text")
 	private String text;
 	@ManyToOne(fetch=FetchType.EAGER)
 	private Doctor doctor;
 	@ManyToOne(fetch=FetchType.LAZY)
 	private Patient patient;
+	
+	public Anamnese(int id) {
+		this.id = id;
+	}
+	
+	public Anamnese() {
+		this(0);
+	}
 	
 	public int getId() {
 		return id;
@@ -50,6 +61,9 @@ public class Anamnese {
 	}
 	public void setPatient(Patient patient) {
 		this.patient = patient;
+	}
+	public static Anamnese empty() {
+		return new Anamnese();
 	}
 	
 	

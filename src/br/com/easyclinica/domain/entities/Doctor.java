@@ -6,8 +6,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import org.hibernate.annotations.Type;
+
 @Entity
-public class Doctor {
+public class Doctor implements IDable {
 	
 	@Id
 	@GeneratedValue
@@ -19,6 +21,7 @@ public class Doctor {
 	private Specialty specialty;
 	private String telephone;
 	private String email;
+	@Type(type="text") 
 	private String observations;
 	private boolean active;
 	

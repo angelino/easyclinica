@@ -1,11 +1,11 @@
 package br.com.easyclinica.infra.dao;
 
 import org.hibernate.Session;
-import org.hibernate.cfg.Configuration;
 import org.junit.After;
 import org.junit.Before;
 
 import br.com.easyclinica.domain.entities.Clinic;
+import br.com.easyclinica.infra.database.DatabaseInfo;
 import br.com.easyclinica.tests.helpers.ClinicBuilder;
 
 public abstract class BaseIntegrationTests {
@@ -15,7 +15,7 @@ public abstract class BaseIntegrationTests {
 
 	@Before
 	public void createEMandDefaultClinic() {
-		session = new Configuration().configure("hibernate-test.cfg.xml").buildSessionFactory().openSession();
+		session = DatabaseInfo.config("easyclinicatest").buildSessionFactory().openSession();
 		session.getTransaction().begin();
 		
 		ClinicDao clinicDao = new ClinicDao(session);

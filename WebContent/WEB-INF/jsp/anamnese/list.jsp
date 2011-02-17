@@ -23,7 +23,7 @@
 				<helper:message successKey="${successKey}" errorKey="${errorKey}" />
 				
 				<c:choose>
-		    		<c:when test="${fn:length(patient.appointments) == 0}">
+		    		<c:when test="${fn:length(patient.anamneses) == 0}">
 		    			<p class="messengernotice">
 		    				Não há anamneses registradas para esse paciente! <a href='<c:url value="/pacientes/${patient.id}/anamneses/novo" />'>Clique aqui</a> para cadastrar uma anamnese!
 		    			</p>
@@ -46,9 +46,9 @@
 									<td>${anamnese.text}</td>
 									
 									<td class="buttons">
-										<a class="btnpeopleshow" title="Exibir" href="<c:url value="/pacientes/${patient.id}/anamneses/${anamnese.id}"/>">&nbsp;</a>
+										<a class="btnpeopleshow" title="Exibir" href="<c:url value="/pacientes/${patient.id}/anamneses/${anamnese.id}/editar"/>">&nbsp;</a>
                                     	
-                                    	<form action="<c:url value="/pacientes/${patient.id}/anamneses/${anamneses.id}"/>" method="post">
+                                    	<form action="<c:url value="/pacientes/${patient.id}/anamneses/${anamnese.id}"/>" method="post">
 									        <input type="hidden" name="_method" value="delete"/>
 									        <input type="submit" class="btndelete" title="Excluir Anamnese" value="" onclick="return confirm('Deseja realmente deletar essa anamnese?');"/>
 									    </form>

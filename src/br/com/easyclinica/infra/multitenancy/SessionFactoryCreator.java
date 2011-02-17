@@ -26,6 +26,7 @@ import br.com.easyclinica.domain.entities.PrecifiedProcedure;
 import br.com.easyclinica.domain.entities.PrecifiedSpecialty;
 import br.com.easyclinica.domain.entities.Procedure;
 import br.com.easyclinica.domain.entities.Specialty;
+import br.com.easyclinica.infra.database.DatabaseInfo;
 
 @Component
 @RequestScoped
@@ -50,43 +51,8 @@ public class SessionFactoryCreator implements ComponentFactory<SessionFactory> {
 	
 	private SessionFactory createSessionFactoryForTenant(String tenant) {
 		// TODO: pegar url do banco de algum arquivo de config
-		Configuration configuration = new Configuration();
-		configuration.setProperty("hibernate.connection.driver_class", "com.mysql.jdbc.Driver");
-		configuration.setProperty("hibernate.connection.url", "jdbc:mysql://localhost:3306/" + tenant);
-		configuration.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
-		configuration.setProperty("hibernate.connection.username", "easyclinica");
-		configuration.setProperty("hibernate.connection.password", "3@sycl1n1c@");
-		configuration.setProperty("hibernate.hbm2ddl.auto", "true");
-		configuration.setProperty("hibernate.show_sql", "true");
-		configuration.setProperty("hibernate.format_sql", "true");
-		
-		configuration.addAnnotatedClass(Appointment.class);
-		configuration.addAnnotatedClass(AppointmentMaterial.class);
-		configuration.addAnnotatedClass(AppointmentMedicine.class);
-		configuration.addAnnotatedClass(AppointmentProcedure.class);
-		configuration.addAnnotatedClass(Clinic.class);
-		configuration.addAnnotatedClass(Doctor.class);
-		configuration.addAnnotatedClass(HealthCarePlan.class);
-		configuration.addAnnotatedClass(Material.class);
-		configuration.addAnnotatedClass(Medicine.class);
-		configuration.addAnnotatedClass(Patient.class);
-		configuration.addAnnotatedClass(PrecifiedMaterial.class);
-		configuration.addAnnotatedClass(PrecifiedMedicine.class);
-		configuration.addAnnotatedClass(PrecifiedProcedure.class);
-		configuration.addAnnotatedClass(PrecifiedSpecialty.class);
-		configuration.addAnnotatedClass(MaterialInProcedure.class);
-		configuration.addAnnotatedClass(MedicineInProcedure.class);
-		configuration.addAnnotatedClass(Procedure.class);
-		configuration.addAnnotatedClass(Specialty.class);
-		configuration.addAnnotatedClass(Employee.class);
-		configuration.addAnnotatedClass(Anamnese.class);
-		
-		// TODO: Colocar c3p0
-//			hibernate.c3p0.min_size=5
-//			hibernate.c3p0.max_size=20
-//			hibernate.c3p0.timeout=1800
-//			hibernate.c3p0.max_statements=50
-		
+		Configuration configuration = DatabaseInfo.config(tenant);
+				
 		return configuration.buildSessionFactory();
 	}
 

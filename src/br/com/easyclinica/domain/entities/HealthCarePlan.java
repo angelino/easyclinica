@@ -11,6 +11,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import org.hibernate.annotations.Type;
+
 import br.com.easyclinica.domain.types.Address;
 import br.com.easyclinica.domain.types.Money;
 
@@ -25,6 +27,7 @@ public class HealthCarePlan {
 	private String telephone;
 	private String email;
 	private String website;
+	@Type(type="text")
 	private String observations;
 	@Embedded private Money ch;
 	private String contact;

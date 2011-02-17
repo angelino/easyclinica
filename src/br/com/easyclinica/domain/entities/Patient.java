@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import org.hibernate.annotations.Type;
+
 import br.com.easyclinica.domain.types.Address;
 
 @Entity
@@ -22,7 +24,7 @@ public class Patient {
 	@Embedded private Address address;
 	@ManyToOne(fetch=FetchType.EAGER)
 	private HealthCarePlan healthCarePlan;
-	private String observations;
+	@Type(type="text") private String observations;
 	private String cellphone;
 	private String telephone;
 	private String email;

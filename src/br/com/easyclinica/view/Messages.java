@@ -22,5 +22,9 @@ public class Messages {
 
 	public static final String APPOINTMENT_ADDED = "appointments.added";
 	public static final String APPOINTMENT_DELETED = "appointments.deleted";
+
+	public static final String ANAMNESE_ADDED = "anamneses.added";
+	public static final String ANAMNESE_UPDATED = "anamneses.updated";
+	public static final String ANAMNESE_DELETED = "anamneses.deleted";
 	
 }

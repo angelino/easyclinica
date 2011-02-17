@@ -18,6 +18,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.hibernate.annotations.Type;
+
 import br.com.easyclinica.domain.types.Money;
 
 @Entity
@@ -52,6 +54,7 @@ public class Appointment {
 	}) 
 	private Money procedureAmount;
 	
+	@Type(type="text") 
 	private String observations;
 	
 	@OneToMany(cascade=CascadeType.ALL, mappedBy="appointment", orphanRemoval=true, fetch=FetchType.EAGER) 
