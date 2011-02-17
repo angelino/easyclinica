@@ -2,6 +2,7 @@
     <excludes>
         <pattern>/*/_*</pattern>
         <pattern>/login</pattern>
+        <pattern>/*/impressos/*</pattern>
     </excludes>
     
     <decorator name="main" page="main.jsp">
