@@ -168,11 +168,11 @@ public class Appointment {
 	}
 
 	public void recalculate() {
-		if(procedureAmount == null) procedureAmount = Money.empty();
+		procedureAmount = Money.empty();
 		
 		for(AppointmentProcedure procedure : procedures) {
-			procedureAmount.addValueToAmount(procedure.getTotalAmount().getAmount());
+			procedureAmount.plus(procedure.getTotalAmount().getAmount());
 		}
-	}	
+	}
 	
 }

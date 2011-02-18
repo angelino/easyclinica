@@ -91,10 +91,10 @@ public class AppointmentProcedure {
 		Money total = (this.amount == null ? Money.empty() : this.amount);
 		
 		for(AppointmentMaterial material : materials) {
-			total.addValueToAmount(material.getTotalAmount().getAmount());
+			total.plus(material.getTotalAmount().getAmount());
 		}
 		for(AppointmentMedicine medicine : medicines) {
-			total.addValueToAmount(medicine.getTotalAmount().getAmount());
+			total.plus(medicine.getTotalAmount().getAmount());
 		}		
 		return total;
 	}

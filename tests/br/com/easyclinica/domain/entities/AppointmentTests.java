@@ -1,5 +1,6 @@
 package br.com.easyclinica.domain.entities;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -29,12 +30,11 @@ public class AppointmentTests {
 	
 	@Test
 	public void shouldRecalculateTheTotalAmountOfTheAppointment() {
-		
 		AppointmentProcedure procedure = new AppointmentProcedure();
 		procedure.addMaterial(aMaterial());
 		appointment.addProcedure(procedure);
 		
-		assertTrue(new Money(10).getAmount().doubleValue() == appointment.getProcedureAmount().getAmount().doubleValue());
+		assertEquals(new Money(10).getAmount().doubleValue(), appointment.getProcedureAmount().getAmount().doubleValue(), 0.00001);
 	}
 
 	private AppointmentMaterial aMaterial() {

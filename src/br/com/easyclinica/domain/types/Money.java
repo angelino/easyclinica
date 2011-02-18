@@ -9,7 +9,10 @@ public class Money {
 
 	private BigDecimal amount;
 
-	public Money(){}
+	public Money(){
+		this.amount = BigDecimal.ZERO;
+	}
+	
 	public Money(BigDecimal amount){
 		this.amount = amount;
 	}
@@ -29,7 +32,7 @@ public class Money {
 		return new Money(BigDecimal.ZERO);
 	}
 	
-	public void addValueToAmount(BigDecimal value) {
+	public void plus(BigDecimal value) {
 		this.amount = this.amount.add(value);
 	}
 
