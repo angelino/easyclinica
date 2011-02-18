@@ -12,13 +12,9 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-import org.apache.log4j.Logger;
-
 @Entity
 public class AppointmentProcedure {
 
-	private static Logger log = Logger.getLogger(AppointmentProcedure.class);
-	
 	@Id @GeneratedValue
 	private int id;
 	@ManyToOne(fetch=FetchType.LAZY) 
