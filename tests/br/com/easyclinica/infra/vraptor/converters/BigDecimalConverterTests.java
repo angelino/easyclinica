@@ -20,8 +20,8 @@ public class BigDecimalConverterTests {
 	
 	@Test
 	public void shouldConvertNumberWithDot() {
-		BigDecimal convertedNumber = convert("123.45");
-		assertEquals(123.45, convertedNumber.doubleValue(), 0.00000001);
+		BigDecimal convertedNumber = convert("50.45");
+		assertEquals(50.45, convertedNumber.doubleValue(), 0.00000001);
 
 		BigDecimal convertedNumber3 = convert("100.00");
 		assertEquals(100.0, convertedNumber3.doubleValue(), 0.00000001);

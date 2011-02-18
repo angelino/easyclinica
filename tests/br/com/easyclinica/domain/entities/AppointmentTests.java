@@ -4,11 +4,10 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import java.math.BigDecimal;
+
 import org.junit.Before;
 import org.junit.Test;
-
-import br.com.easyclinica.domain.types.Money;
-import br.com.easyclinica.domain.types.Quantity;
 
 public class AppointmentTests {
 
@@ -34,13 +33,13 @@ public class AppointmentTests {
 		procedure.addMaterial(aMaterial());
 		appointment.addProcedure(procedure);
 		
-		assertEquals(new Money(10).getAmount().doubleValue(), appointment.getProcedureAmount().getAmount().doubleValue(), 0.00001);
+		assertEquals(new BigDecimal(10), appointment.getProcedureAmount());
 	}
 
 	private AppointmentMaterial aMaterial() {
 		AppointmentMaterial material = new AppointmentMaterial();
-		material.setQty(new Quantity(1));
-		material.setUnitAmount(new Money(10.0));
+		material.setQty(new BigDecimal(1));
+		material.setUnitAmount(new BigDecimal(10.0));
 		return material;
 	}
 }

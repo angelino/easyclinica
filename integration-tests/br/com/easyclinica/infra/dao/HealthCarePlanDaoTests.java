@@ -39,7 +39,7 @@ public class HealthCarePlanDaoTests extends BaseIntegrationTests {
 		assertEquals(plan.getWebsite(), newOne.getWebsite());
 		assertEquals(plan.getContact(), newOne.getContact());
 		assertEquals(plan.getObservations(), newOne.getObservations());
-		assertEquals(plan.getCh().getAmount(), newOne.getCh().getAmount());
+		assertEquals(plan.getCh(), newOne.getCh());
 		assertEquals(plan.isActive(), newOne.isActive());
 	}
 

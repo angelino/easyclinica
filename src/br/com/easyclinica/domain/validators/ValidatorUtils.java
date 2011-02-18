@@ -3,7 +3,6 @@ package br.com.easyclinica.domain.validators;
 import java.math.BigDecimal;
 
 import br.com.easyclinica.domain.entities.IDable;
-import br.com.easyclinica.domain.types.Money;
 
 public class ValidatorUtils {
 	
@@ -20,9 +19,9 @@ public class ValidatorUtils {
 		return false;
 	}
 	
-	public static boolean isMoreThanZero(Money value)
+	public static boolean isMoreThanZero(BigDecimal value)
 	{
-		if(value.getAmount().compareTo(new BigDecimal(0.0)) > 0 ) return true;
+		if(value.compareTo(BigDecimal.ZERO) > 0 ) return true;
 		
 		return false;
 	}

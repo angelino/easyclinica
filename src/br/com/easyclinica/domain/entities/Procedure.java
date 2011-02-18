@@ -1,5 +1,6 @@
 package br.com.easyclinica.domain.entities;
 
+import java.math.BigDecimal;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
@@ -11,8 +12,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-import br.com.easyclinica.domain.types.Quantity;
 
 @Entity
 @Table(name="medical_procedures")
@@ -95,7 +94,7 @@ public class Procedure {
 		return this.name;
 	}
 	
-	public void addMaterial(Material material, Quantity qty) {
+	public void addMaterial(Material material, BigDecimal qty) {
 		MaterialInProcedure materialInProcedure = new MaterialInProcedure();
 		materialInProcedure.setMaterial(material);
 		materialInProcedure.setProcedure(this);
@@ -104,7 +103,7 @@ public class Procedure {
 		this.materials.add(materialInProcedure);
 	}
 	
-	public void addMedicine(Medicine medicine, Quantity qty) {
+	public void addMedicine(Medicine medicine, BigDecimal qty) {
 		MedicineInProcedure medicineInProcedure = new MedicineInProcedure();
 		medicineInProcedure.setMedicine(medicine);
 		medicineInProcedure.setProcedure(this);

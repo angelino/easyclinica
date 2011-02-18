@@ -1,14 +1,11 @@
 package br.com.easyclinica.domain.entities;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-import javax.persistence.AttributeOverride;
-import javax.persistence.AttributeOverrides;
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -19,8 +16,6 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.Type;
-
-import br.com.easyclinica.domain.types.Money;
 
 @Entity
 public class Appointment {
@@ -42,17 +37,8 @@ public class Appointment {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Calendar date;
 	
-	@Embedded
-	@AttributeOverrides({ 
-			@AttributeOverride(name="amount", column=@Column(name="appointmentAmount"))
-	}) 
-	private Money appointmentAmount;
-	
-	@Embedded 
-	@AttributeOverrides({ 
-		@AttributeOverride(name="amount", column=@Column(name="procedureAmount"))
-	}) 
-	private Money procedureAmount;
+	private BigDecimal appointmentAmount;
+	private BigDecimal procedureAmount;
 	
 	@Type(type="text") 
 	private String observations;
@@ -151,15 +137,15 @@ public class Appointment {
 		this.id = id;
 	}
 
-	public void setAppointmentAmount(Money appointmentAmount) {
+	public void setAppointmentAmount(BigDecimal appointmentAmount) {
 		this.appointmentAmount = appointmentAmount;
 	}
 
-	public Money getAppointmentAmount() {
+	public BigDecimal getAppointmentAmount() {
 		return appointmentAmount;
 	}
 
-	public Money getProcedureAmount() {
+	public BigDecimal getProcedureAmount() {
 		return procedureAmount;
 	}
 	
@@ -168,10 +154,10 @@ public class Appointment {
 	}
 
 	public void recalculate() {
-		procedureAmount = Money.empty();
+		procedureAmount = BigDecimal.ZERO;
 		
 		for(AppointmentProcedure procedure : procedures) {
-			procedureAmount.plus(procedure.getTotalAmount().getAmount());
+			procedureAmount = procedureAmount.add(procedure.getTotalAmount());
 		}
 	}
 	

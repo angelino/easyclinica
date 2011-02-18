@@ -88,7 +88,7 @@
 						    			${procedure.amount}
 						    		</c:when>
 						    		<c:otherwise>
-						    			${procedure.procedure.ch * appointment.healthCarePlan.ch.amount}
+						    			${procedure.procedure.ch * appointment.healthCarePlan.ch}
 						    		</c:otherwise>
 						    	</c:choose>						    	
 						    </td>
@@ -104,31 +104,31 @@
 						</tr>
 						
 						<c:forEach items="${procedure.materials}" var="material">
-							<c:set var="materialAmount" value="${material.qty.qty * material.unitAmount.amount}" />
+							<c:set var="materialAmount" value="${material.qty * material.unitAmount}" />
 							<tr>
 	                            <td>${material.material}</td>
-	                            <td>${material.qty.qty}</td>
-	                            <td class="currency">${material.unitAmount.amount}</td>
+	                            <td>${material.qty}</td>
+	                            <td class="currency">${material.unitAmount}</td>
 	                            <td class="currency">${materialAmount}</td>
 	                            <td>&nbsp;</td>
 	                        </tr>
 						</c:forEach>
 					
 						<c:forEach items="${procedure.medicines}" var="medicine">
-							<c:set var="medicineAmount" value="${medicine.qty.qty * medicine.unitAmount.amount}" />
+							<c:set var="medicineAmount" value="${medicine.qty * medicine.unitAmount}" />
 							<tr>
 	                            <td>${medicine.medicine}</td>
-	                            <td>${medicine.qty.qty}</td>
-	                            <td class="currency">${medicine.unitAmount.amount}</td>
+	                            <td>${medicine.qty}</td>
+	                            <td class="currency">${medicine.unitAmount}</td>
 	                            <td class="currency">${medicineAmount}</td>
 	                            <td>&nbsp;</td>
 	                        </tr>
 						</c:forEach>					
 						<tr class="boxsubtotal">
 						    <td colspan="3">Total do procedimento:</td>
-						    <td class="currency">${procedure.amount.amount}</td>
+						    <td class="currency">${procedure.totalAmount}</td>
 						    <td>&nbsp;</td>
-						    <c:set var="totalProcedures" value="${totalProcedures + procedure.amount.amount}"/>
+						    <c:set var="totalProcedures" value="${totalProcedures + procedure.totalAmount}"/>
 						</tr>
 						<tr class="boxdivisortable">
 							<td colspan="5">&nbsp;</td>
@@ -144,11 +144,11 @@
 					</tr>
 					<tr class="boxtotal">
 						<td colspan="1">Consulta:</td>
-						<td class="currency">${appointment.appointmentAmount.amount}</td>
+						<td class="currency">${appointment.appointmentAmount}</td>
 					</tr>
 					<tr class="boxtotal">
 						<td colspan="1">Total:</td>
-						<td class="currency">${appointment.appointmentAmount.amount + totalProcedures}</td>
+						<td class="currency">${appointment.appointmentAmount + totalProcedures}</td>
 					</tr>
 				</table>
 					

@@ -2,19 +2,18 @@ package br.com.easyclinica.domain.entities;
 
 import static org.junit.Assert.assertEquals;
 
-import org.junit.Test;
+import java.math.BigDecimal;
 
-import br.com.easyclinica.domain.types.Money;
-import br.com.easyclinica.domain.types.Quantity;
+import org.junit.Test;
 
 public class AppointmentMaterialTests {
 
 	@Test
 	public void shouldCalculateTotalAmount() {
 		AppointmentMaterial am = new AppointmentMaterial();
-		am.setQty(new Quantity(2.0F));
-		am.setUnitAmount(new Money(10.0));
+		am.setQty(new BigDecimal(2.0));
+		am.setUnitAmount(new BigDecimal(10.0));
 		
-		assertEquals(new Money(20.0), am.getTotalAmount());
+		assertEquals(new BigDecimal(20.0), am.getTotalAmount());
 	}
 }

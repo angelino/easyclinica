@@ -1,7 +1,9 @@
 package br.com.easyclinica.infra.dao;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
+import java.math.BigDecimal;
 import java.util.Calendar;
 
 import org.junit.Before;
@@ -71,7 +73,7 @@ public class AppointmentDaoTests extends BaseIntegrationTests {
 	}
 
 	private HealthCarePlan aSavedHealthCarePlan() {
-		HealthCarePlan plan = new HealthCarePlanBuilder().withName("bla").withCh(10).instance();
+		HealthCarePlan plan = new HealthCarePlanBuilder().withName("bla").withCh(new BigDecimal(10)).instance();
 		session.save(plan);
 		return plan;
 	}

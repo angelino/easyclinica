@@ -1,10 +1,10 @@
 package br.com.easyclinica.domain.entities;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -13,8 +13,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import org.apache.log4j.Logger;
-
-import br.com.easyclinica.domain.types.Money;
 
 @Entity
 public class AppointmentProcedure {
@@ -27,7 +25,7 @@ public class AppointmentProcedure {
 	private Appointment appointment;
 	@ManyToOne(fetch=FetchType.EAGER) 
 	private Procedure procedure;
-	@Embedded private Money amount;
+	private BigDecimal amount;
 	private boolean isFixedAmount;
 	
 	@OneToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL, orphanRemoval=true, mappedBy="procedure") 
@@ -51,12 +49,12 @@ public class AppointmentProcedure {
 	public void setProcedure(Procedure procedure) {
 		this.procedure = procedure;
 	}
-	public Money getAmount() {
-		log.info("alguem pediu o getAmount");
+	public BigDecimal getAmount() {
+//		log.info("alguem pediu o getAmount");
 		return amount;
 	}
-	public void setAmount(Money amount) {
-		log.info("setando amount aqui " + amount.getAmount());
+	public void setAmount(BigDecimal amount) {
+//		log.info("setando amount aqui " + amount);
 		this.amount = amount;
 	}
 	public boolean isFixedAmount() {
@@ -93,14 +91,14 @@ public class AppointmentProcedure {
 		medicines.add(medicine);		
 	}
 	
-	public Money getTotalAmount() {
-		Money total = (this.amount == null ? Money.empty() : this.amount);
+	public BigDecimal getTotalAmount() {
+		BigDecimal total = (this.amount == null ? BigDecimal.ZERO : this.amount);
 		
 		for(AppointmentMaterial material : materials) {
-			total.plus(material.getTotalAmount().getAmount());
+			total = total.add(material.getTotalAmount());
 		}
 		for(AppointmentMedicine medicine : medicines) {
-			total.plus(medicine.getTotalAmount().getAmount());
+			total = total.add(medicine.getTotalAmount());
 		}		
 		return total;
 	}

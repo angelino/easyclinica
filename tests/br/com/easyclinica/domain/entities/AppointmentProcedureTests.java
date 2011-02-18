@@ -1,11 +1,10 @@
 package br.com.easyclinica.domain.entities;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertEquals;
+
+import java.math.BigDecimal;
 
 import org.junit.Test;
-
-import br.com.easyclinica.domain.types.Money;
-import br.com.easyclinica.domain.types.Quantity;
 
 public class AppointmentProcedureTests {
 
@@ -18,20 +17,20 @@ public class AppointmentProcedureTests {
 		proc.addMedicine(aMedicine(3, 30.0));
 		
 		double total = 2*10 + 100 + 2*20 + 3*30;
-		assertTrue(new Money(total).getAmount().doubleValue() == proc.getTotalAmount().getAmount().doubleValue());
+		assertEquals(new BigDecimal(total), proc.getTotalAmount());
 	}
 
 	private AppointmentMaterial aMaterial(int qty, double amount) {
 		AppointmentMaterial m = new AppointmentMaterial();
-		m.setQty(new Quantity(qty));
-		m.setUnitAmount(new Money(amount));
+		m.setQty(new BigDecimal(qty));
+		m.setUnitAmount(new BigDecimal(amount));
 		return m;
 	}
 	
 	private AppointmentMedicine aMedicine(int qty, double amount) {
 		AppointmentMedicine m = new AppointmentMedicine();
-		m.setQty(new Quantity(qty));
-		m.setUnitAmount(new Money(amount));
+		m.setQty(new BigDecimal(qty));
+		m.setUnitAmount(new BigDecimal(amount));
 		return m;
 	}
 

@@ -2,34 +2,31 @@ package br.com.easyclinica.domain.entities;
 
 import java.math.BigDecimal;
 
-import br.com.easyclinica.domain.types.Money;
-import br.com.easyclinica.domain.types.Quantity;
-
 
 public class MaterialWithPriceAndQuantity {
 	
 	private Material material;
-	private Quantity qty;
-	private Money amount;
+	private BigDecimal qty;
+	private BigDecimal amount;
 	
 	public MaterialWithPriceAndQuantity() { }
 	public MaterialWithPriceAndQuantity(Material material, BigDecimal qty, BigDecimal amount) {
 		this.material = material;
-		this.qty = new Quantity(qty);
-		this.amount = new Money(amount);
+		this.qty = qty;
+		this.amount = amount;
 	}
 	
-	public void setQty(Quantity qty) {
+	public void setQty(BigDecimal qty) {
 		this.qty = qty;
 	}
-	public Quantity getQty() {
+	public BigDecimal getQty() {
 		return qty;
 	}
 	
-	public void setAmount(Money amount) {
+	public void setAmount(BigDecimal amount) {
 		this.amount = amount;
 	}
-	public Money getAmount() {
+	public BigDecimal getAmount() {
 		return amount;
 	}
 	public void setMaterial(Material material) {

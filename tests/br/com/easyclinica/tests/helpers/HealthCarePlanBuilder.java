@@ -1,7 +1,8 @@
 package br.com.easyclinica.tests.helpers;
 
+import java.math.BigDecimal;
+
 import br.com.easyclinica.domain.entities.HealthCarePlan;
-import br.com.easyclinica.domain.types.Money;
 
 public class HealthCarePlanBuilder {
 
@@ -20,7 +21,7 @@ public class HealthCarePlanBuilder {
 		plan.setWebsite("website.com");
 		plan.setContact("contact");
 		plan.setObservations("obs");
-		plan.setCh(new Money(20.0));
+		plan.setCh(new BigDecimal(20.0));
 	}
 	
 	public HealthCarePlanBuilder withName(String name) {
@@ -28,8 +29,8 @@ public class HealthCarePlanBuilder {
 		return this;
 	}
 
-	public HealthCarePlanBuilder withCh(double ch) {
-		plan.setCh(new Money(ch));
+	public HealthCarePlanBuilder withCh(BigDecimal ch) {
+		plan.setCh(ch);
 		return this;
 	}
 	

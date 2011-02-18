@@ -1,12 +1,12 @@
 package br.com.easyclinica.domain.entities;
 
+import java.math.BigDecimal;
+
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-
-import br.com.easyclinica.domain.types.Quantity;
 
 @Entity
 public class MedicineInProcedure {
@@ -20,7 +20,7 @@ public class MedicineInProcedure {
 	@ManyToOne(fetch=FetchType.LAZY)
 	private Procedure procedure;
 	
-	private Quantity qty;
+	private BigDecimal qty;
 	
 	public int getId() {
 		return id;
@@ -46,11 +46,11 @@ public class MedicineInProcedure {
 		this.procedure = procedure;
 	}
 
-	public Quantity getQty() {
+	public BigDecimal getQty() {
 		return qty;
 	}
 
-	public void setQty(Quantity qty) {
+	public void setQty(BigDecimal qty) {
 		this.qty = qty;
 	}
 }

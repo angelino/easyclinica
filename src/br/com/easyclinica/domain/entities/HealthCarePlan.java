@@ -1,5 +1,6 @@
 package br.com.easyclinica.domain.entities;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -14,7 +15,6 @@ import javax.persistence.OneToMany;
 import org.hibernate.annotations.Type;
 
 import br.com.easyclinica.domain.types.Address;
-import br.com.easyclinica.domain.types.Money;
 
 @Entity
 public class HealthCarePlan {
@@ -29,7 +29,7 @@ public class HealthCarePlan {
 	private String website;
 	@Type(type="text")
 	private String observations;
-	@Embedded private Money ch;
+	private BigDecimal ch;
 	private String contact;
 	private boolean active;
 	private int periodToReturn;
@@ -167,10 +167,10 @@ public class HealthCarePlan {
 		return periodToReturn;
 	}
 	
-	public void setCh(Money ch) {
+	public void setCh(BigDecimal ch) {
 		this.ch = ch;
 	}
-	public Money getCh() {
+	public BigDecimal getCh() {
 		return ch;
 	}
 	@Override
