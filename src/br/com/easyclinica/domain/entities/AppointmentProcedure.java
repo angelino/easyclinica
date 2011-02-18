@@ -12,11 +12,15 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import org.apache.log4j.Logger;
+
 import br.com.easyclinica.domain.types.Money;
 
 @Entity
 public class AppointmentProcedure {
 
+	private static Logger log = Logger.getLogger(AppointmentProcedure.class);
+	
 	@Id @GeneratedValue
 	private int id;
 	@ManyToOne(fetch=FetchType.LAZY) 
@@ -48,9 +52,11 @@ public class AppointmentProcedure {
 		this.procedure = procedure;
 	}
 	public Money getAmount() {
+		log.info("alguem pediu o getAmount");
 		return amount;
 	}
 	public void setAmount(Money amount) {
+		log.info("setando amount aqui " + amount.getAmount());
 		this.amount = amount;
 	}
 	public boolean isFixedAmount() {
