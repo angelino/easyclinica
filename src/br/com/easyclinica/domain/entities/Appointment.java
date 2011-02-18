@@ -57,7 +57,7 @@ public class Appointment {
 	@Type(type="text") 
 	private String observations;
 	
-	@OneToMany(cascade=CascadeType.ALL, mappedBy="appointment", orphanRemoval=true, fetch=FetchType.EAGER) 
+	@OneToMany(cascade=CascadeType.ALL, mappedBy="appointment", orphanRemoval=true) 
 	private List<AppointmentProcedure> procedures;
 
 	public Appointment() {
