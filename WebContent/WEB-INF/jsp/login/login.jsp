@@ -15,16 +15,18 @@
 		    <div class="boxlogin">
 				<h1>Easy Clínica</h1>
 			    <h2>Login:</h2>
-			    <p class="messengererror">Error message</p>
+			    <c:if test="${errorLogin == true}">
+			    <p class="messengererror">Login e/ou senha incorretos.</p>
+			    </c:if>
 			    
 			    <form action="<c:url value="/login" />" class="form login" method="post"> 
 			    	<fieldset>
-			        	<label>Nome:</label>
-			            <input type="text" />
+			        	<label>Login:</label>
+			            <input type="text" name="login"/>
 			        </fieldset>
 			    	<fieldset>
 			        	<label>Senha:</label>
-			            <input type="text" />
+			            <input type="password" name="password" />
 			        </fieldset>
 			        <fieldset class="boxactions">
 			            <input type="submit" class="btnlogin" value="Login" />

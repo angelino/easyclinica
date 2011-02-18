@@ -23,7 +23,7 @@ import br.com.easyclinica.domain.entities.PrecifiedSpecialty;
 import br.com.easyclinica.domain.entities.Procedure;
 import br.com.easyclinica.domain.entities.Specialty;
 
-public class DatabaseInfo {
+public class DatabaseConfigurator {
 
 	public static Configuration config(String database) {
 		Configuration configuration = new Configuration();

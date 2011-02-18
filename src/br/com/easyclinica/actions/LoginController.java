@@ -5,18 +5,16 @@ import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
-import br.com.easyclinica.domain.entities.Clinic;
-import br.com.easyclinica.domain.entities.Employee;
-import br.com.easyclinica.infra.multitenancy.LoggedUser;
+import br.com.easyclinica.domain.services.Authentication;
 
 @Resource
 public class LoginController {
 
 	private final Result result;
-	private final LoggedUser loggedUser;
+	private final Authentication auth;
 
-	public LoginController(LoggedUser loggedUser, Result result) {
-		this.loggedUser = loggedUser;
+	public LoginController(Authentication auth, Result result) {
+		this.auth = auth;
 		this.result = result;
 	}
 	
@@ -27,17 +25,14 @@ public class LoginController {
 	
 	@Post
 	@Path("/login")
-	public void doLogin() { 
-		Clinic clinic = new Clinic();
-		clinic.setDomain("easyclinica");
-		
-		Employee employee = new Employee();
-		employee.setUser("x");
-		
-		loggedUser.set(clinic, employee);
-		
-		result.redirectTo(HomeController.class).dashboard();
+	public void doLogin(String login, String password) { 
+		if(auth.user(login, password)) {
+			result.redirectTo(HomeController.class).dashboard();
+		}
+		else {
+			result.include("errorLogin", true);
+			result.redirectTo(LoginController.class).login();
+		}
 	}
 	
-
 }

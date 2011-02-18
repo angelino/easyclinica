@@ -9,19 +9,26 @@ public class Employee {
 
 	@Id @GeneratedValue
 	private int id;
-	private String user;
+	private String login;
+	private String password;
 	
-	public String getUser() {
-		return user;
+	public String getLogin() {
+		return login;
 	}
-	public void setUser(String user) {
-		this.user = user;
+	public void setLogin(String login) {
+		this.login = login;
 	}
 	public int getId() {
 		return id;
 	}
 	protected void setId(int id) {
 		this.id = id;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	
 	

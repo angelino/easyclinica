@@ -5,7 +5,7 @@ import org.junit.After;
 import org.junit.Before;
 
 import br.com.easyclinica.domain.entities.Clinic;
-import br.com.easyclinica.infra.database.DatabaseInfo;
+import br.com.easyclinica.infra.database.DatabaseConfigurator;
 import br.com.easyclinica.tests.helpers.ClinicBuilder;
 
 public abstract class BaseIntegrationTests {
@@ -15,12 +15,11 @@ public abstract class BaseIntegrationTests {
 
 	@Before
 	public void createEMandDefaultClinic() {
-		session = DatabaseInfo.config("easyclinicatest").buildSessionFactory().openSession();
+		session = DatabaseConfigurator.config("easyclinicatest").buildSessionFactory().openSession();
 		session.getTransaction().begin();
 		
-		ClinicDao clinicDao = new ClinicDao(session);
 		clinic = new ClinicBuilder().withName("EasyClinica").withDomain("easyclinica").instance();
-		clinicDao.add(clinic);
+		session.save(clinic);
 	}
 	
 	@After

@@ -26,7 +26,7 @@ import br.com.easyclinica.domain.entities.PrecifiedProcedure;
 import br.com.easyclinica.domain.entities.PrecifiedSpecialty;
 import br.com.easyclinica.domain.entities.Procedure;
 import br.com.easyclinica.domain.entities.Specialty;
-import br.com.easyclinica.infra.database.DatabaseInfo;
+import br.com.easyclinica.infra.database.DatabaseConfigurator;
 
 @Component
 @RequestScoped
@@ -51,7 +51,7 @@ public class SessionFactoryCreator implements ComponentFactory<SessionFactory> {
 	
 	private SessionFactory createSessionFactoryForTenant(String tenant) {
 		// TODO: pegar url do banco de algum arquivo de config
-		Configuration configuration = DatabaseInfo.config(tenant);
+		Configuration configuration = DatabaseConfigurator.config(tenant);
 				
 		return configuration.buildSessionFactory();
 	}
