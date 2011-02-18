@@ -9,6 +9,7 @@ import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.interceptor.download.Download;
 import br.com.easyclinica.domain.entities.Patient;
 import br.com.easyclinica.domain.repositories.AllPatients;
+import br.com.easyclinica.infra.multitenancy.LoggedUser;
 import br.com.easyclinica.infra.reports.JasperMaker;
 
 @Resource
@@ -16,10 +17,12 @@ public class PrintingsController {
 
 	private final JasperMaker jasperMaker;
 	private final AllPatients patients;
+	private final LoggedUser loggedUser;
 
-	public PrintingsController(JasperMaker jasperMaker, AllPatients patients) {
+	public PrintingsController(JasperMaker jasperMaker, AllPatients patients, LoggedUser loggedUser) {
 		this.jasperMaker = jasperMaker;
 		this.patients = patients;
+		this.loggedUser = loggedUser;
 	}
 	
 	@Get
@@ -28,7 +31,8 @@ public class PrintingsController {
 		Patient patient = patients.getById(id);
 		
 		Map<String, Object> params = new HashMap<String, Object>();
-		params.put("patientName", patient.getName());
+		params.put("patient", patient);
+		params.put("clinic", loggedUser.getClinic());
 		
 		return jasperMaker.makePdf(  
 	               "patient-anamnese.jrxml",  
