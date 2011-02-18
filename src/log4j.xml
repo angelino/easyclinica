@@ -9,6 +9,11 @@
                 </layout>
         </appender>
 
+        <category name="br.com.easyclinica">
+                <priority value="DEBUG" />
+                <appender-ref ref="stdout" />
+        </category>
+        
         <category name="org.vraptor">
                 <priority value="INFO" />
                 <appender-ref ref="stdout" />

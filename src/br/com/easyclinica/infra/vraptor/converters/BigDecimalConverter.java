@@ -6,20 +6,21 @@ import java.util.ResourceBundle;
 
 import br.com.caelum.vraptor.Convert;
 import br.com.caelum.vraptor.Converter;
+import br.com.caelum.vraptor.ioc.ApplicationScoped;
 
 @Convert(BigDecimal.class)
+@ApplicationScoped
 public class BigDecimalConverter implements Converter<BigDecimal> {
 
 	public BigDecimal convert(String value, Class<? extends BigDecimal> type,
 			ResourceBundle resource) {
-		
-		value = value.replace(',', '.');		
+
 		if(value == null || value.equals("")) {  
             return BigDecimal.ZERO;  
-        }  
+        }  		
         
-		System.out.println("Vamos converter o valor: " + value);
-		
+		value = value.replace(',', '.');
+	
 		BigDecimal converted = new BigDecimal(value);  
 		converted.setScale(2, RoundingMode.CEILING);
 		
