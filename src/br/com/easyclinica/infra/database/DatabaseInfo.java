@@ -29,7 +29,7 @@ public class DatabaseInfo {
 		Configuration configuration = new Configuration();
 		configuration.setProperty("hibernate.connection.driver_class", "com.mysql.jdbc.Driver");
 		configuration.setProperty("hibernate.connection.url", "jdbc:mysql://localhost:3306/" + database);
-		configuration.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
+		configuration.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLInnoDBDialect");
 		configuration.setProperty("hibernate.connection.username", "easyclinica");
 		configuration.setProperty("hibernate.connection.password", "3@sycl1n1c@");
 		configuration.setProperty("hibernate.hbm2ddl.auto", "true");
