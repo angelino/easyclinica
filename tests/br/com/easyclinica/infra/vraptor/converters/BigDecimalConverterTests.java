@@ -23,6 +23,9 @@ public class BigDecimalConverterTests {
 		BigDecimal convertedNumber = convert("123.45");
 		assertEquals(123.45, convertedNumber.doubleValue(), 0.00000001);
 
+		BigDecimal convertedNumber3 = convert("100.00");
+		assertEquals(100.0, convertedNumber3.doubleValue(), 0.00000001);
+		
 		BigDecimal convertedNumber2 = convert("123.00");
 		assertEquals(123.0, convertedNumber2.doubleValue(), 0.00000001);
 	}

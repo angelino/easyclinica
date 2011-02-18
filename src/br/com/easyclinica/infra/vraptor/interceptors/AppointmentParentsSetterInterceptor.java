@@ -47,7 +47,7 @@ public class AppointmentParentsSetterInterceptor implements Interceptor {
 		Appointment appointment = (Appointment) info.getParameters()[position];
 		setAllParents(appointment);
 		appointment.recalculate();
-		setAllParents(appointment);
+		//setAllParents(appointment);
 
 		stack.next(method, instance);
 	}
