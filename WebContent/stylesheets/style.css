@@ -115,7 +115,7 @@ table.easy tr td a.btnappointments{background-image:url(/easyclinica/images/icon
 table.easy tr td form{width:50px!important;}
 table.easy tr td input{background-color:#EEEEEE;background-repeat:no-repeat;background-position:10px 5px;border:1px solid #BFBFBF;color:#222222;cursor:pointer;float:left;font-size:1em;font-weight:bold;line-height:1.3em;margin:0 0 0 10px;padding:5px 10px 5px 25px;text-decoration:none;}
 table.easy tr td input:hover{background-color:#dfdfde;}
-table.easy tr td input.btndelete{background-image:url(/easyclinica/images/icons/delete.png);}
+table.easy tr td input.btndelete{background-image:url(/easyclinica/images/icons/delete.png);margin:0!important;}
 
 table.easy tr td.statusenable{background:transparent url(/easyclinica/images/icons/user_green.png) center no-repeat;text-indent:-9999px;}
 table.easy tr td.statusdisable{background:transparent url(/easyclinica/images/icons/user_grayoff.png) center no-repeat;text-indent:-9999px;}
@@ -347,5 +347,11 @@ div.error {
 .dados-consulta p{float:left;width:135px!important;margin:0!important;font-weight: bold;}
 .dados-consulta span{float:left;}
 .dados-consulta div.observations p {width: 100%;}
+
+.modal-anamneses .modal-content{padding:0 20px;text-align:left;}
+.modal-anamneses .modal-content div {float:left; width: 100%;margin-top:5px;}
+.modal-anamneses .modal-content p{float:left;width:143px;font-weight: bold;}
+.modal-anamneses .modal-content span{float:left;}
+.modal-anamneses .modal-content div.anamnese p {width: 100%;}
 /*END MODAL ######################################################################################################################*/
 

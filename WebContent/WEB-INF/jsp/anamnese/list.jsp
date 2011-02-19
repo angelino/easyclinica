@@ -34,7 +34,7 @@
 			                    <th>Data</th> 
 			                    <th>Médico</th>
 			                    <th>Anamnese</th> 
-			                    <th width="145px">&nbsp;</th>
+			                    <th width="160px">&nbsp;</th>
 			                </tr> 
                   
 							<c:forEach items="${patient.anamneses}" var="anamnese" varStatus="st">
@@ -46,8 +46,9 @@
 									<td>${anamnese.text}</td>
 									
 									<td class="buttons">
-										<a class="btnpeopleshow" title="Exibir" href="<c:url value="/pacientes/${patient.id}/anamneses/${anamnese.id}/editar"/>">&nbsp;</a>
-                                    	
+										<a class="btnpeopleedit" title="Editar" href="<c:url value="/pacientes/${patient.id}/anamneses/${anamnese.id}/editar"/>">&nbsp;</a>
+                                    	<a class="btnpeopleshow exibir" title="Exibir" anamnese_id="${anamnese.id}">&nbsp;</a>
+                                                                            	
                                     	<form action="<c:url value="/pacientes/${patient.id}/anamneses/${anamnese.id}"/>" method="post">
 									        <input type="hidden" name="_method" value="delete"/>
 									        <input type="submit" class="btndelete" title="Excluir Anamnese" value="" onclick="return confirm('Deseja realmente deletar essa anamnese?');"/>

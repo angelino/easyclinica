@@ -24,6 +24,7 @@
 	    <helper:include fileName="medicos.js" type="js" />
 	    <helper:include fileName="convenios.js" type="js" />
 	    <helper:include fileName="pacientes.js" type="js" />
+	    <helper:include fileName="anamnese.js" type="js" />
 	    
 	    <decorator:head />
 	</head>

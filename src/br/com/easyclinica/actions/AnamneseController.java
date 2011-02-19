@@ -48,6 +48,12 @@ public class AnamneseController extends BaseController {
 		return patients.getById(patient);
 	}
 
+	@Post
+	public void _show(int id) {
+		Anamnese loadedAnamnese = anamneses.getById(id);
+		include(loadedAnamnese);
+	}
+	
 	@Get
 	@Path("/pacientes/{patient}/anamneses/novo")
 	public void newForm(int patient) {

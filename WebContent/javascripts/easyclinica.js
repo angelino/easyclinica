@@ -55,7 +55,8 @@ EasyClinica.cfg.services = {
 		
 		showDoctorDetails: '/easyclinica/doctor/_show',
 		showHealthCarePlanDetails: '/easyclinica/healthCarePlan/_show',
-		showPatientDetails: '/easyclinica/patient/_show'
+		showPatientDetails: '/easyclinica/patient/_show',
+		showAnamneseDetails: '/easyclinica/anamnese/_show'
 };
 
 EasyClinica.cfg.images = {
