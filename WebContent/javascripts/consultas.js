@@ -19,7 +19,33 @@ EasyClinica.pages['consultas'] = function(){
 		}
 		
 		var healthCarePlanId = $("input[name=appointment.healthCarePlan.id]:checked").val();
+		addNewProcedure(procedureId, healthCarePlanId);
 		
+	});
+	
+	$('input[name=appointment.healthCarePlan.id]').change(function(){
+		var healthCarePlanId = $(this).val();
+		var procedures = new Array();
+		var indice = 0;
+		
+		$('.procedure-id').each(function(index){
+			var procedureId = $(this).val();
+			procedures[indice] = procedureId;
+			removeProcedure(procedureId);
+			
+			indice += 1;
+		});
+		
+		for (var i = 0; i <procedures.length; i++){
+			addNewProcedure(procedures[i], healthCarePlanId);
+		}
+		
+		var specialtyId = $('select[name=appointment.specialty.id]').val();
+		if(specialtyId == 0) return;
+		refreshMedicalAppointmentAmount(specialtyId);
+	});
+	
+	var addNewProcedure = function(procedureId, healthCarePlanId) {
 		$.post(EasyClinica.cfg.services.newProcedureToAppointment, { procedureId: procedureId, healthCarePlanId: healthCarePlanId }, function(data){
 			var index = $('.procedure-id').size();
 			if(index == "") index = 0;
@@ -38,22 +64,32 @@ EasyClinica.pages['consultas'] = function(){
 			$('#selected_procedure_id').val(0);
 			$('#informe-procedimento-message').hide();
 		});
-	});
+	};
+	
+	var removeProcedure = function(procedureId) {
+		$('tr[procedure_id=' + procedureId + ']').remove();
+		refreshAppointentValue();
+	};
 	
 	var configureRemoveActions = function() {
 		$('.remove-procedure').click(function(e){
 			e.preventDefault();
 			
+			if(!confirm('Deseja realmente deletar esse procedimento?')) return;
+			
 			var procedure_id = $(this).attr('procedure_id');				
-			$('tr[procedure_id=' + procedure_id + ']').remove();			
-			refreshAppointentValue();
+			removeProcedure(procedure_id);
 		});
 		
 		$('.remove-material, .remove-medicine').click(function(e){
 			e.preventDefault();			
+			var isMaterial = $(this).hasClass('remove-material');
+			
+			if(!confirm('Deseja realmente deletar esse ' + (isMaterial ? 'material' : 'medicamento') + '?')) return;
+			
 			var procedure_id = $(this).attr('procedure_id');
 			
-			selector = ($(this).hasClass('remove-material') ? '.material' : '.medicine') + '-' + procedure_id;
+			selector = (isMaterial ? '.material' : '.medicine') + '-' + procedure_id;
 			var element = findRecursiveParent($(this),selector);				
 			element.remove();
 			
