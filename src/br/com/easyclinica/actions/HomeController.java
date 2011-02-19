@@ -10,4 +10,9 @@ public class HomeController {
 	@Get
 	@Path("/")
 	public void dashboard(){}
+
+	@Get
+	@Path("/nao-autorizado")
+	public void notAuthorized() {
+	}
 }

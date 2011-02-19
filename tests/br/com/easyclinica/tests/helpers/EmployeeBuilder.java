@@ -1,6 +1,7 @@
 package br.com.easyclinica.tests.helpers;
 
 import br.com.easyclinica.domain.entities.Employee;
+import br.com.easyclinica.domain.entities.Position;
 
 public class EmployeeBuilder {
 
@@ -12,5 +13,10 @@ public class EmployeeBuilder {
 	
 	public Employee instance() {
 		return instance;
+	}
+
+	public EmployeeBuilder withPosition(Position position) {
+		instance.setPosition(position);
+		return this;
 	}
 }

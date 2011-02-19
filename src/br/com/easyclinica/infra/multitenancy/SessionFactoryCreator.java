@@ -6,26 +6,6 @@ import org.hibernate.cfg.Configuration;
 import br.com.caelum.vraptor.ioc.Component;
 import br.com.caelum.vraptor.ioc.ComponentFactory;
 import br.com.caelum.vraptor.ioc.RequestScoped;
-import br.com.easyclinica.domain.entities.Anamnese;
-import br.com.easyclinica.domain.entities.Appointment;
-import br.com.easyclinica.domain.entities.AppointmentMaterial;
-import br.com.easyclinica.domain.entities.AppointmentMedicine;
-import br.com.easyclinica.domain.entities.AppointmentProcedure;
-import br.com.easyclinica.domain.entities.Clinic;
-import br.com.easyclinica.domain.entities.Doctor;
-import br.com.easyclinica.domain.entities.Employee;
-import br.com.easyclinica.domain.entities.HealthCarePlan;
-import br.com.easyclinica.domain.entities.Material;
-import br.com.easyclinica.domain.entities.MaterialInProcedure;
-import br.com.easyclinica.domain.entities.Medicine;
-import br.com.easyclinica.domain.entities.MedicineInProcedure;
-import br.com.easyclinica.domain.entities.Patient;
-import br.com.easyclinica.domain.entities.PrecifiedMaterial;
-import br.com.easyclinica.domain.entities.PrecifiedMedicine;
-import br.com.easyclinica.domain.entities.PrecifiedProcedure;
-import br.com.easyclinica.domain.entities.PrecifiedSpecialty;
-import br.com.easyclinica.domain.entities.Procedure;
-import br.com.easyclinica.domain.entities.Specialty;
 import br.com.easyclinica.infra.database.DatabaseConfigurator;
 
 @Component

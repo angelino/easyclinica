@@ -1,6 +1,7 @@
 package br.com.easyclinica.domain.entities;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -12,7 +13,7 @@ public class Employee {
 	private int id;
 	private String login;
 	private String password;
-	@Enumerated
+	@Enumerated(EnumType.STRING)
 	private Position position;
 	private String email;
 	private String name;
