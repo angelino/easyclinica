@@ -1,6 +1,7 @@
 package br.com.easyclinica.domain.entities;
 
 import javax.persistence.Entity;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
@@ -11,6 +12,12 @@ public class Employee {
 	private int id;
 	private String login;
 	private String password;
+	@Enumerated
+	private Position position;
+	private String email;
+	private String name;
+	private String cellphone;
+	private String observations;
 	
 	public String getLogin() {
 		return login;
@@ -29,6 +36,36 @@ public class Employee {
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	public Position getPosition() {
+		return position;
+	}
+	public void setPosition(Position position) {
+		this.position = position;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getCellphone() {
+		return cellphone;
+	}
+	public void setCellphone(String cellphone) {
+		this.cellphone = cellphone;
+	}
+	public String getObservations() {
+		return observations;
+	}
+	public void setObservations(String observations) {
+		this.observations = observations;
 	}
 	
 	
