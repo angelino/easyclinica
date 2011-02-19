@@ -52,7 +52,9 @@ public class VerifyIfAnAppointmentIsReturnServiceTests  extends BaseIntegrationT
 		appointment.setSpecialty(specialty);
 		session.save(appointment);
 		
-		boolean retorno = service.check(patient.getId(), specialty.getId(), plan.getId());
+		Calendar nextAppointment =  Calendar.getInstance();
+		nextAppointment.add(Calendar.DAY_OF_MONTH, 2);
+		boolean retorno = service.check(patient.getId(), specialty.getId(), plan.getId(), nextAppointment);
 		
 		assertTrue(retorno);
 	}
@@ -71,14 +73,14 @@ public class VerifyIfAnAppointmentIsReturnServiceTests  extends BaseIntegrationT
 		appointment.setSpecialty(specialty);
 		session.save(appointment);
 		
-		boolean retorno = service.check(patient.getId(), specialty.getId(), plan.getId());
+		boolean retorno = service.check(patient.getId(), specialty.getId(), plan.getId(), Calendar.getInstance());
 		
 		assertFalse(retorno);
 	}
 	
 	@Test
 	public void shouldReturnFalseIfThereIsNotAnAppointmentForThePatient() {
-		boolean retorno = service.check(patient.getId(), specialty.getId(), plan.getId());
+		boolean retorno = service.check(patient.getId(), specialty.getId(), plan.getId(), Calendar.getInstance());
 		
 		assertFalse(retorno);
 	}

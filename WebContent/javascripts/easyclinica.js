@@ -41,7 +41,14 @@ var EasyClinica = {
 		// alinhamento do box lateral direito
 		if($('.boxmenu').length > 0) {
 			$('.boxright').css('margin-top', '55px');
-		} 
+		}
+		
+		$(window).keydown(function(event){
+		    if(event.keyCode == 13) {
+		      event.preventDefault();
+		      return false;
+		    }
+		});
 	}
 };
 
@@ -50,7 +57,7 @@ EasyClinica.cfg.services = {
 		newProcedureToAppointment: '/easyclinica/appointments/_newProcedureToAppointment',
 		getSpecialtyPrice: '/easyclinica/especialidades/{0}/{1}',
 		getDoctorSpecialty: '/easyclinica/medicos/{0}/especialidade',
-		verifyIfAppointmentIsReturn: '/easyclinica/pacientes/{0}/{1}/{2}/isReturn',
+		verifyIfAppointmentIsReturn: '/easyclinica/appointments/isReturn',
 		searchProcedure: '/easyclinica/procedures/_search',
 		
 		showDoctorDetails: '/easyclinica/doctor/_show',

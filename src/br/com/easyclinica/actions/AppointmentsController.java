@@ -1,5 +1,6 @@
 package br.com.easyclinica.actions;
 
+import java.util.Calendar;
 import java.util.List;
 
 import br.com.caelum.vraptor.Delete;
@@ -134,10 +135,9 @@ public class AppointmentsController extends BaseController {
 		 	result.include("medicines", medicines);
 	}
 	
-	@Get
-	@Path("/pacientes/{patientId}/{specialtyId}/{healthCarePlanId}/isReturn")
-	public void isReturn(int patientId, int specialtyId, int healthCarePlanId) {
-		boolean isReturn = verifyIfAnAppointmentIsReturnService.check(patientId, specialtyId, healthCarePlanId);
+	@Post
+	public void isReturn(int patientId, int specialtyId, int healthCarePlanId, Calendar appointmentDate) {
+		boolean isReturn = verifyIfAnAppointmentIsReturnService.check(patientId, specialtyId, healthCarePlanId, appointmentDate);
 		
 		result.use(Results.json()).from(isReturn).serialize();
 	}

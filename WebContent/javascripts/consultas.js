@@ -120,6 +120,10 @@ EasyClinica.pages['consultas'] = function(){
 		isReturn();
 	});
 	
+	$('input[name=appointment.appointmentDate]').change(function(){
+		isReturn();
+	});
+	
 	$('select[name=appointment.doctor.id]').change(function(){
 		var doctorId = $(this).val();
 		
@@ -146,12 +150,21 @@ EasyClinica.pages['consultas'] = function(){
 	};
 	
 	var isReturn = function() {
-		var specialty_id = $('select[name=appointment.specialty.id]').val();
-		var patient_id = $('input[name=appointment.patient.id]').val();
-		var convenio_id = $('input[name=appointment.healthCarePlan.id]:checked').val();
+		var specialtyId = $('select[name=appointment.specialty.id]').val();
+		var patientId = $('input[name=appointment.patient.id]').val();
+		var healthCarePlanId = $('input[name=appointment.healthCarePlan.id]:checked').val();
+		var appointmentDate = $('input[name=appointment.appointmentDate]').val();
 		
-		var url = EasyClinica.cfg.services.verifyIfAppointmentIsReturn.format(patient_id, specialty_id, convenio_id);		
-		$.get(url, function(data) {
+		if(specialtyId == 0) return;
+		
+		var dados = {
+				specialtyId: specialtyId, 
+				patientId: patientId, 
+				healthCarePlanId: healthCarePlanId,
+				appointmentDate: appointmentDate
+		};
+		
+		$.post(EasyClinica.cfg.services.verifyIfAppointmentIsReturn, dados, function(data){
 			if(data.boolean) $('#aviso-retorno').show();
 			else $('#aviso-retorno').hide();
 		});

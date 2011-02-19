@@ -20,7 +20,7 @@ public class VerifyIfAnAppointmentIsReturnService {
 		this.allAppointments = allAppointments;
 	}
 	
-	public boolean check(int patientId, int specialtyId, int healthCarePlanId) {
+	public boolean check(int patientId, int specialtyId, int healthCarePlanId, Calendar appointmentDate) {
 		HealthCarePlan plan = allHealthCarePlans.getById(healthCarePlanId);
 		Appointment appointment = allAppointments.getLastFromPatientAndSpecialty(new Patient(patientId), new Specialty(specialtyId));
 		
@@ -31,7 +31,7 @@ public class VerifyIfAnAppointmentIsReturnService {
 		Calendar lastDayForReturn = appointment.getAppointmentDate();
 		lastDayForReturn.add(Calendar.DAY_OF_MONTH, plan.getPeriodToReturn());
 		
-		if(lastDayForReturn.after(Calendar.getInstance())) isReturn = true;
+		if(lastDayForReturn.after(appointmentDate)) isReturn = true;
 		
 		return isReturn;
 	}
