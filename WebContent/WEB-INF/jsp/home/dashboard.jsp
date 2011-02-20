@@ -20,10 +20,12 @@
 				
 				<c:forEach var="message" items="${messages}">
 					<div>
+						<helper:gravatar email="${message.employee.email}" size="150"></helper:gravatar>
 						${message.text}
 					</div>
 					<c:forEach var="reply" items="${message.replies}">
 						<div>
+							<helper:gravatar email="${reply.employee.email}" size="150"></helper:gravatar>
 							${reply.text}
 						</div>
 					</c:forEach>

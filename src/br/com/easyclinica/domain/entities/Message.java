@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
@@ -17,7 +18,7 @@ public class Message {
 	@Id @GeneratedValue
 	private int id;
 	private String text;
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.EAGER)
 	private Employee employee;
 	private Calendar date;
 	@OneToMany(mappedBy="message", cascade=CascadeType.ALL)

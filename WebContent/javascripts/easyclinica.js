@@ -95,7 +95,7 @@ EasyClinica.common.generalFunctions = function(){
 		}
 	});
 	
-	// Máscaras
+	// Mï¿½scaras
 	$('.mask_telefone').mask('(99) 9999-9999');
 	$('.mask_cep').mask('99999-999');
 	
@@ -107,14 +107,14 @@ EasyClinica.common.generalFunctions = function(){
 		showAnim: 'drop'
 	});
 	
-	// botão voltar
+	// botï¿½o voltar
 	$('.btnback').click(function(e){
 		e.preventDefault();
 		var redirect_to = $(this).attr('redirect_to');
 		document.location.href = redirect_to;
 	});
 	
-	// botão cancelar
+	// botï¿½o cancelar
 	$('.btncancel').click(function(e) {
 		e.preventDefault();
 		var redirect_to = $(this).attr('redirect_to');
@@ -129,7 +129,7 @@ EasyClinica.common.formValidation = function () {
 	});	
 	
     $.tools.validator.localize('pt', {
-        '[required]': 'campo obrigatório'
+        '[required]': 'campo obrigatï¿½rio'
     });
     
     $('input[type=submit], .submit').click(function (e) {
@@ -144,7 +144,7 @@ EasyClinica.common.formValidation = function () {
     });
     
     //messages
-    $('input.currency').attr('data-message','valor inválido');
+    $('input.currency').attr('data-message','valor invï¿½lido');
 };
 
 /* LIB */

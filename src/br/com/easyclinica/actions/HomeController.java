@@ -5,6 +5,7 @@ import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
 import br.com.easyclinica.domain.repositories.AllMessages;
+import br.com.easyclinica.infra.gravatar.GravatarImage;
 
 @Resource
 public class HomeController {
@@ -20,6 +21,7 @@ public class HomeController {
 	@Get
 	@Path("/")
 	public void dashboard(){
+		result.include("gravatar", new GravatarImage());
 		result.include("messages", messages.recents());
 	}
 
