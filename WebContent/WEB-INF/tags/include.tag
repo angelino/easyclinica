@@ -9,5 +9,5 @@
 </c:if>
 <c:if test="${type == 'js'}">
 <c:url value="/javascripts/${fileName}" var="js"></c:url>
-<script type="text/javascript" language="javascript" src="${js}" charset="iso-8859-1"></script>
+<script type="text/javascript" language="javascript" src="${js}" charset="utf-8"></script>
 </c:if>
