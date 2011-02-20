@@ -15,12 +15,14 @@ import br.com.easyclinica.domain.entities.Material;
 import br.com.easyclinica.domain.entities.MaterialInProcedure;
 import br.com.easyclinica.domain.entities.Medicine;
 import br.com.easyclinica.domain.entities.MedicineInProcedure;
+import br.com.easyclinica.domain.entities.Message;
 import br.com.easyclinica.domain.entities.Patient;
 import br.com.easyclinica.domain.entities.PrecifiedMaterial;
 import br.com.easyclinica.domain.entities.PrecifiedMedicine;
 import br.com.easyclinica.domain.entities.PrecifiedProcedure;
 import br.com.easyclinica.domain.entities.PrecifiedSpecialty;
 import br.com.easyclinica.domain.entities.Procedure;
+import br.com.easyclinica.domain.entities.Reply;
 import br.com.easyclinica.domain.entities.Specialty;
 
 public class DatabaseConfigurator {
@@ -56,6 +58,8 @@ public class DatabaseConfigurator {
 		configuration.addAnnotatedClass(Specialty.class);
 		configuration.addAnnotatedClass(Employee.class);
 		configuration.addAnnotatedClass(Anamnese.class);
+		configuration.addAnnotatedClass(Message.class);
+		configuration.addAnnotatedClass(Reply.class);
 
 		// TODO: Colocar c3p0
 //		hibernate.c3p0.min_size=5
