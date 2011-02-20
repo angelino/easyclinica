@@ -27,6 +27,7 @@
 		
 		<div class="box" id="schedule">		
 			<div class="boxcontent">
+				<input type="hidden" name="schedule.doctor.id" value="${doctor.id}"/>
 			
 				<div id="calhead" style="padding-left:1px;padding-right:1px;">          
             		<div class="cHead"><div class="ftitle">Agenda - Dr(a) ${doctor.name}</div>

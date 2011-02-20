@@ -1,8 +1,9 @@
 EasyClinica.pages['schedule'] = function(){
 	
+	var doctorId = $('input[name=schedule.doctor.id]').val();
+	
 	var view="week";          
     
-    var DATA_FEED_URL = "php/datafeed.php";
     var op = {
         view: view,
         theme:3,
@@ -15,10 +16,10 @@ EasyClinica.pages['schedule'] = function(){
         onAfterRequestData: cal_afterrequest,
         onRequestDataError: cal_onerror, 
         autoload:true,
-        url: DATA_FEED_URL + "?method=list",  
-        quickAddUrl: DATA_FEED_URL + "?method=add", 
-        quickUpdateUrl: DATA_FEED_URL + "?method=update",
-        quickDeleteUrl: DATA_FEED_URL + "?method=remove"        
+        url: EasyClinica.cfg.services.scheduleList.format(doctorId),  
+        quickAddUrl: EasyClinica.cfg.services.scheduleAdd.format(doctorId), 
+        quickUpdateUrl: EasyClinica.cfg.services.scheduleUpdate.format(doctorId),
+        quickDeleteUrl: EasyClinica.cfg.services.scheduleRemove.format(doctorId)        
     };
     var $dv = $("#calhead");
     var _MH = document.documentElement.clientHeight;
@@ -33,13 +34,14 @@ EasyClinica.pages['schedule'] = function(){
     $("#caltoolbar").noSelect();
     
     $("#hdtxtshow").datepicker({ picker: "#txtdatetimeshow", showtarget: $("#txtdatetimeshow"),
-    onReturn:function(r){                          
-                    var p = $("#gridcontainer").gotoDate(r).BcalGetOp();
-                    if (p && p.datestrshow) {
-                        $("#txtdatetimeshow").text(p.datestrshow);
-                    }
-             } 
+    	onReturn:function(r){                          
+            var p = $("#gridcontainer").gotoDate(r).BcalGetOp();
+            if (p && p.datestrshow) {
+                $("#txtdatetimeshow").text(p.datestrshow);
+            }
+        } 
     });
+    
     function cal_beforerequest(type)
     {
         var t="Carregando...";
@@ -57,6 +59,7 @@ EasyClinica.pages['schedule'] = function(){
         $("#errorpannel").hide();
         $("#loadingpannel").html(t).show();    
     }
+    
     function cal_afterrequest(type)
     {
         switch(type)
@@ -166,8 +169,6 @@ EasyClinica.pages['schedule'] = function(){
         if (p && p.datestrshow) {
             $("#txtdatetimeshow").text(p.datestrshow);
         }
-
-
     });
     //previous date range
     $("#sfprevbtn").click(function(e) {
