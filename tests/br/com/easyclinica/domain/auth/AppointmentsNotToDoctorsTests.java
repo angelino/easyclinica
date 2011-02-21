@@ -43,6 +43,16 @@ public class AppointmentsNotToDoctorsTests {
 		
 		assertTrue(accepts);
 	}
+	
+	@Test
+	public void shouldAllowOwners() {
+		Employee employee = as(Position.OWNER);
+		
+		loggedUser.set(clinic, employee);
+		boolean accepts = new AppointmentsNotToDoctors().allows(AppointmentsController.class, employee);
+		
+		assertTrue(accepts);
+	}
 
 	@Test
 	public void shouldAllowFinancial() {

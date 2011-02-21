@@ -6,7 +6,7 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
-import br.com.easyclinica.actions.ReportsController;
+import br.com.easyclinica.actions.UsersController;
 import br.com.easyclinica.domain.entities.Clinic;
 import br.com.easyclinica.domain.entities.Employee;
 import br.com.easyclinica.domain.entities.Position;
@@ -14,7 +14,7 @@ import br.com.easyclinica.infra.multitenancy.LoggedUser;
 import br.com.easyclinica.tests.helpers.ClinicBuilder;
 import br.com.easyclinica.tests.helpers.EmployeeBuilder;
 
-public class ReportsOnlyToFinancialTests {
+public class UsersOnlyToOwnersTests {
 
 	private LoggedUser loggedUser;
 	private Clinic clinic;
@@ -29,7 +29,7 @@ public class ReportsOnlyToFinancialTests {
 		Employee employee = as(Position.DOCTOR);
 		
 		loggedUser.set(clinic, employee);
-		boolean accepts = new ReportsOnlyToFinancial().allows(ReportsController.class, employee);
+		boolean accepts = new UsersOnlyToOwners().allows(UsersController.class, employee);
 		
 		assertFalse(accepts);
 	}
@@ -39,33 +39,32 @@ public class ReportsOnlyToFinancialTests {
 		Employee employee = as(Position.ATTENDANT);
 		
 		loggedUser.set(clinic, employee);
-		boolean accepts = new ReportsOnlyToFinancial().allows(ReportsController.class, employee);
+		boolean accepts = new UsersOnlyToOwners().allows(UsersController.class, employee);
 		
 		assertFalse(accepts);
 	}
 
 	@Test
-	public void shouldAllowFinancial() {
+	public void shouldNotAllowFinancial() {
 		Employee employee = as(Position.FINANCIAL);
 		
 		loggedUser.set(clinic, employee);
-		boolean accepts = new ReportsOnlyToFinancial().allows(ReportsController.class, employee);
+		boolean accepts = new UsersOnlyToOwners().allows(UsersController.class, employee);
 		
-		assertTrue(accepts);
+		assertFalse(accepts);
 	}
-	
+
 	@Test
 	public void shouldAllowOwners() {
 		Employee employee = as(Position.OWNER);
 		
 		loggedUser.set(clinic, employee);
-		boolean accepts = new ReportsOnlyToFinancial().allows(ReportsController.class, employee);
+		boolean accepts = new UsersOnlyToOwners().allows(UsersController.class, employee);
 		
 		assertTrue(accepts);
 	}
-
+	
 	public Employee as(Position position) {
 		return new EmployeeBuilder().withPosition(position).instance();
 	}
-
 }

@@ -72,7 +72,9 @@ EasyClinica.cfg.services = {
 		
 		postReply: '/easyclinica/mensagens/{0}/respostas/_nova',
 		postMessage: '/easyclinica/mensagens/_nova',
-		recentMessages: '/easyclinica/mensagens/_recentes'
+		recentMessages: '/easyclinica/mensagens/_recentes',
+			
+		showUserDetails: '/easyclinica/usuarios/_show'
 };
 
 EasyClinica.cfg.images = {

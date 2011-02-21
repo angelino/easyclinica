@@ -17,4 +17,5 @@ public class ValidationMessages {
 	public static final String INVALID_ANAMNESE = "errors.invalid_anamnese";
 	
 	public static final String INVALID_APPOINTMENT_DATE = "errors.invalid_appointment_date";
+	public static final String INVALID_LOGIN = "errors.invalid_login";
 }

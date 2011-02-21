@@ -330,6 +330,12 @@ div.error {
 .modal-medicos .modal-content span{float:left;}
 .modal-medicos .modal-content div.observations p {width: 100%;}
 
+.modal-usuarios .modal-content{padding:0 20px;text-align:left;}
+.modal-usuarios .modal-content div {float:left; width: 100%;margin-top:5px;}
+.modal-usuarios .modal-content p{float:left;width:90px;font-weight: bold;}
+.modal-usuarios .modal-content span{float:left;}
+.modal-usuarios .modal-content div.observations p {width: 100%;}
+
 .modal-convenios .modal-content{padding:0 20px;text-align:left;}
 .modal-convenios .modal-content div {float:left; width: 100%;margin-top:5px;}
 .modal-convenios .modal-content p{float:left;width:189px;font-weight: bold;}

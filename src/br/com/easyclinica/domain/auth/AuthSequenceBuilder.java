@@ -9,6 +9,6 @@ public class AuthSequenceBuilder {
 
 	public AuthSequence build() {
 		return new AuthSequence(new AppointmentsNotToDoctors(),
-				new ReportsOnlyToFinancial());
+				new ReportsOnlyToFinancial(), new UsersOnlyToOwners());
 	}
 }

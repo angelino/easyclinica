@@ -27,6 +27,7 @@
 	    <helper:include fileName="anamnese.js" type="js" />
 	    <helper:include fileName="agenda.js" type="js" />
 	    <helper:include fileName="dashboard.js" type="js" />	    
+	    <helper:include fileName="usuarios.js" type="js" />	    
 	    <decorator:head />
 	</head>
 
@@ -48,6 +49,7 @@
                   <li id="menu-link-pacientes"><a href="<c:url value="/pacientes" />">Pacientes</a></li>
                   <li id="menu-link-convenios"><a href="<c:url value="/convenios" />">Convênios</a></li>
                   <li id="menu-link-medicos"><a href="<c:url value="/medicos" />">Médicos</a></li>
+                  <li id="menu-link-usuarios"><a href="<c:url value="/usuarios" />">Usuários</a></li>
                 </ul>
             </div>
             <!-- END HEADER -->
