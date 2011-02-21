@@ -8,17 +8,22 @@ import org.junit.Before;
 import org.junit.Test;
 
 import br.com.easyclinica.domain.entities.Employee;
+import br.com.easyclinica.domain.repositories.AllEmployees;
 import br.com.easyclinica.domain.validators.Error;
 import br.com.easyclinica.domain.validators.ValidationMessages;
 import br.com.easyclinica.tests.helpers.EmployeeBuilder;
-
+import static org.mockito.Mockito.*;
 public class DefaultEmployeeValidatorTests {
 
 	private DefaultEmployeeValidator validator;
+	private AllEmployees employees;
 
 	@Before
 	public void setUp() {
-		validator = new DefaultEmployeeValidator();
+		employees = mock(AllEmployees.class);
+		validator = new DefaultEmployeeValidator(employees);
+		
+		when(employees.getByLogin(any(String.class))).thenReturn(null);
 	}
 	
 	@Test
@@ -47,6 +52,18 @@ public class DefaultEmployeeValidatorTests {
 		List<Error> errors = validator.validate(employee);		
 		assertEquals(1, errors.size());
 		assertEquals(ValidationMessages.INVALID_LOGIN, errors.get(0).getKey());
+	}
+	
+	@Test
+	public void shouldReturnErrorIfLoginAlreadyExists() {
+		Employee employee = new EmployeeBuilder().withLogin("johnny").instance();
+		Employee johnny = new EmployeeBuilder().withLogin("johnny").instance();
+		
+		when(employees.getByLogin("johnny")).thenReturn(johnny);
+		
+		List<Error> errors = validator.validate(employee);
+		assertEquals(1, errors.size());
+		assertEquals(ValidationMessages.LOGIN_ALREADY_EXISTS, errors.get(0).getKey());		
 	}
 
 }
