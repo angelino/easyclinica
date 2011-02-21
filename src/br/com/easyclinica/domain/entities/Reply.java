@@ -7,12 +7,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import org.hibernate.annotations.Type;
+
 @Entity
 public class Reply {
 
 	@Id @GeneratedValue
 	private int id;
-	private String text;
+	@Type(type="text") private String text;
 	private Calendar date;
 	@ManyToOne
 	private Employee employee;

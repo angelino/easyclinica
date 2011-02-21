@@ -11,12 +11,14 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import org.hibernate.annotations.Type;
+
 @Entity
 public class Message {
 
 	@Id @GeneratedValue
 	private int id;
-	private String text;
+	@Type(type="text") private String text;
 	@ManyToOne(fetch=FetchType.EAGER)
 	private Employee employee;
 	private Calendar date;
