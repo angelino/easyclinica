@@ -12,6 +12,6 @@
 		<img src="<%= url %>" />
 	</c:when>
 	<c:otherwise>
-		<img src="" />
+		<img src="<c:url value="/images/person.gif" width="${size}" height="${size}" />" />
 	</c:otherwise>
 </c:choose>
