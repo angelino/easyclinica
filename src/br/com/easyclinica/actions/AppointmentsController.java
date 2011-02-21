@@ -12,6 +12,9 @@ import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.Validator;
 import br.com.caelum.vraptor.view.Results;
 import br.com.easyclinica.domain.entities.Appointment;
+import br.com.easyclinica.domain.entities.AppointmentMaterial;
+import br.com.easyclinica.domain.entities.AppointmentMedicine;
+import br.com.easyclinica.domain.entities.AppointmentProcedure;
 import br.com.easyclinica.domain.entities.HealthCarePlan;
 import br.com.easyclinica.domain.entities.MaterialWithPriceAndQuantity;
 import br.com.easyclinica.domain.entities.MedicineWithPriceAndQuantity;
@@ -102,11 +105,29 @@ public class AppointmentsController extends BaseController {
 		return allPatients.getById(patient);
 	}
 	
+	private void setAllParents(Appointment appointment) {
+		for (AppointmentProcedure procedure : appointment.getProcedures()) {
+			procedure.setAppointment(appointment);
+
+			for (AppointmentMaterial material : procedure.getMaterials()) {
+				material.setProcedure(procedure);
+			}
+
+			for (AppointmentMedicine medicine : procedure.getMedicines()) {
+				medicine.setProcedure(procedure);
+			}
+		}
+	}
+
+	
 	@Post
 	@Path("/pacientes/{appointment.patient.id}/consultas/novo")
 	public void saveNewAppointment(Appointment appointment) {
 		translator.translate(appointmentValidator.validate(appointment));
 		validator.onErrorUse(Results.logic()).forwardTo(AppointmentsController.class).newAppointment(appointment.getPatient().getId());		
+		
+		setAllParents(appointment);
+		appointment.recalculate();
 		
 		allAppointments.save(appointment);
 		
