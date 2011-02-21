@@ -31,26 +31,30 @@
 			</select>
 			
     	</div>
-	
-		<div>
-			<label class="title">Login:<span>*</span></label>
-			<input type="text" name="employee.login" maxlength="100" value="${employee.login}" required="required" />
-		</div>
-
-
-		<c:if test="${param.put == true}">
-		<div>
-			<label class="title">Senha:</label>
-			<input type="password" name="employee.password" maxlength="100" />
-				<span>Se não quiser alterar a senha, deixe este campo em branco.</span>
-		</div>
-		</c:if>
-
+    	
 		<c:if test="${param.put == false}">
-		<div>
-			<label class="title">Senha:<span>*</span></label>
-			<input type="password" name="employee.password" maxlength="100" value="${employee.password}" required="required" />
-		</div>
+			<div>
+				<label class="title">Login:<span>*</span></label>
+				<input type="text" name="employee.login" maxlength="100" value="${employee.login}" required="required" />
+			</div>
+			
+			<div>
+				<label class="title">Senha:<span>*</span></label>
+				<input type="password" name="employee.password" maxlength="100" value="${employee.password}" required="required" />
+			</div>
+
+		</c:if>
+		
+		<c:if test="${param.put == true}">
+			<div>
+				<label class="title">Login:<span>*</span></label>
+				<input type="hidden" name="employee.login" value="${employee.login}" />${employee.login}
+			</div>
+			<div>
+				<label class="title">Senha:</label>
+				<input type="password" name="employee.password" maxlength="100" />
+					<span>Se não quiser alterar a senha, deixe este campo em branco.</span>
+			</div>
 		</c:if>
 					
 		<div class="telephone">
