@@ -1,10 +1,13 @@
 package br.com.easyclinica.domain.entities;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -27,6 +30,12 @@ public class Patient {
 	@Type(type="text") private String observations;
 	private String cellphone;
 	private String telephone;
+	private String commercialPhone;
+	private Calendar birthDate;
+	private String rg;
+	private String cpf;
+	private String profession;
+	@Enumerated(EnumType.STRING) private MaritalStatus maritalStatus;
 	private String email;
 	private String healthCarePlanCode;
 	@OneToMany(fetch=FetchType.LAZY, mappedBy="patient")
@@ -150,5 +159,40 @@ public class Patient {
 		a.setPatient(this);
 		anamneses.add(a);
 	}
-
+	public String getCommercialPhone() {
+		return commercialPhone;
+	}
+	public void setCommercialPhone(String commercialPhone) {
+		this.commercialPhone = commercialPhone;
+	}
+	public Calendar getBirthDate() {
+		return birthDate;
+	}
+	public void setBirthDate(Calendar birthDate) {
+		this.birthDate = birthDate;
+	}
+	public String getRg() {
+		return rg;
+	}
+	public void setRg(String rg) {
+		this.rg = rg;
+	}
+	public String getCpf() {
+		return cpf;
+	}
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+	public String getProfession() {
+		return profession;
+	}
+	public void setProfession(String profession) {
+		this.profession = profession;
+	}
+	public MaritalStatus getMaritalStatus() {
+		return maritalStatus;
+	}
+	public void setMaritalStatus(MaritalStatus maritalStatus) {
+		this.maritalStatus = maritalStatus;
+	}
 }
