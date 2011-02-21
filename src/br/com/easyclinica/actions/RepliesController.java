@@ -32,6 +32,6 @@ public class RepliesController {
 		
 		replies.add(newReply);
 		
-		result.include("messages", messages.recents());
+		result.redirectTo(MessagesController.class).recents();
 	}
 }

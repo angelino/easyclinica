@@ -24,4 +24,21 @@ EasyClinica.pages['dashboard'] = function(){
 		});
 	};
 
+	refreshMessages = function() {
+		alert('oi');
+		var url = EasyClinica.cfg.services.recentMessages;
+		$.get(url, function(data) {
+			$('#allMessages').html(data);
+		});
+		
+		startRefreshingMessages();
+	};
+	
+	startRefreshingMessages = function() {
+		setTimeout(refreshMessages, 60000 * 5); // 5 minutos		
+	};
+	
+	startRefreshingMessages();
+	
+	
 };

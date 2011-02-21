@@ -71,7 +71,8 @@ EasyClinica.cfg.services = {
 		scheduleRemove: '/easyclinica/medicos/{0}/agenda/delete',
 		
 		postReply: '/easyclinica/mensagens/{0}/respostas/_nova',
-		postMessage: '/easyclinica/mensagens/_nova'
+		postMessage: '/easyclinica/mensagens/_nova',
+		recentMessages: '/easyclinica/mensagens/_recentes'
 };
 
 EasyClinica.cfg.images = {

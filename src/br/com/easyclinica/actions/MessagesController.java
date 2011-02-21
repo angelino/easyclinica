@@ -2,6 +2,7 @@ package br.com.easyclinica.actions;
 
 import java.util.Calendar;
 
+import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Resource;
@@ -31,7 +32,12 @@ public class MessagesController {
 		
 		messages.add(message);
 		
+		result.redirectTo(MessagesController.class).recents();
+	}
+	
+	@Get
+	@Path("/mensagens/_recentes")
+	public void recents() {
 		result.include("messages", messages.recents());
-		
 	}
 }
