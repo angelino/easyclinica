@@ -7,12 +7,12 @@ public enum MaritalStatus {
 	UNMARRIED_PARTNER("Parceiro não casado"),
 	WIDOWED("Viúvo");
 	
-	private String description;
-	MaritalStatus(String description) {
-		this.description = description;
+	private String formattedName;
+	MaritalStatus(String formattedName) {
+		this.formattedName = formattedName;
 	}
 
-	public String getDescription() {
-		return this.description;
+	public String getFormattedName() {
+		return this.formattedName;
 	}
 }

@@ -30,7 +30,41 @@
 			<label class="title">Celular:</label>
     		<input type="text" name="patient.cellphone" class="mask_telefone" maxlength="50" value="${patient.cellphone}" />
     	</div>
-		
+
+		<div class="telephone">
+			<label class="title">Comercial:</label>
+    		<input type="text" name="patient.commercialPhone" class="mask_telefone" maxlength="50" value="${patient.commercialPhone}" />
+    	</div>
+
+		<div class="title">
+			<label class="title">Birth Date:</label>
+    		<input type="text" name="patient.birthDate"maxlength="50" class="datepicker" value="<fmt:formatDate value="${patient.birthDate.time}" pattern="dd/MM/yyyy" />" />
+    	</div>
+
+		<div class="title">
+			<label class="title">RG:</label>
+    		<input type="text" name="patient.rg" maxlength="50" value="${patient.rg}" />
+    	</div>
+    	
+    	<div class="title">
+			<label class="title">CPF:</label>
+    		<input type="text" name="patient.cpf" maxlength="50" value="${patient.cpf}" />
+    	</div>
+
+    	<div class="title">
+			<label class="title">Profissão:</label>
+    		<input type="text" name="patient.profession" maxlength="50" value="${patient.profession}" />
+    	</div>
+
+    	<div class="title">
+			<label class="title">Estado Civil:</label>
+			<select name="patient.maritalStatus">
+				<c:forEach var="status" items="${statuses}">
+					<option value="${status}" <c:if test="${status == patient.maritalStatus}">selected</c:if>>${status.formattedName}</option>
+				</c:forEach>
+			</select>
+    	</div>
+    	    	    	
 		<div>
 			<label class="title">E-mail:</label>
 			<input type="text" name="patient.email" maxlength="100" value="${patient.email}" />
