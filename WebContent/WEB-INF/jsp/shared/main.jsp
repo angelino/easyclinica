@@ -26,7 +26,7 @@
 	    <helper:include fileName="pacientes.js" type="js" />
 	    <helper:include fileName="anamnese.js" type="js" />
 	    <helper:include fileName="agenda.js" type="js" />
-	    
+	    <helper:include fileName="dashboard.js" type="js" />	    
 	    <decorator:head />
 	</head>
 

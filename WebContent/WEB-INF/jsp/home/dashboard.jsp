@@ -12,32 +12,13 @@
 				
 				<div>
 					O que você está fazendo agora?
-					<form action="<c:url value="/mensagens" />" method="post">
-						<input type="text" name="message.text"/>
-						<input type="submit" value="Postar" />
-					</form>
+						<input type="text" id="messageText"/>
+						<input type="button" value="Postar" class="message-button" />
 				</div>
 				
-				<c:forEach var="message" items="${messages}">
-					<div>
-						<helper:gravatar email="${message.employee.email}" size="50"></helper:gravatar>
-						${message.text}
-					</div>
-					<c:forEach var="reply" items="${message.replies}">
-						<div>
-							<helper:gravatar email="${reply.employee.email}" size="50"></helper:gravatar>
-							${reply.text}
-						</div>
-					</c:forEach>
-					<div>
-					Responder:
-					<form action="<c:url value="/mensagens/${message.id}/respostas" />" method="post">
-						<input type="text" name="reply" />
-						<input type="submit" />
-					</form>
-					</div>
-				</c:forEach>
-				
+				<div id="allMessages">
+					<helper:messages list="${messages}" />
+				</div>
 								
 			</div>
 		</div>

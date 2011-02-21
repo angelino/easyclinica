@@ -68,7 +68,10 @@ EasyClinica.cfg.services = {
 		scheduleList: '/easyclinica/medicos/{0}/agenda/list',
 		scheduleAdd: '/easyclinica/medicos/{0}/agenda/add',
 		scheduleUpdate: '/easyclinica/medicos/{0}/agenda/update',
-		scheduleRemove: '/easyclinica/medicos/{0}/agenda/delete'
+		scheduleRemove: '/easyclinica/medicos/{0}/agenda/delete',
+		
+		postReply: '/easyclinica/mensagens/{0}/respostas/_nova',
+		postMessage: '/easyclinica/mensagens/_nova'
 };
 
 EasyClinica.cfg.images = {
@@ -258,3 +261,15 @@ isFloat = function(s)
 {
 	return s.length>0 && !(/[^0-9.]/).test(s) && (/\.\d/).test(s);
 };
+
+disable = function(obj) {
+	obj.attr('disabled', true);
+};
+
+enable = function(obj) {
+	obj.attr('disabled', false);
+};
+
+isEmpty = function(text) {
+	return text == '';
+}

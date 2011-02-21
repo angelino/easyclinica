@@ -16,6 +16,7 @@ public class MessagesController {
 	private final AllMessages messages;
 	private final Result result;
 	private final LoggedUser loggedUser;
+	
 	public MessagesController(Result result, AllMessages messages, LoggedUser loggedUser) {
 		this.result = result;
 		this.messages = messages;
@@ -23,13 +24,14 @@ public class MessagesController {
 	}
 	
 	@Post
-	@Path("/mensagens")
+	@Path("/mensagens/_nova")
 	public void add(Message message) {
 		message.setDate(Calendar.getInstance());
 		message.setEmployee(loggedUser.getEmployee());
 		
 		messages.add(message);
 		
-		result.redirectTo(HomeController.class).dashboard();
+		result.include("messages", messages.recents());
+		
 	}
 }

@@ -13,9 +13,9 @@ public class MessageTests {
 		Message mensagem = new Message();
 		Employee employee = new EmployeeBuilder().instance();
 		
-		mensagem.addReply(employee, "reply");
+		Reply reply = mensagem.newReply(employee, "reply");
 		
-		assertEquals("reply", mensagem.getReplies().get(0).getText());
-		assertSame(employee, mensagem.getReplies().get(0).getEmployee());
+		assertEquals("reply", reply.getText());
+		assertSame(employee, reply.getEmployee());
 	}
 }
