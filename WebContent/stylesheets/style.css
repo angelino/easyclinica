@@ -361,3 +361,52 @@ div.error {
 .modal-anamneses .modal-content div.anamnese p {width: 100%;}
 /*END MODAL ######################################################################################################################*/
 
+/* MENSAGENS NA HOME */
+.box_post{float:left;width:418px;font-family:"lucida grande",tahoma,verdana,arial,sans-serif;margin:10px 0 0 10px;}
+.post_end{margin:20px 0 20px 20px;}
+.box_post .box_img{float:left;width:62px;height:auto;}
+.box_post p{float:left;width:350px;height:auto;font-size:11px;/*color:#808080;*/color:#000;word-wrap:break-word;}
+.box_post p strong{font-size:13px;font-weight:bold;color:#3B5998;margin:0 3px 0 0;}
+.box_post p strong a{font-weight:bold;color:#3B5998;float:left;margin:0 5px 0 0;}
+.box_post p strong a:hover{text-decoration:underline;}
+.box_post p.tempo{width:auto;margin-top:8px;float:left;color:#808080;}
+.box_post p.tempo span{margin:0 5px;}
+.box_post p.tempo1{margin:8px 0 0 63px;}
+.box_post span{float:left;margin:12px 5px 0 5px;color:#808080;}
+.box_post a{float:left;font-size:11px;color:#3B5998;text-decoration:none;margin-top:15px;}
+
+
+.box_post .box_comments_post{float:left;width:100%;color:#333333;font-family:"lucida grande",tahoma,verdana,arial,sans-serif;font-size:11px;text-align:left;margin-top:10px;}
+.box_post .box_comments_post ul{float:left;width:410px;}
+.box_post .box_comments_post ul li{float:left;width:400px;background-color:#EDEFF4;border-bottom:2px solid #fff;padding:5px;position:relative;}
+.box_post .box_comments_post ul li.highlight{float:left;width:410px;background-color:#d2d4d8;border-bottom:2px solid #fff;padding:5px;position:relative;}
+.box_post .box_comments_post ul li span.img_seta_fb_box_comments_post{float:left;width:9px;height:5px;background:url(../img/ideias/img_seta_fb_box_comments_post.png) no-repeat;position:absolute;top:-10px!important;left:17px!important;}
+.box_post .box_comments_post ul li span.img_mao{float:left;width:13px;height:12px;background:url(../img/ideias/img_mao.png) no-repeat; margin:0 5px 0 5px;}
+
+.box_post .box_comments_post ul li .img_foto_post{float:left;width:32px;height:32px;margin-right:8px;}
+
+.box_post .box_comments_post ul li .post{float:left;width:90%;}
+.box_post .box_comments_post ul li .post p.txt_post{float:left;width:360px!important; word-wrap:break-word;}
+.box_post .box_comments_post ul li .post p.txt_post a{float:left;font-weight:bold;}
+.box_post .box_comments_post ul li .post p.txt_post a:hover{text-decoration:underline!important;}
+
+.box_post .box_comments_post ul li .post p.txt_post strong{color:#17253F;font-size:11px;font-weight:bold;margin:0;}
+
+.box_post .box_comments_post ul li textarea{float:left;width:98.5%;height:14px;border:1px solid #BDC7D8;color:#777777;font-family:"lucida grande",tahoma,verdana,arial,sans-serif;font-size:11px;padding:3px;}
+.box_post .box_comments_post ul li textarea.comment{float:left;width:88.2%;height:29px;}
+.box_post .box_comments_post ul li input{float:right;margin-top:5px;background-color:#5972a8;border:1px #29447e solid;padding:4px;font-weight:bold;color:#FFF;cursor: pointer;}
+
+.box_post .box_comments_post ul li a{color:#3B5998;cursor:pointer;text-decoration:none;margin:0 5px 0 0!important;}
+.box_post .box_comments_post ul li a.link_comentario_exibir_todos{background:url(../img/balao_coment.png) no-repeat;padding-left:16px;}
+.box_post .box_comments_post ul li a:hover{text-decoration:underline;}
+
+.box_post .box_comments_post ul li .post p.exibir_todos{color:#3B5998;float:left;font-size:11px;margin:3px 0 0 5px; width:auto;}
+.box_post .box_comments_post ul li .post span.exibir_todos{color:#3B5998;float:left;font-size:11px;margin:3px 0 0 5px;width:auto;}
+
+.box_post .box_comments_post ul li a{color:#3B5998;cursor:pointer;text-decoration:none;margin:0 5px 0 0!important;}
+.box_post .box_comments_post ul li a.link_comentario_exibir_todos{background:url(../img/balao_coment.png) no-repeat;padding-left:16px;}
+.box_post .box_comments_post ul li a:hover{text-decoration:underline;}
+
+.newPost textarea{float:left;width:98.5%;height:14px;border:1px solid #BDC7D8;color:#777777;font-family:"lucida grande",tahoma,verdana,arial,sans-serif;font-size:11px;padding:3px;}
+.newPost textarea.comment{float:left;width:88.2%;height:29px;}
+.newPost input{float:right;margin-top:5px;background-color:#5972a8;border:1px #29447e solid;padding:4px;font-weight:bold;color:#FFF;cursor: pointer;}

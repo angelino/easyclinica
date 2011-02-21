@@ -10,9 +10,9 @@
 			<div class="boxcontent">
 				<h2>Dashboard</h2>
 				
-				<div>
+				<div class="newPost">
 					O que você está fazendo agora?
-						<input type="text" id="messageText"/>
+						<textarea id="messageText" class="comment"></textarea>
 						<input type="button" value="Postar" class="message-button" />
 				</div>
 				

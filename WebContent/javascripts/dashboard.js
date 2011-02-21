@@ -25,7 +25,6 @@ EasyClinica.pages['dashboard'] = function(){
 	};
 
 	refreshMessages = function() {
-		alert('oi');
 		var url = EasyClinica.cfg.services.recentMessages;
 		$.get(url, function(data) {
 			$('#allMessages').html(data);
