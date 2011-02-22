@@ -39,6 +39,6 @@ public class PrintingsController {
 	               patient.getAnamneses(),   
 	               "anamnese.pdf",   
 	               true,   
-	               params);  
+	               params);
 	}
 }

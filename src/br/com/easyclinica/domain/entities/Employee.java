@@ -1,5 +1,6 @@
 package br.com.easyclinica.domain.entities;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -11,6 +12,8 @@ public class Employee {
 
 	@Id @GeneratedValue
 	private int id;
+	
+	@Column(unique=true)
 	private String login;
 	private String password;
 	@Enumerated(EnumType.STRING)
@@ -19,6 +22,7 @@ public class Employee {
 	private String name;
 	private String cellphone;
 	private String observations;
+	private boolean active;
 	
 	public String getLogin() {
 		return login;
@@ -67,6 +71,24 @@ public class Employee {
 	}
 	public void setObservations(String observations) {
 		this.observations = observations;
+	}
+	public static Employee empty() {
+		Employee e = new Employee();
+		e.active();
+		return e;
+	}
+	
+	public boolean isActive() {
+		return active;
+	}
+	protected void setActive(boolean active) {
+		this.active = active;
+	}
+	public void deactive() {
+		this.active = false;
+	}
+	public void active() {
+		this.active = true;
 	}
 	
 	

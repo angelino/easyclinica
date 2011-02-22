@@ -23,11 +23,15 @@ public class Authentication {
 
 	public boolean user(String login, String password) {
 		Employee employee = employees.getByLogin(login);
-		if(thereIsAn(employee) && pwdMatches(password, employee)) {
+		if(thereIsAn(employee) && isActive(employee) && pwdMatches(password, employee)) {
 			logThe(employee);
 			return true;
 		}
 		return false;
+	}
+
+	private boolean isActive(Employee employee) {
+		return employee.isActive();
 	}
 
 	private boolean pwdMatches(String password, Employee employee) {

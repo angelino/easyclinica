@@ -27,4 +27,11 @@ public class Messages {
 	public static final String ANAMNESE_UPDATED = "anamneses.updated";
 	public static final String ANAMNESE_DELETED = "anamneses.deleted";
 	
+	public static final String EMPLOYEE_ADDED = "employee.added";
+	public static final String EMPLOYEE_UPDATED = "employee.updated";
+	public static final String EMPLOYEE_DEACTIVATED = "employee.deactivated";
+	public static final String EMPLOYEE_ACTIVATED = "employee.activated";
+	
+	public static final String CLINIC_UPDATED = "clinic.updated";
+	
 }

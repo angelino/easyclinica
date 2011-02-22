@@ -43,6 +43,19 @@ public class AuthenticationTests {
 		assertTrue(authorized);
 		assertEquals(employee, loggedUser.getEmployee());
 	}
+	
+
+	@Test
+	public void shouldLoginEvenAValidUserIfItIsDeactivated() {
+		
+		Employee employee = anEmployee("user", "pwd", false);
+		when(employees.getByLogin("login")).thenReturn(employee);
+		
+		Authentication auth = new Authentication(loggedUser, employees, clinicInfo);
+		boolean authorized = auth.user("login", "pwd");
+		
+		assertFalse(authorized);
+	}
 
 	@Test
 	public void shouldNotLoginIfPasswordIsInvalid() {
@@ -70,11 +83,15 @@ public class AuthenticationTests {
 		assertNull(loggedUser.getEmployee());
 	}
 
-	
 	private Employee anEmployee(String login, String password) {
+		return anEmployee(login, password, true);
+	}
+	
+	private Employee anEmployee(String login, String password, boolean active) {
 		Employee e = new Employee();
 		e.setLogin(login);
 		e.setPassword(password);
+		if(active) e.active(); else e.deactive();
 		return e;
 	}
 }

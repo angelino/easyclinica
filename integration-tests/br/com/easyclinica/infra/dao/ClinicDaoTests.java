@@ -10,4 +10,14 @@ public class ClinicDaoTests extends BaseIntegrationTests {
 	public void shouldGetClinic() {
 		assertEquals(clinic.getName(), new ClinicDao(session).get().getName());
 	}
+	
+	@Test
+	public void shouldUpdate() {
+		clinic.setName("new name");
+		
+		ClinicDao dao = new ClinicDao(session);
+		dao.update(clinic);
+		
+		assertEquals("new name", dao.get().getName());
+	}
 }

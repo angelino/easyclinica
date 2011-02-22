@@ -53,6 +53,16 @@ public class ReportsOnlyToFinancialTests {
 		
 		assertTrue(accepts);
 	}
+	
+	@Test
+	public void shouldAllowOwners() {
+		Employee employee = as(Position.OWNER);
+		
+		loggedUser.set(clinic, employee);
+		boolean accepts = new ReportsOnlyToFinancial().allows(ReportsController.class, employee);
+		
+		assertTrue(accepts);
+	}
 
 	public Employee as(Position position) {
 		return new EmployeeBuilder().withPosition(position).instance();

@@ -68,7 +68,13 @@ EasyClinica.cfg.services = {
 		scheduleList: '/easyclinica/medicos/{0}/agenda/_list',
 		scheduleAdd: '/easyclinica/medicos/{0}/agenda/add',
 		scheduleUpdate: '/easyclinica/medicos/{0}/agenda/update',
-		scheduleRemove: '/easyclinica/medicos/{0}/agenda/delete'
+		scheduleRemove: '/easyclinica/medicos/{0}/agenda/delete',
+		
+		postReply: '/easyclinica/mensagens/{0}/respostas/_nova',
+		postMessage: '/easyclinica/mensagens/_nova',
+		recentMessages: '/easyclinica/mensagens/_recentes',
+			
+		showUserDetails: '/easyclinica/usuarios/_show'
 };
 
 EasyClinica.cfg.images = {
@@ -100,9 +106,10 @@ EasyClinica.common.generalFunctions = function(){
 		}
 	});
 	
-	// Máscaras
+	// Mascaras
 	$('.mask_telefone').mask('(99) 9999-9999');
 	$('.mask_cep').mask('99999-999');
+	$('.mask_cnpj').mask('99.999.999/9999-99');
 	
 	// Datepicker
 	$('.datepicker').datepicker({
@@ -112,14 +119,14 @@ EasyClinica.common.generalFunctions = function(){
 		showAnim: 'drop'
 	});
 	
-	// botão voltar
+	// botï¿½o voltar
 	$('.btnback').click(function(e){
 		e.preventDefault();
 		var redirect_to = $(this).attr('redirect_to');
 		document.location.href = redirect_to;
 	});
 	
-	// botão cancelar
+	// botï¿½o cancelar
 	$('.btncancel').click(function(e) {
 		e.preventDefault();
 		var redirect_to = $(this).attr('redirect_to');
@@ -134,7 +141,7 @@ EasyClinica.common.formValidation = function () {
 	});	
 	
     $.tools.validator.localize('pt', {
-        '[required]': 'campo obrigatório'
+        '[required]': 'campo obrigatï¿½rio'
     });
     
     $('input[type=submit], .submit').click(function (e) {
@@ -149,7 +156,7 @@ EasyClinica.common.formValidation = function () {
     });
     
     //messages
-    $('input.currency').attr('data-message','valor inválido');
+    $('input.currency').attr('data-message','valor invï¿½lido');
 };
 
 /* LIB */
@@ -258,3 +265,15 @@ isFloat = function(s)
 {
 	return s.length>0 && !(/[^0-9.]/).test(s) && (/\.\d/).test(s);
 };
+
+disable = function(obj) {
+	obj.attr('disabled', true);
+};
+
+enable = function(obj) {
+	obj.attr('disabled', false);
+};
+
+isEmpty = function(text) {
+	return text == '';
+}

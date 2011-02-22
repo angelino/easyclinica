@@ -8,7 +8,18 @@
 	<body>
 		<div class="box" id="dashboard">		
 			<div class="boxcontent">
-				<h2>Dashboard</h2>				
+				<h2>Dashboard</h2>
+				
+				<div class="newPost">
+					O que você está fazendo agora?
+						<textarea id="messageText" class="comment"></textarea>
+						<input type="button" value="Postar" class="message-button" />
+				</div>
+				
+				<div id="allMessages">
+					<helper:messages list="${messages}" />
+				</div>
+								
 			</div>
 		</div>
 	</body>
