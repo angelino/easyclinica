@@ -22,8 +22,14 @@ public class Schedule {
 	private String description;
 	@ManyToOne(fetch=FetchType.EAGER)
 	private Doctor doctor;
-	private boolean isAllDayEvent;
-	private String color;
+	
+	public Schedule(int id) {
+		this.id = id;
+	}
+
+	public Schedule() {
+		this(0);
+	}
 
 	public void setId(int id) {
 		this.id = id;
@@ -71,21 +77,5 @@ public class Schedule {
 
 	public Doctor getDoctor() {
 		return doctor;
-	}
-
-	public void setAllDayEvent(boolean isAllDayEvent) {
-		this.isAllDayEvent = isAllDayEvent;
-	}
-
-	public boolean isAllDayEvent() {
-		return isAllDayEvent;
-	}
-
-	public void setColor(String color) {
-		this.color = color;
-	}
-
-	public String getColor() {
-		return color;
 	}
 }

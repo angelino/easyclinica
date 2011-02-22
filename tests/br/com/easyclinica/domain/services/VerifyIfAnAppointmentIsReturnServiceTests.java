@@ -21,7 +21,7 @@ import br.com.easyclinica.tests.helpers.HealthCarePlanBuilder;
 import br.com.easyclinica.tests.helpers.PatientBuilder;
 import br.com.easyclinica.tests.helpers.SpecialtyBuilder;
 
-public class VerifyIfAnAppointmentIsReturnServiceTests  extends BaseIntegrationTests {
+public class VerifyIfAnAppointmentIsReturnServiceTests extends BaseIntegrationTests {
 	private VerifyIfAnAppointmentIsReturnService service;
 	private HealthCarePlan plan;
 	private Patient patient;
