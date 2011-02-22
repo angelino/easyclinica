@@ -22,6 +22,7 @@ import br.com.easyclinica.domain.entities.PrecifiedMedicine;
 import br.com.easyclinica.domain.entities.PrecifiedProcedure;
 import br.com.easyclinica.domain.entities.PrecifiedSpecialty;
 import br.com.easyclinica.domain.entities.Procedure;
+import br.com.easyclinica.domain.entities.Schedule;
 import br.com.easyclinica.domain.entities.Reply;
 import br.com.easyclinica.domain.entities.Specialty;
 
@@ -58,6 +59,7 @@ public class DatabaseConfigurator {
 		configuration.addAnnotatedClass(Specialty.class);
 		configuration.addAnnotatedClass(Employee.class);
 		configuration.addAnnotatedClass(Anamnese.class);
+		configuration.addAnnotatedClass(Schedule.class);
 		configuration.addAnnotatedClass(Message.class);
 		configuration.addAnnotatedClass(Reply.class);
 

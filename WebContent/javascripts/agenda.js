@@ -100,8 +100,7 @@ EasyClinica.pages['schedule'] = function(){
         alert(str);               
     }    
     function Delete(data,callback)
-    {           
-        
+    {   
         $.alerts.okButton="Ok";  
         $.alerts.cancelButton="Cancel";  
         hiConfirm("Deseja realmente deletar esse compromisso?", 'Confirm',function(r){ r && callback(0);});           

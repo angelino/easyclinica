@@ -65,7 +65,7 @@ EasyClinica.cfg.services = {
 		showPatientDetails: '/easyclinica/patient/_show',
 		showAnamneseDetails: '/easyclinica/anamnese/_show',
 		
-		scheduleList: '/easyclinica/medicos/{0}/agenda/list',
+		scheduleList: '/easyclinica/medicos/{0}/agenda/_list',
 		scheduleAdd: '/easyclinica/medicos/{0}/agenda/add',
 		scheduleUpdate: '/easyclinica/medicos/{0}/agenda/update',
 		scheduleRemove: '/easyclinica/medicos/{0}/agenda/delete',
