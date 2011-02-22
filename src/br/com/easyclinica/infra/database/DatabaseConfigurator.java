@@ -1,5 +1,6 @@
 package br.com.easyclinica.infra.database;
 
+import org.hibernate.cfg.AnnotationConfiguration;
 import org.hibernate.cfg.Configuration;
 
 import br.com.easyclinica.domain.entities.Anamnese;
@@ -22,14 +23,14 @@ import br.com.easyclinica.domain.entities.PrecifiedMedicine;
 import br.com.easyclinica.domain.entities.PrecifiedProcedure;
 import br.com.easyclinica.domain.entities.PrecifiedSpecialty;
 import br.com.easyclinica.domain.entities.Procedure;
-import br.com.easyclinica.domain.entities.Schedule;
 import br.com.easyclinica.domain.entities.Reply;
+import br.com.easyclinica.domain.entities.Schedule;
 import br.com.easyclinica.domain.entities.Specialty;
 
 public class DatabaseConfigurator {
 
 	public static Configuration config(String database) {
-		Configuration configuration = new Configuration();
+		AnnotationConfiguration configuration = new AnnotationConfiguration();
 		configuration.setProperty("hibernate.connection.driver_class", "com.mysql.jdbc.Driver");
 		configuration.setProperty("hibernate.connection.url", "jdbc:mysql://localhost:3306/" + database);
 		configuration.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLInnoDBDialect");

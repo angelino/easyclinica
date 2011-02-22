@@ -4,9 +4,11 @@ import java.util.List;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.criterion.Order;
 
 import br.com.caelum.vraptor.ioc.Component;
 import br.com.easyclinica.domain.entities.HealthCarePlan;
+import br.com.easyclinica.domain.entities.Material;
 import br.com.easyclinica.domain.entities.MaterialWithPriceAndQuantity;
 import br.com.easyclinica.domain.entities.Procedure;
 import br.com.easyclinica.domain.repositories.AllMaterials;
@@ -41,6 +43,11 @@ public class MaterialDao implements AllMaterials {
 							 .setParameter("procedureId", procedure.getId());
 		
 		return (List<MaterialWithPriceAndQuantity>) query.list();
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<Material> getAll() {
+		return session.createCriteria(Material.class).addOrder(Order.asc("name")).list();
 	}
 
 }

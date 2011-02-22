@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.criterion.Order;
 
 import br.com.caelum.vraptor.ioc.Component;
 import br.com.easyclinica.domain.entities.Procedure;
@@ -37,6 +38,11 @@ public class ProcedureDao implements AllProcedures {
 							 .setString("name", "%" + text + "%");
 				
 		return query.list();
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<Procedure> getAll() {
+		return session.createCriteria(Procedure.class).addOrder(Order.asc("name")).list();
 	}
 
 }

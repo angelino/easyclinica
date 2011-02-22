@@ -139,15 +139,15 @@ public class HealthCarePlan {
 		return id;
 	}
 
-	protected List<PrecifiedMaterial> getPrecifiedMaterials() {
+	public List<PrecifiedMaterial> getPrecifiedMaterials() {
 		return Collections.unmodifiableList(precifiedMaterials);
 	}
 
-	protected List<PrecifiedMedicine> getPrecifiedMedicines() {
+	public List<PrecifiedMedicine> getPrecifiedMedicines() {
 		return Collections.unmodifiableList(precifiedMedicines);
 	}
 
-	protected List<PrecifiedProcedure> getPrecifiedProcedures() {
+	public List<PrecifiedProcedure> getPrecifiedProcedures() {
 		return Collections.unmodifiableList(precifiedProcedures);
 	}
 

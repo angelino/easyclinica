@@ -15,6 +15,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.Type;
 
 @Entity
@@ -43,7 +44,8 @@ public class Appointment {
 	@Type(type="text") 
 	private String observations;
 	
-	@OneToMany(cascade=CascadeType.ALL, mappedBy="appointment", orphanRemoval=true) 
+	@Cascade(value=org.hibernate.annotations.CascadeType.DELETE_ORPHAN)
+	@OneToMany(cascade=CascadeType.ALL, mappedBy="appointment") 
 	private List<AppointmentProcedure> procedures;
 
 	public Appointment() {

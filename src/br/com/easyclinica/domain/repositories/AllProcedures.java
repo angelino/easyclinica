@@ -8,4 +8,5 @@ public interface AllProcedures {
 
 	Procedure getById(int id);
 	List<Procedure> search(String text);
+	List<Procedure> getAll();
 }

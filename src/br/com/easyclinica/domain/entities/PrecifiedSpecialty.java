@@ -1,5 +1,7 @@
 package br.com.easyclinica.domain.entities;
 
+import java.math.BigDecimal;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -19,7 +21,7 @@ public class PrecifiedSpecialty {
 	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
 	private HealthCarePlan healthCarePlan;
 	
-	private double amount;
+	private BigDecimal amount;
 
 	public int getId() {
 		return id;
@@ -45,13 +47,12 @@ public class PrecifiedSpecialty {
 		this.healthCarePlan = healthCarePlan;
 	}
 
-	public double getAmount() {
+	public BigDecimal getAmount() {
 		return amount;
 	}
 
-	public void setAmount(double amount) {
+	public void setAmount(BigDecimal amount) {
 		this.amount = amount;
 	}
-	
 	
 }
