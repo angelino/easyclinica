@@ -66,9 +66,11 @@ EasyClinica.cfg.services = {
 		showAnamneseDetails: '/easyclinica/anamnese/_show',
 		
 		scheduleList: '/easyclinica/medicos/{0}/agenda/_list',
-		scheduleAdd: '/easyclinica/medicos/{0}/agenda/add',
-		scheduleUpdate: '/easyclinica/medicos/{0}/agenda/update',
-		scheduleRemove: '/easyclinica/medicos/{0}/agenda/delete',
+		scheduleAdd: '/easyclinica/medicos/{0}/agenda/_add',
+		scheduleUpdate: '/easyclinica/medicos/{0}/agenda/_update',
+		scheduleRemove: '/easyclinica/medicos/{0}/agenda/_delete',
+		scheduleNew: '/easyclinica/medicos/{0}/agenda/_new',
+		scheduleEdit: '/easyclinica/medicos/{0}/agenda/{1}/edit',
 		
 		postReply: '/easyclinica/mensagens/{0}/respostas/_nova',
 		postMessage: '/easyclinica/mensagens/_nova',

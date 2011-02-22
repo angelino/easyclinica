@@ -11,17 +11,21 @@ import br.com.caelum.vraptor.Result;
 import br.com.easyclinica.domain.entities.Doctor;
 import br.com.easyclinica.domain.entities.Schedule;
 import br.com.easyclinica.domain.repositories.AllDoctors;
+import br.com.easyclinica.domain.repositories.AllSchedule;
 import br.com.easyclinica.domain.services.ConsultSchedule;
 
 @Resource
 public class ScheduleController extends BaseController {
 
+	private AllSchedule allSchedule;
 	private AllDoctors allDoctors;
 	private ConsultSchedule consultSchedule;
 	
-	public ScheduleController(Result result, AllDoctors allDoctors, ConsultSchedule consultSchedule) {
+	public ScheduleController(AllDoctors allDoctors, AllSchedule allSchedule ,
+					ConsultSchedule consultSchedule, Result result) {
 		super(result);
 		
+		this.allSchedule = allSchedule;
 		this.allDoctors = allDoctors;
 		this.consultSchedule = consultSchedule;
 	}
@@ -60,5 +64,28 @@ public class ScheduleController extends BaseController {
 		result.include("start", start);
 		result.include("end", end);
 		result.include("schedules", schedules);
+	}
+	
+	@Post
+	@Path("/medicos/{doctorId}/agenda/_delete")
+	public void _delete(int calendarId) {
+		Schedule schedule = allSchedule.getById(calendarId);
+		
+		allSchedule.delete(schedule);
+	}
+	
+	@Get
+	@Path("/medicos/{doctorId}/agenda/_new")
+	public void _new(int doctorId) {
+		Doctor doctor = allDoctors.getById(doctorId);
+		
+		Schedule emptySchedule = Schedule.empty();
+		
+		include(emptySchedule);
+		result.include("doctor", doctor);
+	}
+	
+	private void include(Schedule emptySchedule) {
+		result.include("schedule", emptySchedule);
 	}
 }

@@ -32,7 +32,7 @@
 								<th>Especialidade:</th>
 								<th>Telefone:</th>
 								<th>E-mail:</th>
-								<th width="145px">&nbsp;</th>
+								<th width="191px">&nbsp;</th>
 							</tr>
 							
 							<c:forEach var="doctor" items="${doctors.result}" varStatus="status">
@@ -55,6 +55,7 @@
 									<td class="buttons">
 										<a class="btnpeopleedit" title="Editar" href="<c:url value="/medicos/${doctor.id}/editar" />">&nbsp;</a>
                                         <a class="btnpeopleshow exibir" title="Exibir" doctor_id="${doctor.id}">&nbsp;</a>
+                                        <a class="btnschedule" title="Agenda" href="<c:url value="/medicos/${doctor.id}/agenda" />">&nbsp;</a>
                                         
                                         <c:choose>
 											<c:when test="${doctor.active}">

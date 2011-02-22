@@ -7,7 +7,7 @@
 <json:object>
 	<json:array name="events" var="schedule" items="${schedules}">
 		<json:array>
-			<json:property value="${95937}"/>
+			<json:property value="${schedule.id}"/>
 			<json:property value="${schedule.subject}"/>
 			<json:property>
 				<fmt:formatDate value="${schedule.startTime.time}" pattern="MM/dd/yyyy HH:mm" />
@@ -15,10 +15,10 @@
 			<json:property>
 				<fmt:formatDate value="${schedule.endTime.time}" pattern="MM/dd/yyyy HH:mm" />
 			</json:property>
-			<json:property value="${0}"/>
-			<json:property value="${0}"/>
-			<json:property value="${0}"/>
-			<json:property value="${11}"/>
+			<json:property value="${0}"/>  
+			<json:property value="${0}"/>  
+			<json:property value="${0}"/>  			
+			<json:property value="${8}"/> 
 			<json:property value="${1}"/>
 			<json:property value="${schedule.description}"/>
 			<json:property value=""/>
