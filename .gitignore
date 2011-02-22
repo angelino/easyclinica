@@ -4,4 +4,4 @@ target
 classes
 *.class
 .DS_Store
-lib/*.jar
+WebContent/WEB-INF/lib/*.jar
