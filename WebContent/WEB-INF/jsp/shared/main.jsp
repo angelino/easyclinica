@@ -39,7 +39,7 @@
        	    <h1><a href="#">Easy Clínica</a></h1>
 
                 <ul class="menulogin">
-                  <li><a href="#">Dados da Clínica</a></li>
+                  <li><a href="<c:url value="/clinica" />">Dados da Clínica</a></li>
                   <li><a href="#">Configurações</a></li>
                   <li><a href="#" class="logout">Logout</a></li>
                 </ul>

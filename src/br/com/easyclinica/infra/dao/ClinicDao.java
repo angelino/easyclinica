@@ -17,5 +17,11 @@ public class ClinicDao implements ClinicInfo {
 	public Clinic get() {
 		return (Clinic) session.createCriteria(Clinic.class).list().get(0);
 	}
+
+	public void update(Clinic clinic) {
+		session.merge(clinic);
+	}
+	
+	
 	
 }

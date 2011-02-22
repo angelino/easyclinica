@@ -32,4 +32,6 @@ public class Messages {
 	public static final String EMPLOYEE_DEACTIVATED = "employee.deactivated";
 	public static final String EMPLOYEE_ACTIVATED = "employee.activated";
 	
+	public static final String CLINIC_UPDATED = "clinic.updated";
+	
 }

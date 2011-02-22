@@ -106,9 +106,10 @@ EasyClinica.common.generalFunctions = function(){
 		}
 	});
 	
-	// M�scaras
+	// Mascaras
 	$('.mask_telefone').mask('(99) 9999-9999');
 	$('.mask_cep').mask('99999-999');
+	$('.mask_cnpj').mask('99.999.999/9999-99');
 	
 	// Datepicker
 	$('.datepicker').datepicker({
