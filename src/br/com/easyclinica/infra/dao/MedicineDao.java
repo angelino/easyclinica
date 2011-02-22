@@ -4,9 +4,11 @@ import java.util.List;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.criterion.Order;
 
 import br.com.caelum.vraptor.ioc.Component;
 import br.com.easyclinica.domain.entities.HealthCarePlan;
+import br.com.easyclinica.domain.entities.Medicine;
 import br.com.easyclinica.domain.entities.MedicineWithPriceAndQuantity;
 import br.com.easyclinica.domain.entities.Procedure;
 import br.com.easyclinica.domain.repositories.AllMedicines;
@@ -41,6 +43,11 @@ public class MedicineDao implements AllMedicines {
 							 .setParameter("procedureId", procedure.getId());
 		
 		return (List<MedicineWithPriceAndQuantity>) query.list();
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<Medicine> getAll() {
+		return session.createCriteria(Medicine.class).addOrder(Order.asc("name")).list();
 	}
 
 }

@@ -5,7 +5,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="/WEB-INF/easyclinica.tld" prefix="helper" %>
-
 <c:choose>
  		<c:when test="${fn:length(list) == 0}">
  			<p class="messengernotice">

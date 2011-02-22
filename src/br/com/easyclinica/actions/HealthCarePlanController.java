@@ -92,7 +92,7 @@ public class HealthCarePlanController extends BaseController {
 	}
 
 	@Get
-	@Path("convenios/{id}/deactivate")
+	@Path("/convenios/{id}/deactivate")
 	public void deactivate(int id) {
 		HealthCarePlan plan = allHealthCares.getById(id);
 		
@@ -104,7 +104,7 @@ public class HealthCarePlanController extends BaseController {
 	}
 	
 	@Get
-	@Path("convenios/{id}/activate")
+	@Path("/convenios/{id}/activate")
 	public void activate(int id) {
 		HealthCarePlan plan = allHealthCares.getById(id);
 		

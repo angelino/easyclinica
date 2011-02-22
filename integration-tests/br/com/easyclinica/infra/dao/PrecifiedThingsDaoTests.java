@@ -115,7 +115,7 @@ public class PrecifiedThingsDaoTests extends BaseIntegrationTests {
 		Specialty specialty = aSavedSpecialty();
 		
 		PrecifiedSpecialty precifiedSpecialty = new PrecifiedSpecialty();
-		precifiedSpecialty.setAmount(30.50);
+		precifiedSpecialty.setAmount(new BigDecimal("30.50"));
 		precifiedSpecialty.setHealthCarePlan(healthCarePlan);
 		precifiedSpecialty.setSpecialty(specialty);
 		session.save(precifiedSpecialty);
