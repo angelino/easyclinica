@@ -45,7 +45,7 @@
                 </ul>
 
                 <ul class="menu" id="menu-principal">
-                  <li class="first" id="menu-link-dashboard"><a href="<c:url value="/dashboard" />">Dashboard</a></li>
+                  <li class="first" id="menu-link-dashboard"><a href="<c:url value="/" />">Dashboard</a></li>
                   <li id="menu-link-pacientes"><a href="<c:url value="/pacientes" />">Pacientes</a></li>
                   <li id="menu-link-convenios"><a href="<c:url value="/convenios" />">Convênios</a></li>
                   <li id="menu-link-medicos"><a href="<c:url value="/medicos" />">Médicos</a></li>
