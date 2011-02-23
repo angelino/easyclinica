@@ -278,4 +278,4 @@ enable = function(obj) {
 
 isEmpty = function(text) {
 	return text == '';
-}
+};
