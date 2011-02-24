@@ -6,6 +6,7 @@ import org.junit.Test;
 
 import br.com.easyclinica.tests.helpers.HealthCarePlanBuilder;
 
+
 public class HealthCarePlanTests {
 
 	@Test

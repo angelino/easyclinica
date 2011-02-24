@@ -3,6 +3,10 @@ package br.com.easyclinica.tests.helpers;
 import java.math.BigDecimal;
 
 import br.com.easyclinica.domain.entities.HealthCarePlan;
+import br.com.easyclinica.domain.entities.PrecifiedMaterial;
+import br.com.easyclinica.domain.entities.PrecifiedMedicine;
+import br.com.easyclinica.domain.entities.PrecifiedProcedure;
+import br.com.easyclinica.domain.entities.PrecifiedSpecialty;
 
 public class HealthCarePlanBuilder {
 
@@ -48,8 +52,28 @@ public class HealthCarePlanBuilder {
 		return this;
 	}
 	
+	public HealthCarePlanBuilder withPrecifiedMaterial(PrecifiedMaterial pm) {
+		plan.addPrecifiedMaterial(pm);
+		return this;
+	}
+	
 	public HealthCarePlanBuilder active() {
 		plan.activate();
+		return this;
+	}
+
+	public HealthCarePlanBuilder withPrecifiedMedicine(PrecifiedMedicine pm) {
+		plan.addPrecifiedMedicine(pm);
+		return this;
+	}
+
+	public HealthCarePlanBuilder withPrecifiedSpecialty(PrecifiedSpecialty pm) {
+		plan.addPrecifiedSpecialty(pm);
+		return this;
+	}
+
+	public HealthCarePlanBuilder withPrecifiedProcedure(PrecifiedProcedure pm) {
+		plan.addPrecifiedProcedure(pm);
 		return this;
 	}
 

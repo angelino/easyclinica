@@ -50,4 +50,8 @@ public class MedicineDao implements AllMedicines {
 		return session.createCriteria(Medicine.class).addOrder(Order.asc("name")).list();
 	}
 
+	public Medicine getById(int id) {
+		return (Medicine) session.load(Medicine.class, id);
+	}
+
 }

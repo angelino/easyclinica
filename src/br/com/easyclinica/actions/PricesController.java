@@ -19,6 +19,7 @@ import br.com.easyclinica.domain.entities.pricing.ImportedStuff;
 import br.com.easyclinica.domain.repositories.AllHealthCarePlans;
 import br.com.easyclinica.domain.services.pricing.PricingSheetExporter;
 import br.com.easyclinica.domain.services.pricing.PricingSheetImporter;
+import br.com.easyclinica.domain.services.pricing.PricingUpdater;
 
 @Resource
 public class PricesController {
@@ -27,13 +28,16 @@ public class PricesController {
 	private final AllHealthCarePlans plans;
 	private final Result result;
 	private final PricingSheetImporter importer;
+	private final PricingUpdater updater;
 
 	public PricesController(PricingSheetExporter exporter,
 			PricingSheetImporter importer, AllHealthCarePlans plans,
+			PricingUpdater updater,
 			Result result) {
 		this.exporter = exporter;
 		this.importer = importer;
 		this.plans = plans;
+		this.updater = updater;
 		this.result = result;
 	}
 
@@ -48,7 +52,7 @@ public class PricesController {
 
 		return new InputStreamDownload(new ByteArrayInputStream(
 				out.toByteArray()), "application/ms-excel", "precos-"
-				+ formatName(plan.getName()) + "-" + id + ".xls", true,
+				+ formatName(plan.getName()) + ".xls", true,
 				out.size());
 	}
 
@@ -57,8 +61,9 @@ public class PricesController {
 	public void importPrices(int id, List<ImportedStuff> procedures,
 			List<ImportedStuff> specialties, List<ImportedStuff> medicines,
 			List<ImportedStuff> materials) {
-
-		result.include("x", "x");
+		
+		HealthCarePlan plan = plans.getById(id);
+		updater.pricesForAHealthCarePlan(plan, procedures, specialties, medicines, materials);
 	}
 
 	@Get

@@ -7,6 +7,10 @@ import org.hibernate.Session;
 
 import br.com.caelum.vraptor.ioc.Component;
 import br.com.easyclinica.domain.entities.HealthCarePlan;
+import br.com.easyclinica.domain.entities.PrecifiedMaterial;
+import br.com.easyclinica.domain.entities.PrecifiedMedicine;
+import br.com.easyclinica.domain.entities.PrecifiedProcedure;
+import br.com.easyclinica.domain.entities.PrecifiedSpecialty;
 import br.com.easyclinica.domain.repositories.AllHealthCarePlans;
 
 @Component
@@ -47,5 +51,31 @@ public class HealthCarePlanDao implements AllHealthCarePlans {
 	public int count() {
 		Query query = session.createQuery("select count(*) from HealthCarePlan");
 		return ((Long) query.uniqueResult()).intValue();
+	}
+
+	public void updatePrices(HealthCarePlan plan) {
+		int count=0;
+		
+		for(PrecifiedMaterial material : plan.getPrecifiedMaterials()){
+			session.saveOrUpdate(material);
+			if(count++ % 20 == 0) flushIt();
+		}
+		for(PrecifiedMedicine medicine : plan.getPrecifiedMedicines()){
+			session.saveOrUpdate(medicine);
+			if(count++ % 20 == 0) flushIt();
+		}
+		for(PrecifiedSpecialty specialty : plan.getPrecifiedSpecialties()){
+			session.saveOrUpdate(specialty);
+			if(count++ % 20 == 0) flushIt();
+		}	
+		for(PrecifiedProcedure procedure : plan.getPrecifiedProcedures()){
+			session.saveOrUpdate(procedure);
+			if(count++ % 20 == 0) flushIt();
+		}	
+	}
+
+	private void flushIt() {
+		session.flush();
+		session.clear();
 	}
 }

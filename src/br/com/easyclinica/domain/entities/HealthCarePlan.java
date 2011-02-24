@@ -19,36 +19,39 @@ import br.com.easyclinica.domain.types.Address;
 @Entity
 public class HealthCarePlan {
 
-	@Id @GeneratedValue
+	@Id
+	@GeneratedValue
 	private int id;
-	
+
 	private String name;
-	@Embedded private Address address;
+	@Embedded
+	private Address address;
 	private String telephone;
 	private String email;
 	private String website;
-	@Type(type="text")
+	@Type(type = "text")
 	private String observations;
 	private BigDecimal ch;
 	private String contact;
 	private boolean active;
 	private int periodToReturn;
-	
-	@OneToMany(fetch=FetchType.LAZY, mappedBy="healthCarePlan") 
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "healthCarePlan")
 	private List<PrecifiedMaterial> precifiedMaterials;
-	@OneToMany(fetch=FetchType.LAZY, mappedBy="healthCarePlan")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "healthCarePlan")
 	private List<PrecifiedMedicine> precifiedMedicines;
-	@OneToMany(fetch=FetchType.LAZY, mappedBy="healthCarePlan")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "healthCarePlan")
 	private List<PrecifiedProcedure> precifiedProcedures;
-	@OneToMany(fetch=FetchType.LAZY, mappedBy="healthCarePlan")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "healthCarePlan")
 	private List<PrecifiedSpecialty> precifiedSpecialties;
-	
+
 	public HealthCarePlan() {
 		precifiedMaterials = new ArrayList<PrecifiedMaterial>();
 		precifiedMedicines = new ArrayList<PrecifiedMedicine>();
 		precifiedProcedures = new ArrayList<PrecifiedProcedure>();
 		precifiedSpecialties = new ArrayList<PrecifiedSpecialty>();
 	}
+
 	public HealthCarePlan(int id) {
 		this();
 		this.id = id;
@@ -67,7 +70,7 @@ public class HealthCarePlan {
 	public void activate() {
 		active = true;
 	}
-	
+
 	public String getName() {
 		return name;
 	}
@@ -135,6 +138,7 @@ public class HealthCarePlan {
 	protected void setId(int id) {
 		this.id = id;
 	}
+
 	public int getId() {
 		return id;
 	}
@@ -154,28 +158,58 @@ public class HealthCarePlan {
 	public List<PrecifiedSpecialty> getPrecifiedSpecialties() {
 		return precifiedSpecialties;
 	}
-	
+
 	protected void setPrecifiedSpecialties(
 			List<PrecifiedSpecialty> precifiedSpecialties) {
 		this.precifiedSpecialties = precifiedSpecialties;
 	}
+
+	protected void setPrecifiedMaterials(
+			List<PrecifiedMaterial> precifiedMaterials) {
+		this.precifiedMaterials = precifiedMaterials;
+	}
 	
+	public void addPrecifiedMaterial(PrecifiedMaterial pm) {
+		pm.setHealthCarePlan(this);
+		this.precifiedMaterials.add(pm);
+	}
+
 	public void setPeriodToReturn(int periodToReturn) {
 		this.periodToReturn = periodToReturn;
 	}
+
 	public int getPeriodToReturn() {
 		return periodToReturn;
 	}
-	
+
 	public void setCh(BigDecimal ch) {
 		this.ch = ch;
 	}
+
 	public BigDecimal getCh() {
 		return ch;
 	}
+
 	@Override
 	public String toString() {
 		return this.name;
+	}
+
+	public void addPrecifiedMedicine(PrecifiedMedicine precifiedMedicine) {
+		precifiedMedicine.setHealthCarePlan(this);
+		this.precifiedMedicines.add(precifiedMedicine);		
+	}
+
+	public void addPrecifiedSpecialty(PrecifiedSpecialty precifiedSpecialty) {
+		precifiedSpecialty.setHealthCarePlan(this);
+		this.precifiedSpecialties.add(precifiedSpecialty);		
+		
+	}
+
+	public void addPrecifiedProcedure(PrecifiedProcedure precifiedProcedure) {
+		precifiedProcedure.setHealthCarePlan(this);
+		this.precifiedProcedures.add(precifiedProcedure);
+		
 	}
 
 }

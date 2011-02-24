@@ -19,6 +19,12 @@ public class PrecifiedMaterial {
 	private Material material;
 	private BigDecimal amount;
 	
+	public PrecifiedMaterial() {}
+	
+	public PrecifiedMaterial(int id) {
+		this.id = id;
+	}
+	
 	public HealthCarePlan getHealthCarePlan() {
 		return healthCarePlan;
 	}

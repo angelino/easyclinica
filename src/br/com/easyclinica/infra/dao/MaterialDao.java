@@ -50,4 +50,8 @@ public class MaterialDao implements AllMaterials {
 		return session.createCriteria(Material.class).addOrder(Order.asc("name")).list();
 	}
 
+	public Material getById(int id) {
+		return (Material) session.load(Material.class, id);
+	}
+
 }

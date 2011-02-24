@@ -10,6 +10,7 @@ import br.com.easyclinica.tests.helpers.AddressBuilder;
 import br.com.easyclinica.tests.helpers.HealthCarePlanBuilder;
 import br.com.easyclinica.tests.helpers.PatientBuilder;
 
+
 public class PatientTests {
 
 	@Test

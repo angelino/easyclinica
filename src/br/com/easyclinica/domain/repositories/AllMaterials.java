@@ -11,4 +11,6 @@ public interface AllMaterials {
 	List<MaterialWithPriceAndQuantity> getMaterialsWithPriceAndQuantity(Procedure procedure, HealthCarePlan healthCarePlan);
 
 	List<Material> getAll();
+
+	Material getById(int id);
 }

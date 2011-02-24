@@ -9,4 +9,6 @@ public interface AllHealthCarePlans extends Pagging<HealthCarePlan> {
 	List<HealthCarePlan> get();
 	HealthCarePlan getById(int id);
 	void update(HealthCarePlan plan);
+	
+	void updatePrices(HealthCarePlan plan);
 }
