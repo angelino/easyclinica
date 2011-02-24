@@ -1,5 +1,6 @@
 package br.com.easyclinica.domain.services.pricing;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import br.com.caelum.vraptor.ioc.Component;
@@ -11,10 +12,10 @@ import br.com.easyclinica.domain.repositories.AllProcedures;
 @Component
 public class ProcedurePriceUpdate {
 
-	private final AllProcedures procedures;
+	private final AllProcedures allProcedures;
 
 	public ProcedurePriceUpdate(AllProcedures procedures) {
-		this.procedures = procedures;
+		this.allProcedures = procedures;
 	}
 	
 	public void pricesForAHealthCarePlan(HealthCarePlan plan,
@@ -23,8 +24,7 @@ public class ProcedurePriceUpdate {
 		for(ImportedStuff importedProcedure : procedures) {
 			PrecifiedProcedure precifiedProcedure = find(importedProcedure, plan.getPrecifiedProcedures());
 			if(doesntExist(precifiedProcedure)) {
-				precifiedProcedure = newOneFrom(importedProcedure);
-				plan.addPrecifiedProcedure(precifiedProcedure);
+				precifiedProcedure = plan.addPrecifiedProcedure(allProcedures.getById(importedProcedure.getId()), BigDecimal.ZERO);
 			}
 			
 			precifiedProcedure.setFixedAmount(importedProcedure.getValue());
@@ -35,13 +35,6 @@ public class ProcedurePriceUpdate {
 
 	private boolean doesntExist(PrecifiedProcedure precifiedProcedure) {
 		return precifiedProcedure == null;
-	}
-
-	private PrecifiedProcedure newOneFrom(ImportedStuff importedProcedure) {
-		PrecifiedProcedure pm = new PrecifiedProcedure();
-		pm.setProcedure(procedures.getById(importedProcedure.getId()));
-		
-		return pm;
 	}
 
 	private PrecifiedProcedure find(ImportedStuff importedProcedure,

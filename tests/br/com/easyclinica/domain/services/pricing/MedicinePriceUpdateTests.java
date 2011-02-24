@@ -13,7 +13,6 @@ import org.junit.Test;
 
 import br.com.easyclinica.domain.entities.HealthCarePlan;
 import br.com.easyclinica.domain.entities.Medicine;
-import br.com.easyclinica.domain.entities.PrecifiedMedicine;
 import br.com.easyclinica.domain.entities.pricing.ImportedStuff;
 import br.com.easyclinica.domain.repositories.AllMedicines;
 import br.com.easyclinica.tests.helpers.HealthCarePlanBuilder;
@@ -33,11 +32,10 @@ public class MedicinePriceUpdateTests{
 	@Test
 	public void shouldUpdateMedicineValueIfItAlreadyExists() {
 		
-		PrecifiedMedicine pm = aPrecifiedMedicine(1, "100.0");		
-		HealthCarePlan plan = new HealthCarePlanBuilder().withPrecifiedMedicine(pm).instance();
+		HealthCarePlan plan = new HealthCarePlanBuilder().withPrecifiedMedicine(new Medicine(1), new BigDecimal("100.0")).instance();
 		
-		ImportedStuff Medicine = new ImportedStuff(1, new BigDecimal("150.0"));
-		update.pricesForAHealthCarePlan(plan, Arrays.asList(Medicine));
+		ImportedStuff medicine = new ImportedStuff(1, new BigDecimal("150.0"));
+		update.pricesForAHealthCarePlan(plan, Arrays.asList(medicine));
 		
 		assertEquals(new BigDecimal("150.0"), plan.getPrecifiedMedicines().get(0).getAmount());
 	}
@@ -52,16 +50,5 @@ public class MedicinePriceUpdateTests{
 		
 		assertNotNull(plan.getPrecifiedMedicines().get(0));
 		assertEquals(new BigDecimal("150.0"), plan.getPrecifiedMedicines().get(0).getAmount());
-	}
-	
-
-	private PrecifiedMedicine aPrecifiedMedicine(int id, String price) {
-		PrecifiedMedicine pm = new PrecifiedMedicine();
-		pm.setAmount(new BigDecimal(price));
-		
-		Medicine Medicine = new Medicine(id);
-		pm.setMedicine(Medicine);
-		
-		return pm;
 	}
 }

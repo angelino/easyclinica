@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -12,6 +13,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.Type;
 
 import br.com.easyclinica.domain.types.Address;
@@ -36,13 +38,17 @@ public class HealthCarePlan {
 	private boolean active;
 	private int periodToReturn;
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "healthCarePlan")
+	@Cascade(org.hibernate.annotations.CascadeType.DELETE_ORPHAN)
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "healthCarePlan", cascade=CascadeType.ALL)
 	private List<PrecifiedMaterial> precifiedMaterials;
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "healthCarePlan")
+	@Cascade(org.hibernate.annotations.CascadeType.DELETE_ORPHAN)
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "healthCarePlan", cascade=CascadeType.ALL)
 	private List<PrecifiedMedicine> precifiedMedicines;
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "healthCarePlan")
+	@Cascade(org.hibernate.annotations.CascadeType.DELETE_ORPHAN)
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "healthCarePlan", cascade=CascadeType.ALL)
 	private List<PrecifiedProcedure> precifiedProcedures;
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "healthCarePlan")
+	@Cascade(org.hibernate.annotations.CascadeType.DELETE_ORPHAN)
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "healthCarePlan", cascade=CascadeType.ALL)
 	private List<PrecifiedSpecialty> precifiedSpecialties;
 
 	public HealthCarePlan() {
@@ -168,11 +174,7 @@ public class HealthCarePlan {
 			List<PrecifiedMaterial> precifiedMaterials) {
 		this.precifiedMaterials = precifiedMaterials;
 	}
-	
-	public void addPrecifiedMaterial(PrecifiedMaterial pm) {
-		pm.setHealthCarePlan(this);
-		this.precifiedMaterials.add(pm);
-	}
+
 
 	public void setPeriodToReturn(int periodToReturn) {
 		this.periodToReturn = periodToReturn;
@@ -195,21 +197,44 @@ public class HealthCarePlan {
 		return this.name;
 	}
 
-	public void addPrecifiedMedicine(PrecifiedMedicine precifiedMedicine) {
+	public PrecifiedMedicine addPrecifiedMedicine(Medicine medicine, BigDecimal amount) {
+		PrecifiedMedicine precifiedMedicine = new PrecifiedMedicine();
+		precifiedMedicine.setAmount(amount);
+		precifiedMedicine.setMedicine(medicine);
 		precifiedMedicine.setHealthCarePlan(this);
-		this.precifiedMedicines.add(precifiedMedicine);		
-	}
-
-	public void addPrecifiedSpecialty(PrecifiedSpecialty precifiedSpecialty) {
-		precifiedSpecialty.setHealthCarePlan(this);
-		this.precifiedSpecialties.add(precifiedSpecialty);		
+		this.precifiedMedicines.add(precifiedMedicine);
 		
+		return precifiedMedicine;
 	}
 
-	public void addPrecifiedProcedure(PrecifiedProcedure precifiedProcedure) {
+	public PrecifiedSpecialty addPrecifiedSpecialty(Specialty specialty, BigDecimal amount) {
+		PrecifiedSpecialty precifiedSpecialty = new PrecifiedSpecialty();
+		precifiedSpecialty.setSpecialty(specialty);
+		precifiedSpecialty.setAmount(amount);
+		precifiedSpecialty.setHealthCarePlan(this);
+		this.precifiedSpecialties.add(precifiedSpecialty);
+		
+		return precifiedSpecialty;
+	}
+
+	public PrecifiedProcedure addPrecifiedProcedure(Procedure procedure, BigDecimal amount) {
+		PrecifiedProcedure precifiedProcedure = new PrecifiedProcedure();
+		precifiedProcedure.setProcedure(procedure);
+		precifiedProcedure.setFixedAmount(amount);
 		precifiedProcedure.setHealthCarePlan(this);
 		this.precifiedProcedures.add(precifiedProcedure);
 		
+		return precifiedProcedure;
 	}
-
+	
+	public PrecifiedMaterial addPrecifiedMaterial(Material material, BigDecimal amount) {
+		PrecifiedMaterial pm = new PrecifiedMaterial();
+		pm.setAmount(amount);
+		pm.setMaterial(material);
+		pm.setHealthCarePlan(this);
+		
+		this.precifiedMaterials.add(pm);
+		
+		return pm;
+	}
 }

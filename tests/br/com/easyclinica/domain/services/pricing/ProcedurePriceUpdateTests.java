@@ -13,7 +13,6 @@ import org.junit.Test;
 
 import br.com.easyclinica.domain.entities.HealthCarePlan;
 import br.com.easyclinica.domain.entities.Procedure;
-import br.com.easyclinica.domain.entities.PrecifiedProcedure;
 import br.com.easyclinica.domain.entities.pricing.ImportedStuff;
 import br.com.easyclinica.domain.repositories.AllProcedures;
 import br.com.easyclinica.tests.helpers.HealthCarePlanBuilder;
@@ -33,8 +32,7 @@ public class ProcedurePriceUpdateTests{
 	@Test
 	public void shouldUpdateProcedureValueIfItAlreadyExists() {
 		
-		PrecifiedProcedure pm = aPrecifiedProcedure(1, "100.0");		
-		HealthCarePlan plan = new HealthCarePlanBuilder().withPrecifiedProcedure(pm).instance();
+		HealthCarePlan plan = new HealthCarePlanBuilder().withPrecifiedProcedure(new Procedure(1), new BigDecimal("100.0")).instance();
 		
 		ImportedStuff Procedure = new ImportedStuff(1, new BigDecimal("150.0"));
 		update.pricesForAHealthCarePlan(plan, Arrays.asList(Procedure));
@@ -52,16 +50,5 @@ public class ProcedurePriceUpdateTests{
 		
 		assertNotNull(plan.getPrecifiedProcedures().get(0));
 		assertEquals(new BigDecimal("150.0"), plan.getPrecifiedProcedures().get(0).getFixedAmount());
-	}
-	
-
-	private PrecifiedProcedure aPrecifiedProcedure(int id, String price) {
-		PrecifiedProcedure pm = new PrecifiedProcedure();
-		pm.setFixedAmount(new BigDecimal(price));
-		
-		Procedure Procedure = new Procedure(id);
-		pm.setProcedure(Procedure);
-		
-		return pm;
 	}
 }

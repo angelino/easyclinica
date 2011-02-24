@@ -13,7 +13,6 @@ import org.junit.Test;
 
 import br.com.easyclinica.domain.entities.HealthCarePlan;
 import br.com.easyclinica.domain.entities.Material;
-import br.com.easyclinica.domain.entities.PrecifiedMaterial;
 import br.com.easyclinica.domain.entities.pricing.ImportedStuff;
 import br.com.easyclinica.domain.repositories.AllMaterials;
 import br.com.easyclinica.tests.helpers.HealthCarePlanBuilder;
@@ -33,8 +32,7 @@ public class MaterialPriceUpdateTests{
 	@Test
 	public void shouldUpdateMaterialValueIfItAlreadyExists() {
 		
-		PrecifiedMaterial pm = aPrecifiedMaterial(1, "100.0");		
-		HealthCarePlan plan = new HealthCarePlanBuilder().withPrecifiedMaterial(pm).instance();
+		HealthCarePlan plan = new HealthCarePlanBuilder().withPrecifiedMaterial(new Material(1), new BigDecimal("100.0")).instance();
 		
 		ImportedStuff material = new ImportedStuff(1, new BigDecimal("150.0"));
 		update.pricesForAHealthCarePlan(plan, Arrays.asList(material));
@@ -54,14 +52,4 @@ public class MaterialPriceUpdateTests{
 		assertEquals(new BigDecimal("150.0"), plan.getPrecifiedMaterials().get(0).getAmount());
 	}
 	
-
-	private PrecifiedMaterial aPrecifiedMaterial(int id, String price) {
-		PrecifiedMaterial pm = new PrecifiedMaterial();
-		pm.setAmount(new BigDecimal(price));
-		
-		Material material = new Material(id);
-		pm.setMaterial(material);
-		
-		return pm;
-	}
 }

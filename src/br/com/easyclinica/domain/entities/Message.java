@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.Type;
 
 @Entity
@@ -23,6 +24,7 @@ public class Message {
 	@ManyToOne(fetch=FetchType.EAGER)
 	private Employee employee;
 	private Calendar date;
+	@Cascade(org.hibernate.annotations.CascadeType.DELETE_ORPHAN)
 	@OneToMany(mappedBy="message", cascade=CascadeType.ALL)
 	private List<Reply> replies;
 

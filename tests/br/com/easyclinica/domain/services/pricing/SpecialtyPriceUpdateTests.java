@@ -12,7 +12,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import br.com.easyclinica.domain.entities.HealthCarePlan;
-import br.com.easyclinica.domain.entities.PrecifiedSpecialty;
 import br.com.easyclinica.domain.entities.Specialty;
 import br.com.easyclinica.domain.entities.pricing.ImportedStuff;
 import br.com.easyclinica.domain.repositories.AllSpecialties;
@@ -33,8 +32,7 @@ public class SpecialtyPriceUpdateTests{
 	@Test
 	public void shouldUpdateSpecialtyValueIfItAlreadyExists() {
 		
-		PrecifiedSpecialty pm = aPrecifiedSpecialty(1, "100.0");		
-		HealthCarePlan plan = new HealthCarePlanBuilder().withPrecifiedSpecialty(pm).instance();
+		HealthCarePlan plan = new HealthCarePlanBuilder().withPrecifiedSpecialty(new Specialty(1), new BigDecimal("100.0")).instance();
 		
 		ImportedStuff Specialty = new ImportedStuff(1, new BigDecimal("150.0"));
 		update.pricesForAHealthCarePlan(plan, Arrays.asList(Specialty));
@@ -52,16 +50,5 @@ public class SpecialtyPriceUpdateTests{
 		
 		assertNotNull(plan.getPrecifiedSpecialties().get(0));
 		assertEquals(new BigDecimal("150.0"), plan.getPrecifiedSpecialties().get(0).getAmount());
-	}
-	
-
-	private PrecifiedSpecialty aPrecifiedSpecialty(int id, String price) {
-		PrecifiedSpecialty pm = new PrecifiedSpecialty();
-		pm.setAmount(new BigDecimal(price));
-		
-		Specialty Specialty = new Specialty(id);
-		pm.setSpecialty(Specialty);
-		
-		return pm;
 	}
 }

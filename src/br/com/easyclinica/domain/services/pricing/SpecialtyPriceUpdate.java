@@ -1,5 +1,6 @@
 package br.com.easyclinica.domain.services.pricing;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import br.com.caelum.vraptor.ioc.Component;
@@ -11,10 +12,10 @@ import br.com.easyclinica.domain.repositories.AllSpecialties;
 @Component
 public class SpecialtyPriceUpdate {
 
-	private final AllSpecialties specialties;
+	private final AllSpecialties allSpecialties;
 
 	public SpecialtyPriceUpdate(AllSpecialties specialties) {
-		this.specialties = specialties;
+		this.allSpecialties = specialties;
 	}
 	
 	public void pricesForAHealthCarePlan(HealthCarePlan plan,
@@ -23,8 +24,7 @@ public class SpecialtyPriceUpdate {
 		for(ImportedStuff importedSpecialty : specialties) {
 			PrecifiedSpecialty precifiedSpecialty = find(importedSpecialty, plan.getPrecifiedSpecialties());
 			if(doesntExist(precifiedSpecialty)) {
-				precifiedSpecialty = newOneFrom(importedSpecialty);
-				plan.addPrecifiedSpecialty(precifiedSpecialty);
+				precifiedSpecialty = plan.addPrecifiedSpecialty(allSpecialties.getById(importedSpecialty.getId()), BigDecimal.ZERO);
 			}
 			
 			precifiedSpecialty.setAmount(importedSpecialty.getValue());
@@ -35,13 +35,6 @@ public class SpecialtyPriceUpdate {
 
 	private boolean doesntExist(PrecifiedSpecialty precifiedSpecialty) {
 		return precifiedSpecialty == null;
-	}
-
-	private PrecifiedSpecialty newOneFrom(ImportedStuff importedSpecialty) {
-		PrecifiedSpecialty pm = new PrecifiedSpecialty();
-		pm.setSpecialty(specialties.getById(importedSpecialty.getId()));
-		
-		return pm;
 	}
 
 	private PrecifiedSpecialty find(ImportedStuff importedSpecialty,
