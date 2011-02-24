@@ -13,6 +13,7 @@
 		
 		<dependency org="javax.servlet" name="jstl" rev="1.2" conf="default" />
 		<dependency org="taglibs" name="standard" rev="1.0.6"/>
+		<dependency org="commons-fileupload" name="commons-fileupload" rev="1.2.1"/>
 		
 		<dependency org="org.hamcrest" name="hamcrest-all" rev="1.1" conf="default" />
 		<dependency org="org.hibernate" name="hibernate-core" rev="3.3.2.GA" conf="default" />
