@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -22,7 +23,7 @@ public class Message {
 	@ManyToOne(fetch=FetchType.EAGER)
 	private Employee employee;
 	private Calendar date;
-	@OneToMany(mappedBy="message")
+	@OneToMany(mappedBy="message", cascade=CascadeType.ALL)
 	private List<Reply> replies;
 
 	public Message() {
@@ -67,6 +68,7 @@ public class Message {
 		reply.setDate(Calendar.getInstance());
 		reply.setMessage(this);
 		
+		replies.add(reply);
 		return reply;
 		
 	}

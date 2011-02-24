@@ -3,7 +3,6 @@ package br.com.easyclinica.domain.repositories;
 import java.util.List;
 
 import br.com.easyclinica.domain.entities.HealthCarePlan;
-import br.com.easyclinica.domain.entities.Material;
 import br.com.easyclinica.domain.entities.Medicine;
 import br.com.easyclinica.domain.entities.MedicineWithPriceAndQuantity;
 import br.com.easyclinica.domain.entities.Procedure;
