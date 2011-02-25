@@ -14,22 +14,20 @@ import br.com.caelum.vraptor.ioc.ApplicationScoped;
 @ApplicationScoped
 public class BigDecimalConverter implements Converter<BigDecimal> {
 
-	Logger log = Logger.getLogger(BigDecimalConverter.class);
-	
+	private static Logger log = Logger.getLogger(BigDecimalConverter.class);
+
 	public BigDecimal convert(String value, Class<? extends BigDecimal> type,
 			ResourceBundle resource) {
 
-		if(value == null || value.equals("")) {  
-            return BigDecimal.ZERO;  
-        }  		
-        
+		if (value == null || value.equals("")) {
+			return BigDecimal.ZERO;
+		}
 		
 		value = value.replace(',', '.');
 		BigDecimal converted = new BigDecimal(value);
 		converted = converted.setScale(2, RoundingMode.CEILING);
-		
-		//log.info("converter " + value + "=" + converted);
-		
+
+		log.info(value + " convertida em bigdecimal " + converted);
 		return converted;
 	}
 

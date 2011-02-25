@@ -14,7 +14,7 @@ public class PrecifiedProcedure {
 	private int id;
 	@ManyToOne(fetch=FetchType.LAZY)
 	private HealthCarePlan healthCarePlan;
-	@ManyToOne(fetch=FetchType.LAZY) 
+	@ManyToOne(fetch=FetchType.EAGER) 
 	private Procedure procedure;
 	private BigDecimal fixedAmount;
 	

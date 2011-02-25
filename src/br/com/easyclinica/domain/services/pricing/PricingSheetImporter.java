@@ -67,9 +67,18 @@ public class PricingSheetImporter {
 			Row row = rit.next();
 			qty++;
 			if(qty==1) continue;
-			
-			list.add(new ImportedStuff((int)(row.getCell(0).getNumericCellValue()), new BigDecimal(String.valueOf(row.getCell(pricePosition).getNumericCellValue()))));
+						
+			list.add(new ImportedStuff(toInt(row, 0), toBigDecimal(row, pricePosition)));
 		}		
+	}
+	
+	private int toInt(Row row, int position) {
+		return (int)(row.getCell(position).getNumericCellValue());
+	}
+	
+	private BigDecimal toBigDecimal(Row row, int pricePosition) {
+		double numericCellValue = row.getCell(pricePosition).getNumericCellValue();
+		return new BigDecimal(String.valueOf(numericCellValue));
 	}
 	
 	public List<ImportedStuff> getImportedSpecialties() {

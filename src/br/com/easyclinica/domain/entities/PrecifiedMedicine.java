@@ -15,7 +15,7 @@ public class PrecifiedMedicine {
 	private int id;
 	@ManyToOne(fetch=FetchType.LAZY) 
 	private HealthCarePlan healthCarePlan;
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.EAGER)
 	private Medicine medicine;
 	private BigDecimal amount;
 	
