@@ -23,6 +23,9 @@ public class Schedule {
 	@ManyToOne(fetch=FetchType.EAGER)
 	private Doctor doctor;
 	
+	private boolean moreThanOneDay;
+	private String color;
+	
 	public Schedule(int id) {
 		this.id = id;
 	}
@@ -78,4 +81,25 @@ public class Schedule {
 	public Doctor getDoctor() {
 		return doctor;
 	}
+	
+	public void setMoreThanOneDay(boolean moreThanOneDay) {
+		this.moreThanOneDay = moreThanOneDay;
+	}
+
+	public boolean isMoreThanOneDay() {
+		return moreThanOneDay;
+	}
+
+	public void setColor(String color) {
+		this.color = color;
+	}
+
+	public String getColor() {
+		return color;
+	}
+
+	public static Schedule empty() {
+		Schedule empty = new Schedule();
+		return empty;
+	}	
 }

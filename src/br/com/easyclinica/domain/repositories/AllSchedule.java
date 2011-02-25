@@ -7,6 +7,7 @@ import br.com.easyclinica.domain.entities.Doctor;
 import br.com.easyclinica.domain.entities.Schedule;
 
 public interface AllSchedule {
+	Schedule getById(int id);
 	void add(Schedule schedule);
 	void update(Schedule schedule);
 	void delete(Schedule schedule);

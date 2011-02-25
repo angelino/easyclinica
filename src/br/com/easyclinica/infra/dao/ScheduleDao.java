@@ -47,5 +47,9 @@ public class ScheduleDao implements AllSchedule {
 					  .setParameter("end", end)
 					  .list();
 	}
+
+	public Schedule getById(int id) {
+		return (Schedule)session.load(Schedule.class, id);
+	}
 	
 }

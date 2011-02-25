@@ -12,7 +12,7 @@ public class ExportTables {
 
 	@Test @Ignore
 	public void exportDatabase() {
-		Configuration cfg = DatabaseConfigurator.config("easyclinicatest");
+		Configuration cfg = DatabaseConfigurator.config("easyclinica");
 		
 		SchemaExport se = new SchemaExport(cfg);
 		se.create(true, true);

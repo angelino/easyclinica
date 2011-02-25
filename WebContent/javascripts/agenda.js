@@ -82,10 +82,11 @@ EasyClinica.pages['schedule'] = function(){
     }
     function Edit(data)
     {
-       var eurl="edit.php?id={0}&start={2}&end={3}&isallday={4}&title={1}";   
-        if(data)
+    	//var eurl="edit.php?id={0}&start={2}&end={3}&isallday={4}&title={1}";  
+    	if(data)
         {
-            var url = StrFormat(eurl,data);
+            //var url = StrFormat(eurl,data);
+        	var url = EasyClinica.cfg.services.scheduleEdit.format(doctorId, data[0]);
             OpenModelWindow(url,{ width: 600, height: 400, caption:"Gerenciando Agenda",onclose:function(){
                $("#gridcontainer").reload();
             }});
@@ -112,7 +113,7 @@ EasyClinica.pages['schedule'] = function(){
         }
         $("#caltoolbar div.fcurrent").each(function() {
             $(this).removeClass("fcurrent");
-        })
+        });
         $("#showdaybtn").addClass("fcurrent");
     }
     //to show day view
@@ -120,7 +121,7 @@ EasyClinica.pages['schedule'] = function(){
         //document.location.href="#day";
         $("#caltoolbar div.fcurrent").each(function() {
             $(this).removeClass("fcurrent");
-        })
+        });
         $(this).addClass("fcurrent");
         var p = $("#gridcontainer").swtichView("day").BcalGetOp();
         if (p && p.datestrshow) {
@@ -132,7 +133,7 @@ EasyClinica.pages['schedule'] = function(){
         //document.location.href="#week";
         $("#caltoolbar div.fcurrent").each(function() {
             $(this).removeClass("fcurrent");
-        })
+        });
         $(this).addClass("fcurrent");
         var p = $("#gridcontainer").swtichView("week").BcalGetOp();
         if (p && p.datestrshow) {
@@ -145,7 +146,7 @@ EasyClinica.pages['schedule'] = function(){
         //document.location.href="#month";
         $("#caltoolbar div.fcurrent").each(function() {
             $(this).removeClass("fcurrent");
-        })
+        });
         $(this).addClass("fcurrent");
         var p = $("#gridcontainer").swtichView("month").BcalGetOp();
         if (p && p.datestrshow) {
@@ -159,7 +160,7 @@ EasyClinica.pages['schedule'] = function(){
     
     //Add a new event
     $("#faddbtn").click(function(e) {
-        var url ="edit.php";
+        var url = EasyClinica.cfg.services.scheduleNew.format(doctorId);
         OpenModelWindow(url,{ width: 500, height: 400, caption: "Criar novo compromisso"});
     });
     //go to today
