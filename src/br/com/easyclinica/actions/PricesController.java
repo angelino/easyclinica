@@ -40,7 +40,7 @@ public class PricesController {
 		this.updater = updater;
 		this.result = result;
 	}
-
+	
 	@Get
 	@Path("/convenios/{id}/precos")
 	public Download priceList(int id) throws IOException {
