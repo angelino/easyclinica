@@ -270,12 +270,13 @@ ul.errors {float:left;width:99.2%;background:#FFDDDD;border:1px solid #FFBBBB;te
 ul.errors li {width:100%;margin:0 10px;}
 
 div.error {
-	 background: url("/easyclinica/images/icons/error.png") no-repeat scroll 3px 5px #FFFFCC;
+	background: url("/easyclinica/images/icons/error.png") no-repeat scroll 3px 5px #FFFFCC;
     border: 1px solid #FFFAAA;
     color: #000000;
     font-size: 11px;
     margin-left: 5px;
     padding: 4px 10px 4px 25px;
+    z-index: 9999;
 }
 
 .procedures div.error {
@@ -306,7 +307,7 @@ div.error {
 	width: 100%;
 	height: 100%;
 	position: fixed; top: 0; left: 0;
-	z-index: 9900;
+	z-index: 997;
 	opacity:0.7;
 }
 
@@ -316,7 +317,7 @@ div.error {
 	position:absolute;
 	left:50%;
 	top:50%;
-	z-index: 9999;
+	z-index: 998;
 	margin: -250px 0 100px -300px;
 	width: 40%;
 }
@@ -362,6 +363,25 @@ div.error {
 .modal-anamneses .modal-content p{float:left;width:143px;font-weight: bold;}
 .modal-anamneses .modal-content span{float:left;}
 .modal-anamneses .modal-content div.anamnese p {width: 100%;}
+
+.modal-schedule .modal-content{padding:0 20px;text-align:left;}
+.modal-schedule .modal-content{float:left;}
+.modal-schedule .modal-content div {float:left; width: 100%;margin-top:5px;}
+.modal-schedule .modal-content p{float:left;width:143px;font-weight: bold;}
+.modal-schedule .modal-content span{float:left;}
+.modal-schedule .modal-content fieldset{float:left;width:50%;}
+.modal-schedule .modal-content fieldset label{float:left;width:100%;}
+.modal-schedule .modal-content fieldset label.title{float:left;font-weight:bold;margin:10px 0 2px 0;}
+.modal-schedule .modal-content fieldset label.title span{color:#F00;}
+.modal-schedule .modal-content fieldset input, .main .content .box fieldset select, .main .content .box fieldset textarea{float:left;width:200px;padding:4px 6px;border-color:#CCCCCC #DDDDDD #DDDDDD #CCCCCC;border-right:1px solid #DDDDDD;border-style:solid;border-width:2px 1px 1px 2px;}
+.modal-schedule .modal-content fieldset input.radio{float:left;width:auto;margin:0;padding:0;}
+.modal-schedule .modal-content fieldset div{float:left;width:100%;}
+.modal-schedule .modal-content fieldset div label.title{width:100%;}
+.modal-schedule .modal-content fieldset div input{width:90%;}
+.modal-schedule .modal-content fieldset div select{width:90%;}
+.modal-schedule .modal-content fieldset div textarea{width:97%;height:100px;}
+.modal-schedule .modal-content fieldset div input.radio{margin:2px 5px 0 5px;border:none;}
+
 /*END MODAL ######################################################################################################################*/
 
 /* MENSAGENS NA HOME */

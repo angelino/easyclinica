@@ -18,11 +18,11 @@ import br.com.easyclinica.tests.helpers.ScheduleBuilder;
 
 public class ConsultScheduleTests extends BaseIntegrationTests {
 
-	private ConsultSchedule service;
+	private SearchSchedule service;
 	
 	@Before
 	public void setUp() {
-		service = new ConsultSchedule(new ScheduleDao(session));
+		service = new SearchSchedule(new ScheduleDao(session));
 	}
 
 	@Test
@@ -45,7 +45,7 @@ public class ConsultScheduleTests extends BaseIntegrationTests {
 		
 		List<Schedule> schedules = service.ofTheDoctor(doctor)
 										  .from(Calendar.getInstance())
-										  .execute(ConsultSchedule.VIEW_TYPE_DAY);
+										  .execute(SearchSchedule.VIEW_TYPE_DAY);
 		
 		assertEquals(schedules.size(), 2);
 	}
@@ -72,7 +72,7 @@ public class ConsultScheduleTests extends BaseIntegrationTests {
 		
 		List<Schedule> schedules = service.ofTheDoctor(doctor)
 										  .from(Calendar.getInstance())
-										  .execute(ConsultSchedule.VIEW_TYPE_WEEK);
+										  .execute(SearchSchedule.VIEW_TYPE_WEEK);
 		
 		assertEquals(schedules.size(), 2);
 	}
@@ -101,7 +101,7 @@ public class ConsultScheduleTests extends BaseIntegrationTests {
 		
 		List<Schedule> schedules = service.ofTheDoctor(doctor)
 										  .from(Calendar.getInstance())
-										  .execute(ConsultSchedule.VIEW_TYPE_MONTH);
+										  .execute(SearchSchedule.VIEW_TYPE_MONTH);
 		
 		assertEquals(schedules.size(), 2);
 	}

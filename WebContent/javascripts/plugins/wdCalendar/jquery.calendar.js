@@ -48,6 +48,7 @@
                 if (new RegExp("(" + k + ")").test(format))
                     format = format.replace(RegExp.$1, RegExp.$1.length == 1 ? o[k] : ("00" + o[k]).substr(("" + o[k]).length));
             }
+           
             return format;
         };
     }
@@ -1696,9 +1697,9 @@
                 var os = data[2];
                 var od = data[3];
                 var zone = new Date().getTimezoneOffset() / 60 * -1;
-                var param = [{ "name": "calendarId", value: id },
-							{ "name": "CalendarStartTime", value: dateFormat.call(start, i18n.xgcalendar.dateformat.fulldayvalue + " HH:mm") },
-							{ "name": "CalendarEndTime", value: dateFormat.call(end, i18n.xgcalendar.dateformat.fulldayvalue + " HH:mm") },
+                var param = [{ "name": "scheduleId", value: id },
+							{ "name": "startTime", value: dateFormat.call(start, i18n.xgcalendar.dateformat.fulldayvalue + " HH:mm") },
+							{ "name": "endTime", value: dateFormat.call(end, i18n.xgcalendar.dateformat.fulldayvalue + " HH:mm") },
 							{ "name": "timezone", value: zone }
 						   ];
                 var d;
@@ -1779,9 +1780,9 @@
                         return false;
                     }
                     var zone = new Date().getTimezoneOffset() / 60 * -1;
-                    var param = [{ "name": "CalendarTitle", value: what },
-						{ "name": "CalendarStartTime", value: datestart },
-						{ "name": "CalendarEndTime", value: dateend },
+                    var param = [{ "name": "schedule.subject", value: what },
+						{ "name": "schedule.startTime", value: datestart },
+						{ "name": "schedule.endTime", value: dateend },
 						{ "name": "IsAllDayEvent", value: allday },
 						{ "name": "timezone", value: zone}];
 

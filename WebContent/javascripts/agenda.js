@@ -9,7 +9,6 @@ EasyClinica.pages['schedule'] = function(){
         theme:3,
         showday: new Date(),
         EditCmdhandler:Edit,
-        DeleteCmdhandler:Delete,
         ViewCmdhandler:View,    
         onWeekOrMonthToDay:wtd,
         onBeforeRequestData: cal_beforerequest,
@@ -17,7 +16,7 @@ EasyClinica.pages['schedule'] = function(){
         onRequestDataError: cal_onerror, 
         autoload:true,
         url: EasyClinica.cfg.services.scheduleList.format(doctorId),  
-        quickAddUrl: EasyClinica.cfg.services.scheduleAdd.format(doctorId), 
+        quickAddUrl: EasyClinica.cfg.services.scheduleQuickAdd.format(doctorId), 
         quickUpdateUrl: EasyClinica.cfg.services.scheduleUpdate.format(doctorId),
         quickDeleteUrl: EasyClinica.cfg.services.scheduleRemove.format(doctorId)        
     };
@@ -33,9 +32,11 @@ EasyClinica.pages['schedule'] = function(){
     }
     $("#caltoolbar").noSelect();
     
-    $("#hdtxtshow").datepicker({ picker: "#txtdatetimeshow", showtarget: $("#txtdatetimeshow"),
-    	onReturn:function(r){                          
-            var p = $("#gridcontainer").gotoDate(r).BcalGetOp();
+    $("#hdtxtshow").datepicker({
+    	altField: "#txtdatetimeshow",
+    	dateFormat: 'dd/mm/yy',
+		onSelect:function(dateText, inst){
+			var p = $("#gridcontainer").gotoDate(dateText).BcalGetOp();
             if (p && p.datestrshow) {
                 $("#txtdatetimeshow").text(p.datestrshow);
             }
@@ -82,14 +83,13 @@ EasyClinica.pages['schedule'] = function(){
     }
     function Edit(data)
     {
-    	//var eurl="edit.php?id={0}&start={2}&end={3}&isallday={4}&title={1}";  
     	if(data)
         {
-            //var url = StrFormat(eurl,data);
         	var url = EasyClinica.cfg.services.scheduleEdit.format(doctorId, data[0]);
-            OpenModelWindow(url,{ width: 600, height: 400, caption:"Gerenciando Agenda",onclose:function(){
-               $("#gridcontainer").reload();
-            }});
+        	EasyClinica.lib.openModal(url, 'GET', {}, function(){
+            	EasyClinica.common.generalFunctions();
+    			EasyClinica.common.formValidation();
+            });
         }
     }    
     function View(data)
@@ -100,12 +100,7 @@ EasyClinica.pages['schedule'] = function(){
         });
         alert(str);               
     }    
-    function Delete(data,callback)
-    {   
-        $.alerts.okButton="Ok";  
-        $.alerts.cancelButton="Cancel";  
-        hiConfirm("Deseja realmente deletar esse compromisso?", 'Confirm',function(r){ r && callback(0);});           
-    }
+    
     function wtd(p)
     {
        if (p && p.datestrshow) {
@@ -116,9 +111,9 @@ EasyClinica.pages['schedule'] = function(){
         });
         $("#showdaybtn").addClass("fcurrent");
     }
+    
     //to show day view
     $("#showdaybtn").click(function(e) {
-        //document.location.href="#day";
         $("#caltoolbar div.fcurrent").each(function() {
             $(this).removeClass("fcurrent");
         });
@@ -128,6 +123,7 @@ EasyClinica.pages['schedule'] = function(){
             $("#txtdatetimeshow").text(p.datestrshow);
         }
     });
+    
     //to show week view
     $("#showweekbtn").click(function(e) {
         //document.location.href="#week";
@@ -139,8 +135,8 @@ EasyClinica.pages['schedule'] = function(){
         if (p && p.datestrshow) {
             $("#txtdatetimeshow").text(p.datestrshow);
         }
-
     });
+    
     //to show month view
     $("#showmonthbtn").click(function(e) {
         //document.location.href="#month";
@@ -154,6 +150,7 @@ EasyClinica.pages['schedule'] = function(){
         }
     });
     
+    // refresh
     $("#showreflashbtn").click(function(e){
         $("#gridcontainer").reload();
     });
@@ -161,8 +158,13 @@ EasyClinica.pages['schedule'] = function(){
     //Add a new event
     $("#faddbtn").click(function(e) {
         var url = EasyClinica.cfg.services.scheduleNew.format(doctorId);
-        OpenModelWindow(url,{ width: 500, height: 400, caption: "Criar novo compromisso"});
+        
+        EasyClinica.lib.openModal(url, 'GET', {}, function(){
+        	EasyClinica.common.generalFunctions();
+			EasyClinica.common.formValidation();
+        });
     });
+    
     //go to today
     $("#showtodaybtn").click(function(e) {
         var p = $("#gridcontainer").gotoDate().BcalGetOp();
@@ -170,6 +172,7 @@ EasyClinica.pages['schedule'] = function(){
             $("#txtdatetimeshow").text(p.datestrshow);
         }
     });
+    
     //previous date range
     $("#sfprevbtn").click(function(e) {
         var p = $("#gridcontainer").previousRange().BcalGetOp();
@@ -178,6 +181,7 @@ EasyClinica.pages['schedule'] = function(){
         }
 
     });
+    
     //next date range
     $("#sfnextbtn").click(function(e) {
         var p = $("#gridcontainer").nextRange().BcalGetOp();
@@ -185,5 +189,4 @@ EasyClinica.pages['schedule'] = function(){
             $("#txtdatetimeshow").text(p.datestrshow);
         }
     });
-	
 };

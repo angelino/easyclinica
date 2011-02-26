@@ -66,11 +66,11 @@ EasyClinica.cfg.services = {
 		showAnamneseDetails: '/easyclinica/anamnese/_show',
 		
 		scheduleList: '/easyclinica/medicos/{0}/agenda/_list',
-		scheduleAdd: '/easyclinica/medicos/{0}/agenda/_add',
-		scheduleUpdate: '/easyclinica/medicos/{0}/agenda/_update',
+		scheduleQuickAdd: '/easyclinica/medicos/{0}/agenda/_quickAdd',
+		scheduleUpdate: '/easyclinica/medicos/{0}/agenda/_quickUpdate',
 		scheduleRemove: '/easyclinica/medicos/{0}/agenda/_delete',
 		scheduleNew: '/easyclinica/medicos/{0}/agenda/_new',
-		scheduleEdit: '/easyclinica/medicos/{0}/agenda/{1}/edit',
+		scheduleEdit: '/easyclinica/medicos/{0}/agenda/{1}/_edit',
 		
 		postReply: '/easyclinica/mensagens/{0}/respostas/_nova',
 		postMessage: '/easyclinica/mensagens/_nova',
@@ -85,7 +85,6 @@ EasyClinica.cfg.images = {
 
 /* COMMON */
 EasyClinica.common.generalFunctions = function(){
-	
 	// Currency
 	$('.currency').each(function(index){
 		var element = $(this);
@@ -121,14 +120,27 @@ EasyClinica.common.generalFunctions = function(){
 		showAnim: 'drop'
 	});
 	
-	// botï¿½o voltar
+	// Datetime Picker
+	$('.datetimepicker').datetimepicker({
+		timeFormat: 'hh:mm',
+		dateFormat: 'dd/mm/yy',
+		timeOnlyTitle: 'Escolha um Horário',
+		timeText: 'Harário',
+		hourText: 'Hora',
+		minuteText: 'Minutos',
+		secondText: 'Segundos',
+		currentText: 'Agora',
+		closeText: 'Ok'
+	});
+	
+	// botão voltar
 	$('.btnback').click(function(e){
 		e.preventDefault();
 		var redirect_to = $(this).attr('redirect_to');
 		document.location.href = redirect_to;
 	});
 	
-	// botï¿½o cancelar
+	// botão cancelar
 	$('.btncancel').click(function(e) {
 		e.preventDefault();
 		var redirect_to = $(this).attr('redirect_to');
@@ -143,7 +155,7 @@ EasyClinica.common.formValidation = function () {
 	});	
 	
     $.tools.validator.localize('pt', {
-        '[required]': 'campo obrigatï¿½rio'
+        '[required]': 'campo obrigatório'
     });
     
     $('input[type=submit], .submit').click(function (e) {
@@ -158,7 +170,7 @@ EasyClinica.common.formValidation = function () {
     });
     
     //messages
-    $('input.currency').attr('data-message','valor invï¿½lido');
+    $('input.currency').attr('data-message','valor inválido');
 };
 
 /* LIB */
@@ -198,6 +210,8 @@ EasyClinica.lib.openModal = function (contentUrl, type, parameters, onCreate) {
 			e.preventDefault();
 			var modal = findRecursiveParent($(this), '.modal');
 			modal.remove();
+			
+			$('.error').remove();
 		});
 	};
 };

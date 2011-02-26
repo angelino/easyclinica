@@ -3,9 +3,9 @@ var i18n = $.extend({}, i18n || {}, {
         dateformat: {
             "fulldaykey": "ddMMyyyy",
             "fulldayshow": "L d yyyy",
-            "fulldayvalue": "d/M/yyyy",
-            "Md": "W d/M",
-            "Md3": "L d",
+            "fulldayvalue": "dd/MM/yyyy",
+            "Md": "W dd/MM",
+            "Md3": "L dd",
             "separator": "/",
             "year_index": 2,
             "month_index": 1,

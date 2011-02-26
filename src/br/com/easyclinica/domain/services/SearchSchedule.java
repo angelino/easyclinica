@@ -9,7 +9,7 @@ import br.com.easyclinica.domain.entities.Schedule;
 import br.com.easyclinica.domain.repositories.AllSchedule;
 
 @Component
-public class ConsultSchedule {
+public class SearchSchedule {
 	
 	public static final String VIEW_TYPE_DAY = "day";
 	public static final String VIEW_TYPE_WEEK = "week";
@@ -19,16 +19,16 @@ public class ConsultSchedule {
 	private Doctor doctor;
 	private Calendar date;
 	
-	public ConsultSchedule(AllSchedule allSchedule){
+	public SearchSchedule(AllSchedule allSchedule){
 		this.allSchedule = allSchedule;
 	}
 	
-	public ConsultSchedule ofTheDoctor(Doctor doctor) {
+	public SearchSchedule ofTheDoctor(Doctor doctor) {
 		this.doctor = doctor;
 		return this;
 	}
 	
-	public ConsultSchedule from(Calendar date) {
+	public SearchSchedule from(Calendar date) {
 		this.date = date;
 		return this;
 	}

@@ -9,15 +9,10 @@
 	<head>
 		<title>.: EasyClinica - Agenda Médica :.</title>
 		
-		<helper:include fileName="plugins/wdCalendar/dailog.css" type="css" />
 		<helper:include fileName="plugins/wdCalendar/calendar.css" type="css" />
-		<helper:include fileName="plugins/wdCalendar/dp.css" type="css" />
-		<helper:include fileName="plugins/wdCalendar/alert.css" type="css" />
 		<helper:include fileName="plugins/wdCalendar/main.css" type="css" />
 	
 	    <helper:include fileName="plugins/wdCalendar/Common.js" type="js"/>
-	    <helper:include fileName="plugins/wdCalendar/datepicker_lang_PT.js" type="js"/> 
-	    <helper:include fileName="plugins/wdCalendar/jquery.datepicker.js" type="js"/> 
 	    <helper:include fileName="plugins/wdCalendar/jquery.alert.js" type="js"/>
 	    <helper:include fileName="plugins/wdCalendar/jquery.ifrmdailog.js" type="js"/>
 	    <helper:include fileName="plugins/wdCalendar/wdCalendar_lang_PT.js" type="js"/>
