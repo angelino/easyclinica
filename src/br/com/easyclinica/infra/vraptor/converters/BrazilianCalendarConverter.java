@@ -20,7 +20,10 @@ public class BrazilianCalendarConverter implements Converter<Calendar> {
 			ResourceBundle bundle) {
 		
 		try {
-			Date convertedDate = new SimpleDateFormat("dd/MM/yyyy").parse(value);
+			String format = "dd/MM/yyyy";
+			if(value.contains(":")) format += " H:m";
+			
+			Date convertedDate = new SimpleDateFormat(format).parse(value);
 			
 			Calendar calendar = Calendar.getInstance();
 			calendar.setTime(convertedDate);

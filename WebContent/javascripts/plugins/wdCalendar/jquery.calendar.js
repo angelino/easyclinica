@@ -25,7 +25,7 @@
             objClone.toString = obj.toString;
             objClone.valueOf = obj.valueOf;
             return objClone;
-        }
+        };
     }
     if (!dateFormat || typeof (dateFormat) != "function") {
         var dateFormat = function(format) {
@@ -75,7 +75,7 @@
                 case "l": date.setMilliseconds(date.getMilliseconds() + number); break;
             }
             return date;
-        }
+        };
     }
     if (!DateDiff || typeof (DateDiff) != "function") {
         var DateDiff = function(interval, d1, d2) {
@@ -112,7 +112,7 @@
             }
             return diff;
 
-        }
+        };
     }
     if ($.fn.noSelect == undefined) {
         $.fn.noSelect = function(p) { //no select plugin by me :-)
@@ -529,7 +529,7 @@
                 if (de.length > 0) { //           
                     for (var j = 0; j < de.length; j++) {
                         var end = DateDiff("d", lrdate, de[j].event[3]) > 0 ? lrdate : de[j].event[3];
-                        de[j].colSpan = DateDiff("d", dayarrs[i].date, end) + 1
+                        de[j].colSpan = DateDiff("d", dayarrs[i].date, end) + 1;
                     }
                 }
                 de = null;
@@ -576,7 +576,7 @@
                         for (var D = x.ne.length; D--; ) {
                             var Ia = x.ne[D];
                             La = Math.max(La, Ia.VL);
-                            H = Math.min(H, Ia.left)
+                            H = Math.min(H, Ia.left);
                         }
                         x.VL = La + 1;
                         x.width = H / (x.PO + 1);
@@ -1373,9 +1373,9 @@
 
             var a = [];
             if (showyear) {
-                a.push(i18n.xgcalendar.dateformat.fulldayshow)
+                a.push(i18n.xgcalendar.dateformat.fulldayshow);
             } else if (showmonth) {
-                a.push(i18n.xgcalendar.dateformat.Md3)
+                a.push(i18n.xgcalendar.dateformat.Md3);
             } else if (showday) {
                 a.push(i18n.xgcalendar.dateformat.day);
             }
@@ -1523,7 +1523,7 @@
             if (data != null) {
                 if (option.quickDeleteUrl != "" && data[8] == 1 && option.readonly != true) {
                     var csbuddle = '<div id="bbit-cs-buddle" style="z-index: 180; width: 400px;visibility:hidden;" class="bubble"><table class="bubble-table" cellSpacing="0" cellPadding="0"><tbody><tr><td class="bubble-cell-side"><div id="tl1" class="bubble-corner"><div class="bubble-sprite bubble-tl"></div></div><td class="bubble-cell-main"><div class="bubble-top"></div><td class="bubble-cell-side"><div id="tr1" class="bubble-corner"><div class="bubble-sprite bubble-tr"></div></div>  <tr><td class="bubble-mid" colSpan="3"><div style="overflow: hidden" id="bubbleContent1"><div><div></div><div class="cb-root"><table class="cb-table" cellSpacing="0" cellPadding="0"><tbody><tr><td class="cb-value"><div class="textbox-fill-wrapper"><div class="textbox-fill-mid"><div id="bbit-cs-what" title="'
-                    	+ i18n.xgcalendar.click_to_detail + '" class="textbox-fill-div lk" style="cursor:pointer;"></div></div></div></td></tr><tr><td class=cb-value><div id="bbit-cs-buddle-timeshow"></div></td></tr></tbody></table><div class="bbit-cs-split"><input id="bbit-cs-id" type="hidden" value=""/>[ <span id="bbit-cs-delete" class="lk">'
+                    	+ i18n.xgcalendar.click_to_detail + '" class="textbox-fill-div lk" style="cursor:pointer;"></div></div></div></td></tr><tr><td class=cb-value><div id="bbit-cs-buddle-timeshow"></div></td></tr><tr><td class=cb-value><div id="bbit-cs-buddle-description"></div></td></tr></tbody></table><div class="bbit-cs-split"><input id="bbit-cs-id" type="hidden" value=""/>[ <span id="bbit-cs-delete" class="lk">'
                     	+ i18n.xgcalendar.i_delete + '</span> ]&nbsp; <SPAN id="bbit-cs-editLink" class="lk">'
                     	+ i18n.xgcalendar.update_detail + ' <StrONG>&gt;&gt;</StrONG></SPAN></div></div></div></div><tr><td><div id="bl1" class="bubble-corner"><div class="bubble-sprite bubble-bl"></div></div><td><div class="bubble-bottom"></div><td><div id="br1" class="bubble-corner"><div class="bubble-sprite bubble-br"></div></div></tr></tbody></table><div id="bubbleClose2" class="bubble-closebutton"></div><div id="prong1" class="prong"><div class=bubble-sprite></div></div></div>';
                     var bud = $("#bbit-cs-buddle");
@@ -1540,7 +1540,7 @@
                                 option.DeleteCmdhandler.call(this, data, quickd);
                             }
                             else {
-                                if (confirm(i18n.xgcalendar.confirm_delete_event + "?")) {
+                                if (confirm(i18n.xgcalendar.confirm_delete_event)) {
                                     var s = 0; //0 single event , 1 for Recurring event
                                     if (data[6] == 1) {
                                         if (confirm(i18n.xgcalendar.confrim_delete_event_or_all)) {
@@ -1559,7 +1559,8 @@
                         });
                         $("#bbit-cs-what").click(function(e) {
                             if (!option.ViewCmdhandler) {
-                                alert("ViewCmdhandler" + i18n.xgcalendar.i_undefined);
+                            	e.preventDefault();
+                                //alert("ViewCmdhandler" + i18n.xgcalendar.i_undefined);
                             }
                             else {
                                 if (option.ViewCmdhandler && $.isFunction(option.ViewCmdhandler)) {
@@ -1581,14 +1582,14 @@
                             $("#bbit-cs-buddle").css("visibility", "hidden");
                             return false;
                         });
-                        bud.click(function() { return false });
+                        bud.click(function() { return false; });
                     }
                     var pos = getbuddlepos(e.pageX, e.pageY);
                     if (pos.hide) {
-                        $("#prong1").hide()
+                        $("#prong1").hide();
                     }
                     else {
-                        $("#prong1").show()
+                        $("#prong1").show();
                     }
                     var ss = [];
                     var iscos = DateDiff("d", data[2], data[3]) != 0;
@@ -1605,6 +1606,7 @@
                     }
                     var ts = $("#bbit-cs-buddle-timeshow").html(ss.join(""));
                     $("#bbit-cs-what").html(data[1]);
+                    $("#bbit-cs-buddle-description").html(data[9]);
                     $("#bbit-cs-id").val(data[0]);
                     bud.data("cdata", data);
                     bud.css({ "visibility": "visible", left: pos.left, top: pos.top });
@@ -1845,16 +1847,16 @@
                     }
                     return false;
                 });
-                buddle.mousedown(function(e) { return false });
+                buddle.mousedown(function(e) { return false; });
             }
 			
             var dateshow = CalDateShow(start, end, !isallday, true);			
             var off = getbuddlepos(pos.left, pos.top);
             if (off.hide) {
-                $("#prong2").hide()
+                $("#prong2").hide();
             }
             else {
-                $("#prong2").show()
+                $("#prong2").show();
             }
             $("#bbit-cal-buddle-timeshow").html(dateshow);
             var calwhat = $("#bbit-cal-what").val("");
@@ -2001,7 +2003,7 @@
                         });
                     }
                     else {
-                        chip.mousedown(returnfalse)
+                        chip.mousedown(returnfalse);
                     }
                 });
                 $("div.rb-o", gridcontainer).each(function(i) {
@@ -2012,7 +2014,7 @@
                         chip.mousedown(function(e) { dragStart.call(this, "dw5", e); return false; });
                     }
                     else {
-                        chip.mousedown(returnfalse)
+                        chip.mousedown(returnfalse);
                     }
                 });
                 if (option.readonly == false) {
@@ -2039,7 +2041,7 @@
                         chip.mousedown(function(e) { dragStart.call(this, "m2", e); return false; });
                     }
                     else {
-                        chip.mousedown(returnfalse)
+                        chip.mousedown(returnfalse);
                     }
                 });
                 $("td.st-more", gridcontainer).each(function(i) {
@@ -2725,7 +2727,7 @@
             if (this.bcal) {
                 this.bcal.sv(view);
             }
-        })
+        });
     };
     
     /**
@@ -2736,7 +2738,7 @@
             if (this.bcal) {
                 this.bcal.rf();
             }
-        })
+        });
     };
     
     /**
@@ -2750,7 +2752,7 @@
             if (this.bcal) {
                 this.bcal.gt(d);
             }
-        })
+        });
     };
     
     /**
@@ -2763,7 +2765,7 @@
             if (this.bcal) {
                 this.bcal.pv();
             }
-        })
+        });
     };
     
     /**
@@ -2776,7 +2778,7 @@
             if (this.bcal) {
                 this.bcal.nt();
             }
-        })
+        });
     };
     
     

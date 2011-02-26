@@ -12,9 +12,6 @@
 		<helper:include fileName="plugins/wdCalendar/calendar.css" type="css" />
 		<helper:include fileName="plugins/wdCalendar/main.css" type="css" />
 	
-	    <helper:include fileName="plugins/wdCalendar/Common.js" type="js"/>
-	    <helper:include fileName="plugins/wdCalendar/jquery.alert.js" type="js"/>
-	    <helper:include fileName="plugins/wdCalendar/jquery.ifrmdailog.js" type="js"/>
 	    <helper:include fileName="plugins/wdCalendar/wdCalendar_lang_PT.js" type="js"/>
 	    <helper:include fileName="plugins/wdCalendar/jquery.calendar.js" type="js"/>
 	</head>
@@ -67,7 +64,7 @@
 	            	<div class="fshowdatep fbutton">
 	                    <div>
 	                        <input type="hidden" name="txtshow" id="hdtxtshow" />
-	                        <span id="txtdatetimeshow">Carregando</span>
+	                        <span id="txtdatetimeshow">Escolha uma data</span>
 	                    </div>
 	            	</div>
 	                <div class="clear"></div>

@@ -9,7 +9,6 @@ EasyClinica.pages['schedule'] = function(){
         theme:3,
         showday: new Date(),
         EditCmdhandler:Edit,
-        ViewCmdhandler:View,    
         onWeekOrMonthToDay:wtd,
         onBeforeRequestData: cal_beforerequest,
         onAfterRequestData: cal_afterrequest,
@@ -17,7 +16,7 @@ EasyClinica.pages['schedule'] = function(){
         autoload:true,
         url: EasyClinica.cfg.services.scheduleList.format(doctorId),  
         quickAddUrl: EasyClinica.cfg.services.scheduleQuickAdd.format(doctorId), 
-        quickUpdateUrl: EasyClinica.cfg.services.scheduleUpdate.format(doctorId),
+        quickUpdateUrl: EasyClinica.cfg.services.scheduleQuickUpdate.format(doctorId),
         quickDeleteUrl: EasyClinica.cfg.services.scheduleRemove.format(doctorId)        
     };
     var $dv = $("#calhead");
@@ -29,18 +28,25 @@ EasyClinica.pages['schedule'] = function(){
     var p = $("#gridcontainer").bcalendar(op).BcalGetOp();
     if (p && p.datestrshow) {
         $("#txtdatetimeshow").text(p.datestrshow);
-    }
+    } 
     $("#caltoolbar").noSelect();
     
     $("#hdtxtshow").datepicker({
     	altField: "#txtdatetimeshow",
     	dateFormat: 'dd/mm/yy',
 		onSelect:function(dateText, inst){
-			var p = $("#gridcontainer").gotoDate(dateText).BcalGetOp();
+			var dateParts = dateText.split('/');
+			var selectedDate = new Date(dateParts[2], dateParts[1], dateParts[0]);
+			
+			var p = $("#gridcontainer").gotoDate(selectedDate).BcalGetOp();
             if (p && p.datestrshow) {
                 $("#txtdatetimeshow").text(p.datestrshow);
             }
         } 
+    });
+    
+    $('.fshowdatep').click(function(e){
+    	$("#hdtxtshow").focus();
     });
     
     function cal_beforerequest(type)
@@ -92,15 +98,7 @@ EasyClinica.pages['schedule'] = function(){
             });
         }
     }    
-    function View(data)
-    {
-        var str = "";
-        $.each(data, function(i, item){
-            str += "[" + i + "]: " + item + "\n";
-        });
-        alert(str);               
-    }    
-    
+        
     function wtd(p)
     {
        if (p && p.datestrshow) {

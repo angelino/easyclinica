@@ -67,7 +67,7 @@ EasyClinica.cfg.services = {
 		
 		scheduleList: '/easyclinica/medicos/{0}/agenda/_list',
 		scheduleQuickAdd: '/easyclinica/medicos/{0}/agenda/_quickAdd',
-		scheduleUpdate: '/easyclinica/medicos/{0}/agenda/_quickUpdate',
+		scheduleQuickUpdate: '/easyclinica/medicos/{0}/agenda/_quickUpdate',
 		scheduleRemove: '/easyclinica/medicos/{0}/agenda/_delete',
 		scheduleNew: '/easyclinica/medicos/{0}/agenda/_new',
 		scheduleEdit: '/easyclinica/medicos/{0}/agenda/{1}/_edit',
@@ -114,6 +114,7 @@ EasyClinica.common.generalFunctions = function(){
 	
 	// Datepicker
 	$('.datepicker').datepicker({
+		showOn: 'both',
 		dateFormat: 'dd/mm/yy',
 		showOtherMonths: true,
 		selectOtherMonths: true,
@@ -130,7 +131,10 @@ EasyClinica.common.generalFunctions = function(){
 		minuteText: 'Minutos',
 		secondText: 'Segundos',
 		currentText: 'Agora',
-		closeText: 'Ok'
+		closeText: 'Ok',
+		hourGrid: 3,
+		minuteGrid: 15
+
 	});
 	
 	// botão voltar
