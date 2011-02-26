@@ -90,4 +90,4 @@ public class HealthCarePlanDaoTests extends BaseIntegrationTests {
 		
 		assertEquals(firstPlan.getName(), dao.get(0, 1).get(0).getName());
 	}
-}
+	}

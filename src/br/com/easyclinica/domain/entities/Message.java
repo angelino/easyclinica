@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -11,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.Type;
 
 @Entity
@@ -22,7 +24,8 @@ public class Message {
 	@ManyToOne(fetch=FetchType.EAGER)
 	private Employee employee;
 	private Calendar date;
-	@OneToMany(mappedBy="message")
+	@Cascade(org.hibernate.annotations.CascadeType.DELETE_ORPHAN)
+	@OneToMany(mappedBy="message", cascade=CascadeType.ALL)
 	private List<Reply> replies;
 
 	public Message() {
@@ -67,6 +70,7 @@ public class Message {
 		reply.setDate(Calendar.getInstance());
 		reply.setMessage(this);
 		
+		replies.add(reply);
 		return reply;
 		
 	}

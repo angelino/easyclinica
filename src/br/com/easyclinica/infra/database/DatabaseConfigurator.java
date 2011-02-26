@@ -32,13 +32,14 @@ public class DatabaseConfigurator {
 	public static Configuration config(String database) {
 		AnnotationConfiguration configuration = new AnnotationConfiguration();
 		configuration.setProperty("hibernate.connection.driver_class", "com.mysql.jdbc.Driver");
-		configuration.setProperty("hibernate.connection.url", "jdbc:mysql://localhost:3306/" + database);
+		configuration.setProperty("hibernate.connection.url", "jdbc:mysql://localhost:3306/" + database + "?useUnicode=true&characterEncoding=UTF-8");
 		configuration.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLInnoDBDialect");
 		configuration.setProperty("hibernate.connection.username", "easyclinica");
 		configuration.setProperty("hibernate.connection.password", "3@sycl1n1c@");
 		configuration.setProperty("hibernate.hbm2ddl.auto", "true");
 		configuration.setProperty("hibernate.show_sql", "true");
 		configuration.setProperty("hibernate.format_sql", "true");
+		configuration.setProperty("hibernate.jdbc.batch_size", "20");
 		
 		configuration.addAnnotatedClass(Appointment.class);
 		configuration.addAnnotatedClass(AppointmentMaterial.class);

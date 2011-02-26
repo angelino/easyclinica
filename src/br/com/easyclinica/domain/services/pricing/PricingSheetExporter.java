@@ -1,4 +1,4 @@
-package br.com.easyclinica.domain.services;
+package br.com.easyclinica.domain.services.pricing;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;

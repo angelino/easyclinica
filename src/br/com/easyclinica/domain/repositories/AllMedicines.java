@@ -11,4 +11,6 @@ public interface AllMedicines {
 	List<MedicineWithPriceAndQuantity> getMedicinesWithPriceAndQuantity(Procedure procedure, HealthCarePlan healthCarePlan);
 
 	List<Medicine> getAll();
+
+	Medicine getById(int id);
 }

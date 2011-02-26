@@ -37,6 +37,6 @@ public class BigDecimalConverterTests {
 	}
 	
 	private BigDecimal convert(String number) {
-		return new BigDecimalConverter().convert(number, BigDecimal.class, null);
+		return new BrazilianOrAmericanBigDecimalConverter().convert(number, BigDecimal.class, null);
 	}
 }

@@ -21,4 +21,9 @@ public class ProcedureBuilder {
 	public Procedure instance() {
 		return instance;
 	}
+
+	public ProcedureBuilder withName(String name) {
+		instance.setName(name);
+		return this;
+	}
 }
