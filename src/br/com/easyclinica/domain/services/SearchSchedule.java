@@ -63,6 +63,9 @@ public class SearchSchedule {
 		int firstDayOfTheWeek = date.getFirstDayOfWeek();
 		int currentDayOfTheWeek = date.get(Calendar.DAY_OF_WEEK);
 		int currentDayOfTheMonth = date.get(Calendar.DAY_OF_MONTH);
+		
+		if(currentDayOfTheWeek == Calendar.SUNDAY) currentDayOfTheWeek = 8;
+		
 		first.set(Calendar.DAY_OF_MONTH, currentDayOfTheMonth - (currentDayOfTheWeek - firstDayOfTheWeek));
 		
 		return first;
@@ -74,6 +77,9 @@ public class SearchSchedule {
 		int lastDayOfWeek = date.getMaximum(Calendar.DAY_OF_WEEK);
 		int currentDayOfTheWeek = date.get(Calendar.DAY_OF_WEEK);
 		int currentDayOfTheMonth = date.get(Calendar.DAY_OF_MONTH);
+		
+		if(currentDayOfTheWeek == Calendar.SUNDAY) currentDayOfTheWeek = lastDayOfWeek;
+		
 		end.set(Calendar.DAY_OF_MONTH, currentDayOfTheMonth + (lastDayOfWeek - currentDayOfTheWeek));
 		
 		return end;

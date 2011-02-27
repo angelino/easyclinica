@@ -61,12 +61,11 @@ public class ConsultScheduleTests extends BaseIntegrationTests {
 												 .instance();
 		session.save(schedule1);
 		
-		Calendar aDayAfter = Calendar.getInstance();
-		aDayAfter.add(Calendar.DAY_OF_MONTH, 1);
+		Calendar lastDayOfThisWeek = service.getLastDayOfWeek(schedule1.getStartTime());
 		Schedule schedule2 = new ScheduleBuilder().ofTheDoctor(doctor)
 												 .withSubject("Compromisso 2")
-												 .withStartTime(aDayAfter)
-												 .withEndTime(aDayAfter)
+												 .withStartTime(lastDayOfThisWeek)
+												 .withEndTime(lastDayOfThisWeek)
 												 .instance();
 		session.save(schedule2);
 		
