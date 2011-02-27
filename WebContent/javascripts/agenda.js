@@ -36,7 +36,7 @@ EasyClinica.pages['schedule'] = function(){
     	dateFormat: 'dd/mm/yy',
 		onSelect:function(dateText, inst){
 			var dateParts = dateText.split('/');
-			var selectedDate = new Date(dateParts[2], dateParts[1], dateParts[0]);
+			var selectedDate = new Date(dateParts[2], dateParts[1]-1, dateParts[0]);
 			
 			var p = $("#gridcontainer").gotoDate(selectedDate).BcalGetOp();
             if (p && p.datestrshow) {
@@ -80,13 +80,14 @@ EasyClinica.pages['schedule'] = function(){
                 $("#loadingpannel").html("Success!");
                 window.setTimeout(function(){ $("#loadingpannel").hide();},2000);
             break;
-        }              
-       
+        }   
     }
+    
     function cal_onerror(type,data)
     {
         $("#errorpannel").show();
     }
+    
     function Edit(data)
     {
     	if(data)

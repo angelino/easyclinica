@@ -73,9 +73,16 @@
 		<div>
 			<label class="title">Convênio:<span>*</span></label>
 			<select name="patient.healthCarePlan.id" min="1" data-message="Selecione um convênio.">
-				<option value="0">Selecione um convênio</option>
 				<c:forEach var="plan" items="${healthCarePlans}">
-					<option value="${plan.id}" <c:if test="${plan.id == patient.healthCarePlan.id}">selected</c:if>>${plan.name}</option>
+					<c:choose>
+						<c:when test="${plan.id == patient.healthCarePlan.id || (patient.id == 0 && plan.id == loggedUser.clinic.privatePlan.id)}">
+							<option value="${plan.id}" selected="selected">${plan.name}</option>
+						</c:when>
+						<c:otherwise>
+							<option value="${plan.id}">${plan.name}</option>
+						</c:otherwise>
+					</c:choose>
+					
 				</c:forEach>
 			</select>
 		</div>
