@@ -21,12 +21,14 @@
 		</div>
 			
 		<div class="boxright">
+		
 			<% 
 				java.util.List<Link> links = new LinkedList<Link>();  
 				links.add(new Link("/convenios","Voltar para listagem"));
 				pageContext.setAttribute("links",links);
 			%>
 			<helper:navigation links="${links}"></helper:navigation>		
+			<helper:notice notice="Você deve escolher um convênio de base para a cópia dos preços de materiais, remédios, especialidades e procedimentos. Esses valores podem ser alterados posteriormente através da opção Financeiro, na tela de dados do convênio." title="Gerando o Financeiro"></helper:notice>
 		</div>
 	</body>
 </html>
