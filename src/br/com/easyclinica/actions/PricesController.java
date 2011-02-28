@@ -43,7 +43,7 @@ public class PricesController {
 	
 	@Get
 	@Path("/convenios/{id}/financeiro")
-	public void priceListRequest(int id) {
+	public void financial(int id) {
 		result.include("healthCarePlan", plans.getById(id));
 	}
 	
