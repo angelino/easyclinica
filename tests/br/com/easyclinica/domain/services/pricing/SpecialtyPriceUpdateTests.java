@@ -34,7 +34,7 @@ public class SpecialtyPriceUpdateTests{
 		
 		HealthCarePlan plan = new HealthCarePlanBuilder().withPrecifiedSpecialty(new Specialty(1), new BigDecimal("100.0")).instance();
 		
-		ImportedStuff Specialty = new ImportedStuff(1, new BigDecimal("150.0"));
+		ImportedStuff Specialty = new ImportedStuff(1, "specialty", new BigDecimal("150.0"));
 		update.pricesForAHealthCarePlan(plan, Arrays.asList(Specialty));
 		
 		assertEquals(new BigDecimal("150.0"), plan.getPrecifiedSpecialties().get(0).getAmount());
@@ -45,7 +45,7 @@ public class SpecialtyPriceUpdateTests{
 		when(Specialties.getById(1)).thenReturn(new SpecialtyBuilder(1).instance());
 		HealthCarePlan plan = new HealthCarePlanBuilder().instance();
 		
-		ImportedStuff Specialty = new ImportedStuff(1, new BigDecimal("150.0"));
+		ImportedStuff Specialty = new ImportedStuff(1, "specialty", new BigDecimal("150.0"));
 		update.pricesForAHealthCarePlan(plan, Arrays.asList(Specialty));
 		
 		assertNotNull(plan.getPrecifiedSpecialties().get(0));

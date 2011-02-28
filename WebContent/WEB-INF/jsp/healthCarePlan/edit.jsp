@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="/WEB-INF/easyclinica.tld" prefix="helper" %>
-<%@page import="br.com.easyclinica.view.Link"%>
 <%@page import="br.com.easyclinica.domain.entities.HealthCarePlan"%>
+<%@page import="br.com.easyclinica.view.Link"%>
 <%@page import="java.util.LinkedList"%>
 <html>
 	<head>
@@ -11,6 +11,7 @@
 	<body>
 
 		<div class="box" id="convenios">
+			<helper:healthCarePlanMenu plan="${healthCarePlan}" selected="Convenio" />
 			<div class="boxcontent">
 		   		<h2>Editar Convênio</h2>
 				

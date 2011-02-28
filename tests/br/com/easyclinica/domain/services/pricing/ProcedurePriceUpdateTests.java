@@ -34,7 +34,7 @@ public class ProcedurePriceUpdateTests{
 		
 		HealthCarePlan plan = new HealthCarePlanBuilder().withPrecifiedProcedure(new Procedure(1), new BigDecimal("100.0")).instance();
 		
-		ImportedStuff Procedure = new ImportedStuff(1, new BigDecimal("150.0"));
+		ImportedStuff Procedure = new ImportedStuff(1, "procedure", new BigDecimal("150.0"));
 		update.pricesForAHealthCarePlan(plan, Arrays.asList(Procedure));
 		
 		assertEquals(new BigDecimal("150.0"), plan.getPrecifiedProcedures().get(0).getFixedAmount());
@@ -45,7 +45,7 @@ public class ProcedurePriceUpdateTests{
 		when(Procedures.getById(1)).thenReturn(new ProcedureBuilder(1).instance());
 		HealthCarePlan plan = new HealthCarePlanBuilder().instance();
 		
-		ImportedStuff Procedure = new ImportedStuff(1, new BigDecimal("150.0"));
+		ImportedStuff Procedure = new ImportedStuff(1, "procedure", new BigDecimal("150.0"));
 		update.pricesForAHealthCarePlan(plan, Arrays.asList(Procedure));
 		
 		assertNotNull(plan.getPrecifiedProcedures().get(0));

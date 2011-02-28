@@ -46,32 +46,36 @@ public class PricingSheetImporter {
 	}
 
 	private void extractSpecialties() {
-		extract(wb.getSheet("Especialidades"), importedSpecialties, 2);
+		extract(wb.getSheet("Especialidades"), importedSpecialties, 1, 2);
 	}
 
 	private void extractMaterials() {
-		extract(wb.getSheet("Materiais"), importedMaterials, 2);
+		extract(wb.getSheet("Materiais"), importedMaterials, 1, 2);
 	}
 	
 	private void extractMedicines() {
-		extract(wb.getSheet("Remédios"), importedMedicines, 2);
+		extract(wb.getSheet("Remédios"), importedMedicines, 1, 2);
 	}
 	
 	private void extractProcedures() {		
-		extract(wb.getSheet("Procedimentos"), importedProcedures, 3);
+		extract(wb.getSheet("Procedimentos"), importedProcedures, 2, 3);
 	}
 
-	private void extract(Sheet sheet, List<ImportedStuff> list, int pricePosition) {
+	private void extract(Sheet sheet, List<ImportedStuff> list, int namePosition, int pricePosition) {
 		int qty = 0;
 		for (Iterator<Row> rit = sheet.rowIterator(); rit.hasNext(); ) {
 			Row row = rit.next();
 			qty++;
 			if(qty==1) continue;
 						
-			list.add(new ImportedStuff(toInt(row, 0), toBigDecimal(row, pricePosition)));
+			list.add(new ImportedStuff(toInt(row, 0), toString(row, namePosition),  toBigDecimal(row, pricePosition)));
 		}		
 	}
 	
+	private String toString(Row row, int namePosition) {
+		return row.getCell(namePosition).getStringCellValue();
+	}
+
 	private int toInt(Row row, int position) {
 		return (int)(row.getCell(position).getNumericCellValue());
 	}

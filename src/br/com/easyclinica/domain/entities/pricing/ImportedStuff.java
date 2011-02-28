@@ -6,13 +6,18 @@ public class ImportedStuff {
 
 	private int id;
 	private BigDecimal value;
+	private String name;
 
 	public ImportedStuff() {}
-	public ImportedStuff(int id, BigDecimal value) {
+	public ImportedStuff(int id, String name, BigDecimal value) {
 		this.id = id;
+		this.name = name;
 		this.value = value;
 	}
 
+	public String getName() {
+		return name;
+	}
 	public int getId() {
 		return id;
 	}

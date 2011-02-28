@@ -34,7 +34,7 @@ public class MaterialPriceUpdateTests{
 		
 		HealthCarePlan plan = new HealthCarePlanBuilder().withPrecifiedMaterial(new Material(1), new BigDecimal("100.0")).instance();
 		
-		ImportedStuff material = new ImportedStuff(1, new BigDecimal("150.0"));
+		ImportedStuff material = new ImportedStuff(1, "material", new BigDecimal("150.0"));
 		update.pricesForAHealthCarePlan(plan, Arrays.asList(material));
 		
 		assertEquals(new BigDecimal("150.0"), plan.getPrecifiedMaterials().get(0).getAmount());
@@ -45,7 +45,7 @@ public class MaterialPriceUpdateTests{
 		when(materials.getById(1)).thenReturn(new MaterialBuilder(1).instance());
 		HealthCarePlan plan = new HealthCarePlanBuilder().instance();
 		
-		ImportedStuff material = new ImportedStuff(1, new BigDecimal("150.0"));
+		ImportedStuff material = new ImportedStuff(1, "material", new BigDecimal("150.0"));
 		update.pricesForAHealthCarePlan(plan, Arrays.asList(material));
 		
 		assertNotNull(plan.getPrecifiedMaterials().get(0));

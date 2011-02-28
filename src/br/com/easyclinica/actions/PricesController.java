@@ -42,6 +42,12 @@ public class PricesController {
 	}
 	
 	@Get
+	@Path("/convenios/{id}/financeiro")
+	public void priceListRequest(int id) {
+		result.include("healthCarePlan", plans.getById(id));
+	}
+	
+	@Get
 	@Path("/convenios/{id}/precos")
 	public Download priceList(int id) throws IOException {
 
@@ -64,12 +70,15 @@ public class PricesController {
 		
 		HealthCarePlan plan = plans.getById(id);
 		updater.pricesForAHealthCarePlan(plan, procedures, specialties, medicines, materials);
+		
+		result.include("healthCarePlan", plan);
 	}
 
 	@Get
 	@Path("/convenios/{id}/precos/importar")
 	public void showFileUpload(int id) {
 		result.include("id", id);
+		result.include("healthCarePlan", plans.getById(id));
 	}
 
 	@Post
@@ -79,6 +88,7 @@ public class PricesController {
 
 		result.include("import", importer);
 		result.include("id", id);
+		result.include("healthCarePlan", plans.getById(id));
 	}
 
 	private String formatName(String name) {
