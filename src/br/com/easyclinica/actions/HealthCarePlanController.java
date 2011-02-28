@@ -10,6 +10,7 @@ import br.com.caelum.vraptor.Validator;
 import br.com.caelum.vraptor.view.Results;
 import br.com.easyclinica.domain.entities.HealthCarePlan;
 import br.com.easyclinica.domain.repositories.AllHealthCarePlans;
+import br.com.easyclinica.domain.services.pricing.PricingCopier;
 import br.com.easyclinica.domain.validators.HealthCarePlanValidator;
 import br.com.easyclinica.infra.vraptor.validators.ErrorTranslator;
 import br.com.easyclinica.view.Messages;
@@ -23,10 +24,11 @@ public class HealthCarePlanController extends BaseController {
 	private final HealthCarePlanValidator healthCarePlanValidator;
 	private final ErrorTranslator translator;
 	private final Paginator paginator;
+	private final PricingCopier copier;
 
 	public HealthCarePlanController(AllHealthCarePlans allHealthCares, 
 			Result result, Validator validator, HealthCarePlanValidator healthCarePlanValidator, 
-			ErrorTranslator translator, Paginator paginator) {
+			ErrorTranslator translator, Paginator paginator, PricingCopier copier) {
 		super(result);
 		this.allHealthCares = allHealthCares;
 		this.result = result;
@@ -34,6 +36,7 @@ public class HealthCarePlanController extends BaseController {
 		this.healthCarePlanValidator = healthCarePlanValidator;
 		this.translator = translator;
 		this.paginator = paginator;
+		this.copier = copier;
 	}
 	
 	@Get
@@ -48,15 +51,18 @@ public class HealthCarePlanController extends BaseController {
 	public void newForm() {
 		HealthCarePlan emptyPlan = HealthCarePlan.empty();
 		include(emptyPlan);
+		
+		result.include("healthCarePlans", allHealthCares.get());
 	}
 	
 	@Post
 	@Path("/convenios")
-	public void save(final HealthCarePlan healthCarePlan) {
+	public void save(final HealthCarePlan healthCarePlan, HealthCarePlan example) {
 		translator.translate(healthCarePlanValidator.validate(healthCarePlan));
 		validator.onErrorUse(Results.logic()).forwardTo(HealthCarePlanController.class).newForm();
 		
 		allHealthCares.add(healthCarePlan);
+		copier.copyPrices(example, healthCarePlan);
 		
 		successMsg(Messages.HEALTH_CARE_PLAN_ADDED);
 		result.redirectTo(HealthCarePlanController.class).index(Paginator.firstPage());

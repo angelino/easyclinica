@@ -50,7 +50,7 @@
 			<label class="title">Período para retorno (em dias):<span>*</span></label>
 			<input type="text" name="healthCarePlan.periodToReturn" min="0" required="required" data-message="campo obrigatório" value="${healthCarePlan.periodToReturn}" />
 		</div>
-	
+		
 	</fieldset>
 	
 	<fieldset>	
@@ -83,6 +83,18 @@
        		<label class="title">Observações:</label>
         	<textarea name="healthCarePlan.observations">${healthCarePlan.observations}</textarea>
       	</div>
+      	
+		<c:if test="${empty param.put}">
+			<div>
+				<label class="title">Copiar parte financeira do convênio:<span>*</span></label>
+				<select name="example.id">
+					<c:forEach var="plan" items="${healthCarePlans}">
+						<option value="${plan.id}">${plan.name}</option>
+					</c:forEach>
+				</select>
+			</div>	
+		</c:if>
+
     </fieldset>
     
     <div class="boxactions">
