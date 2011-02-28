@@ -51,17 +51,22 @@
 									<td>${healthCare.telephone}</td>
 									<td class="currency">${healthCare.ch}</td>
 									<td class="buttons">
-										<a class="btnpeopleedit" title="Editar" href="<c:url value="/convenios/${healthCare.id}/editar" />">&nbsp;</a>
+										<c:if test="${healthCare.id != loggedUser.clinic.privatePlan.id}">
+											<a class="btnpeopleedit" title="Editar" href="<c:url value="/convenios/${healthCare.id}/editar" />">&nbsp;</a>
+                                        </c:if>
+                                        
                                         <a class="btnpeopleshow exibir" title="Exibir" healthCarePlan_id="${healthCare.id}">&nbsp;</a>
                                         
-                                        <c:choose>
-											<c:when test="${healthCare.active}">
-												<a class="btnpeopledisable last" title="Desativar" href="<c:url value="/convenios/${healthCare.id}/deactivate" />">&nbsp;</a>
-											</c:when>
-											<c:otherwise>
-												<a class="btnpeopleenable last" title="Ativar" href="<c:url value="/convenios/${healthCare.id}/activate" />">&nbsp;</a>
-											</c:otherwise>
-										</c:choose>
+                                        <c:if test="${healthCare.id != loggedUser.clinic.privatePlan.id}">
+	                                        <c:choose>
+												<c:when test="${healthCare.active}">
+													<a class="btnpeopledisable last" title="Desativar" href="<c:url value="/convenios/${healthCare.id}/deactivate" />">&nbsp;</a>
+												</c:when>
+												<c:otherwise>
+													<a class="btnpeopleenable last" title="Ativar" href="<c:url value="/convenios/${healthCare.id}/activate" />">&nbsp;</a>
+												</c:otherwise>
+											</c:choose>
+										</c:if>
                                     </td>
 								</tr>
 							</c:forEach>

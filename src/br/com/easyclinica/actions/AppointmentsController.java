@@ -133,23 +133,23 @@ public class AppointmentsController extends BaseController {
 	
 	@Post
 	public void _newProcedureToAppointment(int procedureId, int healthCarePlanId) {
-		 	Procedure procedure = allProcedures.getById(procedureId);
-		 	HealthCarePlan healthCarePlan = allHealthCarePlans.getById(healthCarePlanId);
-		 	
-		 	PrecifiedProcedure precifiedProcedure = precifiedThings.getPrice(procedure, healthCarePlan);
-		 	List<MaterialWithPriceAndQuantity> materials = materialWithPriceAndQuantityBuilder.ofTheProcedure(procedure)
-		 																					  .inTheHealthCarePlan(healthCarePlan)
-		 																					  .execute();
-		 	
-		 	List<MedicineWithPriceAndQuantity> medicines = medicineWithPriceAndQuantityBuilder.ofTheProcedure(procedure)
-																							  .inTheHealthCarePlan(healthCarePlan)
-																							  .execute();
- 		 			 	
-		 	result.include("procedure", procedure);
-		 	result.include("healthCarePlan", healthCarePlan);
-		 	result.include("precifiedProcedure", precifiedProcedure);
-		 	result.include("materials", materials);
-		 	result.include("medicines", medicines);
+	 	Procedure procedure = allProcedures.getById(procedureId);
+	 	HealthCarePlan healthCarePlan = allHealthCarePlans.getById(healthCarePlanId);
+	 	
+	 	PrecifiedProcedure precifiedProcedure = precifiedThings.getPrice(procedure, healthCarePlan);
+	 	List<MaterialWithPriceAndQuantity> materials = materialWithPriceAndQuantityBuilder.ofTheProcedure(procedure)
+	 																					  .inTheHealthCarePlan(healthCarePlan)
+	 																					  .execute();
+	 	
+	 	List<MedicineWithPriceAndQuantity> medicines = medicineWithPriceAndQuantityBuilder.ofTheProcedure(procedure)
+																						  .inTheHealthCarePlan(healthCarePlan)
+																						  .execute();
+	 			 	
+	 	result.include("procedure", procedure);
+	 	result.include("healthCarePlan", healthCarePlan);
+	 	result.include("precifiedProcedure", precifiedProcedure);
+	 	result.include("materials", materials);
+	 	result.include("medicines", medicines);
 	}
 	
 	@Post

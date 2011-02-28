@@ -114,7 +114,6 @@ EasyClinica.common.generalFunctions = function(){
 	
 	// Datepicker
 	$('.datepicker').datepicker({
-		showOn: 'both',
 		dateFormat: 'dd/mm/yy',
 		showOtherMonths: true,
 		selectOtherMonths: true,

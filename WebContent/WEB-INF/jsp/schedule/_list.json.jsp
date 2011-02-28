@@ -18,7 +18,7 @@
 			<json:property value="${0}"/>  
 			<json:property value="${0}"/>  
 			<json:property value="${0}"/>  			
-			<json:property value="${8}"/> 
+			<json:property value="${schedule.color}"/> 
 			<json:property value="${1}"/>
 			<json:property value="${schedule.description}"/>
 			<json:property value=""/>

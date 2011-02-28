@@ -27,7 +27,7 @@
      <td colspan="2" class="center">${procedure.ch} CH</td>
      <td>
      	<c:choose>
-			<c:when test="${precifiedProcedure != null }">
+			<c:when test="${precifiedProcedure != null && precifiedProcedure.fixedAmount > 0}">
 				<input type="hidden" name="appointment.procedures[#index#].amount" value="${precifiedProcedure.fixedAmount}"/>
 				<input type="hidden" name="appointment.procedures[#index#].fixedAmount" value="1"/>
 				<span class="procedure-total-${procedure.id} currency">${precifiedProcedure.fixedAmount}</span> 

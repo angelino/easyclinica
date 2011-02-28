@@ -10,32 +10,43 @@
 	<% } %>
 	
 	<fieldset>
+		<p class="required"><span>*</span> campos obrigatórios</p>
+		
 		<input type="hidden" name="schedule.id" value="${schedule.id}"/>
 		<input type="hidden" name="schedule.doctor.id" value="${schedule.doctor.id}"/>
     		
     	<div>
-     		<label>Título:*</label>                    
+     		<label class="title">Título:<span>*</span></label>                    
        		<input type="text" maxlength="200" required="required" name="schedule.subject" value="${schedule.subject}"/>                     
        	</div>
     		
 		<div>
-			<label>Início:*</label>
+			<label class="title">Início:<span>*</span></label>
 			<input type="text" name="schedule.startTime" required="required" class="datetimepicker" value="<fmt:formatDate pattern="dd/MM/yyyy HH:mm" value="${schedule.startTime.time}" />"/>
 		</div>
  			
 		<div>
-			<label>Término:*</label>
+			<label class="title">Término:<span>*</span></label>
 			<input type="text" name="schedule.endTime" required="required" class="datetimepicker" value="<fmt:formatDate pattern="dd/MM/yyyy HH:mm" value="${schedule.endTime.time}" />"/>
 		</div>
 		
 		<div>
-			<label>Cor:*</label>
-			<div class="colorpicker" rel="schedule.color"></div>
-			<input id="schedule.color" name="schedule.color" type="hidden" value="-1" />
+			<input name="schedule.color" type="hidden" value="-1" />
+			<label class="title">Cor:</label>
+			<div class="paleta-cores">
+				<p style="background-color:#cc3333;" value="1"/>
+				<p style="background-color:#dd4477;" value="2"/>
+				<p style="background-color:#994499;" value="3"/>
+				<p style="background-color:#3366cc;" value="6"/>
+				<p style="background-color:#109618;" value="9"/>
+				<p style="background-color:#d6ae00;" value="12"/>
+				<p style="background-color:#ee8800;" value="13"/>
+			</div>
+			<div class="cor-selecionada" title="Cor selecionada"></div>
 		</div>
     		
     	<div>                    
-       		<label>Descrição:</label>                    
+       		<label class="title">Descrição:</label>                    
 			<textarea name="schedule.description">${schedule.description}</textarea>                
      	</div>
     </fieldset>
