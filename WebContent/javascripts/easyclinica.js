@@ -64,6 +64,7 @@ EasyClinica.cfg.services = {
 		showHealthCarePlanDetails: '/easyclinica/healthCarePlan/_show',
 		showPatientDetails: '/easyclinica/patient/_show',
 		showAnamneseDetails: '/easyclinica/anamnese/_show',
+		showUserDetails: '/easyclinica/usuarios/_show',
 		
 		scheduleList: '/easyclinica/medicos/{0}/agenda/_list',
 		scheduleQuickAdd: '/easyclinica/medicos/{0}/agenda/_quickAdd',
@@ -76,7 +77,7 @@ EasyClinica.cfg.services = {
 		postMessage: '/easyclinica/mensagens/_nova',
 		recentMessages: '/easyclinica/mensagens/_recentes',
 			
-		showUserDetails: '/easyclinica/usuarios/_show'
+		searchPatients: '/easyclinica/patient/_list'
 };
 
 EasyClinica.cfg.images = {
@@ -87,7 +88,14 @@ EasyClinica.cfg.datepicker = {
 	dateFormat: 'dd/mm/yy',
 	showOtherMonths: true,
 	selectOtherMonths: true,
-	showAnim: 'drop'
+	showAnim: 'drop',
+	changeMonth: true,
+	changeYear: true,
+	dayNames: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'],
+	dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab'],
+	dayNamesMin: ['Do', 'Se', 'Te', 'Qa', 'Qi', 'Se', 'Sa'],
+	monthNames: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+	monthNamesShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez']
 };
 
 EasyClinica.cfg.timepicker = {
@@ -123,6 +131,7 @@ EasyClinica.common.generalFunctions = function(){
 	// Mascaras
 	$('.mask_telefone').mask('(99) 9999-9999');
 	$('.mask_cep').mask('99999-999');
+	$('.mask_cpf').mask('999.999.999-99');
 	$('.mask_cnpj').mask('99.999.999/9999-99');
 	
 	// Datepicker

@@ -8,7 +8,9 @@
 		
 		<c:url value="/medicos/${schedule.doctor.id}/agenda/update" var="formAction" />
 		<jsp:include page="_form.jsp">	
-		   <jsp:param name="formAction" value="${formAction}" />			  	
+		   	<jsp:param name="formAction" value="${formAction}" />
+		   	<jsp:param name="put" value="true"/>	
+		   	<jsp:param name="edit" value="true"/>			  	
 		</jsp:include>
 			         
 	</div>

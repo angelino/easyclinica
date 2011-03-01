@@ -41,6 +41,7 @@ img{border:none;}
 .fl{float:left;display:inline;}
 .fr{float:right;display:inline;}
 .cb{clear: both;}
+.hide{display:none;}
 /*FIM RESET ########################################################################################################################*/
 
 body{font:12px/1.5em "Lucida Grande","Helvetica Neue",Arial,sans-serif;background:#EBEBEB;}
@@ -239,6 +240,14 @@ table.easy tr td.tablenostyle{background:#ffffff!important;border:none;}
 .main .content .box fieldset .procedures a:hover{background-color:#dfdfde;}
 .main .content .box fieldset .procedures a{background-image:url(/easyclinica/images/icons/add.png);}
 .main .content .box fieldset .procedures p{float:left;width:100%;color:#999999;margin:0 0 5px 0;}
+
+.main .content .box fieldset .search{float:left;width:100%;}
+.main .content .box fieldset .search label{width:100%;}
+.main .content .box fieldset .search input{width:43%;}
+.main .content .box fieldset .search a{background-color:#EEEEEE;background-repeat:no-repeat;background-position:10px 5px;border:1px solid #BFBFBF;color:#222222;cursor:pointer;float:left;font-size:1em;font-weight:bold;line-height:1.3em;margin:0 0 0 10px;padding:5px 10px 5px 35px;text-decoration:none;}
+.main .content .box fieldset .search a:hover{background-color:#dfdfde;}
+.main .content .box fieldset .search a{background-image:url(/easyclinica/images/icons/search.png);}
+.main .content .box fieldset .search p{float:left;width:100%;color:#999999;margin:0 0 5px 0;}
 
 /*BOX DIREITO ######################################################################################################################*/
 .main .content .boxright{float:left;width:27%;margin:30px 0 0 0;}

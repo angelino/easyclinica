@@ -37,8 +37,8 @@
     	</div>
 
 		<div class="title">
-			<label class="title">Birth Date:</label>
-    		<input type="text" name="patient.birthDate"maxlength="50" class="datepicker" value="<fmt:formatDate value="${patient.birthDate.time}" pattern="dd/MM/yyyy" />" />
+			<label class="title">Birth Date:<span>*</span></label>
+    		<input type="text" name="patient.birthDate"maxlength="50" required="required" class="datepicker" value="<fmt:formatDate value="${patient.birthDate.time}" pattern="dd/MM/yyyy" />" />
     	</div>
 
 		<div class="title">
@@ -48,7 +48,7 @@
     	
     	<div class="title">
 			<label class="title">CPF:</label>
-    		<input type="text" name="patient.cpf" maxlength="50" value="${patient.cpf}" />
+    		<input type="text" name="patient.cpf" maxlength="50" value="${patient.cpf}" class="mask_cpf" />
     	</div>
 
     	<div class="title">

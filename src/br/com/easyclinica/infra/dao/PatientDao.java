@@ -49,5 +49,22 @@ public class PatientDao implements AllPatients {
 		Query query = session.createQuery("from Patient p order by name");
 		return query.list();
 	}
+
+	@SuppressWarnings("unchecked")
+	public List<Patient> search(String text) {
+		StringBuilder hql = new StringBuilder();
+		hql.append(" from Patient patient ");
+		hql.append(" where ");
+		hql.append(" patient.cpf = :text ");
+		hql.append(" or patient.email = :text ");
+		hql.append(" or patient.name like :text_like ");
+		hql.append(" order by name ");
+		
+		Query query = session.createQuery(hql.toString())
+							 .setString("text", text)
+							 .setString("text_like", "%" + text + "%");
+				
+		return query.list();
+	}
 		
 }

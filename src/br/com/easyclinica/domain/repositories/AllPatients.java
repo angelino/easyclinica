@@ -9,6 +9,7 @@ public interface AllPatients extends Pagging<Patient> {
 	void add(Patient patient);
 	Patient getById(int id);
 	void update(Patient patient);
-
+	
 	List<Patient> getAll();
+	List<Patient> search(String text);
 }

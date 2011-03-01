@@ -6,6 +6,7 @@ import java.util.List;
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
+import br.com.caelum.vraptor.Put;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
 import br.com.easyclinica.domain.entities.Doctor;
@@ -113,7 +114,7 @@ public class ScheduleController extends BaseController {
 		include(schedule);
 	}
 	
-	@Post
+	@Put
 	@Path("/medicos/{schedule.doctor.id}/agenda/update")
 	public void update(Schedule schedule) {
 		allSchedule.update(schedule);
