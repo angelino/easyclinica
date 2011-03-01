@@ -98,8 +98,20 @@ public class Schedule {
 		return color;
 	}
 
+	public String getDuration() {
+		if(this.endTime == null || this.startTime == null) return "";
+		
+		long milisec = this.endTime.getTimeInMillis() - this.startTime.getTimeInMillis();
+		int minutes = (int) (milisec/(1000 * 60));
+		int hour = (int)(minutes/60);
+		minutes = minutes % 60;
+		
+		return hour + ":" + minutes;
+	}
+
 	public static Schedule empty() {
 		Schedule empty = new Schedule();
 		return empty;
-	}	
+	}
+
 }

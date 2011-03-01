@@ -13,21 +13,32 @@
 		<p class="required"><span>*</span> campos obrigatórios</p>
 		
 		<input type="hidden" name="schedule.id" value="${schedule.id}"/>
-		<input type="hidden" name="schedule.doctor.id" value="${schedule.doctor.id}"/>
+		
+    	<div>
+    		<label class="title">Médico:<span>*</span></label>
+    		<select name="schedule.doctor.id">
+    			<c:forEach items="${medicos}" var="medico">
+    				<option value="${medico.id}" <c:if test="${medico.id == schedule.doctor.id}">selected="selected"</c:if> >${medico.name}</option>
+    			</c:forEach>
+    		</select>
+    	</div>
     		
     	<div>
-     		<label class="title">Título:<span>*</span></label>                    
+     		<label class="title">Paciente:<span>*</span></label>                    
        		<input type="text" maxlength="200" required="required" name="schedule.subject" value="${schedule.subject}"/>                     
        	</div>
     		
-		<div>
+		<div class="horario">
 			<label class="title">Início:<span>*</span></label>
-			<input type="text" name="schedule.startTime" required="required" class="datetimepicker" value="<fmt:formatDate pattern="dd/MM/yyyy HH:mm" value="${schedule.startTime.time}" />"/>
+			<input type="text" name="startDate" required="required" class="data" value="<fmt:formatDate pattern="dd/MM/yyyy" value="${schedule.startTime.time}" />" />
+			<input type="text" name="startTime" class="hora" value="<fmt:formatDate pattern="HH:mm" value="${schedule.startTime.time}" />" />
+			<input type="hidden" name="schedule.startTime" value="<fmt:formatDate pattern="dd/MM/yyyy HH:mm" value="${schedule.startTime.time}" />"/>
 		</div>
  			
 		<div>
-			<label class="title">Término:<span>*</span></label>
-			<input type="text" name="schedule.endTime" required="required" class="datetimepicker" value="<fmt:formatDate pattern="dd/MM/yyyy HH:mm" value="${schedule.endTime.time}" />"/>
+			<label class="title">Duração:<span>*</span></label>
+			<input type="text" name="schedule.duration" required="required" value="${schedule.duration}"/>
+			<input type="hidden" name="schedule.endTime" required="required" value="<fmt:formatDate pattern="dd/MM/yyyy HH:mm" value="${schedule.endTime.time}" />"/>
 		</div>
 		
 		<div>
@@ -46,7 +57,7 @@
 		</div>
     		
     	<div>                    
-       		<label class="title">Descrição:</label>                    
+       		<label class="title">Observações:</label>                    
 			<textarea name="schedule.description">${schedule.description}</textarea>                
      	</div>
     </fieldset>

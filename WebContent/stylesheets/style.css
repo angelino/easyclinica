@@ -373,11 +373,16 @@ div.error {
 .modal-schedule .modal-content fieldset label.title span{color:#F00;}
 .modal-schedule .modal-content fieldset input, .main .content .box fieldset select, .main .content .box fieldset textarea{float:left;width:200px;padding:4px 6px;border-color:#CCCCCC #DDDDDD #DDDDDD #CCCCCC;border-right:1px solid #DDDDDD;border-style:solid;border-width:2px 1px 1px 2px;}
 .modal-schedule .modal-content fieldset input.radio{float:left;width:auto;margin:0;padding:0;}
+
 .modal-schedule .modal-content fieldset div{float:left;width:100%;}
 .modal-schedule .modal-content fieldset div input{width:90%;}
 .modal-schedule .modal-content fieldset div select{width:90%;}
 .modal-schedule .modal-content fieldset div textarea{width:97%;height:100px;}
 .modal-schedule .modal-content fieldset div input.radio{margin:2px 5px 0 5px;border:none;}
+
+.modal-schedule .modal-content fieldset div.horario input{float:left;margin-right:5px;}
+.modal-schedule .modal-content fieldset div.horario input.data{width:50%;}
+.modal-schedule .modal-content fieldset div.horario input.hora{width:32%;}
 
 .modal-schedule .modal-content .paleta-cores{float:left;width:60%;}
 .modal-schedule .modal-content .paleta-cores p{float:left; width:15px; height:15px;margin-right:2px;cursor:pointer;}

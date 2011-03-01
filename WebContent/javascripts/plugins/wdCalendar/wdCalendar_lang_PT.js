@@ -32,7 +32,7 @@ var i18n = $.extend({}, i18n || {}, {
             "dec": "Dez"
         },
         "no_implemented": "Em implementação",
-        "to_date_view": "CLique para ver o dia atual",
+        "to_date_view": "Clique para ver o dia atual",
         "i_undefined": "Não definido",
         "allday_event": "Compromissos diários",
         "repeat_event": "Compromissos repetitivos",
@@ -48,7 +48,7 @@ var i18n = $.extend({}, i18n || {}, {
         "invalid_title": "O título do compromisso é obrigatório.",
         "view_no_ready": "Agenda não pode ser lida",
         "example": "consulta com o paciente Fulano na sala 43.",
-        "content": "O que",
+        "content": "Paciente",
         "create_event": "Criar Compromisso",
         "update_detail": "Editar Compromisso",
         "click_to_detail": "Visualizar Compromisso",

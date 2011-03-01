@@ -53,9 +53,7 @@
 		</div>
 		
 		<div class="boxactions">
-			<c:if test="${healthCarePlan.id != loggedUser.clinic.privatePlan.id}">
-				<a class="btnedit" href="<c:url value="/convenios/${healthCarePlan.id}/editar"/>">Editar</a>
-			</c:if>
+			<a class="btnedit" href="<c:url value="/convenios/${healthCarePlan.id}/editar"/>">Editar</a>
 			<a class="btnclose modal-close">Fechar</a>
 	    </div>
    	</div>

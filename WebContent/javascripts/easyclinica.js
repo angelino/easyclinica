@@ -83,6 +83,19 @@ EasyClinica.cfg.images = {
 	loading: '/easyclinica/images/loading.gif'
 };
 
+EasyClinica.cfg.datepicker = {
+	dateFormat: 'dd/mm/yy',
+	showOtherMonths: true,
+	selectOtherMonths: true,
+	showAnim: 'drop'
+};
+
+EasyClinica.cfg.timepicker = {
+	hourText: 'Hora',
+	minuteText: 'Minuto',
+	defaultTime: '00:00'
+};
+
 /* COMMON */
 EasyClinica.common.generalFunctions = function(){
 	// Currency
@@ -113,28 +126,10 @@ EasyClinica.common.generalFunctions = function(){
 	$('.mask_cnpj').mask('99.999.999/9999-99');
 	
 	// Datepicker
-	$('.datepicker').datepicker({
-		dateFormat: 'dd/mm/yy',
-		showOtherMonths: true,
-		selectOtherMonths: true,
-		showAnim: 'drop'
-	});
+	$('.datepicker').datepicker(EasyClinica.cfg.datepicker);
 	
-	// Datetime Picker
-	$('.datetimepicker').datetimepicker({
-		timeFormat: 'hh:mm',
-		dateFormat: 'dd/mm/yy',
-		timeOnlyTitle: 'Escolha um Horário',
-		timeText: 'Harário',
-		hourText: 'Hora',
-		minuteText: 'Minutos',
-		secondText: 'Segundos',
-		currentText: 'Agora',
-		closeText: 'Ok',
-		hourGrid: 3,
-		minuteGrid: 15
-
-	});
+	// Time Picker
+	$('input.time').timepicker(EasyClinica.cfg.timepicker);
 	
 	// botão voltar
 	$('.btnback').click(function(e){
@@ -226,6 +221,24 @@ EasyClinica.lib.calculateAmount = function(qty, amount) {
 	return (qty * amount).toString().convertToFloat();
 };
 
+EasyClinica.lib.getHourAndMinuteDiffBetweenTwoDates = function(start, end) {
+        var tempoRestante = end.getTime() - start.getTime();
+        var horas = Math.floor(tempoRestante/3600000);
+        var minutos = Math.floor((tempoRestante%3600000)/60000);
+        
+        horas = String(horas % 24);
+        if(horas.length < 2){
+                horas = "0" + horas;
+        }
+        
+        minutos = String(minutos % 60);
+        
+        //O sinal de negativo de aparecer somente na hora
+        if (minutos < 0) minutos = minutos * -1;
+        
+        return horas + ":" + minutos;
+};
+
 /* Other functions */
 findRecursiveParent = function(element, selector) {
 	var parent = element.parent();
@@ -295,4 +308,43 @@ enable = function(obj) {
 
 isEmpty = function(text) {
 	return text == '';
+};
+
+Date.prototype.format = function (formatString) {
+	var formatDate = this;
+	if(formatDate instanceof Date) {
+		var months = new Array("Jan","Fev","Mar","Abr","Mai","Jun","Jul","Ago","Set","Out","Nov","Dez");
+		var yyyy = formatDate.getFullYear();
+		var yy = yyyy.toString().substring(2);
+		var M = formatDate.getMonth() + 1;
+		var MM = M < 10 ? "0" + M : M;
+		var MMM = months[M];
+		var d = formatDate.getDate();
+		var dd = d < 10 ? "0" + d : d;
+		
+		var h = formatDate.getHours();
+		var hh = h < 10 ? "0" + h : h;
+		var m = formatDate.getMinutes();
+		var mm = m < 10 ? "0" + m : m;
+		var s = formatDate.getSeconds();
+		var ss = s < 10 ? "0" + s : s;
+		
+		formatString = formatString.replace(/yyyy/g, yyyy);
+		formatString = formatString.replace(/yy/g, yy);
+		formatString = formatString.replace(/MMM/g, MMM);
+		formatString = formatString.replace(/MM/g, MM);
+		formatString = formatString.replace(/M/g, M);
+		formatString = formatString.replace(/dd/g, dd);
+		formatString = formatString.replace(/d/g, d);
+		formatString = formatString.replace(/hh/g, hh);
+		formatString = formatString.replace(/h/g, h);
+		formatString = formatString.replace(/mm/g, mm);
+		formatString = formatString.replace(/m/g, m);
+		formatString = formatString.replace(/ss/g, ss);
+		formatString = formatString.replace(/s/g, s);
+
+		return formatString;
+	} else {
+		return "";
+	}
 };

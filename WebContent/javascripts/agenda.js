@@ -97,6 +97,7 @@ EasyClinica.pages['schedule'] = function(){
             	EasyClinica.common.generalFunctions();
     			EasyClinica.common.formValidation();
     			managerColor();
+    			schedulePeriodManager();
             });
         }
     }    
@@ -163,6 +164,7 @@ EasyClinica.pages['schedule'] = function(){
         	EasyClinica.common.generalFunctions();
 			EasyClinica.common.formValidation();
 			managerColor();
+			schedulePeriodManager();
         });
     });
     
@@ -199,4 +201,56 @@ EasyClinica.pages['schedule'] = function(){
         	$('.cor-selecionada').css('background-color', cor.css('background-color'));
         });
     };
+    
+    /* Funções Data */
+    var schedulePeriodManager = function() {
+    	
+    	// Start Time
+	    var startDateCfg = clone(EasyClinica.cfg.datepicker);
+	    startDateCfg.onSelect = function(dateText, inst){
+	    	scheduleStartTimeManager();
+	    };
+	    $("input[name=startDate]").datepicker(startDateCfg);
+	    
+	    var startTimeCfg = clone(EasyClinica.cfg.timepicker);
+	    startTimeCfg.onSelect = function(time, inst) {
+	    	scheduleStartTimeManager();
+	    };
+	    $("input[name=startTime]").timepicker(startTimeCfg);
+	    
+	    // End Time
+	    var endTimeCfg = clone(EasyClinica.cfg.timepicker);
+	    endTimeCfg.onSelect = function(time, inst) {
+	    	scheduleEndTimeManager();
+	    };
+	    $("input[name=schedule.duration]").timepicker(endTimeCfg);
+    };
+    
+    var scheduleStartTimeManager = function() {
+    	var date = $("input[name=startDate]").val();
+    	var time = $("input[name=startTime]").val();
+    	
+    	$("input[name=schedule.startTime]").val(date + ' ' + time);
+    	scheduleEndTimeManager();
+    };
+    
+    var scheduleEndTimeManager = function() {
+    	var startDateParts = $("input[name=startDate]").val().split('/');
+    	var startTimeParts = $("input[name=startTime]").val().split(':');
+    	var howMuchTimeParts = $("input[name=schedule.duration]").val().split(':');
+    	
+    	if(startDateParts.length < 3 || startTimeParts.length < 2 || howMuchTimeParts.length < 2) return;
+    	
+    	var endTime = new Date(startDateParts[2], startDateParts[1]-1, startDateParts[0],0,0,0,0);
+    	var hour = parseInt(startTimeParts[0], 10) + parseInt(howMuchTimeParts[0], 10);
+    	var minutes = parseInt(startTimeParts[1]) + parseInt(howMuchTimeParts[1]);
+    	
+    	//alert(startTimeParts[0] + ' + ' + howMuchTimeParts[0] + ' = ' + hour);
+    	//alert(startTimeParts[1] + ' + ' + howMuchTimeParts[1] + ' = ' + minutes);
+    	
+    	endTime.setHours(hour, minutes, 0, 0);
+    	
+    	$("input[name=schedule.endTime]").val(endTime.format('dd/MM/yyyy hh:mm'));
+    };
+     
 };

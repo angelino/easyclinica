@@ -80,6 +80,9 @@ public class ScheduleController extends BaseController {
 		Schedule emptySchedule = Schedule.empty();		
 		emptySchedule.setDoctor(new Doctor(doctorId));
 		
+		List<Doctor> medicos = allDoctors.getActivated();
+		result.include("medicos", medicos);
+		
 		include(emptySchedule);
 	}
 	
@@ -103,6 +106,9 @@ public class ScheduleController extends BaseController {
 	@Path("/medicos/{doctorId}/agenda/{scheduleId}/_edit")
 	public void _edit(int doctorId, int scheduleId) {
 		Schedule schedule = allSchedule.getById(scheduleId);
+		
+		List<Doctor> medicos = allDoctors.getActivated();
+		result.include("medicos", medicos);
 		
 		include(schedule);
 	}
