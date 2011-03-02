@@ -39,13 +39,13 @@ public class ReportsHibernate implements ReportGenerator {
 
 	private Calendar endDate() {
 		Calendar c = Calendar.getInstance();
-		c.set(2011, 1, 31, 23, 59, 59);
+		c.set(2011, 0, 31, 23, 59, 59);
 		return c;
 	}
 
 	private Calendar startDate() {
 		Calendar c = Calendar.getInstance();
-		c.set(2011, 1, 1);
+		c.set(2011, 0, 1);
 		return c;
 	}
 

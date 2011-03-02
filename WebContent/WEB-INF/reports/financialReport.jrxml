@@ -11,7 +11,7 @@
 	<field name="appointmentDate" class="java.util.Calendar"/>
 	<field name="patient" class="br.com.easyclinica.domain.entities.Patient"/>
 	<field name="doctor" class="br.com.easyclinica.domain.entities.Doctor"/>
-	<field name="plan" class="br.com.easyclinica.domain.entities.HealthCarePlan"/>
+	<field name="healthCarePlan" class="br.com.easyclinica.domain.entities.HealthCarePlan"/>
 	<field name="specialty" class="br.com.easyclinica.domain.entities.Specialty"/>
 	<field name="return" class="java.lang.Boolean"/>
 	<field name="appointmentAmount" class="java.math.BigDecimal"/>
@@ -65,7 +65,7 @@
 			<textField evaluationTime="Auto">
 				<reportElement x="207" y="0" width="100" height="20"/>
 				<textElement/>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{plan}.name]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{healthCarePlan}.name]]></textFieldExpression>
 			</textField>
 			<textField evaluationTime="Auto">
 				<reportElement x="92" y="0" width="100" height="20"/>
