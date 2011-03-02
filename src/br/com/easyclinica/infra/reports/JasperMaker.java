@@ -46,7 +46,7 @@ public class JasperMaker {
 	}
 	
 	public Download makePdf(String jasperFile,Collection<?> dataSource, String fileName, boolean doDownload, Map<String,Object> parametros) {
-		jasperFile = jasperDir+jasperFile;
+		jasperFile = jasperDir+jasperFile + ".jrxml";
 		parametros.put("jasperPath", jasperDir);
 		parametros.put("contextPath", contextDir);
         try {

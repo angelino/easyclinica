@@ -35,7 +35,7 @@ public class PrintingsController {
 		params.put("clinic", loggedUser.getClinic());
 		
 		return jasperMaker.makePdf(  
-	               "patient-anamnese.jrxml",  
+	               "patient-anamnese",  
 	               patient.getAnamneses(),   
 	               "anamnese.pdf",   
 	               true,   
