@@ -90,7 +90,8 @@
 				links.add(new Link("/medicos","Listagem de médicos"));
 				pageContext.setAttribute("links",links);
 			%>
-			<helper:navigation links="${links}"></helper:navigation>   
+			<helper:navigation links="${links}"></helper:navigation>
+			<helper:notice notice="Para criar um compromisso de forma simples e rápida, basta clicar na agenda ao lado, no dia e hora que desejar!" title="Facilite seu trabalho"></helper:notice>   
 	    </div>
 		
 	</body>
