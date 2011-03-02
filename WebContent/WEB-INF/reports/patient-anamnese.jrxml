@@ -4,7 +4,7 @@
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<parameter name="patient" class="br.com.easyclinica.domain.entities.Patient" isForPrompting="false"/>
-	<parameter name="clinic" class="br.com.easyclinica.domain.entities.Clinic"/>
+	<parameter name="clinic" class="br.com.easyclinica.domain.entities.Clinic" isForPrompting="false"/>
 	<field name="text" class="java.lang.String"/>
 	<field name="date" class="java.util.Calendar"/>
 	<field name="doctor" class="br.com.easyclinica.domain.entities.Doctor"/>
@@ -23,8 +23,8 @@
 	<variable name="date" class="java.lang.String">
 		<variableExpression><![CDATA[new SimpleDateFormat("dd/MM/yyyy").format($F{date}.getTime())]]></variableExpression>
 	</variable>
-	<variable name="clinic" class="java.lang.String">
-		<variableExpression><![CDATA[$P{clinic}.name]]></variableExpression>
+	<variable name="clinicName" class="java.lang.String">
+		<variableExpression><![CDATA[$P{clinic}.getName()]]></variableExpression>
 	</variable>
 	<background>
 		<band splitType="Stretch"/>
@@ -38,10 +38,10 @@
 				</textElement>
 				<text><![CDATA[Anamnese]]></text>
 			</staticText>
-			<textField>
+			<textField evaluationTime="Auto">
 				<reportElement x="0" y="0" width="555" height="20"/>
 				<textElement textAlignment="Center"/>
-				<textFieldExpression class="java.lang.String"><![CDATA[$V{clinic}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[$V{clinicName}]]></textFieldExpression>
 			</textField>
 		</band>
 	</title>
