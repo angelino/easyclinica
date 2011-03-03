@@ -54,34 +54,34 @@ var EasyClinica = {
 
 /* CONFIG */
 EasyClinica.cfg.services = {
-		newProcedureToAppointment: '/easyclinica/appointments/_newProcedureToAppointment',
-		getSpecialtyPrice: '/easyclinica/especialidades/{0}/{1}',
-		getDoctorSpecialty: '/easyclinica/medicos/{0}/especialidade',
-		verifyIfAppointmentIsReturn: '/easyclinica/appointments/isReturn',
-		searchProcedure: '/easyclinica/procedures/_search',
+		newProcedureToAppointment: BASE_URI + 'appointments/_newProcedureToAppointment',
+		getSpecialtyPrice: BASE_URI + 'especialidades/{0}/{1}',
+		getDoctorSpecialty: BASE_URI + 'medicos/{0}/especialidade',
+		verifyIfAppointmentIsReturn: BASE_URI + 'appointments/isReturn',
+		searchProcedure: BASE_URI + 'procedures/_search',
 		
-		showDoctorDetails: '/easyclinica/doctor/_show',
-		showHealthCarePlanDetails: '/easyclinica/healthCarePlan/_show',
-		showPatientDetails: '/easyclinica/patient/_show',
-		showAnamneseDetails: '/easyclinica/anamnese/_show',
-		showUserDetails: '/easyclinica/usuarios/_show',
+		showDoctorDetails: BASE_URI + 'doctor/_show',
+		showHealthCarePlanDetails: BASE_URI + 'healthCarePlan/_show',
+		showPatientDetails: BASE_URI + 'patient/_show',
+		showAnamneseDetails: BASE_URI + 'anamnese/_show',
+		showUserDetails: BASE_URI + 'usuarios/_show',
 		
-		scheduleList: '/easyclinica/medicos/{0}/agenda/_list',
-		scheduleQuickAdd: '/easyclinica/medicos/{0}/agenda/_quickAdd',
-		scheduleQuickUpdate: '/easyclinica/medicos/{0}/agenda/_quickUpdate',
-		scheduleRemove: '/easyclinica/medicos/{0}/agenda/_delete',
-		scheduleNew: '/easyclinica/medicos/{0}/agenda/_new',
-		scheduleEdit: '/easyclinica/medicos/{0}/agenda/{1}/_edit',
+		scheduleList: BASE_URI + 'medicos/{0}/agenda/_list',
+		scheduleQuickAdd: BASE_URI + 'medicos/{0}/agenda/_quickAdd',
+		scheduleQuickUpdate: BASE_URI + 'medicos/{0}/agenda/_quickUpdate',
+		scheduleRemove: BASE_URI + 'medicos/{0}/agenda/_delete',
+		scheduleNew: BASE_URI + 'medicos/{0}/agenda/_new',
+		scheduleEdit: BASE_URI + 'medicos/{0}/agenda/{1}/_edit',
 		
-		postReply: '/easyclinica/mensagens/{0}/respostas/_nova',
-		postMessage: '/easyclinica/mensagens/_nova',
-		recentMessages: '/easyclinica/mensagens/_recentes',
+		postReply: BASE_URI + 'mensagens/{0}/respostas/_nova',
+		postMessage: BASE_URI + 'mensagens/_nova',
+		recentMessages: BASE_URI + 'mensagens/_recentes',
 			
-		searchPatients: '/easyclinica/patient/_list'
+		searchPatients: BASE_URI + 'patient/_list'
 };
 
 EasyClinica.cfg.images = {
-	loading: '/easyclinica/images/loading.gif'
+	loading: BASE_URI + 'images/loading.gif'
 };
 
 EasyClinica.cfg.datepicker = {

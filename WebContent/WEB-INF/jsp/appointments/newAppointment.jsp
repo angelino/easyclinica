@@ -38,10 +38,12 @@
 	               	<div class="healthcare">
 	                   	<label class="title">Convênio:<span>*</span></label>
 	                   	<label>${patient.healthCarePlan.name}:</label>
-	                       <input type="radio" class="radio" name="appointment.healthCarePlan.id" value="${patient.healthCarePlan.id}" checked="checked" />
-						<label>Particular:</label>
-	                       <input type="radio" class="radio" name="appointment.healthCarePlan.id" value="${loggedUser.clinic.privatePlan.id}" />
-	                   </div>
+	                    <input type="radio" class="radio" name="appointment.healthCarePlan.id" value="${patient.healthCarePlan.id}" checked="checked" />
+						<c:if test="${patient.healthCarePlan.id != loggedUser.clinic.privatePlan.id}">
+							<label>Particular:</label>
+		                    <input type="radio" class="radio" name="appointment.healthCarePlan.id" value="${loggedUser.clinic.privatePlan.id}" />
+	                	</c:if>
+	                </div>
 	               	<div class="returning">
 	                   	<label class="title">Retorno:<span>*</span></label>
 	                       <label>Sim:</label>

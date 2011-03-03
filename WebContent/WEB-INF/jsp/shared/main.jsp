@@ -14,6 +14,23 @@
 		<helper:include fileName="plugins/jquery-ui/jquery-ui-1.8.2.custom.css" type="css" />
 		<helper:include fileName="plugins/jquery.autocomplete/jquery.autocomplete.css" type="css" />
 		
+		<%
+		 	int serverPort = request.getServerPort();
+		 	String scheme = request.getScheme();
+			String serverName = request.getServerName();
+			String contextPath = request.getContextPath();
+			
+			String BASE_URI = "./";
+		    if ( serverPort == 80 || serverPort == 443 )
+		    	BASE_URI = scheme + "://" + serverName + contextPath + "/";
+		    else
+		    	BASE_URI = scheme + "://" + serverName + ":" + serverPort + contextPath + "/";
+		%>
+		
+		<script type="text/javascript" language="javascript">
+			var BASE_URI = "<%= BASE_URI  %>";
+		</script>
+		
 		<helper:include fileName="plugins/jquery-1.4.4.min.js" type="js" />
 		<helper:include fileName="plugins/jquery.tools/jquery.tools.min.js" type="js" />
 		<helper:include fileName="plugins/jquery-ui/jquery-ui-1.8.4.custom.min.js" type="js" />

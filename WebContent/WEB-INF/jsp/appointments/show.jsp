@@ -61,7 +61,6 @@
 			
 			<div class="boxcontent">	
 				<table class="tableprocedures" border="0">
-					<c:set var="totalProcedures" value="${0}"/>
 					<c:forEach items="${appointment.procedures}" var="procedure">
 						<tr class="tableheader">
 						    <th>Código:</th>
@@ -128,7 +127,6 @@
 						    <td colspan="3">Total do procedimento:</td>
 						    <td class="currency">${procedure.totalAmount}</td>
 						    <td>&nbsp;</td>
-						    <c:set var="totalProcedures" value="${totalProcedures + procedure.totalAmount}"/>
 						</tr>
 						<tr class="boxdivisortable">
 							<td colspan="5">&nbsp;</td>
@@ -139,7 +137,7 @@
 						<td colspan="1" rowspan="3" class="tablenostyle">&nbsp;</td>
 						<th colspan="2" rowspan="3">&nbsp;</th>
 						<td colspan="1">Procedimentos</td>
-						<td class="currency">${totalProcedures}</td>
+						<td class="currency">${appointment.procedureAmount}</td>
 						<td rowspan="3">&nbsp;</td>
 					</tr>
 					<tr class="boxtotal">
@@ -148,7 +146,7 @@
 					</tr>
 					<tr class="boxtotal">
 						<td colspan="1">Total:</td>
-						<td class="currency">${appointment.appointmentAmount + totalProcedures}</td>
+						<td class="currency">${appointment.appointmentAmount + appointment.procedureAmount}</td>
 					</tr>
 				</table>
 					
