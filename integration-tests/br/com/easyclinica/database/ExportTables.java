@@ -10,9 +10,9 @@ import br.com.easyclinica.infra.database.DatabaseConfigurator;
 
 public class ExportTables {
 
-	@Test @Ignore
+	@Test
 	public void exportDatabase() {
-		Configuration cfg = DatabaseConfigurator.config("easyclinicatest");
+		Configuration cfg = DatabaseConfigurator.config("easyclinica");
 		
 		SchemaExport se = new SchemaExport(cfg);
 		se.create(true, true);

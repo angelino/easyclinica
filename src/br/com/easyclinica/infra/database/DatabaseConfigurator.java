@@ -18,6 +18,7 @@ import br.com.easyclinica.domain.entities.Medicine;
 import br.com.easyclinica.domain.entities.MedicineInProcedure;
 import br.com.easyclinica.domain.entities.Message;
 import br.com.easyclinica.domain.entities.Patient;
+import br.com.easyclinica.domain.entities.PrecifiedAssistant;
 import br.com.easyclinica.domain.entities.PrecifiedMaterial;
 import br.com.easyclinica.domain.entities.PrecifiedMedicine;
 import br.com.easyclinica.domain.entities.PrecifiedProcedure;
@@ -64,6 +65,7 @@ public class DatabaseConfigurator {
 		configuration.addAnnotatedClass(Schedule.class);
 		configuration.addAnnotatedClass(Message.class);
 		configuration.addAnnotatedClass(Reply.class);
+		configuration.addAnnotatedClass(PrecifiedAssistant.class);
 
 		// TODO: Colocar c3p0
 //		hibernate.c3p0.min_size=5

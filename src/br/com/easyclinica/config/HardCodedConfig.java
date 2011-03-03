@@ -13,7 +13,7 @@ public class HardCodedConfig implements Config {
 	
 	static {
 		configs = new Hashtable<String, Object>();
-		configs.put(ConfigKeys.ELEMENTS_PER_PAGE, "1");
+		configs.put(ConfigKeys.ELEMENTS_PER_PAGE, "10");
 		
 		Calendar start = new GregorianCalendar();
 		start.set(Calendar.HOUR_OF_DAY, 6);

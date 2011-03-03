@@ -29,9 +29,14 @@ public class AppointmentProcedure {
 	@Cascade(value=org.hibernate.annotations.CascadeType.DELETE_ORPHAN)
 	@OneToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL, mappedBy="procedure")
 	private List<AppointmentMaterial> materials;
+	
 	@OneToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL, mappedBy="procedure")
 	@Cascade(value=org.hibernate.annotations.CascadeType.DELETE_ORPHAN)
 	private List<AppointmentMedicine> medicines;
+	
+	@OneToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL, mappedBy="procedure")
+	@Cascade(value=org.hibernate.annotations.CascadeType.DELETE_ORPHAN)
+	private List<PrecifiedAssistant> assistants;
 	
 	public AppointmentProcedure() {
 		materials = new ArrayList<AppointmentMaterial>();
@@ -50,11 +55,9 @@ public class AppointmentProcedure {
 		this.procedure = procedure;
 	}
 	public BigDecimal getAmount() {
-//		log.info("alguem pediu o getAmount");
 		return amount;
 	}
 	public void setAmount(BigDecimal amount) {
-//		log.info("setando amount aqui " + amount);
 		this.amount = amount;
 	}
 	public boolean isFixedAmount() {
@@ -101,6 +104,12 @@ public class AppointmentProcedure {
 			total = total.add(medicine.getTotalAmount());
 		}		
 		return total;
+	}
+	public void setAssistants(List<PrecifiedAssistant> assistants) {
+		this.assistants = assistants;
+	}
+	public List<PrecifiedAssistant> getAssistants() {
+		return assistants;
 	}
 	
 	

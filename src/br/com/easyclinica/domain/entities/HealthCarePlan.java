@@ -37,6 +37,8 @@ public class HealthCarePlan {
 	private String contact;
 	private boolean active;
 	private int periodToReturn;
+	private boolean payForRoomRate;
+	private BigDecimal roomRateDefaultAmount;
 
 	@Cascade(org.hibernate.annotations.CascadeType.DELETE_ORPHAN)
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "healthCarePlan", cascade=CascadeType.ALL)
@@ -190,6 +192,22 @@ public class HealthCarePlan {
 
 	public BigDecimal getCh() {
 		return ch;
+	}
+
+	public void setPayForRoomRate(boolean payForRoomRate) {
+		this.payForRoomRate = payForRoomRate;
+	}
+
+	public boolean isPayForRoomRate() {
+		return payForRoomRate;
+	}
+
+	public void setRoomRateDefaultAmount(BigDecimal roomRateDefaultAmount) {
+		this.roomRateDefaultAmount = roomRateDefaultAmount;
+	}
+
+	public BigDecimal getRoomRateDefaultAmount() {
+		return roomRateDefaultAmount;
 	}
 
 	@Override

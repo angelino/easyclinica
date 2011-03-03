@@ -45,6 +45,19 @@
 			<label class="title">Valor em R$ da CH:<span>*</span></label>
 			<input type="text" name="healthCarePlan.ch" class="currency" required="required" value="${healthCarePlan.ch}" />
 		</div>
+		
+		<div class="pay-for-room-rate">
+			<label class="title">Paga por Taxa de Sala?</label>
+			<label>SIM</label>
+			<input type="radio" class="radio" name="healthCarePlan.payForRoomRate" value="true" <c:if test="${healthCarePlan.payForRoomRate}">checked</c:if> />
+			<label>NÃO</label>
+			<input type="radio" class="radio" name="healthCarePlan.payForRoomRate" value="false" <c:if test="${not healthCarePlan.payForRoomRate}">checked</c:if> />
+		</div>
+	
+		<div>
+			<label class="title">Valor padrão para Taxa de Sala:<span>*</span></label>
+			<input type="text" name="healthCarePlan.roomRateDefaultAmount" class="currency" required="required" value="${healthCarePlan.roomRateDefaultAmount}" />
+		</div>
 	
 		<div>
 			<label class="title">Período para retorno (em dias):<span>*</span></label>
