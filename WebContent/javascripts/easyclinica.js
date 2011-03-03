@@ -205,7 +205,7 @@ EasyClinica.lib.openModal = function (contentUrl, type, parameters, onCreate) {
 		});
 	}
 	else {
-		$.get(contentUrl, function(html) {
+		$.get(contentUrl, parameters, function(html) {
 			$('#conteudo-modal').html(html);
 			onCreate();
 			configureCloseModal();
