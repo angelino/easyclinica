@@ -22,6 +22,7 @@
 		
 		<form action="<c:url value="/pacientes/${patient.id}/consultas/novo"/>" method="post">
 			<input type="hidden" value="${patient.id}" name="appointment.patient.id"/>
+			<input type="hidden" value="${loggedUser.employee.id}" name="appointment.employee.id" />
 		
 			<div class="boxcontent">
 				

@@ -48,6 +48,9 @@ public class Appointment {
 	@OneToMany(cascade=CascadeType.ALL, mappedBy="appointment") 
 	private List<AppointmentProcedure> procedures;
 
+	@ManyToOne(fetch=FetchType.EAGER)
+	private Employee employee;
+	
 	public Appointment() {
 		procedures = new ArrayList<AppointmentProcedure>();
 		date = Calendar.getInstance();
@@ -151,6 +154,14 @@ public class Appointment {
 		return procedureAmount;
 	}
 	
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
+	}
+
+	public Employee getEmployee() {
+		return employee;
+	}
+
 	public void markAsReturn() {
 		this.isReturn = true;
 	}
