@@ -3,18 +3,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib uri="/WEB-INF/easyclinica.tld" prefix="helper" %>
 
-    <c:catch var="exception">${patients.result}</c:catch>
-	<c:choose>
-		<c:when test="${not empty exception}">
-			<c:set var="patientsToList" value="${patients}"/>
-		</c:when>
-		<c:otherwise>
-			<c:set var="patientsToList" value="${patients.result}"/>
-		</c:otherwise>
-	</c:choose>
-    
-	<c:choose>
-   		<c:when test="${fn:length(patientsToList) == 0}">
+   <c:choose>
+   		<c:when test="${fn:length(patients.result) == 0}">
    			<p class="messengernotice">
    				Nenhum paciente foi encontrado! <a href='<c:url value="/pacientes/novo" />'>Clique aqui</a> para adicionar um paciente.
    			</p>
@@ -31,7 +21,7 @@
 					<th width="191px">&nbsp;</th>
 				</tr>
 				
-				<c:forEach var="patient" items="${patientsToList}" varStatus="status">
+				<c:forEach var="patient" items="${patients.result}" varStatus="status">
 					<tr class="${status.count % 2 == 0 ? 'odd' : 'even' }">
 						<c:choose>
 							<c:when test="${patient.active}">
@@ -67,9 +57,7 @@
 				</c:forEach>
 			</table>
 			
-			<c:if test="${empty exception}">
-				<helper:pagging total="${patients.totalPages}" current="${patients.currentPage}" />
-			</c:if>
-            		
+			<helper:pagging total="${patients.totalPages}" current="${patients.currentPage}" />
+					
    		</c:otherwise>
    	</c:choose>

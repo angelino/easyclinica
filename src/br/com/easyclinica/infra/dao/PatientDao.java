@@ -66,5 +66,40 @@ public class PatientDao implements AllPatients {
 				
 		return query.list();
 	}
+
+	@SuppressWarnings("unchecked")
+	public List<Patient> search(String textToSearch, int firstResult, int maxResults) {
+		StringBuilder hql = new StringBuilder();
+		hql.append(" from Patient patient ");
+		hql.append(" where ");
+		hql.append(" patient.cpf = :text ");
+		hql.append(" or patient.email = :text ");
+		hql.append(" or patient.name like :text_like ");
+		hql.append(" order by name ");
+		
+		Query query = session.createQuery(hql.toString())
+							 .setString("text", textToSearch)
+							 .setString("text_like", "%" + textToSearch + "%");
+		
+		query.setFirstResult(firstResult);
+		query.setMaxResults(maxResults);
+		
+		return query.list();
+	}
+
+	public int count(String textToSearch) {
+		StringBuilder hql = new StringBuilder();
+		hql.append(" select count(*) from Patient patient ");
+		hql.append(" where ");
+		hql.append(" patient.cpf = :text ");
+		hql.append(" or patient.email = :text ");
+		hql.append(" or patient.name like :text_like ");
+		
+		Query query = session.createQuery(hql.toString())
+							 .setString("text", textToSearch)
+							 .setString("text_like", "%" + textToSearch + "%");
+		
+		return ((Long) query.uniqueResult()).intValue();
+	}
 		
 }

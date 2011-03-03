@@ -1,7 +1,5 @@
 package br.com.easyclinica.actions;
 
-import java.util.List;
-
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
@@ -48,10 +46,9 @@ public class PatientController extends BaseController {
 	}
 
 	@Post
-	public void _list(String text) {
-		List<Patient> patients = allPatients.search(text);
-		
-		result.include("patients", patients);
+	public void _list(String text, int page) {
+		int currentPage = page == 0 ? Paginator.firstPage() : page;
+		result.include("patients", paginator.searchAndPaginate(allPatients, text, currentPage));
 	}
 	
 	@Get

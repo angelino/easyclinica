@@ -5,6 +5,8 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+
 import br.com.caelum.vraptor.ioc.Component;
 import br.com.easyclinica.domain.entities.Specialty;
 import br.com.easyclinica.domain.repositories.AllSpecialties;
@@ -39,6 +41,15 @@ public class SpecialtyDao implements AllSpecialties {
 	public int count() {
 		Query query = session.createQuery("select count(*) from Specialty");
 		return ((Long)query.uniqueResult()).intValue();
+	}
+
+	public List<Specialty> search(String textToSearch, int firstResult,
+			int maxResults) {
+		throw new NotImplementedException();
+	}
+
+	public int count(String textToSearch) {
+		throw new NotImplementedException();
 	}
 
 }

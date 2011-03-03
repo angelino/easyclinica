@@ -23,6 +23,15 @@ public class Paginator {
 		return new PaginatedResult<T>(repository.get(firstResult, elementsPerPage), currentPage, totalPages);
 	}
 	
+	public <T> PaginatedResult<T> searchAndPaginate(Pagging<T> repository, String textToSearch, int currentPage) {
+		int totalElements = repository.count(textToSearch);
+		int totalPages = totalElements / elementsPerPage + (totalElements % elementsPerPage > 0 ? 1 : 0);
+		
+		int firstResult = (currentPage-1) * elementsPerPage;
+		
+		return new PaginatedResult<T>(repository.search(textToSearch, firstResult, elementsPerPage), currentPage, totalPages);
+	}
+	
 	public static int firstPage() {
 		return 1;
 	}
