@@ -10,7 +10,7 @@ import br.com.easyclinica.infra.database.DatabaseConfigurator;
 
 public class ExportTables {
 
-	@Test
+	@Test @Ignore
 	public void exportDatabase() {
 		Configuration cfg = DatabaseConfigurator.config("easyclinica");
 		
