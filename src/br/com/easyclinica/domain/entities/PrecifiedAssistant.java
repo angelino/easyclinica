@@ -3,6 +3,8 @@ package br.com.easyclinica.domain.entities;
 import java.math.BigDecimal;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -17,6 +19,10 @@ public class PrecifiedAssistant {
 	private String name;
 	private int ch;
 	private BigDecimal amount;
+	
+	@Enumerated(EnumType.STRING)
+	private AssistantType type;
+	
 	@ManyToOne(fetch=FetchType.LAZY) 
 	private AppointmentProcedure procedure;
 	
@@ -60,5 +66,13 @@ public class PrecifiedAssistant {
 
 	public AppointmentProcedure getProcedure() {
 		return procedure;
+	}
+
+	public void setType(AssistantType type) {
+		this.type = type;
+	}
+
+	public AssistantType getType() {
+		return type;
 	}
 }
