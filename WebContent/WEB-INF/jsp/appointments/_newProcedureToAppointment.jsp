@@ -9,7 +9,52 @@
     <th>Procedimento:</th>
     <th colspan="2">Valor CH:</th>
     <th>Valor R$</th>
-    <th width="95px">&nbsp;</th>
+    <th width="95px">&nbsp;
+    	<ul class="procedure-elements">
+    		<li>
+    			<a href="" class="new-assistant">A</a>
+    			<div class="new-assistant">
+    				<form>
+	    				<fieldset>
+							<p class="required"><span>*</span> campos obrigatórios</p>
+							
+							<div>	
+								<label class="title">Tipo:<span>*</span></label>
+								<select name="appointment.procedures[#index#].assistants[#assistant_index#].type">
+									<c:forEach var="type" items="${assistantTypes}">
+										<option value="${type}">${type.formattedName}</option>
+									</c:forEach>
+								</select>
+							</div>
+							
+							<div>	
+								<label class="title">Nome:<span>*</span></label>
+								<input type="text" name="appointment.procedures[#index#].assistants[#assistant_index#].name" maxlength="50" required="required" />
+					    	</div>
+					    	
+					    	<div>
+								<label class="title">CH:<span>*</span></label>
+								<input type="text" name="appointment.procedures[#index#].assistants[#assistant_index#].ch" class="currency" required="required" />
+							</div>
+							
+							<div>
+								<label class="title">Valor em R$:<span>*</span></label>
+								<input type="text" name="appointment.procedures[#index#].assistants[#assistant_index#].amount" class="currency" required="required" />
+							</div>
+					    	
+					    </fieldset>
+					    		
+					    <div class="boxactions">
+							<input type="submit" class="btnsave" value="Salvar" />
+					      	<a class="btnclose">Fechar</a>
+						</div>
+					</form>
+    			</div>
+    		</li>
+    		<li><a href="" class="new-material" procedure_id="${procedure.id}" index="#index#">Mt</a></li>
+    		<li><a href="" class="new-medicine" procedure_id="${procedure.id}" index="#index#">Med</a></li>
+    	</ul>
+    </th>
 </tr>
 <tr procedure_id="${procedure.id}">
      <td>

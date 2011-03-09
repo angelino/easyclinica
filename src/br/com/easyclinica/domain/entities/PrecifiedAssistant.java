@@ -75,4 +75,8 @@ public class PrecifiedAssistant {
 	public AssistantType getType() {
 		return type;
 	}
+
+	public static PrecifiedAssistant empty() {
+		return new PrecifiedAssistant(0);
+	}
 }

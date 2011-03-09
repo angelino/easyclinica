@@ -1,7 +1,7 @@
 EasyClinica.pages['consultas'] = function(){
 	
 	$('#informe-procedimento-message').hide();
-		
+	
 	$("#txt_search_procedure").autocomplete(EasyClinica.cfg.services.searchProcedure, {
 		autoFill: false
 	}).result(function(event, item) {
@@ -57,6 +57,7 @@ EasyClinica.pages['consultas'] = function(){
 			configureAmountManager();
 			configureRemoveActions();
 			refreshAppointentValue();
+			managerProcedureElements();
 			EasyClinica.common.generalFunctions();
 			EasyClinica.common.formValidation();
 			
@@ -204,5 +205,29 @@ EasyClinica.pages['consultas'] = function(){
 			if(data.boolean) $('#aviso-retorno').show();
 			else $('#aviso-retorno').hide();
 		});
+	};
+	
+	var managerProcedureElements = function(){		
+		hideFormToAddNewProcedureElements();
+		
+		$('.procedure-elements li a').click(function(e){
+			e.preventDefault();
+			
+			hideFormToAddNewProcedureElements();
+			$(this).next().show();
+		});
+		
+		$('.new-assistant .btnclose').click(function(e){
+			var boxNewAssistant = findRecursiveParent($(this), '.new-assistant');
+			boxNewAssistant.hide();
+		});
+		
+		$('.new-assistant form').submit(function(){
+			alert("Opa");
+		});
+	};
+	
+	var hideFormToAddNewProcedureElements = function(){
+		$('.procedure-elements li div:first').hide();
 	};
 };

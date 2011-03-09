@@ -15,6 +15,7 @@ import br.com.easyclinica.domain.entities.Appointment;
 import br.com.easyclinica.domain.entities.AppointmentMaterial;
 import br.com.easyclinica.domain.entities.AppointmentMedicine;
 import br.com.easyclinica.domain.entities.AppointmentProcedure;
+import br.com.easyclinica.domain.entities.AssistantType;
 import br.com.easyclinica.domain.entities.HealthCarePlan;
 import br.com.easyclinica.domain.entities.MaterialWithPriceAndQuantity;
 import br.com.easyclinica.domain.entities.MedicineWithPriceAndQuantity;
@@ -150,6 +151,7 @@ public class AppointmentsController extends BaseController {
 	 	result.include("precifiedProcedure", precifiedProcedure);
 	 	result.include("materials", materials);
 	 	result.include("medicines", medicines);
+	 	result.include("assistantTypes", AssistantType.values());
 	}
 	
 	@Post
