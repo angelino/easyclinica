@@ -40,6 +40,7 @@ public class Appointment {
 	
 	private BigDecimal appointmentAmount;
 	private BigDecimal procedureAmount;
+	private BigDecimal roomRateAmount;
 	
 	@Type(type="text") 
 	private String observations;
@@ -162,6 +163,14 @@ public class Appointment {
 		return employee;
 	}
 
+	public void setRoomRateAmount(BigDecimal roomRateAmount) {
+		this.roomRateAmount = roomRateAmount;
+	}
+
+	public BigDecimal getRoomRateAmount() {
+		return roomRateAmount;
+	}
+
 	public void markAsReturn() {
 		this.isReturn = true;
 	}
@@ -172,6 +181,8 @@ public class Appointment {
 		for(AppointmentProcedure procedure : procedures) {
 			procedureAmount = procedureAmount.add(procedure.getTotalAmount());
 		}
+		
+		procedureAmount = procedureAmount.add(roomRateAmount);
 	}
 	
 }
