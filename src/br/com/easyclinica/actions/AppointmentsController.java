@@ -128,7 +128,7 @@ public class AppointmentsController extends BaseController {
 		allAppointments.save(appointment);
 		
 		successMsg(Messages.APPOINTMENT_ADDED);
-		result.redirectTo(AppointmentsController.class).list(appointment.getPatient().getId());
+		result.redirectTo(AppointmentsController.class).show(appointment.getPatient().getId(), appointment.getId());
 	}
 	
 	@Post

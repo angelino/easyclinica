@@ -19,6 +19,8 @@
 			
 			<div class="boxcontent">
 			
+				<helper:message successKey="${successKey}" errorKey="${errorKey}" />
+				
 				<h2>Paciente: ${appointment.patient.name}</h2>
 				
 				<div class="dados-consulta">
