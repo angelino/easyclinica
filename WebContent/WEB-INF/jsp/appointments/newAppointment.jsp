@@ -115,7 +115,7 @@
                     <tr class="boxtotal">
                         <td colspan="1">Taxa de Sala:</td>
                         <td class="valor">
-                        	<input type="text" class="currency" required="required" value="${patient.healthCarePlan.roomRateDefaultAmount}" name="appointment.roomRateAmount"/>
+                        	<input type="text" class="amount currency" required="required" value="${patient.healthCarePlan.roomRateDefaultAmount}" name="appointment.roomRateAmount"/>
                         </td>                         
                     </tr>
                     <tr class="boxtotal">

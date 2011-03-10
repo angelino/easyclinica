@@ -129,6 +129,26 @@ EasyClinica.common.generalFunctions = function(){
 		}
 	});
 	
+	// Number
+	$('input.number').each(function(index){
+		$(this).attr('pattern','^[-+]?[0-9]+$');
+		$(this).attr('data-message','valor inválido.');
+		
+		var valor = $(this).val().convertToInt();
+		$(this).val(valor.toString());
+		
+		$(this).keyup(function(key){
+			if(key.keyCode == '13') key.preventDefault();
+			
+			var texto = $(this).val();
+			var decimalRegExp = new RegExp('^[-+]?[0-9]*$');
+			if(!decimalRegExp.test(texto)) {
+				texto = texto.substring(0,texto.length -1);
+				$(this).val(texto);
+			}
+		});
+	});
+	
 	// Mascaras
 	$('.mask_telefone').mask('(99) 9999-9999');
 	$('.mask_cep').mask('99999-999');
@@ -302,6 +322,23 @@ String.prototype.convertToFloat = function(){
 	}
 	
 	return parseFloat(valor);
+};
+
+String.prototype.convertToInt = function(){
+	var valor = this;
+	
+	var regexCurrency = new RegExp(/[0-9]/g);
+	var matched = this.match(regexCurrency);
+	if(matched != null) {
+		valor = "";
+		for (i = 0; i < matched.length; i++) {
+			valor += matched[i];
+		}
+	}	
+	
+	if(valor == '') valor = "0";
+	
+	return parseInt(valor);
 };
 
 String.prototype.formatCurrency = function(putSymbol, decimalPlaces){

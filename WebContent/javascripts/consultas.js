@@ -73,8 +73,10 @@ EasyClinica.pages['consultas'] = function(){
 		refreshAppointentValue();
 	};
 	
-	var configureRemoveActions = function() {
-		$('.remove-procedure').click(function(e){
+	var configureRemoveActions = function(selector) {
+		if (selector === undefined) selector = '*';
+		
+		$(selector).find('.remove-procedure').click(function(e){
 			e.preventDefault();
 			
 			if(!confirm('Deseja realmente deletar esse procedimento?')) return;
@@ -83,7 +85,7 @@ EasyClinica.pages['consultas'] = function(){
 			removeProcedure(procedure_id);
 		});
 		
-		$('.remove-material, .remove-medicine').click(function(e){
+		$(selector).find('.remove-material, .remove-medicine').click(function(e){
 			e.preventDefault();			
 			var isMaterial = $(this).hasClass('remove-material');
 			
@@ -99,6 +101,20 @@ EasyClinica.pages['consultas'] = function(){
 			var rowspan = table_space.attr('rowspan');
 			rowspan -= 1;
 			table_space.attr('rowspan',rowspan);
+			
+			refreshAppointentValue();
+		});
+		
+		$(selector).find('.remove-assistant').click(function(e){
+			e.preventDefault();
+			
+			if(!confirm('Deseja realmente deletar esse auxiliar?')) return;
+			
+			var procedure_id = $(this).attr('procedure_id');
+			
+			selector = '.assistant-' + procedure_id;
+			var element = findRecursiveParent($(this),selector);				
+			element.remove();
 			
 			refreshAppointentValue();
 		});
@@ -133,6 +149,12 @@ EasyClinica.pages['consultas'] = function(){
 				procedure_total += total.toString().convertToFloat();
 			});
 			
+			$('.assistant-' + procedure_id).each(function(assistant_index){
+				var amount = $(this).find('.amount').val().convertToFloat();
+				
+				procedure_total += amount;
+			});
+			
 			$('.procedure-amount-' + procedure_id).html(procedure_total.toString().formatCurrency(true));
 			
 			appointment_procedure_amount += procedure_total.toString().convertToFloat();
@@ -141,8 +163,10 @@ EasyClinica.pages['consultas'] = function(){
 		$('#appointment-procedure-amount').html(appointment_procedure_amount.toString().formatCurrency(true));
 	};
 	
-	var configureAmountManager = function() {
-		$('.qty, .amount').change(function(){
+	var configureAmountManager = function(selector) {
+		if (selector === undefined) selector = '*';
+		
+		$(selector).find('.qty, .amount').change(function(){
 			refreshAppointentValue();
 		});
 	};
@@ -191,12 +215,18 @@ EasyClinica.pages['consultas'] = function(){
 	var refreshRoomRateAmount = function() {
 		var convenioId = $('input[name=appointment.healthCarePlan.id]:checked').val();
 		
-		var url = EasyClinica.cfg.services.getHealthCarePlan.format(convenioId);		
-		$.get(url, function(data) {
+		getHealthCarePlanData(convenioId, function(data){
 			var amount = 0;
 			if(data.healthCarePlan.payForRoomRate) amount = data.healthCarePlan.roomRateDefaultAmount;
 			
 			$('input[name=appointment.roomRateAmount]').val(amount.toString().formatCurrency());
+		});
+	};
+	
+	var getHealthCarePlanData = function(planId, OnCreate) {
+		var url = EasyClinica.cfg.services.getHealthCarePlan.format(planId);		
+		$.get(url, function(data) {
+			OnCreate(data);
 		});
 	};
 	
@@ -258,26 +288,25 @@ EasyClinica.pages['consultas'] = function(){
         var procedure_id = form.find('input[name=procedure_id]').val();
         var assistantName = form.find('input[name=assistantName]').val();
         var assistantType = form.find('select[name=assistantType]').val();
+        var assistantTypeName = form.find('select[name=assistantType]').text();
         var assistantCH = form.find('input[name=assistantCH]').val();
-        var assistantAmount = form.find('input[name=assistantAmount]').val();
         
         var assistant_index = $('.assistant').size();
 		if(assistant_index == "") assistant_index = 0;
         
-        var template = "<tr class='assistant' procedure_id='#procedure_id#'>";
+        var template = "<tr class='assistant assistant-#procedure_id#' procedure_id='#procedure_id#'>";
+        		template += "<td>&nbsp;</td>";
     			template += "<td>";
     				template += "<input type='hidden' name='appointment.procedures[#index#].assistants[#assistant_index#].name' value='#assistantName#' />";
     				template += "#assistantName#";
+    				template += "<input type='hidden' name='appointment.procedures[#index#].assistants[#assistant_index#].type' value='#assistantType#' />";
+	    			template += "(#assistantTypeName#)";
     			template += "</td>";
-    			template += "<td>";
-	    			template += "<input type='hidden' name='appointment.procedures[#index#].assistants[#assistant_index#].type' value='#assistantType#' />";
-	    			template += "#assistantType#";
-    			template += "</td>";
-    			template += "<td>";
-    				template += "<input type='text' class='qty currency' pattern='^[0-9]+(\,\d{1,2})?$' name='appointment.procedures[#index#].assistants[#assistant_index#].ch' value='#assistantCH#' />";
+    			template += "<td colspan='2'>";
+    				template += "<input type='text' class='qty number assistantCH' pattern='^[0-9]+(\,\d{1,2})?$' name='appointment.procedures[#index#].assistants[#assistant_index#].ch' value='#assistantCH#' />";
     			template += "</td>";
     			template += "<td class='total'>";
-    				template += "<input type='text' class='amount currency' pattern='^[0-9]+(\,\d{1,2})?$' name='appointment.procedures[#index#].assistants[#assistant_index#].amount' value='#assistantAmount#' />";
+    				template += "<input type='text' class='amount currency' pattern='^[0-9]+(\,\d{1,2})?$' name='appointment.procedures[#index#].assistants[#assistant_index#].amount' value='' />";
     			template += "</td>";
     			template += "<td>";
     				template += "<a href='#' class='remove-assistant btndelete last' procedure_id='#procedure_id#'>Excluir</a>";
@@ -289,17 +318,46 @@ EasyClinica.pages['consultas'] = function(){
     	template = template.replace(/#procedure_id#/g, procedure_id);
     	template = template.replace(/#assistantName#/g, assistantName);
     	template = template.replace(/#assistantType#/g, assistantType);
+    	template = template.replace(/#assistantTypeName#/g, assistantTypeName);
     	template = template.replace(/#assistantCH#/g, assistantCH);
-    	template = template.replace(/#assistantAmount#/g, assistantAmount);
     	
-    	alert(template);
-    	
-    	$('.boxsubtotal').each(function(index){
+    	$('.header-materials-medicine').each(function(index){
     		var box_procedure_id = $(this).attr('procedure_id');
     		if(procedure_id == box_procedure_id) {
     			$(this).before(template);
-    			alert("Opa");
     		}
     	});
+    	
+    	var convenioId = $('input[name=appointment.healthCarePlan.id]:checked').val();
+        getHealthCarePlanData(convenioId, function(data){
+        	var assistantAmount = assistantCH.convertToFloat() * data.healthCarePlan.ch;
+        	
+        	$('.assistant').last().find('.amount').val(assistantAmount.toString().formatCurrency());
+        	
+        	configureAmountManager('.assistant-'+procedure_id);
+			configureRemoveActions('.assistant-'+procedure_id);
+			refreshAppointentValue();
+			assistantCHChange('.assistant-'+procedure_id);
+			EasyClinica.common.generalFunctions();
+			EasyClinica.common.formValidation();
+        });
 	};
+	
+	var assistantCHChange = function(selector){
+		if (selector === undefined) selector = '*';
+		
+		$(selector).find('.assistantCH').change(function(){
+			var assistantCH = $(this);
+			var convenioId = $('input[name=appointment.healthCarePlan.id]:checked').val();
+	        getHealthCarePlanData(convenioId, function(data){
+	        	var assistantAmount = assistantCH.val().convertToFloat() * data.healthCarePlan.ch;
+	        	
+	        	var amountField = findRecursiveParent(assistantCH, 'tr');
+	        	amountField.find('.amount').val(assistantAmount.toString().formatCurrency());
+	        	
+	        	refreshAppointentValue();
+			});
+		});
+	};
+	
 };
