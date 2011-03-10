@@ -121,4 +121,11 @@ public class HealthCarePlanController extends BaseController {
 		result.redirectTo(HealthCarePlanController.class).index(Paginator.firstPage());
 	}
 
+	@Get
+	@Path("/convenios/{planId}/resgatar")
+	public void get(int planId) {
+		HealthCarePlan plan = allHealthCares.getById(planId);
+		
+		result.use(Results.json()).from(plan).serialize();
+	}
 }

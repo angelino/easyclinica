@@ -1,7 +1,7 @@
 EasyClinica.pages['consultas'] = function(){
 	
 	$('#informe-procedimento-message').hide();
-		
+	
 	$("#txt_search_procedure").autocomplete(EasyClinica.cfg.services.searchProcedure, {
 		autoFill: false
 	}).result(function(event, item) {
@@ -25,9 +25,14 @@ EasyClinica.pages['consultas'] = function(){
 	
 	$('input[name=appointment.healthCarePlan.id]').change(function(){
 		var healthCarePlanId = $(this).val();
+		refreshRoomRateAmount();
+		
+		var specialtyId = $('select[name=appointment.specialty.id]').val();
+		if(specialtyId == 0) return;
+		refreshMedicalAppointmentAmount(specialtyId);
+				
 		var procedures = new Array();
 		var indice = 0;
-		
 		$('.procedure-id').each(function(index){
 			var procedureId = $(this).val();
 			procedures[indice] = procedureId;
@@ -39,10 +44,6 @@ EasyClinica.pages['consultas'] = function(){
 		for (var i = 0; i <procedures.length; i++){
 			addNewProcedure(procedures[i], healthCarePlanId);
 		}
-		
-		var specialtyId = $('select[name=appointment.specialty.id]').val();
-		if(specialtyId == 0) return;
-		refreshMedicalAppointmentAmount(specialtyId);
 	});
 	
 	var addNewProcedure = function(procedureId, healthCarePlanId) {
@@ -57,6 +58,7 @@ EasyClinica.pages['consultas'] = function(){
 			configureAmountManager();
 			configureRemoveActions();
 			refreshAppointentValue();
+			managerProcedureElements();
 			EasyClinica.common.generalFunctions();
 			EasyClinica.common.formValidation();
 			
@@ -107,7 +109,8 @@ EasyClinica.pages['consultas'] = function(){
 		
 		var valor_consulta = $('#valor-consulta').html().convertToFloat();
 		var valor_procedimentos = $('#appointment-procedure-amount').html().convertToFloat();
-		var appointment_amount = valor_consulta + valor_procedimentos;
+		var taxa_sala = $('input[name=appointment.roomRateAmount]').val().convertToFloat();
+		var appointment_amount = valor_consulta + valor_procedimentos + taxa_sala;
 		
 		$('#appointment-amount').html(appointment_amount.toString().formatCurrency(true));
 	};
@@ -185,6 +188,18 @@ EasyClinica.pages['consultas'] = function(){
 		});
 	};
 	
+	var refreshRoomRateAmount = function() {
+		var convenioId = $('input[name=appointment.healthCarePlan.id]:checked').val();
+		
+		var url = EasyClinica.cfg.services.getHealthCarePlan.format(convenioId);		
+		$.get(url, function(data) {
+			var amount = 0;
+			if(data.healthCarePlan.payForRoomRate) amount = data.healthCarePlan.roomRateDefaultAmount;
+			
+			$('input[name=appointment.roomRateAmount]').val(amount.toString().formatCurrency());
+		});
+	};
+	
 	var isReturn = function() {
 		var specialtyId = $('select[name=appointment.specialty.id]').val();
 		var patientId = $('input[name=appointment.patient.id]').val();
@@ -204,5 +219,87 @@ EasyClinica.pages['consultas'] = function(){
 			if(data.boolean) $('#aviso-retorno').show();
 			else $('#aviso-retorno').hide();
 		});
+	};
+	
+	var managerProcedureElements = function(){		
+		hideFormToAddNewProcedureElements();
+		
+		$('.procedure-elements li a').click(function(e){
+			e.preventDefault();
+			
+			hideFormToAddNewProcedureElements();
+			$(this).next().show();
+		});
+		
+		$('.new-assistant .btnclose').click(function(e){
+			var boxNewAssistant = findRecursiveParent($(this), '.new-assistant');
+			boxNewAssistant.hide();
+		});
+		
+		$('.new-assistant .btnsave').click(function(e){
+			e.preventDefault();
+			
+			var validator = $('#frm-new-assistant').data('validator');
+	        if (validator && validator.checkValidity()) {
+	            validator.destroy();
+	            
+	            generateAssistantTemplate();
+	        } 
+		});
+	};
+	
+	var hideFormToAddNewProcedureElements = function(){
+		$('.procedure-elements li div:first').hide();
+	};
+	
+	var generateAssistantTemplate = function(){
+		var form = $('#frm-new-assistant');
+        var index = form.find('input[name=index]').val();
+        var procedure_id = form.find('input[name=procedure_id]').val();
+        var assistantName = form.find('input[name=assistantName]').val();
+        var assistantType = form.find('select[name=assistantType]').val();
+        var assistantCH = form.find('input[name=assistantCH]').val();
+        var assistantAmount = form.find('input[name=assistantAmount]').val();
+        
+        var assistant_index = $('.assistant').size();
+		if(assistant_index == "") assistant_index = 0;
+        
+        var template = "<tr class='assistant' procedure_id='#procedure_id#'>";
+    			template += "<td>";
+    				template += "<input type='hidden' name='appointment.procedures[#index#].assistants[#assistant_index#].name' value='#assistantName#' />";
+    				template += "#assistantName#";
+    			template += "</td>";
+    			template += "<td>";
+	    			template += "<input type='hidden' name='appointment.procedures[#index#].assistants[#assistant_index#].type' value='#assistantType#' />";
+	    			template += "#assistantType#";
+    			template += "</td>";
+    			template += "<td>";
+    				template += "<input type='text' class='qty currency' pattern='^[0-9]+(\,\d{1,2})?$' name='appointment.procedures[#index#].assistants[#assistant_index#].ch' value='#assistantCH#' />";
+    			template += "</td>";
+    			template += "<td class='total'>";
+    				template += "<input type='text' class='amount currency' pattern='^[0-9]+(\,\d{1,2})?$' name='appointment.procedures[#index#].assistants[#assistant_index#].amount' value='#assistantAmount#' />";
+    			template += "</td>";
+    			template += "<td>";
+    				template += "<a href='#' class='remove-assistant btndelete last' procedure_id='#procedure_id#'>Excluir</a>";
+    			template += "</td>";
+    		template += "</tr>";
+    	
+    	template = template.replace(/#index#/g, index);
+    	template = template.replace(/#assistant_index#/g, assistant_index);
+    	template = template.replace(/#procedure_id#/g, procedure_id);
+    	template = template.replace(/#assistantName#/g, assistantName);
+    	template = template.replace(/#assistantType#/g, assistantType);
+    	template = template.replace(/#assistantCH#/g, assistantCH);
+    	template = template.replace(/#assistantAmount#/g, assistantAmount);
+    	
+    	alert(template);
+    	
+    	$('.boxsubtotal').each(function(index){
+    		var box_procedure_id = $(this).attr('procedure_id');
+    		if(procedure_id == box_procedure_id) {
+    			$(this).before(template);
+    			alert("Opa");
+    		}
+    	});
 	};
 };

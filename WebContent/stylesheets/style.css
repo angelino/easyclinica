@@ -144,6 +144,9 @@ table.easy tr td.tablenostyle{background:#ffffff!important;border:none;}
 .main .content .box table.tableprocedures tr td input.amount{width:60px}
 .main .content .box table tr td.tablenostyle{background:#ffffff!important;border:none;}
 
+.main .content .box .tableprocedures div.new-assistant{background-color: #FFFFFF;position: absolute;width: 400px;}
+.main .content .box .tableprocedures div.new-assistant fieldset{width:100%;}
+
 /*BOX BOTOES ######################################################################################################################*/
 .boxactions{float:left;width:100%;background-color:#EEEEEE; border:#EEEEEE 1px solid;font-size:14px;padding:10px 0;margin:10px 0;}
 .boxactions a{background-color:#EEEEEE;background-repeat:no-repeat;background-position:10px 5px;border:1px solid #BFBFBF;color:#222222;cursor:pointer;float:left;font-size:1em;font-weight:bold;line-height:1.3em;margin:0 0 0 10px;padding:5px 10px 5px 35px;text-decoration:none;}

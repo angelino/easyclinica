@@ -77,7 +77,8 @@ EasyClinica.cfg.services = {
 		postMessage: BASE_URI + 'mensagens/_nova',
 		recentMessages: BASE_URI + 'mensagens/_recentes',
 			
-		searchPatients: BASE_URI + 'patient/_list'
+		searchPatients: BASE_URI + 'patient/_list',
+		getHealthCarePlan: BASE_URI + 'convenios/{0}/resgatar'
 };
 
 EasyClinica.cfg.images = {
@@ -91,10 +92,10 @@ EasyClinica.cfg.datepicker = {
 	showAnim: 'drop',
 	changeMonth: true,
 	changeYear: true,
-	dayNames: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'],
+	dayNames: ['Domingo', 'Segunda', 'Terï¿½a', 'Quarta', 'Quinta', 'Sexta', 'Sï¿½bado'],
 	dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab'],
 	dayNamesMin: ['Do', 'Se', 'Te', 'Qa', 'Qi', 'Se', 'Sa'],
-	monthNames: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+	monthNames: ['Janeiro', 'Fevereiro', 'Marï¿½o', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
 	monthNamesShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez']
 };
 
@@ -140,14 +141,14 @@ EasyClinica.common.generalFunctions = function(){
 	// Time Picker
 	$('input.time').timepicker(EasyClinica.cfg.timepicker);
 	
-	// botão voltar
+	// botï¿½o voltar
 	$('.btnback').click(function(e){
 		e.preventDefault();
 		var redirect_to = $(this).attr('redirect_to');
 		document.location.href = redirect_to;
 	});
 	
-	// botão cancelar
+	// botï¿½o cancelar
 	$('.btncancel').click(function(e) {
 		e.preventDefault();
 		var redirect_to = $(this).attr('redirect_to');
@@ -162,7 +163,7 @@ EasyClinica.common.formValidation = function () {
 	});	
 	
     $.tools.validator.localize('pt', {
-        '[required]': 'campo obrigatório'
+        '[required]': 'campo obrigatÃ³rio'
     });
     
     $('input[type=submit], .submit').click(function (e) {
@@ -177,7 +178,7 @@ EasyClinica.common.formValidation = function () {
     });
     
     //messages
-    $('input.currency').attr('data-message','valor inválido');
+    $('input.currency').attr('data-message','valor invï¿½lido');
 };
 
 /* LIB */
@@ -246,6 +247,21 @@ EasyClinica.lib.getHourAndMinuteDiffBetweenTwoDates = function(start, end) {
         if (minutos < 0) minutos = minutos * -1;
         
         return horas + ":" + minutos;
+};
+
+EasyClinica.lib.generateHTML = function(tag, html, attrs) {
+	if (typeof(html) != 'string') {
+		attrs = html;
+    	html = null;
+  	}
+  
+  	var h = '<' + tag;
+  	for (attr in attrs) {
+	  	if(attrs[attr] === false) continue;
+    	h += ' ' + attr + '="' + attrs[attr] + '"';
+  	}
+  
+  	return h += html ? ">" + html + "</" + tag + ">" : "/>";
 };
 
 /* Other functions */
