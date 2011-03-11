@@ -37,11 +37,12 @@ public class AppointmentProcedure {
 	
 	@OneToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL, mappedBy="procedure")
 	@Cascade(value=org.hibernate.annotations.CascadeType.DELETE_ORPHAN)
-	private List<PrecifiedAssistant> assistants;
+	private List<AppointmentAssistant> assistants;
 	
 	public AppointmentProcedure() {
 		materials = new ArrayList<AppointmentMaterial>();
 		medicines = new ArrayList<AppointmentMedicine>();
+		assistants = new ArrayList<AppointmentAssistant>();
 	}
 	public Appointment getAppointment() {
 		return appointment;
@@ -101,15 +102,21 @@ public class AppointmentProcedure {
 		for(AppointmentMaterial material : materials) {
 			total = total.add(material.getTotalAmount());
 		}
+		
 		for(AppointmentMedicine medicine : medicines) {
 			total = total.add(medicine.getTotalAmount());
 		}		
+		
+		for(AppointmentAssistant assistant : assistants) {
+			total = total.add(assistant.getAmount());
+		}
+		
 		return total;
 	}
-	public void setAssistants(List<PrecifiedAssistant> assistants) {
+	public void setAssistants(List<AppointmentAssistant> assistants) {
 		this.assistants = assistants;
 	}
-	public List<PrecifiedAssistant> getAssistants() {
+	public List<AppointmentAssistant> getAssistants() {
 		return assistants;
 	}
 	

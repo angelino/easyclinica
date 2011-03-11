@@ -13,7 +13,7 @@ import javax.persistence.ManyToOne;
 import org.hibernate.annotations.Index;
 
 @Entity
-public class PrecifiedAssistant {
+public class AppointmentAssistant {
 
 	@Id
 	@GeneratedValue
@@ -30,10 +30,10 @@ public class PrecifiedAssistant {
 	@Index(name = "PAProcedureIndex")
 	private AppointmentProcedure procedure;
 
-	public PrecifiedAssistant() {
+	public AppointmentAssistant() {
 	}
 
-	public PrecifiedAssistant(int id) {
+	public AppointmentAssistant(int id) {
 		this.id = id;
 	}
 
@@ -85,7 +85,7 @@ public class PrecifiedAssistant {
 		return type;
 	}
 
-	public static PrecifiedAssistant empty() {
-		return new PrecifiedAssistant(0);
+	public static AppointmentAssistant empty() {
+		return new AppointmentAssistant(0);
 	}
 }

@@ -187,8 +187,6 @@ public class Appointment {
 		for (AppointmentProcedure procedure : procedures) {
 			procedureAmount = procedureAmount.add(procedure.getTotalAmount());
 		}
-
-		procedureAmount = procedureAmount.add(roomRateAmount);
 	}
 
 }

@@ -32,19 +32,19 @@
 							
 							<div>	
 								<label class="title">Nome:<span>*</span></label>
-								<input type="text" name="assistantName" maxlength="50" required="required" />
+								<input type="text" name="assistantName" maxlength="50" />
 					    	</div>
 					    	
 					    	<div>
 								<label class="title">CH:<span>*</span></label>
-								<input type="text" name="assistantCH" class="number" required="required" />
+								<input type="text" name="assistantCH" class="number skip-validation" />
 							</div>
 							
 					    </fieldset>
 					    		
 					    <div class="boxactions">
 							<input type="button" class="btnsave" value="Salvar" />
-					      	<a class="btnclose">Fechar</a>
+					      	<a class="btnclose" rel="new-assistant">Fechar</a>
 						</div>
 					</form>
     			</div>

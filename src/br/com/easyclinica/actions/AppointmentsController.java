@@ -12,6 +12,7 @@ import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.Validator;
 import br.com.caelum.vraptor.view.Results;
 import br.com.easyclinica.domain.entities.Appointment;
+import br.com.easyclinica.domain.entities.AppointmentAssistant;
 import br.com.easyclinica.domain.entities.AppointmentMaterial;
 import br.com.easyclinica.domain.entities.AppointmentMedicine;
 import br.com.easyclinica.domain.entities.AppointmentProcedure;
@@ -114,6 +115,10 @@ public class AppointmentsController extends BaseController {
 
 			for (AppointmentMedicine medicine : procedure.getMedicines()) {
 				medicine.setProcedure(procedure);
+			}
+			
+			for (AppointmentAssistant assistant : procedure.getAssistants()) {
+				assistant.setProcedure(procedure);
 			}
 		}
 	}

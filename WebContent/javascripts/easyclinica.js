@@ -117,6 +117,10 @@ EasyClinica.common.generalFunctions = function(){
 		
 		if(isInput) element.val(valor.toString().formatCurrency());
 		else element.html(valor.toString().formatCurrency(true));
+		
+		if(!$(this).hasClass('skip-validation') && isInput) {
+			$(this).attr('pattern','^[0-9]+(\\,\\d{1,2})?$');
+		}
 	});
 	$('input.currency').keyup(function(key){
 		if(key.keyCode == '13') key.preventDefault();
@@ -131,9 +135,10 @@ EasyClinica.common.generalFunctions = function(){
 	
 	// Number
 	$('input.number').each(function(index){
-		$(this).attr('pattern','^[-+]?[0-9]+$');
-		$(this).attr('data-message','valor inválido.');
-		
+		if(!$(this).hasClass('skip-validation')) {
+			$(this).attr('pattern','^[-+]?[0-9]+$');
+		}
+			
 		var valor = $(this).val().convertToInt();
 		$(this).val(valor.toString());
 		
@@ -189,16 +194,19 @@ EasyClinica.common.formValidation = function () {
     $('input[type=submit], .submit').click(function (e) {
         if($(this).is('a')) e.preventDefault();
         
-        var validator = $('form').data('validator');
+        var form = findRecursiveParent($(this), 'form');
+        
+        var validator = form.data('validator');
         if (validator && validator.checkValidity()) {
             validator.destroy();
         } 
 
-        $('form').submit();
+        form.submit();
     });
     
     //messages
-    $('input.currency').attr('data-message','valor inv�lido');
+    $('input.currency').attr('data-message','valor inválido');
+    $('input.number').attr('data-message','valor inválido.');
 };
 
 /* LIB */

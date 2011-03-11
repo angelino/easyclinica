@@ -126,6 +126,7 @@ EasyClinica.pages['consultas'] = function(){
 		var valor_consulta = $('#valor-consulta').html().convertToFloat();
 		var valor_procedimentos = $('#appointment-procedure-amount').html().convertToFloat();
 		var taxa_sala = $('input[name=appointment.roomRateAmount]').val().convertToFloat();
+		
 		var appointment_amount = valor_consulta + valor_procedimentos + taxa_sala;
 		
 		$('#appointment-amount').html(appointment_amount.toString().formatCurrency(true));
@@ -209,6 +210,8 @@ EasyClinica.pages['consultas'] = function(){
 			var amount = data.precifiedSpecialty.amount;
 			$('#valor-consulta').html(amount.toString().formatCurrency(true));
 			$('input[name=appointment.appointmentAmount]').val(amount);
+			
+			refreshAppointentValue();
 		});
 	};
 	
@@ -258,12 +261,19 @@ EasyClinica.pages['consultas'] = function(){
 			e.preventDefault();
 			
 			hideFormToAddNewProcedureElements();
+			removeActiveFromMenuProcedureElements();
+			
 			$(this).next().show();
+			$(this).addClass('active');
+			
+			// validation
+			if($(this).hasClass('new-assistant')) generateFormNewAssistantValidation();
 		});
 		
 		$('.new-assistant .btnclose').click(function(e){
 			var boxNewAssistant = findRecursiveParent($(this), '.new-assistant');
 			boxNewAssistant.hide();
+			removeFormNewAssistantValidation();
 		});
 		
 		$('.new-assistant .btnsave').click(function(e){
@@ -280,6 +290,27 @@ EasyClinica.pages['consultas'] = function(){
 	
 	var hideFormToAddNewProcedureElements = function(){
 		$('.procedure-elements li div:first').hide();
+	};
+	
+	var removeActiveFromMenuProcedureElements = function() {
+		$('.procedure-elements li a').removeClass('active');
+	};
+	
+	var generateFormNewAssistantValidation = function(){
+		$('input[name=assistantName]').attr('required','required');
+		$('input[name=assistantCH]').attr('pattern','^[-+]?[0-9]+$');
+		
+		$('#frm-new-assistant').validator({
+			lang: 'pt',
+			position: 'center right'		
+		});
+	};
+
+	var removeFormNewAssistantValidation = function() {
+		$('input[name=assistantName]').removeAttr('required');
+		$('input[name=assistantCH]').removeAttr('pattern');
+		
+		$('#frm-new-assistant').data('validator').destroy();
 	};
 	
 	var generateAssistantTemplate = function(){
@@ -303,10 +334,10 @@ EasyClinica.pages['consultas'] = function(){
 	    			template += "(#assistantTypeName#)";
     			template += "</td>";
     			template += "<td colspan='2'>";
-    				template += "<input type='text' class='qty number assistantCH' pattern='^[0-9]+(\,\d{1,2})?$' name='appointment.procedures[#index#].assistants[#assistant_index#].ch' value='#assistantCH#' />";
+    				template += "<input type='text' class='qty number assistantCH' name='appointment.procedures[#index#].assistants[#assistant_index#].ch' value='#assistantCH#' />";
     			template += "</td>";
     			template += "<td class='total'>";
-    				template += "<input type='text' class='amount currency' pattern='^[0-9]+(\,\d{1,2})?$' name='appointment.procedures[#index#].assistants[#assistant_index#].amount' value='' />";
+    				template += "<input type='text' class='amount currency' name='appointment.procedures[#index#].assistants[#assistant_index#].amount' value='' />";
     			template += "</td>";
     			template += "<td>";
     				template += "<a href='#' class='remove-assistant btndelete last' procedure_id='#procedure_id#'>Excluir</a>";

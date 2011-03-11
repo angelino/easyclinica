@@ -95,6 +95,17 @@
 						    </td>
 						    <td>&nbsp;</td>
 						</tr>
+						
+						<c:forEach items="${procedure.assistants}" var="assistant">
+							<tr>
+								<td>&nbsp;</td>
+	                            <td>${assistant.name} (${assistant.type.formattedName})</td>
+	                            <td colspan="2" class="center">${assistant.ch} CH</td>
+	                            <td class="currency">${assistant.amount}</td>
+	                            <td>&nbsp;</td>
+	                        </tr>
+						</c:forEach>
+						
 						<tr class="tableheader">
 						    <td rowspan="${ 3 + fn:length(procedure.materials) + fn:length(procedure.medicines)}" class="tablenostyle">&nbsp;</td>
 						    <td>Material/Medicamento:</td>
@@ -136,19 +147,23 @@
 					</c:forEach> 
 					 
 					<tr class="boxtotal">
-						<td colspan="1" rowspan="3" class="tablenostyle">&nbsp;</td>
-						<th colspan="2" rowspan="3">&nbsp;</th>
+						<td colspan="1" rowspan="4" class="tablenostyle">&nbsp;</td>
+						<th colspan="2" rowspan="4">&nbsp;</th>
 						<td colspan="1">Procedimentos</td>
 						<td class="currency">${appointment.procedureAmount}</td>
-						<td rowspan="3">&nbsp;</td>
+						<td rowspan="4">&nbsp;</td>
 					</tr>
 					<tr class="boxtotal">
 						<td colspan="1">Consulta:</td>
 						<td class="currency">${appointment.appointmentAmount}</td>
 					</tr>
 					<tr class="boxtotal">
+						<td colspan="1">Taxa de Sala:</td>
+						<td class="currency">${appointment.roomRateAmount}</td>
+					</tr>
+					<tr class="boxtotal">
 						<td colspan="1">Total:</td>
-						<td class="currency">${appointment.appointmentAmount + appointment.procedureAmount}</td>
+						<td class="currency">${appointment.appointmentAmount + appointment.procedureAmount + appointment.roomRateAmount}</td>
 					</tr>
 				</table>
 					
