@@ -55,7 +55,12 @@
 		<name>healthCarePlanMenu</name>
 		<path>/WEB-INF/tags/healthCarePlanMenu.tag</path>
 	</tag-file>
-	
+
+	<tag-file>
+		<name>patientDetails</name>
+		<path>/WEB-INF/tags/patientDetails.tag</path>
+	</tag-file>
+		
 	<tag-file>
 		<name>planDetails</name>
 		<path>/WEB-INF/tags/planDetails.tag</path>

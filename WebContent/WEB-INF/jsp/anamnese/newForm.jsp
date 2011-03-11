@@ -31,6 +31,7 @@
 				pageContext.setAttribute("links",links);
 			%>
 			<helper:navigation links="${links}"></helper:navigation>
+			<helper:patientDetails patient="${patient}" />
 		</div>
 	</body>
 </html>

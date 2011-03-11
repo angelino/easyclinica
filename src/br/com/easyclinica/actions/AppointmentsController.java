@@ -93,12 +93,14 @@ public class AppointmentsController extends BaseController {
 	@Get
 	@Path("/pacientes/{patient}/consultas/{appointment}")
 	public Appointment show(int patient, int appointment) {
+		result.include("patient", allPatients.getById(patient));
 		return allAppointments.getById(appointment);
 	}
 	
 	@Get
 	@Path("/pacientes/{patient}/consultas")
 	public Patient list(int patient) {
+		result.include("patient", allPatients.getById(patient));
 		return allPatients.getById(patient);
 	}
 	

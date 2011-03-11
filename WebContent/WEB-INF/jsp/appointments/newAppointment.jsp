@@ -141,7 +141,7 @@
 			pageContext.setAttribute("links",links);
 		%>
 		<helper:navigation links="${links}"></helper:navigation>
-		
+		<helper:patientDetails patient="${patient}" />
 		<helper:notice id="aviso-retorno" notice="Essa consulta pode ser um retorno." title="Retorno" />
 	</div>					
 	

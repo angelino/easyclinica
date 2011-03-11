@@ -15,7 +15,7 @@
 
 		<div class="box" id="anamneses">
 			<div class="boxcontent">
-		   		<h2>Editar Médico</h2>				
+		   		<h2>Editar Anamnese</h2>				
 		
 				<c:url value="/pacientes/${patient.id}/anamneses/${anamnese.id}" var="formAction" />			
 				<jsp:include page="_form.jsp">	
@@ -33,6 +33,7 @@
 				pageContext.setAttribute("links",links);
 			%>
 			<helper:navigation links="${links}"></helper:navigation>
+			<helper:patientDetails patient="${patient}" />
 		</div>
 	
 	</body>

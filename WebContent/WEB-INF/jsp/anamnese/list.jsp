@@ -18,7 +18,7 @@
 			<helper:patientMenu patient="${patient}" selected="Anamnese" />
 			
 			<div class="boxcontent">			
-				<h2>Anamneses - ${patient.name}</h2>
+				<h2>Anamneses</h2>
 				
 				<helper:message successKey="${successKey}" errorKey="${errorKey}" />
 				
@@ -70,6 +70,7 @@
 				pageContext.setAttribute("links",links);
 			%>
 			<helper:navigation links="${links}"></helper:navigation>
+			<helper:patientDetails patient="${patient}" />
 		</div>
 	</body>
 </html>
