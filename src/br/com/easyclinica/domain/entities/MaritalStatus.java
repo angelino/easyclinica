@@ -8,6 +8,7 @@ public enum MaritalStatus {
 	WIDOWED("Viúvo");
 	
 	private String formattedName;
+
 	MaritalStatus(String formattedName) {
 		this.formattedName = formattedName;
 	}

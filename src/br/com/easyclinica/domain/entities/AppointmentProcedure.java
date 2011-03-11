@@ -13,13 +13,14 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.Index;
 
 @Entity
 public class AppointmentProcedure {
 
 	@Id @GeneratedValue
 	private int id;
-	@ManyToOne(fetch=FetchType.LAZY) 
+	@ManyToOne(fetch=FetchType.LAZY) @Index(name="appProcedureIndex")
 	private Appointment appointment;
 	@ManyToOne(fetch=FetchType.EAGER) 
 	private Procedure procedure;

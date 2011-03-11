@@ -8,18 +8,22 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import org.hibernate.annotations.Index;
+
 @Entity
 public class MaterialInProcedure {
-	
-	@Id @GeneratedValue
+
+	@Id
+	@GeneratedValue
 	private int id;
-	
-	@ManyToOne(fetch=FetchType.EAGER) 
+
+	@ManyToOne(fetch = FetchType.EAGER)
 	private Material material;
-	
-	@ManyToOne(fetch=FetchType.LAZY) 
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@Index(name = "materialInProcedureIndex")
 	private Procedure procedure;
-	
+
 	private BigDecimal qty;
 
 	protected void setId(int id) {

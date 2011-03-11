@@ -9,18 +9,22 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import org.hibernate.annotations.Index;
+
 @Entity
 public class PrecifiedSpecialty {
 
-	@Id @GeneratedValue
+	@Id
+	@GeneratedValue
 	private int id;
-	
-	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private Specialty specialty;
-	
-	@ManyToOne(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
+
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@Index(name = "PrecifiedSpecialtyPlanIndex")
 	private HealthCarePlan healthCarePlan;
-	
+
 	private BigDecimal amount;
 
 	public int getId() {
@@ -54,5 +58,5 @@ public class PrecifiedSpecialty {
 	public void setAmount(BigDecimal amount) {
 		this.amount = amount;
 	}
-	
+
 }

@@ -6,25 +6,31 @@ import javax.persistence.Id;
 
 @Entity
 public class Medicine {
-	@Id @GeneratedValue
+	@Id
+	@GeneratedValue
 	private int id;
 	private String name;
-	
+
 	public Medicine() {
 		this(0);
 	}
+
 	public Medicine(int id) {
 		this.id = id;
 	}
+
 	public int getId() {
 		return id;
 	}
+
 	protected void setId(int id) {
 		this.id = id;
 	}
+
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
@@ -33,6 +39,5 @@ public class Medicine {
 	public String toString() {
 		return this.name;
 	}
-
 
 }

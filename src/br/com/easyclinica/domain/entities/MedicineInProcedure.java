@@ -8,20 +8,24 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import org.hibernate.annotations.Index;
+
 @Entity
 public class MedicineInProcedure {
-	
-	@Id @GeneratedValue
+
+	@Id
+	@GeneratedValue
 	private int id;
-	
-	@ManyToOne(fetch=FetchType.EAGER)
+
+	@ManyToOne(fetch = FetchType.EAGER)
 	private Medicine medicine;
-	
-	@ManyToOne(fetch=FetchType.LAZY)
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@Index(name = "MedicineInProcedureIndex")
 	private Procedure procedure;
-	
+
 	private BigDecimal qty;
-	
+
 	public int getId() {
 		return id;
 	}

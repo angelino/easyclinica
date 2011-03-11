@@ -8,42 +8,50 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import org.hibernate.annotations.Index;
+
 @Entity
 public class PrecifiedProcedure {
-	@Id @GeneratedValue
+	@Id
+	@GeneratedValue
 	private int id;
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY)
+	@Index(name = "PrecifiedProcedurePlanIndex")
 	private HealthCarePlan healthCarePlan;
-	@ManyToOne(fetch=FetchType.EAGER) 
+	@ManyToOne(fetch = FetchType.EAGER)
 	private Procedure procedure;
 	private BigDecimal fixedAmount;
-	
+
 	public HealthCarePlan getHealthCarePlan() {
 		return healthCarePlan;
 	}
+
 	public void setHealthCarePlan(HealthCarePlan healthCarePlan) {
 		this.healthCarePlan = healthCarePlan;
 	}
+
 	public Procedure getProcedure() {
 		return procedure;
 	}
+
 	public void setProcedure(Procedure procedure) {
 		this.procedure = procedure;
 	}
-	
+
 	public int getId() {
 		return id;
 	}
+
 	protected void setId(int id) {
 		this.id = id;
 	}
+
 	public void setFixedAmount(BigDecimal fixedAmount) {
 		this.fixedAmount = fixedAmount;
 	}
+
 	public BigDecimal getFixedAmount() {
 		return fixedAmount;
 	}
-	
-	
-	
+
 }

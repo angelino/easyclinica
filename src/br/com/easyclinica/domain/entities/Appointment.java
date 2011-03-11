@@ -16,47 +16,53 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.Index;
 import org.hibernate.annotations.Type;
 
 @Entity
 public class Appointment {
 
-	@Id @GeneratedValue
+	@Id
+	@GeneratedValue
 	private int id;
-	
-	@ManyToOne(fetch=FetchType.EAGER)
+
+	@ManyToOne(fetch = FetchType.EAGER)
+	@Index(name = "appointmentPlanIndex")
 	private HealthCarePlan healthCarePlan;
-	@ManyToOne(fetch=FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.EAGER)
+	@Index(name = "appointmentDoctorIndex")
 	private Doctor doctor;
-	@ManyToOne(fetch=FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.EAGER)
+	@Index(name = "appointmentPatientIndex")
 	private Patient patient;
-	@ManyToOne(fetch=FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.EAGER)
 	private Specialty specialty;
 	private boolean isReturn;
 	@Temporal(TemporalType.DATE)
+	@Index(name = "appointmentDateIndex")
 	private Calendar appointmentDate;
 	@Temporal(TemporalType.TIMESTAMP)
 	private Calendar date;
-	
+
 	private BigDecimal appointmentAmount;
 	private BigDecimal procedureAmount;
 	private BigDecimal roomRateAmount;
-	
-	@Type(type="text") 
+
+	@Type(type = "text")
 	private String observations;
-	
-	@Cascade(value=org.hibernate.annotations.CascadeType.DELETE_ORPHAN)
-	@OneToMany(cascade=CascadeType.ALL, mappedBy="appointment") 
+
+	@Cascade(value = org.hibernate.annotations.CascadeType.DELETE_ORPHAN)
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "appointment")
 	private List<AppointmentProcedure> procedures;
 
-	@ManyToOne(fetch=FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.EAGER)
 	private Employee employee;
-	
+
 	public Appointment() {
 		procedures = new ArrayList<AppointmentProcedure>();
 		date = Calendar.getInstance();
 	}
-	
+
 	public int getId() {
 		return id;
 	}
@@ -154,7 +160,7 @@ public class Appointment {
 	public BigDecimal getProcedureAmount() {
 		return procedureAmount;
 	}
-	
+
 	public void setEmployee(Employee employee) {
 		this.employee = employee;
 	}
@@ -177,12 +183,12 @@ public class Appointment {
 
 	public void recalculate() {
 		procedureAmount = BigDecimal.ZERO;
-		
-		for(AppointmentProcedure procedure : procedures) {
+
+		for (AppointmentProcedure procedure : procedures) {
 			procedureAmount = procedureAmount.add(procedure.getTotalAmount());
 		}
-		
+
 		procedureAmount = procedureAmount.add(roomRateAmount);
 	}
-	
+
 }

@@ -6,23 +6,30 @@ import javax.persistence.Id;
 
 @Entity
 public class Material {
-	@Id @GeneratedValue
+	@Id
+	@GeneratedValue
 	private int id;
 	private String name;
-	
-	public Material() {}
+
+	public Material() {
+	}
+
 	public Material(int id) {
 		this.id = id;
 	}
+
 	public int getId() {
 		return id;
 	}
+
 	protected void setId(int id) {
 		this.id = id;
 	}
+
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
@@ -31,6 +38,5 @@ public class Material {
 	public String toString() {
 		return this.name;
 	}
-
 
 }
