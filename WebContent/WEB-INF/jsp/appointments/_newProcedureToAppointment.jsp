@@ -37,14 +37,9 @@
 					    	
 					    	<div>
 								<label class="title">CH:<span>*</span></label>
-								<input type="text" name="assistantCH" class="currency" required="required" />
+								<input type="text" name="assistantCH" class="number" required="required" />
 							</div>
 							
-							<div>
-								<label class="title">Valor em R$:<span>*</span></label>
-								<input type="text" name="assistantAmount" class="currency" required="required" />
-							</div>
-					    	
 					    </fieldset>
 					    		
 					    <div class="boxactions">
@@ -90,7 +85,7 @@
      <td><a href="#" class="btndelete last remove-procedure" procedure_id="${procedure.id}">Excluir</a></td>
 </tr>	
 		
-<tr class="tableheader" procedure_id="${procedure.id}">
+<tr class="tableheader header-materials-medicine" procedure_id="${procedure.id}">
      <td rowspan="${ 3 + fn:length(materials) + fn:length(medicines)}" id="table-space-${procedure.id}" class="tablenostyle">&nbsp;</td>
      <td>Material/Medicamento:</td>
      <td>Quantidade:</td>
