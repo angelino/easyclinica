@@ -27,9 +27,11 @@
 	</taskdef>
 	
 	<target name="reports">
-		<delete file="${reports.dir}/*.jasper" />
-		<delete file="${reports.dir}/*.groovy" />
+		<delete dir="${reports.tmp.dir}" includes="**/*.*" />
+		<delete dir="${reports.dest.dir}" includes="**/*.*" />
+		
 		<mkdir dir="${reports.tmp.dir}" />
+		<mkdir dir="${reports.dest.dir}" />
 		
 		<jrc 
 	    srcdir="${reports.dir}"
