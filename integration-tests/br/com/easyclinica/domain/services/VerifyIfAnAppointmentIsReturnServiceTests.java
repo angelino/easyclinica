@@ -14,14 +14,14 @@ import br.com.easyclinica.domain.entities.HealthCarePlan;
 import br.com.easyclinica.domain.entities.Patient;
 import br.com.easyclinica.domain.entities.Specialty;
 import br.com.easyclinica.infra.dao.AppointmentDao;
-import br.com.easyclinica.infra.dao.BaseIntegrationTests;
+import br.com.easyclinica.infra.dao.DaoBase;
 import br.com.easyclinica.infra.dao.HealthCarePlanDao;
 import br.com.easyclinica.tests.helpers.DoctorBuilder;
 import br.com.easyclinica.tests.helpers.HealthCarePlanBuilder;
 import br.com.easyclinica.tests.helpers.PatientBuilder;
 import br.com.easyclinica.tests.helpers.SpecialtyBuilder;
 
-public class VerifyIfAnAppointmentIsReturnServiceTests extends BaseIntegrationTests {
+public class VerifyIfAnAppointmentIsReturnServiceTests extends DaoBase {
 	private VerifyIfAnAppointmentIsReturnService service;
 	private HealthCarePlan plan;
 	private Patient patient;

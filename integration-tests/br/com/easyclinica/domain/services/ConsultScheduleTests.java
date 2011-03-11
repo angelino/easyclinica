@@ -11,12 +11,12 @@ import org.junit.Test;
 import br.com.easyclinica.domain.entities.Doctor;
 import br.com.easyclinica.domain.entities.Schedule;
 import br.com.easyclinica.domain.entities.Specialty;
-import br.com.easyclinica.infra.dao.BaseIntegrationTests;
+import br.com.easyclinica.infra.dao.DaoBase;
 import br.com.easyclinica.infra.dao.ScheduleDao;
 import br.com.easyclinica.tests.helpers.DoctorBuilder;
 import br.com.easyclinica.tests.helpers.ScheduleBuilder;
 
-public class ConsultScheduleTests extends BaseIntegrationTests {
+public class ConsultScheduleTests extends DaoBase {
 
 	private SearchSchedule service;
 	

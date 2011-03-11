@@ -4,7 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-public class ClinicDaoTests extends BaseIntegrationTests {
+public class ClinicDaoTests extends DaoBase {
 
 	@Test
 	public void shouldGetClinic() {

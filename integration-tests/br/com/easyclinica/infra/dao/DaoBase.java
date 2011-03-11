@@ -8,7 +8,7 @@ import br.com.easyclinica.domain.entities.Clinic;
 import br.com.easyclinica.infra.database.DatabaseConfigurator;
 import br.com.easyclinica.tests.helpers.ClinicBuilder;
 
-public abstract class BaseIntegrationTests {
+public abstract class DaoBase {
 
 	protected Clinic clinic;
 	protected Session session;

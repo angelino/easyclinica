@@ -15,7 +15,7 @@ import br.com.easyclinica.tests.helpers.DoctorBuilder;
 import br.com.easyclinica.tests.helpers.HealthCarePlanBuilder;
 import br.com.easyclinica.tests.helpers.PatientBuilder;
 
-public class AnamneseDaoTests extends BaseIntegrationTests {
+public class AnamneseDaoTests extends DaoBase {
 
 	private AnamneseDao dao;
 	private Doctor doctor;
