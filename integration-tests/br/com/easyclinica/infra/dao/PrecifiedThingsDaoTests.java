@@ -24,7 +24,7 @@ import br.com.easyclinica.tests.helpers.MedicineBuilder;
 import br.com.easyclinica.tests.helpers.ProcedureBuilder;
 import br.com.easyclinica.tests.helpers.SpecialtyBuilder;
 
-public class PrecifiedThingsDaoTests extends BaseIntegrationTests {
+public class PrecifiedThingsDaoTests extends DaoBase {
 	
 	private PrecifiedThingsDao dao;
 	

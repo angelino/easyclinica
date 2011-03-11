@@ -13,13 +13,13 @@ import br.com.easyclinica.domain.entities.Medicine;
 import br.com.easyclinica.domain.entities.MedicineWithPriceAndQuantity;
 import br.com.easyclinica.domain.entities.PrecifiedMedicine;
 import br.com.easyclinica.domain.entities.Procedure;
-import br.com.easyclinica.infra.dao.BaseIntegrationTests;
+import br.com.easyclinica.infra.dao.DaoBase;
 import br.com.easyclinica.infra.dao.MedicineDao;
 import br.com.easyclinica.tests.helpers.HealthCarePlanBuilder;
 import br.com.easyclinica.tests.helpers.MedicineBuilder;
 import br.com.easyclinica.tests.helpers.ProcedureBuilder;
 
-public class MedicineWithPriceAndQuantityBuilderTests extends BaseIntegrationTests {
+public class MedicineWithPriceAndQuantityBuilderTests extends DaoBase {
 	private MedicineDao dao;
 	
 	@Before

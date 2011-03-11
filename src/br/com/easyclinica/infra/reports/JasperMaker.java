@@ -10,10 +10,8 @@ import javax.servlet.ServletContext;
 
 import net.sf.jasperreports.engine.JRExporter;
 import net.sf.jasperreports.engine.JRExporterParameter;
-import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import net.sf.jasperreports.engine.export.JRPdfExporter;
 
@@ -46,12 +44,11 @@ public class JasperMaker {
 	}
 	
 	public Download makePdf(String jasperFile,Collection<?> dataSource, String fileName, boolean doDownload, Map<String,Object> parametros) {
-		jasperFile = jasperDir+jasperFile + ".jrxml";
+		jasperFile = jasperDir+jasperFile + ".jasper";
 		parametros.put("jasperPath", jasperDir);
 		parametros.put("contextPath", contextDir);
         try {
-        	JasperReport jasperReport = JasperCompileManager.compileReport(jasperFile);
-            JasperPrint print = JasperFillManager.fillReport(jasperReport, parametros, new JRBeanCollectionDataSource(dataSource));
+            JasperPrint print = JasperFillManager.fillReport(jasperFile, parametros, new JRBeanCollectionDataSource(dataSource));
             
             JRExporter exporter = new JRPdfExporter();
 

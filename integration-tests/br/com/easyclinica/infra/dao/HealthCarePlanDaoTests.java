@@ -11,7 +11,7 @@ import org.junit.Test;
 import br.com.easyclinica.domain.entities.HealthCarePlan;
 import br.com.easyclinica.tests.helpers.HealthCarePlanBuilder;
 
-public class HealthCarePlanDaoTests extends BaseIntegrationTests {
+public class HealthCarePlanDaoTests extends DaoBase {
 	private HealthCarePlanDao dao;
 	
 	@Before

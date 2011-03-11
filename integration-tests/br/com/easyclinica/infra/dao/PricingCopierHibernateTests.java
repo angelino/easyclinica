@@ -19,7 +19,7 @@ import br.com.easyclinica.tests.helpers.MedicineBuilder;
 import br.com.easyclinica.tests.helpers.ProcedureBuilder;
 import br.com.easyclinica.tests.helpers.SpecialtyBuilder;
 
-public class PricingCopierHibernateTests extends BaseIntegrationTests {
+public class PricingCopierHibernateTests extends DaoBase {
 
 	private PricingCopierHibernate copier;
 	private HealthCarePlan from;

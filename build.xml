@@ -7,18 +7,51 @@
 		<fileset dir="${lib.dir}" />
 	</path>
 
-	<!-- ================================= 
-          target: resolve              
-         ================================= -->
+	<path id="test.path.id">
+		<path refid="lib.path.id" />
+		<pathelement location="${test.build.dir}" />
+		<pathelement location="${build.dir}" />
+	</path>
+
+	<path id="integrationtest.path.id">
+		<path refid="lib.path.id" />
+		<pathelement location="${test.build.dir}" />
+		<pathelement location="${integrationtest.build.dir}" />
+		<pathelement location="${build.dir}" />
+	</path>
+
+	<!-- compile reports -->
+	<taskdef name="jrc" classname="net.sf.jasperreports.ant.JRAntCompileTask">
+		<classpath refid="lib.path.id"/>
+		<classpath path="${build.dir}" />
+	</taskdef>
+	
+	<target name="reports">
+		<delete file="${reports.dir}/*.jasper" />
+		<delete file="${reports.dir}/*.groovy" />
+		<mkdir dir="${reports.tmp.dir}" />
+		
+		<jrc 
+	    srcdir="${reports.dir}"
+	    destdir="${reports.dest.dir}"
+	    tempdir="${reports.tmp.dir}"
+	    keepjava="true"
+	    xmlvalidation="true">
+			<classpath refid="lib.path.id"/>
+			<include name="**/*.jrxml"/>
+		</jrc>
+	</target>
+
+	<!-- resolve dependencies -->
 	<target name="resolve" description="--> retrieve dependencies with ivy">
 		<path id="ivy.lib.path">
 			<pathelement location="${ivy.jar.file}" />
 		</path>
 		<taskdef resource="org/apache/ivy/ant/antlib.xml" uri="antlib:org.apache.ivy.ant" classpathref="ivy.lib.path" />
-		
+
 		<delete dir="${lib.dir}" includes="**/*.*" />
 		<ivy:retrieve pattern="WebContent/WEB-INF/lib/[artifact]-[revision](-[classifier]).[ext]" sync="true" />
-		
+
 		<copy todir="${lib.dir}">
 			<fileset dir="${lib.unresolved}">
 				<include name="*.jar" />
@@ -26,4 +59,58 @@
 		</copy>
 	</target>
 
+	<target name="compile" depends="resolve" description="--> compile">
+		<mkdir dir="${build.dir}" />
+		<delete dir="${build.dir}" includes="**/*.*" />
+		<javac srcdir="${src.dir}" destdir="${build.dir}" classpathref="lib.path.id" debug="on" />
+	</target>
+
+	
+	<target name="war" description="--> generate war file" depends="reports">
+		<war destfile="${output.dir}/${project.name}.war">
+			<zipfileset dir="${webapp.dir}" />
+		</war>
+	</target>
+	
+	<!-- testes de unidade -->
+	<target name="compile-test" depends="compile" description="--> compile test">
+		<mkdir dir="${test.build.dir}" />
+		<delete dir="${test.build.dir}" includes="**/*.*" />
+		<javac srcdir="${test.src.dir}" destdir="${test.build.dir}" classpathref="test.path.id" debug="on" />
+	</target>
+	
+	<target name="test" depends="compile-test" description="--> run all tests">
+		<mkdir dir="${output.dir}/test-results" />
+		<junit haltonfailure="yes">
+			<batchtest fork="yes" todir="${output.dir}/test-results">
+				<fileset dir="${test.build.dir}" />
+			</batchtest>
+			<formatter type="brief" usefile="false" />
+			<formatter type="xml" />
+			<classpath refid="test.path.id" />
+		</junit>
+	</target>
+	
+	<!-- testes de integracao -->
+	<target name="compile-integration-test" depends="compile-test" description="--> compile test">
+		<mkdir dir="${integrationtest.build.dir}" />
+		<delete dir="${integrationtest.build.dir}" includes="**/*.*" />
+		<javac srcdir="${integrationtest.src.dir}" destdir="${integrationtest.build.dir}" classpathref="integrationtest.path.id" debug="on" />
+	</target>
+	
+	<target name="integration-test" depends="compile-integration-test" description="--> run all tests">
+		<mkdir dir="${output.dir}/integration-test-results" />
+		<junit haltonfailure="yes">
+			<batchtest fork="yes" todir="${output.dir}/integration-test-results">
+				<fileset dir="${integrationtest.build.dir}">
+					<include name="**/*Test.class"/>
+					<include name="**/*Tests.class"/>
+				</fileset>
+			</batchtest>
+			<formatter type="brief" usefile="false" />
+			<formatter type="xml" />
+			<classpath refid="integrationtest.path.id" />
+		</junit>
+	</target>
+	
 </project>

@@ -13,7 +13,7 @@ import br.com.easyclinica.domain.entities.Patient;
 import br.com.easyclinica.tests.helpers.HealthCarePlanBuilder;
 import br.com.easyclinica.tests.helpers.PatientBuilder;
 
-public class PatientDaoTests extends BaseIntegrationTests {
+public class PatientDaoTests extends DaoBase {
 	private PatientDao dao;
 	private HealthCarePlan plan;
 	

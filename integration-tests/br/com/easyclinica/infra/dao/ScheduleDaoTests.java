@@ -14,7 +14,7 @@ import br.com.easyclinica.domain.entities.Specialty;
 import br.com.easyclinica.tests.helpers.DoctorBuilder;
 import br.com.easyclinica.tests.helpers.ScheduleBuilder;
 
-public class ScheduleDaoTests  extends BaseIntegrationTests  {
+public class ScheduleDaoTests  extends DaoBase  {
 
 	private ScheduleDao dao;
 	

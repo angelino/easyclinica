@@ -12,7 +12,7 @@ import br.com.easyclinica.domain.entities.Doctor;
 import br.com.easyclinica.domain.entities.Specialty;
 import br.com.easyclinica.tests.helpers.DoctorBuilder;
 
-public class DoctorDaoTests extends BaseIntegrationTests {
+public class DoctorDaoTests extends DaoBase {
 	private DoctorDao dao;
 	private Specialty specialty;
 	

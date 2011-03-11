@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import br.com.easyclinica.domain.entities.Employee;
 
-public class EmployeeDaoTests extends BaseIntegrationTests {
+public class EmployeeDaoTests extends DaoBase {
 
 	@Test
 	public void shouldFindEmployeeByLogin() {

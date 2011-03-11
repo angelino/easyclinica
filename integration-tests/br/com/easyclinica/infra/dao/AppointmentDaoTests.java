@@ -19,7 +19,7 @@ import br.com.easyclinica.tests.helpers.HealthCarePlanBuilder;
 import br.com.easyclinica.tests.helpers.PatientBuilder;
 import br.com.easyclinica.tests.helpers.SpecialtyBuilder;
 
-public class AppointmentDaoTests extends BaseIntegrationTests {
+public class AppointmentDaoTests extends DaoBase {
 
 	private AppointmentDao dao;
 
