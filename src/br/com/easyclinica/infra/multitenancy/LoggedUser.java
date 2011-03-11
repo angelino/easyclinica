@@ -27,6 +27,11 @@ public class LoggedUser {
 	public boolean isLogged() {
 		return employee != null && clinic != null;
 	}
+
+	public void logoff() {
+		employee = null;
+		clinic = null;
+	}
 	
 	
 }

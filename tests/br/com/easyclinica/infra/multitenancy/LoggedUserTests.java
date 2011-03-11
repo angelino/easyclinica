@@ -43,4 +43,14 @@ public class LoggedUserTests {
 		
 		assertTrue(loggedUser.isLogged());
 	}
+	
+	@Test
+	public void shouldLogOff() {
+		loggedUser.set(clinic, employee);
+		assertTrue(loggedUser.isLogged());
+		
+		loggedUser.logoff();
+		
+		assertFalse(loggedUser.isLogged());
+	}
 }
