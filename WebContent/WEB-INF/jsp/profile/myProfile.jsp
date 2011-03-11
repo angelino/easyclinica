@@ -13,11 +13,11 @@
 			<div class="boxcontent">
 		   		<h2>Editar Usuário</h2>
 				
-				<c:url value="/usuarios/${employee.id}" var="formAction" />
+				<helper:message successKey="${successKey}" errorKey="${errorKey}" />
+				
+				<c:url value="/perfil" var="formAction" />
 				<jsp:include page="_form.jsp">	
 				   <jsp:param name="formAction" value="${formAction}" />
-				   <jsp:param name="put" value="true"/>	
-				   <jsp:param name="edit" value="true"/>			  	
 				</jsp:include>
 			</div>			
 		</div>
@@ -25,8 +25,7 @@
 		<div class="boxright">
 			<% 
 				java.util.List<Link> links = new LinkedList<Link>();  
-				links.add(new Link("/usuarios","Voltar para listagem"));
-				links.add(new Link("/usuarios/novo","Adicionar novo convênio"));
+				links.add(new Link("/dashboard","Dashboard"));
 				pageContext.setAttribute("links",links);
 			%>
 			<helper:navigation links="${links}"></helper:navigation>

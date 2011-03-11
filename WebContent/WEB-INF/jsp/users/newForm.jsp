@@ -26,7 +26,8 @@
 				links.add(new Link("/convenios","Voltar para listagem"));
 				pageContext.setAttribute("links",links);
 			%>
-			<helper:navigation links="${links}"></helper:navigation>		
+			<helper:navigation links="${links}"></helper:navigation>
+			<helper:notice notice="Para exibir sua foto nas mensagens trocadas, basta cadastrar seu e-mail e sua foto no site www.gravatar.com." title="Foto no dashboard"></helper:notice>		
 		</div>
 	</body>
 </html>

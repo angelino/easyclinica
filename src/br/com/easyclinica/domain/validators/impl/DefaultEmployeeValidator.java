@@ -33,4 +33,12 @@ public class DefaultEmployeeValidator implements EmployeeValidator {
 		}
 		return errors;
 	}
+
+	public List<Error> validateProfileUpdate(Employee employee) {
+		List<Error> errors = new ArrayList<Error>();
+		if(ValidatorUtils.isNullOrEmpty(employee.getName())) {
+			errors.add(new Error("employee", ValidationMessages.INVALID_NAME));
+		}
+		return errors;
+	}
 }

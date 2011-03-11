@@ -36,13 +36,21 @@ public class DefaultEmployeeValidatorTests {
 	}
 	
 	@Test
+	public void shouldReturnErrorIfNameIsNotPresentWhenUpdating() {
+		Employee employee = new EmployeeBuilder().withName("").instance();
+		
+		List<Error> errors = validator.validateProfileUpdate(employee);		
+		assertEquals(1, errors.size());
+		assertEquals(ValidationMessages.INVALID_NAME, errors.get(0).getKey());
+	}
+	
+	@Test
 	public void shouldReturnErrorIfNameIsNotPresent() {
 		Employee employee = new EmployeeBuilder().withName("").instance();
 		
 		List<Error> errors = validator.validate(employee);		
 		assertEquals(1, errors.size());
 		assertEquals(ValidationMessages.INVALID_NAME, errors.get(0).getKey());
-	
 	}
 	
 	@Test
