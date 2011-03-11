@@ -37,7 +37,7 @@
 					    	
 					    	<div>
 								<label class="title">CH:<span>*</span></label>
-								<input type="text" name="assistantCH" class="number skip-validation" />
+								<input type="text" name="assistantCH" class="number" />
 							</div>
 							
 					    </fieldset>
@@ -67,7 +67,10 @@
      	${procedure.name}
      	<input type="hidden" class="procedure-id" name="appointment.procedures[#index#].procedure.id" value="${procedure.id}"/>
      </td>
-     <td colspan="2" class="center">${procedure.ch} CH</td>
+     <td colspan="2" class="center">
+     	${procedure.ch} CH
+     	<input type="hidden" id="procedure-ch-${procedure.id}" value="${procedure.ch}" />
+     </td>
      <td>
      	<c:choose>
 			<c:when test="${precifiedProcedure != null && precifiedProcedure.fixedAmount > 0}">

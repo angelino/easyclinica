@@ -267,7 +267,12 @@ EasyClinica.pages['consultas'] = function(){
 			$(this).addClass('active');
 			
 			// validation
-			if($(this).hasClass('new-assistant')) generateFormNewAssistantValidation();
+			if($(this).hasClass('new-assistant')) {
+				var chDefault = getAssistantCHDefaultValue();
+				$('input[name=assistantCH]').val(chDefault.toString());
+				
+				generateFormNewAssistantValidation();
+			}
 		});
 		
 		$('.new-assistant .btnclose').click(function(e){
@@ -284,8 +289,27 @@ EasyClinica.pages['consultas'] = function(){
 	            validator.destroy();
 	            
 	            generateAssistantTemplate();
+	            clearNewAssistantForm();
 	        } 
 		});
+	};
+	
+	var getAssistantCHDefaultValue = function() {
+		var procedure_id = $('.procedure-id').val();
+		var ch = $('#procedure-ch-' + procedure_id).val();
+		var qtyAssistants = $('.assistant').size();
+		
+		var chDefault = parseInt(ch * 0.3);
+		if(qtyAssistants > 0) chDefault = parseInt(ch * 0.2);
+		
+		return chDefault;
+	};
+	
+	var clearNewAssistantForm = function(){
+		$('input[name=assistantName]').val('');
+		
+		var chDefault = getAssistantCHDefaultValue();
+		$('input[name=assistantCH]').val(chDefault.toString());
 	};
 	
 	var hideFormToAddNewProcedureElements = function(){
@@ -300,10 +324,7 @@ EasyClinica.pages['consultas'] = function(){
 		$('input[name=assistantName]').attr('required','required');
 		$('input[name=assistantCH]').attr('pattern','^[-+]?[0-9]+$');
 		
-		$('#frm-new-assistant').validator({
-			lang: 'pt',
-			position: 'center right'		
-		});
+		EasyClinica.common.generalFunctions();
 	};
 
 	var removeFormNewAssistantValidation = function() {
