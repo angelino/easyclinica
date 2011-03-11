@@ -60,6 +60,7 @@
                 <ul class="menulogin">
                   <li><a href="<c:url value="/clinica" />">Dados da Clínica</a></li>
                   <li><a href="#">Configurações</a></li>
+                  <li><a href="<c:url value="/perfil" />">Meu perfil</a></li>
                   <li><a href="<c:url value="/logoff" />" class="logout">Logout</a></li>
                 </ul>
 
