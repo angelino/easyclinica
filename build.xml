@@ -66,7 +66,7 @@
 	</target>
 
 	
-	<target name="war" description="--> generate war file" depends="reports">
+	<target name="war" description="--> generate war file" depends="test, integration-test, reports">
 		<war destfile="${output.dir}/${project.name}.war">
 			<zipfileset dir="${webapp.dir}" />
 		</war>
