@@ -59,6 +59,8 @@ EasyClinica.cfg.services = {
 		getDoctorSpecialty: BASE_URI + 'medicos/{0}/especialidade',
 		verifyIfAppointmentIsReturn: BASE_URI + 'appointments/isReturn',
 		searchProcedure: BASE_URI + 'procedures/_search',
+		searchMaterial: BASE_URI + 'materials/_search',
+		searchMedicine: BASE_URI + 'medicines/_search',
 		
 		showDoctorDetails: BASE_URI + 'doctor/_show',
 		showHealthCarePlanDetails: BASE_URI + 'healthCarePlan/_show',
@@ -105,6 +107,11 @@ EasyClinica.cfg.timepicker = {
 	defaultTime: '00:00'
 };
 
+EasyClinica.cfg.validation = {
+	currency: '^[0-9]+(\\,\\d{1,2})?$',
+	number: '^[-+]?[0-9]+$'
+};
+
 /* COMMON */
 EasyClinica.common.generalFunctions = function(){
 	// Currency
@@ -119,14 +126,14 @@ EasyClinica.common.generalFunctions = function(){
 		else element.html(valor.toString().formatCurrency(true));
 		
 		if(!$(this).hasClass('skip-validation') && isInput) {
-			$(this).attr('pattern','^[0-9]+(\\,\\d{1,2})?$');
+			$(this).attr('pattern',EasyClinica.cfg.validation.currency);
 		}
 	});
 	$('input.currency').keyup(function(key){
 		if(key.keyCode == '13') key.preventDefault();
 		
 		var texto = $(this).val();
-		var floatingPointregExp = new RegExp('^[-+]?[0-9]*\,?[0-9]*$');
+		var floatingPointregExp = new RegExp(EasyClinica.cfg.validation.currency);
 		if(!floatingPointregExp.test(texto)) {
 			texto = texto.substring(0,texto.length -1);
 			$(this).val(texto);
@@ -136,7 +143,7 @@ EasyClinica.common.generalFunctions = function(){
 	// Number
 	$('input.number').each(function(index){
 		if(!$(this).hasClass('skip-validation')) {
-			$(this).attr('pattern','^[-+]?[0-9]+$');
+			$(this).attr('pattern',EasyClinica.cfg.validation.number);
 		}
 			
 		var valor = $(this).val().convertToInt();
@@ -146,7 +153,7 @@ EasyClinica.common.generalFunctions = function(){
 			if(key.keyCode == '13') key.preventDefault();
 			
 			var texto = $(this).val();
-			var decimalRegExp = new RegExp('^[-+]?[0-9]*$');
+			var decimalRegExp = new RegExp(EasyClinica.cfg.validation.number);
 			if(!decimalRegExp.test(texto)) {
 				texto = texto.substring(0,texto.length -1);
 				$(this).val(texto);

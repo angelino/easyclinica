@@ -13,4 +13,6 @@ public interface AllMedicines {
 	List<Medicine> getAll();
 
 	Medicine getById(int id);
+
+	List<Medicine> search(String text);
 }

@@ -9,17 +9,17 @@
     <th>Procedimento:</th>
     <th colspan="2">Valor CH:</th>
     <th>Valor R$</th>
-    <th width="95px">&nbsp;
+    <th width="95px">
+    	<input type="hidden" name="index" value="#index#"/>
+		<input type="hidden" name="procedure_id" value="${procedure.id}"/>
+    	
     	<ul class="procedure-elements">
     		<li>
-    			<a href="" class="new-assistant">A</a>
+    			<a href="" class="new-assistant">assistente</a>
     			<div class="new-assistant">
     				<form id="frm-new-assistant">
 	    				<fieldset>
 							<p class="required"><span>*</span> campos obrigatórios</p>
-							
-							<input type="hidden" name="index" value="#index#"/>
-							<input type="hidden" name="procedure_id" value="${procedure.id}"/>
 							
 							<div>	
 								<label class="title">Tipo:<span>*</span></label>
@@ -49,8 +49,69 @@
 					</form>
     			</div>
     		</li>
-    		<li><a href="" class="new-material" procedure_id="${procedure.id}" index="#index#">Mt</a></li>
-    		<li><a href="" class="new-medicine" procedure_id="${procedure.id}" index="#index#">Med</a></li>
+    		
+    		<li>
+    			<a href="" class="new-material">material</a>
+    			<div class="new-material">
+    				<form id="frm-new-material">
+	    				<fieldset>
+							<p class="required"><span>*</span> campos obrigatórios</p>
+							
+							<div>	
+								<label class="title">Nome:<span>*</span></label>
+								<input type="text" name="materialName" maxlength="255" />
+								<input type="hidden" name="materialId" value="0" />
+					    	</div>
+					    	
+					    	<div>
+								<label class="title">Quantidade:<span>*</span></label>
+								<input type="text" name="materialQuantity" class="currency" />
+							</div>
+							
+							<div>
+								<label class="title">Valor Unitário:<span>*</span></label>
+								<input type="text" name="materialUnitAmount" class="currency" />
+							</div>
+					    </fieldset>
+					    		
+					    <div class="boxactions">
+							<input type="button" class="btnsave" value="Salvar" />
+					      	<a class="btnclose" rel="new-material">Fechar</a>
+						</div>
+					</form>
+    			</div>
+    		</li>
+    		<li>
+    			<a href="" class="new-medicine">medicamento</a>
+    			<div class="new-medicine">
+    				<form id="frm-new-medicine">
+	    				<fieldset>
+							<p class="required"><span>*</span> campos obrigatórios</p>
+							
+							<div>	
+								<label class="title">Nome:<span>*</span></label>
+								<input type="text" name="medicineName" maxlength="255" />
+								<input type="hidden" name="medicineId" value="0" />
+					    	</div>
+					    	
+					    	<div>
+								<label class="title">Quantidade:<span>*</span></label>
+								<input type="text" name="medicineQuantity" class="currency" />
+							</div>
+							
+							<div>
+								<label class="title">Valor Unitário:<span>*</span></label>
+								<input type="text" name="medicineUnitAmount" class="currency" />
+							</div>
+					    </fieldset>
+					    		
+					    <div class="boxactions">
+							<input type="button" class="btnsave" value="Salvar" />
+					      	<a class="btnclose" rel="new-medicine">Fechar</a>
+						</div>
+					</form>
+    			</div>
+    		</li>
     	</ul>
     </th>
 </tr>

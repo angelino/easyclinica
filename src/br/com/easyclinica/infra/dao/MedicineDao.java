@@ -54,4 +54,18 @@ public class MedicineDao implements AllMedicines {
 		return (Medicine) session.load(Medicine.class, id);
 	}
 
+	@SuppressWarnings("unchecked")
+	public List<Medicine> search(String text) {
+		StringBuilder hql = new StringBuilder();
+		hql.append(" from Medicine medicine ");
+		hql.append(" where ");
+		hql.append(" medicine.name like :name ");
+		hql.append(" order by name ");
+		
+		Query query = session.createQuery(hql.toString())
+							 .setString("name", "%" + text + "%");
+				
+		return query.list();
+	}
+
 }

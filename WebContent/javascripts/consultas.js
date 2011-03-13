@@ -62,6 +62,18 @@ EasyClinica.pages['consultas'] = function(){
 			EasyClinica.common.generalFunctions();
 			EasyClinica.common.formValidation();
 			
+			$("input[name=materialName]").autocomplete(EasyClinica.cfg.services.searchMaterial, {
+				autoFill: false
+			}).result(function(event, item) {
+				$('input[name=materialId]').val(item[1]);
+			});
+			
+			$("input[name=medicineName]").autocomplete(EasyClinica.cfg.services.searchMedicine, {
+				autoFill: false
+			}).result(function(event, item) {
+				$('input[name=medicineId]').val(item[1]);
+			});
+			
 			$("#txt_search_procedure").val("");
 			$('#selected_procedure_id').val(0);
 			$('#informe-procedimento-message').hide();
@@ -70,6 +82,7 @@ EasyClinica.pages['consultas'] = function(){
 	
 	var removeProcedure = function(procedureId) {
 		$('tr[procedure_id=' + procedureId + ']').remove();
+		refreshRoomRateAmount();
 		refreshAppointentValue();
 	};
 	
@@ -216,6 +229,12 @@ EasyClinica.pages['consultas'] = function(){
 	};
 	
 	var refreshRoomRateAmount = function() {
+		var qtyProcedures = $('.procedure-id').size();
+		if(qtyProcedures == 0) {
+			$('input[name=appointment.roomRateAmount]').val('0'.formatCurrency());
+			return;
+		}
+		
 		var convenioId = $('input[name=appointment.healthCarePlan.id]:checked').val();
 		
 		getHealthCarePlanData(convenioId, function(data){
@@ -266,19 +285,39 @@ EasyClinica.pages['consultas'] = function(){
 			$(this).next().show();
 			$(this).addClass('active');
 			
-			// validation
 			if($(this).hasClass('new-assistant')) {
 				var chDefault = getAssistantCHDefaultValue();
 				$('input[name=assistantCH]').val(chDefault.toString());
 				
 				generateFormNewAssistantValidation();
 			}
+			
+			if($(this).hasClass('new-material')) {
+				generateFormNewMaterialValidation();
+			}
+			
+			if($(this).hasClass('new-medicine')) {
+				generateFormNewMedicineValidation();
+			}
 		});
 		
-		$('.new-assistant .btnclose').click(function(e){
-			var boxNewAssistant = findRecursiveParent($(this), '.new-assistant');
-			boxNewAssistant.hide();
-			removeFormNewAssistantValidation();
+		$('.procedure-elements .btnclose').click(function(e){
+			var rel = $(this).attr('rel');			
+			var box = $('div.' + rel);
+			box.hide();
+			
+			switch(rel) {
+				case 'new-assitant':
+					removeFormNewAssistantValidation();
+					break;					
+				case 'new-material':
+					removeFormNewMaterialValidation();
+					break;
+				case 'new-medicine':
+					removeFormNewMedicineValidation();
+					break;
+			}
+			
 		});
 		
 		$('.new-assistant .btnsave').click(function(e){
@@ -290,6 +329,30 @@ EasyClinica.pages['consultas'] = function(){
 	            
 	            generateAssistantTemplate();
 	            clearNewAssistantForm();
+	        } 
+		});
+		
+		$('.new-material .btnsave').click(function(e){
+			e.preventDefault();
+			
+			var validator = $('#frm-new-material').data('validator');
+	        if (validator && validator.checkValidity()) {
+	            validator.destroy();
+	            
+	            generateMaterialTemplate();
+	            clearNewMaterialForm();
+	        } 
+		});
+		
+		$('.new-medicine .btnsave').click(function(e){
+			e.preventDefault();
+			
+			var validator = $('#frm-new-medicine').data('validator');
+	        if (validator && validator.checkValidity()) {
+	            validator.destroy();
+	            
+	            generateMedicineTemplate();
+	            clearNewMedicineForm();
 	        } 
 		});
 	};
@@ -312,8 +375,20 @@ EasyClinica.pages['consultas'] = function(){
 		$('input[name=assistantCH]').val(chDefault.toString());
 	};
 	
+	var clearNewMaterialForm = function(){
+		$('input[name=materialName]').val('');
+		$('input[name=materialQuantity]').val('0'.formatCurrency());
+		$('input[name=materialUnitAmount]').val('0'.formatCurrency());
+	};
+	
+	var clearNewMedicineForm = function(){
+		$('input[name=medicineName]').val('');
+		$('input[name=medicineQuantity]').val('0'.formatCurrency());
+		$('input[name=medicineUnitAmount]').val('0'.formatCurrency());
+	};
+	
 	var hideFormToAddNewProcedureElements = function(){
-		$('.procedure-elements li div:first').hide();
+		$('.procedure-elements li > div').hide();
 	};
 	
 	var removeActiveFromMenuProcedureElements = function() {
@@ -322,7 +397,23 @@ EasyClinica.pages['consultas'] = function(){
 	
 	var generateFormNewAssistantValidation = function(){
 		$('input[name=assistantName]').attr('required','required');
-		$('input[name=assistantCH]').attr('pattern','^[-+]?[0-9]+$');
+		$('input[name=assistantCH]').attr('pattern',EasyClinica.cfg.validation.number);
+		
+		EasyClinica.common.generalFunctions();
+	};
+	
+	var generateFormNewMaterialValidation = function(){
+		$('input[name=materialName]').attr('required','required');
+		$('input[name=materialQuantity]').attr('pattern',EasyClinica.cfg.validation.currency);
+		$('input[name=materialUnitAmount]').attr('pattern',EasyClinica.cfg.validation.currency);
+		
+		EasyClinica.common.generalFunctions();
+	};
+	
+	var generateFormNewMedicineValidation = function(){
+		$('input[name=medicineName]').attr('required','required');
+		$('input[name=medicineQuantity]').attr('pattern',EasyClinica.cfg.validation.currency);
+		$('input[name=medicineUnitAmount]').attr('pattern',EasyClinica.cfg.validation.currency);
 		
 		EasyClinica.common.generalFunctions();
 	};
@@ -334,10 +425,26 @@ EasyClinica.pages['consultas'] = function(){
 		$('#frm-new-assistant').data('validator').destroy();
 	};
 	
+	var removeFormNewMaterialValidation = function() {
+		$('input[name=materialName]').removeAttr('required');
+		$('input[name=materialQuantity]').removeAttr('pattern');
+		$('input[name=materialUnitAmount]').removeAttr('pattern');
+		
+		$('#frm-new-material').data('validator').destroy();
+	};
+	
+	var removeFormNewMedicineValidation = function() {
+		$('input[name=medicineName]').removeAttr('required');
+		$('input[name=medicineQuantity]').removeAttr('pattern');
+		$('input[name=medicineUnitAmount]').removeAttr('pattern');
+		
+		$('#frm-new-medicine').data('validator').destroy();
+	};
+	
 	var generateAssistantTemplate = function(){
 		var form = $('#frm-new-assistant');
-        var index = form.find('input[name=index]').val();
-        var procedure_id = form.find('input[name=procedure_id]').val();
+        var index = $('input[name=index]').val();
+        var procedure_id = $('input[name=procedure_id]').val();
         var assistantName = form.find('input[name=assistantName]').val();
         var assistantType = form.find('select[name=assistantType]').val();
         var assistantTypeName = form.find('select[name=assistantType]').text();
@@ -412,4 +519,97 @@ EasyClinica.pages['consultas'] = function(){
 		});
 	};
 	
+	var generateMaterialTemplate = function(){
+		var form = $('#frm-new-material');
+		var index = $('input[name=index]').val();
+        var procedure_id = $('input[name=procedure_id]').val();
+        var materialName = form.find('input[name=materialName]').val();
+        var materialId = form.find('input[name=materialId]').val();
+        var materialQuantity = form.find('input[name=materialQuantity]').val();
+        var materialUnitAmount = form.find('input[name=materialUnitAmount]').val();
+        var materialAmount = materialQuantity.convertToFloat() * materialUnitAmount.convertToFloat();
+        
+        var material_index = $('.material-'+procedure_id).size();
+		if(material_index == "") material_index = 0;
+        
+        var template = "<tr class='material-#procedure_id#' procedure_id='#procedure_id#'>";
+        		template += "<td><input type='hidden' name='appointment.procedures[#index#].materials[#material_index#].material.id' value='#materialId#' />#materialName#</td>";
+    			template += "<td><input type='text' class='qty currency' name='appointment.procedures[#index#].materials[#material_index#].qty' value='#materialQuantity#' /></td>";
+    			template += "<td><input type='text' class='amount currency' name='appointment.procedures[#index#].materials[#material_index#].unitAmount' value='#materialUnitAmount#' /></td>";
+    			template += "<td class='total currency'>#materialAmount#</td>";
+    			template += "<td>";
+    				template += "<a href='#' class='remove-material btndelete last' procedure_id='#procedure_id#'>Excluir</a>";
+    			template += "</td>";
+    		template += "</tr>";
+    	
+    	template = template.replace(/#index#/g, index);
+    	template = template.replace(/#material_index#/g, material_index);
+    	template = template.replace(/#procedure_id#/g, procedure_id);
+    	template = template.replace(/#materialName#/g, materialName);
+    	template = template.replace(/#materialId#/g, materialId);
+    	template = template.replace(/#materialQuantity#/g, materialQuantity);
+    	template = template.replace(/#materialUnitAmount#/g, materialUnitAmount);
+    	template = template.replace(/#materialAmount#/g, materialAmount);
+    	
+    	$('.material-'+procedure_id).last().after(template);
+    	
+    	var table_space = $('#table-space-' + procedure_id);
+		var rowspan = table_space.attr('rowspan');
+		rowspan += 1;
+		table_space.attr('rowspan',rowspan);
+    	
+    	configureAmountManager('.material-'+procedure_id);
+		configureRemoveActions('.material-'+procedure_id);
+		refreshAppointentValue();
+		assistantCHChange('.material-'+procedure_id);
+		EasyClinica.common.generalFunctions();
+		EasyClinica.common.formValidation();
+	};
+	
+	var generateMedicineTemplate = function(){
+		var form = $('#frm-new-medicine');
+		var index = $('input[name=index]').val();
+        var procedure_id = $('input[name=procedure_id]').val();
+        var medicineName = form.find('input[name=medicineName]').val();
+        var medicineId = form.find('input[name=medicineId]').val();
+        var medicineQuantity = form.find('input[name=medicineQuantity]').val();
+        var medicineUnitAmount = form.find('input[name=medicineUnitAmount]').val();
+        var medicineAmount = medicineQuantity.convertToFloat() * medicineUnitAmount.convertToFloat();
+        
+        var medicine_index = $('.medicine-'+procedure_id).size();
+		if(medicine_index == "") medicine_index = 0;
+        
+        var template = "<tr class='medicine-#procedure_id#' procedure_id='#procedure_id#'>";
+        		template += "<td><input type='hidden' name='appointment.procedures[#index#].medicines[#medicine_index#].medicine.id' value='#medicineId#' />#medicineName#</td>";
+    			template += "<td><input type='text' class='qty currency' name='appointment.procedures[#index#].medicines[#medicine_index#].qty' value='#medicineQuantity#' /></td>";
+    			template += "<td><input type='text' class='amount currency' name='appointment.procedures[#index#].medicines[#medicine_index#].unitAmount' value='#medicineUnitAmount#' /></td>";
+    			template += "<td class='total currency'>#medicineAmount#</td>";
+    			template += "<td>";
+    				template += "<a href='#' class='remove-medicine btndelete last' procedure_id='#procedure_id#'>Excluir</a>";
+    			template += "</td>";
+    		template += "</tr>";
+    	
+    	template = template.replace(/#index#/g, index);
+    	template = template.replace(/#medicine_index#/g, medicine_index);
+    	template = template.replace(/#procedure_id#/g, procedure_id);
+    	template = template.replace(/#medicineName#/g, medicineName);
+    	template = template.replace(/#medicineId#/g, medicineId);
+    	template = template.replace(/#medicineQuantity#/g, medicineQuantity);
+    	template = template.replace(/#medicineUnitAmount#/g, medicineUnitAmount);
+    	template = template.replace(/#medicineAmount#/g, medicineAmount);
+    	
+    	$('.medicine-'+procedure_id).last().after(template);
+    	
+    	var table_space = $('#table-space-' + procedure_id);
+		var rowspan = table_space.attr('rowspan');
+		rowspan += 1;
+		table_space.attr('rowspan',rowspan);
+    	
+    	configureAmountManager('.medicine-'+procedure_id);
+		configureRemoveActions('.medicine-'+procedure_id);
+		refreshAppointentValue();
+		assistantCHChange('.medicine-'+procedure_id);
+		EasyClinica.common.generalFunctions();
+		EasyClinica.common.formValidation();
+	};
 };

@@ -54,4 +54,18 @@ public class MaterialDao implements AllMaterials {
 		return (Material) session.load(Material.class, id);
 	}
 
+	@SuppressWarnings("unchecked")
+	public List<Material> search(String text) {
+		StringBuilder hql = new StringBuilder();
+		hql.append(" from Material material ");
+		hql.append(" where ");
+		hql.append(" material.name like :name ");
+		hql.append(" order by name ");
+		
+		Query query = session.createQuery(hql.toString())
+							 .setString("name", "%" + text + "%");
+				
+		return query.list();
+	}
+
 }
