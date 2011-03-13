@@ -377,12 +377,14 @@ EasyClinica.pages['consultas'] = function(){
 	
 	var clearNewMaterialForm = function(){
 		$('input[name=materialName]').val('');
+		$('input[name=materialId]').val('0');
 		$('input[name=materialQuantity]').val('0'.formatCurrency());
 		$('input[name=materialUnitAmount]').val('0'.formatCurrency());
 	};
 	
 	var clearNewMedicineForm = function(){
 		$('input[name=medicineName]').val('');
+		$('input[name=medicineId]').val('0');
 		$('input[name=medicineQuantity]').val('0'.formatCurrency());
 		$('input[name=medicineUnitAmount]').val('0'.formatCurrency());
 	};
@@ -404,6 +406,8 @@ EasyClinica.pages['consultas'] = function(){
 	
 	var generateFormNewMaterialValidation = function(){
 		$('input[name=materialName]').attr('required','required');
+		$('input[name=materialId]').attr('min','1');
+		$('input[name=materialId]').attr('data-message','Escolha um material válido');
 		$('input[name=materialQuantity]').attr('pattern',EasyClinica.cfg.validation.currency);
 		$('input[name=materialUnitAmount]').attr('pattern',EasyClinica.cfg.validation.currency);
 		
@@ -412,6 +416,8 @@ EasyClinica.pages['consultas'] = function(){
 	
 	var generateFormNewMedicineValidation = function(){
 		$('input[name=medicineName]').attr('required','required');
+		$('input[name=medicineId]').attr('min','1');
+		$('input[name=medicineId]').attr('data-message','Escolha um medicamento válido');
 		$('input[name=medicineQuantity]').attr('pattern',EasyClinica.cfg.validation.currency);
 		$('input[name=medicineUnitAmount]').attr('pattern',EasyClinica.cfg.validation.currency);
 		

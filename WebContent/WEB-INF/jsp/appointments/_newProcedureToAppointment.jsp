@@ -15,7 +15,7 @@
     	
     	<ul class="procedure-elements">
     		<li>
-    			<a href="" class="new-assistant">assistente</a>
+    			<a href="" class="new-assistant" title="Adicionar assistente ao procedimento.">assistente</a>
     			<div class="new-assistant">
     				<form id="frm-new-assistant">
 	    				<fieldset>
@@ -51,7 +51,7 @@
     		</li>
     		
     		<li>
-    			<a href="" class="new-material">material</a>
+    			<a href="" class="new-material" title="Adicionar material ao procedimento.">material</a>
     			<div class="new-material">
     				<form id="frm-new-material">
 	    				<fieldset>
@@ -82,7 +82,7 @@
     			</div>
     		</li>
     		<li>
-    			<a href="" class="new-medicine">medicamento</a>
+    			<a href="" class="new-medicine" title="Adicionar medicamento ao procedimento.">medicamento</a>
     			<div class="new-medicine">
     				<form id="frm-new-medicine">
 	    				<fieldset>
