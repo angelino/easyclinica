@@ -12,7 +12,6 @@
    		<c:otherwise>
     		<table border="0" class="easy">
 				<tr class="tableheader">
-					<th width="65px">Status:</th>
 					<th>Nome</th>
 					<th>Convênio</th>
 					<th>Número no Convênio</th>
@@ -23,17 +22,7 @@
 				
 				<c:forEach var="patient" items="${patients.result}" varStatus="status">
 					<tr class="${status.count % 2 == 0 ? 'odd' : 'even' }">
-						<c:choose>
-							<c:when test="${patient.active}">
-								<td class="statusenable">Ativo</td>
-                                 		<td>${patient.name}</td>
-							</c:when>
-							<c:otherwise>
-								<td class="statusdisable">Inativo</td>
-                                 		<td class="namedisable">${patient.name}</td>
-							</c:otherwise>
-						</c:choose>
-						
+                        <td>${patient.name}</td>
 						<td>${patient.healthCarePlan.name}</td>
 						<td>${patient.healthCarePlanCode}</td>
 						<td>${patient.telephone}</td>
@@ -41,17 +30,8 @@
 						
 						<td class="buttons">
 							<a class="btnpeopleedit" title="Editar" href="<c:url value="/pacientes/${patient.id}/editar" />">&nbsp;</a>
-                                     <a class="btnpeopleshow exibir" title="Exibir" patient_id="${patient.id}">&nbsp;</a>
-                                     <a class="btnappointments" title="Consultas" href="<c:url value="/pacientes/${patient.id}/consultas" />">&nbsp;</a>
-                                     
-                                     <c:choose>
-								<c:when test="${patient.active}">
-									<a class="btnpeopledisable last" title="Desativar" href="<c:url value="/pacientes/${patient.id}/deactivate" />">&nbsp;</a>
-								</c:when>
-								<c:otherwise>
-									<a class="btnpeopleenable last" title="Ativar" href="<c:url value="/pacientes/${patient.id}/activate" />">&nbsp;</a>
-								</c:otherwise>
-							</c:choose>
+                            <a class="btnpeopleshow exibir" title="Exibir" patient_id="${patient.id}">&nbsp;</a>
+                            <a class="btnappointments" title="Consultas" href="<c:url value="/pacientes/${patient.id}/consultas" />">&nbsp;</a>
                          </td>
 					</tr>
 				</c:forEach>

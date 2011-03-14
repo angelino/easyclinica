@@ -9,7 +9,6 @@
 		<input type="hidden" name="_method" value="PUT" />
 	</c:if>
 	<input type="hidden" name="patient.id" value="${patient.id}" />
-	<input type="hidden" name="patient.active" value="${patient.active}" />
 	
 	<helper:errors errors="${errors}" />
 

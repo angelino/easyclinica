@@ -102,30 +102,6 @@ public class PatientController extends BaseController {
 	}
 	
 	@Get
-	@Path("/pacientes/{id}/deactivate")
-	public void deactivate(int id) {
-		Patient patient = allPatients.getById(id);
-		
-		patient.deactivate();
-		allPatients.update(patient);
-		
-		successMsg(Messages.PATIENT_DEACTIVATED);
-		result.redirectTo(PatientController.class).index(Paginator.firstPage());
-	}
-	
-	@Get
-	@Path("/pacientes/{id}/activate")
-	public void activate(int id) {
-		Patient patient = allPatients.getById(id);
-		
-		patient.activate();
-		allPatients.update(patient);
-		
-		successMsg(Messages.PATIENT_ACTIVATED);
-		result.redirectTo(PatientController.class).index(Paginator.firstPage());
-	}
-	
-	@Get
 	@Path("/pacientes/{id}/convenio")
 	public void getHealthCarePlan(int id) {
 		Patient patient = allPatients.getById(id);

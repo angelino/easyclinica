@@ -47,8 +47,6 @@ public class Patient {
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "patient")
 	private List<Anamnese> anamneses;
 
-	private boolean active;
-
 	public Patient() {
 	}
 
@@ -60,7 +58,6 @@ public class Patient {
 
 	public static Patient empty() {
 		Patient empty = new Patient();
-		empty.setActive(true);
 		return empty;
 	}
 
@@ -142,22 +139,6 @@ public class Patient {
 
 	public String getHealthCarePlanCode() {
 		return healthCarePlanCode;
-	}
-
-	public void setActive(boolean active) {
-		this.active = active;
-	}
-
-	public boolean isActive() {
-		return active;
-	}
-
-	public void deactivate() {
-		this.setActive(false);
-	}
-
-	public void activate() {
-		this.setActive(true);
 	}
 
 	public List<Anamnese> getAnamneses() {
