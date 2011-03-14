@@ -62,4 +62,9 @@ public class PatientBuilder {
 		instance.setObservations(observations);
 		return this;
 	}
+
+	public PatientBuilder withCpf(String cpf) {
+		instance.setCpf(cpf);
+		return this;
+	}
 }

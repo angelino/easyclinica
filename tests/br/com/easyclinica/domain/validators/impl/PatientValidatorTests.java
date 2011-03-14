@@ -7,6 +7,7 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
+import br.com.caelum.stella.validation.CPFValidator;
 import br.com.easyclinica.domain.entities.HealthCarePlan;
 import br.com.easyclinica.domain.entities.Patient;
 import br.com.easyclinica.domain.validators.Error;
@@ -21,7 +22,7 @@ public class PatientValidatorTests {
 
 	@Before
 	public void setUp() {
-		validator = new DefaultPatientValidator();
+		validator = new DefaultPatientValidator(new CPFValidator());
 		
 		plan = new HealthCarePlanBuilder(123).instance();
 	}
@@ -60,6 +61,19 @@ public class PatientValidatorTests {
 		List<Error> errors = validator.validate(patient);		
 		assertEquals(1, errors.size());
 		assertEquals(ValidationMessages.INVALID_HEALTHCAREPLAN, errors.get(0).getKey());	
+	}
+	
+	@Test
+	public void shouldReturnErrorIfCpfIsInvalid() {
+		Patient patient = new PatientBuilder().withHealthCarePlan(plan).withCpf("123").instance();
+		
+		List<Error> errors = validator.validate(patient);		
+		assertEquals(1, errors.size());
+		assertEquals(ValidationMessages.INVALID_CPF, errors.get(0).getKey());
+		
+		Patient validPatient = new PatientBuilder().withHealthCarePlan(plan).withCpf("330.591.998-17").instance();
+		errors = validator.validate(validPatient);
+		assertEquals(0, errors.size());
 	}
 
 }

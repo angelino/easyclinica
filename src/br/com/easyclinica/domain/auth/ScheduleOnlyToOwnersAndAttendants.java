@@ -7,10 +7,10 @@ import br.com.easyclinica.domain.entities.Position;
 public class ScheduleOnlyToOwnersAndAttendants implements Authorizer {
 	public boolean allows(Class<?> clazz, Employee employee) {
 		if (clazz.equals(ScheduleController.class)
-				&& (isOwner(employee) || isAttendant(employee)))
-			return true;
+				&& !isOwner(employee) && !isAttendant(employee))
+			return false;
 
-		return false;
+		return true;
 	}
 
 	private boolean isAttendant(Employee employee) {

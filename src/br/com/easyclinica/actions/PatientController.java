@@ -53,11 +53,11 @@ public class PatientController extends BaseController {
 	
 	@Get
 	@Path("/pacientes/novo")
-	public void newForm() {
-		Patient emptyPatient = Patient.empty();
+	public void newForm(Patient patient) {
+		Patient patientToFill = (patient == null ? Patient.empty() : patient);
 		result.include("healthCarePlans", allHealthCarePlans.get());
 		result.include("statuses", MaritalStatus.values());
-		include(emptyPatient);
+		include(patientToFill);
 	}
 
 	@Post
@@ -92,7 +92,7 @@ public class PatientController extends BaseController {
 	@Path("/pacientes")
 	public void save(final Patient patient) {
 		translator.translate(patientValidator.validate(patient));
-		validator.onErrorUse(Results.logic()).forwardTo(PatientController.class).newForm();
+		validator.onErrorUse(Results.logic()).forwardTo(PatientController.class).newForm(patient);
 		
 		allPatients.add(patient);
 		

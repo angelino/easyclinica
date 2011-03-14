@@ -19,4 +19,5 @@ public class ValidationMessages {
 	public static final String INVALID_APPOINTMENT_DATE = "errors.invalid_appointment_date";
 	public static final String INVALID_LOGIN = "errors.invalid_login";
 	public static final String LOGIN_ALREADY_EXISTS = "errors.login_already_exists";
+	public static final String INVALID_CPF = "errors.invalid_cpf";
 }
