@@ -10,6 +10,7 @@ import br.com.caelum.vraptor.Validator;
 import br.com.caelum.vraptor.view.Results;
 import br.com.easyclinica.domain.entities.Employee;
 import br.com.easyclinica.domain.entities.Position;
+import br.com.easyclinica.domain.repositories.AllDoctors;
 import br.com.easyclinica.domain.repositories.AllEmployees;
 import br.com.easyclinica.domain.validators.EmployeeValidator;
 import br.com.easyclinica.infra.vraptor.validators.ErrorTranslator;
@@ -23,16 +24,18 @@ public class UsersController extends BaseController {
 	private final ErrorTranslator translator;
 	private final AllEmployees allEmployees;
 	private final EmployeeValidator employeeValidator;
+	private final AllDoctors doctors;
 
 	public UsersController(AllEmployees allEmployees, 
 			Result result, Validator validator, EmployeeValidator employeeValidator, 
-			ErrorTranslator translator, Paginator paginator) {
+			ErrorTranslator translator, Paginator paginator, AllDoctors doctors) {
 		super(result);
 		this.allEmployees = allEmployees;
 		this.result = result;
 		this.validator = validator;
 		this.employeeValidator = employeeValidator;
 		this.translator = translator;
+		this.doctors = doctors;
 	}
 	
 	@Get
@@ -45,6 +48,7 @@ public class UsersController extends BaseController {
 	@Path("/usuarios/novo")
 	public void newForm() {
 		Employee emptyEmployee = Employee.empty();
+		result.include("doctors", doctors.get());
 		result.include("positions", Position.values());
 		include(emptyEmployee);
 	}
@@ -73,24 +77,40 @@ public class UsersController extends BaseController {
 	public void edit(int id) {
 		Employee employeeToBeEdited = allEmployees.getById(id);
 		result.include("positions", Position.values());
+		result.include("doctors", doctors.get());
 		include(employeeToBeEdited);
 	}
 
 	@Put
 	@Path("usuarios/{employee.id}")
 	public void update(final Employee employee) {
-		translator.translate(employeeValidator.validate(employee));
+		translator.translate(employeeValidator.validateProfileUpdate(employee));
 		validator.onErrorUse(Results.logic()).forwardTo(UsersController.class).edit(employee.getId());
 		
 		Employee current = allEmployees.getById(employee.getId());
-		if(employee.getPassword().length() == 0) {
-			employee.setPassword(current.getPassword());
-		}
+		
+		matchOldPassword(employee, current);		
+		setDoctor(employee);
 		
 		allEmployees.update(employee);
 		
 		successMsg(Messages.EMPLOYEE_UPDATED);
 		result.redirectTo(UsersController.class).index();
+	}
+
+	private void setDoctor(final Employee employee) {
+		if(employee.getDoctor()!=null && employee.getDoctor().getId() > 0) {
+			employee.setDoctor(doctors.getById(employee.getDoctor().getId()));
+		}
+		else {
+			employee.setDoctor(null);
+		}
+	}
+
+	private void matchOldPassword(final Employee employee, Employee current) {
+		if(employee.getPassword().length() == 0) {
+			employee.setPassword(current.getPassword());
+		}
 	}
 
 	private void include(Employee employee) {

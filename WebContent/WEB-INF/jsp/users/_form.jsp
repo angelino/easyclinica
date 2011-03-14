@@ -24,15 +24,25 @@
 		<div>	
 			<label class="title">Cargo:<span>*</span></label>
 			
-			<select name="employee.position">
+			<select name="employee.position" id="position">
 				<c:forEach var="position" items="${positions}">
-					<option value="${position}" <c:if test="${position == employee.position}">selected</c:if>>${position.formattedName}</option>
+					<option value="${position}" ${position == employee.position ? 'selected' : ''}>${position.formattedName}</option>
 				</c:forEach>
 			</select>
-			
     	</div>
     	
-		<c:if test="${param.put == false}">
+		<div id="doctors">
+			<label class="title">Médico associado:<span>*</span></label>
+			<input type="hidden" name="employee.doctor.id" id="doctorId" value="${employee.doctor.id}" />
+			
+			<select name="selectedDoctor" id="selectedDoctor">
+				<c:forEach var="doctor" items="${doctors}">
+					<option value="${doctor.id}" ${doctor.id == employee.doctor.id ? 'selected' : ''} >${doctor.name}</option>
+				</c:forEach>
+			</select>
+		</div>
+    	
+		<c:if test="${param.put != true}">
 			<div>
 				<label class="title">Login:<span>*</span></label>
 				<input type="text" name="employee.login" maxlength="100" value="${employee.login}" required="required" />

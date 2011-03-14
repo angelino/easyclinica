@@ -10,6 +10,10 @@
 	<input type="hidden" name="employee.position" value="${employee.position}" />
 	<input type="hidden" name="employee.login" value="${employee.login}" />
 	
+	<c:if test="${not empty employee.doctor.id}">
+		<input type="hidden" name="employee.doctor.id" value="${employee.doctor.id}" />
+	</c:if>
+	
 	<helper:errors errors="${errors}" />
 
 	<p class="required"><span>*</span> campos obrigatórios</p>
@@ -22,8 +26,8 @@
 
     	
 		<div>
-			<label class="title">Senha:<span>*</span></label>
-			<input type="password" name="employee.password" maxlength="100" value="${employee.password}" required="required" />
+			<label class="title">Senha:</label>
+			<input type="password" name="employee.password" maxlength="100" />
 			<span>Se não quiser alterar a senha, deixe este campo em branco.</span>
 		</div>
 

@@ -4,8 +4,10 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Employee {
@@ -24,6 +26,8 @@ public class Employee {
 	private String cellphone;
 	private String observations;
 	private boolean active;
+	@ManyToOne(fetch=FetchType.EAGER)
+	private Doctor doctor;
 
 	public String getLogin() {
 		return login;
@@ -109,6 +113,14 @@ public class Employee {
 
 	public void active() {
 		this.active = true;
+	}
+
+	public Doctor getDoctor() {
+		return doctor;
+	}
+
+	public void setDoctor(Doctor doctor) {
+		this.doctor = doctor;
 	}
 
 }

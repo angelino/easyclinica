@@ -29,6 +29,7 @@
 								<th>Nome</th>
 								<th>Telefone</th>
 								<th>Login</th>
+								<th>Cargo</th>
 								<th width="145px">&nbsp;</th>
 							</tr>
 							
@@ -48,6 +49,7 @@
 									
 									<td>${employee.cellphone}</td>
 									<td>${employee.login}</td>
+									<td>${employee.position.formattedName}</td>
 									<td class="buttons">
 										<a class="btnpeopleedit" title="Editar" href="<c:url value="/usuarios/${employee.id}/editar" />">&nbsp;</a>
                                         <a class="btnpeopleshow exibir" title="Exibir" employee_id="${employee.id}">&nbsp;</a>

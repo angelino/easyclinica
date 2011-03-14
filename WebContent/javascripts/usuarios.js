@@ -10,4 +10,32 @@ EasyClinica.pages['usuarios'] = function(){
 		});		
 	});
 	
+	setDoctorAsTheSelectedOne = function() {
+		$('#doctorId').val($('#selectedDoctor').val());		
+	};
+	
+	setDoctorAsNull = function() {
+		$('#doctorId').val('');
+	};
+	
+	$('#position').change(function() {
+		var position = $('#position').val();
+		if(position == 'DOCTOR') {
+			$('#doctors').show();
+			setDoctorAsTheSelectedOne();
+		}
+		else {
+			$('#doctors').hide();
+			setDoctorAsNull();
+		}
+		
+	});
+	
+	$(function() {
+		var position = $('#position').val();
+		if(position != 'DOCTOR') {
+			$('#doctors').hide();
+		}
+	});
+	
 };
