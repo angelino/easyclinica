@@ -1,6 +1,7 @@
 package br.com.easyclinica.infra.multitenancy;
 
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
 
@@ -8,8 +9,10 @@ import org.junit.Before;
 import org.junit.Test;
 
 import br.com.easyclinica.domain.entities.Clinic;
+import br.com.easyclinica.domain.entities.Doctor;
 import br.com.easyclinica.domain.entities.Employee;
 import br.com.easyclinica.tests.helpers.ClinicBuilder;
+import br.com.easyclinica.tests.helpers.DoctorBuilder;
 import br.com.easyclinica.tests.helpers.EmployeeBuilder;
 
 public class LoggedUserTests {
@@ -52,5 +55,28 @@ public class LoggedUserTests {
 		loggedUser.logoff();
 		
 		assertFalse(loggedUser.isLogged());
+	}
+	
+	@Test
+	public void shouldIdentifyIfItIsADoctor() {
+		assertFalse(loggedUser.isDoctor());
+		
+		loggedUser.set(clinic, employee);
+		assertFalse(loggedUser.isDoctor());
+		
+		employee.setDoctor(new DoctorBuilder().instance());
+		assertTrue(loggedUser.isDoctor());
+	}
+	
+	@Test
+	public void shouldGetDoctor() {
+		assertNull(loggedUser.getDoctor());
+		
+		loggedUser.set(clinic, employee);
+		assertNull(loggedUser.getDoctor());
+		
+		Doctor doctor = new DoctorBuilder().instance();
+		employee.setDoctor(doctor);
+		assertSame(doctor, loggedUser.getDoctor());		
 	}
 }

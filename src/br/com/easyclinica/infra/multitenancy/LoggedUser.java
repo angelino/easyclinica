@@ -3,6 +3,7 @@ package br.com.easyclinica.infra.multitenancy;
 import br.com.caelum.vraptor.ioc.Component;
 import br.com.caelum.vraptor.ioc.SessionScoped;
 import br.com.easyclinica.domain.entities.Clinic;
+import br.com.easyclinica.domain.entities.Doctor;
 import br.com.easyclinica.domain.entities.Employee;
 
 @Component
@@ -32,6 +33,16 @@ public class LoggedUser {
 		employee = null;
 		clinic = null;
 	}
+
+	public boolean isDoctor() {
+		return isLogged() && employee.getDoctor() != null;
+	}
+
+	public Doctor getDoctor() {
+		return employee!=null ? employee.getDoctor() : null;
+	}
+	
+	
 	
 	
 }
