@@ -10,6 +10,7 @@ public class AuthSequenceBuilder {
 	public AuthSequence build() {
 		return new AuthSequence(new AppointmentsNotToDoctors(),
 				new ReportsOnlyToFinancial(), new UsersOnlyToOwners(),
-				new ClinicInfoOnlyToOwners());
+				new ClinicInfoOnlyToOwners(), new MyScheduleOnlyToDoctors(),
+				new ScheduleOnlyToOwnersAndAttendants());
 	}
 }
