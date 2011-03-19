@@ -13,12 +13,21 @@ EasyClinica.pages['schedule'] = function(){
         onBeforeRequestData: cal_beforerequest,
         onAfterRequestData: cal_afterrequest,
         onRequestDataError: cal_onerror, 
-        autoload:true,
-        url: EasyClinica.cfg.services.scheduleList.format(doctorId),  
-        quickAddUrl: EasyClinica.cfg.services.scheduleQuickAdd.format(doctorId), 
-        quickUpdateUrl: EasyClinica.cfg.services.scheduleQuickUpdate.format(doctorId),
-        quickDeleteUrl: EasyClinica.cfg.services.scheduleRemove.format(doctorId)        
+        autoload:true                
     };
+    
+    if(doctorId == 0) {
+    	op.url = EasyClinica.cfg.services.scheduleList;  
+        op.quickDeleteUrl = EasyClinica.cfg.services.scheduleRemove;
+    } 
+    else {
+    	op.url = EasyClinica.cfg.services.doctorScheduleList;  
+        op.quickAddUrl = EasyClinica.cfg.services.doctorScheduleQuickAdd; 
+        op.quickUpdateUrl = EasyClinica.cfg.services.doctorScheduleQuickUpdate;
+        op.quickDeleteUrl = EasyClinica.cfg.services.doctorScheduleRemove;
+    }
+    
+    
     var $dv = $("#calhead");
     var _MH = document.documentElement.clientHeight;
     var dvH = $dv.height() + 2;
@@ -92,7 +101,9 @@ EasyClinica.pages['schedule'] = function(){
     {
     	if(data)
         {
-        	var url = EasyClinica.cfg.services.scheduleEdit.format(doctorId, data[0]);
+        	var url = EasyClinica.cfg.services.doctorScheduleEdit.format(data[0]);
+        	if(doctorId == 0) url = EasyClinica.cfg.services.scheduleEdit.format(data[0]);
+        	
         	EasyClinica.lib.openModal(url, 'GET', {}, function(){
             	EasyClinica.common.generalFunctions();
     			EasyClinica.common.formValidation();
@@ -158,7 +169,7 @@ EasyClinica.pages['schedule'] = function(){
     
     //Add a new event
     $("#faddbtn").click(function(e) {
-        var url = EasyClinica.cfg.services.scheduleNew.format(doctorId);
+        var url = (doctorId == 0 ? EasyClinica.cfg.services.scheduleNew : EasyClinica.cfg.services.doctorScheduleNew);
         
         EasyClinica.lib.openModal(url, 'GET', {}, function(){
         	EasyClinica.common.generalFunctions();
@@ -202,7 +213,7 @@ EasyClinica.pages['schedule'] = function(){
         });
     };
     
-    /* Funções Data */
+    /* FunÃ§Ãµes Data */
     var schedulePeriodManager = function() {
     	
     	// Start Time

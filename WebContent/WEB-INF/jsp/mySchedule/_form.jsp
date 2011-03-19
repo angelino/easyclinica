@@ -16,7 +16,7 @@
 		
     	<div>
     		<label class="title">Médico:<span>*</span></label>
-    		<select name="schedule.doctor.id">
+    		<select name="schedule.doctor.id" <c:if test="${loggedUser.doctor}">disabled</c:if> >
     			<c:forEach items="${medicos}" var="medico">
     				<option value="${medico.id}" <c:if test="${medico.id == schedule.doctor.id}">selected="selected"</c:if> >${medico.name}</option>
     			</c:forEach>

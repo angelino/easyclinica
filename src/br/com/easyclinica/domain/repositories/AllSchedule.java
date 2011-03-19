@@ -13,4 +13,5 @@ public interface AllSchedule {
 	void delete(Schedule schedule);
 	
 	List<Schedule> getDoctorScheduleByPeriod(Doctor doctor, Calendar start, Calendar end);
+	List<Schedule> getScheduleByPeriod(Calendar start, Calendar end);
 }

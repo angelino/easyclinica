@@ -53,18 +53,29 @@
 									<td>${doctor.telephone}</td>
 									<td>${doctor.email}</td>
 									<td class="buttons">
-										<a class="btnpeopleedit" title="Editar" href="<c:url value="/medicos/${doctor.id}/editar" />">&nbsp;</a>
-                                        <a class="btnpeopleshow exibir" title="Exibir" doctor_id="${doctor.id}">&nbsp;</a>
-                                        <a class="btnschedule" title="Agenda" href="<c:url value="/medicos/${doctor.id}/agenda" />">&nbsp;</a>
-                                        
-                                        <c:choose>
-											<c:when test="${doctor.active}">
-												<a class="btnpeopledisable last" title="Desativar" href="<c:url value="/medicos/${doctor.id}/deactivate" />">&nbsp;</a>
-											</c:when>
-											<c:otherwise>
-												<a class="btnpeopleenable last" title="Ativar" href="<c:url value="/medicos/${doctor.id}/activate" />">&nbsp;</a>
-											</c:otherwise>
-										</c:choose>
+										<c:if test="${!loggedUser.doctor || loggedUser.employee.doctor.id == doctor.id}">
+											<a class="btnpeopleedit" title="Editar" href="<c:url value="/medicos/${doctor.id}/editar" />">&nbsp;</a>
+	                                        <a class="btnpeopleshow exibir" title="Exibir" doctor_id="${doctor.id}">&nbsp;</a>
+	                                        
+	                                        <c:choose>
+	                                        	<c:when test="${loggedUser.doctor}">
+	                                        		<c:url value="/medicos/minha-agenda" var="agenda_url"/>
+	                                        	</c:when>
+	                                        	<c:otherwise>
+	                                        		<c:url value="/agenda" var="agenda_url"/>
+	                                        	</c:otherwise>
+	                                        </c:choose>
+	                                        <a class="btnschedule" title="Agenda" href="${agenda_url}">&nbsp;</a>
+	                                        
+	                                        <c:choose>
+												<c:when test="${doctor.active}">
+													<a class="btnpeopledisable last" title="Desativar" href="<c:url value="/medicos/${doctor.id}/deactivate" />">&nbsp;</a>
+												</c:when>
+												<c:otherwise>
+													<a class="btnpeopleenable last" title="Ativar" href="<c:url value="/medicos/${doctor.id}/activate" />">&nbsp;</a>
+												</c:otherwise>
+											</c:choose>
+										</c:if>
                                     </td>
 								</tr>
 							</c:forEach>

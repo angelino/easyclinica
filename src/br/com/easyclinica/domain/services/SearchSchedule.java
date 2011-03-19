@@ -48,7 +48,11 @@ public class SearchSchedule {
 			end = getLastDayOfMonth(end);			
 		}
 		
-		return allSchedule.getDoctorScheduleByPeriod(doctor, start, end);
+		List<Schedule> schedules = null;
+		if(this.doctor == null) schedules = allSchedule.getScheduleByPeriod(start, end);
+		else schedules = allSchedule.getDoctorScheduleByPeriod(doctor, start, end);
+		
+		return schedules;
 	}
 	
 	public void setTime(Calendar date, int hour, int minute, int second) {

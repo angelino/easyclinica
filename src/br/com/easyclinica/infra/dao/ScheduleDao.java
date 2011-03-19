@@ -48,6 +48,20 @@ public class ScheduleDao implements AllSchedule {
 					  .list();
 	}
 
+	@SuppressWarnings("unchecked")
+	public List<Schedule> getScheduleByPeriod(Calendar start, Calendar end) {
+		
+		StringBuilder sql = new StringBuilder();
+		sql.append(" from Schedule s ");
+		sql.append(" where ");
+		sql.append(" s.startTime between :start and :end ");
+		
+		return session.createQuery(sql.toString())
+					  .setParameter("start", start)
+					  .setParameter("end", end)
+					  .list();
+	}
+	
 	public Schedule getById(int id) {
 		return (Schedule)session.load(Schedule.class, id);
 	}

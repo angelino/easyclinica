@@ -68,12 +68,17 @@ EasyClinica.cfg.services = {
 		showAnamneseDetails: BASE_URI + 'anamnese/_show',
 		showUserDetails: BASE_URI + 'usuarios/_show',
 		
-		scheduleList: BASE_URI + 'medicos/{0}/agenda/_list',
-		scheduleQuickAdd: BASE_URI + 'medicos/{0}/agenda/_quickAdd',
-		scheduleQuickUpdate: BASE_URI + 'medicos/{0}/agenda/_quickUpdate',
-		scheduleRemove: BASE_URI + 'medicos/{0}/agenda/_delete',
-		scheduleNew: BASE_URI + 'medicos/{0}/agenda/_new',
-		scheduleEdit: BASE_URI + 'medicos/{0}/agenda/{1}/_edit',
+		doctorScheduleList: BASE_URI + 'medicos/minha-agenda/_list',
+		doctorScheduleQuickAdd: BASE_URI + 'medicos/minha-agenda/_quickAdd',
+		doctorScheduleQuickUpdate: BASE_URI + 'medicos/minha-agenda/_quickUpdate',
+		doctorScheduleRemove: BASE_URI + 'medicos/minha-agenda/_delete',
+		doctorScheduleNew: BASE_URI + 'medicos/minha-agenda/_new',
+		doctorScheduleEdit: BASE_URI + 'medicos/minha-agenda/{0}/_edit',
+		
+		scheduleList: BASE_URI + 'agenda/_list',
+		scheduleRemove: BASE_URI + 'agenda/_delete',
+		scheduleNew: BASE_URI + 'agenda/_new',
+		scheduleEdit: BASE_URI + 'agenda/{0}/_edit',
 		
 		postReply: BASE_URI + 'mensagens/{0}/respostas/_nova',
 		postMessage: BASE_URI + 'mensagens/_nova',

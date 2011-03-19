@@ -6,7 +6,15 @@
     
     <div class="modal-content">    	
 		
-		<c:url value="/medicos/${schedule.doctor.id}/agenda/update" var="formAction" />
+		<c:choose>
+			<c:when test="${loggedUser.doctor}">
+				<c:url value="/medicos/minha-agenda/update" var="formAction" />
+			</c:when>
+			<c:otherwise>
+				<c:url value="/agenda/update" var="formAction" />
+			</c:otherwise>
+		</c:choose>
+		
 		<jsp:include page="_form.jsp">	
 		   	<jsp:param name="formAction" value="${formAction}" />
 		   	<jsp:param name="put" value="true"/>	
