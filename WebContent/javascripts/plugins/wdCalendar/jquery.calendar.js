@@ -1454,6 +1454,11 @@
                 drag: "drag-chip",
                 redisplay: resize ? "block" : "none"
             });
+            
+            if ((!option.quickAddHandler && option.quickAddUrl == "") || option.readonly) {
+        		if(!title) newtemp = "";
+        	}
+            
             return newtemp;
         }
 
@@ -2207,7 +2212,7 @@
             $('body').noSelect();
         }
         function dragMove(e) {
-            if (_dragdata) {
+        	if (_dragdata) {
                 if (e.pageX < 0 || e.pageY < 0
 					|| e.pageX > document.documentElement.clientWidth
 					|| e.pageY >= document.documentElement.clientHeight) {
@@ -2293,7 +2298,7 @@
                         }
                         break;
                     case 4:
-                        var data = d.data;
+                    	var data = d.data;
                         if (data != null && data[8] == 1) {
                             var sx = d.sx;
                             var x = e.pageX;
