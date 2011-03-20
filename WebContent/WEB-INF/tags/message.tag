@@ -2,7 +2,7 @@
 <%@tag display-name="message"%>
 <%@ attribute name="successKey" type="java.lang.String" required="true" rtexprvalue="true" %>
 <%@ attribute name="errorKey" type="java.lang.String" required="true" rtexprvalue="true" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <c:if test="${not empty successKey}">

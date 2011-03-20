@@ -2,7 +2,7 @@
 <%@tag display-name="pagging"%>
 <%@ attribute name="total" type="java.lang.Integer" required="true" rtexprvalue="true" %>
 <%@ attribute name="current" type="java.lang.Integer" required="true" rtexprvalue="true" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <c:if test="${total > 1}">

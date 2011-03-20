@@ -2,7 +2,7 @@
 <%@tag display-name="include"%>
 <%@ attribute name="fileName" type="java.lang.String" required="true" rtexprvalue="true" %>
 <%@ attribute name="type" type="java.lang.String" required="true" rtexprvalue="true" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
 <c:if test="${type == 'css'}">
 <c:url value="/stylesheets/${fileName}" var="css"></c:url>
 <link rel="stylesheet" href="${css}" type="text/css" media="screen" />

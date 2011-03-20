@@ -1740,8 +1740,8 @@
             }
         }
         function quickadd(start, end, isallday, pos) {
-            if ((!option.quickAddHandler && option.quickAddUrl == "") || option.readonly) {
-                return;
+        	if ((!option.quickAddHandler && option.quickAddUrl == "") || option.readonly) {
+        		return;
             }
             var buddle = $("#bbit-cal-buddle");
             if (buddle.length == 0) {

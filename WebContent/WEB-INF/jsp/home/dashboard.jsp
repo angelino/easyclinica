@@ -12,8 +12,8 @@
 				
 				<div class="newPost">
 					O que você está fazendo agora?
-						<textarea id="messageText" class="comment"></textarea>
-						<input type="button" value="Postar" class="message-button" />
+					<textarea id="messageText" class="comment"></textarea>
+					<input type="button" value="Postar" class="message-button" />
 				</div>
 				
 				<div id="allMessages">
@@ -22,5 +22,9 @@
 								
 			</div>
 		</div>
+		
+		<div class="boxright">			
+			<helper:schedule list="${schedules}"></helper:schedule>   
+	    </div>
 	</body>
 </html>

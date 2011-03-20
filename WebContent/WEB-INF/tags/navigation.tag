@@ -3,7 +3,7 @@
 
 <%@ attribute name="links" type="java.util.List" required="true" rtexprvalue="true" %>
 
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
 
 <div class="simpleboxlink">
 	<h4>Navegação</h4>

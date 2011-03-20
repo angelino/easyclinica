@@ -284,10 +284,23 @@ table.easy tr td.tablenostyle{background:#ffffff!important;border:none;}
 /*BOX DIREITO LINKS ######################################################################################################################*/
 .main .content .boxright .simpleboxlink{float:left;width:91%;margin:0 0 10px 30px;}
 .main .content .boxright .simpleboxlink h4{background:#FFFFFF;border-color:#DDDDDD #CCCCCC #CCCCCC #DDDDDD;border-style:solid;border-width:1px;color:#333333;font-weight:bold;padding:5px 10px;margin:0 0 10px 0;}
+.main .content .boxright .simpleboxlink h4 a{background-position: 0 5px; background-repeat: no-repeat;color: #222222;cursor: pointer;font-size: 1em;font-weight: bold;line-height: 1.3em;margin: 6px 0 0 7px;padding: 5px 8px 0 5px;text-decoration: none;}
+.main .content .boxright .simpleboxlink h4 a.btnschedule{background-image:url(/easyclinica/images/icons/schedule.png);}
 .main .content .boxright .simpleboxlink ul{float:left;}
 .main .content .boxright .simpleboxlink ul li{float:left;width:100%;}
 .main .content .boxright .simpleboxlink ul li a{float:left;color:#6A6A6A;padding:5px 10px;text-decoration:none;}
 .main .content .boxright .simpleboxlink ul li a:hover{text-decoration:underline;}
+/*BOX DIREITO SCHEDULE WIDGET ######################################################################################################################*/
+.main .content .boxright .schedule-widget{float:left;width:91%;margin:0 0 10px 30px;}
+.main .content .boxright .schedule-widget h4{background:#FFFFFF;border-color:#DDDDDD #CCCCCC #CCCCCC #DDDDDD;border-style:solid;border-width:1px;color:#333333;font-weight:bold;padding:5px 10px;margin:0 0 10px 0;}
+.main .content .boxright .schedule-widget h4 a{background-position: 0 5px; background-repeat: no-repeat;color: #222222;cursor: pointer;font-size: 1em;font-weight: bold;line-height: 1.3em;margin: 6px 0 0 7px;padding: 5px 8px 0 5px;text-decoration: none;}
+.main .content .boxright .schedule-widget h4 a.btnschedule{background-image:url(/easyclinica/images/icons/schedule.png);}
+.main .content .boxright .schedule-widget ul{float:left;width:100%;}
+.main .content .boxright .schedule-widget ul li{float:left;width:100%;}
+.main .content .boxright .schedule-widget ul li.hour{width:12%;}
+.main .content .boxright .schedule-widget ul li.subject{width:88%;}
+.main .content .boxright .schedule-widget ul li a{float:left;color:#6A6A6A;padding:5px 10px;text-decoration:none;}
+.main .content .boxright .schedule-widget ul li a:hover{text-decoration:underline;}
 
 /*MESAGEM ERRO/AVISOS/NOTICIAS ######################################################################################################################*/
 p.messengererror{float:left;width:99.2%;background:#FFDDDD;border:1px solid #FFBBBB;text-align:center;padding:10px 0;}

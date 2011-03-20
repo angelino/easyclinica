@@ -1,6 +1,6 @@
 <%@ tag language="java" pageEncoding="utf-8"%>
 <%@tag display-name="patientMenu"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <%@ attribute name="patient" type="br.com.easyclinica.domain.entities.Patient" required="true" rtexprvalue="true" %>
 <%@ attribute name="selected" required="true" %>
 <ul class="boxmenu">
