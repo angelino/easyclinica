@@ -42,10 +42,10 @@ public class ValidatorUtils {
 	public boolean cpfIsValid(String cpf) {
 		try {
 			cpfValidator.assertValid(cpf);
-			return false;
+			return true;
 		}
 		catch(Exception e) {
-			return true;
+			return false;
 		}
 	}
 }

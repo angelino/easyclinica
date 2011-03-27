@@ -28,6 +28,9 @@ public class Receipt {
 	@Type(type = "text")
 	private String observations;
 	
+	@ManyToOne(fetch = FetchType.EAGER)
+	private Employee employee;
+	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@Index(name = "receiptPatientIndex")
 	private Patient patient;
@@ -102,6 +105,14 @@ public class Receipt {
 
 	public String getCpf() {
 		return cpf;
+	}
+
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
+	}
+
+	public Employee getEmployee() {
+		return employee;
 	}
 
 	public static Receipt empty() {

@@ -35,7 +35,7 @@
 			                    <th>Em nome de</th>
 			                    <th>CPF</th>
 			                    <th>Amount</th> 
-			                    <th width="160px">&nbsp;</th>
+			                    <th width="202px">&nbsp;</th>
 			                </tr> 
                   
 							<c:forEach items="${patient.receipts}" var="receipt" varStatus="st">
@@ -48,6 +48,7 @@
 									<td class="currency">${receipt.amount}</td>
 									
 									<td class="buttons">
+										<a class="btnpdf" title="Gerar recibo em formato .pdf" href="<c:url value="/pacientes/${receipt.patient.id}/recibos/${receipt.id}"/>">&nbsp;</a>
 										<a class="btnpeopleedit" title="Editar" href="<c:url value="/pacientes/${receipt.patient.id}/recibos/${receipt.id}/editar"/>">&nbsp;</a>
                                     	<a class="btnpeopleshow exibir" title="Exibir" recibo_id="${receipt.id}">&nbsp;</a>
                                         

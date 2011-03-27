@@ -114,6 +114,7 @@ table.easy tr td a.btnpeopledisable{background-image:url(/easyclinica/images/ico
 table.easy tr td a.btnappointments{background-image:url(/easyclinica/images/icons/appointments.png);}
 table.easy tr td a.btnschedule{background-image:url(/easyclinica/images/icons/schedule.png);}
 table.easy tr td a.btnreceipt{background-image:url(/easyclinica/images/icons/receipt.png);}
+table.easy tr td a.btnpdf{background-image:url(/easyclinica/images/icons/pdf.png);}
 
 table.easy tr td form{width:50px!important;}
 table.easy tr td input{background-color:#EEEEEE;background-repeat:no-repeat;background-position:10px 5px;border:1px solid #BFBFBF;color:#222222;cursor:pointer;float:left;font-size:1em;font-weight:bold;line-height:1.3em;margin:0 0 0 10px;padding:5px 10px 5px 25px;text-decoration:none;}
@@ -190,6 +191,8 @@ table.easy tr td.tablenostyle{background:#ffffff!important;border:none;}
 .boxactions input.btnappointments{background-image:url(/easyclinica/images/icons/appointments.png);}
 .boxactions a.btnschedule{background-image:url(/easyclinica/images/icons/schedule.png);}
 .boxactions input.btnschedule{background-image:url(/easyclinica/images/icons/schedule.png);}
+.boxactions a.btnpdf{background-image:url(/easyclinica/images/icons/pdf.png);}
+.boxactions input.btnpdf{background-image:url(/easyclinica/images/icons/pdf.png);}
 
 /*BOX PAGINACAO ######################################################################################################################*/
 .boxpagination{float:left;width:100%;background-color:#EEEEEE;border:#EEEEEE 1px solid;font-size:14px;padding:10px 0;margin:10px 0 20px 0;text-align:center;}

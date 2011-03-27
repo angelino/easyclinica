@@ -30,9 +30,9 @@ public class DefaultReceiptValidator implements ReceiptValidator {
 			errors.add(new Error("receipt", ValidationMessages.INVALID_AMOUNT));
 		}
 		
-		//if(!validatorUtils.cpfIsValid(obj.getCpf())) {
-		//	errors.add(new Error("receipt", ValidationMessages.INVALID_CPF));
-		//}
+		if(!validatorUtils.cpfIsValid(obj.getCpf())) {
+			errors.add(new Error("receipt", ValidationMessages.INVALID_CPF));
+		}
 		
 		return errors;
 	}

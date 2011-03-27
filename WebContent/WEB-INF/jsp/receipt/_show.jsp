@@ -33,8 +33,9 @@
 		</div>
 		
 		<div class="boxactions">
-			<a class="btnedit" href="<c:url value="/pacientes/${receipt.patient.id}/anamneses/${receipt.id}/editar"/>">Editar</a>
+			<a class="btnedit" href="<c:url value="/pacientes/${receipt.patient.id}/recibos/${receipt.id}/editar"/>">Editar</a>
 			<a class="btnclose modal-close">Fechar</a>
+			<a class="btnpdf" href="<c:url value="/pacientes/${receipt.patient.id}/recibos/${receipt.id}"/>">Gerar Recibo</a>
 	    </div>
    	</div>
 </div>		

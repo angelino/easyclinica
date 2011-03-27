@@ -1,5 +1,8 @@
 package br.com.easyclinica.actions;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import br.com.caelum.vraptor.Delete;
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
@@ -8,12 +11,16 @@ import br.com.caelum.vraptor.Put;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.Validator;
+import br.com.caelum.vraptor.interceptor.download.Download;
 import br.com.caelum.vraptor.view.Results;
 import br.com.easyclinica.domain.entities.Kinship;
+import br.com.easyclinica.domain.entities.Patient;
 import br.com.easyclinica.domain.entities.Receipt;
 import br.com.easyclinica.domain.repositories.AllPatients;
 import br.com.easyclinica.domain.repositories.AllReceipts;
 import br.com.easyclinica.domain.validators.ReceiptValidator;
+import br.com.easyclinica.infra.multitenancy.LoggedUser;
+import br.com.easyclinica.infra.reports.JasperMaker;
 import br.com.easyclinica.infra.vraptor.validators.ErrorTranslator;
 import br.com.easyclinica.view.Messages;
 
@@ -25,8 +32,12 @@ public class ReceiptController extends BaseController {
 	private final Validator validator;
 	private final ErrorTranslator translator;
 	private final ReceiptValidator receiptValidator;
+	private final JasperMaker jasperMaker;
+	private final LoggedUser loggedUser;
 	
-	public ReceiptController(Result result, AllPatients allPatients, AllReceipts allReceipts, ReceiptValidator receiptValidator, Validator validator, ErrorTranslator translator) {
+	public ReceiptController(Result result, AllPatients allPatients, AllReceipts allReceipts, 
+			ReceiptValidator receiptValidator, Validator validator, ErrorTranslator translator,
+			JasperMaker jasperMaker, LoggedUser loggedUser) {
 		super(result);
 		
 		this.allPatients = allPatients;
@@ -34,6 +45,8 @@ public class ReceiptController extends BaseController {
 		this.validator = validator;
 		this.translator = translator;
 		this.receiptValidator = receiptValidator;
+		this.jasperMaker = jasperMaker;
+		this.loggedUser = loggedUser;
 	}
 
 	@Get
@@ -106,6 +119,24 @@ public class ReceiptController extends BaseController {
 		
 		successMsg(Messages.RECEIPT_DELETED);
 		result.redirectTo(ReceiptController.class).list(patient_id);
+	}
+	
+	@Get
+	@Path("/pacientes/{patient_id}/recibos/{id}")
+	public Download receipt(int patient_id, int id) {
+		Patient patient = allPatients.getById(patient_id);
+		Receipt receipt = allReceipts.getById(id);
+		
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("receipt", receipt);
+		params.put("clinic", loggedUser.getClinic());
+		
+		return jasperMaker.makePdf(  
+	               "receipt",  
+	               patient.getReceipts(),   
+	               "recibo.pdf",   
+	               true,   
+	               params);
 	}
 	
 	private void include(Receipt receipt) {

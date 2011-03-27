@@ -10,6 +10,7 @@
 	<% } %>
 	<input type="hidden" name="receipt.id" value="${receipt.id}" />
 	<input type="hidden" name="receipt.patient.id" value="${receipt.patient.id}" />
+	<input type="hidden" name="receipt.employee.id" value="${loggedUser.employee.id}" />
 	
 	<helper:errors errors="${errors}" />
 
