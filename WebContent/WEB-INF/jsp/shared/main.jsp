@@ -46,7 +46,8 @@
 	    <helper:include fileName="agenda.js" type="js" />
 	    <helper:include fileName="dashboard.js" type="js" />	    
 	    <helper:include fileName="usuarios.js" type="js" />	    
-	    <helper:include fileName="prices.js" type="js" />	    
+	    <helper:include fileName="prices.js" type="js" />
+	    <helper:include fileName="recibo.js" type="js" />    
 	    <decorator:head />
 	</head>
 

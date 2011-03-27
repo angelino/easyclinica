@@ -7,10 +7,12 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
+import br.com.caelum.stella.validation.CPFValidator;
 import br.com.easyclinica.domain.entities.Anamnese;
 import br.com.easyclinica.domain.entities.Doctor;
 import br.com.easyclinica.domain.validators.Error;
 import br.com.easyclinica.domain.validators.ValidationMessages;
+import br.com.easyclinica.domain.validators.ValidatorUtils;
 import br.com.easyclinica.tests.helpers.AnamneseBuilder;
 import br.com.easyclinica.tests.helpers.DoctorBuilder;
 
@@ -20,7 +22,9 @@ public class DefaultAnamneseValidatorTests {
 	
 	@Before
 	public void setUp() {
-		validator = new DefaultAnamneseValidator();
+		CPFValidator cpfValidator = new CPFValidator();
+		ValidatorUtils validatorUtils = new ValidatorUtils(cpfValidator);
+		validator = new DefaultAnamneseValidator(validatorUtils);
 	}
 	
 	@Test

@@ -33,5 +33,8 @@ public class Messages {
 	public static final String EMPLOYEE_ACTIVATED = "employee.activated";
 	
 	public static final String CLINIC_UPDATED = "clinic.updated";
-	
+
+	public static final String RECEIPT_ADDED = "receipts.added";
+	public static final String RECEIPT_UPDATED = "receipts.updated";
+	public static final String RECEIPT_DELETED = "receipts.deleted";
 }

@@ -113,6 +113,7 @@ table.easy tr td a.btnpeopleenable{background-image:url(/easyclinica/images/icon
 table.easy tr td a.btnpeopledisable{background-image:url(/easyclinica/images/icons/user_grayoff.png);}
 table.easy tr td a.btnappointments{background-image:url(/easyclinica/images/icons/appointments.png);}
 table.easy tr td a.btnschedule{background-image:url(/easyclinica/images/icons/schedule.png);}
+table.easy tr td a.btnreceipt{background-image:url(/easyclinica/images/icons/receipt.png);}
 
 table.easy tr td form{width:50px!important;}
 table.easy tr td input{background-color:#EEEEEE;background-repeat:no-repeat;background-position:10px 5px;border:1px solid #BFBFBF;color:#222222;cursor:pointer;float:left;font-size:1em;font-weight:bold;line-height:1.3em;margin:0 0 0 10px;padding:5px 10px 5px 25px;text-decoration:none;}
@@ -407,6 +408,12 @@ div.error {
 .modal-anamneses .modal-content p{float:left;width:143px;font-weight: bold;}
 .modal-anamneses .modal-content span{float:left;}
 .modal-anamneses .modal-content div.anamnese p {width: 100%;}
+
+.modal-recibos .modal-content{padding:0 20px;text-align:left;}
+.modal-recibos .modal-content div {float:left; width: 100%;margin-top:5px;}
+.modal-recibos .modal-content p{float:left;width:143px;font-weight: bold;}
+.modal-recibos .modal-content span{float:left;}
+.modal-recibos .modal-content div.observations p {width: 100%;}
 
 .modal-schedule .modal-content{padding:0 20px;text-align:left;}
 .modal-schedule .modal-content{float:left;}

@@ -8,9 +8,11 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
+import br.com.caelum.stella.validation.CPFValidator;
 import br.com.easyclinica.domain.entities.HealthCarePlan;
 import br.com.easyclinica.domain.validators.Error;
 import br.com.easyclinica.domain.validators.ValidationMessages;
+import br.com.easyclinica.domain.validators.ValidatorUtils;
 import br.com.easyclinica.tests.helpers.HealthCarePlanBuilder;
 
 public class HealthCarePlanValidatorTests {
@@ -19,7 +21,9 @@ public class HealthCarePlanValidatorTests {
 
 	@Before
 	public void setUp() {
-		validator = new DefaultHealthCarePlanValidator();
+		CPFValidator cpfValidator = new CPFValidator();
+		ValidatorUtils validatorUtils = new ValidatorUtils(cpfValidator);
+		validator = new DefaultHealthCarePlanValidator(validatorUtils);
 	}
 	
 	@Test

@@ -15,17 +15,19 @@ import br.com.easyclinica.domain.validators.ValidatorUtils;
 public class DefaultEmployeeValidator implements EmployeeValidator {
 	
 	private final AllEmployees employees;
-
-	public DefaultEmployeeValidator(AllEmployees employees) {
+	private final ValidatorUtils validatorUtils;
+	
+	public DefaultEmployeeValidator(AllEmployees employees, ValidatorUtils validatorUtils) {
 		this.employees = employees;
+		this.validatorUtils = validatorUtils;
 	}
 
 	public List<Error> validate(Employee obj) {
 		List<Error> errors = new ArrayList<Error>();
-		if(ValidatorUtils.isNullOrEmpty(obj.getName())) {
+		if(validatorUtils.isNullOrEmpty(obj.getName())) {
 			errors.add(new Error("employee", ValidationMessages.INVALID_NAME));
 		}
-		if(ValidatorUtils.isNullOrEmpty(obj.getLogin())) {
+		if(validatorUtils.isNullOrEmpty(obj.getLogin())) {
 			errors.add(new Error("employee", ValidationMessages.INVALID_LOGIN));
 		}
 		if(employees.getByLogin(obj.getLogin())!=null) {
@@ -36,7 +38,7 @@ public class DefaultEmployeeValidator implements EmployeeValidator {
 
 	public List<Error> validateProfileUpdate(Employee employee) {
 		List<Error> errors = new ArrayList<Error>();
-		if(ValidatorUtils.isNullOrEmpty(employee.getName())) {
+		if(validatorUtils.isNullOrEmpty(employee.getName())) {
 			errors.add(new Error("employee", ValidationMessages.INVALID_NAME));
 		}
 		return errors;

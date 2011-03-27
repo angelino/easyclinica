@@ -20,4 +20,7 @@ public class ValidationMessages {
 	public static final String INVALID_LOGIN = "errors.invalid_login";
 	public static final String LOGIN_ALREADY_EXISTS = "errors.login_already_exists";
 	public static final String INVALID_CPF = "errors.invalid_cpf";
+	
+	public static final String INVALID_IN_NAME_OF = "errors.invalid_in_name_of";
+	public static final String INVALID_AMOUNT = "errors.invalid_amount";
 }

@@ -35,7 +35,7 @@
 			                    <th>Convênio</th>
 			                    <th>Médico</th>
 			                    <th>Especialidade</th> 
-			                    <th width="145px">&nbsp;</th>
+			                    <th width="156px">&nbsp;</th>
 			                </tr> 
                   
 							<c:forEach items="${patient.appointments}" var="appointment" varStatus="st">
@@ -57,7 +57,7 @@
 									        <input type="hidden" name="_method" value="delete"/>
 									        <input type="submit" class="btndelete" title="Excluir Consulta" value="" onclick="return confirm('Deseja realmente deletar essa consulta?');"/>
 									    </form>
-                                    </td>
+									</td>
 								</tr>
 							</c:forEach>
 				  		</table>

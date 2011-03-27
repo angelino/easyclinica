@@ -13,13 +13,19 @@ import br.com.easyclinica.domain.validators.ValidatorUtils;
 @Component
 public class DefaultDoctorValidator implements DoctorValidator {
 
+	private final ValidatorUtils validatorUtils;
+	
+	public DefaultDoctorValidator(ValidatorUtils validatorUtils){
+		this.validatorUtils = validatorUtils;
+	}
+	
 	public List<Error> validate(Doctor obj) {
 		List<Error> errors = new ArrayList<Error>();
 		
-		if(ValidatorUtils.isNullOrEmpty(obj.getName())) {
+		if(validatorUtils.isNullOrEmpty(obj.getName())) {
 			errors.add(new Error("doctor", ValidationMessages.INVALID_NAME));
 		}
-		if(ValidatorUtils.isNullOrEmpty(obj.getCrm())) {
+		if(validatorUtils.isNullOrEmpty(obj.getCrm())) {
 			errors.add(new Error("doctor", ValidationMessages.INVALID_CRM));
 		}
 		if(obj.getSpecialty().getId() == 0) {

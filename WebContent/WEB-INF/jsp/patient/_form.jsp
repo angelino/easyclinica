@@ -44,7 +44,7 @@
     	</div>
     	
     	<div class="title">
-			<label class="title">CPF:</label>
+			<label class="title">CPF:<span>*</span></label>
     		<input type="text" name="patient.cpf" maxlength="50" value="${patient.cpf}" class="mask_cpf" />
     	</div>
 

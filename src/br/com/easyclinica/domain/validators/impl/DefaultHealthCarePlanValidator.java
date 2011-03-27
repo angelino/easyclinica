@@ -13,12 +13,18 @@ import br.com.easyclinica.domain.validators.ValidatorUtils;
 @Component
 public class DefaultHealthCarePlanValidator implements HealthCarePlanValidator {
 	
+	private final ValidatorUtils validatorUtils;
+	
+	public DefaultHealthCarePlanValidator(ValidatorUtils validatorUtils){
+		this.validatorUtils = validatorUtils;
+	}
+	
 	public List<Error> validate(HealthCarePlan obj) {
 		List<Error> errors = new ArrayList<Error>();
-		if(ValidatorUtils.isNullOrEmpty(obj.getName())) {
+		if(validatorUtils.isNullOrEmpty(obj.getName())) {
 			errors.add(new Error("healthCarePlan", ValidationMessages.INVALID_NAME));
 		}
-		if(!ValidatorUtils.isMoreThanZero(obj.getCh())) {
+		if(!validatorUtils.isMoreThanZero(obj.getCh())) {
 			errors.add(new Error("healthCarePlan", ValidationMessages.INVALID_CH));
 		}
 		

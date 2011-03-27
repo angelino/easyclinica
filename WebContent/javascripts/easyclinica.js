@@ -67,6 +67,7 @@ EasyClinica.cfg.services = {
 		showPatientDetails: BASE_URI + 'patient/_show',
 		showAnamneseDetails: BASE_URI + 'anamnese/_show',
 		showUserDetails: BASE_URI + 'usuarios/_show',
+		showReceiptDetails: BASE_URI + 'receipt/_show',
 		
 		doctorScheduleList: BASE_URI + 'medicos/minha-agenda/_list',
 		doctorScheduleQuickAdd: BASE_URI + 'medicos/minha-agenda/_quickAdd',
@@ -138,11 +139,16 @@ EasyClinica.common.generalFunctions = function(){
 		if(key.keyCode == '13') key.preventDefault();
 		
 		var texto = $(this).val();
-		var floatingPointregExp = new RegExp(EasyClinica.cfg.validation.currency);
-		if(!floatingPointregExp.test(texto)) {
-			texto = texto.substring(0,texto.length -1);
-			$(this).val(texto);
+		valor = "0";	
+		var regexCurrency = new RegExp(/(\d|,|\.)/g);
+		var matched = texto.match(regexCurrency);
+		if(matched != null) {
+			valor = "";
+			for (i = 0; i < matched.length; i++) {
+				valor += (matched[i] == '' ? ',' : matched[i]);
+			}
 		}
+		$(this).val(valor);
 	});
 	
 	// Number

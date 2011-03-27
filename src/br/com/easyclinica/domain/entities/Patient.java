@@ -46,6 +46,8 @@ public class Patient {
 	private List<Appointment> appointments;
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "patient")
 	private List<Anamnese> anamneses;
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "patient")
+	private List<Receipt> receipts;
 
 	public Patient() {
 	}
@@ -147,6 +149,14 @@ public class Patient {
 
 	protected void setAnamneses(List<Anamnese> anamneses) {
 		this.anamneses = anamneses;
+	}
+
+	public void setReceipts(List<Receipt> receipts) {
+		this.receipts = receipts;
+	}
+
+	public List<Receipt> getReceipts() {
+		return receipts;
 	}
 
 	public void addAnamnese(Anamnese a) {

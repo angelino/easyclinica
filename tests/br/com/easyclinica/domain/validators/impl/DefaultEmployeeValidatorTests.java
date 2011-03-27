@@ -7,10 +7,12 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
+import br.com.caelum.stella.validation.CPFValidator;
 import br.com.easyclinica.domain.entities.Employee;
 import br.com.easyclinica.domain.repositories.AllEmployees;
 import br.com.easyclinica.domain.validators.Error;
 import br.com.easyclinica.domain.validators.ValidationMessages;
+import br.com.easyclinica.domain.validators.ValidatorUtils;
 import br.com.easyclinica.tests.helpers.EmployeeBuilder;
 import static org.mockito.Mockito.*;
 public class DefaultEmployeeValidatorTests {
@@ -20,8 +22,11 @@ public class DefaultEmployeeValidatorTests {
 
 	@Before
 	public void setUp() {
+		CPFValidator cpfValidator = new CPFValidator();
+		ValidatorUtils validatorUtils = new ValidatorUtils(cpfValidator);
+		
 		employees = mock(AllEmployees.class);
-		validator = new DefaultEmployeeValidator(employees);
+		validator = new DefaultEmployeeValidator(employees, validatorUtils);
 		
 		when(employees.getByLogin(any(String.class))).thenReturn(null);
 	}

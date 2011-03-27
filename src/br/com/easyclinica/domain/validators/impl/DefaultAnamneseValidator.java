@@ -13,14 +13,20 @@ import br.com.easyclinica.domain.validators.ValidatorUtils;
 @Component
 public class DefaultAnamneseValidator implements AnamneseValidator {
 
+	private final ValidatorUtils validatorUtils;
+	
+	public DefaultAnamneseValidator(ValidatorUtils validatorUtils){
+		this.validatorUtils = validatorUtils;
+	}
+	
 	public List<Error> validate(Anamnese obj) {
 		List<Error> errors = new ArrayList<Error>();
 		
-		if(ValidatorUtils.isNullOrEmpty(obj.getText())) {
+		if(validatorUtils.isNullOrEmpty(obj.getText())) {
 			errors.add(new Error("anamnese", ValidationMessages.INVALID_ANAMNESE));
 		}
 		
-		if(!ValidatorUtils.exists(obj.getDoctor())) {
+		if(!validatorUtils.exists(obj.getDoctor())) {
 			errors.add(new Error("doctor", ValidationMessages.INVALID_DOCTOR));
 		}
 		

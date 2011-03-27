@@ -12,6 +12,7 @@ import br.com.easyclinica.domain.entities.HealthCarePlan;
 import br.com.easyclinica.domain.entities.Patient;
 import br.com.easyclinica.domain.validators.Error;
 import br.com.easyclinica.domain.validators.ValidationMessages;
+import br.com.easyclinica.domain.validators.ValidatorUtils;
 import br.com.easyclinica.tests.helpers.HealthCarePlanBuilder;
 import br.com.easyclinica.tests.helpers.PatientBuilder;
 
@@ -22,7 +23,9 @@ public class PatientValidatorTests {
 
 	@Before
 	public void setUp() {
-		validator = new DefaultPatientValidator(new CPFValidator());
+		CPFValidator cpfValidator = new CPFValidator();
+		ValidatorUtils validatorUtils = new ValidatorUtils(cpfValidator);
+		validator = new DefaultPatientValidator(validatorUtils);
 		
 		plan = new HealthCarePlanBuilder(123).instance();
 	}
