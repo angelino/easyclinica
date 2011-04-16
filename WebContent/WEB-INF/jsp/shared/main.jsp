@@ -48,6 +48,7 @@
 	    <helper:include fileName="usuarios.js" type="js" />	    
 	    <helper:include fileName="prices.js" type="js" />
 	    <helper:include fileName="recibo.js" type="js" />    
+	    <helper:include fileName="reports.js" type="js" />    
 	    <decorator:head />
 	</head>
 
@@ -71,6 +72,7 @@
                   <li id="menu-link-convenios"><a href="<c:url value="/convenios" />">Convênios</a></li>
                   <li id="menu-link-medicos"><a href="<c:url value="/medicos" />">Médicos</a></li>
                   <li id="menu-link-usuarios"><a href="<c:url value="/usuarios" />">Usuários</a></li>
+                  <li id="menu-link-reports"><a href="<c:url value="/relatorios" />">Relatórios</a></li>
                 </ul>
             </div>
             <!-- END HEADER -->
