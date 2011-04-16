@@ -5,3 +5,4 @@ classes
 *.class
 .DS_Store
 WebContent/WEB-INF/lib/*.jar
+*.jasper
