@@ -3,12 +3,16 @@ package br.com.easyclinica.infra.dao.reports;
 import java.util.Calendar;
 import java.util.List;
 
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
+import org.hibernate.transform.Transformers;
 
 import br.com.caelum.vraptor.ioc.Component;
 import br.com.easyclinica.domain.entities.Appointment;
+import br.com.easyclinica.domain.entities.reports.FinancialByDoctorReportData;
 import br.com.easyclinica.domain.reports.ReportGenerator;
 
 @Component
@@ -47,6 +51,35 @@ public class ReportsHibernate implements ReportGenerator {
 		Calendar c = Calendar.getInstance();
 		c.set(2011, 0, 1);
 		return c;
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<FinancialByDoctorReportData> financialByDoctor(Calendar start, Calendar end) {
+		
+		setToTime(start,0,0,0);
+		setToTime(start,23,59,59);
+		
+		Criteria criteria = session.createCriteria(Appointment.class)
+								   .add(Restrictions.between("appointmentDate", start, end))
+								   .setProjection( Projections.projectionList()
+										   .add(Projections.rowCount(), "qtyAppointments")
+										   .add(Projections.sum("procedureAmount"), "procedureAmount")
+										   .add(Projections.sum("appointmentAmount"), "appointmentAmount")
+										   .add(Projections.sum("roomRateAmount"), "roomRateAmount")
+										   .add(Projections.property("doctor"), "doctor")
+										   .add(Projections.groupProperty("doctor"))
+								   )
+								   .setResultTransformer(Transformers.aliasToBean(FinancialByDoctorReportData.class))
+								   .createCriteria("doctor")
+								   .addOrder(Order.asc("name"));
+		
+		return (List<FinancialByDoctorReportData>)criteria.list();
+	}
+
+	private void setToTime(Calendar date, int hour, int minute, int second) {
+		date.set(Calendar.HOUR_OF_DAY,hour);
+		date.set(Calendar.MINUTE,minute);
+		date.set(Calendar.SECOND, second);
 	}
 
 }
