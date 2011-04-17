@@ -55,10 +55,6 @@ public class ReportsHibernate implements ReportGenerator {
 
 	@SuppressWarnings("unchecked")
 	public List<FinancialByDoctorReportData> financialByDoctor(Calendar start, Calendar end) {
-		
-		setToTime(start,0,0,0);
-		setToTime(start,23,59,59);
-		
 		Criteria criteria = session.createCriteria(Appointment.class)
 								   .add(Restrictions.between("appointmentDate", start, end))
 								   .setProjection( Projections.projectionList()
@@ -75,11 +71,4 @@ public class ReportsHibernate implements ReportGenerator {
 		
 		return (List<FinancialByDoctorReportData>)criteria.list();
 	}
-
-	private void setToTime(Calendar date, int hour, int minute, int second) {
-		date.set(Calendar.HOUR_OF_DAY,hour);
-		date.set(Calendar.MINUTE,minute);
-		date.set(Calendar.SECOND, second);
-	}
-
 }
