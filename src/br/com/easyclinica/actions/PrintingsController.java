@@ -27,6 +27,12 @@ public class PrintingsController {
 	}
 	
 	@Get
+	@Path("/pacientes/{id}/impressos")
+	public Patient index(int id) {
+		return patients.getById(id);
+	}
+	
+	@Get
 	@Path("/pacientes/{id}/impressos/anamnese")
 	public Download anamnese(int id) {
 		Patient patient = patients.getById(id);

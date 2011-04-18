@@ -17,5 +17,5 @@
 	<li ${selected=='Recibos' ? 'class="active first"' : ''}>
 		<a href="<c:url value="/pacientes/${patient.id}/recibos"/>">Recibos</a>
 	</li>
-	<li ${selected=='Impressos' ? 'class="active first"' : ''}><a href="#">Impressos</a></li>
+	<li ${selected=='Impressos' ? 'class="active first"' : ''}><a href="<c:url value="/pacientes/${patient.id}/impressos"/>">Impressos</a></li>
 </ul>
