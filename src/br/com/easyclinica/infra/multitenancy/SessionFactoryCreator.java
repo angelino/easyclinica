@@ -14,10 +14,12 @@ public class SessionFactoryCreator implements ComponentFactory<SessionFactory> {
 
 	private final SessionFactoryStore store;
 	private final Tenant tenant;
+	private final DatabaseConfigurator configurator;
 
-	public SessionFactoryCreator(Tenant tenant, SessionFactoryStore store) {
+	public SessionFactoryCreator(Tenant tenant, SessionFactoryStore store, DatabaseConfigurator configurator) {
 		this.tenant = tenant;
 		this.store = store;
+		this.configurator = configurator;
 	}
 	
 	public SessionFactory getInstance() {
@@ -31,7 +33,7 @@ public class SessionFactoryCreator implements ComponentFactory<SessionFactory> {
 	
 	private SessionFactory createSessionFactoryForTenant(String tenant) {
 		// TODO: pegar url do banco de algum arquivo de config
-		Configuration configuration = DatabaseConfigurator.config(tenant);
+		Configuration configuration = configurator.config(tenant);
 				
 		return configuration.buildSessionFactory();
 	}

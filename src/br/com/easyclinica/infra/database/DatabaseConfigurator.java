@@ -3,8 +3,12 @@ package br.com.easyclinica.infra.database;
 import org.hibernate.cfg.AnnotationConfiguration;
 import org.hibernate.cfg.Configuration;
 
+import br.com.caelum.vraptor.ioc.ApplicationScoped;
+import br.com.caelum.vraptor.ioc.Component;
+import br.com.easyclinica.config.Config;
 import br.com.easyclinica.domain.entities.Anamnese;
 import br.com.easyclinica.domain.entities.Appointment;
+import br.com.easyclinica.domain.entities.AppointmentAssistant;
 import br.com.easyclinica.domain.entities.AppointmentMaterial;
 import br.com.easyclinica.domain.entities.AppointmentMedicine;
 import br.com.easyclinica.domain.entities.AppointmentProcedure;
@@ -18,7 +22,6 @@ import br.com.easyclinica.domain.entities.Medicine;
 import br.com.easyclinica.domain.entities.MedicineInProcedure;
 import br.com.easyclinica.domain.entities.Message;
 import br.com.easyclinica.domain.entities.Patient;
-import br.com.easyclinica.domain.entities.AppointmentAssistant;
 import br.com.easyclinica.domain.entities.PrecifiedMaterial;
 import br.com.easyclinica.domain.entities.PrecifiedMedicine;
 import br.com.easyclinica.domain.entities.PrecifiedProcedure;
@@ -29,15 +32,23 @@ import br.com.easyclinica.domain.entities.Reply;
 import br.com.easyclinica.domain.entities.Schedule;
 import br.com.easyclinica.domain.entities.Specialty;
 
+@Component
+@ApplicationScoped
 public class DatabaseConfigurator {
+	
+	private final Config cfg;
 
-	public static Configuration config(String database) {
+	public DatabaseConfigurator(Config cfg) {
+		this.cfg = cfg;
+	}
+
+	public Configuration config(String database) {
 		AnnotationConfiguration configuration = new AnnotationConfiguration();
-		configuration.setProperty("hibernate.connection.driver_class", "com.mysql.jdbc.Driver");
-		configuration.setProperty("hibernate.connection.url", "jdbc:mysql://localhost:3306/" + database + "?useUnicode=true&characterEncoding=UTF-8");
+		configuration.setProperty("hibernate.connection.driver_class", cfg.get("driver_class"));
+		configuration.setProperty("hibernate.connection.url", cfg.get("connection_string").replace("#database#", nameOf(database)));
 		configuration.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLInnoDBDialect");
-		configuration.setProperty("hibernate.connection.username", "easyclinica");
-		configuration.setProperty("hibernate.connection.password", "3@sycl1n1c@");
+		configuration.setProperty("hibernate.connection.username", nameOf(database));
+		configuration.setProperty("hibernate.connection.password", cfg.get("db_pwd"));
 		configuration.setProperty("hibernate.hbm2ddl.auto", "true");
 		configuration.setProperty("hibernate.show_sql", "true");
 		configuration.setProperty("hibernate.format_sql", "true");
@@ -76,5 +87,9 @@ public class DatabaseConfigurator {
 //		hibernate.c3p0.max_statements=50
 
 		return configuration;
+	}
+
+	private String nameOf(String database) {
+		return cfg.get("db_prefix") + database;
 	}
 }

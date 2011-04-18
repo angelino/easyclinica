@@ -2,7 +2,6 @@ package br.com.easyclinica.view.paginator;
 
 import br.com.caelum.vraptor.ioc.Component;
 import br.com.easyclinica.config.Config;
-import br.com.easyclinica.config.ConfigKeys;
 import br.com.easyclinica.domain.repositories.Pagging;
 
 @Component
@@ -11,7 +10,7 @@ public class Paginator {
 	private final int elementsPerPage;
 	
 	public Paginator(Config config) {
-		elementsPerPage = Integer.parseInt(config.get(ConfigKeys.ELEMENTS_PER_PAGE));
+		elementsPerPage = Integer.parseInt(config.get("elements_per_page"));
 	}
 	
 	public <T> PaginatedResult<T> paginate(Pagging<T> repository, int currentPage) {

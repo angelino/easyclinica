@@ -9,7 +9,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import br.com.easyclinica.config.Config;
-import br.com.easyclinica.config.ConfigKeys;
 import br.com.easyclinica.domain.entities.HealthCarePlan;
 import br.com.easyclinica.domain.repositories.AllHealthCarePlans;
 
@@ -21,7 +20,7 @@ public class PaginatorTest {
 	@Before
 	public void setUp() {
 		Config config = mock(Config.class);
-		when(config.get(ConfigKeys.ELEMENTS_PER_PAGE)).thenReturn("10");
+		when(config.get("elements_per_page")).thenReturn("10");
 		
 		paginator = new Paginator(config);
 	}
