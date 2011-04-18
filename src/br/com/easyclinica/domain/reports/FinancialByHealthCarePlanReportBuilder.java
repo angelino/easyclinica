@@ -41,6 +41,6 @@ public class FinancialByHealthCarePlanReportBuilder {
 		return params;
 	}
 	public List<FinancialByHealthCarePlanReportData> build() {
-		return report.financialByHealthCarePlan(startDate, endDate);
+		return report.byHealthCarePlan(startDate, endDate);
 	}
 }

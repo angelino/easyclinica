@@ -29,7 +29,7 @@ public class FinancialReportHibernate implements FinancialReportGenerator {
 
 
 	@SuppressWarnings("unchecked")
-	public List<Appointment> financial(Calendar startDate, Calendar endDate,
+	public List<Appointment> full(Calendar startDate, Calendar endDate,
 			Doctor doctor, HealthCarePlan plan) {
 		Criteria report = session.createCriteria(Appointment.class)
 		.add(Restrictions.between("appointmentDate", startDate, endDate));
@@ -47,7 +47,7 @@ public class FinancialReportHibernate implements FinancialReportGenerator {
 	
 
 	@SuppressWarnings("unchecked")
-	public List<FinancialByDoctorReportData> financialByDoctor(Calendar start,
+	public List<FinancialByDoctorReportData> byDoctor(Calendar start,
 			Calendar end) {
 		Criteria criteria = session
 				.createCriteria(Appointment.class)
@@ -73,7 +73,7 @@ public class FinancialReportHibernate implements FinancialReportGenerator {
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<FinancialByHealthCarePlanReportData> financialByHealthCarePlan(
+	public List<FinancialByHealthCarePlanReportData> byHealthCarePlan(
 			Calendar start, Calendar end) {
 		Criteria criteria = session
 				.createCriteria(Appointment.class)

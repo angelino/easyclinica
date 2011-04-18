@@ -58,6 +58,6 @@ public class FinancialReportBuilder {
 		return params;
 	}
 	public List<Appointment> build() {
-		return report.financial(startDate, endDate, doctor, plan);
+		return report.full(startDate, endDate, doctor, plan);
 	}
 }

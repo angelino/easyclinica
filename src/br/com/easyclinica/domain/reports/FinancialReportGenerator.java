@@ -10,7 +10,7 @@ import br.com.easyclinica.domain.entities.reports.FinancialByDoctorReportData;
 import br.com.easyclinica.domain.entities.reports.FinancialByHealthCarePlanReportData;
 
 public interface FinancialReportGenerator {
-	List<Appointment> financial(Calendar startDate, Calendar endDate, Doctor doctor, HealthCarePlan plan);
-	List<FinancialByDoctorReportData> financialByDoctor(Calendar startDate, Calendar endDate);
-	List<FinancialByHealthCarePlanReportData> financialByHealthCarePlan(Calendar startDate, Calendar endDate);
+	List<Appointment> full(Calendar startDate, Calendar endDate, Doctor doctor, HealthCarePlan plan);
+	List<FinancialByDoctorReportData> byDoctor(Calendar startDate, Calendar endDate);
+	List<FinancialByHealthCarePlanReportData> byHealthCarePlan(Calendar startDate, Calendar endDate);
 }

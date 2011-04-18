@@ -41,6 +41,6 @@ public class FinancialByDoctorReportBuilder {
 		return params;
 	}
 	public List<FinancialByDoctorReportData> build() {
-		return report.financialByDoctor(startDate, endDate);
+		return report.byDoctor(startDate, endDate);
 	}
 }
