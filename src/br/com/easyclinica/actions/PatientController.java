@@ -52,6 +52,12 @@ public class PatientController extends BaseController {
 	}
 	
 	@Get
+	@Path("/pacientes/{id}")
+	public Patient show(int id) {
+		return allPatients.getById(id);
+	}
+	
+	@Get
 	@Path("/pacientes/novo")
 	public void newForm(Patient patient) {
 		Patient patientToFill = (patient == null ? Patient.empty() : patient);
@@ -75,7 +81,7 @@ public class PatientController extends BaseController {
 		allPatients.update(patient);
 		
 		successMsg(Messages.PATIENT_UPDATED);
-		result.redirectTo(PatientController.class).index(Paginator.firstPage());
+		result.redirectTo(PatientController.class).show(patient.getId());
 	}
 
 	@Get
@@ -97,7 +103,7 @@ public class PatientController extends BaseController {
 		allPatients.add(patient);
 		
 		successMsg(Messages.PATIENT_ADDED);
-		result.redirectTo(PatientController.class).index(Paginator.firstPage());
+		result.redirectTo(PatientController.class).show(patient.getId());
 		
 	}
 	

@@ -11,7 +11,7 @@
 	<body>
 
 		<div class="box" id="pacientes">
-			<helper:patientMenu patient="${patient}" selected="Paciente" />
+			<helper:patientMenu patient="${patient}" selected="Edicao" />
 			
 			<div class="boxcontent">
 				<h2>Editar Paciente</h2>
