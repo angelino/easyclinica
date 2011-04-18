@@ -1,5 +1,6 @@
 package br.com.easyclinica.actions;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -38,6 +39,22 @@ public class PrintingsController {
 	               "patient-anamnese",  
 	               patient.getAnamneses(),   
 	               "anamnese.pdf",   
+	               true,   
+	               params);
+	}
+	
+	@Get
+	@Path("/pacientes/{id}/impressos/atestado-de-saude")
+	public Download atestadoDeSaude(int id) {
+		Patient patient = patients.getById(id);
+		
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("clinic", loggedUser.getClinic());
+		
+		return jasperMaker.makePdf(  
+	               "atestadoDeSaude",  
+	               Collections.singletonList(patient),   
+	               "atestadoDeSaude.pdf",   
 	               true,   
 	               params);
 	}
