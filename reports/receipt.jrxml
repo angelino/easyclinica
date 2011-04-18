@@ -12,10 +12,10 @@
 		<variableExpression><![CDATA[new br.com.caelum.stella.inwords.NumericToWordsConverter(new br.com.caelum.stella.inwords.FormatoDeReal()).toWords($P{receipt}.amount.doubleValue())]]></variableExpression>
 	</variable>
 	<variable name="receiptData" class="java.lang.String">
-		<variableExpression><![CDATA["São Paulo, " + new SimpleDateFormat("dd MMMMM yyyy").format($P{receipt}.date.getTime()) ]]></variableExpression>
+		<variableExpression><![CDATA["São Paulo, " + new SimpleDateFormat("dd MMMMM yyyy").format($P{receipt}.date.getTime())]]></variableExpression>
 	</variable>
 	<variable name="texto" class="java.lang.String">
-		<variableExpression><![CDATA["Recebemos de " + $P{receipt}.inNameOf + ", número de CPF " + $P{receipt}.cpf+", a importância de " + $V{amount} + "(" + $V{extenso} + ") referente a serviços médicos prestados."]]></variableExpression>
+		<variableExpression><![CDATA["Recebemos de " + $P{receipt}.inNameOf + ", portador do CPF " + $P{receipt}.cpf+", a importância de " + $V{amount} + "(" + $V{extenso} + ") referente a serviços médicos prestados."]]></variableExpression>
 	</variable>
 	<background>
 		<band splitType="Stretch"/>
