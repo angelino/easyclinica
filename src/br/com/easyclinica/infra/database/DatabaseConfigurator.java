@@ -54,14 +54,16 @@ public class DatabaseConfigurator {
 		configuration.setProperty("hibernate.format_sql", "true");
 		configuration.setProperty("hibernate.jdbc.batch_size", "20");
 		
-		configuration.setProperty("hibernate.c3p0.min_size", "5");
-		configuration.setProperty("hibernate.c3p0.max_size", "20");
-		configuration.setProperty("hibernate.c3p0.timeout", "1800");
-		configuration.setProperty("hibernate.c3p0.max_statements", "50");
+//		configuration.setProperty("hibernate.c3p0.acquire_increment", "5");
+//		configuration.setProperty("hibernate.c3p0.idle_test_period", "100");
+//		configuration.setProperty("hibernate.c3p0.max_size", "100");
+//		configuration.setProperty("hibernate.c3p0.max_statements", "0");
+//		configuration.setProperty("hibernate.c3p0.min_size", "10");
+//		configuration.setProperty("hibernate.c3p0.timeout", "100");
 		
-		configuration.setProperty("hibernate.cache.region.factory_class", "net.sf.ehcache.hibernate.SingletonEhCacheRegionFactory");
-		configuration.setProperty("hibernate.cache.use_second_level_cache", "true");
-		configuration.setProperty("hibernate.cache.use_query_cache", "true");
+//		configuration.setProperty("hibernate.cache.provider_class", "org.hibernate.EhCacheProvider");
+//		configuration.setProperty("hibernate.cache.use_second_level_cache", "true");
+//		configuration.setProperty("hibernate.cache.use_query_cache", "true");
 		
 		configuration.addAnnotatedClass(Appointment.class);
 		configuration.addAnnotatedClass(AppointmentMaterial.class);
