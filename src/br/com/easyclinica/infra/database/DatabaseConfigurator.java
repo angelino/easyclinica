@@ -54,6 +54,11 @@ public class DatabaseConfigurator {
 		configuration.setProperty("hibernate.format_sql", "true");
 		configuration.setProperty("hibernate.jdbc.batch_size", "20");
 		
+		configuration.setProperty("hibernate.c3p0.min_size", "5");
+		configuration.setProperty("hibernate.c3p0.max_size", "20");
+		configuration.setProperty("hibernate.c3p0.timeout", "1800");
+		configuration.setProperty("hibernate.c3p0.max_statements", "50");
+		
 		configuration.addAnnotatedClass(Appointment.class);
 		configuration.addAnnotatedClass(AppointmentMaterial.class);
 		configuration.addAnnotatedClass(AppointmentMedicine.class);
@@ -79,12 +84,6 @@ public class DatabaseConfigurator {
 		configuration.addAnnotatedClass(Reply.class);
 		configuration.addAnnotatedClass(AppointmentAssistant.class);
 		configuration.addAnnotatedClass(Receipt.class);
-
-		// TODO: Colocar c3p0
-//		hibernate.c3p0.min_size=5
-//		hibernate.c3p0.max_size=20
-//		hibernate.c3p0.timeout=1800
-//		hibernate.c3p0.max_statements=50
 
 		return configuration;
 	}
