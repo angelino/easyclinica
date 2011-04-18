@@ -7,28 +7,28 @@ import java.util.Map;
 
 import br.com.caelum.vraptor.ioc.Component;
 import br.com.caelum.vraptor.ioc.RequestScoped;
-import br.com.easyclinica.domain.entities.reports.FinancialByDoctorReportData;
+import br.com.easyclinica.domain.entities.reports.FinancialByHealthCarePlanReportData;
 import br.com.easyclinica.infra.multitenancy.LoggedUser;
 
 @Component
 @RequestScoped
-public class FinancialByDoctorReportBuilder {
+public class FinancialByHealthCarePlanReportBuilder {
 	private final FinancialReportGenerator report;
 	private Calendar startDate;
 	private Calendar endDate;
 	private final LoggedUser loggedUser;
 	
-	public FinancialByDoctorReportBuilder(FinancialReportGenerator report, LoggedUser loggedUser){
+	public FinancialByHealthCarePlanReportBuilder(FinancialReportGenerator report, LoggedUser loggedUser){
 		this.report = report;
 		this.loggedUser = loggedUser;
 	}
 
-	public FinancialByDoctorReportBuilder withStartDate(Calendar startDate) {
+	public FinancialByHealthCarePlanReportBuilder withStartDate(Calendar startDate) {
 		this.startDate = startDate;
 		return this;
 	}
 	
-	public FinancialByDoctorReportBuilder withEndDate(Calendar endDate) {
+	public FinancialByHealthCarePlanReportBuilder withEndDate(Calendar endDate) {
 		this.endDate = endDate;
 		return this;
 	}
@@ -40,7 +40,7 @@ public class FinancialByDoctorReportBuilder {
 		params.put("end", endDate);
 		return params;
 	}
-	public List<FinancialByDoctorReportData> build() {
-		return report.financialByDoctor(startDate, endDate);
+	public List<FinancialByHealthCarePlanReportData> build() {
+		return report.financialByHealthCarePlan(startDate, endDate);
 	}
 }

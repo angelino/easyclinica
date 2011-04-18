@@ -2,20 +2,20 @@ package br.com.easyclinica.domain.entities.reports;
 
 import java.math.BigDecimal;
 
-import br.com.easyclinica.domain.entities.Doctor;
+import br.com.easyclinica.domain.entities.HealthCarePlan;
 
-public class FinancialByDoctorReportData {
-
-	private Doctor doctor;
+public class FinancialByHealthCarePlanReportData {
+	
+	private HealthCarePlan healthCarePlan;
 	private int qtyAppointments;
 	private BigDecimal procedureAmount;
 	private BigDecimal appointmentAmount;
 	private BigDecimal roomRateAmount;
-	public Doctor getDoctor() {
-		return doctor;
+	public HealthCarePlan getHealthCarePlan() {
+		return healthCarePlan;
 	}
-	public void setDoctor(Doctor doctor) {
-		this.doctor = doctor;
+	public void setHealthCarePlan(HealthCarePlan healthCarePlan) {
+		this.healthCarePlan = healthCarePlan;
 	}
 	public int getQtyAppointments() {
 		return qtyAppointments;
@@ -41,8 +41,6 @@ public class FinancialByDoctorReportData {
 	public void setRoomRateAmount(BigDecimal roomRateAmount) {
 		this.roomRateAmount = roomRateAmount;
 	}
-
-	
 	
 	
 }

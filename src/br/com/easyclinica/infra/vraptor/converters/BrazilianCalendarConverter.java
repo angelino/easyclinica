@@ -1,7 +1,7 @@
 package br.com.easyclinica.infra.vraptor.converters;
 
+import java.net.URLDecoder;
 import java.text.MessageFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -20,6 +20,8 @@ public class BrazilianCalendarConverter implements Converter<Calendar> {
 			ResourceBundle bundle) {
 		
 		try {
+			value = URLDecoder.decode(value, "application/x-www-form-urlencoded");
+			
 			String format = "dd/MM/yyyy";
 			if(value.contains(":")) format += " H:m";
 			
@@ -29,7 +31,7 @@ public class BrazilianCalendarConverter implements Converter<Calendar> {
 			calendar.setTime(convertedDate);
 			
 			return calendar;
-		} catch (ParseException e) {
+		} catch (Exception e) {
 			throw new ConversionError(MessageFormat.format(bundle.getString("is_not_a_valid_date"), value));
 		}
 		
