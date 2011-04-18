@@ -15,6 +15,8 @@
 				
 				<a href="<c:url value="/pacientes/${patient.id}/impressos/atestado-de-saude" />">Atestado de Saúde</a>
 
+				<a href="<c:url value="/pacientes/${patient.id}/impressos/atestado-de-saude-ocupacional" />">Atestado de Saúde Ocupacional</a>
+
 			</div>
 		</div>
 		
