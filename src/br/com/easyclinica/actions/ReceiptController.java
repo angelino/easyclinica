@@ -1,5 +1,6 @@
 package br.com.easyclinica.actions;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -133,7 +134,7 @@ public class ReceiptController extends BaseController {
 		
 		return jasperMaker.makePdf(  
 	               "receipt",  
-	               patient.getReceipts(),   
+	               Collections.singletonList(patient),   
 	               "recibo.pdf",   
 	               true,   
 	               params);

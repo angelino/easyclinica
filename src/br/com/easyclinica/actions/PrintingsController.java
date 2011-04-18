@@ -64,4 +64,20 @@ public class PrintingsController {
 	               true,   
 	               params);
 	}
+	
+	@Get
+	@Path("/pacientes/{id}/impressos/atestado-de-saude-ocupacional")
+	public Download atestadoDeSaudeOcupacional(int id) {
+		Patient patient = patients.getById(id);
+		
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("clinic", loggedUser.getClinic());
+		
+		return jasperMaker.makePdf(  
+	               "atestadoDeSaudeOcupacional",  
+	               Collections.singletonList(patient),   
+	               "atestadoDeSaudeOcupacional.pdf",   
+	               true,   
+	               params);
+	}
 }
