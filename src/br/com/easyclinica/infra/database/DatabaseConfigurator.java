@@ -59,6 +59,10 @@ public class DatabaseConfigurator {
 		configuration.setProperty("hibernate.c3p0.timeout", "1800");
 		configuration.setProperty("hibernate.c3p0.max_statements", "50");
 		
+		configuration.setProperty("hibernate.cache.region.factory_class", "net.sf.ehcache.hibernate.SingletonEhCacheRegionFactory");
+		configuration.setProperty("hibernate.cache.use_second_level_cache", "true");
+		configuration.setProperty("hibernate.cache.use_query_cache", "true");
+		
 		configuration.addAnnotatedClass(Appointment.class);
 		configuration.addAnnotatedClass(AppointmentMaterial.class);
 		configuration.addAnnotatedClass(AppointmentMedicine.class);

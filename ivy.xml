@@ -27,6 +27,8 @@
 		
 		<dependency org="org.apache.poi" name="poi" rev="3.7" conf="default" />
 		
+		<dependency org="net.sf.ehcache" name="ehcache" rev="2.4.1" conf="default"/>
+		
 		<!-- Test dependencies -->
 		<dependency org="junit" name="junit" rev="4.8.2" conf="test->default" />
 		<dependency org="org.mockito" name="mockito-all" rev="1.8.5" conf="test->default" />
