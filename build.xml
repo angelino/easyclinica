@@ -69,6 +69,9 @@
 
 	
 	<target name="war" description="--> generate war file" depends="test, integration-test, reports">
+		<delete file="${build.dir}/easyclinica.properties" />
+		<rename dest="${build.dir}/easyclinica-production.properties" src="${build.dir}/easyclinica.properties"/>
+		
 		<war destfile="${output.dir}/${project.name}.war">
 			<zipfileset dir="${webapp.dir}" />
 		</war>
