@@ -20,28 +20,9 @@
 		<pathelement location="${build.dir}" />
 	</path>
 
-	<!-- compile reports -->
-	<taskdef name="jrc" classname="net.sf.jasperreports.ant.JRAntCompileTask">
-		<classpath refid="lib.path.id"/>
-		<classpath path="${build.dir}" />
-	</taskdef>
 	
 	<target name="reports">
-		<delete dir="${reports.tmp.dir}" includes="**/*.*" />
-		<delete dir="${reports.dest.dir}" includes="**/*.*" />
-		
-		<mkdir dir="${reports.tmp.dir}" />
-		<mkdir dir="${reports.dest.dir}" />
-		
-		<jrc 
-	    srcdir="${reports.dir}"
-	    destdir="${reports.dest.dir}"
-	    tempdir="${reports.tmp.dir}"
-	    keepjava="true"
-	    xmlvalidation="true">
-			<classpath refid="lib.path.id"/>
-			<include name="**/*.jrxml"/>
-		</jrc>
+		<ant target="reports" antfile="build-reports.xml" />
 	</target>
 
 	<!-- resolve dependencies -->
