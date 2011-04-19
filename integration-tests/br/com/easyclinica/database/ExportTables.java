@@ -6,14 +6,14 @@ import org.hibernate.tool.hbm2ddl.SchemaUpdate;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import br.com.easyclinica.config.TestConfig;
+import br.com.easyclinica.config.HardCodedConfigForTests;
 import br.com.easyclinica.infra.database.DatabaseConfigurator;
 
 public class ExportTables {
 
 	@Test @Ignore
 	public void createNewSchema() {
-		Configuration cfg = new DatabaseConfigurator(new TestConfig()).config("easyclinicatest");
+		Configuration cfg = new DatabaseConfigurator(new HardCodedConfigForTests()).config("easyclinicatest");
 		
 		SchemaExport se = new SchemaExport(cfg);
 		se.create(true, true);
@@ -21,7 +21,7 @@ public class ExportTables {
 	
 	@Test @Ignore
 	public void updateSchema() {
-		Configuration cfg = new DatabaseConfigurator(new TestConfig()).config("easyclinicatest");
+		Configuration cfg = new DatabaseConfigurator(new HardCodedConfigForTests()).config("easyclinicatest");
 		
 		SchemaUpdate se = new SchemaUpdate(cfg);
 		se.execute(true, true);

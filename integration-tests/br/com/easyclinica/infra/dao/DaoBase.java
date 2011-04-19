@@ -4,7 +4,7 @@ import org.hibernate.Session;
 import org.junit.After;
 import org.junit.Before;
 
-import br.com.easyclinica.config.TestConfig;
+import br.com.easyclinica.config.HardCodedConfigForTests;
 import br.com.easyclinica.domain.entities.Clinic;
 import br.com.easyclinica.infra.database.DatabaseConfigurator;
 import br.com.easyclinica.tests.helpers.ClinicBuilder;
@@ -16,7 +16,7 @@ public abstract class DaoBase {
 
 	@Before
 	public void createEMandDefaultClinic() {
-		session = new DatabaseConfigurator(new TestConfig()).config("easyclinicatest").buildSessionFactory().openSession();
+		session = new DatabaseConfigurator(new HardCodedConfigForTests()).config("easyclinicatest").buildSessionFactory().openSession();
 		session.getTransaction().begin();
 		
 		clinic = new ClinicBuilder().withName("EasyClinica").withDomain("easyclinica").instance();

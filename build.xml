@@ -65,12 +65,18 @@
 		<mkdir dir="${build.dir}" />
 		<delete dir="${build.dir}" includes="**/*.*" />
 		<javac srcdir="${src.dir}" destdir="${build.dir}" classpathref="lib.path.id" debug="on" />
+		
+		<copy todir="${build.dir}">
+			<fileset dir="${resources.dir}">
+				<include name="**/*.*" />
+			</fileset>
+		</copy>
 	</target>
 
 	
-	<target name="war" description="--> generate war file" depends="test, integration-test, reports">
+	<target name="war" description="--> generate war file" depends="test, reports">
 		<delete file="${build.dir}/easyclinica.properties" />
-		<rename dest="${build.dir}/easyclinica-production.properties" src="${build.dir}/easyclinica.properties"/>
+		<rename src="${build.dir}/easyclinica-production.properties" dest="${build.dir}/easyclinica.properties"/>
 		
 		<war destfile="${output.dir}/${project.name}.war">
 			<zipfileset dir="${webapp.dir}" />
@@ -88,7 +94,7 @@
 		<mkdir dir="${output.dir}/test-results" />
 		<junit haltonfailure="yes">
 			<batchtest fork="yes" todir="${output.dir}/test-results">
-				<fileset dir="${test.build.dir}" />
+				<fileset dir="${test.build.dir}" includes="*Test*" />
 			</batchtest>
 			<formatter type="brief" usefile="false" />
 			<formatter type="xml" />

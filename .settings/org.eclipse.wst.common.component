@@ -5,6 +5,7 @@
 <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/tests"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/integration-tests"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/resources"/>
 <property name="context-root" value="easyclinica"/>
 <property name="java-output-path"/>
 </wb-module>

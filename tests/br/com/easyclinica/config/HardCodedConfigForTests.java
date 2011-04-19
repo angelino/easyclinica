@@ -2,11 +2,11 @@ package br.com.easyclinica.config;
 
 import java.util.HashMap;
 
-public class TestConfig implements Config{
+public class HardCodedConfigForTests implements Config{
 
 	private HashMap<String, String> cfgs;
 
-	public TestConfig() {
+	public HardCodedConfigForTests() {
 		cfgs = new HashMap<String, String>();
 		
 		cfgs.put("connection_string", "jdbc:mysql://localhost:3306/#database#?useUnicode=true&characterEncoding=UTF-8");
