@@ -48,7 +48,6 @@ public class DatabaseConfigurator {
 		configuration.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLInnoDBDialect");
 		configuration.setProperty("hibernate.connection.username", nameOf(database));
 		configuration.setProperty("hibernate.connection.password", cfg.get("db_pwd"));
-		configuration.setProperty("hibernate.hbm2ddl.auto", "true");
 		configuration.setProperty("hibernate.show_sql", "true");
 		configuration.setProperty("hibernate.format_sql", "true");
 		configuration.setProperty("hibernate.jdbc.batch_size", "20");
