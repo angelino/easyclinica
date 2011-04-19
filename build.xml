@@ -21,7 +21,10 @@
 	</path>
 
 	<!-- compile reports -->
-
+	<taskdef name="jrc" classname="net.sf.jasperreports.ant.JRAntCompileTask">
+		<classpath refid="lib.path.id"/>
+		<classpath path="${build.dir}" />
+	</taskdef>
 	
 	<target name="reports">
 		<delete dir="${reports.tmp.dir}" includes="**/*.*" />
