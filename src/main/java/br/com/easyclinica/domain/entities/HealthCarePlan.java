@@ -1,5 +1,6 @@
 package br.com.easyclinica.domain.entities;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -21,7 +22,9 @@ import br.com.easyclinica.domain.types.Address;
 
 @Entity
 @Cache(usage=CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-public class HealthCarePlan {
+public class HealthCarePlan implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue

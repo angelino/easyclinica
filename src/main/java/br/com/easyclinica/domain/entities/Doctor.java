@@ -1,5 +1,7 @@
 package br.com.easyclinica.domain.entities;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -12,8 +14,10 @@ import org.hibernate.annotations.Type;
 
 @Entity
 @Cache(usage=CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-public class Doctor implements IDable {
+public class Doctor implements IDable, Serializable {
 	
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue
 	private int id;

@@ -1,5 +1,7 @@
 package br.com.easyclinica.domain.entities;
 
+import java.io.Serializable;
+
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -14,7 +16,9 @@ import br.com.easyclinica.domain.types.Address;
 
 @Entity
 @Cache(usage=CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-public class Clinic {
+public class Clinic implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	@Id @GeneratedValue
 	private int id;

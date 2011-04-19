@@ -1,5 +1,7 @@
 package br.com.easyclinica.infra.multitenancy;
 
+import java.io.Serializable;
+
 import br.com.caelum.vraptor.ioc.Component;
 import br.com.caelum.vraptor.ioc.SessionScoped;
 import br.com.easyclinica.domain.entities.Clinic;
@@ -8,8 +10,9 @@ import br.com.easyclinica.domain.entities.Employee;
 
 @Component
 @SessionScoped
-public class LoggedUser {
+public class LoggedUser implements Serializable {
 
+	private static final long serialVersionUID = 1L;
 	private Employee employee;
 	private Clinic clinic;
 	
