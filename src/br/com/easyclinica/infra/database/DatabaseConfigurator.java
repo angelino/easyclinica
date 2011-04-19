@@ -1,6 +1,5 @@
 package br.com.easyclinica.infra.database;
 
-import org.hibernate.cfg.AnnotationConfiguration;
 import org.hibernate.cfg.Configuration;
 
 import br.com.caelum.vraptor.ioc.ApplicationScoped;
@@ -43,7 +42,7 @@ public class DatabaseConfigurator {
 	}
 
 	public Configuration config(String database) {
-		AnnotationConfiguration configuration = new AnnotationConfiguration();
+		Configuration configuration = new Configuration();
 		configuration.setProperty("hibernate.connection.driver_class", cfg.get("driver_class"));
 		configuration.setProperty("hibernate.connection.url", cfg.get("connection_string").replace("#database#", nameOf(database)));
 		configuration.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLInnoDBDialect");
@@ -54,16 +53,16 @@ public class DatabaseConfigurator {
 		configuration.setProperty("hibernate.format_sql", "true");
 		configuration.setProperty("hibernate.jdbc.batch_size", "20");
 		
-//		configuration.setProperty("hibernate.c3p0.acquire_increment", "5");
-//		configuration.setProperty("hibernate.c3p0.idle_test_period", "100");
-//		configuration.setProperty("hibernate.c3p0.max_size", "100");
-//		configuration.setProperty("hibernate.c3p0.max_statements", "0");
-//		configuration.setProperty("hibernate.c3p0.min_size", "10");
-//		configuration.setProperty("hibernate.c3p0.timeout", "100");
+		configuration.setProperty("hibernate.c3p0.acquire_increment", "5");
+		configuration.setProperty("hibernate.c3p0.idle_test_period", "100");
+		configuration.setProperty("hibernate.c3p0.max_size", "100");
+		configuration.setProperty("hibernate.c3p0.max_statements", "0");
+		configuration.setProperty("hibernate.c3p0.min_size", "10");
+		configuration.setProperty("hibernate.c3p0.timeout", "100");
 		
-//		configuration.setProperty("hibernate.cache.provider_class", "org.hibernate.EhCacheProvider");
-//		configuration.setProperty("hibernate.cache.use_second_level_cache", "true");
-//		configuration.setProperty("hibernate.cache.use_query_cache", "true");
+		configuration.setProperty("hibernate.cache.provider_class", "org.hibernate.cache.EhCacheProvider");
+		configuration.setProperty("hibernate.cache.use_second_level_cache", "true");
+		configuration.setProperty("hibernate.cache.use_query_cache", "true");
 		
 		configuration.addAnnotatedClass(Appointment.class);
 		configuration.addAnnotatedClass(AppointmentMaterial.class);
@@ -95,6 +94,7 @@ public class DatabaseConfigurator {
 	}
 
 	private String nameOf(String database) {
-		return cfg.get("db_prefix") + database;
+		String prefix = cfg.get("db_prefix");
+		return (prefix==null?"":prefix) + database;
 	}
 }

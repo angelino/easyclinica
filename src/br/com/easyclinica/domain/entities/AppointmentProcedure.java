@@ -12,7 +12,6 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.Index;
 
 @Entity
@@ -27,16 +26,13 @@ public class AppointmentProcedure {
 	private BigDecimal amount;
 	private boolean isFixedAmount;
 	
-	@Cascade(value=org.hibernate.annotations.CascadeType.DELETE_ORPHAN)
 	@OneToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL, mappedBy="procedure")
 	private List<AppointmentMaterial> materials;
 	
 	@OneToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL, mappedBy="procedure")
-	@Cascade(value=org.hibernate.annotations.CascadeType.DELETE_ORPHAN)
 	private List<AppointmentMedicine> medicines;
 	
 	@OneToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL, mappedBy="procedure")
-	@Cascade(value=org.hibernate.annotations.CascadeType.DELETE_ORPHAN)
 	private List<AppointmentAssistant> assistants;
 	
 	public AppointmentProcedure() {

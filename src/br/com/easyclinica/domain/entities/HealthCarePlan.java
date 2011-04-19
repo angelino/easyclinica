@@ -15,7 +15,6 @@ import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.Type;
 
 import br.com.easyclinica.domain.types.Address;
@@ -43,16 +42,12 @@ public class HealthCarePlan {
 	private boolean payForRoomRate;
 	private BigDecimal roomRateDefaultAmount;
 
-	@Cascade(org.hibernate.annotations.CascadeType.DELETE_ORPHAN)
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "healthCarePlan", cascade=CascadeType.ALL)
 	private List<PrecifiedMaterial> precifiedMaterials;
-	@Cascade(org.hibernate.annotations.CascadeType.DELETE_ORPHAN)
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "healthCarePlan", cascade=CascadeType.ALL)
 	private List<PrecifiedMedicine> precifiedMedicines;
-	@Cascade(org.hibernate.annotations.CascadeType.DELETE_ORPHAN)
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "healthCarePlan", cascade=CascadeType.ALL)
 	private List<PrecifiedProcedure> precifiedProcedures;
-	@Cascade(org.hibernate.annotations.CascadeType.DELETE_ORPHAN)
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "healthCarePlan", cascade=CascadeType.ALL)
 	private List<PrecifiedSpecialty> precifiedSpecialties;
 

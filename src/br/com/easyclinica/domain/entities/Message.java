@@ -16,7 +16,6 @@ import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.Type;
 
 @Entity
@@ -32,7 +31,6 @@ public class Message {
 	private Employee employee;
 	@Temporal(TemporalType.TIMESTAMP)
 	private Calendar date;
-	@Cascade(org.hibernate.annotations.CascadeType.DELETE_ORPHAN)
 	@OneToMany(mappedBy = "message", cascade = CascadeType.ALL)
 	private List<Reply> replies;
 

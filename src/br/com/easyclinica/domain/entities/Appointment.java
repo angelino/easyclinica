@@ -51,7 +51,7 @@ public class Appointment {
 	@Type(type = "text")
 	private String observations;
 
-	@Cascade(value = org.hibernate.annotations.CascadeType.DELETE_ORPHAN)
+	@Cascade(value = org.hibernate.annotations.CascadeType.DELETE)
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "appointment")
 	private List<AppointmentProcedure> procedures;
 
