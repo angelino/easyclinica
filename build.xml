@@ -73,11 +73,15 @@
 		</copy>
 	</target>
 
-	
-	<target name="war" description="--> generate war file" depends="test, reports">
+	<target name="config" description="--> put the right production files">
 		<delete file="${build.dir}/easyclinica.properties" />
 		<move file="${build.dir}/easyclinica-production.properties" toFile="${build.dir}/easyclinica.properties"/>
-		
+
+		<delete file="${build.dir}/log4j.xml" />
+		<move file="${build.dir}/log4j-production.xml" toFile="${build.dir}/log4j.xml"/>
+	</target>
+	
+	<target name="war" description="--> generate war file" depends="test, reports, config">			
 		<war destfile="${output.dir}/${project.name}.war">
 			<zipfileset dir="${webapp.dir}" />
 		</war>
