@@ -22,6 +22,8 @@ public class Procedure {
 	private String name;
 	private int ch;
 	private String ambCode;
+	private String lpmCode;
+	private String cbhpmCode;
 	private String tussCode;
 	
 	@OneToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL, mappedBy="procedure")
@@ -69,6 +71,22 @@ public class Procedure {
 		this.tussCode = tussCode;
 	}
 	
+	public String getLpmCode() {
+		return lpmCode;
+	}
+
+	public void setLpmCode(String lpmCode) {
+		this.lpmCode = lpmCode;
+	}
+
+	public String getCbhpmCode() {
+		return cbhpmCode;
+	}
+
+	public void setCbhpmCode(String cbhpmCode) {
+		this.cbhpmCode = cbhpmCode;
+	}
+
 	protected void setId(int id) {
 		this.id = id;
 	}
