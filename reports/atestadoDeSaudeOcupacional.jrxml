@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="atestadoDeSaudeOcupacional" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="121"/>
+	<property name="ireport.y" value="0"/>
 	<parameter name="clinic" class="br.com.easyclinica.domain.entities.Clinic" isForPrompting="false"/>
 	<field name="name" class="java.lang.String"/>
 	<field name="rg" class="java.lang.String"/>
@@ -38,7 +38,7 @@
 		<band height="667" splitType="Stretch">
 			<textField>
 				<reportElement x="0" y="0" width="555" height="67"/>
-				<textElement>
+				<textElement textAlignment="Justified">
 					<font size="12"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA["Em cumprimento ao disposto nos artigos 168 e 169 do capítulo V da Consolidação das Leis do Trabalho (C.L.T.), e com a redação dada pelas Leis 7.855 de 24/10/1989 e 6.514 de 22/12/1977 e pelas portarias 3.214 de 08/06/1978 e nº 24 de 29/12/1994 do Ministério do trabalho (Normas Regulamentadoras relativas à Segurança e Medicina do Trabalho), atestamos que o Sr(a).:"]]></textFieldExpression>
@@ -62,21 +62,14 @@
 				<textElement>
 					<font size="12"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{maritalStatus}.formattedName +", nascido em " + new SimpleDateFormat("dd/MM/yyyy").format($F{birthDate}.time) + "," ]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{maritalStatus}.formattedName +", nascido em " + new SimpleDateFormat("dd/MM/yyyy").format($F{birthDate}.time) + ","]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="0" y="144" width="555" height="38"/>
-				<textElement>
+				<textElement textAlignment="Justified">
 					<font size="12"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA["foi examinado nesta data, sendo constatado que está ( ) apto ( ) inapto para exercer a função de " + $F{profession} + "."]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="0" y="215" width="555" height="21"/>
-				<textElement>
-					<font size="12"/>
-				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA["( ) admissional  ( ) periódico  ( ) demissional  ( ) de retorno ao trabalho  ( ) de mudança de função"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="0" y="195" width="112" height="20"/>
@@ -173,6 +166,13 @@
 					<font size="12"/>
 				</textElement>
 				<text><![CDATA[Médico Examinador]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="215" width="554" height="24"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[( ) admissional  ( ) periódico  ( ) demissional  ( ) de retorno ao trabalho  ( ) de mudança de função                ]]></text>
 			</staticText>
 		</band>
 	</detail>
