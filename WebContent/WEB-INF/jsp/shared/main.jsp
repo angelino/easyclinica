@@ -73,6 +73,17 @@
                   <li id="menu-link-medicos"><a href="<c:url value="/medicos" />">Médicos</a></li>
                   <li id="menu-link-usuarios"><a href="<c:url value="/usuarios" />">Usuários</a></li>
                   <li id="menu-link-reports"><a href="<c:url value="/relatorios" />">Relatórios</a></li>
+                  <li id="menu-link-schedule">
+                  	<c:choose>
+						<c:when test="${loggedUser.doctor}">
+							<c:url value="/medicos/minha-agenda" var="schedule_link"/>
+						</c:when>
+						<c:otherwise>
+							<c:url value="/agenda" var="schedule_link"/>
+						</c:otherwise>
+					</c:choose>
+					<a href="${schedule_link}" title="Ver agenda completa">Agenda</a>
+                  </li>
                 </ul>
             </div>
             <!-- END HEADER -->
