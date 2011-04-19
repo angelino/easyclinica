@@ -35,6 +35,6 @@ public class HibernateTransactionInterceptor implements Interceptor {
 	}
 
 	public boolean accepts(ResourceMethod method) {
-		return method.getMethod().getAnnotation(Get.class) != null;
+		return method.getMethod().getAnnotation(Get.class) == null;
 	}
 }
