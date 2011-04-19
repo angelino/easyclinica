@@ -8,6 +8,7 @@
 	<field name="rg" class="java.lang.String"/>
 	<field name="birthDate" class="java.util.Calendar"/>
 	<field name="profession" class="java.lang.String"/>
+	<field name="maritalStatus" class="br.com.easyclinica.domain.entities.MaritalStatus"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -61,7 +62,7 @@
 				<textElement>
 					<font size="12"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA["nascido em " + new SimpleDateFormat("dd/MM/yyyy").format($F{birthDate}.time) + "," ]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{maritalStatus}.formattedName +", nascido em " + new SimpleDateFormat("dd/MM/yyyy").format($F{birthDate}.time) + "," ]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="0" y="144" width="555" height="38"/>
