@@ -97,6 +97,7 @@ public class HealthCarePlanController extends BaseController {
 		result.include("healthCarePlan", plan);
 	}
 
+	// TODO: mudar o get
 	@Get
 	@Path("/convenios/{id}/deactivate")
 	public void deactivate(int id) {
@@ -109,6 +110,7 @@ public class HealthCarePlanController extends BaseController {
 		result.redirectTo(HealthCarePlanController.class).index(Paginator.firstPage());
 	}
 	
+	// TODO: mudar o get
 	@Get
 	@Path("/convenios/{id}/activate")
 	public void activate(int id) {

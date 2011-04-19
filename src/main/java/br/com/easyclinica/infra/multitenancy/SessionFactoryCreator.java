@@ -32,7 +32,6 @@ public class SessionFactoryCreator implements ComponentFactory<SessionFactory> {
 	}
 	
 	private SessionFactory createSessionFactoryForTenant(String tenant) {
-		// TODO: pegar url do banco de algum arquivo de config
 		Configuration configuration = configurator.config(tenant);
 				
 		return configuration.buildSessionFactory();

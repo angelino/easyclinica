@@ -25,7 +25,7 @@ public abstract class DaoBase {
 	
 	@After
 	public void rollbackDatabaseChanges() {
-		// TODO: o melhor aqui eh commitar e truncar todos os dados
+		session.flush();
 		session.getTransaction().rollback();
 		
 		session.close();

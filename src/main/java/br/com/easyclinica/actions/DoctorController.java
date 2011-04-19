@@ -92,6 +92,7 @@ public class DoctorController extends BaseController {
 		include(loadedDoctor);
 	}
 	
+	// TODO: mudar o get
 	@Get
 	@Path("medicos/{id}/deactivate")
 	public void deactivate(int id) {
@@ -104,6 +105,7 @@ public class DoctorController extends BaseController {
 		result.redirectTo(DoctorController.class).index(Paginator.firstPage());
 	}
 	
+	// TODO: mudar o get
 	@Get
 	@Path("medicos/{id}/activate")
 	public void activate(int id) {

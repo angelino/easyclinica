@@ -3,6 +3,7 @@ package br.com.easyclinica.infra.vraptor.interceptors;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Intercepts;
 import br.com.caelum.vraptor.core.InterceptorStack;
 import br.com.caelum.vraptor.interceptor.Interceptor;
@@ -10,7 +11,7 @@ import br.com.caelum.vraptor.ioc.RequestScoped;
 import br.com.caelum.vraptor.resource.ResourceMethod;
 
 @RequestScoped
-@Intercepts(after=LoginInterceptor.class)
+@Intercepts(after = LoginInterceptor.class)
 public class HibernateTransactionInterceptor implements Interceptor {
 
 	private final Session session;
@@ -19,14 +20,14 @@ public class HibernateTransactionInterceptor implements Interceptor {
 		this.session = session;
 	}
 
-	public void intercept(InterceptorStack stack, ResourceMethod method, Object instance) {
+	public void intercept(InterceptorStack stack, ResourceMethod method,
+			Object instance) {
 		Transaction transaction = null;
 		try {
 			transaction = session.beginTransaction();
 			stack.next(method, instance);
 			transaction.commit();
-		}
-		finally {
+		} finally {
 			if (transaction != null && transaction.isActive()) {
 				transaction.rollback();
 			}
@@ -34,6 +35,6 @@ public class HibernateTransactionInterceptor implements Interceptor {
 	}
 
 	public boolean accepts(ResourceMethod method) {
-		return true; // Will intercept all requests
+		return method.getMethod().getAnnotation(Get.class) != null;
 	}
 }
