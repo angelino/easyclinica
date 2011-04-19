@@ -22,14 +22,14 @@
 			    <form action="<c:url value="/login" />" class="form login" method="post"> 
 			    	<fieldset>
 			        	<label>Login:</label>
-			            <input type="text" name="login"/>
+			            <input type="text" name="login" id="login" />
 			        </fieldset>
 			    	<fieldset>
 			        	<label>Senha:</label>
-			            <input type="password" name="password" />
+			            <input type="password" name="password" id="password"/>
 			        </fieldset>
 			        <fieldset class="boxactions">
-			            <input type="submit" class="btnlogin" value="Login" />
+			            <input type="submit" class="btnlogin" value="Login" id="btnlogin" />
 			        </fieldset>
 			    </form>
 			</div>

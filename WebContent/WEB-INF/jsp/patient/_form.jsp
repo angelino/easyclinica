@@ -124,7 +124,7 @@
     </fieldset>
     
     <div class="boxactions">
-		<input type="submit" class="btnsave" value="Salvar" />
+		<input type="submit" class="btnsave" value="Salvar" id="btnSalvar" />
         <input type="button" class="btncancel" value="Cancelar" redirect_to="<c:url value="/pacientes"/>"/>
     </div>
   
