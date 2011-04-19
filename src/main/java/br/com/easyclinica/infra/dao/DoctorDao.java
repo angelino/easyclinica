@@ -5,8 +5,6 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
-
 import br.com.caelum.vraptor.ioc.Component;
 import br.com.easyclinica.domain.entities.Doctor;
 import br.com.easyclinica.domain.repositories.AllDoctors;
@@ -60,11 +58,11 @@ public class DoctorDao implements AllDoctors {
 
 	public List<Doctor> search(String textToSearch, int firstResult,
 			int maxResults) {
-		throw new NotImplementedException();
+		throw new RuntimeException("not implemented");
 	}
 
 
 	public int count(String textToSearch) {
-		throw new NotImplementedException();
+		throw new RuntimeException("not implemented");
 	}
 }

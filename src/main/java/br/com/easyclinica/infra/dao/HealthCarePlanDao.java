@@ -5,8 +5,6 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
-
 import br.com.caelum.vraptor.ioc.Component;
 import br.com.easyclinica.domain.entities.HealthCarePlan;
 import br.com.easyclinica.domain.entities.PrecifiedMaterial;
@@ -83,10 +81,10 @@ public class HealthCarePlanDao implements AllHealthCarePlans {
 
 	public List<HealthCarePlan> search(String textToSearch, int firstResult,
 			int maxResults) {
-		throw new NotImplementedException();
+		throw new RuntimeException("not implemented");
 	}
 
 	public int count(String textToSearch) {
-		throw new NotImplementedException();
+		throw new RuntimeException("not implemented");
 	}
 }
