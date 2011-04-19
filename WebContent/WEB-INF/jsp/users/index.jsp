@@ -54,14 +54,16 @@
 										<a class="btnpeopleedit" title="Editar" href="<c:url value="/usuarios/${employee.id}/editar" />">&nbsp;</a>
                                         <a class="btnpeopleshow exibir" title="Exibir" employee_id="${employee.id}">&nbsp;</a>
                                         
-                                        <c:choose>
-											<c:when test="${employee.active}">
-												<a class="btnpeopledisable last" title="Desativar" href="<c:url value="/usuarios/${employee.id}/desativar" />">&nbsp;</a>
-											</c:when>
-											<c:otherwise>
-												<a class="btnpeopleenable last" title="Ativar" href="<c:url value="/usuarios/${employee.id}/ativar" />">&nbsp;</a>
-											</c:otherwise>
-										</c:choose>
+                                        <c:if test="${loggedUser.employee.id != employee.id}">
+	                                        <c:choose>
+												<c:when test="${employee.active}">
+													<a class="btnpeopledisable last" title="Desativar" href="<c:url value="/usuarios/${employee.id}/desativar" />">&nbsp;</a>
+												</c:when>
+												<c:otherwise>
+													<a class="btnpeopleenable last" title="Ativar" href="<c:url value="/usuarios/${employee.id}/ativar" />">&nbsp;</a>
+												</c:otherwise>
+											</c:choose>
+										</c:if>
                                     </td>
 								</tr>
 							</c:forEach>
