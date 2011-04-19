@@ -107,22 +107,22 @@ table.easy tr td{text-align:left;padding:8px; border-bottom:#efefef 1px solid;}
 table.easy tr.boxdivisortable td{padding:0;border:none;}
 table.easy tr td a{background-color:#EEEEEE;background-repeat:no-repeat;background-position:10px 5px;border:1px solid #BFBFBF;color:#222222;cursor:pointer;float:left;font-size:1em;font-weight:bold;line-height:1.3em;margin:0 7px 0 0;padding:5px 10px 5px 25px;text-decoration:none;}
 table.easy tr td a:hover{background-color:#dfdfde;}
-table.easy tr td a.btnpeopleedit{background-image:url(/easyclinica/images/icons/pencil.png);}
-table.easy tr td a.btnpeopleshow{background-image:url(/easyclinica/images/icons/vcard.png);}
-table.easy tr td a.btnpeopleenable{background-image:url(/easyclinica/images/icons/user_green.png);}
-table.easy tr td a.btnpeopledisable{background-image:url(/easyclinica/images/icons/user_grayoff.png);}
-table.easy tr td a.btnappointments{background-image:url(/easyclinica/images/icons/appointments.png);}
-table.easy tr td a.btnschedule{background-image:url(/easyclinica/images/icons/schedule.png);}
-table.easy tr td a.btnreceipt{background-image:url(/easyclinica/images/icons/receipt.png);}
-table.easy tr td a.btnpdf{background-image:url(/easyclinica/images/icons/pdf.png);}
+table.easy tr td a.btnpeopleedit{background-image:url(/images/icons/pencil.png);}
+table.easy tr td a.btnpeopleshow{background-image:url(/images/icons/vcard.png);}
+table.easy tr td a.btnpeopleenable{background-image:url(/images/icons/user_green.png);}
+table.easy tr td a.btnpeopledisable{background-image:url(/images/icons/user_grayoff.png);}
+table.easy tr td a.btnappointments{background-image:url(/images/icons/appointments.png);}
+table.easy tr td a.btnschedule{background-image:url(/images/icons/schedule.png);}
+table.easy tr td a.btnreceipt{background-image:url(/images/icons/receipt.png);}
+table.easy tr td a.btnpdf{background-image:url(/images/icons/pdf.png);}
 
 table.easy tr td form{width:50px!important;}
 table.easy tr td input{background-color:#EEEEEE;background-repeat:no-repeat;background-position:10px 5px;border:1px solid #BFBFBF;color:#222222;cursor:pointer;float:left;font-size:1em;font-weight:bold;line-height:1.3em;margin:0 0 0 10px;padding:5px 10px 5px 25px;text-decoration:none;}
 table.easy tr td input:hover{background-color:#dfdfde;}
-table.easy tr td input.btndelete{background-image:url(/easyclinica/images/icons/delete.png);margin:0!important;}
+table.easy tr td input.btndelete{background-image:url(/images/icons/delete.png);margin:0!important;}
 
-table.easy tr td.statusenable{background:transparent url(/easyclinica/images/icons/user_green.png) center no-repeat;text-indent:-9999px;}
-table.easy tr td.statusdisable{background:transparent url(/easyclinica/images/icons/user_grayoff.png) center no-repeat;text-indent:-9999px;}
+table.easy tr td.statusenable{background:transparent url(/images/icons/user_green.png) center no-repeat;text-indent:-9999px;}
+table.easy tr td.statusdisable{background:transparent url(/images/icons/user_grayoff.png) center no-repeat;text-indent:-9999px;}
 table.easy tr td.namedisable{text-decoration:line-through;}
 table.easy tr td a.last{margin:0;}
 table.easy tr td.tablenostyle{background:#ffffff!important;border:none;}
@@ -139,7 +139,7 @@ table.easy tr td.tablenostyle{background:#ffffff!important;border:none;}
 .main .content .box table.tableprocedures tr.boxtotal td{padding:0 8px;border:none;text-transform:uppercase;font-weight:bold;}
 .main .content .box table.tableprocedures tr td a{background-color:#EEEEEE;background-repeat:no-repeat;background-position:10px 5px;border:1px solid #BFBFBF;color:#222222;cursor:pointer;float:left;font-size:1em;font-weight:bold;line-height:1.3em;margin:0 7px 0 0;padding:5px 10px 5px 35px;text-decoration:none;}
 .main .content .box table.tableprocedures tr td a:hover{background-color:#dfdfde;}
-.main .content .box table.tableprocedures tr td a.btndelete{background-image:url(/easyclinica/images/icons/delete.png);}
+.main .content .box table.tableprocedures tr td a.btndelete{background-image:url(/images/icons/delete.png);}
 .main .content .box table.tableprocedures tr td a.last{margin:0;}
 .main .content .box table.tableprocedures tr td input{float:left;width:200px;padding:4px 6px;border-color:#CCCCCC #DDDDDD #DDDDDD #CCCCCC;border-right:1px solid #DDDDDD;border-style:solid;border-width:2px 1px 1px 2px;}
 .main .content .box table.tableprocedures tr td input.qty{width:33px}
@@ -150,9 +150,9 @@ table.easy tr td.tablenostyle{background:#ffffff!important;border:none;}
 .main .content .box .tableprocedures .procedure-elements li > a{display:block;text-indent:-9999px;background-repeat:no-repeat;width:22px;height:22px;padding:2px;cursor:pointer;}
 .main .content .box .tableprocedures .procedure-elements li > a:hover{filter:alpha(opacity=70);opacity:0.7;}
 .main .content .box .tableprocedures .procedure-elements li > a.active{background-color:#fff;}
-.main .content .box .tableprocedures .procedure-elements li a.new-assistant{background-image:url(/easyclinica/images/icons/assistant.png);}
-.main .content .box .tableprocedures .procedure-elements li a.new-material{background-image:url(/easyclinica/images/icons/material.png);}
-.main .content .box .tableprocedures .procedure-elements li a.new-medicine{background-image:url(/easyclinica/images/icons/medicine.png);}
+.main .content .box .tableprocedures .procedure-elements li a.new-assistant{background-image:url(/images/icons/assistant.png);}
+.main .content .box .tableprocedures .procedure-elements li a.new-material{background-image:url(/images/icons/material.png);}
+.main .content .box .tableprocedures .procedure-elements li a.new-medicine{background-image:url(/images/icons/medicine.png);}
 
 .main .content .box .tableprocedures div.new-assistant{background-color: #FFFFFF;position: absolute;width: 400px;}
 .main .content .box .tableprocedures div.new-assistant fieldset{width:100%;}
@@ -169,30 +169,30 @@ table.easy tr td.tablenostyle{background:#ffffff!important;border:none;}
 .boxactions a:hover{background-color:#dfdfde;}
 .boxactions input{background-color:#EEEEEE;background-repeat:no-repeat;background-position:10px 5px;border:1px solid #BFBFBF;color:#222222;cursor:pointer;float:left;font-size:1em;font-weight:bold;line-height:1.3em;margin:0 0 0 10px;padding:5px 10px 5px 35px;text-decoration:none;}
 .boxactions input:hover{background-color:#dfdfde;}
-.boxactions a.btnsave{background-image:url(/easyclinica/images/icons/disk.png);}
-.boxactions input.btnsave{background-image:url(/easyclinica/images/icons/disk.png);}
-.boxactions a.btncancel{background-image:url(/easyclinica/images/icons/cancel.png);}
-.boxactions input.btncancel{background-image:url(/easyclinica/images/icons/cancel.png);}
-.boxactions a.btnadd{background-image:url(/easyclinica/images/icons/add.png);}
-.boxactions input.btnadd{background-image:url(/easyclinica/images/icons/add.png);}
-.boxactions a.btnaccept{background-image:url(/easyclinica/images/icons/accept.png);}
-.boxactions input.btnaccept{background-image:url(/easyclinica/images/icons/accept.png);}
-.boxactions a.btndelete{background-image:url(/easyclinica/images/icons/delete.png);}
-.boxactions input.btndelete{background-image:url(/easyclinica/images/icons/delete.png);}
-.boxactions a.btnlogin{background-image:url(/easyclinica/images/icons/key.png);}
-.boxactions input.btnlogin{background-image:url(/easyclinica/images/icons/key.png);}
-.boxactions a.btnback{background-image:url(/easyclinica/images/icons/resultset_previous.png);}
-.boxactions input.btnback{background-image:url(/easyclinica/images/icons/resultset_previous.png);}
-.boxactions a.btnedit{background-image:url(/easyclinica/images/icons/pencil.png);}
-.boxactions input.btnedit{background-image:url(/easyclinica/images/icons/pencil.png);}
-.boxactions a.btnclose{background-image:url(/easyclinica/images/icons/cross.png);}
-.boxactions input.btnclose{background-image:url(/easyclinica/images/icons/cross.png);}
-.boxactions a.btnappointments{background-image:url(/easyclinica/images/icons/appointments.png);}
-.boxactions input.btnappointments{background-image:url(/easyclinica/images/icons/appointments.png);}
-.boxactions a.btnschedule{background-image:url(/easyclinica/images/icons/schedule.png);}
-.boxactions input.btnschedule{background-image:url(/easyclinica/images/icons/schedule.png);}
-.boxactions a.btnpdf{background-image:url(/easyclinica/images/icons/pdf.png);}
-.boxactions input.btnpdf{background-image:url(/easyclinica/images/icons/pdf.png);}
+.boxactions a.btnsave{background-image:url(/images/icons/disk.png);}
+.boxactions input.btnsave{background-image:url(/images/icons/disk.png);}
+.boxactions a.btncancel{background-image:url(/images/icons/cancel.png);}
+.boxactions input.btncancel{background-image:url(/images/icons/cancel.png);}
+.boxactions a.btnadd{background-image:url(/images/icons/add.png);}
+.boxactions input.btnadd{background-image:url(/images/icons/add.png);}
+.boxactions a.btnaccept{background-image:url(/images/icons/accept.png);}
+.boxactions input.btnaccept{background-image:url(/images/icons/accept.png);}
+.boxactions a.btndelete{background-image:url(/images/icons/delete.png);}
+.boxactions input.btndelete{background-image:url(/images/icons/delete.png);}
+.boxactions a.btnlogin{background-image:url(/images/icons/key.png);}
+.boxactions input.btnlogin{background-image:url(/images/icons/key.png);}
+.boxactions a.btnback{background-image:url(/images/icons/resultset_previous.png);}
+.boxactions input.btnback{background-image:url(/images/icons/resultset_previous.png);}
+.boxactions a.btnedit{background-image:url(/images/icons/pencil.png);}
+.boxactions input.btnedit{background-image:url(/images/icons/pencil.png);}
+.boxactions a.btnclose{background-image:url(/images/icons/cross.png);}
+.boxactions input.btnclose{background-image:url(/images/icons/cross.png);}
+.boxactions a.btnappointments{background-image:url(/images/icons/appointments.png);}
+.boxactions input.btnappointments{background-image:url(/images/icons/appointments.png);}
+.boxactions a.btnschedule{background-image:url(/images/icons/schedule.png);}
+.boxactions input.btnschedule{background-image:url(/images/icons/schedule.png);}
+.boxactions a.btnpdf{background-image:url(/images/icons/pdf.png);}
+.boxactions input.btnpdf{background-image:url(/images/icons/pdf.png);}
 
 /*BOX PAGINACAO ######################################################################################################################*/
 .boxpagination{float:left;width:100%;background-color:#EEEEEE;border:#EEEEEE 1px solid;font-size:14px;padding:10px 0;margin:10px 0 20px 0;text-align:center;}
@@ -220,7 +220,7 @@ table.easy tr td.tablenostyle{background:#ffffff!important;border:none;}
 .main .content .box fieldset .date{float:left;width:100%;}
 .main .content .box fieldset .date label.title{width:100%;}
 .main .content .box fieldset .date input{width:68px;}
-.main .content .box fieldset .date a{float:left;width:25px;height:25px;background:url(/easyclinica/images/icons/calendar_view_week.png) center no-repeat;text-indent:-9999px;}
+.main .content .box fieldset .date a{float:left;width:25px;height:25px;background:url(/images/icons/calendar_view_week.png) center no-repeat;text-indent:-9999px;}
 
 .main .content .box fieldset .healthcare{float:left;width:100%;}
 .main .content .box fieldset .healthcare label{width:auto;}
@@ -259,7 +259,7 @@ table.easy tr td.tablenostyle{background:#ffffff!important;border:none;}
 .main .content .box fieldset .procedures input{width:43%;}
 .main .content .box fieldset .procedures a{background-color:#EEEEEE;background-repeat:no-repeat;background-position:10px 5px;border:1px solid #BFBFBF;color:#222222;cursor:pointer;float:left;font-size:1em;font-weight:bold;line-height:1.3em;margin:0 0 0 10px;padding:5px 10px 5px 35px;text-decoration:none;}
 .main .content .box fieldset .procedures a:hover{background-color:#dfdfde;}
-.main .content .box fieldset .procedures a{background-image:url(/easyclinica/images/icons/add.png);}
+.main .content .box fieldset .procedures a{background-image:url(/images/icons/add.png);}
 .main .content .box fieldset .procedures p{float:left;width:100%;color:#999999;margin:0 0 5px 0;}
 
 .main .content .box fieldset .search{float:left;width:100%;}
@@ -267,7 +267,7 @@ table.easy tr td.tablenostyle{background:#ffffff!important;border:none;}
 .main .content .box fieldset .search input{width:64%;}
 .main .content .box fieldset .search a{background-color:#EEEEEE;background-repeat:no-repeat;background-position:10px 5px;border:1px solid #BFBFBF;color:#222222;cursor:pointer;float:left;font-size:1em;font-weight:bold;line-height:1.3em;margin:0 0 0 10px;padding:5px 10px 5px 35px;text-decoration:none;}
 .main .content .box fieldset .search a:hover{background-color:#dfdfde;}
-.main .content .box fieldset .search a{background-image:url(/easyclinica/images/icons/search.png);}
+.main .content .box fieldset .search a{background-image:url(/images/icons/search.png);}
 .main .content .box fieldset .search p{float:left;width:100%;color:#999999;margin:0 0 5px 0;}
 
 .main .content .box fieldset .pay-for-room-rate{float:left;}
@@ -289,7 +289,7 @@ table.easy tr td.tablenostyle{background:#ffffff!important;border:none;}
 .main .content .boxright .simpleboxlink{float:left;width:91%;margin:0 0 10px 30px;}
 .main .content .boxright .simpleboxlink h4{background:#FFFFFF;border-color:#DDDDDD #CCCCCC #CCCCCC #DDDDDD;border-style:solid;border-width:1px;color:#333333;font-weight:bold;padding:5px 10px;margin:0 0 10px 0;}
 .main .content .boxright .simpleboxlink h4 a{background-position: 0 5px; background-repeat: no-repeat;color: #222222;cursor: pointer;font-size: 1em;font-weight: bold;line-height: 1.3em;margin: 6px 0 0 7px;padding: 5px 8px 0 5px;text-decoration: none;}
-.main .content .boxright .simpleboxlink h4 a.btnschedule{background-image:url(/easyclinica/images/icons/schedule.png);}
+.main .content .boxright .simpleboxlink h4 a.btnschedule{background-image:url(/images/icons/schedule.png);}
 .main .content .boxright .simpleboxlink ul{float:left;}
 .main .content .boxright .simpleboxlink ul li{float:left;width:100%;}
 .main .content .boxright .simpleboxlink ul li a{float:left;color:#6A6A6A;padding:5px 10px;text-decoration:none;}
@@ -298,7 +298,7 @@ table.easy tr td.tablenostyle{background:#ffffff!important;border:none;}
 .main .content .boxright .schedule-widget{float:left;width:91%;margin:0 0 10px 30px;}
 .main .content .boxright .schedule-widget h4{background:#FFFFFF;border-color:#DDDDDD #CCCCCC #CCCCCC #DDDDDD;border-style:solid;border-width:1px;color:#333333;font-weight:bold;padding:5px 10px;margin:0 0 10px 0;}
 .main .content .boxright .schedule-widget h4 a{background-position: 0 5px; background-repeat: no-repeat;color: #222222;cursor: pointer;font-size: 1em;font-weight: bold;line-height: 1.3em;margin: 6px 0 0 7px;padding: 5px 8px 0 5px;text-decoration: none;}
-.main .content .boxright .schedule-widget h4 a.btnschedule{background-image:url(/easyclinica/images/icons/schedule.png);}
+.main .content .boxright .schedule-widget h4 a.btnschedule{background-image:url(/images/icons/schedule.png);}
 .main .content .boxright .schedule-widget ul{float:left;width:100%;}
 .main .content .boxright .schedule-widget ul li{float:left;width:100%;}
 .main .content .boxright .schedule-widget ul li.hour{width:12%;}
@@ -318,7 +318,7 @@ ul.errors {float:left;width:99.2%;background:#FFDDDD;border:1px solid #FFBBBB;te
 ul.errors li {width:100%;margin:0 10px;}
 
 div.error {
-	background: url("/easyclinica/images/icons/error.png") no-repeat scroll 3px 5px #FFFFCC;
+	background: url("/images/icons/error.png") no-repeat scroll 3px 5px #FFFFCC;
     border: 1px solid #FFFAAA;
     color: #000000;
     font-size: 11px;
