@@ -40,7 +40,7 @@
 		<div class="boxright">
 			<% 
 				java.util.List<Link> links = new LinkedList<Link>();
-				links.add(new Link("/pacientes/" + ((Patient)request.getAttribute("patient")).getId() + "/anamneses/" + ((Anamnese)request.getAttribute("anamnese")).getId(),"Editar anamnese"));
+				links.add(new Link("/pacientes/" + ((Patient)request.getAttribute("patient")).getId() + "/anamneses/" + ((Anamnese)request.getAttribute("anamnese")).getId() + "/editar","Editar anamnese"));
 				links.add(new Link("/pacientes/" + ((Patient)request.getAttribute("patient")).getId() + "/anamneses/novo","Criar nova anamnese"));
 				links.add(new Link("/pacientes/" + ((Patient)request.getAttribute("patient")).getId() + "/anamneses","Voltar para anamneses"));
 				pageContext.setAttribute("links",links);
