@@ -49,3 +49,13 @@ Exemplos:
 |nome           | telefone       | celular        | comercial      | nascimento  | rg            | cpf            | profissao                 | civil    |email                     | convenio   | carteirinha | cep       | endereco                               | bairro  | cidade    | estado | observacoes   |
 |Mauricio Aniche| (11) 3729-0433 | (11) 8717-7145 | (11) 1234-5678 | 23/01/1986  | 43.942.694-7  | 330.591.998-17 | Desenvolvedor de Software | Solteiro | mauricioaniche@gmail.com | Particular |             | 01538-001 | Av. Lins de Vasconcelos, 1480 - Casa 3 | Cambuci | São Paulo | SP     | criador do sw |
 |Marcelo Aniche | (11) 3729-0433 |                |                | 12/01/1989  |               | 330.591.998-17 | Estudante de Medicina     | Casado   | marceloaniche@gmail.com  | Particular |             | 01538-001 | Av. Lins de Vasconcelos, 1480 - Casa 3 | Cambuci | São Paulo | SP     | meu irmao     |
+
+Cenario: Editar Paciente
+	Dado que estou logado como owner
+	E que um paciente "Mauricio" padrao esta cadastrado
+	Quando clico no link "Edição"
+	E preencho "Mauricio 2" em "patient.name"
+	E pressiono "btnSalvar"
+	Entao devo ver "Paciente atualizado com sucesso!"
+	E devo ver "Mauricio 2"
+	

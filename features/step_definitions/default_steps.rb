@@ -14,6 +14,10 @@ Quando /^pressiono "(.*)"$/ do |botao|
   click_button botao
 end
 
+Quando /^clico no link "(.*)"$/ do |link|
+  click_link link
+end
+
 Entao /^devo ver "(.*)"$/ do |texto|
   page.should have_content(texto)
 end
