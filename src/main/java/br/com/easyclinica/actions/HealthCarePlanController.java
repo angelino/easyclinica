@@ -97,7 +97,8 @@ public class HealthCarePlanController extends BaseController {
 		result.include("healthCarePlan", plan);
 	}
 
-	@Put("/convenios/{id}/deactivate")
+	@Put
+	@Path("/convenios/{id}/deactivate")
 	public void deactivate(int id) {
 		HealthCarePlan plan = allHealthCares.getById(id);
 		
@@ -108,7 +109,8 @@ public class HealthCarePlanController extends BaseController {
 		result.redirectTo(HealthCarePlanController.class).index(Paginator.firstPage());
 	}
 	
-	@Put("/convenios/{id}/activate")
+	@Put
+	@Path("/convenios/{id}/activate")
 	public void activate(int id) {
 		HealthCarePlan plan = allHealthCares.getById(id);
 		

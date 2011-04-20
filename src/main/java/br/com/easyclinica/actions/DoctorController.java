@@ -92,7 +92,8 @@ public class DoctorController extends BaseController {
 		include(loadedDoctor);
 	}
 	
-	@Put("medicos/{id}/deactivate")
+	@Put
+	@Path("medicos/{id}/deactivate")
 	public void deactivate(int id) {
 		Doctor doctor = allDoctors.getById(id);
 		
@@ -103,7 +104,8 @@ public class DoctorController extends BaseController {
 		result.redirectTo(DoctorController.class).index(Paginator.firstPage());
 	}
 	
-	@Put("medicos/{id}/activate")
+	@Put
+	@Path("medicos/{id}/activate")
 	public void activate(int id) {
 		Doctor doctor = allDoctors.getById(id);
 		
