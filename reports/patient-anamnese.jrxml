@@ -23,25 +23,45 @@
 	<variable name="date" class="java.lang.String">
 		<variableExpression><![CDATA[new SimpleDateFormat("dd/MM/yyyy").format($F{date}.getTime())]]></variableExpression>
 	</variable>
-	<variable name="clinicName" class="java.lang.String">
-		<variableExpression><![CDATA[$P{clinic}.getName()]]></variableExpression>
-	</variable>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="50" splitType="Stretch">
+		<band height="118" splitType="Stretch">
 			<staticText>
-				<reportElement x="0" y="19" width="555" height="29"/>
+				<reportElement x="0" y="84" width="555" height="29"/>
 				<textElement textAlignment="Center">
 					<font size="24"/>
 				</textElement>
 				<text><![CDATA[Anamnese]]></text>
 			</staticText>
-			<textField evaluationTime="Auto">
-				<reportElement x="0" y="0" width="555" height="20"/>
-				<textElement textAlignment="Center"/>
-				<textFieldExpression class="java.lang.String"><![CDATA[$V{clinicName}]]></textFieldExpression>
+			<textField>
+				<reportElement x="0" y="2" width="555" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{clinic}.name]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="22" width="555" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{clinic}.address.street + " - " + $P{clinic}.address.neighborhood]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="62" width="555" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{clinic}.telephone + " " + $P{clinic}.website]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="42" width="555" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{clinic}.address.postalCode + " - " + $P{clinic}.address.city + "/" + $P{clinic}.address.state]]></textFieldExpression>
 			</textField>
 		</band>
 	</title>
