@@ -24,7 +24,7 @@ Cenario: Editar Anamnese
 	E preencho "paciente com dor nas costas e nos rins" em "anamnese.text"
 	E preencho "11/11/2010" em "anamnese.date"
 	E pressiono "Salvar"
-	Entao devo ver "Anamnese atualizada com sucesso!"
+	Entao devo ver "Anamnese alterada com sucesso!"
 	E devo ver "paciente com dor nas costas e nos rins"
 	E devo ver "11/11/2010"
 	
