@@ -46,8 +46,8 @@
 									<td>${anamnese.text}</td>
 									
 									<td class="buttons">
+										<a class="btnpeopleshow" title="Exibir" href="<c:url value="/pacientes/${patient.id}/anamneses/${anamnese.id}"/>">&nbsp;</a>
 										<a class="btnpeopleedit" title="Editar" href="<c:url value="/pacientes/${patient.id}/anamneses/${anamnese.id}/editar"/>">&nbsp;</a>
-                                    	<a class="btnpeopleshow exibir" title="Exibir" anamnese_id="${anamnese.id}">&nbsp;</a>
                                                                             	
                                     	<form action="<c:url value="/pacientes/${patient.id}/anamneses/${anamnese.id}"/>" method="post">
 									        <input type="hidden" name="_method" value="delete"/>

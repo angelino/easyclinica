@@ -48,10 +48,12 @@ public class AnamneseController extends BaseController {
 		return patients.getById(patient);
 	}
 
-	@Post
-	public void _show(int id) {
+	@Get
+	@Path("/pacientes/{patient}/anamneses/{id}")
+	public void show(int patient, int id) {
 		Anamnese loadedAnamnese = anamneses.getById(id);
-		include(loadedAnamnese);
+		result.include("patient", patients.getById(patient));
+		include(loadedAnamnese);		
 	}
 	
 	@Get
@@ -75,7 +77,7 @@ public class AnamneseController extends BaseController {
 		anamneses.add(anamnese);
 
 		successMsg(Messages.ANAMNESE_ADDED);
-		result.redirectTo(AnamneseController.class).list(patient);
+		result.redirectTo(AnamneseController.class).show(patient, anamnese.getId());
 	}
 
 	@Get

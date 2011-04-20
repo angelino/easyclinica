@@ -1,3 +1,4 @@
+<%@page import="br.com.easyclinica.domain.entities.Anamnese"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -14,6 +15,8 @@
 
 		<div class="box" id="anamneses">
 			<div class="boxcontent">
+				<helper:message successKey="${successKey}" errorKey="${errorKey}" />
+			
 		   		<h2>Anamnese em <fmt:formatDate value="${anamnese.date.time}" pattern="dd/MM/yyyy" /></h2>				
 
       	<div class="date">
@@ -37,6 +40,7 @@
 		<div class="boxright">
 			<% 
 				java.util.List<Link> links = new LinkedList<Link>();
+				links.add(new Link("/pacientes/" + ((Patient)request.getAttribute("patient")).getId() + "/anamneses/" + ((Anamnese)request.getAttribute("anamnese")).getId(),"Editar anamnese"));
 				links.add(new Link("/pacientes/" + ((Patient)request.getAttribute("patient")).getId() + "/anamneses/novo","Criar nova anamnese"));
 				links.add(new Link("/pacientes/" + ((Patient)request.getAttribute("patient")).getId() + "/anamneses","Voltar para anamneses"));
 				pageContext.setAttribute("links",links);
