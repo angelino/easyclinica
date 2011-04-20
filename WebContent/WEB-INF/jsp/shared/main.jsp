@@ -13,24 +13,9 @@
 		<helper:include fileName="style.css" type="css" />
 		<helper:include fileName="plugins/jquery-ui/jquery-ui-1.8.2.custom.css" type="css" />
 		<helper:include fileName="plugins/jquery.autocomplete/jquery.autocomplete.css" type="css" />
-		
-		<%
-		 	int serverPort = request.getServerPort();
-		 	String scheme = request.getScheme();
-			String serverName = request.getServerName();
-			String contextPath = request.getContextPath();
-			
-			String BASE_URI = "./";
-		    if ( serverPort == 80 || serverPort == 443 )
-		    	BASE_URI = scheme + "://" + serverName + contextPath + "/";
-		    else
-		    	BASE_URI = scheme + "://" + serverName + ":" + serverPort + contextPath + "/";
-		%>
-		
 		<script type="text/javascript" language="javascript">
-			var BASE_URI = "<%= BASE_URI  %>";
+			var BASE_URI = "/";
 		</script>
-		
 		<helper:include fileName="plugins/jquery-1.4.4.min.js" type="js" />
 		<helper:include fileName="plugins/jquery.tools/jquery.tools.min.js" type="js" />
 		<helper:include fileName="plugins/jquery-ui/jquery-ui-1.8.4.custom.min.js" type="js" />
@@ -60,7 +45,9 @@
        	    <h1><a href="#">Easy Clínica</a></h1>
 
                 <ul class="menulogin">
+                  <c:if test="${loggedUser.employee.position eq 'OWNER'}">
                   <li><a href="<c:url value="/clinica" />">Dados da Clínica</a></li>
+                  </c:if>
                   <li><a href="#">Configurações</a></li>
                   <li><a href="<c:url value="/perfil" />">Meu perfil</a></li>
                   <li><a href="<c:url value="/logoff" />" class="logout" id="lnkLogout">Logout</a></li>
@@ -71,19 +58,30 @@
                   <li id="menu-link-pacientes"><a href="<c:url value="/pacientes" />">Pacientes</a></li>
                   <li id="menu-link-convenios"><a href="<c:url value="/convenios" />">Convênios</a></li>
                   <li id="menu-link-medicos"><a href="<c:url value="/medicos" />">Médicos</a></li>
+                  
+                  <c:if test="${loggedUser.employee.position eq 'OWNER'}">
                   <li id="menu-link-usuarios"><a href="<c:url value="/usuarios" />">Usuários</a></li>
-                  <li id="menu-link-schedule">
+                  </c:if>
+                  
+                  
                   	<c:choose>
 						<c:when test="${loggedUser.doctor}">
+							<li id="menu-link-schedule">
 							<c:url value="/medicos/minha-agenda" var="schedule_link"/>
+							<a href="${schedule_link}" title="Minha agenda">Minha Agenda</a>
+							</li>
 						</c:when>
-						<c:otherwise>
+						<c:when test="${loggedUser.employee.position eq 'OWNER' or loggedUser.employee.position eq 'ATTENDANT'}">
+							<li id="menu-link-schedule">
 							<c:url value="/agenda" var="schedule_link"/>
-						</c:otherwise>
+							<a href="${schedule_link}" title="Ver agenda completa">Agenda Completa</a>
+							</li>
+						</c:when>
 					</c:choose>
-					<a href="${schedule_link}" title="Ver agenda completa">Agenda</a>
-                  </li>
+
+				  <c:if test="${loggedUser.employee.position eq 'OWNER' or loggedUser.employee.position eq 'FINANCIAL'}">
                   <li id="menu-link-reports"><a href="<c:url value="/relatorios" />">Relatórios</a></li>
+                  </c:if>
                 </ul>
             </div>
             <!-- END HEADER -->

@@ -29,7 +29,7 @@ public class ReportsOnlyToFinancialTests {
 		Employee employee = as(Position.DOCTOR);
 		
 		loggedUser.set(clinic, employee);
-		boolean accepts = new ReportsOnlyToFinancial().allows(ReportsController.class, employee);
+		boolean accepts = new ReportsOnlyToOwnersAndFinancial().allows(ReportsController.class, employee);
 		
 		assertFalse(accepts);
 	}
@@ -39,7 +39,7 @@ public class ReportsOnlyToFinancialTests {
 		Employee employee = as(Position.ATTENDANT);
 		
 		loggedUser.set(clinic, employee);
-		boolean accepts = new ReportsOnlyToFinancial().allows(ReportsController.class, employee);
+		boolean accepts = new ReportsOnlyToOwnersAndFinancial().allows(ReportsController.class, employee);
 		
 		assertFalse(accepts);
 	}
@@ -49,7 +49,7 @@ public class ReportsOnlyToFinancialTests {
 		Employee employee = as(Position.FINANCIAL);
 		
 		loggedUser.set(clinic, employee);
-		boolean accepts = new ReportsOnlyToFinancial().allows(ReportsController.class, employee);
+		boolean accepts = new ReportsOnlyToOwnersAndFinancial().allows(ReportsController.class, employee);
 		
 		assertTrue(accepts);
 	}
@@ -59,7 +59,7 @@ public class ReportsOnlyToFinancialTests {
 		Employee employee = as(Position.OWNER);
 		
 		loggedUser.set(clinic, employee);
-		boolean accepts = new ReportsOnlyToFinancial().allows(ReportsController.class, employee);
+		boolean accepts = new ReportsOnlyToOwnersAndFinancial().allows(ReportsController.class, employee);
 		
 		assertTrue(accepts);
 	}

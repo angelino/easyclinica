@@ -11,11 +11,17 @@
 		<a href="<c:url value="/pacientes/${patient.id}/editar"/>">Edição</a>
 	</li>
 	<li ${selected=='Anamnese' ? 'class="active first"' : ''}><a href="<c:url value="/pacientes/${patient.id}/anamneses"/>">Anamnese</a></li>
+	
+	<c:if test="${loggedUser.employee.position != 'DOCTOR'}"> 
 	<li ${selected=='Consultas' ? 'class="active first"' : ''}>
 		<a href="<c:url value="/pacientes/${patient.id}/consultas"/>">Consultas</a>
 	</li>
+	</c:if>
+	
+	<c:if test="${loggedUser.employee.position == 'FINANCIAL'}">
 	<li ${selected=='Recibos' ? 'class="active first"' : ''}>
 		<a href="<c:url value="/pacientes/${patient.id}/recibos"/>">Recibos</a>
 	</li>
+	</c:if>
 	<li ${selected=='Impressos' ? 'class="active first"' : ''}><a href="<c:url value="/pacientes/${patient.id}/impressos"/>">Impressos</a></li>
 </ul>

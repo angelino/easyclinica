@@ -4,7 +4,7 @@ import br.com.easyclinica.actions.ReceiptController;
 import br.com.easyclinica.domain.entities.Employee;
 import br.com.easyclinica.domain.entities.Position;
 
-public class ReceiptOnlyToFinancial implements Authorizer {
+public class ReceiptOnlyToOwnersAndFinancial implements Authorizer {
 
 	public boolean allows(Class<?> clazz, Employee employee) {
 		if (clazz.equals(ReceiptController.class)

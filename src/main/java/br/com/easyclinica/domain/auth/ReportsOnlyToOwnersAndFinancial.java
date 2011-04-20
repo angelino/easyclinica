@@ -4,7 +4,7 @@ import br.com.easyclinica.actions.ReportsController;
 import br.com.easyclinica.domain.entities.Employee;
 import br.com.easyclinica.domain.entities.Position;
 
-public class ReportsOnlyToFinancial implements Authorizer {
+public class ReportsOnlyToOwnersAndFinancial implements Authorizer {
 
 	public boolean allows(Class<?> clazz, Employee employee) {
 		if (clazz.equals(ReportsController.class)
