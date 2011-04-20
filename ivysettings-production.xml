@@ -9,5 +9,5 @@
     </chain>
   </resolvers>
   
-  <caches defaultCacheDir="/mnt/master/slave/workspace/.ivy2"/>
+  <caches defaultCacheDir="/mnt/master/slave/workspace/.ivy2/"/>
 </ivysettings>
