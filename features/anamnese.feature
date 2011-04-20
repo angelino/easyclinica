@@ -5,7 +5,7 @@ Funcionalidade: Cadastro de anamneses
 Cenario: Nova Anamnese
   Dado que estou logado como owner
   E que um paciente "Mauricio" padrao esta cadastrado
-  Quando clico no link "Anamneses"
+  Quando clico no link "Anamnese"
   E clico no link "Nova anamnese"
   E preencho "10/10/2010" em "anamnese.date"
   E preencho "fez tal procedimento" em "anamnese.text"
@@ -28,3 +28,10 @@ Cenario: Editar Anamnese
 	E devo ver "paciente com dor nas costas e nos rins"
 	E devo ver "11/11/2010"
 	
+Cenario: Deve validar campos requeridos
+	Dado que estou logado como owner
+	E que um paciente "Mauricio" padrao esta cadastrado
+	Quando clico no link "Anamnese"
+	E clico no link "Nova anamnese"
+	E pressiono "Salvar"
+	Entao devo ver "campo obrigatório"

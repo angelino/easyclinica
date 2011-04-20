@@ -59,3 +59,8 @@ Cenario: Editar Paciente
 	Entao devo ver "Paciente atualizado com sucesso!"
 	E devo ver "Mauricio 2"
 	
+Cenario: Deve validar campos obrigatorios
+	Dado que estou logado como owner
+	E que estou na tela de novo paciente
+	Quando pressiono "btnSalvar"
+	Entao devo ver "campo obrigatório"
