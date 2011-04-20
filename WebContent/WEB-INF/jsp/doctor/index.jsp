@@ -69,10 +69,16 @@
 	                                        
 	                                        <c:choose>
 												<c:when test="${doctor.active}">
-													<a class="btnpeopledisable last" title="Desativar" href="<c:url value="/medicos/${doctor.id}/deactivate" />">&nbsp;</a>
+													<form action="<c:url value="/medicos/${doctor.id}/deactivate" />" method="post">
+			                                        	<input type="hidden" name="_method" value="PUT" />
+			                                        	<a class="btnpeopledisable last submit" title="Desativar" href="#">&nbsp;</a>
+													</form>
 												</c:when>
 												<c:otherwise>
-													<a class="btnpeopleenable last" title="Ativar" href="<c:url value="/medicos/${doctor.id}/activate" />">&nbsp;</a>
+													<form action="<c:url value="/medicos/${doctor.id}/activate" />" method="post">
+			                                        	<input type="hidden" name="_method" value="PUT" />
+			                                        	<a class="btnpeopleenable last submit" title="Ativar" href="#">&nbsp;</a>
+													</form>
 												</c:otherwise>
 											</c:choose>
 										</c:if>
