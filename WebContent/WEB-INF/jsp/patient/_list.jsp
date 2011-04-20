@@ -31,7 +31,6 @@
 						<td class="buttons">
 							<a class="btnpeopleshow" href="<c:url value="/pacientes/${patient.id}" />">&nbsp;</a>
 							<a class="btnpeopleedit" title="Editar" href="<c:url value="/pacientes/${patient.id}/editar" />">&nbsp;</a>
-                            <a class="btnpeopleshow exibir" title="Exibir" patient_id="${patient.id}">&nbsp;</a>
                             <a class="btnappointments" title="Consultas" href="<c:url value="/pacientes/${patient.id}/consultas" />">&nbsp;</a>
                          </td>
 					</tr>
