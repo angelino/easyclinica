@@ -59,6 +59,7 @@ public class UsersController extends BaseController {
 		translator.translate(employeeValidator.validate(employee));
 		validator.onErrorUse(Results.logic()).forwardTo(UsersController.class).newForm();
 		
+		setDoctor(employee);
 		allEmployees.add(employee);
 		
 		successMsg(Messages.EMPLOYEE_ADDED);
