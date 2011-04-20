@@ -7,7 +7,7 @@
 <%@page import="java.util.LinkedList"%>
 <html>
 	<head>
-		<title>.: EasyClinica - Editar Paciente :.</title>
+		<title>.: EasyClinica - Exibição do Paciente :.</title>
 	</head>
 	<body>
 
@@ -19,100 +19,100 @@
 				
 				<h2>${patient.name}</h2>
 				
-	<fieldset>
-		<div>
-			<label class="title">Nome:</label>
-			${patient.name}
-		</div>
-		
-		<div class="telephone">
-			<label class="title">Telefone:</label>
-    		${patient.telephone}
-    	</div>
-		
-		<div class="telephone">
-			<label class="title">Celular:</label>
-    		${patient.cellphone}
-    	</div>
-
-		<div class="telephone">
-			<label class="title">Comercial:</label>
-    		${patient.commercialPhone}
-    	</div>
-
-		<div class="title">
-			<label class="title">Data de Nascimento:</label>
-    		<fmt:formatDate value="${patient.birthDate.time}" pattern="dd/MM/yyyy" />
-    	</div>
-
-		<div class="title">
-			<label class="title">RG:</label>
-    		${patient.rg}
-    	</div>
-    	
-    	<div class="title">
-			<label class="title">CPF:</label>
-    		${patient.cpf}
-    	</div>
-
-    	<div class="title">
-			<label class="title">Profissão:</label>
-    		${patient.profession}
-    	</div>
-
-    	<div class="title">
-			<label class="title">Estado Civil:</label>
-					${patient.maritalStatus.formattedName}
-    	</div>
-    	    	    	
-		<div>
-			<label class="title">E-mail:</label>
-			${patient.email}
-		</div>
-		
-		<div>
-			<label class="title">Convênio:</label>
-			${patient.healthCarePlan.name}
-		</div>
-	
-		<div>
-			<label class="title">Número da carteirinha:</label>
-    		${patient.healthCarePlanCode}
-    	</div>
-	
-	</fieldset>
-	
-	<fieldset>	
-		<div class="cep">
-			<label class="title">CEP:</label>
-			${patient.address.postalCode}
-		</div>
-		
-		<div>
-			<label class="title">Endereço:</label>
-	    	${patient.address.street}
-	    </div>
-		
-		<div>
-			<label class="title">Bairro:</label>
-			${patient.address.neighborhood}
-		</div>
-		
-		<div>
-			<label class="title">Cidade:</label>
-			${patient.address.city}
-		</div>
-		
-		<div>
-			<label class="title">Estado:</label>
-	    	${patient.address.state}
-	    </div>
-	
-   		<div class="remarks">
-       		<label class="title">Observações:</label>
-        	${patient.observations}
-      	</div>
-    </fieldset>
+				<fieldset>
+					<div>
+						<label class="title">Nome:</label>
+						${patient.name}
+					</div>
+					
+					<div class="telephone">
+						<label class="title">Telefone:</label>
+			    		${patient.telephone}
+			    	</div>
+					
+					<div class="telephone">
+						<label class="title">Celular:</label>
+			    		${patient.cellphone}
+			    	</div>
+			
+					<div class="telephone">
+						<label class="title">Comercial:</label>
+			    		${patient.commercialPhone}
+			    	</div>
+			
+					<div class="title">
+						<label class="title">Data de Nascimento:</label>
+			    		<fmt:formatDate value="${patient.birthDate.time}" pattern="dd/MM/yyyy" />
+			    	</div>
+			
+					<div class="title">
+						<label class="title">RG:</label>
+			    		${patient.rg}
+			    	</div>
+			    	
+			    	<div class="title">
+						<label class="title">CPF:</label>
+			    		${patient.cpf}
+			    	</div>
+			
+			    	<div class="title">
+						<label class="title">Profissão:</label>
+			    		${patient.profession}
+			    	</div>
+			
+			    	<div class="title">
+						<label class="title">Estado Civil:</label>
+								${patient.maritalStatus.formattedName}
+			    	</div>
+			    	    	    	
+					<div>
+						<label class="title">E-mail:</label>
+						${patient.email}
+					</div>
+					
+					<div>
+						<label class="title">Convênio:</label>
+						${patient.healthCarePlan.name}
+					</div>
+				
+					<div>
+						<label class="title">Número da carteirinha:</label>
+			    		${patient.healthCarePlanCode}
+			    	</div>
+				
+				</fieldset>
+				
+				<fieldset>	
+					<div class="cep">
+						<label class="title">CEP:</label>
+						${patient.address.postalCode}
+					</div>
+					
+					<div>
+						<label class="title">Endereço:</label>
+				    	${patient.address.street}
+				    </div>
+					
+					<div>
+						<label class="title">Bairro:</label>
+						${patient.address.neighborhood}
+					</div>
+					
+					<div>
+						<label class="title">Cidade:</label>
+						${patient.address.city}
+					</div>
+					
+					<div>
+						<label class="title">Estado:</label>
+				    	${patient.address.state}
+				    </div>
+				
+			   		<div class="remarks">
+			       		<label class="title">Observações:</label>
+			        	${patient.observations}
+			      	</div>
+			    </fieldset>
     
 					
 			</div>
