@@ -9,6 +9,7 @@ import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.Validator;
 import br.com.caelum.vraptor.view.Results;
 import br.com.easyclinica.domain.entities.Doctor;
+import br.com.easyclinica.domain.entities.Patient;
 import br.com.easyclinica.domain.repositories.AllDoctors;
 import br.com.easyclinica.domain.repositories.AllSpecialties;
 import br.com.easyclinica.domain.validators.DoctorValidator;
@@ -62,7 +63,7 @@ public class DoctorController extends BaseController {
 		allDoctors.add(doctor);
 		
 		successMsg(Messages.DOCTOR_ADDED);
-		result.redirectTo(DoctorController.class).index(Paginator.firstPage());
+		result.redirectTo(DoctorController.class).show(doctor.getId());
 	}
 
 	@Get
@@ -83,13 +84,19 @@ public class DoctorController extends BaseController {
 		allDoctors.update(doctor);
 		
 		successMsg(Messages.DOCTOR_UPDATED);
-		result.redirectTo(DoctorController.class).index(Paginator.firstPage());
+		result.redirectTo(DoctorController.class).show(doctor.getId());
 	}
 
 	@Post
 	public void _show(int id) {
 		Doctor loadedDoctor = allDoctors.getById(id);
 		include(loadedDoctor);
+	}
+	
+	@Get
+	@Path("/medicos/{id}")
+	public void show(int id) {
+		include(allDoctors.getById(id));
 	}
 	
 	@Put
