@@ -307,7 +307,7 @@ EasyClinica.pages['consultas'] = function(){
 			box.hide();
 			
 			switch(rel) {
-				case 'new-assitant':
+				case 'new-assistant':
 					removeFormNewAssistantValidation();
 					break;					
 				case 'new-material':
@@ -433,6 +433,7 @@ EasyClinica.pages['consultas'] = function(){
 	
 	var removeFormNewMaterialValidation = function() {
 		$('input[name=materialName]').removeAttr('required');
+		$('input[name=materialId]').removeAttr('min');
 		$('input[name=materialQuantity]').removeAttr('pattern');
 		$('input[name=materialUnitAmount]').removeAttr('pattern');
 		
@@ -441,6 +442,7 @@ EasyClinica.pages['consultas'] = function(){
 	
 	var removeFormNewMedicineValidation = function() {
 		$('input[name=medicineName]').removeAttr('required');
+		$('input[name=medicineId]').removeAttr('min');
 		$('input[name=medicineQuantity]').removeAttr('pattern');
 		$('input[name=medicineUnitAmount]').removeAttr('pattern');
 		

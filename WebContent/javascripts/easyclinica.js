@@ -139,7 +139,7 @@ EasyClinica.common.generalFunctions = function(){
 		if(key.keyCode == '13') key.preventDefault();
 		
 		var texto = $(this).val();
-		valor = "0";	
+		valor = "";	
 		var regexCurrency = new RegExp(/(\d|,|\.)/g);
 		var matched = texto.match(regexCurrency);
 		if(matched != null) {

@@ -10,13 +10,21 @@
 		<helper:patientMenu patient="${patient}" selected="Impressos" />
 		
 			<div class="boxcontent">
-
-				<a href="<c:url value="/pacientes/${patient.id}/impressos/anamnese" />">Anamnese</a>
 				
-				<a href="<c:url value="/pacientes/${patient.id}/impressos/atestado-de-saude" />">Atestado de Saúde</a>
-
-				<a href="<c:url value="/pacientes/${patient.id}/impressos/atestado-de-saude-ocupacional" />">Atestado de Saúde Ocupacional</a>
-
+				<h2>Impressos</h2>
+				
+				<ul>
+					<li>
+						<a href="<c:url value="/pacientes/${patient.id}/impressos/anamnese" />" class="btn">Anamnese</a>
+					</li>
+					<li>
+						<a href="<c:url value="/pacientes/${patient.id}/impressos/atestado-de-saude" />" class="btn">Atestado de Saúde</a>
+					</li>
+					<li>
+						<a href="<c:url value="/pacientes/${patient.id}/impressos/atestado-de-saude-ocupacional" />" class="btn">Atestado de Saúde Ocupacional</a>
+					</li>
+				</ul>
+				
 			</div>
 		</div>
 		

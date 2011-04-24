@@ -99,6 +99,7 @@ body{font:12px/1.5em "Lucida Grande","Helvetica Neue",Arial,sans-serif;backgroun
 .main .content .box .boxcontent p span.gray{color:#999999;}
 .main .content .box .boxcontent p span.hightlight{background:#FFFFCC;}
 .main .content .box .boxcontent hr{background:#AAAAAA;border:0 none;height:1px;}
+.main .content .box .boxcontent em{float:left;}
 
 /*BOX TABELA GERAL ######################################################################################################################*/
 table.easy{float:left;width:100%;border:none; margin-top: 10px;}

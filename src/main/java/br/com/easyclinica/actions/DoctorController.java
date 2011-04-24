@@ -9,7 +9,6 @@ import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.Validator;
 import br.com.caelum.vraptor.view.Results;
 import br.com.easyclinica.domain.entities.Doctor;
-import br.com.easyclinica.domain.entities.Patient;
 import br.com.easyclinica.domain.repositories.AllDoctors;
 import br.com.easyclinica.domain.repositories.AllSpecialties;
 import br.com.easyclinica.domain.validators.DoctorValidator;
