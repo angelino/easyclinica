@@ -28,7 +28,7 @@
 		<div>
 			<label class="title">Senha:</label>
 			<input type="password" name="employee.password" maxlength="100" />
-			<span>Se não quiser alterar a senha, deixe este campo em branco.</span>
+			<em>Se não quiser alterar a senha, deixe este campo em branco.</em>
 		</div>
 
 		<div class="telephone">

@@ -30,7 +30,7 @@
 								<th>Telefone</th>
 								<th>Login</th>
 								<th>Cargo</th>
-								<th width="145px">&nbsp;</th>
+								<th width="155px">&nbsp;</th>
 							</tr>
 							
 							<c:forEach var="employee" items="${employees}" varStatus="status">
@@ -52,15 +52,21 @@
 									<td>${employee.position.formattedName}</td>
 									<td class="buttons">
 										<a class="btnpeopleedit" title="Editar" href="<c:url value="/usuarios/${employee.id}/editar" />">&nbsp;</a>
-                                        <a class="btnpeopleshow exibir" title="Exibir" employee_id="${employee.id}">&nbsp;</a>
+                                        <a class="btnpeopleshow" title="Exibir" href="<c:url value="/usuarios/${employee.id}" />">&nbsp;</a>
                                         
                                         <c:if test="${loggedUser.employee.id != employee.id}">
 	                                        <c:choose>
 												<c:when test="${employee.active}">
-													<a class="btnpeopledisable last" title="Desativar" href="<c:url value="/usuarios/${employee.id}/desativar" />">&nbsp;</a>
+													<form action="<c:url value="/usuarios/${employee.id}/desativar" />" method="post">
+			                                        	<input type="hidden" name="_method" value="PUT" />
+			                                        	<a class="btnpeopledisable last submit" title="Desativar" href="#">&nbsp;</a>
+													</form>
 												</c:when>
 												<c:otherwise>
-													<a class="btnpeopleenable last" title="Ativar" href="<c:url value="/usuarios/${employee.id}/ativar" />">&nbsp;</a>
+													<form action="<c:url value="/usuarios/${employee.id}/ativar" />" method="post">
+			                                        	<input type="hidden" name="_method" value="PUT" />
+			                                        	<a class="btnpeopleenable last submit" title="Ativar" href="#">&nbsp;</a>
+													</form>
 												</c:otherwise>
 											</c:choose>
 										</c:if>

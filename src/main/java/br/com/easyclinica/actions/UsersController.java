@@ -74,6 +74,12 @@ public class UsersController extends BaseController {
 	}
 	
 	@Get
+	@Path("/usuarios/{id}")
+	public void show(int id) {
+		include(allEmployees.getById(id));
+	}
+	
+	@Get
 	@Path("/usuarios/{id}/editar")
 	public void edit(int id) {
 		Employee employeeToBeEdited = allEmployees.getById(id);
@@ -118,7 +124,7 @@ public class UsersController extends BaseController {
 		result.include("employee", employee);
 	}
 
-	@Get
+	@Put
 	@Path("usuarios/{id}/desativar")
 	public void deactivate(int id) {
 		Employee employee = allEmployees.getById(id);
@@ -130,7 +136,7 @@ public class UsersController extends BaseController {
 		result.redirectTo(UsersController.class).index();
 	}
 	
-	@Get
+	@Put
 	@Path("usuarios/{id}/ativar")
 	public void activate(int id) {
 		Employee employee = allEmployees.getById(id);

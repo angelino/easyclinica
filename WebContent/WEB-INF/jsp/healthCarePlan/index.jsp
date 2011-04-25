@@ -30,7 +30,7 @@
 								<th>Contato:</th>
 								<th>Telefone:</th>
 								<th>Valor CH (R$):</th>
-								<th width="145px">&nbsp;</th>
+								<th width="155px">&nbsp;</th>
 							</tr>
 							
 							<c:forEach var="healthCare" items="${healthcares.result}" varStatus="status">
@@ -52,7 +52,7 @@
 									<td class="currency">${healthCare.ch}</td>
 									<td class="buttons">
 										<a class="btnpeopleedit" title="Editar" href="<c:url value="/convenios/${healthCare.id}/editar" />">&nbsp;</a>
-                                        <a class="btnpeopleshow exibir" title="Exibir" healthCarePlan_id="${healthCare.id}">&nbsp;</a>
+                                        <a class="btnpeopleshow" title="Exibir" href="<c:url value="/convenios/${healthCare.id}"/>">&nbsp;</a>
                                         
                                         <c:if test="${healthCare.id != loggedUser.clinic.privatePlan.id}">
 	                                        

@@ -65,13 +65,19 @@ public class HealthCarePlanController extends BaseController {
 		copier.copyPrices(example, healthCarePlan);
 		
 		successMsg(Messages.HEALTH_CARE_PLAN_ADDED);
-		result.redirectTo(HealthCarePlanController.class).index(Paginator.firstPage());
+		result.redirectTo(HealthCarePlanController.class).show(healthCarePlan.getId());
 	}
 
 	@Post
 	public void _show(int id) {
 		HealthCarePlan loadedPlan = allHealthCares.getById(id);
 		include(loadedPlan);
+	}
+	
+	@Get
+	@Path("/convenios/{id}")
+	public void show(int id) {
+		include(allHealthCares.getById(id));
 	}
 	
 	@Get
@@ -90,7 +96,7 @@ public class HealthCarePlanController extends BaseController {
 		allHealthCares.update(healthCarePlan);
 		
 		successMsg(Messages.HEALTH_CARE_PLAN_UPDATED);
-		result.redirectTo(HealthCarePlanController.class).index(Paginator.firstPage());
+		result.redirectTo(HealthCarePlanController.class).show(healthCarePlan.getId());
 	}
 
 	private void include(HealthCarePlan plan) {
