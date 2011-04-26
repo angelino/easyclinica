@@ -17,18 +17,38 @@ Quando /^altero o preco do (.*)o material do (.*)o procedimento para "(.*)"$/ do
 	fill_in "appointment.procedures[#{procedimento.to_i - 1}].materials[#{material.to_i - 1}].unitAmount", :with => valor
 end
 
-Quando /^altero a quantidade do (.*)o medicamento do (.*)o procedimento para "(.*)"$/ do |medicamento, procedimento, valor|
+Quando /^altero a quantidade do ([0-9]*)o medicamento do ([0-9]*)o procedimento para "(.*)"$/ do |medicamento, procedimento, valor|
 	fill_in "appointment.procedures[#{procedimento.to_i - 1}].medicines[#{medicamento.to_i - 1}].qty", :with => valor
 end
 
-Quando /^altero o preco do (.*)o medicamento do (.*)o procedimento para "(.*)"$/ do |medicamento, procedimento, valor|
+Quando /^altero o preco do ([0-9]*)o medicamento do ([0-9]*)o procedimento para "(.*)"$/ do |medicamento, procedimento, valor|
 	fill_in "appointment.procedures[#{procedimento.to_i - 1}].medicines[#{medicamento.to_i - 1}].unitAmount", :with => valor
 end
 
 Quando /^seleciono o doutor "(.*)"$/ do |medico|
 	select medico,:from=>'appointment.doctor.id'
+	sleep 1
 end
 
 Quando /^marco a consulta para o dia "([^"]*)"$/ do |data|
 	fill_in 'appointment.appointmentDate', :with => data
+end
+
+Quando /^altero a taxa de sala para "(.*)"$/ do |valor|
+	fill_in 'appointment.roomRateAmount', :with => valor
+end
+
+Quando /^excluo o ([0-9]*)o material do ([0-9]*)o procedimento$/ do |material, procedimento|
+	accept_js_confirm
+	click_link "lnkDeleteMaterial#{material.to_i-1}Procedure#{procedimento.to_i-1}"
+end
+
+Quando /^excluo o ([0-9]*)o medicamento do ([0-9]*)o procedimento$/ do |medicamento, procedimento|
+	accept_js_confirm
+	click_link "lnkDeleteMedicine#{medicamento.to_i-1}Procedure#{procedimento.to_i-1}"
+end
+
+Quando /^excluo o ([0-9]*)o procedimento$/ do |procedimento|
+	accept_js_confirm
+	click_link "lnkDeleteProcedure#{procedimento.to_i - 1}"
 end

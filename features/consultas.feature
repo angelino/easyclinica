@@ -49,5 +49,69 @@ Cenario: Consulta com 1 procedimento com valor de medicamento alterado
 	Entao devo ver "R$ 2183,65"
 	E devo ver "R$ 1933,65"
 	E devo ver "R$ 1333,65"
+
+Cenario: Varios procedimentos
+	Dado que estou logado como owner
+	E que um paciente "Mauricio" padrao esta cadastrado
+	Quando clico no link "Nova consulta"
+	E marco a consulta para o dia "10/10/2010"
+	E seleciono o doutor "Dr. Roberto Aniche"
+	E adiciono o procedimento "procedimento 1"
+	E adiciono o procedimento "procedimento 2"
+	E adiciono o procedimento "procedimento 3"
+	E adiciono o procedimento "procedimento 4"
+	E adiciono o procedimento "procedimento 5"
+	E salvo a consulta
+	Entao devo ver "R$ 2800,00"
+	E devo ver "R$ 3050,00"
 	
+Cenario: Remover material do procedimento
+	Dado que estou logado como owner
+	E que um paciente "Mauricio" padrao esta cadastrado
+	Quando clico no link "Nova consulta"
+	E marco a consulta para o dia "10/10/2010"
+	E seleciono o doutor "Dr. Roberto Aniche"
+	E adiciono o procedimento "procedimento 1"
+	E excluo o 1o material do 1o procedimento
+	E salvo a consulta
+	Entao devo ver "R$ 700,00"
+	E devo ver "R$ 950,00"
 	
+Cenario: Remover medicamento do procedimento
+	Dado que estou logado como owner
+	E que um paciente "Mauricio" padrao esta cadastrado
+	Quando clico no link "Nova consulta"
+	E marco a consulta para o dia "10/10/2010"
+	E seleciono o doutor "Dr. Roberto Aniche"
+	E adiciono o procedimento "procedimento 1"
+	E excluo o 1o medicamento do 1o procedimento
+	E salvo a consulta
+	Entao devo ver "R$ 600,00"
+	E devo ver "R$ 850,00"
+	
+Cenario: Remover procedimento
+	Dado que estou logado como owner
+	E que um paciente "Mauricio" padrao esta cadastrado
+	Quando clico no link "Nova consulta"
+	E marco a consulta para o dia "10/10/2010"
+	E seleciono o doutor "Dr. Roberto Aniche"
+	E adiciono o procedimento "procedimento 1"
+	E adiciono o procedimento "procedimento 2"
+	E excluo o 1o procedimento
+	E salvo a consulta
+	Entao devo ver "R$ 500,00"
+	E devo ver "R$ 750,00"
+	
+# escrever teste para testar atualizacoes de valores
+
+Cenario: Taxa de sala
+	Dado que estou logado como owner
+	E que um paciente "Mauricio" padrao esta cadastrado
+	Quando clico no link "Nova consulta"
+	E marco a consulta para o dia "10/10/2010"
+	E seleciono o doutor "Dr. Roberto Aniche"
+	E altero a taxa de sala para "112,45"
+	E salvo a consulta
+	Entao devo ver "R$ 112,45"
+	E devo ver "R$ 362,45"
+

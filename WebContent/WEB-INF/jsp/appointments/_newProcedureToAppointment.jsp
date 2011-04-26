@@ -145,7 +145,7 @@
 			</c:otherwise>
 		</c:choose>
      </td>
-     <td><a href="#" class="btndelete last remove-procedure" procedure_id="${procedure.id}">Excluir</a></td>
+     <td><a href="#" class="btndelete last remove-procedure" procedure_id="${procedure.id}" id="lnkDeleteProcedure#index#">Excluir</a></td>
 </tr>	
 		
 <tr class="tableheader header-materials-medicine" procedure_id="${procedure.id}">
@@ -172,7 +172,7 @@
 		</td>
 		<td class="total currency">${material.qty * material.amount}</td>
 		<td>
-			<a href="#" class="remove-material btndelete last" procedure_id="${procedure.id}">Excluir</a>
+			<a href="#" class="remove-material btndelete last" procedure_id="${procedure.id}" id="lnkDeleteMaterial${status.count-1}Procedure#index#">Excluir</a>
 		</td>
 	</tr>
 </c:forEach>
@@ -192,7 +192,7 @@
 		</td>
 		<td class="total currency">${medicine.qty * medicine.amount}</td>
 		<td>
-			<a href="#" class="remove-medicine btndelete last" procedure_id="${procedure.id}">Excluir</a>
+			<a href="#" class="remove-medicine btndelete last" procedure_id="${procedure.id}" id="lnkDeleteMedicine${status.count-1}Procedure#index#">Excluir</a>
 		</td>
 	</tr>
 </c:forEach>
