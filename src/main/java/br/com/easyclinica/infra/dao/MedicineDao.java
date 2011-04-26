@@ -4,7 +4,9 @@ import java.util.List;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Restrictions;
 
 import br.com.caelum.vraptor.ioc.Component;
 import br.com.easyclinica.domain.entities.HealthCarePlan;
@@ -56,16 +58,13 @@ public class MedicineDao implements AllMedicines {
 
 	@SuppressWarnings("unchecked")
 	public List<Medicine> search(String text) {
-		StringBuilder hql = new StringBuilder();
-		hql.append(" from Medicine medicine ");
-		hql.append(" where ");
-		hql.append(" medicine.name like :name ");
-		hql.append(" order by name ");
-		
-		Query query = session.createQuery(hql.toString())
-							 .setString("name", "%" + text + "%");
-				
-		return query.list();
+		return session.createCriteria(Medicine.class).add(Restrictions.or(
+													Restrictions.like("name", text, MatchMode.ANYWHERE), 
+													Restrictions.like("code", text, MatchMode.ANYWHERE)
+												  )
+											   )
+											  .addOrder(Order.asc("name"))
+											  .list();
 	}
 
 }

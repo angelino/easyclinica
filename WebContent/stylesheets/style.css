@@ -47,6 +47,9 @@ img{border:none;}
 body{font:12px/1.5em "Lucida Grande","Helvetica Neue",Arial,sans-serif;background:#EBEBEB;}
 .main{float:left;width:100%;}
 
+a.btn{color: #364B69;padding: 5px 5px;text-decoration: none;}
+a.btn:hover{background-color:#445566; color: #FFFFFF;}
+
 /*START LOGIN ######################################################################################################################*/
 .main .boxlogin{float:left;width:300px;background:#ffffff;position:absolute;top:30%;left:50%;margin:-160px 0 0 -150px;}
 .main .boxlogin h1{float:left;width:290px;font-size:28px;margin:0;padding:20px 0 20px 10px;color:#444444;background:#EBEBEB;}
@@ -155,14 +158,20 @@ table.easy tr td.tablenostyle{background:#ffffff!important;border:none;}
 .main .content .box .tableprocedures .procedure-elements li a.new-material{background-image:url(/images/icons/material.png);}
 .main .content .box .tableprocedures .procedure-elements li a.new-medicine{background-image:url(/images/icons/medicine.png);}
 
-.main .content .box .tableprocedures div.new-assistant{background-color: #FFFFFF;position: absolute;width: 400px;}
+.main .content .box .tableprocedures div.new-assistant{background-color: #FFFFFF;position: absolute;width: 400px;padding: 5px;}
 .main .content .box .tableprocedures div.new-assistant fieldset{width:100%;}
+.main .content .box .tableprocedures div.new-assistant p{text-align: left;margin:0;}
+.main .content .box .tableprocedures div.new-assistant label.title{text-align: left;}
 
-.main .content .box .tableprocedures div.new-material{background-color: #FFFFFF;position: absolute;width: 400px;}
+.main .content .box .tableprocedures div.new-material{background-color: #FFFFFF;position: absolute;width: 400px;padding: 5px;}
 .main .content .box .tableprocedures div.new-material fieldset{width:100%;}
+.main .content .box .tableprocedures div.new-material p{text-align: left;margin:0;}
+.main .content .box .tableprocedures div.new-material label.title{text-align: left;}
 
-.main .content .box .tableprocedures div.new-medicine{background-color: #FFFFFF;position: absolute;width: 400px;}
+.main .content .box .tableprocedures div.new-medicine{background-color: #FFFFFF;position: absolute;width: 400px;padding: 5px;}
 .main .content .box .tableprocedures div.new-medicine fieldset{width:100%;}
+.main .content .box .tableprocedures div.new-medicine p{text-align: left;margin:0;}
+.main .content .box .tableprocedures div.new-medicine label.title{text-align: left;}
 
 /*BOX BOTOES ######################################################################################################################*/
 .boxactions{float:left;width:100%;background-color:#EEEEEE; border:#EEEEEE 1px solid;font-size:14px;padding:10px 0;margin:10px 0;}
@@ -495,3 +504,7 @@ div.error {
 .newPost textarea{float:left;width:98.5%;height:14px;border:1px solid #BDC7D8;color:#777777;font-family:"lucida grande",tahoma,verdana,arial,sans-serif;font-size:11px;padding:3px;}
 .newPost textarea.comment{float:left;width:88.2%;height:29px;}
 .newPost input{float:right;margin-top:5px;background-color:#5972a8;border:1px #29447e solid;padding:4px;font-weight:bold;color:#FFF;cursor: pointer;}
+
+/* PRINTINGS ########################################################### */
+ul.printings{float:left;margin:5px 0;}
+ul.printings li{padding:5px 0;}

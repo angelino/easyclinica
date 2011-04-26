@@ -4,7 +4,9 @@ import java.util.List;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Restrictions;
 
 import br.com.caelum.vraptor.ioc.Component;
 import br.com.easyclinica.domain.entities.HealthCarePlan;
@@ -56,16 +58,9 @@ public class MaterialDao implements AllMaterials {
 
 	@SuppressWarnings("unchecked")
 	public List<Material> search(String text) {
-		StringBuilder hql = new StringBuilder();
-		hql.append(" from Material material ");
-		hql.append(" where ");
-		hql.append(" material.name like :name ");
-		hql.append(" order by name ");
-		
-		Query query = session.createQuery(hql.toString())
-							 .setString("name", "%" + text + "%");
-				
-		return query.list();
+		return session.createCriteria(Material.class).add(Restrictions.like("name", text, MatchMode.ANYWHERE)													   )
+													 .addOrder(Order.asc("name"))
+													 .list();
 	}
 
 }
