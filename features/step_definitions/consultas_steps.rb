@@ -52,3 +52,8 @@ Quando /^excluo o ([0-9]*)o procedimento$/ do |procedimento|
 	accept_js_confirm
 	click_link "lnkDeleteProcedure#{procedimento.to_i - 1}"
 end
+
+Quando /^seleciono a especialidade "([^"]*)"$/ do |especialidade|
+  select especialidade,:from=>'appointment.specialty.id'
+  sleep 1
+end

@@ -102,6 +102,18 @@ Cenario: Remover procedimento
 	Entao devo ver "R$ 500,00"
 	E devo ver "R$ 750,00"
 	
+Cenario: Outra especialidade
+	Dado que estou logado como owner
+	E que um paciente "Mauricio" padrao esta cadastrado
+	Quando clico no link "Nova consulta"
+	E marco a consulta para o dia "10/10/2010"
+	E seleciono o doutor "Dr. Roberto Aniche"
+	E seleciono a especialidade "Pediatria"
+	E salvo a consulta
+	Entao devo ver "R$ 100,00"
+	E devo ver "Pediatria"
+	E devo ver "Dr. Roberto Aniche"
+	
 # escrever teste para testar atualizacoes de valores
 
 Cenario: Taxa de sala
