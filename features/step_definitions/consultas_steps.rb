@@ -24,3 +24,11 @@ end
 Quando /^altero o preco do (.*)o medicamento do (.*)o procedimento para "(.*)"$/ do |medicamento, procedimento, valor|
 	fill_in "appointment.procedures[#{procedimento.to_i - 1}].medicines[#{medicamento.to_i - 1}].unitAmount", :with => valor
 end
+
+Quando /^seleciono o doutor "(.*)"$/ do |medico|
+	select medico,:from=>'appointment.doctor.id'
+end
+
+Quando /^marco a consulta para o dia "([^"]*)"$/ do |data|
+	fill_in 'appointment.appointmentDate', :with => data
+end

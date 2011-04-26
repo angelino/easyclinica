@@ -6,8 +6,8 @@ Cenario: Consulta com 1 procedimento
 	Dado que estou logado como owner
 	E que um paciente "Mauricio" padrao esta cadastrado
 	Quando clico no link "Nova consulta"
-	E preencho "10/10/2010" em "appointment.appointmentDate"
-	E seleciono "Dr. Roberto Aniche" em "appointment.doctor.id"
+	E marco a consulta para o dia "10/10/2010"
+	E seleciono o doutor "Dr. Roberto Aniche"
 	E adiciono o procedimento "procedimento 1"
 	E salvo a consulta
 	Entao devo ver "R$ 800,00"
@@ -26,8 +26,8 @@ Cenario: Consulta com 1 procedimento com valor de material alterado
 	Dado que estou logado como owner
 	E que um paciente "Mauricio" padrao esta cadastrado
 	Quando clico no link "Nova consulta"
-	E preencho "10/10/2010" em "appointment.appointmentDate"
-	E seleciono "Dr. Roberto Aniche" em "appointment.doctor.id"
+	E marco a consulta para o dia "10/10/2010"
+	E seleciono o doutor "Dr. Roberto Aniche"
 	E adiciono o procedimento "procedimento 1"
 	E altero a quantidade do 1o material do 1o procedimento para "2,0"
 	E altero o preco do 1o material do 1o procedimento para "123,45"
@@ -40,8 +40,8 @@ Cenario: Consulta com 1 procedimento com valor de medicamento alterado
 	Dado que estou logado como owner
 	E que um paciente "Mauricio" padrao esta cadastrado
 	Quando clico no link "Nova consulta"
-	E preencho "10/10/2010" em "appointment.appointmentDate"
-	E seleciono "Dr. Roberto Aniche" em "appointment.doctor.id"
+	E marco a consulta para o dia "10/10/2010"
+	E seleciono o doutor "Dr. Roberto Aniche"
 	E adiciono o procedimento "procedimento 1"
 	E altero a quantidade do 1o medicamento do 1o procedimento para "3,0"
 	E altero o preco do 1o medicamento do 1o procedimento para "444,55"
