@@ -127,8 +127,8 @@
 		
 			<div class="boxcontent">
 				<div class="boxactions">
-	  				<input type="submit" class="btnsave" value="Salvar" />
-	                <input type="button" class="btncancel" value="Cancelar" redirect_to="<c:url value="/pacientes/${patient.id}/consultas"/>"/>
+	  				<input type="submit" class="btnsave" value="Salvar" id="btnSalvar" />
+	                <input type="button" class="btncancel" value="Cancelar" redirect_to="<c:url value="/pacientes/${patient.id}/consultas"/>" id="btnCancelar"/>
 	            </div>
 			</div>			
 		</form>					
