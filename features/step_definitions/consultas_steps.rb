@@ -16,3 +16,11 @@ end
 Quando /^altero o preco do (.*)o material do (.*)o procedimento para "(.*)"$/ do |material, procedimento, valor|
 	fill_in "appointment.procedures[#{procedimento.to_i - 1}].materials[#{material.to_i - 1}].unitAmount", :with => valor
 end
+
+Quando /^altero a quantidade do (.*)o medicamento do (.*)o procedimento para "(.*)"$/ do |medicamento, procedimento, valor|
+	fill_in "appointment.procedures[#{procedimento.to_i - 1}].medicines[#{medicamento.to_i - 1}].qty", :with => valor
+end
+
+Quando /^altero o preco do (.*)o medicamento do (.*)o procedimento para "(.*)"$/ do |medicamento, procedimento, valor|
+	fill_in "appointment.procedures[#{procedimento.to_i - 1}].medicines[#{medicamento.to_i - 1}].unitAmount", :with => valor
+end

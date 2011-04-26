@@ -36,3 +36,18 @@ Cenario: Consulta com 1 procedimento com valor de material alterado
 	E devo ver "R$ 1196,90"
 	E devo ver "R$ 246,90"
 	
+Cenario: Consulta com 1 procedimento com valor de medicamento alterado 
+	Dado que estou logado como owner
+	E que um paciente "Mauricio" padrao esta cadastrado
+	Quando clico no link "Nova consulta"
+	E preencho "10/10/2010" em "appointment.appointmentDate"
+	E seleciono "Dr. Roberto Aniche" em "appointment.doctor.id"
+	E adiciono o procedimento "procedimento 1"
+	E altero a quantidade do 1o medicamento do 1o procedimento para "3,0"
+	E altero o preco do 1o medicamento do 1o procedimento para "444,55"
+	E salvo a consulta
+	Entao devo ver "R$ 2183,65"
+	E devo ver "R$ 1933,65"
+	E devo ver "R$ 1333,65"
+	
+	
