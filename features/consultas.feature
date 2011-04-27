@@ -139,7 +139,6 @@ Cenario: Procedimentos e taxa de sala
 	Entao devo ver "R$ 352,50"
 	E devo ver "R$ 614,84"
 
-@test
 Cenario: Aviso de retorno
 	Dado que estou logado como owner
 	E que um paciente "Mauricio" do convenio "Amil" esta cadastrado
