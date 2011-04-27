@@ -30,7 +30,7 @@
 								<th>Contato:</th>
 								<th>Telefone:</th>
 								<th>Valor CH (R$):</th>
-								<th width="155px">&nbsp;</th>
+								<th width="171px">&nbsp;</th>
 							</tr>
 							
 							<c:forEach var="healthCare" items="${healthcares.result}" varStatus="status">

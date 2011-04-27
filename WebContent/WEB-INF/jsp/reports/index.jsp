@@ -55,8 +55,6 @@
 						</form>
 					</div>
 										
-				    <h3><a href="#">Próximo</a></h3>
-				    <div>Second content</div>
 				</div>
 
 			</div>

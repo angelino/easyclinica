@@ -12,7 +12,9 @@
 	</head>
 	<body>
 
-		<div class="box" id="convenios">			
+		<div class="box" id="convenios">		
+			<helper:healthCarePlanMenu plan="${healthCarePlan}" selected="Convenio" />
+				
 			<div class="boxcontent">
 				<helper:message successKey="${successKey}" errorKey="${errorKey}" />
 				

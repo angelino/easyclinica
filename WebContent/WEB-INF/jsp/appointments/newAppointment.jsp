@@ -17,7 +17,7 @@
 	</script>
 </head>
 <body>
-	<div class="box" id="consultas">
+	<div class="box" id="consultas" main-page="pacientes">
 		<helper:patientMenu patient="${patient}" selected="Consultas" />
 		
 		<form action="<c:url value="/pacientes/${patient.id}/consultas/novo"/>" method="post">

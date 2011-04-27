@@ -21,10 +21,9 @@
 						Mas lembre-se de não modificar a estrutura do arquivo; apenas altere os valores.
 					</p>
 
-					<input type="button" value="Baixar os preços" onclick="window.location.href='<c:url value="/convenios/${healthCarePlan.id}/precos" />';"/>
+					<a href='<c:url value="/convenios/${healthCarePlan.id}/precos" />' class="btn">Baixar os preços</a>
 
-					<input type="button" value="Importar os preços" onclick="window.location.href='<c:url value="/convenios/${healthCarePlan.id}/precos/importar" />';"/>
-													
+					<a href='<c:url value="/convenios/${healthCarePlan.id}/precos/importar" />' class="btn">Importar preços</a>													
 			</div>
 		</div>
 		

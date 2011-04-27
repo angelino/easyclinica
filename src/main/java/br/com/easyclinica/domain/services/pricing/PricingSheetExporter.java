@@ -59,7 +59,7 @@ public class PricingSheetExporter {
 	private void exportProcedures() throws IOException {
 		Sheet sheet = wb.createSheet("Procedimentos");
 		
-		createHeader(sheet, "ID", "Código AMB", "Nome do Procedimento", "Preço");
+		createHeader(sheet, "ID", "Código AMB", "Nome do Procedimento", "Valor Fixo", "CHs");
 		
 		int rowCount = 1;
 		for(Procedure procedure : procedures.getAll()) {
@@ -69,6 +69,7 @@ public class PricingSheetExporter {
 			row.createCell(1).setCellValue(procedure.getAmbCode());
 			row.createCell(2).setCellValue(procedure.getName());
 			row.createCell(3).setCellValue((precifiedProcedure == null ? 0.0 : precifiedProcedure.getFixedAmount().doubleValue())); 
+			row.createCell(4).setCellValue((precifiedProcedure == null ? 0 : precifiedProcedure.getCh())); 
 		}
 	}
 

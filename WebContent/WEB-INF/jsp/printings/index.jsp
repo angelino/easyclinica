@@ -6,7 +6,7 @@
 		<title>.: EasyClinica :.</title>
 	</head>
 	<body>
-		<div class="box">		
+		<div class="box" id="pacientes">		
 		<helper:patientMenu patient="${patient}" selected="Impressos" />
 		
 			<div class="boxcontent">

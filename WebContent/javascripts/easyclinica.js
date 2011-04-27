@@ -29,7 +29,7 @@ var EasyClinica = {
 		}
 	},
 	getPageName: function() {
-		return $('.box').attr('id') || 'dashboard';
+		return $('.box').attr('main-page') || $('.box').attr('id') || 'dashboard';
 	},
 	runPage: function() {
 		var pageName = EasyClinica.getPageName();
@@ -175,14 +175,14 @@ EasyClinica.common.generalFunctions = function(selector){
 	// Time Picker
 	$(selector).find('input.time').timepicker(EasyClinica.cfg.timepicker);
 	
-	// botão voltar
+	// botï¿½o voltar
 	$(selector).find('.btnback').click(function(e){
 		e.preventDefault();
 		var redirect_to = $(this).attr('redirect_to');
 		document.location.href = redirect_to;
 	});
 	
-	// botão cancelar
+	// botï¿½o cancelar
 	$(selector).find('.btncancel').click(function(e) {
 		e.preventDefault();
 		var redirect_to = $(this).attr('redirect_to');
@@ -216,8 +216,8 @@ EasyClinica.common.formValidation = function (selector){
     });
     
     //messages
-    $(selector).find('input.currency').attr('data-message','valor inválido');
-    $(selector).find('input.number').attr('data-message','valor inválido.');
+    $(selector).find('input.currency').attr('data-message','valor invï¿½lido');
+    $(selector).find('input.number').attr('data-message','valor invï¿½lido.');
 };
 
 /* LIB */

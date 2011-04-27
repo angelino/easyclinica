@@ -46,29 +46,40 @@ public class PricingSheetImporter {
 	}
 
 	private void extractSpecialties() {
-		extract(wb.getSheet("Especialidades"), importedSpecialties, 1, 2);
+		extract(wb.getSheet("Especialidades"), importedSpecialties);
 	}
 
 	private void extractMaterials() {
-		extract(wb.getSheet("Materiais"), importedMaterials, 1, 2);
+		extract(wb.getSheet("Materiais"), importedMaterials);
 	}
 	
 	private void extractMedicines() {
-		extract(wb.getSheet("Remédios"), importedMedicines, 1, 2);
+		extract(wb.getSheet("Remédios"), importedMedicines);
 	}
 	
 	private void extractProcedures() {		
-		extract(wb.getSheet("Procedimentos"), importedProcedures, 2, 3);
+		extractWithCh(wb.getSheet("Procedimentos"), importedProcedures);
 	}
 
-	private void extract(Sheet sheet, List<ImportedStuff> list, int namePosition, int pricePosition) {
+	private void extractWithCh(Sheet sheet, List<ImportedStuff> list) {
 		int qty = 0;
 		for (Iterator<Row> rit = sheet.rowIterator(); rit.hasNext(); ) {
 			Row row = rit.next();
 			qty++;
 			if(qty==1) continue;
 						
-			list.add(new ImportedStuff(toInt(row, 0), toString(row, namePosition),  toBigDecimal(row, pricePosition)));
+			list.add(new ImportedStuff(toInt(row, 0), toString(row, 2),  toBigDecimal(row, 3), toInt(row, 4)));
+		}		
+	}
+	
+	private void extract(Sheet sheet, List<ImportedStuff> list) {
+		int qty = 0;
+		for (Iterator<Row> rit = sheet.rowIterator(); rit.hasNext(); ) {
+			Row row = rit.next();
+			qty++;
+			if(qty==1) continue;
+						
+			list.add(new ImportedStuff(toInt(row, 0), toString(row, 1),  toBigDecimal(row, 2)));
 		}		
 	}
 	

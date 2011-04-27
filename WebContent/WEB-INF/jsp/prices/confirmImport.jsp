@@ -30,8 +30,9 @@
 					
 						<ul>
 							<c:forEach var="procedure" items="${import.importedProcedures}" varStatus="st">
-								<li>${procedure.name} - ${procedure.value}
+								<li>${procedure.name} - ${procedure.value} - ${procedure.ch}
 								<input type="hidden" name="procedures[${st.index}].id" value="${procedure.id}" />
+								<input type="hidden" name="procedures[${st.index}].ch" value="${procedure.ch}" />
 								<input type="hidden" name="procedures[${st.index}].value" value="${procedure.value}" />
 							</c:forEach>
 						</ul>

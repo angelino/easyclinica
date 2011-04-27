@@ -48,7 +48,6 @@
                   <c:if test="${loggedUser.employee.position eq 'OWNER'}">
                   <li><a href="<c:url value="/clinica" />">Dados da Clínica</a></li>
                   </c:if>
-                  <li><a href="#">Configurações</a></li>
                   <li><a href="<c:url value="/perfil" />">Meu perfil</a></li>
                   <li><a href="<c:url value="/logoff" />" class="logout" id="lnkLogout">Logout</a></li>
                 </ul>

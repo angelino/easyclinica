@@ -13,7 +13,7 @@
 	</head>
 	<body>
 
-		<div class="box" id="anamneses">
+		<div class="box" id="anamneses" main-page="pacientes">
 			<div class="boxcontent">
 				<helper:message successKey="${successKey}" errorKey="${errorKey}" />
 			
