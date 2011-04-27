@@ -14,6 +14,7 @@ public class HardCodedConfigForTests implements Config{
 		cfgs.put("db_pwd", "3@sycl1n1c@");
 		
 		cfgs.put("elements_per_page", "10");
+		cfgs.put("env", "test");
 		
 	}
 	
