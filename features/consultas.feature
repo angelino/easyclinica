@@ -10,10 +10,10 @@ Cenario: Consulta com 1 procedimento
 	E seleciono o doutor "Dr. Roberto Aniche"
 	E adiciono o procedimento "procedimento 1"
 	E salvo a consulta
-	Entao devo ver "R$ 38,50"
+	Entao devo ver "R$ 338,50"
 	E devo ver "R$ 250,00"
 	E devo ver "R$ 0,00"
-	E devo ver "R$ 288,50"
+	E devo ver "R$ 588,50"
 	E devo ver "procedimento 1"
 	E devo ver "material 1"
 	E devo ver "remedio 1"
@@ -32,9 +32,9 @@ Cenario: Consulta com 1 procedimento com valor de material alterado
 	E altero a quantidade do 1o material do 1o procedimento para "2,0"
 	E altero o preco do 1o material do 1o procedimento para "123,45"
 	E salvo a consulta
-	Entao devo ver "R$ 946,90"
-	E devo ver "R$ 1196,90"
-	E devo ver "R$ 246,90"
+	Entao devo ver "R$ 485,40"
+	E devo ver "R$ 250,00"
+	E devo ver "R$ 735,40"
 	
 Cenario: Consulta com 1 procedimento com valor de medicamento alterado 
 	Dado que estou logado como owner
@@ -46,9 +46,8 @@ Cenario: Consulta com 1 procedimento com valor de medicamento alterado
 	E altero a quantidade do 1o medicamento do 1o procedimento para "3,0"
 	E altero o preco do 1o medicamento do 1o procedimento para "444,55"
 	E salvo a consulta
-	Entao devo ver "R$ 2183,65"
-	E devo ver "R$ 1933,65"
-	E devo ver "R$ 1333,65"
+	Entao devo ver "R$ 1472,15"
+	E devo ver "R$ 1722,15"
 
 Cenario: Varios procedimentos
 	Dado que estou logado como owner
@@ -62,8 +61,8 @@ Cenario: Varios procedimentos
 	E adiciono o procedimento "procedimento 4"
 	E adiciono o procedimento "procedimento 5"
 	E salvo a consulta
-	Entao devo ver "R$ 2800,00"
-	E devo ver "R$ 3050,00"
+	Entao devo ver "R$ 423,90"
+	E devo ver "R$ 673,90"
 	
 Cenario: Remover material do procedimento
 	Dado que estou logado como owner
@@ -74,8 +73,8 @@ Cenario: Remover material do procedimento
 	E adiciono o procedimento "procedimento 1"
 	E excluo o 1o material do 1o procedimento
 	E salvo a consulta
-	Entao devo ver "R$ 700,00"
-	E devo ver "R$ 950,00"
+	Entao devo ver "R$ 238,50"
+	E devo ver "R$ 488,50"
 	
 Cenario: Remover medicamento do procedimento
 	Dado que estou logado como owner
@@ -86,8 +85,8 @@ Cenario: Remover medicamento do procedimento
 	E adiciono o procedimento "procedimento 1"
 	E excluo o 1o medicamento do 1o procedimento
 	E salvo a consulta
-	Entao devo ver "R$ 600,00"
-	E devo ver "R$ 850,00"
+	Entao devo ver "R$ 138,50"
+	E devo ver "R$ 388,50"
 	
 Cenario: Remover procedimento
 	Dado que estou logado como owner
@@ -99,8 +98,8 @@ Cenario: Remover procedimento
 	E adiciono o procedimento "procedimento 2"
 	E excluo o 1o procedimento
 	E salvo a consulta
-	Entao devo ver "R$ 500,00"
-	E devo ver "R$ 750,00"
+	Entao devo ver "R$ 14,00"
+	E devo ver "R$ 264,00"
 	
 Cenario: Outra especialidade
 	Dado que estou logado como owner
@@ -127,3 +126,17 @@ Cenario: Taxa de sala
 	Entao devo ver "R$ 112,45"
 	E devo ver "R$ 362,45"
 
+@test
+Cenario: Procedimentos e taxa de sala
+	Dado que estou logado como owner
+	E que um paciente "Mauricio" padrao esta cadastrado
+	Quando clico no link "Nova consulta"
+	E marco a consulta para o dia "10/10/2010"
+	E seleciono o doutor "Dr. Roberto Aniche"
+	E adiciono o procedimento "procedimento 1"
+	E adiciono o procedimento "procedimento 2"
+	E altero a taxa de sala para "12,34"
+	E salvo a consulta
+	Entao devo ver "R$ 352,50"
+	E devo ver "R$ 614,84"
+	
