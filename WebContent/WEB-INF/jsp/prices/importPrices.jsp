@@ -8,7 +8,7 @@
 		<title>.: EasyClinica :.</title>
 	</head>
 	<body>
-		<div class="box">		
+		<div class="box" main-page="convenios">		
 			<helper:healthCarePlanMenu plan="${healthCarePlan}" selected="Financeiro" />
 			
 			<div class="boxcontent">
@@ -20,7 +20,6 @@
 		</div>
 		
 		<div class="boxright">
-			<helper:planDetails plan="${healthCarePlan}" />
 			<% 
 				java.util.List<Link> links = new LinkedList<Link>();  
 				links.add(new Link("/convenios","Voltar para listagem"));
@@ -28,6 +27,7 @@
 				pageContext.setAttribute("links",links);
 			%>
 			<helper:navigation links="${links}"></helper:navigation>
+			<helper:planDetails plan="${healthCarePlan}" />
 		</div>
 	</body>
 </html>

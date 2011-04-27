@@ -8,7 +8,7 @@
 		<title>.: EasyClinica :.</title>
 	</head>
 	<body>
-		<div class="box">		
+		<div class="box" main-page="convenios">		
 			<helper:healthCarePlanMenu plan="${healthCarePlan}" selected="Financeiro" />
 			<div class="boxcontent">
 				<h2>Financeiro</h2>

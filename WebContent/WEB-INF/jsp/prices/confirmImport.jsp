@@ -8,7 +8,7 @@
 		<title>.: EasyClinica :.</title>
 	</head>
 	<body>
-		<div class="box" id="prices">
+		<div class="box" id="prices" main-page="convenios">
 			<helper:healthCarePlanMenu plan="${healthCarePlan}" selected="Financeiro" />
 					
 			<div class="boxcontent">
@@ -28,42 +28,76 @@
 					</ul>
 					<div id="procedimentos">
 					
-						<ul>
-							<c:forEach var="procedure" items="${import.importedProcedures}" varStatus="st">
-								<li>${procedure.name} - ${procedure.value} - ${procedure.ch}
-								<input type="hidden" name="procedures[${st.index}].id" value="${procedure.id}" />
-								<input type="hidden" name="procedures[${st.index}].ch" value="${procedure.ch}" />
-								<input type="hidden" name="procedures[${st.index}].value" value="${procedure.value}" />
-							</c:forEach>
-						</ul>
+						<c:choose>
+							<c:when test="${empty import.importedProcedures}">
+								Não há procedimentos a serem importados!
+							</c:when>
+							<c:otherwise>
+								<ul>
+									<c:forEach var="procedure" items="${import.importedProcedures}" varStatus="st">
+										<li>${procedure.name} - ${procedure.value} - ${procedure.ch}
+										<input type="hidden" name="procedures[${st.index}].id" value="${procedure.id}" />
+										<input type="hidden" name="procedures[${st.index}].ch" value="${procedure.ch}" />
+										<input type="hidden" name="procedures[${st.index}].value" value="${procedure.value}" />
+									</c:forEach>
+								</ul>
+							</c:otherwise>
+						</c:choose>
 						
 					</div>
 					<div id="materiais">
-						<ul>
-						<c:forEach var="material" items="${import.importedMaterials}" varStatus="st">
-							<li>${material.name} - ${material.value}</li>
-							<input type="hidden" name="materials[${st.index}].id" value="${material.id}" />
-							<input type="hidden" name="materials[${st.index}].value" value="${material.value}" />
-						</c:forEach>
-						</ul>
+					
+						<c:choose>
+							<c:when test="${empty import.importedMaterials}">
+								Não há procedimentos a serem importados!
+							</c:when>
+							<c:otherwise>
+									
+								<ul>
+								<c:forEach var="material" items="${import.importedMaterials}" varStatus="st">
+									<li>${material.name} - ${material.value}</li>
+									<input type="hidden" name="materials[${st.index}].id" value="${material.id}" />
+									<input type="hidden" name="materials[${st.index}].value" value="${material.value}" />
+								</c:forEach>
+								</ul>
+							</c:otherwise>
+						</c:choose>
 					</div>
 					<div id="remedios">
-						<ul>
-						<c:forEach var="medicine" items="${import.importedMedicines}" varStatus="st">
-							<li>${medicine.name} - ${medicine.value}</li>
-							<input type="hidden" name="medicines[${st.index}].id" value="${medicine.id}" />
-							<input type="hidden" name="medicines[${st.index}].value" value="${medicine.value}" />
-						</c:forEach>
-						</ul>
+					
+						<c:choose>
+							<c:when test="${empty import.importedMedicines}">
+								Não há procedimentos a serem importados!
+							</c:when>
+							<c:otherwise>
+							
+								<ul>
+								<c:forEach var="medicine" items="${import.importedMedicines}" varStatus="st">
+									<li>${medicine.name} - ${medicine.value}</li>
+									<input type="hidden" name="medicines[${st.index}].id" value="${medicine.id}" />
+									<input type="hidden" name="medicines[${st.index}].value" value="${medicine.value}" />
+								</c:forEach>
+								</ul>
+							</c:otherwise>
+						</c:choose>
 					</div>
 					<div id="especialidades">
-						<ul>
-						<c:forEach var="specialty" items="${import.importedSpecialties}" varStatus="st">
-							<li>${specialty.name} - ${specialty.value}</li>
-							<input type="hidden" name="specialties[${st.index}].id" value="${specialty.id}" />
-							<input type="hidden" name="specialties[${st.index}].value" value="${specialty.value}" />
-						</c:forEach>
-						</ul>
+					
+						<c:choose>
+							<c:when test="${empty import.importedSpecialties}">
+								Não há procedimentos a serem importados!
+							</c:when>
+							<c:otherwise>
+							
+								<ul>
+								<c:forEach var="specialty" items="${import.importedSpecialties}" varStatus="st">
+									<li>${specialty.name} - ${specialty.value}</li>
+									<input type="hidden" name="specialties[${st.index}].id" value="${specialty.id}" />
+									<input type="hidden" name="specialties[${st.index}].value" value="${specialty.value}" />
+								</c:forEach>
+								</ul>
+							</c:otherwise>
+						</c:choose>
 					</div>
 				</div>
 						

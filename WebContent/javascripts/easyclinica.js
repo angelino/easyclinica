@@ -10,7 +10,7 @@ var EasyClinica = {
 	common: {}, pages: {}, page: {}, cfg: {}, lib: {}, registry: {},
 	
 	getMenuOption: function() {
-		var opcao = $('#menu-link-' + EasyClinica.getPageName());
+		var opcao = $('#menu-link-' + EasyClinica.getSelectedHeader());
 		if($(opcao).length) return $(opcao);
 		
 		return null;
@@ -28,8 +28,11 @@ var EasyClinica = {
 			EasyClinica.common[c]();
 		}
 	},
+	getSelectedHeader: function() {
+		return $('.box').attr('main-page') || $('.box').attr('id') || 'dashboard'; 
+	},
 	getPageName: function() {
-		return $('.box').attr('main-page') || $('.box').attr('id') || 'dashboard';
+		return $('.box').attr('id') || 'dashboard';
 	},
 	runPage: function() {
 		var pageName = EasyClinica.getPageName();

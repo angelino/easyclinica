@@ -51,8 +51,8 @@
 									<td>${healthCare.telephone}</td>
 									<td class="currency">${healthCare.ch}</td>
 									<td class="buttons">
-										<a class="btnpeopleedit" title="Editar" href="<c:url value="/convenios/${healthCare.id}/editar" />">&nbsp;</a>
                                         <a class="btnpeopleshow" title="Exibir" href="<c:url value="/convenios/${healthCare.id}"/>">&nbsp;</a>
+										<a class="btnpeopleedit" title="Editar" href="<c:url value="/convenios/${healthCare.id}/editar" />">&nbsp;</a>
                                         
                                         <c:if test="${healthCare.id != loggedUser.clinic.privatePlan.id}">
 	                                        

@@ -4,6 +4,7 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.text.Normalizer;
+import java.util.Collections;
 import java.util.List;
 
 import br.com.caelum.vraptor.Get;
@@ -69,6 +70,12 @@ public class PricesController {
 			List<ImportedStuff> materials) {
 		
 		HealthCarePlan plan = plans.getById(id);
+		
+		if(procedures==null) procedures = Collections.emptyList();
+		if(specialties==null) specialties = Collections.emptyList();
+		if(medicines==null) medicines = Collections.emptyList();
+		if(materials==null) materials = Collections.emptyList();
+		
 		updater.pricesForAHealthCarePlan(plan, procedures, specialties, medicines, materials);
 		
 		result.include("healthCarePlan", plan);

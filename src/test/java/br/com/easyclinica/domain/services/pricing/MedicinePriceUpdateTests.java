@@ -13,7 +13,7 @@ import br.com.easyclinica.domain.entities.Medicine;
 import br.com.easyclinica.domain.entities.pricing.ImportedStuff;
 import br.com.easyclinica.tests.helpers.HealthCarePlanBuilder;
 
-public class MedicinePriceUpdateTests{
+public class MedicinePriceUpdateTests {
 
 	private MedicinePriceUpdate update;
 
@@ -21,15 +21,20 @@ public class MedicinePriceUpdateTests{
 	public void setUp() {
 		update = new MedicinePriceUpdate();
 	}
-	
+
 	@Test
 	public void shouldUpdateMedicineValueIfItAlreadyExists() {
-		
-		HealthCarePlan plan = new HealthCarePlanBuilder().withPrecifiedMedicine(new Medicine(1), new BigDecimal("100.0")).instance();
-		
-		ImportedStuff medicine = new ImportedStuff(1, "medicine", new BigDecimal("150.0"));
+
+		HealthCarePlan plan = new HealthCarePlanBuilder()
+				.withPrecifiedMedicine(new Medicine(1), new BigDecimal("100.0"))
+				.instance();
+
+		ImportedStuff medicine = new ImportedStuff(1, "medicine",
+				new BigDecimal("150.0"));
 		update.pricesForAHealthCarePlan(plan, Arrays.asList(medicine));
-		
-		assertEquals(new BigDecimal("150.0").doubleValue(), plan.getPrecifiedMedicines().get(0).getAmount().doubleValue(), 0.00001);
+
+		assertEquals(new BigDecimal("150.0").doubleValue(), plan
+				.getPrecifiedMedicines().get(0).getAmount().doubleValue(),
+				0.00001);
 	}
-	}
+}
