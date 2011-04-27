@@ -13,7 +13,6 @@ public class ProcedureBuilder {
 	public ProcedureBuilder(int id) {
 		instance = new Procedure(id);
 		instance.setAmbCode("AMB");
-		instance.setCh(10);
 		instance.setName("Procedure");
 		instance.setTussCode("TUSS");
 	}

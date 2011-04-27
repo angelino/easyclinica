@@ -22,7 +22,6 @@ public class Procedure {
 	@Id @GeneratedValue
 	private int id;
 	private String name;
-	private int ch;
 	@Index(name="idx_procedure_ambcode") 
 	private String ambCode;
 	@Index(name="idx_procedure_lpmcode")
@@ -57,12 +56,6 @@ public class Procedure {
 	}
 	public void setName(String name) {
 		this.name = name;
-	}
-	public int getCh() {
-		return ch;
-	}
-	public void setCh(int ch) {
-		this.ch = ch;
 	}
 	public String getAmbCode() {
 		return ambCode;

@@ -152,7 +152,7 @@ EasyClinica.pages['consultas'] = function(){
 		$('.procedure-id').each(function(index){
 			var procedure_id = $(this).val();
 			
-			var procedure_total = $('.procedure-total-' + procedure_id).html().convertToFloat();
+			var procedure_total = $('#procedure-total-' + procedure_id).val().convertToFloat();
 			
 			$('.material-' + procedure_id + ', .medicine-' + procedure_id).each(function(material_index){
 				var qty = $(this).find('.qty').val();

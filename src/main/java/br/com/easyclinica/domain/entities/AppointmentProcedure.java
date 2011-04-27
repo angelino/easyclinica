@@ -24,7 +24,7 @@ public class AppointmentProcedure {
 	@ManyToOne(fetch=FetchType.EAGER) 
 	private Procedure procedure;
 	private BigDecimal amount;
-	private boolean isFixedAmount;
+	private int ch;
 	
 	@OneToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL, mappedBy="procedure")
 	private List<AppointmentMaterial> materials;
@@ -59,7 +59,7 @@ public class AppointmentProcedure {
 		this.amount = amount;
 	}
 	public boolean isFixedAmount() {
-		return isFixedAmount;
+		return ch==0;
 	}
 	
 	public List<AppointmentMaterial> getMaterials() {
@@ -71,9 +71,6 @@ public class AppointmentProcedure {
 	
 	public int getId() {
 		return id;
-	}
-	public void setFixedAmount(boolean isFixedAmount) {
-		this.isFixedAmount = isFixedAmount;
 	}
 	protected void setMaterials(List<AppointmentMaterial> materials) {
 		this.materials = materials;
@@ -115,6 +112,13 @@ public class AppointmentProcedure {
 	public List<AppointmentAssistant> getAssistants() {
 		return assistants;
 	}
+	public int getCh() {
+		return ch;
+	}
+	public void setCh(int ch) {
+		this.ch = ch;
+	}
+
 	
 	
 }

@@ -14,7 +14,7 @@ public class ExportTables {
 
 	@Test @Ignore
 	public void createNewSchema() {
-		Configuration cfg = new DatabaseConfigurator(new HardCodedConfigForTests()).config("easyclinica");
+		Configuration cfg = new DatabaseConfigurator(new HardCodedConfigForTests()).config("easyclinicatest");
 		
 		SchemaExport se = new SchemaExport(cfg);
 		se.create(true, true);

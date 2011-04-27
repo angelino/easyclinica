@@ -127,24 +127,30 @@
      	${procedure.name}
      	<input type="hidden" class="procedure-id" name="appointment.procedures[#index#].procedure.id" value="${procedure.id}"/>
      </td>
-     <td colspan="2" class="center">
-     	${procedure.ch} CH
-     	<input type="hidden" id="procedure-ch-${procedure.id}" value="${procedure.ch}" />
-     </td>
-     <td>
+     
      	<c:choose>
-			<c:when test="${precifiedProcedure != null && precifiedProcedure.fixedAmount > 0}">
-				<input type="hidden" name="appointment.procedures[#index#].amount" value="${precifiedProcedure.fixedAmount}"/>
-				<input type="hidden" name="appointment.procedures[#index#].fixedAmount" value="1"/>
-				<span class="procedure-total-${procedure.id} currency">${precifiedProcedure.fixedAmount}</span> 
+			<c:when test="${precifiedProcedure.fixedAmount > 0}">
+				<td colspan="2" class="center">
+     				-
+     				<input type="hidden" id="procedure-ch-${procedure.id}" value="0" />
+     			</td>
+     
+			<td>		
+				<input type="text" class="amount currency" id="procedure-total-${procedure.id}" name="appointment.procedures[#index#].amount" value="${precifiedProcedure.fixedAmount}"/>
+				<input type="hidden" name="appointment.procedures[#index#].ch" value="0"/>
+			</td> 
 			</c:when>
 			<c:otherwise>
-				<input type="hidden" name="appointment.procedures[#index#].fixedAmount" value="0"/>
-				<input type="hidden" name="appointment.procedures[#index#].amount" value="${procedure.ch * healthCarePlan.ch}"/>
-				<span class="procedure-total-${procedure.id} currency">${procedure.ch * healthCarePlan.ch}</span>
+				<td colspan="2" class="center">
+     				${precifiedProcedure.ch} CHs
+     				<input type="hidden" id="procedure-ch-${procedure.id}" value="${precifiedProcedure.ch}" />
+     			</td>
+				<td>
+					<input type="hidden" name="appointment.procedures[#index#].ch" value="${precifiedProcedure.ch}"/>
+					<input type="text" class="amount currency" id="procedure-total-${procedure.id}" name="appointment.procedures[#index#].amount" value="${precifiedProcedure.ch * healthCarePlan.ch}" />
+				</td>
 			</c:otherwise>
 		</c:choose>
-     </td>
      <td><a href="#" class="btndelete last remove-procedure" procedure_id="${procedure.id}" id="lnkDeleteProcedure#index#">Excluir</a></td>
 </tr>	
 		

@@ -82,17 +82,17 @@
 							</td>
 							
 						    <td>${procedure.procedure.name}</td>
-						    <td colspan="2" class="center">${procedure.procedure.ch} CH</td>
-						    <td class="currency">
+						    <td colspan="2" class="center">
 						    	<c:choose>
-						    		<c:when test="${procedure.fixedAmount}">
-						    			${procedure.amount}
-						    		</c:when>
-						    		<c:otherwise>
-						    			${procedure.procedure.ch * appointment.healthCarePlan.ch}
-						    		</c:otherwise>
-						    	</c:choose>						    	
+						    	<c:when test="${procedure.fixedAmount}">
+						    		-
+						    	</c:when>
+						    	<c:otherwise>
+						    		${procedure.ch} CH
+						    	</c:otherwise>
+						    	</c:choose>
 						    </td>
+						    <td class="currency">${procedure.amount}</td>
 						    <td>&nbsp;</td>
 						</tr>
 						
