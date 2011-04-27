@@ -11,30 +11,30 @@
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="83" splitType="Stretch">
+		<band height="71" splitType="Stretch">
 			<textField>
-				<reportElement x="0" y="0" width="555" height="20"/>
+				<reportElement x="0" y="0" width="555" height="16"/>
 				<textElement textAlignment="Center">
 					<font size="10" isBold="true"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$P{clinic}.name]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="0" y="20" width="555" height="20"/>
+				<reportElement x="0" y="16" width="555" height="16"/>
 				<textElement textAlignment="Center">
 					<font size="10"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$P{clinic}.address.street + " - " + $P{clinic}.address.neighborhood]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="0" y="40" width="555" height="20"/>
+				<reportElement x="0" y="32" width="555" height="16"/>
 				<textElement textAlignment="Center">
 					<font size="10"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$P{clinic}.address.postalCode + " - " + $P{clinic}.address.city + "/" + $P{clinic}.address.state]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="0" y="60" width="555" height="20"/>
+				<reportElement x="0" y="48" width="555" height="16"/>
 				<textElement textAlignment="Center">
 					<font size="10"/>
 				</textElement>
@@ -100,7 +100,7 @@
 				<textElement>
 					<font size="12"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[new SimpleDateFormat("'São Paulo,' dd 'de' MMMM 'de' yyyy").format(Calendar.getInstance().getTime())]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{clinic}.address.city + ", " + new SimpleDateFormat("dd 'de' MMMM 'de' yyyy", new Locale("pt", "br")).format(Calendar.getInstance().getTime())]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="0" y="486" width="266" height="20"/>

@@ -35,6 +35,11 @@ VALUES
 INSERT INTO `materialinprocedure` (`id`,`qty`,`material_id`,`procedure_id`)
 VALUES
 	(1, 1.00, 1, 1);
+	
+INSERT INTO `medicineinprocedure` (`id`,`qty`,`medicine_id`,`procedure_id`)
+VALUES
+	(1, 1.00, 1, 1);
+
 
 -- medicamentos
 INSERT INTO `medicine` (`id`,`name`,`code`)
@@ -81,38 +86,38 @@ VALUES
 
 -- convenios
 -- Amil
-INSERT INTO `healthcareplan` (`active`,`city`,`neighborhood`,`postalCode`,`state`,`street`,`ch`,`contact`,`email`,`name`,`observations`,`payForRoomRate`,`periodToReturn`,`roomRateDefaultAmount`,`telephone`,`website`)
+INSERT INTO `healthcareplan` (id, `active`,`city`,`neighborhood`,`postalCode`,`state`,`street`,`ch`,`contact`,`email`,`name`,`observations`,`payForRoomRate`,`periodToReturn`,`roomRateDefaultAmount`,`telephone`,`website`)
 VALUES
-	(1, 'SP', 'SP', '12121-123', 'SP', 'SP', 0.70, 'John Doe', 'mauricioaniche@gmail.com', 'Amil', NULL, 0, 0, NULL, NULL, NULL);
+	(2, 1, 'SP', 'SP', '12121-123', 'SP', 'SP', 0.70, 'John Doe', 'mauricioaniche@gmail.com', 'Amil', NULL, 0, 30, NULL, NULL, NULL);
 
 -- precos
 INSERT INTO `precifiedmaterial` (`amount`,`healthCarePlan_id`,`material_id`)
 VALUES
-	(120.00, 1, 1),
-	(6.00, 1, 5),
-	(17.40, 1, 3),
-	(41.06, 1, 4),
-	(13.14, 1, 2);
+	(120.00, 2, 1),
+	(6.00, 2, 5),
+	(17.40, 2, 3),
+	(41.06, 2, 4),
+	(13.14, 2, 2);
 
 INSERT INTO `precifiedmedicine` (`amount`,`healthCarePlan_id`,`medicine_id`)
 VALUES
-	(220.00, 1, 1),
-	(53.00, 1, 3),
-	(41.70, 1, 2),
-	(15.00, 1, 4);
+	(220.00, 2, 1),
+	(53.00, 2, 3),
+	(41.70, 2, 2),
+	(15.00, 2, 4);
 
 INSERT INTO `precifiedprocedure` (`fixedAmount`,`healthCarePlan_id`,`procedure_id`,`ch`)
 VALUES
-	(0.00, 1, 1, 55),
-	(0.00, 1, 4, 12),
-	(0.00, 1, 2, 20),
-	(0.00, 1, 5, 30),
-	(120.00, 1, 3, 0);
+	(0.00, 2, 1, 55),
+	(0.00, 2, 4, 12),
+	(0.00, 2, 2, 20),
+	(0.00, 2, 5, 30),
+	(120.00, 2, 3, 0);
 
 INSERT INTO `precifiedspecialty` (`amount`,`healthCarePlan_id`,`specialty_id`)
 VALUES
-	(120.00, 1, 2),
-	(200.00, 1, 1);
+	(120.00, 2, 2),
+	(200.00, 2, 1);
 	
 -- clinica
 INSERT INTO `clinic` (`id`,`active`,`city`,`neighborhood`,`postalCode`,`state`,`street`,`billingEmail`,`cnpj`,`contactEmail`,`domain`,`fax`,`name`,`telephone`,`telephone2`,`website`,`privatePlan_id`)

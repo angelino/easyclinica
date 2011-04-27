@@ -177,6 +177,7 @@
 		<div class="boxright">	
 			<% 
 				java.util.List<Link> links = new LinkedList<Link>();  
+				links.add(new Link("/pacientes/" + ((Appointment)request.getAttribute("appointment")).getPatient().getId()+"/consultas/novo","Nova consulta"));
 				links.add(new Link("/pacientes/" + ((Appointment)request.getAttribute("appointment")).getPatient().getId()+"/consultas","Voltar para listagem"));
 				pageContext.setAttribute("links",links);
 			%>

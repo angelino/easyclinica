@@ -11,7 +11,7 @@
 				<h2>Dashboard</h2>
 				
 				<div class="newPost">
-					O que você está fazendo agora?
+					Compartilhe informações com toda a clínica!
 					<textarea id="messageText" class="comment"></textarea>
 					<input type="button" value="Postar" class="message-button" />
 				</div>

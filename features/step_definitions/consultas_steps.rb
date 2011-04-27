@@ -55,5 +55,5 @@ end
 
 Quando /^seleciono a especialidade "([^"]*)"$/ do |especialidade|
   select especialidade,:from=>'appointment.specialty.id'
-  sleep 1
+  sleep 2
 end
