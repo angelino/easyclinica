@@ -56,6 +56,22 @@ public class DoctorDaoTests extends DaoBase {
 		assertNotNull(secondRetrievedDoctor);
 		assertEquals("new Doctor", secondRetrievedDoctor.getName().toString());
 	}
+
+	@Test
+	public void shouldGetAllActivatedDoctors() {
+		Doctor doctorOne = aDoctor();
+		Doctor doctorTwo = aDoctor();
+		doctorOne.activate();
+		doctorTwo.deactivate();
+		
+		session.save(doctorOne);
+		session.save(doctorTwo);
+		
+		List<Doctor> list = dao.getActivated();
+		
+		assertEquals(1, list.size());
+		assertEquals(doctorOne.getId(), list.get(0).getId());
+	}
 	
 	@Test
 	public void shouldGetById() {

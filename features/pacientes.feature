@@ -48,16 +48,50 @@ Exemplos:
 
 |nome           | telefone       | celular        | comercial      | nascimento  | rg            | cpf            | profissao                 | civil    |email                     | convenio   | carteirinha | cep       | endereco                               | bairro  | cidade    | estado | observacoes   |
 |Mauricio Aniche| (11) 3729-0433 | (11) 8717-7145 | (11) 1234-5678 | 23/01/1986  | 43.942.694-7  | 330.591.998-17 | Desenvolvedor de Software | Solteiro | mauricioaniche@gmail.com | Particular |             | 01538-001 | Av. Lins de Vasconcelos, 1480 - Casa 3 | Cambuci | São Paulo | SP     | criador do sw |
-|Marcelo Aniche | (11) 3729-0433 |                |                | 12/01/1989  |               | 330.591.998-17 | Estudante de Medicina     | Casado   | marceloaniche@gmail.com  | Particular |             | 01538-001 | Av. Lins de Vasconcelos, 1480 - Casa 3 | Cambuci | São Paulo | SP     | meu irmao     |
+|Marcelo Aniche | (11) 3729-0433 |                |                | 12/01/1989  |               | 330.591.998-17 | Estudante de Medicina     | Casado   | marceloaniche@gmail.com  | Amil       |             | 01538-001 | Av. Lins de Vasconcelos, 1480 - Casa 3 | Cambuci | São Paulo | SP     | meu irmao     |
 
 Cenario: Editar Paciente
 	Dado que estou logado como owner
 	E que um paciente "Mauricio" padrao esta cadastrado
 	Quando clico no link "Edição"
 	E preencho "Mauricio 2" em "patient.name"
-	E pressiono "btnSalvar"
+    E preencho "(11) 8877-7777" em "patient.telephone"
+    E preencho "(11) 6666-6666" em "patient.cellphone"
+    E preencho "(11) 5555-5555" em "patient.commercialPhone"
+    E preencho "11/01/1970" em "patient.birthDate"
+    E preencho "123.4" em "patient.rg"
+    E preencho "231.444.052-80" em "patient.cpf"
+    E preencho "nova prof" em "patient.profession"
+    E seleciono "Casado" em "patient.maritalStatus"
+    E preencho "novoEmail" em "patient.email"
+    E seleciono "Amil" em "patient.healthCarePlan.id"
+    E preencho "123-44" em "patient.healthCarePlanCode"
+    E preencho "11223-445" em "patient.address.postalCode"
+    E preencho "novo end" em "patient.address.street"
+    E preencho "novo bairro" em "patient.address.neighborhood"
+    E preencho "nova cidade" em "patient.address.city"
+    E preencho "RJ" em "patient.address.state"
+    E preencho "nova obs" em "patient.observations"
+	E pressiono "Salvar"
 	Entao devo ver "Paciente atualizado com sucesso!"
 	E devo ver "Mauricio 2"
+	E devo ver "(11) 8877-7777"
+	E devo ver "(11) 6666-6666"
+	E devo ver "(11) 5555-5555"
+	E devo ver "11/01/1970"
+	E devo ver "123.4"
+	E devo ver "231.444.052-80"
+	E devo ver "nova prof"
+	E devo ver "Casado"
+	E devo ver "novoEmail"
+	E devo ver "Amil"
+	E devo ver "123-44"
+	E devo ver "11223-445"
+	E devo ver "novo end"
+	E devo ver "novo bairro"
+	E devo ver "nova cidade"
+	E devo ver "RJ"
+	E devo ver "nova obs"
 	
 Cenario: Deve validar campos obrigatorios
 	Dado que estou logado como owner

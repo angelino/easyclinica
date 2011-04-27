@@ -16,6 +16,8 @@ public class HardCodedConfigForTests implements Config{
 		cfgs.put("elements_per_page", "10");
 		cfgs.put("env", "test");
 		
+		cfgs.put("dialect", "org.hibernate.dialect.MySQLInnoDBDialect");
+		
 	}
 	
 	public String get(String key) {

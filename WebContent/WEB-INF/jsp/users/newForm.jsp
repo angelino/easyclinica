@@ -5,13 +5,13 @@
 <%@page import="java.util.LinkedList"%>
 <html>
 	<head>
-		<title>.: EasyClinica - Novo Convênio :.</title>
+		<title>.: EasyClinica - Novo Usuário :.</title>
 	</head>
 	<body>
 
 		<div class="box" id="usuarios">
 			<div class="boxcontent">
-			   	<h2>Novo Convênio</h2>
+			   	<h2>Novo Usuário</h2>
 								
 				<c:url value="/usuarios" var="formAction" />
 				<jsp:include page="_form.jsp">	

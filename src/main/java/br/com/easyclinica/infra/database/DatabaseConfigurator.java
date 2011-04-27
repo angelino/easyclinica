@@ -45,7 +45,7 @@ public class DatabaseConfigurator {
 		Configuration configuration = new Configuration();
 		configuration.setProperty("hibernate.connection.driver_class", cfg.get("driver_class"));
 		configuration.setProperty("hibernate.connection.url", cfg.get("connection_string").replace("#database#", nameOf(database)));
-		configuration.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLInnoDBDialect");
+		configuration.setProperty("hibernate.dialect", cfg.get("dialect"));
 		configuration.setProperty("hibernate.connection.username", nameOf(database));
 		configuration.setProperty("hibernate.connection.password", cfg.get("db_pwd"));
 		configuration.setProperty("hibernate.show_sql", "true");
@@ -59,11 +59,16 @@ public class DatabaseConfigurator {
 			configuration.setProperty("hibernate.c3p0.max_statements", "0");
 			configuration.setProperty("hibernate.c3p0.min_size", "10");
 			configuration.setProperty("hibernate.c3p0.timeout", "100");
+			
 		}
-		
+
 		configuration.setProperty("hibernate.cache.provider_class", "org.hibernate.cache.EhCacheProvider");
 		configuration.setProperty("hibernate.cache.use_second_level_cache", "true");
 		configuration.setProperty("hibernate.cache.use_query_cache", "true");
+		
+		if(cfg.get("env").equals("dev")){
+			configuration.setProperty("hibernate.hbm2ddl.auto", "update");
+		}
 		
 		configuration.addAnnotatedClass(Appointment.class);
 		configuration.addAnnotatedClass(AppointmentMaterial.class);

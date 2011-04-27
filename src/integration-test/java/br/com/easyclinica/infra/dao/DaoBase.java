@@ -19,7 +19,7 @@ public abstract class DaoBase {
 		session = new DatabaseConfigurator(new HardCodedConfigForTests()).config("easyclinicatest").buildSessionFactory().openSession();
 		session.getTransaction().begin();
 		
-		clinic = new ClinicBuilder().withName("EasyClinica").withDomain("easyclinica").instance();
+		clinic = new ClinicBuilder().withName("EasyClinica").withDomain("easyclinicatest").instance();
 		session.save(clinic);
 	}
 	

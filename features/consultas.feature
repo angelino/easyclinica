@@ -10,10 +10,10 @@ Cenario: Consulta com 1 procedimento
 	E seleciono o doutor "Dr. Roberto Aniche"
 	E adiciono o procedimento "procedimento 1"
 	E salvo a consulta
-	Entao devo ver "R$ 800,00"
+	Entao devo ver "R$ 38,50"
 	E devo ver "R$ 250,00"
 	E devo ver "R$ 0,00"
-	E devo ver "R$ 1050,00"
+	E devo ver "R$ 288,50"
 	E devo ver "procedimento 1"
 	E devo ver "material 1"
 	E devo ver "remedio 1"

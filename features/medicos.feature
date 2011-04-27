@@ -31,9 +31,19 @@ Cenario: Editar Medico
 	E que um medico "Dr. Seboso" padrao esta cadastrado
 	Quando clico no link "Alterar este médico"
 	E preencho "Dr. Seboso 2" em "doctor.name"
+	E preencho "11.22" em "doctor.crm"
+	E preencho "(11) 8888-7777" em "doctor.telephone"
+	E preencho "novo@email.com" em "doctor.email"
+	E preencho "nova obs" em "doctor.observations"
+	E seleciono "Pediatria" em "doctor.specialty.id"
 	E pressiono "Salvar"
 	Entao devo ver "Médico alterado com sucesso!"
 	E devo ver "Dr. Seboso 2"
+	E devo ver "11.22"
+	E devo ver "(11) 8888-7777"
+	E devo ver "novo@email.com"
+	E devo ver "nova obs"
+	E devo ver "Pediatria"
 	
 Cenario: Deve validar campos obrigatorios
 	Dado que estou logado como owner
