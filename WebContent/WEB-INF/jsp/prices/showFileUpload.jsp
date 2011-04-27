@@ -15,19 +15,27 @@
 			<div class="boxcontent">
 				<h2>Importar Preços</h2>
 
-					<p class="messengernotice">
-						Faça o upload do arquivo com os nossos preços para esse convênio. Lembre-se que o arquivo deverá ter
-						o <b>mesmo formato</b> do arquivo exportado; você deve alterar apenas os valores. 
-						<br/>
-						Qualquer alteração no formato do arquivo poderá causar erros na importação.
-					</p>
+				<p class="messengernotice">
+					Faça o upload do arquivo com os nossos preços para esse convênio. Lembre-se que o arquivo deverá ter
+					o <b>mesmo formato</b> do arquivo exportado; você deve alterar apenas os valores. 
+					<br/>
+					Qualquer alteração no formato do arquivo poderá causar erros na importação.
+				</p>
 
-					<form action="<c:url value="/convenios/${id}/precos/confirmar" />" method="post" enctype="multipart/form-data">
-						<input type="hidden" name="id" value="${id}" />
-						Selecione o arquivo: <input type="file" name="file" />
-						
-						<input type="submit" value="Ler o arquivo"/>
-					</form>				
+				<form action="<c:url value="/convenios/${id}/precos/confirmar" />" method="post" enctype="multipart/form-data">
+					<input type="hidden" name="id" value="${id}" />
+					
+					<fieldset>
+      					<div>
+      						<label class="title">Selecione o arquivo:<span>*</span></label>
+      						<input type="file" name="file" required="required" data-message="campo obrigatório"/>
+						</div>
+					</fieldset>
+					
+					<div class="boxactions">
+						<input type="submit" class="btnsave" value="Ler o arquivo"/>
+					</div>
+				</form>				
 								
 			</div>
 		</div>

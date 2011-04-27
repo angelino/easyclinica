@@ -50,6 +50,9 @@ body{font:12px/1.5em "Lucida Grande","Helvetica Neue",Arial,sans-serif;backgroun
 a.btn{color: #364B69;padding: 5px 5px;text-decoration: none;}
 a.btn:hover{background-color:#445566; color: #FFFFFF;}
 
+ul.botoes{float:left;margin:5px 0;}
+ul.botoes li{padding:5px 0;}
+
 /*START LOGIN ######################################################################################################################*/
 .main .boxlogin{float:left;width:300px;background:#ffffff;position:absolute;top:30%;left:50%;margin:-160px 0 0 -150px;}
 .main .boxlogin h1{float:left;width:290px;font-size:28px;margin:0;padding:20px 0 20px 10px;color:#444444;background:#EBEBEB;}
@@ -508,3 +511,8 @@ div.error {
 /* PRINTINGS ########################################################### */
 ul.printings{float:left;margin:5px 0;}
 ul.printings li{padding:5px 0;}
+
+/* EASYABAS ############################################################ */
+#easyabas{float:left;}
+.easyabas-content{float:left;width:90%;border:solid 1px #000;padding:10px;}
+.easyabas-content table tr th {text-align:left;}

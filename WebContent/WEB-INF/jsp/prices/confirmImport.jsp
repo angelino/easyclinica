@@ -16,68 +16,95 @@
 				
 				<p class="messengernotice">Por favor, confirme os valores que serão importados. Essa operação não poderá ser revertida!</p>
 				
-			<form action="<c:url value="/convenios/${id}/precos" />" method="post">
-				<input type="submit" value="Finalizar importação "/>
-				
-				<div id="tabs">
-					<ul>
+				<form action="<c:url value="/convenios/${id}/precos" />" method="post">
+						
+					<ul class="boxmenu" id="easyabas">
 						<li><a href="#procedimentos">Procedimentos</a></li>
 						<li><a href="#materiais">Materiais</a></li>
 						<li><a href="#remedios">Remédios</a></li>
 						<li><a href="#especialidades">Especialidades</a></li>
 					</ul>
-					<div id="procedimentos">
-					
+					<div id="procedimentos">						
 						<c:choose>
 							<c:when test="${empty import.importedProcedures}">
-								Não há procedimentos a serem importados!
+								<p class="messengernotice">Não há procedimentos a serem importados!</p>
 							</c:when>
 							<c:otherwise>
-								<ul>
+								<table border="0" class="easy">
+									<tr class="tableheader">
+										<th>Procedimento:</th>
+										<th>Valor:</th>
+										<th>CHs:</th>
+									</tr>
 									<c:forEach var="procedure" items="${import.importedProcedures}" varStatus="st">
-										<li>${procedure.name} - ${procedure.value} - ${procedure.ch}
-										<input type="hidden" name="procedures[${st.index}].id" value="${procedure.id}" />
-										<input type="hidden" name="procedures[${st.index}].ch" value="${procedure.ch}" />
-										<input type="hidden" name="procedures[${st.index}].value" value="${procedure.value}" />
+										<tr>
+											<td>
+												${procedure.name}
+												<input type="hidden" name="procedures[${st.index}].id" value="${procedure.id}" />
+												<input type="hidden" name="procedures[${st.index}].ch" value="${procedure.ch}" />
+												<input type="hidden" name="procedures[${st.index}].value" value="${procedure.value}" />
+											</td>
+											<td class="currency">${procedure.value}</td>
+											<td>${procedure.ch}</td>
+										</tr>
 									</c:forEach>
-								</ul>
+								</table>
 							</c:otherwise>
-						</c:choose>
-						
+						</c:choose>							
 					</div>
-					<div id="materiais">
 					
+					<div id="materiais">						
 						<c:choose>
 							<c:when test="${empty import.importedMaterials}">
-								Não há procedimentos a serem importados!
+								<p class="messengernotice">Não há materiais a serem importados!</p>
 							</c:when>
 							<c:otherwise>
-									
-								<ul>
-								<c:forEach var="material" items="${import.importedMaterials}" varStatus="st">
-									<li>${material.name} - ${material.value}</li>
-									<input type="hidden" name="materials[${st.index}].id" value="${material.id}" />
-									<input type="hidden" name="materials[${st.index}].value" value="${material.value}" />
-								</c:forEach>
-								</ul>
+								<table border="0" class="easy">
+									<tr class="tableheader">
+										<th>Material:</th>
+										<th>Valor:</th>
+									</tr>
+									<c:forEach var="material" items="${import.importedMaterials}" varStatus="st">
+										<tr>
+											<td>
+												${material.name}
+												<input type="hidden" name="materials[${st.index}].id" value="${material.id}" />
+												<input type="hidden" name="materials[${st.index}].value" value="${material.value}" />
+											</td>
+											<td>
+												${material.value}
+											</td>
+										</tr>
+									</c:forEach>
+								</table>
 							</c:otherwise>
 						</c:choose>
 					</div>
-					<div id="remedios">
 					
+					<div id="remedios">						
 						<c:choose>
 							<c:when test="${empty import.importedMedicines}">
-								Não há procedimentos a serem importados!
+								<p class="messengernotice">Não há medicamentos a serem importados!</p>
 							</c:when>
 							<c:otherwise>
-							
-								<ul>
-								<c:forEach var="medicine" items="${import.importedMedicines}" varStatus="st">
-									<li>${medicine.name} - ${medicine.value}</li>
-									<input type="hidden" name="medicines[${st.index}].id" value="${medicine.id}" />
-									<input type="hidden" name="medicines[${st.index}].value" value="${medicine.value}" />
-								</c:forEach>
-								</ul>
+								<table border="0" class="easy">
+									<tr class="tableheader">
+										<th>Medicamento:</th>
+										<th>Valor:</th>
+									</tr>
+									<c:forEach var="medicine" items="${import.importedMedicines}" varStatus="st">
+										<tr>
+											<td>
+												${medicine.name}
+												<input type="hidden" name="medicines[${st.index}].id" value="${medicine.id}" />
+												<input type="hidden" name="medicines[${st.index}].value" value="${medicine.value}" />
+											</td>
+											<td>
+												${medicine.value}
+											</td>
+										</tr>
+									</c:forEach>
+								</table>
 							</c:otherwise>
 						</c:choose>
 					</div>
@@ -85,24 +112,36 @@
 					
 						<c:choose>
 							<c:when test="${empty import.importedSpecialties}">
-								Não há procedimentos a serem importados!
+								<p class="messengernotice">Não há especialidades a serem importadas!</p>
 							</c:when>
 							<c:otherwise>
 							
-								<ul>
-								<c:forEach var="specialty" items="${import.importedSpecialties}" varStatus="st">
-									<li>${specialty.name} - ${specialty.value}</li>
-									<input type="hidden" name="specialties[${st.index}].id" value="${specialty.id}" />
-									<input type="hidden" name="specialties[${st.index}].value" value="${specialty.value}" />
-								</c:forEach>
-								</ul>
+								<table border="0" class="easy">
+									<tr class="tableheader">
+										<th>Medicamento:</th>
+										<th>Valor:</th>
+									</tr>
+									<c:forEach var="specialty" items="${import.importedSpecialties}" varStatus="st">
+										<tr>
+											<td>
+												${specialty.name}
+												<input type="hidden" name="specialties[${st.index}].id" value="${specialty.id}" />
+												<input type="hidden" name="specialties[${st.index}].value" value="${specialty.value}" />
+											</td>
+											<td>
+												${specialty.value}
+											</td>
+										</tr>
+									</c:forEach>
+								</table>
 							</c:otherwise>
 						</c:choose>
 					</div>
-				</div>
-						
-						<input type="submit" value="Finalizar importação "/>
-					</form>				
+									
+					<div class="boxactions">
+						<input type="submit" class="btnsave" value="Finalizar importação "/>
+					</div>
+				</form>				
 								
 			</div>
 		</div>

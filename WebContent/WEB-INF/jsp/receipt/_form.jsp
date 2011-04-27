@@ -46,7 +46,7 @@
       <fieldset>
       	<div class="remarks">
           	<label class="title">Observações:</label>
-            <textarea name="receipt.observations">${receipt.observations}</textarea>
+            <textarea name="receipt.observations" allowEnter="true">${receipt.observations}</textarea>
         </div>
       </fieldset>
       

@@ -34,7 +34,7 @@
       <fieldset>
       	<div class="remarks">
           	<label class="title">Anamnese:<span>*</span></label>
-            <textarea name="anamnese.text" required="required">${anamnese.text}</textarea>
+            <textarea name="anamnese.text" required="required" allowEnter="true">${anamnese.text}</textarea>
         </div>
       </fieldset>
       
