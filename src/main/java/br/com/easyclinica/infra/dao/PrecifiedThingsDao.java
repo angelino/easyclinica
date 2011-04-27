@@ -42,7 +42,7 @@ public class PrecifiedThingsDao implements PrecifiedThings {
 		sql.append(" from PrecifiedMaterial pm ");
 		sql.append(" where pm.healthCarePlan.id = :healthCarePlanId ");
 		sql.append(" and pm.material in ( ");
-			sql.append(" select m from Procedure p ");
+			sql.append(" select m.material from Procedure p ");
 			sql.append(" join p.materials m ");
 			sql.append(" where p.id = :procedureId ");
 		sql.append(" ) ");
@@ -59,7 +59,7 @@ public class PrecifiedThingsDao implements PrecifiedThings {
 		sql.append(" from PrecifiedMedicine pm ");
 		sql.append(" where pm.healthCarePlan.id = :healthCarePlanId ");
 		sql.append(" and pm.medicine in ( ");
-			sql.append(" select m from Procedure p ");
+			sql.append(" select m.medicine from Procedure p ");
 			sql.append(" join p.medicine m ");
 			sql.append(" where p.id = :procedureId ");
 		sql.append(" ) ");

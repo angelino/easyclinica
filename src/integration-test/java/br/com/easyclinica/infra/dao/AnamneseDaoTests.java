@@ -2,6 +2,7 @@ package br.com.easyclinica.infra.dao;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+
 import org.hibernate.ObjectNotFoundException;
 import org.junit.Before;
 import org.junit.Test;
@@ -10,10 +11,12 @@ import br.com.easyclinica.domain.entities.Anamnese;
 import br.com.easyclinica.domain.entities.Doctor;
 import br.com.easyclinica.domain.entities.HealthCarePlan;
 import br.com.easyclinica.domain.entities.Patient;
+import br.com.easyclinica.domain.entities.Specialty;
 import br.com.easyclinica.tests.helpers.AnamneseBuilder;
 import br.com.easyclinica.tests.helpers.DoctorBuilder;
 import br.com.easyclinica.tests.helpers.HealthCarePlanBuilder;
 import br.com.easyclinica.tests.helpers.PatientBuilder;
+import br.com.easyclinica.tests.helpers.SpecialtyBuilder;
 
 public class AnamneseDaoTests extends DaoBase {
 
@@ -26,7 +29,10 @@ public class AnamneseDaoTests extends DaoBase {
 	public void setUp() {
 		dao = new AnamneseDao(session);
 		
-		doctor = new DoctorBuilder().withName("john doe").instance();
+		Specialty specialty = new SpecialtyBuilder().instance();
+		session.save(specialty);
+		
+		doctor = new DoctorBuilder().withName("john doe").withSpecialty(specialty).instance();
 		session.save(doctor);
 		
 		plan = new HealthCarePlanBuilder().withName("plan").instance();

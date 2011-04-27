@@ -74,7 +74,7 @@ public class PrecifiedThingsDaoTests extends DaoBase {
 		
 		List<PrecifiedMaterial> materials = dao.getMaterialsPrice(procedure, healthCarePlan);
 		
-		assertEquals(materials.size(), 2);
+		assertEquals(2, materials.size());
 		assertTrue(materials.get(0).getAmount() == precifiedMaterial1.getAmount());
 		assertTrue(materials.get(1).getAmount() == precifiedMaterial2.getAmount());
 	}
