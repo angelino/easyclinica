@@ -119,9 +119,11 @@ EasyClinica.cfg.validation = {
 };
 
 /* COMMON */
-EasyClinica.common.generalFunctions = function(){
+EasyClinica.common.generalFunctions = function(selector){
+	if (selector === undefined) selector = '*';
+	
 	// Currency
-	$('.currency').each(function(index){
+	$(selector).find('.currency').each(function(index){
 		var element = $(this);
 		var isInput = element.is('input');
 		
@@ -135,24 +137,13 @@ EasyClinica.common.generalFunctions = function(){
 			$(this).attr('pattern',EasyClinica.cfg.validation.currency);
 		}
 	});
-	$('input.currency').keyup(function(key){
-		if(key.keyCode == '13') key.preventDefault();
-		
-		var texto = $(this).val();
-		valor = "";	
-		var regexCurrency = new RegExp(/(\d|,|\.)/g);
-		var matched = texto.match(regexCurrency);
-		if(matched != null) {
-			valor = "";
-			for (i = 0; i < matched.length; i++) {
-				valor += (matched[i] == '' ? ',' : matched[i]);
-			}
-		}
-		$(this).val(valor);
+	
+	$(selector).find('.currency').keyup(function(key){
+		onlyNumbersAndComma($(this), key);
 	});
 	
 	// Number
-	$('input.number').each(function(index){
+	$(selector).find('input.number').each(function(index){
 		if(!$(this).hasClass('skip-validation')) {
 			$(this).attr('pattern',EasyClinica.cfg.validation.number);
 		}
@@ -173,34 +164,36 @@ EasyClinica.common.generalFunctions = function(){
 	});
 	
 	// Mascaras
-	$('.mask_telefone').mask('(99) 9999-9999');
-	$('.mask_cep').mask('99999-999');
-	$('.mask_cpf').mask('999.999.999-99');
-	$('.mask_cnpj').mask('99.999.999/9999-99');
+	$(selector).find('.mask_telefone').mask('(99) 9999-9999');
+	$(selector).find('.mask_cep').mask('99999-999');
+	$(selector).find('.mask_cpf').mask('999.999.999-99');
+	$(selector).find('.mask_cnpj').mask('99.999.999/9999-99');
 	
 	// Datepicker
-	$('.datepicker').datepicker(EasyClinica.cfg.datepicker);
+	$(selector).find('.datepicker').datepicker(EasyClinica.cfg.datepicker);
 	
 	// Time Picker
-	$('input.time').timepicker(EasyClinica.cfg.timepicker);
+	$(selector).find('input.time').timepicker(EasyClinica.cfg.timepicker);
 	
-	// botï¿½o voltar
-	$('.btnback').click(function(e){
+	// botão voltar
+	$(selector).find('.btnback').click(function(e){
 		e.preventDefault();
 		var redirect_to = $(this).attr('redirect_to');
 		document.location.href = redirect_to;
 	});
 	
-	// botï¿½o cancelar
-	$('.btncancel').click(function(e) {
+	// botão cancelar
+	$(selector).find('.btncancel').click(function(e) {
 		e.preventDefault();
 		var redirect_to = $(this).attr('redirect_to');
 		document.location.href = redirect_to;
 	});
 };
 
-EasyClinica.common.formValidation = function () {	
-	$('form').validator({
+EasyClinica.common.formValidation = function (selector){
+	if (selector === undefined) selector = '*';
+	
+	$(selector).find('form').validator({
 		lang: 'pt',
 		position: 'center right'		
 	});	
@@ -209,7 +202,7 @@ EasyClinica.common.formValidation = function () {
         '[required]': 'campo obrigatÃ³rio'
     });
     
-    $('input[type=submit], .submit').click(function (e) {
+    $(selector).find('input[type=submit], .submit').click(function (e) {
         if($(this).is('a')) e.preventDefault();
         
         var form = findRecursiveParent($(this), 'form');
@@ -217,14 +210,14 @@ EasyClinica.common.formValidation = function () {
         var validator = form.data('validator');
         if (validator && validator.checkValidity()) {
             validator.destroy();
-        } 
-
-        form.submit();
+            
+            form.submit();
+        }        
     });
     
     //messages
-    $('input.currency').attr('data-message','valor invÃ¡lido');
-    $('input.number').attr('data-message','valor invÃ¡lido.');
+    $(selector).find('input.currency').attr('data-message','valor inválido');
+    $(selector).find('input.number').attr('data-message','valor inválido.');
 };
 
 /* LIB */
@@ -396,6 +389,22 @@ enable = function(obj) {
 
 isEmpty = function(text) {
 	return text == '';
+};
+
+onlyNumbersAndComma = function(element, key) {
+	if(key.keyCode == '13') key.preventDefault();
+	
+	var texto = element.val();
+	valor = "";	
+	var regexCurrency = new RegExp(/(\d|,|\.)/g);
+	var matched = texto.match(regexCurrency);
+	if(matched != null) {
+		valor = "";
+		for (i = 0; i < matched.length; i++) {
+			valor += (matched[i] == '' ? ',' : matched[i]);
+		}
+	}
+	element.val(valor);	
 };
 
 Date.prototype.format = function (formatString) {

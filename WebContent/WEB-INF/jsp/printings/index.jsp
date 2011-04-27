@@ -13,7 +13,7 @@
 				
 				<h2>Impressos</h2>
 				
-				<ul>
+				<ul class="printings">
 					<li>
 						<a href="<c:url value="/pacientes/${patient.id}/impressos/anamnese" />" class="btn">Anamnese</a>
 					</li>

@@ -59,8 +59,9 @@ EasyClinica.pages['consultas'] = function(){
 			configureRemoveActions();
 			refreshAppointentValue();
 			managerProcedureElements();
-			EasyClinica.common.generalFunctions();
+			EasyClinica.common.generalFunctions('tr[procedure_id='+ procedureId +']');
 			EasyClinica.common.formValidation();
+			roomRateAmountManager();
 			
 			$("input[name=materialName]").autocomplete(EasyClinica.cfg.services.searchMaterial, {
 				autoFill: false
@@ -184,7 +185,7 @@ EasyClinica.pages['consultas'] = function(){
 			refreshAppointentValue();
 		});
 	};
-
+	
 	$('select[name=appointment.specialty.id]').change(function(){
 		var specialty_id = $(this).val();
 		
@@ -214,6 +215,17 @@ EasyClinica.pages['consultas'] = function(){
 			isReturn();
 		});
 	});
+	
+	var roomRateAmountManager = function() {
+		$('input[name=appointment.roomRateAmount]').change(function(){
+			refreshAppointentValue();
+		});
+		
+		$('input[name=appointment.roomRateAmount]').keyup(function(key){
+			onlyNumbersAndComma($(this), key);
+		});
+	};
+	roomRateAmountManager();
 	
 	var refreshMedicalAppointmentAmount = function(specialty_id) {
 		var convenioId = $('input[name=appointment.healthCarePlan.id]:checked').val();
@@ -505,7 +517,7 @@ EasyClinica.pages['consultas'] = function(){
 			configureRemoveActions('.assistant-'+procedure_id);
 			refreshAppointentValue();
 			assistantCHChange('.assistant-'+procedure_id);
-			EasyClinica.common.generalFunctions();
+			EasyClinica.common.generalFunctions('.assistant-'+procedure_id);
 			EasyClinica.common.formValidation();
         });
 	};
@@ -570,7 +582,7 @@ EasyClinica.pages['consultas'] = function(){
 		configureRemoveActions('.material-'+procedure_id);
 		refreshAppointentValue();
 		assistantCHChange('.material-'+procedure_id);
-		EasyClinica.common.generalFunctions();
+		EasyClinica.common.generalFunctions('.material-'+procedure_id);
 		EasyClinica.common.formValidation();
 	};
 	
@@ -617,7 +629,7 @@ EasyClinica.pages['consultas'] = function(){
 		configureRemoveActions('.medicine-'+procedure_id);
 		refreshAppointentValue();
 		assistantCHChange('.medicine-'+procedure_id);
-		EasyClinica.common.generalFunctions();
+		EasyClinica.common.generalFunctions('.medicine-'+procedure_id);
 		EasyClinica.common.formValidation();
 	};
 };

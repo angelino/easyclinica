@@ -1,6 +1,8 @@
 package br.com.easyclinica.domain.entities;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
@@ -10,6 +12,9 @@ public class Material {
 	@GeneratedValue
 	private int id;
 	private String name;
+	
+	@Enumerated(EnumType.STRING)
+	private Unit unit;
 
 	public Material() {
 	}
@@ -32,6 +37,14 @@ public class Material {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public void setUnit(Unit unit) {
+		this.unit = unit;
+	}
+
+	public Unit getUnit() {
+		return unit;
 	}
 
 	@Override
