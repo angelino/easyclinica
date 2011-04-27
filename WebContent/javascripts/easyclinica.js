@@ -219,8 +219,8 @@ EasyClinica.common.formValidation = function (selector){
     });
     
     //messages
-    $(selector).find('input.currency').attr('data-message','valor inv�lido');
-    $(selector).find('input.number').attr('data-message','valor inv�lido.');
+    $(selector).find('input.currency').attr('data-message','valor inválido');
+    $(selector).find('input.number').attr('data-message','valor inválido.');
 };
 
 /* LIB */
@@ -374,7 +374,9 @@ String.prototype.formatCurrency = function(putSymbol, decimalPlaces){
 };
 
 clone = function(o) {
-	return eval(uneval(o));
+	//return eval(uneval(o));
+	
+	return $.extend({}, o);
 };
 
 isFloat = function(s)
@@ -395,6 +397,8 @@ isEmpty = function(text) {
 };
 
 onlyNumbersAndComma = function(element, key) {
+	if(key.keyCode == '37' || key.keyCode == '39') return true;
+	
 	if(key.keyCode == '13') key.preventDefault();
 	
 	var texto = element.val();

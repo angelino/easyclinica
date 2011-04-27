@@ -247,14 +247,14 @@ EasyClinica.pages['consultas'] = function(){
 			return;
 		}
 		
-		var convenioId = $('input[name=appointment.healthCarePlan.id]:checked').val();
+		//var convenioId = $('input[name=appointment.healthCarePlan.id]:checked').val();
 		
-		getHealthCarePlanData(convenioId, function(data){
-			var amount = 0;
-			if(data.healthCarePlan.payForRoomRate) amount = data.healthCarePlan.roomRateDefaultAmount;
+		//getHealthCarePlanData(convenioId, function(data){
+		//	var amount = 0;
+		//	if(data.healthCarePlan.payForRoomRate) amount = data.healthCarePlan.roomRateDefaultAmount;
 			
-			$('input[name=appointment.roomRateAmount]').val(amount.toString().formatCurrency());
-		});
+		//	$('input[name=appointment.roomRateAmount]').val(amount.toString().formatCurrency());
+		//});
 	};
 	
 	var getHealthCarePlanData = function(planId, OnCreate) {

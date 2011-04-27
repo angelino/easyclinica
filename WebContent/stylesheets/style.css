@@ -292,7 +292,7 @@ table.easy tr td.tablenostyle{background:#ffffff!important;border:none;}
 .main .content .boxright .simplebox h4{background:#FFFFFF;border-color:#DDDDDD #CCCCCC #CCCCCC #DDDDDD;border-style:solid;border-width:1px;color:#333333;font-weight:bold;padding:5px 10px;margin:0 0 10px 0;}
 .main .content .boxright .simplebox p{margin:0 0 10px 10px;}
 /*BOX DIREITO POSTIT ######################################################################################################################*/
-.main .content .boxright .postit{float:left;margin:0 0 10px 30px;background-color:#FFFFCC;border-color:#FFFFFF #DDDDDD #DDDDDD #FFFFFF;border-style:solid;border-width:1px;padding:0 10px;}
+.main .content .boxright .postit{float:left;margin:0 0 10px 30px;background-color:#FFFFCC;border-color:#FFFFFF #DDDDDD #DDDDDD #FFFFFF;border-style:solid;border-width:1px;padding:0 10px;width: 85%;}
 .main .content .boxright .postit h4{font-size:16px;font-weight:normal;margin:10px 0;}
 .main .content .boxright .postit p{margin:0 0 10px 0;}
 /*BOX DIREITO LINKS ######################################################################################################################*/

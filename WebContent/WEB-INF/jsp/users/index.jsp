@@ -30,7 +30,7 @@
 								<th>Telefone</th>
 								<th>Login</th>
 								<th>Cargo</th>
-								<th width="155px">&nbsp;</th>
+								<th width="171px">&nbsp;</th>
 							</tr>
 							
 							<c:forEach var="employee" items="${employees}" varStatus="status">
