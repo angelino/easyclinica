@@ -13,6 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Index;
+
 @Entity
 @Table(name="medical_procedures")
 public class Procedure {
@@ -21,9 +23,13 @@ public class Procedure {
 	private int id;
 	private String name;
 	private int ch;
+	@Index(name="idx_procedure_ambcode") 
 	private String ambCode;
+	@Index(name="idx_procedure_lpmcode")
 	private String lpmCode;
+	@Index(name="idx_procedure_cbhpmcode")
 	private String cbhpmCode;
+	@Index(name="idx_procedure_tusscode")
 	private String tussCode;
 	
 	@OneToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL, mappedBy="procedure")
