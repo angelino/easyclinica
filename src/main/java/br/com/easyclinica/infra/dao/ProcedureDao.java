@@ -2,9 +2,10 @@ package br.com.easyclinica.infra.dao;
 
 import java.util.List;
 
-import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Restrictions;
 
 import br.com.caelum.vraptor.ioc.Component;
 import br.com.easyclinica.domain.entities.Procedure;
@@ -17,32 +18,29 @@ public class ProcedureDao implements AllProcedures {
 	public ProcedureDao(Session session) {
 		this.session = session;
 	}
-	
+
 	public Procedure getById(int id) {
-		return (Procedure)session.load(Procedure.class, id);
+		return (Procedure) session.load(Procedure.class, id);
 	}
 
 	@SuppressWarnings("unchecked")
 	public List<Procedure> search(String text) {
-		StringBuilder hql = new StringBuilder();
-		hql.append(" from Procedure procedure ");
-		hql.append(" where ");
-		hql.append(" procedure.ambCode = :ambCode ");
-		hql.append(" or procedure.tussCode = :tussCode ");
-		hql.append(" or procedure.name like :name ");
-		hql.append(" order by name ");
-		
-		Query query = session.createQuery(hql.toString())
-							 .setString("ambCode", text)
-							 .setString("tussCode", text)
-							 .setString("name", "%" + text + "%");
-				
-		return query.list();
+		return session.createCriteria(Procedure.class)
+				.add(Restrictions
+						.disjunction()
+						.add(Restrictions.eq("ambCode", text))
+						.add(Restrictions.eq("tussCode", text))
+						.add(Restrictions.eq("lpmCode", text))
+						.add(Restrictions.eq("cbhpmCode", text))
+						.add(Restrictions.like("name", text, MatchMode.ANYWHERE)))
+						.addOrder(Order.asc("name"))
+				.list();
 	}
 
 	@SuppressWarnings("unchecked")
 	public List<Procedure> getAll() {
-		return session.createCriteria(Procedure.class).addOrder(Order.asc("name")).list();
+		return session.createCriteria(Procedure.class)
+				.addOrder(Order.asc("name")).list();
 	}
 
 }
