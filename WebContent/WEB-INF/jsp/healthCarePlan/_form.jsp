@@ -43,7 +43,7 @@
 		
 		<div>
 			<label class="title">Valor em R$ da CH:<span>*</span></label>
-			<input type="text" name="healthCarePlan.ch" class="currency" required="required" value="${healthCarePlan.ch}" />
+			<input type="text" name="healthCarePlan.ch" class="currency" min="0.1" required="required" value="${healthCarePlan.ch}" />
 		</div>
 		
 		<div class="pay-for-room-rate">
@@ -99,8 +99,9 @@
       	
 		<c:if test="${empty param.put}">
 			<div>
-				<label class="title">Copiar parte financeira do convênio:<span>*</span></label>
+				<label class="title">Copiar parte financeira do convênio:</label>
 				<select name="example.id">
+					<option value="0" selected="selected">Não copiar</option>
 					<c:forEach var="plan" items="${healthCarePlans}">
 						<option value="${plan.id}">${plan.name}</option>
 					</c:forEach>

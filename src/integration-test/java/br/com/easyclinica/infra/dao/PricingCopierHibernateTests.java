@@ -32,18 +32,18 @@ public class PricingCopierHibernateTests extends DaoBase {
 	@Before
 	public void setUp() {
 		copier = new PricingCopierHibernate(session);
-		
+
 		material = new MaterialBuilder().instance();
 		medicine = new MedicineBuilder().instance();
 		procedure = new ProcedureBuilder().instance();
 		specialty = new SpecialtyBuilder().instance();
-		
+
 		from = new HealthCarePlanBuilder().instance();
 		from.addPrecifiedMaterial(material, new BigDecimal("400.0"));
 		from.addPrecifiedMedicine(medicine, new BigDecimal("100.0"));
 		from.addPrecifiedSpecialty(specialty, new BigDecimal("200.0"));
 		from.addPrecifiedProcedure(procedure, new BigDecimal("300.0"));
-		
+
 		to = new HealthCarePlanBuilder().instance();
 
 		session.save(material);
@@ -59,37 +59,43 @@ public class PricingCopierHibernateTests extends DaoBase {
 		copier.copyPrices(from, to);
 
 		session.refresh(to);
-		
+
 		assertEquals(1, to.getPrecifiedMedicines().size());
-		assertTrue(new BigDecimal("100.0").compareTo(to.getPrecifiedMedicines().get(0).getAmount())==0);
+		assertTrue(new BigDecimal("100.0").compareTo(to.getPrecifiedMedicines()
+				.get(0).getAmount()) == 0);
 	}
-	
+
 	@Test
 	public void shouldCopySpecialties() {
 		copier.copyPrices(from, to);
 
 		session.refresh(to);
-		
+
 		assertEquals(1, to.getPrecifiedSpecialties().size());
-		assertTrue(new BigDecimal("200.0").compareTo(to.getPrecifiedSpecialties().get(0).getAmount())==0);
+		assertTrue(new BigDecimal("200.0").compareTo(to
+				.getPrecifiedSpecialties().get(0).getAmount()) == 0);
 	}
-	
+
 	@Test
 	public void shouldCopyProcedures() {
 		copier.copyPrices(from, to);
 
 		session.refresh(to);
-		
+
 		assertEquals(1, to.getPrecifiedProcedures().size());
-		assertTrue(new BigDecimal("300.0").compareTo(to.getPrecifiedProcedures().get(0).getFixedAmount())==0);
+		assertTrue(new BigDecimal("300.0").compareTo(to
+				.getPrecifiedProcedures().get(0).getFixedAmount()) == 0);
 	}
+
 	@Test
 	public void shouldCopyMaterials() {
 		copier.copyPrices(from, to);
 
 		session.refresh(to);
-		
+
 		assertEquals(1, to.getPrecifiedMaterials().size());
-		assertTrue(new BigDecimal("400.0").compareTo(to.getPrecifiedMaterials().get(0).getAmount())==0);
+		assertTrue(new BigDecimal("400.0").compareTo(to.getPrecifiedMaterials()
+				.get(0).getAmount()) == 0);
 	}
+
 }

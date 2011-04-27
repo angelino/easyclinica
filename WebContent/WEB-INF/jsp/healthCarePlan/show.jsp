@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib uri="/WEB-INF/easyclinica.tld" prefix="helper" %>
+<%@ taglib tagdir="/WEB-INF/tags" prefix="helper" %>
 <%@page import="br.com.easyclinica.view.Link"%>
 <%@page import="br.com.easyclinica.domain.entities.HealthCarePlan"%>
 <%@page import="java.util.LinkedList"%>
@@ -19,14 +19,6 @@
   				<h2>Convênio: ${healthCarePlan.name}</h2>
 	
 				<fieldset>
-					<div>
-						<label class="title">Valor em R$ da CH:</label>
-						<span class="currency">${healthCarePlan.ch}</span>
-					</div>
-					<div>
-						<label class="title">Período para retorno (em dias):</label>
-						${healthCarePlan.periodToReturn}
-					</div>					
 					<div>
 						<label class="title">Nome do Responsável:</label>
 						${healthCarePlan.contact}
@@ -50,7 +42,27 @@
 							${healthCarePlan.address.postalCode} - ${healthCarePlan.address.neighborhood}<br/>
 							${healthCarePlan.address.city} - ${healthCarePlan.address.state}
 						</c:if>
-					</div>									
+					</div>			
+					<div>
+						<label class="title">Valor em R$ da CH:</label>
+						<span class="currency">${healthCarePlan.ch}</span>
+					</div>
+					<div>
+						<label class="title">Período para retorno (em dias):</label>
+						${healthCarePlan.periodToReturn}
+					</div>
+					<div>
+						<label class="title">Taxa de sala:</label>
+						<c:choose>
+							<c:when test="${healthCarePlan.payForRoomRate}">
+								${healthCarePlan.roomRateDefaultAmount}
+							</c:when>
+							<c:otherwise>
+								Não paga
+							</c:otherwise>
+						</c:choose>
+					</div>					
+
 					<div class="remarks">
 			       		<label class="title">Observações:</label>
 			        	${healthCarePlan.observations}
