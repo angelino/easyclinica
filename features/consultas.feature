@@ -126,7 +126,6 @@ Cenario: Taxa de sala
 	Entao devo ver "R$ 112,45"
 	E devo ver "R$ 362,45"
 
-@test
 Cenario: Procedimentos e taxa de sala
 	Dado que estou logado como owner
 	E que um paciente "Mauricio" padrao esta cadastrado
@@ -139,4 +138,17 @@ Cenario: Procedimentos e taxa de sala
 	E salvo a consulta
 	Entao devo ver "R$ 352,50"
 	E devo ver "R$ 614,84"
+
+@test
+Cenario: Aviso de retorno
+	Dado que estou logado como owner
+	E que um paciente "Mauricio" do convenio "Amil" esta cadastrado
+	Quando clico no link "Nova consulta"
+	E marco a consulta para o dia "10/10/2010"
+	E seleciono o doutor "Dr. Roberto Aniche"
+	E salvo a consulta
+	E clico no link "Nova consulta"
+	E marco a consulta para o dia "20/10/2010"
+	Entao devo ver "Essa consulta pode ser um retorno."
+	
 	

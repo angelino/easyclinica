@@ -88,7 +88,7 @@ VALUES
 -- Amil
 INSERT INTO `healthcareplan` (id, `active`,`city`,`neighborhood`,`postalCode`,`state`,`street`,`ch`,`contact`,`email`,`name`,`observations`,`payForRoomRate`,`periodToReturn`,`roomRateDefaultAmount`,`telephone`,`website`)
 VALUES
-	(2, 1, 'SP', 'SP', '12121-123', 'SP', 'SP', 0.70, 'John Doe', 'mauricioaniche@gmail.com', 'Amil', NULL, 0, 0, NULL, NULL, NULL);
+	(2, 1, 'SP', 'SP', '12121-123', 'SP', 'SP', 0.70, 'John Doe', 'mauricioaniche@gmail.com', 'Amil', NULL, 0, 30, NULL, NULL, NULL);
 
 -- precos
 INSERT INTO `precifiedmaterial` (`amount`,`healthCarePlan_id`,`material_id`)
