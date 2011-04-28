@@ -81,7 +81,7 @@ ul.botoes li{padding:5px 0;}
 .main ul.menu li{float:left;margin:0 5px 0 0;border-top:1px solid #5C738A;color:#333333;}
 .main ul.menu li a{float:left;background:#445566;padding:3px 10px;color:#FFFFFF;text-decoration:none;}
 .main ul.menu li a:hover{background:#576c82;}
-.main ul.menu li.active{border-top:1px solid #FFFFFF;color:#333333;}
+.main ul.menu li.active{color:#333333;}
 .main ul.menu li.active a{background:#EEEEEE;color:#364B69;cursor:default;}
 /*END HEADER ######################################################################################################################*/
 
@@ -94,7 +94,7 @@ ul.botoes li{padding:5px 0;}
 .main .content .box ul.boxmenu li{float:left;color:#FFFFFF;text-decoration:none;}
 .main .content .box ul.boxmenu li a{float:left;background:#445566;padding:3px 10px;margin:0 5px 0 0;color:#FFFFFF;text-decoration:none;}
 .main .content .box ul.boxmenu li a:hover{background:#576c82;}
-.main .content .box ul.boxmenu li.active{border-top:1px solid #FFFFFF;color:#333333;}
+.main .content .box ul.boxmenu li.active{color:#333333;}
 .main .content .box ul.boxmenu li.active a{background:#FFFFFF;color:#364B69;cursor:default;}
 
 /*BOX CONTEUDO GERAL ######################################################################################################################*/
@@ -513,6 +513,24 @@ ul.printings{float:left;margin:5px 0;}
 ul.printings li{padding:5px 0;}
 
 /* EASYABAS ############################################################ */
-#easyabas{float:left;}
-.easyabas-content{float:left;width:90%;border:solid 1px #000;padding:10px;}
-.easyabas-content table tr th {text-align:left;}
+#easyabas {
+	float:left;
+}
+
+#easyabas li.active a {
+	border: 1px solid #DDDDDD;
+    color: #364B69;
+    cursor: default;
+}
+
+.easyabas-content {
+	float:left;
+	width:90%; 
+	border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+	border-style: solid;
+    border-width: 1px;
+    padding:10px;
+}
+.easyabas-content table tr th {
+	text-align:left!important;
+}
