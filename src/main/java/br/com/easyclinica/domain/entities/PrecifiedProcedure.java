@@ -21,6 +21,7 @@ public class PrecifiedProcedure {
 	@ManyToOne(fetch = FetchType.EAGER)
 	private Procedure procedure;
 	private BigDecimal fixedAmount;
+	private BigDecimal roomTaxAmount;
 	private int ch;
 
 	public HealthCarePlan getHealthCarePlan() {
@@ -61,6 +62,14 @@ public class PrecifiedProcedure {
 
 	public void setCh(int ch) {
 		this.ch = ch;
+	}
+
+	public BigDecimal getRoomTaxAmount() {
+		return roomTaxAmount;
+	}
+
+	public void setRoomTaxAmount(BigDecimal roomTaxAmount) {
+		this.roomTaxAmount = roomTaxAmount;
 	}
 
 }
