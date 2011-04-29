@@ -1,16 +1,16 @@
 truncate table medical_procedures;
 
-insert into medical_procedures (ambCode, tussCode, cbhpmCode, lpmCode, ch, name) values ('00010014', '10101012', '10101012', '00010014', 0, 'Em consultório (no horário normal ou preestabelecido)');
+insert into medical_procedures (ambCode, tussCode, cbhpmCode, lpmCode, ch, name) values ('10014', '10101012', '10101012', '00010014', 0, 'Em consultório (no horário normal ou preestabelecido)');
 insert into medical_procedures (ambCode, tussCode, cbhpmCode, lpmCode, ch, name) values ('', '10101020', '10101020', '', 0, 'Em domicílio');
 insert into medical_procedures (ambCode, tussCode, cbhpmCode, lpmCode, ch, name) values ('', '10101039', '10101039', '00010065', 0, 'Em pronto socorro');
-insert into medical_procedures (ambCode, tussCode, cbhpmCode, lpmCode, ch, name) values ('00020010', '10102019', '10102019', '00020010', 0, 'Visita hospitalar (paciente internado)');
-insert into medical_procedures (ambCode, tussCode, cbhpmCode, lpmCode, ch, name) values ('00030015', '10103015', '10103015', '00030015', 0, 'Atendimento ao recém-nascido em berçário');
-insert into medical_procedures (ambCode, tussCode, cbhpmCode, lpmCode, ch, name) values ('00030031', '10103023', '10103023', '00030031', 0, 'Atendimento ao recém-nascido em sala de parto (parto normal ou operatório de baixo risco)');
+insert into medical_procedures (ambCode, tussCode, cbhpmCode, lpmCode, ch, name) values ('20010', '10102019', '10102019', '00020010', 0, 'Visita hospitalar (paciente internado)');
+insert into medical_procedures (ambCode, tussCode, cbhpmCode, lpmCode, ch, name) values ('30015', '10103015', '10103015', '00030015', 0, 'Atendimento ao recém-nascido em berçário');
+insert into medical_procedures (ambCode, tussCode, cbhpmCode, lpmCode, ch, name) values ('30031', '10103023', '10103023', '00030031', 0, 'Atendimento ao recém-nascido em sala de parto (parto normal ou operatório de baixo risco)');
 insert into medical_procedures (ambCode, tussCode, cbhpmCode, lpmCode, ch, name) values ('', '10103023', '10103023', '', 0, 'Atendimento ao recém-nascido em sala de parto (parto normal ou operatório de baixo risco)');
 insert into medical_procedures (ambCode, tussCode, cbhpmCode, lpmCode, ch, name) values ('', '10103031', '10103031', '', 0, 'Atendimento ao recém-nascido em sala de parto (parto normal ou operatório de alto risco)');
 insert into medical_procedures (ambCode, tussCode, cbhpmCode, lpmCode, ch, name) values ('', '10104011', '10104011', '14010062', 0, 'Atendimento do intensivista diarista (por dia e por paciente)');
-insert into medical_procedures (ambCode, tussCode, cbhpmCode, lpmCode, ch, name) values ('00040010', '10104020', '10104020', '14010011', 0, 'Atendimento médico do intensivista em UTI geral ou pediátrica (plantão de 12 horas - por paciente)');
-insert into medical_procedures (ambCode, tussCode, cbhpmCode, lpmCode, ch, name) values ('00040029', '10104020', '10104020', '14010020', 0, 'Atendimento médico do intensivista em UTI geral ou pediátrica (plantão de 12 horas - por paciente)');
+insert into medical_procedures (ambCode, tussCode, cbhpmCode, lpmCode, ch, name) values ('40010', '10104020', '10104020', '14010011', 0, 'Atendimento médico do intensivista em UTI geral ou pediátrica (plantão de 12 horas - por paciente)');
+insert into medical_procedures (ambCode, tussCode, cbhpmCode, lpmCode, ch, name) values ('40029', '10104020', '10104020', '14010020', 0, 'Atendimento médico do intensivista em UTI geral ou pediátrica (plantão de 12 horas - por paciente)');
 insert into medical_procedures (ambCode, tussCode, cbhpmCode, lpmCode, ch, name) values ('', '10105034', '10105034', '', 0, 'Transporte extra-hospitalar terrestre de pacientes graves, 1ª hora - a partir do deslocamento do médico');
 insert into medical_procedures (ambCode, tussCode, cbhpmCode, lpmCode, ch, name) values ('', '10105042', '10105042', '', 0, 'Transporte extra-hospitalar terrestre de pacientes graves, por hora adicional - até o retorno do médico à base');
 insert into medical_procedures (ambCode, tussCode, cbhpmCode, lpmCode, ch, name) values ('', '10105050', '10105050', '', 0, 'Transporte extra-hospitalar aéreo ou aquático de pacientes graves, 1ª hora - a partir do deslocamento do médico');
