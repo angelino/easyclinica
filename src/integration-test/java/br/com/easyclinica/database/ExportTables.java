@@ -29,10 +29,10 @@ public class ExportTables {
 		
 	}
 	
-	@Test @Ignore
+	@Test
 	public void createHomologSchemaInCloudbess() {
-		final String server = "ec2-174-129-9-255.compute-1.amazonaws.com";
-		final String customer = "homologacao";
+		final String server = "ec2-75-101-156-134.compute-1.amazonaws.com";
+		final String customer = "clinicadavila";
 		
 		Configuration cfg = new DatabaseConfigurator(new Config() {
 			public String get(String key) {
@@ -40,6 +40,7 @@ public class ExportTables {
 				if(key.equals("driver_class")) return "com.mysql.jdbc.Driver";
 				if(key.equals("db_pwd")) return "3@sycl1n1c@";
 				if(key.equals("db_prefix")) return "ec-";
+				if(key.equals("dialect")) return "org.hibernate.dialect.MySQLInnoDBDialect";
 				
 				return "";
 			}
@@ -47,5 +48,10 @@ public class ExportTables {
 		
 		SchemaExport se = new SchemaExport(cfg);
 		se.create(true, true);
+		
+		// export specialties
+		
+		// export medicines
+		
 	}
 }
