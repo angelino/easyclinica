@@ -7,7 +7,7 @@ import br.com.easyclinica.domain.entities.HealthCarePlan;
 public class FinancialByHealthCarePlanReportData {
 	
 	private HealthCarePlan healthCarePlan;
-	private int qtyAppointments;
+	private long qtyAppointments;
 	private BigDecimal procedureAmount;
 	private BigDecimal appointmentAmount;
 	private BigDecimal roomRateAmount;
@@ -17,10 +17,10 @@ public class FinancialByHealthCarePlanReportData {
 	public void setHealthCarePlan(HealthCarePlan healthCarePlan) {
 		this.healthCarePlan = healthCarePlan;
 	}
-	public int getQtyAppointments() {
+	public long getQtyAppointments() {
 		return qtyAppointments;
 	}
-	public void setQtyAppointments(int qtyAppointments) {
+	public void setQtyAppointments(long qtyAppointments) {
 		this.qtyAppointments = qtyAppointments;
 	}
 	public BigDecimal getProcedureAmount() {

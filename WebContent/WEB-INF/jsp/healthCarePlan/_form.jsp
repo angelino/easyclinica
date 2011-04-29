@@ -43,7 +43,7 @@
 		
 		<div>
 			<label class="title">Valor em R$ da CH:<span>*</span></label>
-			<input type="text" name="healthCarePlan.ch" class="currency" min="0.1" required="required" value="${healthCarePlan.ch}" />
+			<input type="text" name="healthCarePlan.ch" class="currency" min="0" required="required" value="${healthCarePlan.ch}" />
 		</div>
 		
 		<div class="pay-for-room-rate">

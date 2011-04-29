@@ -21,7 +21,7 @@
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="79" splitType="Stretch">
+		<band height="57" splitType="Stretch">
 			<textField evaluationTime="Auto">
 				<reportElement x="0" y="0" width="100" height="20"/>
 				<textElement>
@@ -29,44 +29,52 @@
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$P{clinic}.name]]></textFieldExpression>
 			</textField>
+			<staticText>
+				<reportElement x="0" y="30" width="555" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Resumo por Médico]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
 			<textField evaluationTime="Auto" isBlankWhenNull="true">
-				<reportElement x="0" y="35" width="100" height="20"/>
+				<reportElement x="0" y="15" width="100" height="20"/>
 				<textElement/>
 				<textFieldExpression class="java.lang.String"><![CDATA["De: "+new SimpleDateFormat("dd/MM/yyyy").format($P{start}.getTime())]]></textFieldExpression>
 			</textField>
 			<textField evaluationTime="Auto">
-				<reportElement x="0" y="59" width="100" height="20"/>
+				<reportElement x="126" y="15" width="100" height="20"/>
 				<textElement/>
 				<textFieldExpression class="java.lang.String"><![CDATA["Até: "+new SimpleDateFormat("dd/MM/yyyy").format($P{end}.getTime())]]></textFieldExpression>
 			</textField>
 			<textField pattern="dd/MM/yyyy HH:mm:ss" isBlankWhenNull="true">
-				<reportElement x="455" y="0" width="100" height="20"/>
+				<reportElement x="393" y="0" width="162" height="20"/>
 				<textElement/>
 				<textFieldExpression class="java.util.Date"><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
 		</band>
-	</title>
-	<pageHeader>
-		<band height="35" splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
-		<band height="61" splitType="Stretch">
+		<band height="41" splitType="Stretch">
 			<staticText>
-				<reportElement x="0" y="41" width="270" height="20"/>
+				<reportElement x="0" y="15" width="270" height="20"/>
 				<textElement>
 					<font size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Médico]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="283" y="41" width="100" height="20"/>
+				<reportElement x="283" y="15" width="100" height="20"/>
 				<textElement textAlignment="Right">
 					<font size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Qtd. Consultas]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="393" y="41" width="162" height="20"/>
+				<reportElement x="393" y="15" width="162" height="20"/>
 				<textElement textAlignment="Right">
 					<font size="12" isBold="true"/>
 				</textElement>
@@ -75,7 +83,7 @@
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="32" splitType="Stretch">
+		<band height="23" splitType="Stretch">
 			<textField evaluationTime="Auto">
 				<reportElement x="0" y="0" width="270" height="20"/>
 				<textElement/>
@@ -89,19 +97,16 @@
 			<textField evaluationTime="Auto" isBlankWhenNull="true">
 				<reportElement x="393" y="0" width="162" height="20"/>
 				<textElement textAlignment="Right"/>
-				<textFieldExpression class="java.lang.String"><![CDATA[java.text.NumberFormat.getCurrencyInstance().format($F{procedureAmount} + $F{roomRateAmount} + $F{appointmentAmount})]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[java.text.NumberFormat.getCurrencyInstance(new Locale("pt", "br")).format($F{procedureAmount} + $F{roomRateAmount} + $F{appointmentAmount})]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement x="0" y="25" width="555" height="1"/>
+				<reportElement x="0" y="21" width="555" height="1"/>
 				<graphicElement>
-					<pen lineStyle="Dashed"/>
+					<pen lineStyle="Solid"/>
 				</graphicElement>
 			</line>
 		</band>
 	</detail>
-	<columnFooter>
-		<band height="9" splitType="Stretch"/>
-	</columnFooter>
 	<pageFooter>
 		<band height="44" splitType="Stretch">
 			<textField>
@@ -128,7 +133,7 @@
 			<textField>
 				<reportElement x="393" y="0" width="162" height="20"/>
 				<textElement textAlignment="Right"/>
-				<textFieldExpression class="java.lang.String"><![CDATA[java.text.NumberFormat.getCurrencyInstance().format($V{totalAmount})]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[java.text.NumberFormat.getCurrencyInstance(new Locale("pt", "br")).format($V{totalAmount})]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="283" y="0" width="100" height="20"/>

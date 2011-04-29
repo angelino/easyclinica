@@ -7,7 +7,7 @@ import br.com.easyclinica.domain.entities.Doctor;
 public class FinancialByDoctorReportData {
 
 	private Doctor doctor;
-	private int qtyAppointments;
+	private long qtyAppointments;
 	private BigDecimal procedureAmount;
 	private BigDecimal appointmentAmount;
 	private BigDecimal roomRateAmount;
@@ -17,10 +17,10 @@ public class FinancialByDoctorReportData {
 	public void setDoctor(Doctor doctor) {
 		this.doctor = doctor;
 	}
-	public int getQtyAppointments() {
+	public long getQtyAppointments() {
 		return qtyAppointments;
 	}
-	public void setQtyAppointments(int qtyAppointments) {
+	public void setQtyAppointments(long qtyAppointments) {
 		this.qtyAppointments = qtyAppointments;
 	}
 	public BigDecimal getProcedureAmount() {

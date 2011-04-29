@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="financialReport" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" whenNoDataType="AllSectionsNoDetail" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
 	<property name="ireport.zoom" value="1.0"/>
-	<property name="ireport.x" value="92"/>
+	<property name="ireport.x" value="26"/>
 	<property name="ireport.y" value="0"/>
 	<parameter name="clinic" class="br.com.easyclinica.domain.entities.Clinic" isForPrompting="false"/>
 	<parameter name="start" class="java.util.Calendar" isForPrompting="false"/>
@@ -23,7 +23,7 @@
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="27" splitType="Stretch">
+		<band height="47" splitType="Stretch">
 			<textField evaluationTime="Auto">
 				<reportElement x="0" y="0" width="802" height="20"/>
 				<textElement textAlignment="Center">
@@ -31,6 +31,13 @@
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$P{clinic}.name]]></textFieldExpression>
 			</textField>
+			<staticText>
+				<reportElement x="0" y="27" width="802" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Relatório Financeiro]]></text>
+			</staticText>
 		</band>
 	</title>
 	<pageHeader>
