@@ -20,6 +20,8 @@
 					o <b>mesmo formato</b> do arquivo exportado; você deve alterar apenas os valores. 
 					<br/>
 					Qualquer alteração no formato do arquivo poderá causar erros na importação.
+					<br/>
+					Tabelas prontas para importação: <a href='<c:url value="/tabelas/amb90.xls" />'>AMB 90</a>
 				</p>
 
 				<form action="<c:url value="/convenios/${id}/precos/confirmar" />" method="post" enctype="multipart/form-data">
