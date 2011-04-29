@@ -52,7 +52,7 @@
 			</textField>
 			<textField pattern="dd/MM/yyyy HH:mm:ss" isBlankWhenNull="true">
 				<reportElement x="393" y="0" width="162" height="20"/>
-				<textElement/>
+				<textElement textAlignment="Right"/>
 				<textFieldExpression class="java.util.Date"><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
 		</band>
