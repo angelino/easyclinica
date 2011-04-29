@@ -47,10 +47,19 @@ var EasyClinica = {
 		}
 		
 		$(window).keydown(function(event){
-		    if(event.keyCode == 13) {
+			if($(event.target).attr("allowEnter")===undefined && event.keyCode == 13) {
 		      event.preventDefault();
 		      return false;
 		    }
+		});
+		
+		// Ajax Configurations
+		$('body').ajaxSend(function() {
+			$('button, submit, a').attr("disabled", "disabled");
+		});
+		
+		$('body').ajaxStop(function() {
+			$('button, submit, a').removeAttr("disabled");
 		});
 	}
 };
@@ -221,6 +230,45 @@ EasyClinica.common.formValidation = function (selector){
     //messages
     $(selector).find('input.currency').attr('data-message','valor inválido');
     $(selector).find('input.number').attr('data-message','valor inválido.');
+};
+
+EasyClinica.common.easyabas = function() {
+	
+	var hideAllTabsContentBoxes = function(showFirst) {
+		if(showFirst === undefined) showFirst = false;
+		
+		$('#easyabas li a').each(function(index){
+			var contentBox = $(this).attr('href');		
+			
+			if(showFirst && index == 0) $(contentBox).show();
+			else $(contentBox).hide();
+			
+			$(contentBox).addClass("easyabas-content");
+		});		
+	};
+	hideAllTabsContentBoxes(true);
+	
+	var inactiveAllTabs = function(activeFirst) {
+		if(activeFirst === undefined) activeFirst = false;
+		
+		$('#easyabas li').removeClass('active');
+		
+		if(activeFirst) $('#easyabas li').first().addClass('active');
+	};
+	inactiveAllTabs(true);
+	
+	$('#easyabas li a').click(function(e){
+		e.preventDefault();
+		
+		hideAllTabsContentBoxes(false);
+		inactiveAllTabs(false);
+		
+		// show this tab content
+		$(this).parent().addClass('active');
+		
+		var contentBox = $(this).attr('href');
+		$(contentBox).show();
+	});
 };
 
 /* LIB */

@@ -13,17 +13,22 @@
 			<div class="boxcontent">
 				<h2>Financeiro</h2>
 
-
-					<p class="messengernotice">
-						Clique no link abaixo para gerar um arquivo Excel com os preços. Você poderá utilizar esse
-						arquivo para importar novos preços.
-						<br/>
-						Mas lembre-se de não modificar a estrutura do arquivo; apenas altere os valores.
-					</p>
-
-					<a href='<c:url value="/convenios/${healthCarePlan.id}/precos" />' class="btn">Baixar os preços</a>
-
-					<a href='<c:url value="/convenios/${healthCarePlan.id}/precos/importar" />' class="btn">Importar preços</a>													
+				<p class="messengernotice">
+					Clique no link abaixo para gerar um arquivo Excel com os preços. Você poderá utilizar esse
+					arquivo para importar novos preços.
+					<br/>
+					Mas lembre-se de não modificar a estrutura do arquivo; apenas altere os valores.
+				</p>
+				
+				<ul class="botoes">
+					<li>
+						<a href='<c:url value="/convenios/${healthCarePlan.id}/precos" />' class="btn">Baixar os preços</a>
+					</li>
+					<li>
+						<a href='<c:url value="/convenios/${healthCarePlan.id}/precos/importar" />' class="btn">Importar preços</a>
+					</li>
+				</ul>					
+																							
 			</div>
 		</div>
 		

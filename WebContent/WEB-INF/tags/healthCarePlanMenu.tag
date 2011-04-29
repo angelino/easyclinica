@@ -4,10 +4,10 @@
 <%@ attribute name="plan" type="br.com.easyclinica.domain.entities.HealthCarePlan" required="true" rtexprvalue="true" %>
 <%@ attribute name="selected" required="true" %>
 <ul class="boxmenu">
-	<li ${selected=='Convenio' ? 'class="active first"' : ''}>
+	<li ${selected=='Convenio' ? 'class="active first"' : 'class="first"'}>
 		<a href="<c:url value="/convenios/${plan.id}/editar"/>">Convênios</a>
 	</li>
-	<li ${selected=='Financeiro' ? 'class="active first"' : ''}>
+	<li ${selected=='Financeiro' ? 'class="active"' : ''}>
 		<a href="<c:url value="/convenios/${plan.id}/financeiro"/>">Financeiro</a>
 	</li>
 </ul>

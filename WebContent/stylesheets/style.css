@@ -50,6 +50,9 @@ body{font:12px/1.5em "Lucida Grande","Helvetica Neue",Arial,sans-serif;backgroun
 a.btn{color: #364B69;padding: 5px 5px;text-decoration: none;}
 a.btn:hover{background-color:#445566; color: #FFFFFF;}
 
+ul.botoes{float:left;margin:5px 0;}
+ul.botoes li{padding:5px 0;}
+
 /*START LOGIN ######################################################################################################################*/
 .main .boxlogin{float:left;width:300px;background:#ffffff;position:absolute;top:30%;left:50%;margin:-160px 0 0 -150px;}
 .main .boxlogin h1{float:left;width:290px;font-size:28px;margin:0;padding:20px 0 20px 10px;color:#444444;background:#EBEBEB;}
@@ -78,7 +81,7 @@ a.btn:hover{background-color:#445566; color: #FFFFFF;}
 .main ul.menu li{float:left;margin:0 5px 0 0;border-top:1px solid #5C738A;color:#333333;}
 .main ul.menu li a{float:left;background:#445566;padding:3px 10px;color:#FFFFFF;text-decoration:none;}
 .main ul.menu li a:hover{background:#576c82;}
-.main ul.menu li.active{border-top:1px solid #FFFFFF;color:#333333;}
+.main ul.menu li.active{color:#333333;}
 .main ul.menu li.active a{background:#EEEEEE;color:#364B69;cursor:default;}
 /*END HEADER ######################################################################################################################*/
 
@@ -91,7 +94,7 @@ a.btn:hover{background-color:#445566; color: #FFFFFF;}
 .main .content .box ul.boxmenu li{float:left;color:#FFFFFF;text-decoration:none;}
 .main .content .box ul.boxmenu li a{float:left;background:#445566;padding:3px 10px;margin:0 5px 0 0;color:#FFFFFF;text-decoration:none;}
 .main .content .box ul.boxmenu li a:hover{background:#576c82;}
-.main .content .box ul.boxmenu li.active{border-top:1px solid #FFFFFF;color:#333333;}
+.main .content .box ul.boxmenu li.active{color:#333333;}
 .main .content .box ul.boxmenu li.active a{background:#FFFFFF;color:#364B69;cursor:default;}
 
 /*BOX CONTEUDO GERAL ######################################################################################################################*/
@@ -508,3 +511,26 @@ div.error {
 /* PRINTINGS ########################################################### */
 ul.printings{float:left;margin:5px 0;}
 ul.printings li{padding:5px 0;}
+
+/* EASYABAS ############################################################ */
+#easyabas {
+	float:left;
+}
+
+#easyabas li.active a {
+	border: 1px solid #DDDDDD;
+    color: #364B69;
+    cursor: default;
+}
+
+.easyabas-content {
+	float:left;
+	width:90%; 
+	border-color: #DDDDDD #CCCCCC #CCCCCC #DDDDDD;
+	border-style: solid;
+    border-width: 1px;
+    padding:10px;
+}
+.easyabas-content table tr th {
+	text-align:left!important;
+}
