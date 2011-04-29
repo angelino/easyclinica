@@ -254,7 +254,8 @@
             option.enableDrag = false;
         }
         //template for month and date
-        var __SCOLLEVENTTEMP = "<DIV style=\"WIDTH:${width};top:${top};left:${left};\" title=\"${title}\" class=\"chip chip${i} ${drag}\"><div class=\"dhdV\" style=\"display:none\">${data}</div><DIV style=\"BORDER-BOTTOM-COLOR:${bdcolor}\" class=ct>&nbsp;</DIV><DL style=\"BORDER-BOTTOM-COLOR:${bdcolor}; BACKGROUND-COLOR:${bgcolor1}; BORDER-TOP-COLOR: ${bdcolor}; HEIGHT: ${height}px; BORDER-RIGHT-COLOR:${bdcolor}; BORDER-LEFT-COLOR:${bdcolor}\"><DT style=\"BACKGROUND-COLOR:${bgcolor2}\">${starttime} - ${endtime} ${icon}</DT><DD><SPAN>${content}</SPAN></DD><DIV class='resizer' style='display:${redisplay}'><DIV class=rszr_icon>&nbsp;</DIV></DIV></DL><DIV style=\"BORDER-BOTTOM-COLOR:${bdcolor}; BACKGROUND-COLOR:${bgcolor1}; BORDER-TOP-COLOR: ${bdcolor}; BORDER-RIGHT-COLOR: ${bdcolor}; BORDER-LEFT-COLOR:${bdcolor}\" class=cb1>&nbsp;</DIV><DIV style=\"BORDER-BOTTOM-COLOR:${bdcolor}; BORDER-TOP-COLOR:${bdcolor}; BORDER-RIGHT-COLOR:${bdcolor}; BORDER-LEFT-COLOR:${bdcolor}\" class=cb2>&nbsp;</DIV></DIV>";
+        //var __SCOLLEVENTTEMP = "<DIV style=\"WIDTH:${width};top:${top};left:${left};\" title=\"${title}\" class=\"chip chip${i} ${drag}\"><div class=\"dhdV\" style=\"display:none\">${data}</div><DIV style=\"BORDER-BOTTOM-COLOR:${bdcolor}\" class=ct>&nbsp;</DIV><DL style=\"BORDER-BOTTOM-COLOR:${bdcolor}; BACKGROUND-COLOR:${bgcolor1}; BORDER-TOP-COLOR: ${bdcolor}; HEIGHT: ${height}px; BORDER-RIGHT-COLOR:${bdcolor}; BORDER-LEFT-COLOR:${bdcolor}\"><DT style=\"BACKGROUND-COLOR:${bgcolor2}\">${starttime} - ${endtime} ${icon}</DT><DD><SPAN>${content}</SPAN></DD><DIV class='resizer' style='display:${redisplay}'><DIV class=rszr_icon>&nbsp;</DIV></DIV></DL><DIV style=\"BORDER-BOTTOM-COLOR:${bdcolor}; BACKGROUND-COLOR:${bgcolor1}; BORDER-TOP-COLOR: ${bdcolor}; BORDER-RIGHT-COLOR: ${bdcolor}; BORDER-LEFT-COLOR:${bdcolor}\" class=cb1>&nbsp;</DIV><DIV style=\"BORDER-BOTTOM-COLOR:${bdcolor}; BORDER-TOP-COLOR:${bdcolor}; BORDER-RIGHT-COLOR:${bdcolor}; BORDER-LEFT-COLOR:${bdcolor}\" class=cb2>&nbsp;</DIV></DIV>";
+		var __SCOLLEVENTTEMP = "<DIV style=\"WIDTH:${width};top:${top};left:${left};\" title=\"${title}\" class=\"chip chip${i} ${drag}\"><div class=\"dhdV\" style=\"display:none\">${data}</div><DIV style=\"BORDER-BOTTOM-COLOR:${bdcolor}\" class=ct>&nbsp;</DIV><DL style=\"BORDER-BOTTOM-COLOR:${bdcolor}; BACKGROUND-COLOR:${bgcolor1}; BORDER-TOP-COLOR: ${bdcolor}; HEIGHT: ${height}px; BORDER-RIGHT-COLOR:${bdcolor}; BORDER-LEFT-COLOR:${bdcolor}\"><DT style=\"BACKGROUND-COLOR:${bgcolor2}\">${starttime} ${content}</DT></DL><DIV style=\"BORDER-BOTTOM-COLOR:${bdcolor}; BACKGROUND-COLOR:${bgcolor1}; BORDER-TOP-COLOR: ${bdcolor}; BORDER-RIGHT-COLOR: ${bdcolor}; BORDER-LEFT-COLOR:${bdcolor}\" class=cb1>&nbsp;</DIV><DIV style=\"BORDER-BOTTOM-COLOR:${bdcolor}; BORDER-TOP-COLOR:${bdcolor}; BORDER-RIGHT-COLOR:${bdcolor}; BORDER-LEFT-COLOR:${bdcolor}\" class=cb2>&nbsp;</DIV></DIV>";
         var __ALLDAYEVENTTEMP = '<div class="rb-o ${eclass}" id="${id}" title="${title}" style="color:${color};"><div class="dhdV" style="display:none">${data}</div><div class="${extendClass} rb-m" style="background-color:${color}">${extendHTML}<div class="rb-i">${content}</div></div></div>';
         var __MonthDays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
         var __LASSOTEMP = "<div class='drag-lasso' style='left:${left}px;top:${top}px;width:${width}px;height:${height}px;'>&nbsp;</div>";
@@ -433,7 +434,7 @@
 
             //onclick=\"javascript:FunProxy('rowhandler',event,this);\"
             html.push("<div id=\"dvtec\"  class=\"scolltimeevent\"><table style=\"table-layout: fixed;", jQuery.browser.msie ? "" : "width:100%", "\" cellspacing=\"0\" cellpadding=\"0\"><tbody><tr><td>");
-            html.push("<table style=\"height: 1008px\" id=\"tgTable\" class=\"tg-timedevents\" cellspacing=\"0\" cellpadding=\"0\"><tbody>");
+            html.push("<table style=\"height: 1968px\" id=\"tgTable\" class=\"tg-timedevents\" cellspacing=\"0\" cellpadding=\"0\"><tbody>");
             BuildDayScollEventContainer(html, days, scollDayEvents);
             html.push("</tbody></table></td></tr></tbody></table></div>");
             gridcontainer.html(html.join(""));
@@ -716,7 +717,7 @@
             var tmt = "";
             for (var i = 0; i < 24; i++) {
                 tmt = fomartTimeShow(i);
-                ht.push("<div style=\"height: 41px\" class=\"tg-time\">", tmt, "</div>");
+                ht.push("<div style=\"height: 81px\" class=\"tg-time\">", tmt, "</div>");
             }
             ht.push("</td>");
 
@@ -726,11 +727,11 @@
                 var istoday = dateFormat.call(dayarrs[i].date, "yyyyMMdd") == dateFormat.call(new Date(), "yyyyMMdd");
                 // Today
                 if (istoday) {
-                    ht.push("<div style=\"margin-bottom: -1008px; height:1008px\" class=\"tg-today\">&nbsp;</div>");
+                    ht.push("<div style=\"margin-bottom: -1968px; height:1968px\" class=\"tg-today\">&nbsp;</div>");
                 }
                 //var eventC = $(eventWrap);
                 //onclick=\"javascript:FunProxy('rowhandler',event,this);\"
-                ht.push("<div  style=\"margin-bottom: -1008px; height: 1008px\" id='tgCol", i, "' class=\"tg-col-eventwrapper\">");
+                ht.push("<div  style=\"margin-bottom: -1968px; height: 1968px\" id='tgCol", i, "' class=\"tg-col-eventwrapper\">");
                 BuildEvents(ht, events[i], dayarrs[i]);
                 ht.push("</div>");
 
@@ -1311,13 +1312,13 @@
             return new Date(Date.parse(str));
         }
         function gP(h, m) {
-            return h * 42 + parseInt(m / 60 * 42);
+            return h * 82 + parseInt(m / 60 * 82);
         }
         function gW(ts1, ts2) {
-            var t1 = ts1 / 42;
+            var t1 = ts1 / 82;
             var t2 = parseInt(t1);
             var t3 = t1 - t2 >= 0.5 ? 30 : 0;
-            var t4 = ts2 / 42;
+            var t4 = ts2 / 82;
             var t5 = parseInt(t4);
             var t6 = t4 - t5 >= 0.5 ? 30 : 0;
             return { sh: t2, sm: t3, eh: t5, em: t6, h: ts2 - ts1 };
@@ -1325,10 +1326,10 @@
         function gH(y1, y2, pt) {
             var sy1 = Math.min(y1, y2);
             var sy2 = Math.max(y1, y2);
-            var t1 = (sy1 - pt) / 42;
+            var t1 = (sy1 - pt) / 82;
             var t2 = parseInt(t1);
             var t3 = t1 - t2 >= 0.5 ? 30 : 0;
-            var t4 = (sy2 - pt) / 42;
+            var t4 = (sy2 - pt) / 82;
             var t5 = parseInt(t4);
             var t6 = t4 - t5 >= 0.5 ? 30 : 0;
             return { sh: t2, sm: t3, eh: t5, em: t6, h: sy2 - sy1 };
@@ -2470,7 +2471,7 @@
                         var wrapid = new Date().getTime();
                         tp = d.target.offset().top;
                         if (!d.cpwrap) {
-                            var gh = gH(d.sy, d.sy + 42, tp);
+                            var gh = gH(d.sy, d.sy + 82, tp);
                             var ny = gP(gh.sh, gh.sm);
                             var tempdata = buildtempdayevent(gh.sh, gh.sm, gh.eh, gh.em, gh.h);
                             d.cpwrap = $("<div class='ca-evpi drag-chip-wrapper' style='top:" + ny + "px'/>").html(tempdata);
