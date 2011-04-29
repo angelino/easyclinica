@@ -77,12 +77,16 @@ public class PricingZerifierHibernateTests extends DaoBase {
 		session.refresh(plan);
 
 		assertEquals(2, plan.getPrecifiedProcedures().size());
+		
 		assertEquals(0.0, plan.getPrecifiedProcedures().get(0).getFixedAmount()
 				.doubleValue(), 0.00001);
 		assertEquals(0, plan.getPrecifiedProcedures().get(0).getCh());
+		assertEquals(0, plan.getPrecifiedProcedures().get(1).getRoomTaxAmount().doubleValue(), 0.0001);
+		
 		assertEquals(0.0, plan.getPrecifiedProcedures().get(1).getFixedAmount()
 				.doubleValue(), 0.00001);
 		assertEquals(0, plan.getPrecifiedProcedures().get(1).getCh());
+		assertEquals(0, plan.getPrecifiedProcedures().get(1).getRoomTaxAmount().doubleValue(), 0.0001);
 	}
 
 	@Test

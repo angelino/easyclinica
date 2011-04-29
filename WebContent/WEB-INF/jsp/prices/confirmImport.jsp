@@ -35,6 +35,7 @@
 										<th>Procedimento:</th>
 										<th>Valor:</th>
 										<th>CHs:</th>
+										<th>Taxa de Sala:</th>
 									</tr>
 									<c:forEach var="procedure" items="${import.importedProcedures}" varStatus="st">
 										<tr>
@@ -42,10 +43,12 @@
 												${procedure.name}
 												<input type="hidden" name="procedures[${st.index}].id" value="${procedure.id}" />
 												<input type="hidden" name="procedures[${st.index}].ch" value="${procedure.ch}" />
+												<input type="hidden" name="procedures[${st.index}].roomTax" value="${procedure.roomTax}" />
 												<input type="hidden" name="procedures[${st.index}].value" value="${procedure.value}" />
 											</td>
 											<td class="currency">${procedure.value}</td>
 											<td>${procedure.ch}</td>
+											<td>${procedure.roomTax}</td>
 										</tr>
 									</c:forEach>
 								</table>

@@ -42,7 +42,7 @@ public class PricingCopierHibernateTests extends DaoBase {
 		from.addPrecifiedMaterial(material, new BigDecimal("400.0"));
 		from.addPrecifiedMedicine(medicine, new BigDecimal("100.0"));
 		from.addPrecifiedSpecialty(specialty, new BigDecimal("200.0"));
-		from.addPrecifiedProcedure(procedure, new BigDecimal("300.0"));
+		from.addPrecifiedProcedure(procedure, new BigDecimal("300.0"), new BigDecimal("15.0"));
 
 		to = new HealthCarePlanBuilder().instance();
 
@@ -74,6 +74,8 @@ public class PricingCopierHibernateTests extends DaoBase {
 		assertEquals(1, to.getPrecifiedSpecialties().size());
 		assertTrue(new BigDecimal("200.0").compareTo(to
 				.getPrecifiedSpecialties().get(0).getAmount()) == 0);
+		assertTrue(new BigDecimal("200.0").compareTo(to
+				.getPrecifiedSpecialties().get(0).getAmount()) == 0);
 	}
 
 	@Test
@@ -85,6 +87,8 @@ public class PricingCopierHibernateTests extends DaoBase {
 		assertEquals(1, to.getPrecifiedProcedures().size());
 		assertTrue(new BigDecimal("300.0").compareTo(to
 				.getPrecifiedProcedures().get(0).getFixedAmount()) == 0);
+		assertTrue(new BigDecimal("15.0").compareTo(to
+				.getPrecifiedProcedures().get(0).getRoomTaxAmount()) == 0);
 	}
 
 	@Test

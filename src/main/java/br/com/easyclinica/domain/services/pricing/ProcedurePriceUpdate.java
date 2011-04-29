@@ -17,6 +17,7 @@ public class ProcedurePriceUpdate {
 			PrecifiedProcedure precifiedProcedure = find(importedProcedure, plan.getPrecifiedProcedures());
 			precifiedProcedure.setFixedAmount(importedProcedure.getValue());
 			precifiedProcedure.setCh(importedProcedure.getCh());
+			precifiedProcedure.setRoomTaxAmount(importedProcedure.getRoomTax());
 		}
 		
 		

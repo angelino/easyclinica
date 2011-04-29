@@ -73,7 +73,7 @@ public class HealthCarePlanBuilder {
 	}
 
 	public HealthCarePlanBuilder withPrecifiedProcedure(Procedure procedure, BigDecimal amount) {
-		plan.addPrecifiedProcedure(procedure, amount);
+		plan.addPrecifiedProcedure(procedure, amount, new BigDecimal("10.0"));
 		return this;
 	}
 

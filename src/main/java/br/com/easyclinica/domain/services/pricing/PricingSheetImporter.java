@@ -65,11 +65,11 @@ public class PricingSheetImporter {
 
 	private void extractProcedures() {
 		if (wb.getSheet("Procedimentos") != null) {
-			extractWithCh(wb.getSheet("Procedimentos"), importedProcedures);
+			extractProcedure(wb.getSheet("Procedimentos"), importedProcedures);
 		}
 	}
 
-	private void extractWithCh(Sheet sheet, List<ImportedStuff> list) {
+	private void extractProcedure(Sheet sheet, List<ImportedStuff> list) {
 		int qty = 0;
 		for (Iterator<Row> rit = sheet.rowIterator(); rit.hasNext();) {
 			Row row = rit.next();
@@ -78,7 +78,7 @@ public class PricingSheetImporter {
 				continue;
 
 			list.add(new ImportedStuff(toInt(row, 0), toString(row, 2),
-					toBigDecimal(row, 3), toInt(row, 4)));
+					toBigDecimal(row, 3), toInt(row, 4), toBigDecimal(row, 5)));
 		}
 	}
 
