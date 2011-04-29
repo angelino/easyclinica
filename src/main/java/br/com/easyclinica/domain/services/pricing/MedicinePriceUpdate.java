@@ -18,8 +18,6 @@ public class MedicinePriceUpdate {
 			
 			precifiedMedicine.setAmount(importedMedicine.getValue());
 		}
-		
-		
 	}
 
 	private PrecifiedMedicine find(ImportedStuff importedMedicine,

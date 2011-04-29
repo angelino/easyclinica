@@ -71,13 +71,13 @@ VALUES
 	(3, 40.30, 1, 2),
 	(4, 15.25, 1, 4);
 
-INSERT INTO `precifiedprocedure` (`id`,`fixedAmount`,`healthCarePlan_id`,`procedure_id`,`ch`)
+INSERT INTO `precifiedprocedure` (`id`,`fixedAmount`,`healthCarePlan_id`,`procedure_id`,`ch`, roomTaxAmount)
 VALUES
-	(1, 0.00, 1, 1, 55),
-	(2, 0.00, 1, 4, 12),
-	(3, 0.00, 1, 2, 20),
-	(4, 0.00, 1, 5, 30),
-	(5, 0.00, 1, 3, 60);
+	(1, 0.00, 1, 1, 55, 10.0),
+	(2, 0.00, 1, 4, 12, 11.0),
+	(3, 0.00, 1, 2, 20, 12.0),
+	(4, 0.00, 1, 5, 30, 13.0),
+	(5, 0.00, 1, 3, 60, 14.0);
 
 INSERT INTO `precifiedspecialty` (`id`,`amount`,`healthCarePlan_id`,`specialty_id`)
 VALUES

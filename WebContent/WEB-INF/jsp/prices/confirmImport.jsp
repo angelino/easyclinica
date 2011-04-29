@@ -48,7 +48,7 @@
 											</td>
 											<td class="currency">${procedure.value}</td>
 											<td>${procedure.ch}</td>
-											<td>${procedure.roomTax}</td>
+											<td class="currency">${procedure.roomTax}</td>
 										</tr>
 									</c:forEach>
 								</table>
