@@ -2,7 +2,7 @@ EasyClinica.pages['schedule'] = function(){
 	
 	var doctorId = $('input[name=schedule.doctor.id]').val();
 	
-	var view="week";          
+	var view="day";          
     
     var op = {
         view: view,
@@ -176,7 +176,13 @@ EasyClinica.pages['schedule'] = function(){
 			EasyClinica.common.formValidation();
 			managerColor();
 			schedulePeriodManager();
-        });
+			
+			var duration = $("input[name=schedule.duration]");
+			if(duration.val() == '') {
+		    	duration.val('00:15');
+		    	scheduleEndTimeManager();
+		    }
+		});
     });
     
     //go to today
@@ -263,5 +269,5 @@ EasyClinica.pages['schedule'] = function(){
     	
     	$("input[name=schedule.endTime]").val(endTime.format('dd/MM/yyyy hh:mm'));
     };
-     
+    
 };
