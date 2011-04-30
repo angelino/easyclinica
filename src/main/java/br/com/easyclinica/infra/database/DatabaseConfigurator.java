@@ -55,10 +55,10 @@ public class DatabaseConfigurator {
 		if(cfg.get("env").equals("production")){
 			configuration.setProperty("hibernate.c3p0.acquire_increment", "5");
 			configuration.setProperty("hibernate.c3p0.idle_test_period", "100");
-			configuration.setProperty("hibernate.c3p0.max_size", "100");
+			configuration.setProperty("hibernate.c3p0.max_size", "20");
 			configuration.setProperty("hibernate.c3p0.max_statements", "0");
-			configuration.setProperty("hibernate.c3p0.min_size", "10");
-			configuration.setProperty("hibernate.c3p0.timeout", "100");
+			configuration.setProperty("hibernate.c3p0.min_size", "3");
+			configuration.setProperty("hibernate.c3p0.timeout", "1800");
 			
 		}
 
