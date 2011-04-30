@@ -15,21 +15,21 @@
 				<div id="accordion">
 				    <h3><a href="#">Financeiro</a></h3>
 				    <div>
-				    	<form action="<c:url value="/relatorios/financeiro" />" method="get" id="form">
+				    	<form action="<c:url value="/relatorios/financeiro" />" method="get">
 				    	
 				    		<fieldset>
 				    			<div>
-				    				<label class="title">Data de Início:</label>
-				    				<input type="text" name="start" class="datepicker" />
+				    				<label class="title">Data de Início:<span>*</span></label>
+				    				<input type="text" name="start" class="datepicker" required="required" />
 				    			</div>
 				    			
 				    			<div>
-				    				<label class="title">Data de Término:</label>
-				    				<input type="text" name="end" class="datepicker" />
+				    				<label class="title">Data de Término:<span>*</span></label>
+				    				<input type="text" name="end" class="datepicker" required="required"/>
 				    			</div>
 				    			
 				    			<div>
-				    				<label class="title">Médico:</label>
+				    				<label class="title">Médico:<span>*</span></label>
 				    				<select name="doctorId" id="doctorId">
 										<option value="0">Todos</option>
 										<c:forEach items="${doctors}" var="doctor">
@@ -39,7 +39,7 @@
 				    			</div>
 				    			
 				    			<div>
-				    				<label class="title">Convênio:</label>
+				    				<label class="title">Convênio:<span>*</span></label>
 				    				<select name="planId" id="planId">
 										<option value="0">Todos</option>
 										<c:forEach items="${plans}" var="plan">
@@ -55,18 +55,18 @@
 						</form>
 					</div>
 					
-					 <h3><a href="#">Resumo por Médico</a></h3>
+					<h3><a href="#">Resumo por Médico</a></h3>
 				    <div>
 				    	<form action="<c:url value="/relatorios/financeiro/medicos" />" method="get">
 							<fieldset>
 								<div>
-				    				<label class="title">Data de Início:</label>
-				    				<input type="text" name="start" class="datepicker" />
+				    				<label class="title">Data de Início:<span>*</span></label>
+				    				<input type="text" name="start" class="datepicker" required="required" />
 				    			</div>
 				    			
 				    			<div>
-				    				<label class="title">Data de Término:</label>
-				    				<input type="text" name="end" class="datepicker" />
+				    				<label class="title">Data de Término:<span>*</span></label>
+				    				<input type="text" name="end" class="datepicker" required="required" />
 				    			</div>
 				    		</fieldset>
 				    		
@@ -76,18 +76,18 @@
 						</form>
 					</div>
 
-					 <h3><a href="#">Resumo por Convênios</a></h3>
+					<h3><a href="#">Resumo por Convênios</a></h3>
 				    <div>
 				    	<form action="<c:url value="/relatorios/financeiro/convenios" />" method="get">
 							<fieldset>
 								<div>
-				    				<label class="title">Data de Início:</label>
-				    				<input type="text" name="start" class="datepicker" />
+				    				<label class="title">Data de Início:<span>*</span></label>
+				    				<input type="text" name="start" class="datepicker" required="required" />
 				    			</div>
 				    			
 				    			<div>
-				    				<label class="title">Data de Término:</label>
-				    				<input type="text" name="end" class="datepicker" />
+				    				<label class="title">Data de Término:<span>*</span></label>
+				    				<input type="text" name="end" class="datepicker" required="required" />
 				    			</div>
 				    		</fieldset>
 				    		
