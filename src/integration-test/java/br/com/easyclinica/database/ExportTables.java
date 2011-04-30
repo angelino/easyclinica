@@ -29,10 +29,10 @@ public class ExportTables {
 		
 	}
 	
-	@Test
+	@Test @Ignore
 	public void createHomologSchemaInCloudbess() {
 		final String server = "ec2-75-101-156-134.compute-1.amazonaws.com";
-		final String customer = "clinicadavila";
+		final String customer = "teste";
 		
 		Configuration cfg = new DatabaseConfigurator(new Config() {
 			public String get(String key) {
