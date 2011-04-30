@@ -206,6 +206,8 @@ table.easy tr td.tablenostyle{background:#ffffff!important;border:none;}
 .boxactions input.btnschedule{background-image:url(/images/icons/schedule.png);}
 .boxactions a.btnpdf{background-image:url(/images/icons/pdf.png);}
 .boxactions input.btnpdf{background-image:url(/images/icons/pdf.png);}
+.boxactions a.btnreport{background-image:url(/images/icons/report.png);}
+.boxactions input.btnreport{background-image:url(/images/icons/report.png);}
 
 /*BOX PAGINACAO ######################################################################################################################*/
 .boxpagination{float:left;width:100%;background-color:#EEEEEE;border:#EEEEEE 1px solid;font-size:14px;padding:10px 0;margin:10px 0 20px 0;text-align:center;}
