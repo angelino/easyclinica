@@ -103,22 +103,26 @@ EasyClinica.pages['consultas'] = function(){
 	
 	var suggestRoomRate = function(index) {
 		var suggestedRoomRate = $('input[name=procedure-'+index+'-roomRate]').val();
-		
 		if(parseFloat(suggestedRoomRate) == 0) {
 			suggestedRoomRate = $('#default-room-tax').val();
 		}
 		
-		var formattedRoomRate = suggestedRoomRate.toString().formatCurrency(true);
-		$('#sugestao-taxadesala-info').html('A taxa de sala sugerida para essa consulta é de ' + formattedRoomRate
-				+ ". Aceita? <a href='javascript:void(0);' id='lnk-accept-roomrate' data-value='"+suggestedRoomRate+"'>Sim</a>");
-		
-		$('#lnk-accept-roomrate').click('click', function() {
-			var suggestedRoomRate = $('#lnk-accept-roomrate').attr('data-value');
-			$('input[name=appointment.roomRateAmount]').val(suggestedRoomRate.toString().formatCurrency());
-			$('#sugestao-taxadesala').hide();	
-			refreshAppointentValue();
-		});
-		$('#sugestao-taxadesala').show();
+		if(parseFloat(suggestedRoomRate) > 0) {
+			var formattedRoomRate = suggestedRoomRate.toString().formatCurrency(true);
+			$('#sugestao-taxadesala-info').html('A taxa de sala sugerida para essa consulta é de ' + formattedRoomRate
+					+ ". Aceita? <a href='javascript:void(0);' id='lnk-accept-roomrate' data-value='"+suggestedRoomRate+"'>Sim</a>");
+			
+			$('#lnk-accept-roomrate').click('click', function() {
+				var suggestedRoomRate = $('#lnk-accept-roomrate').attr('data-value');
+				$('input[name=appointment.roomRateAmount]').val(suggestedRoomRate.toString().formatCurrency());
+				$('#sugestao-taxadesala').hide();	
+				refreshAppointentValue();
+			});
+			$('#sugestao-taxadesala').show();
+		}
+		else {
+			$('#sugestao-taxadesala').hide();
+		}
 	};
 	
 	var configureRemoveActions = function(selector) {
