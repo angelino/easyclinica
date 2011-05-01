@@ -18,7 +18,7 @@
 	<field name="procedureAmount" class="java.math.BigDecimal"/>
 	<field name="roomRateAmount" class="java.math.BigDecimal"/>
 	<variable name="total" class="java.math.BigDecimal" calculation="Sum">
-		<variableExpression><![CDATA[$F{appointmentAmount}]]></variableExpression>
+		<variableExpression><![CDATA[$F{procedureAmount} + $F{roomRateAmount} + $F{appointmentAmount}]]></variableExpression>
 	</variable>
 	<background>
 		<band splitType="Stretch"/>
