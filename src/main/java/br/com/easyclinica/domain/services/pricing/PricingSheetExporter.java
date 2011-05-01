@@ -90,7 +90,7 @@ public class PricingSheetExporter {
 	}
 
 	private void exportMedicines() throws IOException {
-		Sheet sheet = wb.createSheet("Remédios");
+		Sheet sheet = wb.createSheet("Medicamentos");
 		
 		createHeader(sheet, "ID", "Nome do Medicamento", "Valor");
 		

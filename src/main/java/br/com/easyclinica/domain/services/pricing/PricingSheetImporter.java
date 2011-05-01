@@ -102,8 +102,8 @@ public class PricingSheetImporter {
 	}
 
 	private void extractMedicines(HealthCarePlan plan) {
-		if (wb.getSheet("Remédios") != null) {
-			extract(wb.getSheet("Remédios"), importedMedicines);
+		if (wb.getSheet("Medicamentos") != null) {
+			extract(wb.getSheet("Medicamentos"), importedMedicines);
 		}
 		
 		Map<Integer, PrecifiedMedicine> map = generateIndexForMedicines(plan);
