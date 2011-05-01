@@ -23,7 +23,7 @@ public class MedicinePriceUpdateTests {
 	}
 
 	@Test
-	public void shouldUpdateMedicineValueIfItAlreadyExists() {
+	public void shouldUpdateMedicineValue() {
 
 		HealthCarePlan plan = new HealthCarePlanBuilder()
 				.withPrecifiedMedicine(new Medicine(1), new BigDecimal("100.0"))

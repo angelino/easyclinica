@@ -1,6 +1,8 @@
 package br.com.easyclinica.domain.services.pricing;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import br.com.caelum.vraptor.ioc.Component;
 import br.com.easyclinica.domain.entities.HealthCarePlan;
@@ -13,8 +15,11 @@ public class ProcedurePriceUpdate {
 	public void pricesForAHealthCarePlan(HealthCarePlan plan,
 			List<ImportedStuff> procedures) {
 		
+		Map<Integer, PrecifiedProcedure> map = generateMap(plan);
+		
 		for(ImportedStuff importedProcedure : procedures) {
-			PrecifiedProcedure precifiedProcedure = find(importedProcedure, plan.getPrecifiedProcedures());
+			PrecifiedProcedure precifiedProcedure = map.get(importedProcedure.getId());
+			
 			precifiedProcedure.setFixedAmount(importedProcedure.getValue());
 			precifiedProcedure.setCh(importedProcedure.getCh());
 			precifiedProcedure.setRoomTaxAmount(importedProcedure.getRoomTax());
@@ -23,13 +28,13 @@ public class ProcedurePriceUpdate {
 		
 	}
 
-	private PrecifiedProcedure find(ImportedStuff importedProcedure,
-			List<PrecifiedProcedure> precifiedSpecialties) {
-		for(PrecifiedProcedure m : precifiedSpecialties) {
-			if(m.getProcedure().getId() == importedProcedure.getId()) return m;
+	private Map<Integer, PrecifiedProcedure> generateMap(HealthCarePlan plan) {
+		Map<Integer, PrecifiedProcedure> map = new HashMap<Integer, PrecifiedProcedure>();
+		for(PrecifiedProcedure pm : plan.getPrecifiedProcedures()) {
+			map.put(pm.getProcedure().getId(), pm);
 		}
-		
-		return null;
+		return map;
 	}
 
+	
 }
