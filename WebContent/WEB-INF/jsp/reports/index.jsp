@@ -16,6 +16,12 @@
 				    <h3><a href="#">Financeiro</a></h3>
 				    <div>
 				    	<form action="<c:url value="/relatorios/financeiro" />" method="get" id="form">
+				    		<fieldset>
+				    			<div>
+				    				
+				    			</div>
+		cd c:
+				    		</fieldset>
 						Data de Início: <input type="text" name="start" id="start" class="datepicker" /> <br />
 						Data de Fim: <input type="text" name="end" id="end" class="datepicker" /> <br />
 						Médico:
@@ -39,7 +45,7 @@
 						</form>
 					</div>
 					
-					 <h3><a href="#">Resumo por Médico</a></h3>
+					<h3><a href="#">Resumo por Médico</a></h3>
 				    <div>
 				    	<form action="<c:url value="/relatorios/financeiro/medicos" />" method="get">
 							Data de Início: <input type="text" name="start" class="datepicker" /> <br />
