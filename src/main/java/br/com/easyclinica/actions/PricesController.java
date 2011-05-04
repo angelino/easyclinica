@@ -91,7 +91,7 @@ public class PricesController {
 	@Post
 	@Path("/convenios/{id}/precos/confirmar")
 	public void confirmImport(int id, UploadedFile file) {
-		importer.excel(file.getFile());
+		importer.excel(file.getFile(), plans.getById(id));
 
 		result.include("import", importer);
 		result.include("id", id);

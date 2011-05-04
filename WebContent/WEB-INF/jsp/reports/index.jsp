@@ -15,51 +15,85 @@
 				<div id="accordion">
 				    <h3><a href="#">Financeiro</a></h3>
 				    <div>
-				    	<form action="<c:url value="/relatorios/financeiro" />" method="get" id="form">
+				    	<form action="<c:url value="/relatorios/financeiro" />" method="post">
+				    	
 				    		<fieldset>
 				    			<div>
-				    				
+				    				<label class="title">Data de Início:<span>*</span></label>
+				    				<input type="text" name="start" class="datepicker" required="required" />
 				    			</div>
-		cd c:
+				    			
+				    			<div>
+				    				<label class="title">Data de Término:<span>*</span></label>
+				    				<input type="text" name="end" class="datepicker" required="required"/>
+				    			</div>
+				    			
+				    			<div>
+				    				<label class="title">Médico:<span>*</span></label>
+				    				<select name="doctorId" id="doctorId">
+										<option value="0">Todos</option>
+										<c:forEach items="${doctors}" var="doctor">
+											<option value="${doctor.id}">${doctor.name}</option>
+										</c:forEach>
+									</select>
+				    			</div>
+				    			
+				    			<div>
+				    				<label class="title">Convênio:<span>*</span></label>
+				    				<select name="planId" id="planId">
+										<option value="0">Todos</option>
+										<c:forEach items="${plans}" var="plan">
+											<option value="${plan.id}">${plan.name}</option>
+										</c:forEach>
+									</select>
+				    			</div>
 				    		</fieldset>
-						Data de Início: <input type="text" name="start" id="start" class="datepicker" /> <br />
-						Data de Fim: <input type="text" name="end" id="end" class="datepicker" /> <br />
-						Médico:
-							<select name="doctorId" id="doctorId">
-								<option value="0">Todos</option>
-								<c:forEach items="${doctors}" var="doctor">
-									<option value="${doctor.id}">${doctor.name}</option>
-								</c:forEach>
-							</select>
-						
-						Convênio:
-						
-							<select name="planId" id="planId">
-								<option value="0">Todos</option>
-								<c:forEach items="${plans}" var="plan">
-									<option value="${plan.id}">${plan.name}</option>
-								</c:forEach>
-							</select>
-							
-							<input type="submit" value="Gerar Relatório" />
+				    	
+				    		<div class="boxactions">	
+								<input class="btnreport" type="submit" value="Gerar Relatório" />
+							</div>
 						</form>
 					</div>
 					
 					<h3><a href="#">Resumo por Médico</a></h3>
 				    <div>
 				    	<form action="<c:url value="/relatorios/financeiro/medicos" />" method="get">
-							Data de Início: <input type="text" name="start" class="datepicker" /> <br />
-							Data de Fim: <input type="text" name="end" class="datepicker" /> <br />
-							<input type="submit" value="Gerar Relatório" />
+							<fieldset>
+								<div>
+				    				<label class="title">Data de Início:<span>*</span></label>
+				    				<input type="text" name="start" class="datepicker" required="required" />
+				    			</div>
+				    			
+				    			<div>
+				    				<label class="title">Data de Término:<span>*</span></label>
+				    				<input type="text" name="end" class="datepicker" required="required" />
+				    			</div>
+				    		</fieldset>
+				    		
+							<div class="boxactions">	
+								<input class="btnreport" type="submit" value="Gerar Relatório" />
+							</div>
 						</form>
 					</div>
 
-					 <h3><a href="#">Resumo por Convênios</a></h3>
+					<h3><a href="#">Resumo por Convênios</a></h3>
 				    <div>
 				    	<form action="<c:url value="/relatorios/financeiro/convenios" />" method="get">
-							Data de Início: <input type="text" name="start" class="datepicker" /> <br />
-							Data de Fim: <input type="text" name="end"class="datepicker" /> <br />
-							<input type="submit" value="Gerar Relatório" />
+							<fieldset>
+								<div>
+				    				<label class="title">Data de Início:<span>*</span></label>
+				    				<input type="text" name="start" class="datepicker" required="required" />
+				    			</div>
+				    			
+				    			<div>
+				    				<label class="title">Data de Término:<span>*</span></label>
+				    				<input type="text" name="end" class="datepicker" required="required" />
+				    			</div>
+				    		</fieldset>
+				    		
+							<div class="boxactions">	
+								<input class="btnreport" type="submit" value="Gerar Relatório" />
+							</div>
 						</form>
 					</div>
 										
@@ -71,7 +105,7 @@
 		<div class="boxright">
 			<% 
 				java.util.List<Link> links = new LinkedList<Link>();  
-				links.add(new Link("/","Voltar para dashboard"));
+				links.add(new Link("/","Voltar para mural"));
 				pageContext.setAttribute("links",links);
 			%>
 			<helper:navigation links="${links}"></helper:navigation>		

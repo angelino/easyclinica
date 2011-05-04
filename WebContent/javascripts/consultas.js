@@ -1,50 +1,63 @@
 EasyClinica.pages['consultas'] = function(){
-	
-	$('#informe-procedimento-message').hide();
-	
-	$("#txt_search_procedure").autocomplete(EasyClinica.cfg.services.searchProcedure, {
-		autoFill: false
-	}).result(function(event, item) {
-		$('#selected_procedure_id').val(item[1]);
-	});
-	
-	$('#btn_search_procedure').click(function(e){		
-		e.preventDefault();
+
+	$(function() {
+		$('#aviso-retorno').hide();
+		$('#sugestao-taxadesala').hide();
+
+		$('#informe-procedimento-message').hide();
 		
-		var procedureId = $('#selected_procedure_id').val();
-		
-		if(procedureId == 0) {
-			$('#informe-procedimento-message').show('slow');
-			return;
-		}
-		
-		var healthCarePlanId = $("input[name=appointment.healthCarePlan.id]:checked").val();
-		addNewProcedure(procedureId, healthCarePlanId);
-		
-	});
-	
-	$('input[name=appointment.healthCarePlan.id]').change(function(){
-		var healthCarePlanId = $(this).val();
-		refreshRoomRateAmount();
-		
-		var specialtyId = $('select[name=appointment.specialty.id]').val();
-		if(specialtyId == 0) return;
-		refreshMedicalAppointmentAmount(specialtyId);
-				
-		var procedures = new Array();
-		var indice = 0;
-		$('.procedure-id').each(function(index){
-			var procedureId = $(this).val();
-			procedures[indice] = procedureId;
-			removeProcedure(procedureId);
-			
-			indice += 1;
+		$("#txt_search_procedure").autocomplete(EasyClinica.cfg.services.searchProcedure, {
+			autoFill: false
+		}).result(function(event, item) {
+			$('#selected_procedure_id').val(item[1]);
 		});
 		
-		for (var i = 0; i <procedures.length; i++){
-			addNewProcedure(procedures[i], healthCarePlanId);
-		}
+		$('#lnk-default-roomtax').click(function() {
+			var roomTax = $('#lnk-default-roomtax').attr('data-value').toString().formatCurrency();
+			$('input[name=appointment.roomRateAmount]').val(roomTax);
+		});
+		
+		$('#btn_search_procedure').click(function(e){		
+			e.preventDefault();
+			
+			var procedureId = $('#selected_procedure_id').val();
+			
+			if(procedureId == 0) {
+				$('#informe-procedimento-message').show('slow');
+				return;
+			}
+			
+			var healthCarePlanId = $("input[name=appointment.healthCarePlan.id]:checked").val();
+			addNewProcedure(procedureId, healthCarePlanId);
+			
+		});
+		
+		$('input[name=appointment.healthCarePlan.id]').change(function(){
+			var healthCarePlanId = $(this).val();
+			checkIfRoomRateAmountIsStillNeeded();
+			
+			var specialtyId = $('select[name=appointment.specialty.id]').val();
+			if(specialtyId == 0) return;
+			refreshMedicalAppointmentAmount(specialtyId);
+					
+			var procedures = new Array();
+			var indice = 0;
+			$('.procedure-id').each(function(index){
+				var procedureId = $(this).val();
+				procedures[indice] = procedureId;
+				removeProcedure(procedureId);
+				
+				indice += 1;
+			});
+			
+			for (var i = 0; i <procedures.length; i++){
+				addNewProcedure(procedures[i], healthCarePlanId);
+			}
+		});
+	
 	});
+	
+
 	
 	var addNewProcedure = function(procedureId, healthCarePlanId) {
 		$.post(EasyClinica.cfg.services.newProcedureToAppointment, { procedureId: procedureId, healthCarePlanId: healthCarePlanId }, function(data){
@@ -55,6 +68,7 @@ EasyClinica.pages['consultas'] = function(){
 			$('.boxtotal').first().before(data);
 			$('.modal').remove();
 			
+			suggestRoomRate(index);
 			configureAmountManager();
 			configureRemoveActions();
 			refreshAppointentValue();
@@ -83,8 +97,32 @@ EasyClinica.pages['consultas'] = function(){
 	
 	var removeProcedure = function(procedureId) {
 		$('tr[procedure_id=' + procedureId + ']').remove();
-		refreshRoomRateAmount();
+		checkIfRoomRateAmountIsStillNeeded();
 		refreshAppointentValue();
+	};
+	
+	var suggestRoomRate = function(index) {
+		var suggestedRoomRate = $('input[name=procedure-'+index+'-roomRate]').val();
+		if(parseFloat(suggestedRoomRate) == 0) {
+			suggestedRoomRate = $('#default-room-tax').val();
+		}
+		
+		if(parseFloat(suggestedRoomRate) > 0) {
+			var formattedRoomRate = suggestedRoomRate.toString().formatCurrency(true);
+			$('#sugestao-taxadesala-info').html('A taxa de sala sugerida para essa consulta é de ' + formattedRoomRate
+					+ ". Aceita? <a href='javascript:void(0);' id='lnk-accept-roomrate' data-value='"+suggestedRoomRate+"'>Sim</a>");
+			
+			$('#lnk-accept-roomrate').click('click', function() {
+				var suggestedRoomRate = $('#lnk-accept-roomrate').attr('data-value');
+				$('input[name=appointment.roomRateAmount]').val(suggestedRoomRate.toString().formatCurrency());
+				$('#sugestao-taxadesala').hide();	
+				refreshAppointentValue();
+			});
+			$('#sugestao-taxadesala').show();
+		}
+		else {
+			$('#sugestao-taxadesala').hide();
+		}
 	};
 	
 	var configureRemoveActions = function(selector) {
@@ -240,21 +278,12 @@ EasyClinica.pages['consultas'] = function(){
 		});
 	};
 	
-	var refreshRoomRateAmount = function() {
+	var checkIfRoomRateAmountIsStillNeeded = function() {
 		var qtyProcedures = $('.procedure-id').size();
 		if(qtyProcedures == 0) {
 			$('input[name=appointment.roomRateAmount]').val('0'.formatCurrency());
-			return;
+			$('#sugestao-taxadesala').hide();
 		}
-		
-		//var convenioId = $('input[name=appointment.healthCarePlan.id]:checked').val();
-		
-		//getHealthCarePlanData(convenioId, function(data){
-		//	var amount = 0;
-		//	if(data.healthCarePlan.payForRoomRate) amount = data.healthCarePlan.roomRateDefaultAmount;
-			
-		//	$('input[name=appointment.roomRateAmount]').val(amount.toString().formatCurrency());
-		//});
 	};
 	
 	var getHealthCarePlanData = function(planId, OnCreate) {

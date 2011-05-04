@@ -8,7 +8,7 @@
 	<body>
 		<div class="box" id="dashboard">		
 			<div class="boxcontent">
-				<h2>Dashboard</h2>
+				<h2>Mural</h2>
 				
 				<div class="newPost">
 					Compartilhe informações com toda a clínica!

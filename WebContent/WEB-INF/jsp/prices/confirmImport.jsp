@@ -33,8 +33,8 @@
 								<table border="0" class="easy">
 									<tr class="tableheader">
 										<th>Procedimento:</th>
-										<th>Valor:</th>
-										<th>CHs:</th>
+										<th>Valor</th>
+										<th>Taxa de Sala:</th>
 									</tr>
 									<c:forEach var="procedure" items="${import.importedProcedures}" varStatus="st">
 										<tr>
@@ -42,10 +42,18 @@
 												${procedure.name}
 												<input type="hidden" name="procedures[${st.index}].id" value="${procedure.id}" />
 												<input type="hidden" name="procedures[${st.index}].ch" value="${procedure.ch}" />
+												<input type="hidden" name="procedures[${st.index}].roomTax" value="${procedure.roomTax}" />
 												<input type="hidden" name="procedures[${st.index}].value" value="${procedure.value}" />
 											</td>
-											<td class="currency">${procedure.value}</td>
-											<td>${procedure.ch}</td>
+											<c:choose>
+												<c:when test="${procedure.value > 0}">
+													<td class="currency">${procedure.value}</td>
+												</c:when>
+												<c:otherwise>
+													<td>${procedure.ch} CHs</td>
+												</c:otherwise>
+											</c:choose>
+											<td class="currency">${procedure.roomTax}</td>
 										</tr>
 									</c:forEach>
 								</table>
@@ -71,7 +79,7 @@
 												<input type="hidden" name="materials[${st.index}].id" value="${material.id}" />
 												<input type="hidden" name="materials[${st.index}].value" value="${material.value}" />
 											</td>
-											<td>
+											<td class="currency">
 												${material.value}
 											</td>
 										</tr>
@@ -99,7 +107,7 @@
 												<input type="hidden" name="medicines[${st.index}].id" value="${medicine.id}" />
 												<input type="hidden" name="medicines[${st.index}].value" value="${medicine.value}" />
 											</td>
-											<td>
+											<td class="currency">
 												${medicine.value}
 											</td>
 										</tr>
@@ -128,7 +136,7 @@
 												<input type="hidden" name="specialties[${st.index}].id" value="${specialty.id}" />
 												<input type="hidden" name="specialties[${st.index}].value" value="${specialty.value}" />
 											</td>
-											<td>
+											<td class="currency">
 												${specialty.value}
 											</td>
 										</tr>

@@ -102,7 +102,7 @@
 		<div class="boxright">
 			<% 
 				java.util.List<Link> links = new LinkedList<Link>();  
-				links.add(new Link("/","Voltar para dashboard"));
+				links.add(new Link("/","Voltar para mural"));
 				pageContext.setAttribute("links",links);
 			%>
 			<helper:navigation links="${links}"></helper:navigation>		

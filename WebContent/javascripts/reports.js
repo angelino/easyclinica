@@ -1,8 +1,9 @@
 EasyClinica.pages['reports'] = function(){
 	
-	$(function() {
-		$( "#accordion" ).accordion();
-		
+	$( "#accordion" ).accordion({
+	   change: function(event, ui) {  
+		   $('.error').hide();
+	   }
 	});
-	
+		
 };

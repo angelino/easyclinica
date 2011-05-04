@@ -59,7 +59,7 @@ public class PricingSheetExporter {
 	private void exportProcedures() throws IOException {
 		Sheet sheet = wb.createSheet("Procedimentos");
 		
-		createHeader(sheet, "ID", "Código AMB", "Nome do Procedimento", "Valor Fixo", "CHs");
+		createHeader(sheet, "ID", "Codigo AMB", "Nome do Procedimento", "Valor Fixo", "CHs", "Taxa de sala");
 		
 		int rowCount = 1;
 		for(Procedure procedure : procedures.getAll()) {
@@ -70,13 +70,14 @@ public class PricingSheetExporter {
 			row.createCell(2).setCellValue(procedure.getName());
 			row.createCell(3).setCellValue((precifiedProcedure == null ? 0.0 : precifiedProcedure.getFixedAmount().doubleValue())); 
 			row.createCell(4).setCellValue((precifiedProcedure == null ? 0 : precifiedProcedure.getCh())); 
+			row.createCell(5).setCellValue((precifiedProcedure == null ? 0 : precifiedProcedure.getRoomTaxAmount().doubleValue())); 
 		}
 	}
 
 	private void exportSpecialties() throws IOException {
 		Sheet sheet = wb.createSheet("Especialidades");
 		
-		createHeader(sheet, "ID", "Nome da Especialidade", "Preço");
+		createHeader(sheet, "ID", "Nome da Especialidade", "Valor");
 		
 		int rowCount = 1;
 		for(Specialty specialty : specialties.getAll()) {
@@ -89,9 +90,9 @@ public class PricingSheetExporter {
 	}
 
 	private void exportMedicines() throws IOException {
-		Sheet sheet = wb.createSheet("Remédios");
+		Sheet sheet = wb.createSheet("Medicamentos");
 		
-		createHeader(sheet, "ID", "Nome do Remédio", "Preço");
+		createHeader(sheet, "ID", "Nome do Medicamento", "Valor");
 		
 		int rowCount = 1;
 		for(Medicine medicine : medicines.getAll()) {
@@ -106,7 +107,7 @@ public class PricingSheetExporter {
 	private void exportMaterials() throws IOException {
 		Sheet sheet = wb.createSheet("Materiais");
 		
-		createHeader(sheet, "ID", "Nome do Material", "Preço");
+		createHeader(sheet, "ID", "Nome do Material", "Valor");
 		
 		int rowCount = 1;
 		for(Material material : materials.getAll()) {

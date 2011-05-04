@@ -236,10 +236,11 @@ public class HealthCarePlan implements Serializable {
 		return precifiedSpecialty;
 	}
 
-	public PrecifiedProcedure addPrecifiedProcedure(Procedure procedure, BigDecimal amount) {
+	public PrecifiedProcedure addPrecifiedProcedure(Procedure procedure, BigDecimal amount, BigDecimal roomTax) {
 		PrecifiedProcedure precifiedProcedure = new PrecifiedProcedure();
 		precifiedProcedure.setProcedure(procedure);
 		precifiedProcedure.setFixedAmount(amount);
+		precifiedProcedure.setRoomTaxAmount(roomTax);
 		precifiedProcedure.setHealthCarePlan(this);
 		this.precifiedProcedures.add(precifiedProcedure);
 		

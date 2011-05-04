@@ -32,7 +32,7 @@
 								<th>Especialidade:</th>
 								<th>Telefone:</th>
 								<th>E-mail:</th>
-								<th width="201px">&nbsp;</th>
+								<th width="205px">&nbsp;</th>
 							</tr>
 							
 							<c:forEach var="doctor" items="${doctors.result}" varStatus="status">

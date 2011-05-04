@@ -9,6 +9,7 @@
     <th colspan="2">Valor CH:</th>
     <th>Valor R$</th>
     <th width="95px">
+		<input type="hidden" name="procedure-#index#-roomRate" value="${precifiedProcedure.roomTaxAmount}" />
     	<input type="hidden" name="index" value="#index#"/>
 		<input type="hidden" name="procedure_id" value="${procedure.id}"/>
     	

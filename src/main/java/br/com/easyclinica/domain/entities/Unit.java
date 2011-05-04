@@ -6,6 +6,8 @@ public enum Unit {
 	ML("ml"),
 	PAR("par"),
 	KG("kg"),
+	PACOTE("pacote"),
+	CENTIMETRO("centímetro"),
 	METRO("metro");
 
 	private String name;

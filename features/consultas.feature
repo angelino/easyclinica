@@ -126,6 +126,15 @@ Cenario: Taxa de sala
 	Entao devo ver "R$ 112,45"
 	E devo ver "R$ 362,45"
 
+Cenario: Sugestao de taxa de sala
+	Dado que estou logado como owner
+	E que um paciente "Mauricio" padrao esta cadastrado
+	Quando clico no link "Nova consulta"
+	E marco a consulta para o dia "10/10/2010"
+	E seleciono o doutor "Dr. Roberto Aniche"
+	E adiciono o procedimento "procedimento 1"
+	Entao devo ver "A taxa de sala sugerida para essa consulta é de R$ 10,00"
+	
 Cenario: Procedimentos e taxa de sala
 	Dado que estou logado como owner
 	E que um paciente "Mauricio" padrao esta cadastrado

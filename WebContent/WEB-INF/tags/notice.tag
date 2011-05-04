@@ -9,5 +9,5 @@
 
 <div class="postit" id="${id}">
   <h4><c:out value="${title}"/></h4>
-  <p><c:out value="${notice}"/></p>
+  <p id="${id}-info"><c:out value="${notice}"/></p>
 </div>

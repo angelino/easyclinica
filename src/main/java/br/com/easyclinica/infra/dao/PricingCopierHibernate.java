@@ -45,7 +45,7 @@ public class PricingCopierHibernate implements PricingCopier {
 
 	private void copyProcedure(HealthCarePlan from, HealthCarePlan to) {
 		session.createSQLQuery(
-				"insert into PrecifiedProcedure (ch, fixedAmount, healthCarePlan_id, procedure_id) select c.ch, c.fixedamount, :to, procedure_id from PrecifiedProcedure c where c.healthCarePlan_id = :from")
+				"insert into PrecifiedProcedure (roomTaxAmount, ch, fixedAmount, healthCarePlan_id, procedure_id) select c.roomTaxAmount, c.ch, c.fixedamount, :to, procedure_id from PrecifiedProcedure c where c.healthCarePlan_id = :from")
 				.setParameter("to", to.getId())
 				.setParameter("from", from.getId()).executeUpdate();
 	}

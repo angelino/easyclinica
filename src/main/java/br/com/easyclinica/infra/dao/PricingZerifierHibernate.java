@@ -34,7 +34,7 @@ public class PricingZerifierHibernate implements PricingZerifier {
 				.executeUpdate();
 		
 		session.createSQLQuery(
-				"insert into PrecifiedProcedure (ch, fixedAmount, healthCarePlan_id, procedure_id) select 0, 0, :to, id from medical_procedures")
+				"insert into PrecifiedProcedure (roomTaxAmount, ch, fixedAmount, healthCarePlan_id, procedure_id) select 0, 0, 0, :to, id from medical_procedures")
 				.setParameter("to", healthCarePlan.getId())
 				.executeUpdate();
 	}

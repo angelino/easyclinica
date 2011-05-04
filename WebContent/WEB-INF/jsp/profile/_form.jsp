@@ -51,7 +51,7 @@
     
     <div class="boxactions">
 		<input type="submit" class="btnsave" value="Salvar" />
-        <input type="button" class="btncancel" value="Cancelar" redirect_to="<c:url value="/dashboard"/>"/>
+        <input type="button" class="btncancel" value="Cancelar" redirect_to="<c:url value="/"/>"/>
     </div>
   
 </form>

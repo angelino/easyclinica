@@ -217,9 +217,11 @@ EasyClinica.common.formValidation = function (selector){
     $(selector).find('input[type=submit], .submit').click(function (e) {
         if($(this).is('a')) e.preventDefault();
         
-        var form = findRecursiveParent($(this), 'form');
+        $('.error').hide();
         
+        var form = findRecursiveParent($(this), 'form');
         var validator = form.data('validator');
+        validator.checkValidity();
         if (validator && validator.checkValidity()) {
             validator.destroy();
             

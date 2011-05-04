@@ -9,12 +9,6 @@
 <html>
 <head>
 	<title>.: EasyClinica - Nova Consulta :.</title>
-	
-	<script type="text/javascript" language="javascript">
-		$(function(){
-			$('#aviso-retorno').hide();
-		});
-	</script>
 </head>
 <body>
 	<div class="box" id="consultas" main-page="pacientes">
@@ -23,6 +17,7 @@
 		<form action="<c:url value="/pacientes/${patient.id}/consultas/novo"/>" method="post">
 			<input type="hidden" value="${patient.id}" name="appointment.patient.id"/>
 			<input type="hidden" value="${loggedUser.employee.id}" name="appointment.employee.id" />
+			<input type="hidden" value="${patient.healthCarePlan.roomRateDefaultAmount}" id="default-room-tax" />
 		
 			<div class="boxcontent">
 				
@@ -115,8 +110,8 @@
                     <tr class="boxtotal">
                         <td colspan="1">Taxa de Sala:</td>
                         <td class="valor">
-                        	<input type="text" class="amount currency" required="required" value="${patient.healthCarePlan.roomRateDefaultAmount}" name="appointment.roomRateAmount"/>
-                        </td>                         
+                        	<input type="text" class="amount currency" required="required" value="0,00" name="appointment.roomRateAmount"/>
+                        </td>
                     </tr>
                     <tr class="boxtotal">
                         <td colspan="1">Total:</td>
@@ -143,6 +138,7 @@
 		<helper:navigation links="${links}"></helper:navigation>
 		<helper:patientDetails patient="${patient}" />
 		<helper:notice id="aviso-retorno" notice="Essa consulta pode ser um retorno." title="Retorno" />
+		<helper:notice id="sugestao-taxadesala" notice=" " title="Taxa de sala" />
 	</div>					
 	
 </body>
