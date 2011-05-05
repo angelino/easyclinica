@@ -35,7 +35,7 @@
 
 		<div class="title">
 			<label class="title">Data de Nascimento:<span>*</span></label>
-    		<input type="text" name="patient.birthDate"maxlength="50" required="required" class="datepicker" value="<fmt:formatDate value="${patient.birthDate.time}" pattern="dd/MM/yyyy" />" />
+    		<input type="text" name="patient.birthDate"maxlength="50" required="required" class="mask_date" value="<fmt:formatDate value="${patient.birthDate.time}" pattern="dd/MM/yyyy" />" />
     	</div>
 
 		<div class="title">

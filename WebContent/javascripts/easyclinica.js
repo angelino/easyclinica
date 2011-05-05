@@ -180,6 +180,7 @@ EasyClinica.common.generalFunctions = function(selector){
 	$(selector).find('.mask_cep').mask('99999-999');
 	$(selector).find('.mask_cpf').mask('999.999.999-99');
 	$(selector).find('.mask_cnpj').mask('99.999.999/9999-99');
+	$(selector).find('.mask_date').mask('99/99/9999');	
 	
 	// Datepicker
 	$(selector).find('.datepicker').datepicker(EasyClinica.cfg.datepicker);

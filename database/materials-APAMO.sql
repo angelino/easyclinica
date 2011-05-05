@@ -1,3 +1,5 @@
+truncate table material;
+
 INSERT INTO material (`name`,`unit`) VALUES('Gaze','UN');
 INSERT INTO material (`name`,`unit`) VALUES('Compressa cirurgica estéril','UN');
 INSERT INTO material (`name`,`unit`) VALUES('Luvas de procedimentos','PAR');
