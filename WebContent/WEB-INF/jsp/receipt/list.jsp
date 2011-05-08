@@ -34,7 +34,7 @@
 			                    <th>Data</th> 
 			                    <th>Em nome de</th>
 			                    <th>CPF</th>
-			                    <th>Amount</th> 
+			                    <th>Valor</th> 
 			                    <th width="202px">&nbsp;</th>
 			                </tr> 
                   
