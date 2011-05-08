@@ -42,12 +42,19 @@ public class HealthCarePlanValidatorTests {
 		List<Error> errors = validator.validate(plan);		
 		assertEquals(1, errors.size());
 		assertEquals(ValidationMessages.INVALID_NAME, errors.get(0).getKey());
-	
+	}
+
+	@Test
+	public void shouldNotReturnErrorIfCHIsZero() {
+		HealthCarePlan plan = new HealthCarePlanBuilder().withCh(BigDecimal.ZERO).instance();
+		
+		List<Error> errors = validator.validate(plan);		
+		assertEquals(0, errors.size());
 	}
 	
 	@Test
-	public void shouldReturnErrorIfCHIsZeroOrNotPresent() {
-		HealthCarePlan plan = new HealthCarePlanBuilder().withCh(BigDecimal.ZERO).instance();
+	public void shouldReturnErrorIfCHIsLessThanZeroOrNotPresent() {
+		HealthCarePlan plan = new HealthCarePlanBuilder().withCh(new BigDecimal("-1")).instance();
 		
 		List<Error> errors = validator.validate(plan);		
 		assertEquals(1, errors.size());

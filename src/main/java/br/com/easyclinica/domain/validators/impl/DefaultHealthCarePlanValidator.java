@@ -24,7 +24,7 @@ public class DefaultHealthCarePlanValidator implements HealthCarePlanValidator {
 		if(validatorUtils.isNullOrEmpty(obj.getName())) {
 			errors.add(new Error("healthCarePlan", ValidationMessages.INVALID_NAME));
 		}
-		if(!validatorUtils.isMoreThanZero(obj.getCh())) {
+		if(!validatorUtils.isEqualOrMoreThanZero(obj.getCh())) {
 			errors.add(new Error("healthCarePlan", ValidationMessages.INVALID_CH));
 		}
 		

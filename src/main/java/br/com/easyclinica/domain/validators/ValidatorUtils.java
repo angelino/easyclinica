@@ -27,6 +27,13 @@ public class ValidatorUtils {
 		
 		return false;
 	}
+
+	public boolean isEqualOrMoreThanZero(BigDecimal value)
+	{
+		if(value.compareTo(BigDecimal.ZERO) >= 0 ) return true;
+		
+		return false;
+	}
 	
 	public boolean isMoreThanZero(BigDecimal value)
 	{
