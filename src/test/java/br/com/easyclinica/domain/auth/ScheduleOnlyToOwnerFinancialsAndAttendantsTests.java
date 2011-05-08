@@ -14,7 +14,7 @@ import br.com.easyclinica.infra.multitenancy.LoggedUser;
 import br.com.easyclinica.tests.helpers.ClinicBuilder;
 import br.com.easyclinica.tests.helpers.EmployeeBuilder;
 
-public class ScheduleOnlyToOwnersAndAttendantsTests {
+public class ScheduleOnlyToOwnerFinancialsAndAttendantsTests {
 
 	private LoggedUser loggedUser;
 	private Clinic clinic;
@@ -29,7 +29,7 @@ public class ScheduleOnlyToOwnersAndAttendantsTests {
 		Employee employee = as(Position.DOCTOR);
 		
 		loggedUser.set(clinic, employee);
-		boolean accepts = new ScheduleOnlyToOwnersAndAttendants().allows(ScheduleController.class, employee);
+		boolean accepts = new ScheduleOnlyToOwnersFinancialsAndAttendants().allows(ScheduleController.class, employee);
 		
 		assertFalse(accepts);
 	}
@@ -39,19 +39,19 @@ public class ScheduleOnlyToOwnersAndAttendantsTests {
 		Employee employee = as(Position.ATTENDANT);
 		
 		loggedUser.set(clinic, employee);
-		boolean accepts = new ScheduleOnlyToOwnersAndAttendants().allows(ScheduleController.class, employee);
+		boolean accepts = new ScheduleOnlyToOwnersFinancialsAndAttendants().allows(ScheduleController.class, employee);
 		
 		assertTrue(accepts);
 	}
 
 	@Test
-	public void shouldNotAllowFinancial() {
+	public void shouldAllowFinancial() {
 		Employee employee = as(Position.FINANCIAL);
 		
 		loggedUser.set(clinic, employee);
-		boolean accepts = new ScheduleOnlyToOwnersAndAttendants().allows(ScheduleController.class, employee);
+		boolean accepts = new ScheduleOnlyToOwnersFinancialsAndAttendants().allows(ScheduleController.class, employee);
 		
-		assertFalse(accepts);
+		assertTrue(accepts);
 	}
 
 	@Test
@@ -59,7 +59,7 @@ public class ScheduleOnlyToOwnersAndAttendantsTests {
 		Employee employee = as(Position.OWNER);
 		
 		loggedUser.set(clinic, employee);
-		boolean accepts = new ScheduleOnlyToOwnersAndAttendants().allows(ScheduleController.class, employee);
+		boolean accepts = new ScheduleOnlyToOwnersFinancialsAndAttendants().allows(ScheduleController.class, employee);
 		
 		assertTrue(accepts);
 	}
