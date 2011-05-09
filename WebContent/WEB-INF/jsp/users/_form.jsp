@@ -26,7 +26,7 @@
 			
 			<select name="employee.position" id="position">
 				<c:forEach var="position" items="${positions}">
-					<option value="${position}" ${position == employee.position ? 'selected' : ''}>${position.formattedName}</option>
+					<option value="${position}" ${position == employee.position ? 'selected' : ''}><fmt:message key="${position.localeKey}"></fmt:message></option>
 				</c:forEach>
 			</select>
     	</div>

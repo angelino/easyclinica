@@ -2,19 +2,19 @@ package br.com.easyclinica.domain.entities;
 
 public enum Position {
 
-	FINANCIAL ("Financeiro"), 
-	DOCTOR ("Médico"), 
-	ATTENDANT("Atendente"),
-	OWNER("Dono");
+	FINANCIAL ("position.financial"), 
+	DOCTOR ("position.doctor"), 
+	ATTENDANT("position.attendant"),
+	OWNER("position.owner");
 	
-	private String name;
+	private String key;
 	
-	Position(String name) {
-		this.name = name;
+	Position(String key) {
+		this.key = key;
 	}
 	
-	public String getFormattedName() {
-		return name;
+	public String getLocaleKey() {
+		return key;
 	}
 	
 }
