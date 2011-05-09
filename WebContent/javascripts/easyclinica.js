@@ -365,13 +365,6 @@ findRecursiveParent = function(element, selector) {
 	return findRecursiveParent(parent, selector);
 };
 
-findRecursiveChild = function(element, selector) {
-	var child = element.child();
-	if(child.is(selector)) return child;
-	
-	return findRecursiveChild(child, selector);
-};
-
 String.prototype.format = function(){
     var pattern = /\{\d+\}/g;
     var args = arguments;

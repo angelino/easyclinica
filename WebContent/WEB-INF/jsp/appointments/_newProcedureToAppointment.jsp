@@ -17,7 +17,8 @@
     		<li>
     			<a href="" class="new-assistant" title="Adicionar assistente ao procedimento.">assistente</a>
     			<div class="new-assistant">
-    				<form id="frm-new-assistant">
+    				<form class="frm-new-assistant">
+    					<input type="hidden" name="assistant_procedure_id" value="${procedure.id}"/>
 	    				<fieldset>
 							<p class="required"><span>*</span> campos obrigatórios</p>
 							
@@ -53,7 +54,8 @@
     		<li>
     			<a href="" class="new-material" title="Adicionar material ao procedimento.">material</a>
     			<div class="new-material">
-    				<form id="frm-new-material">
+    				<form class="frm-new-material">
+    					<input type="hidden" name="material_procedure_id" value="${procedure.id}"/>
 	    				<fieldset>
 							<p class="required"><span>*</span> campos obrigatórios</p>
 							
@@ -84,7 +86,8 @@
     		<li>
     			<a href="" class="new-medicine" title="Adicionar medicamento ao procedimento.">medicamento</a>
     			<div class="new-medicine">
-    				<form id="frm-new-medicine">
+    				<form class="frm-new-medicine">
+    					<input type="hidden" name="medicine_procedure_id" value="${procedure.id}"/>
 	    				<fieldset>
 							<p class="required"><span>*</span> campos obrigatórios</p>
 							
