@@ -14,7 +14,7 @@
 		
 		<div>
 			<p>Em nome de:</p>
-			<span>${receipt.inNameOf} (${receipt.kinship.formattedName})</span>
+			<span>${receipt.inNameOf} (<fmt:message key="${kinship.localeKey}"></fmt:message>)</span>
 		</div>
 		
 		<div>
