@@ -3,6 +3,8 @@
 <%@ taglib uri="/WEB-INF/easyclinica.tld" prefix="helper" %>
 <%@page import="br.com.easyclinica.view.Link"%>
 <%@page import="br.com.easyclinica.domain.entities.Patient"%>
+<%@page import="br.com.easyclinica.domain.entities.Position"%>
+<%@page import="br.com.easyclinica.infra.multitenancy.LoggedUser"%>
 <%@page import="java.util.LinkedList"%>
 <html>
 	<head>
@@ -29,8 +31,14 @@
 			<% 
 				java.util.List<Link> links = new LinkedList<Link>();  
 				links.add(new Link("/pacientes","Voltar para listagem"));
-				links.add(new Link("/pacientes/novo","Adicionar novo paciente"));
-				links.add(new Link("/pacientes/" + ((Patient)request.getAttribute("patient")).getId() + "/consultas/novo","Nova consulta"));
+				
+				LoggedUser loggedUser = (LoggedUser)request.getAttribute("loggedUser");
+				if(loggedUser.getEmployee().getPosition() != Position.DOCTOR){
+					links.add(new Link("/pacientes/novo","Adicionar novo paciente"));
+				}
+				if(loggedUser.getEmployee().getPosition() == Position.FINANCIAL || loggedUser.getEmployee().getPosition() == Position.OWNER){
+					links.add(new Link("/pacientes/" + ((Patient)request.getAttribute("patient")).getId() + "/consultas/novo","Nova consulta"));
+				}
 				pageContext.setAttribute("links",links);
 			%>
 			<helper:navigation links="${links}"></helper:navigation>			
