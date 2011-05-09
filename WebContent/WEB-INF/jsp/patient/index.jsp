@@ -37,7 +37,7 @@
 			<% 
 				java.util.List<Link> links = new LinkedList<Link>();
 			
-				LoggedUser loggedUser = (LoggedUser)request.getAttribute("loggedUser");
+				LoggedUser loggedUser = (LoggedUser)request.getSession().getAttribute("loggedUser");
 				if(loggedUser.getEmployee().getPosition() != Position.DOCTOR){
 					links.add(new Link("/pacientes/novo","Criar novo paciente"));
 				}
