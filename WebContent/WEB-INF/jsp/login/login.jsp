@@ -8,6 +8,12 @@
 		<title>Easy Clínica</title>
 	    
 		<helper:include fileName="style.css" type="css" />
+		<helper:include fileName="plugins/jquery-1.4.4.min.js" type="js" />
+		<script type="text/javascript">
+			$(function() {
+			  $("#login").focus();
+			});
+		</script>
 	</head>
 	<body>
 	

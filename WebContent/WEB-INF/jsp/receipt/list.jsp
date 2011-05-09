@@ -34,7 +34,7 @@
 			                    <th>Data</th> 
 			                    <th>Em nome de</th>
 			                    <th>CPF</th>
-			                    <th>Amount</th> 
+			                    <th>Valor</th> 
 			                    <th width="202px">&nbsp;</th>
 			                </tr> 
                   
@@ -43,7 +43,7 @@
 									<td>
 										<fmt:formatDate value="${receipt.date.time}" pattern="dd/MM/yyyy" />
 									</td> 
-									<td>${receipt.inNameOf} (${receipt.kinship.formattedName})</td>
+									<td>${receipt.inNameOf} (<fmt:message key="${receipt.kinship.localeKey}"></fmt:message>)</td>
 									<td>${receipt.cpf}</td>
 									<td class="currency">${receipt.amount}</td>
 									

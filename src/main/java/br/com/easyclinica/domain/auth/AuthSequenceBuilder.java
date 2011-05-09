@@ -11,6 +11,6 @@ public class AuthSequenceBuilder {
 		return new AuthSequence(new AppointmentsNotToDoctors(),
 				new ReportsOnlyToOwnersAndFinancial(), new UsersOnlyToOwners(),
 				new ClinicInfoOnlyToOwners(), new MyScheduleOnlyToDoctors(),
-				new ScheduleOnlyToOwnersAndAttendants(), new ReceiptOnlyToOwnersAndFinancial());
+				new ScheduleOnlyToOwnersFinancialsAndAttendants(), new ReceiptOnlyToOwnersAndFinancial());
 	}
 }

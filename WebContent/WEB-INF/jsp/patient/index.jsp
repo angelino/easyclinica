@@ -4,6 +4,9 @@
 <%@ taglib uri="/WEB-INF/easyclinica.tld" prefix="helper" %>
 <%@page import="br.com.easyclinica.view.Link"%>
 <%@page import="java.util.LinkedList"%>
+<%@page import="br.com.easyclinica.domain.entities.Position"%>
+<%@page import="br.com.easyclinica.infra.multitenancy.LoggedUser"%>
+
 <html>
 	<head>
 		<title>.: EasyClinica - Listagem de Pacientes :.</title>
@@ -32,8 +35,12 @@
 			
 		<div class="boxright">	
 			<% 
-				java.util.List<Link> links = new LinkedList<Link>();  
-				links.add(new Link("/pacientes/novo","Criar novo paciente"));
+				java.util.List<Link> links = new LinkedList<Link>();
+			
+				LoggedUser loggedUser = (LoggedUser)request.getSession().getAttribute("loggedUser");
+				if(loggedUser.getEmployee().getPosition() != Position.DOCTOR){
+					links.add(new Link("/pacientes/novo","Criar novo paciente"));
+				}
 				pageContext.setAttribute("links",links);
 			%>
 			<helper:navigation links="${links}"></helper:navigation>

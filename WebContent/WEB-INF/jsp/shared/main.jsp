@@ -70,7 +70,7 @@
 							<a href="${schedule_link}" title="Minha agenda">Minha Agenda</a>
 							</li>
 						</c:when>
-						<c:when test="${loggedUser.employee.position eq 'OWNER' or loggedUser.employee.position eq 'ATTENDANT'}">
+						<c:when test="${loggedUser.employee.position eq 'OWNER' or loggedUser.employee.position eq 'ATTENDANT' or loggedUser.employee.position eq 'FINANCIAL'}">
 							<li id="menu-link-schedule">
 							<c:url value="/agenda" var="schedule_link"/>
 							<a href="${schedule_link}" title="Ver agenda completa">Agenda Completa</a>

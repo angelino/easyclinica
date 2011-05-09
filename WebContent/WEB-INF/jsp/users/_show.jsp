@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib uri="/WEB-INF/easyclinica.tld" prefix="helper" %>
 
 <div class="modal-usuarios">
@@ -18,7 +19,7 @@
 
 		<div>
 			<p>Cargo:</p>
-			<span>${employee.position.formattedName}</span>
+			<span><fmt:message key="${employee.position.localeKey}"></fmt:message></span>
 		</div>
 				
 		<div class="observations">

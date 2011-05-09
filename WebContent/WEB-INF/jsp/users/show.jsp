@@ -29,7 +29,7 @@
 					</div>					
 					<div>
 						<label class="title">Cargo:</label>
-						${employee.position.formattedName}
+						<fmt:message key="${employee.position.localeKey}"></fmt:message>
 					</div>					
 					<div class="remarks">
 			       		<label class="title">Observações:</label>

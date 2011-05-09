@@ -14,12 +14,25 @@
 			<a href="?page=<%= current - 1 %>" page="<%= current - 1 %>" class="previous"><img src="<c:url value="images/icons/resultset_previous.png" />" /></a>
 		<% } %>
 		
-		<% for(int i = 1; i <= total; i++) { %>
+		<%
+			int firstLink = current - 3 > 0 ? current - 3 : 1;
+			int lastLink = current + 3 < total ? current + 3 : total; 
+		%>
+		
+		<% if(firstLink > 1) { %>
+		...
+		<% } %>
+		
+		<% for(int i = firstLink; i <= lastLink; i++) { %>
 			<% if (current == i) { %>
 			<a href="javascript:void(0);" class="active"><%= i %></a>
 			<% } else { %>
 			<a href="?page=<%= i %>" page="<%= i %>"><%= i %></a>
 			<% } %>
+		<% } %>
+		
+		<% if(lastLink < total) { %>
+		...
 		<% } %>
 		
 		<% if(current.equals(total)) { %>

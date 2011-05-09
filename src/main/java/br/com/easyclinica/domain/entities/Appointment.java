@@ -108,7 +108,7 @@ public class Appointment {
 	}
 
 	public Calendar getAppointmentDate() {
-		return appointmentDate;
+		return (Calendar) appointmentDate.clone();
 	}
 
 	public void setAppointmentDate(Calendar appointmentDate) {

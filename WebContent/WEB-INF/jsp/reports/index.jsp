@@ -15,7 +15,7 @@
 				<div id="accordion">
 				    <h3><a href="#">Financeiro</a></h3>
 				    <div>
-				    	<form action="<c:url value="/relatorios/financeiro" />" method="post">
+				    	<form action="<c:url value="/relatorios/financeiro" />" method="get">
 				    	
 				    		<fieldset>
 				    			<div>

@@ -29,7 +29,9 @@
           	<label class="title">Grau de Parentesco:<span>*</span></label>
           	<select name="receipt.kinship">
           		<c:forEach var="kinship" items="${kinships}">
-					<option value="${kinship}" ${kinship == receipt.kinship ? 'selected' : ''}>${kinship.formattedName}</option>
+					<option value="${kinship}" ${kinship == receipt.kinship ? 'selected' : ''}>
+					<fmt:message key="${kinship.localeKey}"></fmt:message>
+					</option>
 				</c:forEach>
           	</select>
         </div>

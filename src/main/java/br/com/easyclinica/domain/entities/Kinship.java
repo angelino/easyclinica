@@ -1,19 +1,19 @@
 package br.com.easyclinica.domain.entities;
 
 public enum Kinship {
-	ME("O Próprio"),
-	MOTHER("Mãe"),
-	FATHER("Pai"),
-	BROTHER("Irmão"),
-	SISTER("Irmã");
+	ME("kinship.me"),
+	MOTHER("kinship.mother"),
+	FATHER("kinship.father"),
+	BROTHER("kinship.brother"),
+	SISTER("kinship.sister");
 
-	private String name;
+	private String key;
 
-	Kinship(String name) {
-		this.name = name;
+	Kinship(String key) {
+		this.key = key;
 	}
 
-	public String getFormattedName() {
-		return name;
+	public String getLocaleKey() {
+		return key;
 	}
 }

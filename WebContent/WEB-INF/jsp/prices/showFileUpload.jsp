@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="/WEB-INF/easyclinica.tld" prefix="helper" %>
+<%@page import="br.com.easyclinica.domain.entities.HealthCarePlan"%>
 <%@page import="br.com.easyclinica.view.Link"%>
 <%@page import="java.util.LinkedList"%>
 <html>
@@ -47,6 +48,7 @@
 				java.util.List<Link> links = new LinkedList<Link>();  
 				links.add(new Link("/convenios","Voltar para listagem"));
 				links.add(new Link("/convenios/novo","Adicionar novo convênio"));
+				links.add(new Link("/convenios/" + ((HealthCarePlan)request.getAttribute("healthCarePlan")).getId() + "/editar","Alterar este convênio"));
 				pageContext.setAttribute("links",links);
 			%>
 			<helper:navigation links="${links}"></helper:navigation>
