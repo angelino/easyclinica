@@ -7,9 +7,13 @@
 	<li ${selected=='Paciente' ? 'class="active first"' : ''}>
 		<a href="<c:url value="/pacientes/${patient.id}"/>">Paciente</a>
 	</li>
+	
+	<c:if test="${loggedUser.employee.position != 'DOCTOR'}">
 	<li ${selected=='Edicao' ? 'class="active first"' : ''}>
 		<a href="<c:url value="/pacientes/${patient.id}/editar"/>">Edição</a>
 	</li>
+	</c:if>
+	
 	<li ${selected=='Anamnese' ? 'class="active first"' : ''}><a href="<c:url value="/pacientes/${patient.id}/anamneses"/>">Anamnese</a></li>
 	
 	<c:if test="${loggedUser.employee.position != 'DOCTOR'}"> 
