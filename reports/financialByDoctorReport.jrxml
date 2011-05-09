@@ -23,7 +23,7 @@
 	<title>
 		<band height="57" splitType="Stretch">
 			<textField evaluationTime="Auto">
-				<reportElement x="0" y="0" width="100" height="20"/>
+				<reportElement x="0" y="0" width="555" height="20"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
