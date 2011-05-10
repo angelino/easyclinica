@@ -5,6 +5,8 @@
 <%@page import="br.com.easyclinica.view.Link"%>
 <%@page import="java.util.LinkedList"%>
 <%@page import="br.com.easyclinica.domain.entities.Patient"%>
+<%@page import="br.com.easyclinica.domain.entities.Position"%>
+<%@page import="br.com.easyclinica.infra.multitenancy.LoggedUser"%>
 
 <html>
 <head>
@@ -95,12 +97,20 @@
 				<table class="tableprocedures" border="0">
 				
 					<tr class="boxtotal">
-                        <td colspan="1" rowspan="4" class="tablenostyle" width="200">&nbsp;</td>
-                        <th colspan="2" rowspan="4" width="95">&nbsp;</th>
-                        <td colspan="1" width="100">Procedimentos</td>
-                        <td class="valor currency" id="appointment-procedure-amount"></td>
-                        <td rowspan="4">&nbsp;</td>
+						<td colspan="1" rowspan="5" class="tablenostyle" width="200">&nbsp;</td>
+                        <td colspan="2" rowspan="5" width="95">&nbsp;</td>
+                        <td colspan="1" width="100">Materiais:</td>
+                        <td class="valor currency" id="valor-materiais"></td>
+                        <td rowspan="5">&nbsp;</td>
+				    </tr>
+                    <tr class="boxtotal">
+                        <td colspan="1">Medicamentos:</td>
+                        <td class="valor currency" id="valor-medicamentos"></td>                        
                     </tr>
+					<tr class="boxtotal">
+                        <td colspan="1">Procedimentos:</td>
+                        <td class="valor currency" id="appointment-procedure-amount"></td>
+                    </tr>                    
                     <tr class="boxtotal">
                         <td colspan="1">Consulta:
                         	<input type="hidden" name="appointment.appointmentAmount" />
@@ -133,6 +143,13 @@
 		<% 
 			java.util.List<Link> links = new LinkedList<Link>();  
 			links.add(new Link("/pacientes/" + ((Patient)request.getAttribute("patient")).getId() + "/consultas","Voltar para listagem"));
+			
+			LoggedUser loggedUser = (LoggedUser)request.getSession().getAttribute("loggedUser");
+			if(loggedUser.getEmployee().getPosition() != Position.DOCTOR){
+				links.add(new Link("/pacientes/novo","Adicionar novo paciente"));
+				links.add(new Link("/pacientes/"+ ((Patient)request.getAttribute("patient")).getId() + "/editar","Editar paciente"));
+			}
+			
 			pageContext.setAttribute("links",links);
 		%>
 		<helper:navigation links="${links}"></helper:navigation>

@@ -25,6 +25,8 @@ public class AppointmentProcedure {
 	private Procedure procedure;
 	private BigDecimal amount;
 	private int ch;
+	private BigDecimal materialAmount;
+	private BigDecimal medicineAmount;
 	
 	@OneToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL, mappedBy="procedure")
 	private List<AppointmentMaterial> materials;
@@ -92,13 +94,34 @@ public class AppointmentProcedure {
 	public BigDecimal getTotalAmount() {
 		BigDecimal total = (this.amount == null ? BigDecimal.ZERO : this.amount);
 		
+		total = total.add(getMaterialsTotal());		
+		total = total.add(getMedicinesTotal());
+		total = total.add(getAssistantsTotal());		
+		
+		return total;
+	}
+	public BigDecimal getMaterialsTotal() {
+		BigDecimal total = BigDecimal.ZERO;
+		
 		for(AppointmentMaterial material : materials) {
 			total = total.add(material.getTotalAmount());
 		}
 		
+		return total;
+	}
+	
+	public BigDecimal getMedicinesTotal() {
+		BigDecimal total = BigDecimal.ZERO;
+		
 		for(AppointmentMedicine medicine : medicines) {
 			total = total.add(medicine.getTotalAmount());
-		}		
+		}
+		
+		return total;
+	}
+	
+	public BigDecimal getAssistantsTotal() {
+		BigDecimal total = BigDecimal.ZERO;
 		
 		for(AppointmentAssistant assistant : assistants) {
 			total = total.add(assistant.getAmount());
@@ -106,17 +129,33 @@ public class AppointmentProcedure {
 		
 		return total;
 	}
+	
 	public void setAssistants(List<AppointmentAssistant> assistants) {
 		this.assistants = assistants;
 	}
 	public List<AppointmentAssistant> getAssistants() {
 		return assistants;
 	}
+	
 	public int getCh() {
 		return ch;
 	}
 	public void setCh(int ch) {
 		this.ch = ch;
+	}
+	
+	public void setMaterialAmount(BigDecimal materialAmount) {
+		this.materialAmount = materialAmount;
+	}
+	public BigDecimal getMaterialAmount() {
+		return materialAmount;
+	}
+	
+	public void setMedicineAmount(BigDecimal medicineAmount) {
+		this.medicineAmount = medicineAmount;
+	}
+	public BigDecimal getMedicineAmount() {
+		return medicineAmount;
 	}
 
 	

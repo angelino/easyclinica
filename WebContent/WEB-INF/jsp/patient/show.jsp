@@ -128,6 +128,7 @@
 				LoggedUser loggedUser = (LoggedUser)request.getSession().getAttribute("loggedUser");
 				if(loggedUser.getEmployee().getPosition() != Position.DOCTOR){
 					links.add(new Link("/pacientes/novo","Adicionar novo paciente"));
+					links.add(new Link("/pacientes/"+ ((Patient)request.getAttribute("patient")).getId() + "/editar","Editar paciente"));
 					links.add(new Link("/pacientes/" + ((Patient)request.getAttribute("patient")).getId() + "/consultas/novo","Nova consulta"));
 				}
 				pageContext.setAttribute("links",links);

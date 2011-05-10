@@ -7,6 +7,8 @@
 <%@page import="br.com.easyclinica.view.Link"%>
 <%@page import="java.util.LinkedList"%>
 <%@page import="br.com.easyclinica.domain.entities.Patient"%>
+<%@page import="br.com.easyclinica.domain.entities.Position"%>
+<%@page import="br.com.easyclinica.infra.multitenancy.LoggedUser"%>
 
 <html>
 	<head>
@@ -65,7 +67,12 @@
 		<div class="boxright">	
 			<% 
 				java.util.List<Link> links = new LinkedList<Link>();  
-				links.add(new Link("/pacientes/" + ((Patient)request.getAttribute("patient")).getId() + "/editar","Perfil do paciente"));
+				
+				LoggedUser loggedUser = (LoggedUser)request.getSession().getAttribute("loggedUser");
+				if(loggedUser.getEmployee().getPosition() != Position.DOCTOR){
+					links.add(new Link("/pacientes/" + ((Patient)request.getAttribute("patient")).getId() + "/editar","Editar paciente"));	
+				}
+				
 				links.add(new Link("/pacientes/" + ((Patient)request.getAttribute("patient")).getId() + "/anamneses/novo","Nova anamnese"));
 				pageContext.setAttribute("links",links);
 			%>

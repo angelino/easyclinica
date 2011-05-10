@@ -68,7 +68,7 @@
 		<div class="boxright">	
 			<% 
 				java.util.List<Link> links = new LinkedList<Link>();  
-				links.add(new Link("/pacientes/" + ((Patient)request.getAttribute("patient")).getId() + "/editar","Perfil do paciente"));
+				links.add(new Link("/pacientes/" + ((Patient)request.getAttribute("patient")).getId() + "/editar","Editar paciente"));
 				links.add(new Link("/pacientes/" + ((Patient)request.getAttribute("patient")).getId() + "/recibos/novo","Novo Recibo"));
 				pageContext.setAttribute("links",links);
 			%>

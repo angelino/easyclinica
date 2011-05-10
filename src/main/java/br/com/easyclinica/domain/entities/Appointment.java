@@ -47,6 +47,9 @@ public class Appointment {
 	private BigDecimal appointmentAmount;
 	private BigDecimal procedureAmount;
 	private BigDecimal roomRateAmount;
+	
+	private BigDecimal materialAmount;
+	private BigDecimal medicineAmount;
 
 	@Type(type = "text")
 	private String observations;
@@ -177,15 +180,36 @@ public class Appointment {
 		return roomRateAmount;
 	}
 
+	public void setMaterialAmount(BigDecimal materialAmount) {
+		this.materialAmount = materialAmount;
+	}
+
+	public BigDecimal getMaterialAmount() {
+		return materialAmount;
+	}
+
+	public void setMedicineAmount(BigDecimal medicineAmount) {
+		this.medicineAmount = medicineAmount;
+	}
+
+	public BigDecimal getMedicineAmount() {
+		return medicineAmount;
+	}
+
 	public void markAsReturn() {
 		this.isReturn = true;
 	}
 
 	public void recalculate() {
 		procedureAmount = BigDecimal.ZERO;
-
+		materialAmount = BigDecimal.ZERO;
+		medicineAmount = BigDecimal.ZERO;
+		
 		for (AppointmentProcedure procedure : procedures) {
 			procedureAmount = procedureAmount.add(procedure.getTotalAmount());
+			
+			materialAmount = materialAmount.add(procedure.getMaterialsTotal());
+			medicineAmount = medicineAmount.add(procedure.getMedicinesTotal());
 		}
 	}
 

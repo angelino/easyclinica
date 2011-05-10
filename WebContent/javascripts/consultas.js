@@ -184,22 +184,47 @@ EasyClinica.pages['consultas'] = function(){
 	
 	var refreshProceduresValue = function() {
 		var appointment_procedure_amount = 0;
+		var appointment_materials_amount = 0;
+		var appointment_medicines_amount = 0;
 		
 		$('.procedure-id').each(function(index){
 			var procedure_id = $(this).val();
 			
 			var procedure_total = $('#procedure-total-' + procedure_id).val().convertToFloat();
 			
-			$('.material-' + procedure_id + ', .medicine-' + procedure_id).each(function(material_index){
+			// materiais
+			var materials_amount = 0;
+			$('.material-' + procedure_id).each(function(index){
 				var qty = $(this).find('.qty').val();
 				var amount = $(this).find('.amount').val();					
 				var total = EasyClinica.lib.calculateAmount(qty,amount);
 				
 				$(this).find('.total').html(total.toString().formatCurrency(true));
 				
+				materials_amount += total.toString().convertToFloat();
+				
 				procedure_total += total.toString().convertToFloat();
 			});
+			$('.procedure-material-amount-' + procedure_id).html(materials_amount.toString().formatCurrency(true));
+			appointment_materials_amount += materials_amount.toString().convertToFloat();
 			
+			// medicamentos
+			var medicine_amount = 0;
+			$('.medicine-' + procedure_id).each(function(index){
+				var qty = $(this).find('.qty').val();
+				var amount = $(this).find('.amount').val();					
+				var total = EasyClinica.lib.calculateAmount(qty,amount);
+				
+				$(this).find('.total').html(total.toString().formatCurrency(true));
+				
+				medicine_amount += total.toString().convertToFloat();
+				
+				procedure_total += total.toString().convertToFloat();
+			});
+			$('.procedure-medicine-amount-' + procedure_id).html(medicine_amount.toString().formatCurrency(true));
+			appointment_medicines_amount += medicine_amount.toString().convertToFloat();
+			
+			// auxiliares
 			$('.assistant-' + procedure_id).each(function(assistant_index){
 				var amount = $(this).find('.amount').val().convertToFloat();
 				
@@ -211,7 +236,10 @@ EasyClinica.pages['consultas'] = function(){
 			appointment_procedure_amount += procedure_total.toString().convertToFloat();
 		});
 		
+		$('#valor-materiais').html(appointment_materials_amount.toString().formatCurrency(true));
+		$('#valor-medicamentos').html(appointment_medicines_amount.toString().formatCurrency(true));
 		$('#appointment-procedure-amount').html(appointment_procedure_amount.toString().formatCurrency(true));
+		
 	};
 	
 	var configureAmountManager = function(selector) {

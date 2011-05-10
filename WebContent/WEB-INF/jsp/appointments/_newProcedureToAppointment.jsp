@@ -159,7 +159,7 @@
 </tr>	
 		
 <tr class="tableheader header-materials-medicine" procedure_id="${procedure.id}">
-     <td rowspan="${ 3 + fn:length(materials) + fn:length(medicines)}" id="table-space-${procedure.id}" class="tablenostyle">&nbsp;</td>
+     <td rowspan="${ 5 + fn:length(materials) + fn:length(medicines)}" id="table-space-${procedure.id}" class="tablenostyle">&nbsp;</td>
      <td>Material/Medicamento:</td>
      <td>Quantidade:</td>
      <td>Valor Unitário:</td>
@@ -208,10 +208,21 @@
 </c:forEach>
 
 <tr class="boxsubtotal" procedure_id="${procedure.id}">
+     <td colspan="3">Total de materiais:</td>
+     <td class="procedure-material-amount-${procedure.id} currency"></td>
+     <td>&nbsp;</td>
+</tr>
+<tr class="boxsubtotal" procedure_id="${procedure.id}">
+     <td colspan="3">Total de medicamentos:</td>
+     <td class="procedure-medicine-amount-${procedure.id} currency"></td>
+     <td>&nbsp;</td>
+</tr>
+<tr class="boxsubtotal" procedure_id="${procedure.id}">
      <td colspan="3">Total do procedimento:</td>
      <td class="procedure-amount-${procedure.id} currency"></td>
      <td>&nbsp;</td>
 </tr>
+
 <tr class="boxdivisortable" procedure_id="${procedure.id}">
      <td colspan="5">&nbsp;</td>
 </tr>		
