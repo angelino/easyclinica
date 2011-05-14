@@ -27,6 +27,7 @@ public class AppointmentProcedure {
 	private int ch;
 	private BigDecimal materialAmount;
 	private BigDecimal medicineAmount;
+	private BigDecimal assistantAmount;
 	
 	@OneToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL, mappedBy="procedure")
 	private List<AppointmentMaterial> materials;
@@ -41,6 +42,11 @@ public class AppointmentProcedure {
 		materials = new ArrayList<AppointmentMaterial>();
 		medicines = new ArrayList<AppointmentMedicine>();
 		assistants = new ArrayList<AppointmentAssistant>();
+		
+		this.amount = BigDecimal.ZERO;
+		this.materialAmount = BigDecimal.ZERO;
+		this.medicineAmount = BigDecimal.ZERO;
+		this.assistantAmount = BigDecimal.ZERO;
 	}
 	public Appointment getAppointment() {
 		return appointment;
@@ -100,6 +106,7 @@ public class AppointmentProcedure {
 		
 		return total;
 	}
+	
 	public BigDecimal getMaterialsTotal() {
 		BigDecimal total = BigDecimal.ZERO;
 		
@@ -157,7 +164,11 @@ public class AppointmentProcedure {
 	public BigDecimal getMedicineAmount() {
 		return medicineAmount;
 	}
-
-	
+	public void setAssistantAmount(BigDecimal assistantAmount) {
+		this.assistantAmount = assistantAmount;
+	}
+	public BigDecimal getAssistantAmount() {
+		return assistantAmount;
+	}
 	
 }

@@ -15,9 +15,9 @@
     	
     	<ul class="procedure-elements">
     		<li>
-    			<a href="" class="new-assistant" title="Adicionar assistente ao procedimento.">assistente</a>
+    			<a href="" class="new-assistant" title="Adicionar assistente ao procedimento." form="frm-new-assistant-${procedure.id}">assistente</a>
     			<div class="new-assistant">
-    				<form class="frm-new-assistant">
+    				<form class="frm-new-assistant-${procedure.id}">
     					<input type="hidden" name="assistant_procedure_id" value="${procedure.id}"/>
 	    				<fieldset>
 							<p class="required"><span>*</span> campos obrigatórios</p>
@@ -45,16 +45,16 @@
 					    		
 					    <div class="boxactions">
 							<input type="button" class="btnsave" value="Salvar" />
-					      	<a class="btnclose" rel="new-assistant">Fechar</a>
+					      	<a class="btnclose" rel="new-assistant" form="frm-new-assistant-${procedure.id}">Fechar</a>
 						</div>
 					</form>
     			</div>
     		</li>
     		
     		<li>
-    			<a href="" class="new-material" title="Adicionar material ao procedimento.">material</a>
+    			<a href="" class="new-material" title="Adicionar material ao procedimento." form="frm-new-material-${procedure.id}">material</a>
     			<div class="new-material">
-    				<form class="frm-new-material">
+    				<form class="frm-new-material-${procedure.id}">
     					<input type="hidden" name="material_procedure_id" value="${procedure.id}"/>
 	    				<fieldset>
 							<p class="required"><span>*</span> campos obrigatórios</p>
@@ -78,15 +78,15 @@
 					    		
 					    <div class="boxactions">
 							<input type="button" class="btnsave" value="Salvar" />
-					      	<a class="btnclose" rel="new-material">Fechar</a>
+					      	<a class="btnclose" rel="new-material" form="frm-new-material-${procedure.id}">Fechar</a>
 						</div>
 					</form>
     			</div>
     		</li>
     		<li>
-    			<a href="" class="new-medicine" title="Adicionar medicamento ao procedimento.">medicamento</a>
+    			<a href="" class="new-medicine" title="Adicionar medicamento ao procedimento." form="frm-new-medicine-${procedure.id}">medicamento</a>
     			<div class="new-medicine">
-    				<form class="frm-new-medicine">
+    				<form class="frm-new-medicine-${procedure.id}">
     					<input type="hidden" name="medicine_procedure_id" value="${procedure.id}"/>
 	    				<fieldset>
 							<p class="required"><span>*</span> campos obrigatórios</p>
@@ -110,7 +110,7 @@
 					    		
 					    <div class="boxactions">
 							<input type="button" class="btnsave" value="Salvar" />
-					      	<a class="btnclose" rel="new-medicine">Fechar</a>
+					      	<a class="btnclose" rel="new-medicine" form="frm-new-medicine-${procedure.id}">Fechar</a>
 						</div>
 					</form>
     			</div>
@@ -146,12 +146,26 @@
 			</c:when>
 			<c:otherwise>
 				<td colspan="2" class="center">
-     				${precifiedProcedure.ch} CHs
-     				<input type="hidden" id="procedure-ch-${procedure.id}" value="${precifiedProcedure.ch}" />
-     			</td>
+					<c:choose>
+				    	<c:when test="${precifiedProcedure.fixedAmount > 0}">
+				    		-
+				    	</c:when>
+				    	<c:otherwise>
+				    		${precifiedProcedure.ch} CHs
+				    		<input type="hidden" id="procedure-ch-${procedure.id}" value="${precifiedProcedure.ch}" />
+				    	</c:otherwise>
+			    	</c:choose>
+				</td>
 				<td>
 					<input type="hidden" name="appointment.procedures[#index#].ch" value="${precifiedProcedure.ch}"/>
-					<input type="text" class="amount currency" id="procedure-total-${procedure.id}" name="appointment.procedures[#index#].amount" value="${precifiedProcedure.ch * healthCarePlan.ch}" />
+					<c:choose>
+				    	<c:when test="${precifiedProcedure.fixedAmount > 0}">
+				    		<input type="text" class="amount currency" id="procedure-total-${procedure.id}" name="appointment.procedures[#index#].amount" value="${precifiedProcedure.fixedAmount}" />
+				    	</c:when>
+				    	<c:otherwise>
+				    		<input type="text" class="amount currency" id="procedure-total-${procedure.id}" name="appointment.procedures[#index#].amount" value="${precifiedProcedure.ch * healthCarePlan.ch}" />
+				    	</c:otherwise>
+			    	</c:choose>	
 				</td>
 			</c:otherwise>
 		</c:choose>
@@ -159,7 +173,7 @@
 </tr>	
 		
 <tr class="tableheader header-materials-medicine" procedure_id="${procedure.id}">
-     <td rowspan="${ 5 + fn:length(materials) + fn:length(medicines)}" id="table-space-${procedure.id}" class="tablenostyle">&nbsp;</td>
+     <td rowspan="${ 3 + fn:length(materials) + fn:length(medicines)}" id="table-space-${procedure.id}" class="tablenostyle">&nbsp;</td>
      <td>Material/Medicamento:</td>
      <td>Quantidade:</td>
      <td>Valor Unitário:</td>
@@ -207,16 +221,6 @@
 	</tr>
 </c:forEach>
 
-<tr class="boxsubtotal" procedure_id="${procedure.id}">
-     <td colspan="3">Total de materiais:</td>
-     <td class="procedure-material-amount-${procedure.id} currency"></td>
-     <td>&nbsp;</td>
-</tr>
-<tr class="boxsubtotal" procedure_id="${procedure.id}">
-     <td colspan="3">Total de medicamentos:</td>
-     <td class="procedure-medicine-amount-${procedure.id} currency"></td>
-     <td>&nbsp;</td>
-</tr>
 <tr class="boxsubtotal" procedure_id="${procedure.id}">
      <td colspan="3">Total do procedimento:</td>
      <td class="procedure-amount-${procedure.id} currency"></td>

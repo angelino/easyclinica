@@ -174,10 +174,18 @@ EasyClinica.pages['consultas'] = function(){
 		refreshProceduresValue();
 		
 		var valor_consulta = $('#valor-consulta').html().convertToFloat();
+		var valor_materiais = $('#valor-materiais').html().convertToFloat();
+		var valor_medicamentos = $('#valor-medicamentos').html().convertToFloat();
+		var valor_auxiliares = $('#valor-auxiliares').html().convertToFloat();
 		var valor_procedimentos = $('#appointment-procedure-amount').html().convertToFloat();
 		var taxa_sala = $('input[name=appointment.roomRateAmount]').val().convertToFloat();
 		
-		var appointment_amount = valor_consulta + valor_procedimentos + taxa_sala;
+		var appointment_amount = valor_consulta + 
+								 valor_materiais + 
+								 valor_medicamentos + 
+								 valor_auxiliares + 
+								 valor_procedimentos + 
+								 taxa_sala;
 		
 		$('#appointment-amount').html(appointment_amount.toString().formatCurrency(true));
 	};
@@ -186,11 +194,14 @@ EasyClinica.pages['consultas'] = function(){
 		var appointment_procedure_amount = 0;
 		var appointment_materials_amount = 0;
 		var appointment_medicines_amount = 0;
+		var appointment_assistant_amount = 0;
 		
 		$('.procedure-id').each(function(index){
 			var procedure_id = $(this).val();
 			
 			var procedure_total = $('#procedure-total-' + procedure_id).val().convertToFloat();
+			
+			appointment_procedure_amount += procedure_total.toString().convertToFloat();
 			
 			// materiais
 			var materials_amount = 0;
@@ -202,10 +213,8 @@ EasyClinica.pages['consultas'] = function(){
 				$(this).find('.total').html(total.toString().formatCurrency(true));
 				
 				materials_amount += total.toString().convertToFloat();
-				
 				procedure_total += total.toString().convertToFloat();
 			});
-			$('.procedure-material-amount-' + procedure_id).html(materials_amount.toString().formatCurrency(true));
 			appointment_materials_amount += materials_amount.toString().convertToFloat();
 			
 			// medicamentos
@@ -217,27 +226,27 @@ EasyClinica.pages['consultas'] = function(){
 				
 				$(this).find('.total').html(total.toString().formatCurrency(true));
 				
-				medicine_amount += total.toString().convertToFloat();
-				
+				medicine_amount += total.toString().convertToFloat();				
 				procedure_total += total.toString().convertToFloat();
 			});
-			$('.procedure-medicine-amount-' + procedure_id).html(medicine_amount.toString().formatCurrency(true));
 			appointment_medicines_amount += medicine_amount.toString().convertToFloat();
 			
 			// auxiliares
+			var assistant_amount = 0;
 			$('.assistant-' + procedure_id).each(function(assistant_index){
 				var amount = $(this).find('.amount').val().convertToFloat();
 				
+				assistant_amount += amount;				
 				procedure_total += amount;
 			});
+			appointment_assistant_amount += assistant_amount;
 			
 			$('.procedure-amount-' + procedure_id).html(procedure_total.toString().formatCurrency(true));
-			
-			appointment_procedure_amount += procedure_total.toString().convertToFloat();
 		});
 		
 		$('#valor-materiais').html(appointment_materials_amount.toString().formatCurrency(true));
 		$('#valor-medicamentos').html(appointment_medicines_amount.toString().formatCurrency(true));
+		$('#valor-auxiliares').html(appointment_assistant_amount.toString().formatCurrency(true));
 		$('#appointment-procedure-amount').html(appointment_procedure_amount.toString().formatCurrency(true));
 		
 	};
@@ -352,7 +361,7 @@ EasyClinica.pages['consultas'] = function(){
 			$(this).next().show();
 			$(this).addClass('active');
 			
-			form = $(this).next().find('form');
+			var form = $('#' + $(this).attr('form'));
 			
 			if($(this).hasClass('new-assistant')) {
 				var chDefault = getAssistantCHDefaultValue(form);
@@ -375,7 +384,7 @@ EasyClinica.pages['consultas'] = function(){
 			var box = $('div.' + rel);
 			box.hide();
 			
-			var form = findRecursiveParent($(this), 'form');
+			var form = $('#' + $(this).attr('form'));
 			
 			switch(rel) {
 				case 'new-assistant':
@@ -434,13 +443,17 @@ EasyClinica.pages['consultas'] = function(){
 	var getAssistantCHDefaultValue = function(form) {
 		var procedure_id = form.find('input[name=assistant_procedure_id]').val();
 		
-		var ch = $('#procedure-ch-' + procedure_id).val();
-		var qtyAssistants = $('.assistant').size();
+		if($('#procedure-ch-' + procedure_id).length) {
+			var ch = $('#procedure-ch-' + procedure_id).val();
+			var qtyAssistants = $('.assistant').size();
+			
+			var chDefault = parseInt(ch * 0.3);
+			if(qtyAssistants > 0) chDefault = parseInt(ch * 0.2);
+			
+			return chDefault;
+		}
 		
-		var chDefault = parseInt(ch * 0.3);
-		if(qtyAssistants > 0) chDefault = parseInt(ch * 0.2);
-		
-		return chDefault;
+		return 0;
 	};
 	
 	var clearNewAssistantForm = function(form){

@@ -24,6 +24,11 @@ public class AppointmentMedicine {
 	@ManyToOne(fetch = FetchType.EAGER)
 	private Medicine medicine;
 
+	public AppointmentMedicine() {
+		this.unitAmount = BigDecimal.ZERO;
+		this.qty = BigDecimal.ZERO;
+	}
+	
 	public int getId() {
 		return id;
 	}

@@ -97,15 +97,19 @@
 				<table class="tableprocedures" border="0">
 				
 					<tr class="boxtotal">
-						<td colspan="1" rowspan="5" class="tablenostyle" width="200">&nbsp;</td>
-                        <td colspan="2" rowspan="5" width="95">&nbsp;</td>
+						<td colspan="1" rowspan="7" class="tablenostyle" width="200">&nbsp;</td>
+                        <td colspan="2" rowspan="7" width="95">&nbsp;</td>
                         <td colspan="1" width="100">Materiais:</td>
                         <td class="valor currency" id="valor-materiais"></td>
-                        <td rowspan="5">&nbsp;</td>
+                        <td rowspan="7">&nbsp;</td>
 				    </tr>
                     <tr class="boxtotal">
                         <td colspan="1">Medicamentos:</td>
                         <td class="valor currency" id="valor-medicamentos"></td>                        
+                    </tr>
+                    <tr class="boxtotal">
+                        <td colspan="1">Auxiliares:</td>
+                        <td class="valor currency" id="valor-auxiliares"></td>                        
                     </tr>
 					<tr class="boxtotal">
                         <td colspan="1">Procedimentos:</td>

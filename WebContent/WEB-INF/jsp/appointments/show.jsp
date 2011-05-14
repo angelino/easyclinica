@@ -84,12 +84,12 @@
 						    <td>${procedure.procedure.name}</td>
 						    <td colspan="2" class="center">
 						    	<c:choose>
-						    	<c:when test="${procedure.fixedAmount}">
-						    		-
-						    	</c:when>
-						    	<c:otherwise>
-						    		${procedure.ch} CH
-						    	</c:otherwise>
+							    	<c:when test="${procedure.fixedAmount}">
+							    		-
+							    	</c:when>
+							    	<c:otherwise>
+							    		${procedure.ch} CH
+							    	</c:otherwise>
 						    	</c:choose>
 						    </td>
 						    <td class="currency">${procedure.amount}</td>
@@ -145,13 +145,25 @@
 							<td colspan="5">&nbsp;</td>
 						</tr>
 					</c:forEach> 
-					 
+					
 					<tr class="boxtotal">
-						<td colspan="1" rowspan="4" class="tablenostyle">&nbsp;</td>
-						<th colspan="2" rowspan="4">&nbsp;</th>
-						<td colspan="1">Procedimentos</td>
+						<td colspan="1" rowspan="7" class="tablenostyle">&nbsp;</td>
+						<th colspan="2" rowspan="7">&nbsp;</th>
+						<td colspan="1">Materiais:</td>
+						<td class="currency">${appointment.materialAmount}</td>
+						<td rowspan="7">&nbsp;</td>
+					</tr>
+					<tr class="boxtotal">
+						<td colspan="1">Medicamentos:</td>
+						<td class="currency">${appointment.medicineAmount}</td>
+					</tr>
+					<tr class="boxtotal">
+						<td colspan="1">Auxiliares:</td>
+						<td class="currency">${appointment.assistantAmount}</td>
+					</tr>
+					<tr class="boxtotal">
+						<td colspan="1">Procedimentos:</td>
 						<td class="currency">${appointment.procedureAmount}</td>
-						<td rowspan="4">&nbsp;</td>
 					</tr>
 					<tr class="boxtotal">
 						<td colspan="1">Consulta:</td>
@@ -163,7 +175,7 @@
 					</tr>
 					<tr class="boxtotal">
 						<td colspan="1">Total:</td>
-						<td class="currency">${appointment.appointmentAmount + appointment.procedureAmount + appointment.roomRateAmount}</td>
+						<td class="currency">${appointment.totalAmount}</td>
 					</tr>
 				</table>
 					

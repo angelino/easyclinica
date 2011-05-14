@@ -231,8 +231,8 @@ EasyClinica.common.formValidation = function (selector){
     });
     
     //messages
-    $(selector).find('input.currency').attr('data-message','valor inválido');
-    $(selector).find('input.number').attr('data-message','valor inválido.');
+    $(selector).find('input.currency').attr('data-message','valor inválido (valor decimal)');
+    $(selector).find('input.number').attr('data-message','valor inválido (apenas inteiros).');
 };
 
 EasyClinica.common.easyabas = function() {

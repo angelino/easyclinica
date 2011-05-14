@@ -24,6 +24,11 @@ public class AppointmentMaterial {
 	@ManyToOne(fetch = FetchType.EAGER)
 	private Material material;
 
+	public AppointmentMaterial() {
+		this.unitAmount = BigDecimal.ZERO;
+		this.qty = BigDecimal.ZERO;
+	}
+	
 	public int getId() {
 		return id;
 	}

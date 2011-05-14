@@ -31,10 +31,12 @@ public class AppointmentAssistant {
 	private AppointmentProcedure procedure;
 
 	public AppointmentAssistant() {
+		this(0);
 	}
 
 	public AppointmentAssistant(int id) {
 		this.id = id;
+		this.amount = BigDecimal.ZERO;
 	}
 
 	public void setId(int id) {
