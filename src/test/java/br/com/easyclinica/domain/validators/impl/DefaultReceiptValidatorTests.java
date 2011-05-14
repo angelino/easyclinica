@@ -3,6 +3,7 @@ package br.com.easyclinica.domain.validators.impl;
 import static org.junit.Assert.assertEquals;
 
 import java.math.BigDecimal;
+import java.util.Calendar;
 import java.util.List;
 
 import org.junit.Before;
@@ -34,6 +35,7 @@ private DefaultReceiptValidator validator;
 	public void shouldNotReturnErrorsOnAValidReceipt() {
 		Receipt receipt = new ReceiptBuilder().toThePatient(aPatient())
 											  .inNameOf("Fulano")
+											  .withBirthDate(Calendar.getInstance())
 											  .his(Kinship.ME)
 											  .ownerOfTheCpf("346.492.088-74")
 											  .withAmount(new BigDecimal(20.00))
@@ -47,6 +49,7 @@ private DefaultReceiptValidator validator;
 	public void shouldReturnErrorIfInNameOfIsNotPresent() {
 		Receipt receipt = new ReceiptBuilder().toThePatient(aPatient())
 											  .his(Kinship.ME)
+											  .withBirthDate(Calendar.getInstance())
 											  .ownerOfTheCpf("346.492.088-74")
 											  .withAmount(new BigDecimal(20.00))
 											  .instance();
@@ -55,11 +58,26 @@ private DefaultReceiptValidator validator;
 		assertEquals(1, errors.size());
 		assertEquals(ValidationMessages.INVALID_IN_NAME_OF, errors.get(0).getKey());
 	}
+
+	@Test
+	public void shouldReturnErrorIfDateOfBirthIsNotPresent() {
+		Receipt receipt = new ReceiptBuilder().toThePatient(aPatient())
+											  .inNameOf("Fulano")
+											  .his(Kinship.ME)
+											  .ownerOfTheCpf("346.492.088-74")
+											  .withAmount(new BigDecimal(20.00))
+											  .instance();
+		
+		List<Error> errors = validator.validate(receipt);
+		assertEquals(1, errors.size());
+		assertEquals(ValidationMessages.INVALID_BIRTHDATE, errors.get(0).getKey());
+	}
 	
 	@Test
 	public void shouldReturnErrorIfAmountIsZero() {
 		Receipt receipt = new ReceiptBuilder().toThePatient(aPatient())
 											  .inNameOf("Fulano")
+											  .withBirthDate(Calendar.getInstance())
 											  .his(Kinship.ME)
 											  .ownerOfTheCpf("346.492.088-74")
 											  .withAmount(new BigDecimal(0))
@@ -74,6 +92,7 @@ private DefaultReceiptValidator validator;
 	public void shouldReturnErrorIfCpfIsInvalid() {
 		Receipt receipt = new ReceiptBuilder().toThePatient(aPatient())
 											  .inNameOf("Fulano")
+											  .withBirthDate(Calendar.getInstance())
 											  .his(Kinship.ME)
 											  .ownerOfTheCpf("0000")
 											  .withAmount(new BigDecimal(20.00))

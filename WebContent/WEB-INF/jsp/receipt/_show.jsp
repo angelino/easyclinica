@@ -16,7 +16,12 @@
 			<p>Em nome de:</p>
 			<span>${receipt.inNameOf} (<fmt:message key="${kinship.localeKey}"></fmt:message>)</span>
 		</div>
-		
+
+		<div>
+			<p>Data de Nascimento:</p>
+			<span><fmt:formatDate pattern="dd/MM/yyyy" value="${receipt.birthDate.time}" /></span>
+		</div>
+				
 		<div>
 			<p>CPF:</p>
 			<span>${receipt.cpf}</span>

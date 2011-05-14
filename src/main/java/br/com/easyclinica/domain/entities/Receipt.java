@@ -10,6 +10,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.Index;
 import org.hibernate.annotations.Type;
@@ -19,6 +21,8 @@ public class Receipt {
 	@Id
 	@GeneratedValue
 	private int id;
+	@Temporal(TemporalType.DATE)
+	@Index(name = "receiptDateIndex")
 	private Calendar date;
 	private BigDecimal amount;
 	private String inNameOf;
@@ -27,6 +31,8 @@ public class Receipt {
 	private Kinship kinship;
 	@Type(type = "text")
 	private String observations;
+	@Temporal(TemporalType.DATE)
+	private Calendar birthDate;
 	
 	@ManyToOne(fetch = FetchType.EAGER)
 	private Employee employee;
@@ -118,4 +124,14 @@ public class Receipt {
 	public static Receipt empty() {
 		return new Receipt();
 	}
+
+	public Calendar getBirthDate() {
+		return birthDate;
+	}
+
+	public void setBirthDate(Calendar birthDate) {
+		this.birthDate = birthDate;
+	}
+	
+	
 }

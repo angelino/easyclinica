@@ -23,4 +23,5 @@ public class ValidationMessages {
 	
 	public static final String INVALID_IN_NAME_OF = "errors.invalid_in_name_of";
 	public static final String INVALID_AMOUNT = "errors.invalid_amount";
+	public static final String INVALID_BIRTHDATE = "errors.invalid_birthdate";
 }

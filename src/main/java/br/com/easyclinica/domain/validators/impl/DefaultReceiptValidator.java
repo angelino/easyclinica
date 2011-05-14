@@ -34,6 +34,10 @@ public class DefaultReceiptValidator implements ReceiptValidator {
 			errors.add(new Error("receipt", ValidationMessages.INVALID_CPF));
 		}
 		
+		if(!validatorUtils.dateIsValid(obj.getBirthDate())) {
+			errors.add(new Error("receipt", ValidationMessages.INVALID_BIRTHDATE));
+		}
+		
 		return errors;
 	}
 
