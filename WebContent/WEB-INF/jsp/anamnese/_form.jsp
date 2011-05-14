@@ -15,11 +15,14 @@
 
 	<p class="required"><span>*</span> campos obrigatórios</p>
 
-	<fieldset>
-      	<div class="date">
+	<fieldset class="full">
+		<div class="date">
 			<label class="title">Data:<span>*</span></label>
 			<input type="text" name="anamnese.date" maxlength="50" class="datepicker" required="required" value="<fmt:formatDate value="${anamnese.date.time}" pattern="dd/MM/yyyy" />" />
 		</div>
+	</fieldset>
+
+	<fieldset>
       	<div>
           	<label class="title">Médico:<span>*</span></label>
           	<select name="anamnese.doctor.id" min="1" data-message="Selecione um médico.">
@@ -29,66 +32,58 @@
           		</c:forEach>
           	</select>
         </div>
-	</fieldset>
-	      	
-      <fieldset>
-      	<div class="remarks">
+		
+		<div class="remarks">
           	<label class="title">Queixa e duração:<span>*</span></label>
             <textarea name="anamnese.complaintAndDuration" required="required" allowEnter="true">${anamnese.complaintAndDuration}</textarea>
         </div>
-      	<div class="remarks">
-          	<label class="title">HPMA:</label>
-            <textarea name="anamnese.hpma" allowEnter="true">${anamnese.hpma}</textarea>
-        </div>
-      </fieldset>
-
-      <fieldset>
-      	<div class="remarks">
+        
+        <div class="remarks">
           	<label class="title">HSDA:</label>
             <textarea name="anamnese.hsda" allowEnter="true">${anamnese.hsda}</textarea>
         </div>
-      	<div class="remarks">
-          	<label class="title">HF:</label>
-            <textarea name="anamnese.hf" allowEnter="true">${anamnese.hf}</textarea>
-        </div>
-      </fieldset>
-      
-       <fieldset>
-      	<div class="remarks">
+        
+        <div class="remarks">
           	<label class="title">Exame Clínico:</label>
             <textarea name="anamnese.clinicExam" allowEnter="true">${anamnese.clinicExam}</textarea>
         </div>
-      	<div class="remarks">
-          	<label class="title">Exame Suplementar:</label>
-            <textarea name="anamnese.supplementaryExam" allowEnter="true">${anamnese.supplementaryExam}</textarea>
-        </div>
-      </fieldset>
-      
-       <fieldset>
-      	<div class="remarks">
+        
+        <div class="remarks">
           	<label class="title">Hipótese Diagnóstica:</label>
             <textarea name="anamnese.hypothesis" allowEnter="true">${anamnese.hypothesis}</textarea>
         </div>
-      	<div class="remarks">
+    </fieldset>
+	
+	<fieldset>
+		<div>
           	<label class="title">CID:</label>
-          	<select name="anamnese.cid.id" min="1" data-message="Selecione um CID.">
-          		<option value="0">Selecione a doença</option>
-				<c:forEach var="cid" items="${cids}">
-					<option value="${cid.id}" <c:if test="${cid.id == anamnese.cid.id}">selected</c:if>>${cid.name}</option>
-				</c:forEach>
-          	</select>
+          	<input type="text" id="txt_search_cid" value="${anamnese.cid.name}"/>
+          	<input type="hidden" id="anamnese.cid.id" value="${anamnese.cid.id}" />
         </div>
-      </fieldset>
-      
-       <fieldset>
-      	<div class="remarks">
+        
+        <div class="remarks">
+          	<label class="title">HPMA:</label>
+            <textarea name="anamnese.hpma" allowEnter="true">${anamnese.hpma}</textarea>
+        </div>
+        
+        <div class="remarks">
+          	<label class="title">HF:</label>
+            <textarea name="anamnese.hf" allowEnter="true">${anamnese.hf}</textarea>
+        </div>
+        
+        <div class="remarks">
+          	<label class="title">Exame Suplementar:</label>
+            <textarea name="anamnese.supplementaryExam" allowEnter="true">${anamnese.supplementaryExam}</textarea>
+        </div>
+        
+        <div class="remarks">
           	<label class="title">Conduta:</label>
             <textarea name="anamnese.conduct" allowEnter="true">${anamnese.conduct}</textarea>
         </div>
-      </fieldset>
-      
-      <div class="boxactions">
-			<input type="submit" class="btnsave" value="Salvar" />
-      </div>
+    </fieldset>
+	      
+    <div class="boxactions">
+		<input type="submit" class="btnsave" value="Salvar" />
+    </div>
   
 </form>

@@ -16,6 +16,8 @@
 	<body>
 
 		<div class="box" id="anamneses" main-page="pacientes">
+			<helper:patientMenu patient="${patient}" selected="Anamnese" />
+			
 			<div class="boxcontent">
 		   		<h2>Editar Anamnese</h2>				
 		

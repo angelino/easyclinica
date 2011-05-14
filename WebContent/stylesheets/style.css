@@ -218,6 +218,7 @@ table.easy tr td.tablenostyle{background:#ffffff!important;border:none;}
 
 /*BOX FORMULARIO ######################################################################################################################*/
 .main .content .box fieldset{float:left;width:50%;}
+.main .content .box fieldset.full{float:left;width:100%;}
 .main .content .box fieldset.procedures{float:left;width:100%;}
 .main .content .box fieldset label{float:left;width:100%;}
 .main .content .box fieldset label.title{float:left;font-weight:bold;margin:10px 0 2px 0;}
@@ -257,7 +258,7 @@ table.easy tr td.tablenostyle{background:#ffffff!important;border:none;}
 
 .main .content .box fieldset .remarks{float:left;width:100%;}
 .main .content .box fieldset .remarks label{width:100%;}
-.main .content .box fieldset .remarks textarea{width:97%;height:100px;}
+.main .content .box fieldset .remarks textarea{width:95%;height:100px;}
 
 .main .content .box fieldset .telephone{float:left;width:100%;}
 .main .content .box fieldset .telephone label.title{width:100%;}

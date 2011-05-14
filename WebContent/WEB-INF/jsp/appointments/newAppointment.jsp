@@ -31,7 +31,6 @@
 	            	<div class="date">
 	                	<label class="title">Data:<span>*</span></label>
 	                    <input type="text" name="appointment.appointmentDate" required="required" class="datepicker" />
-	                    <a href="javascript:void(0);">icondate</a>
 	                </div>
 	               	<div class="healthcare">
 	                   	<label class="title">Convênio:<span>*</span></label>
@@ -85,6 +84,7 @@
 	                    <input type="text"  id="txt_search_procedure" allowEnter="true"/>
 	                    <input type="hidden" id="selected_procedure_id" value="0" />
 	                    <a href="#" id="btn_search_procedure">Adicionar</a>
+	                    <img id="loading" src="<c:url value="images/loading.gif" />" alt="carregando..."/>
 	                    <div class="error" id="informe-procedimento-message">
 	                    	<p>Informe o procedimento que deseja adicionar.</p>
 	                    </div>
