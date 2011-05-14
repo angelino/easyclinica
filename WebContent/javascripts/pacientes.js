@@ -6,7 +6,6 @@ EasyClinica.pages['pacientes'] = function(){
 		searchPatients(1);
 	});
 	
-
 	var searchPatients = function(page) {
 		$(this).after("<img id='loading' src='" + EasyClinica.cfg.images.loading + "' alt='carregando...'/>");
 		
