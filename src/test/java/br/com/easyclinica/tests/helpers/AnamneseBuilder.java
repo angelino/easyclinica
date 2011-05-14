@@ -21,8 +21,8 @@ public class AnamneseBuilder {
 		return this;
 	}
 	
-	public AnamneseBuilder withText(String text) {
-		anamnese.setText(text);
+	public AnamneseBuilder withComplaint(String text) {
+		anamnese.setComplaintAndDuration(text);
 		return this;
 	}
 	

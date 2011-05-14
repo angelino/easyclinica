@@ -22,7 +22,7 @@ public class DefaultAnamneseValidator implements AnamneseValidator {
 	public List<Error> validate(Anamnese obj) {
 		List<Error> errors = new ArrayList<Error>();
 		
-		if(validatorUtils.isNullOrEmpty(obj.getText())) {
+		if(validatorUtils.isNullOrEmpty(obj.getComplaintAndDuration())) {
 			errors.add(new Error("anamnese", ValidationMessages.INVALID_ANAMNESE));
 		}
 		

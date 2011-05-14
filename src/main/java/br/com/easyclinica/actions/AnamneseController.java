@@ -12,6 +12,7 @@ import br.com.caelum.vraptor.view.Results;
 import br.com.easyclinica.domain.entities.Anamnese;
 import br.com.easyclinica.domain.entities.Patient;
 import br.com.easyclinica.domain.repositories.AllAnamneses;
+import br.com.easyclinica.domain.repositories.AllCIDs;
 import br.com.easyclinica.domain.repositories.AllDoctors;
 import br.com.easyclinica.domain.repositories.AllPatients;
 import br.com.easyclinica.domain.validators.AnamneseValidator;
@@ -27,10 +28,11 @@ public class AnamneseController extends BaseController {
 	private final ErrorTranslator translator;
 	private final AnamneseValidator anamneseValidator;
 	private final AllAnamneses anamneses;
+	private final AllCIDs allCIDs;
 
 	public AnamneseController(AllPatients patients, AllDoctors doctors,
 			AllAnamneses anamneses, Result result, Validator validator,
-			ErrorTranslator translator, AnamneseValidator anamneseValidator) {
+			ErrorTranslator translator, AnamneseValidator anamneseValidator, AllCIDs allCIDs) {
 
 		super(result);
 
@@ -40,6 +42,7 @@ public class AnamneseController extends BaseController {
 		this.validator = validator;
 		this.translator = translator;
 		this.anamneseValidator = anamneseValidator;
+		this.allCIDs = allCIDs;
 	}
 
 	@Get
@@ -64,6 +67,7 @@ public class AnamneseController extends BaseController {
 		include(emptyAnamnese);
 		result.include("patient", patients.getById(patient));
 		result.include("doctors", doctors.get());
+		result.include("cids", allCIDs.get());
 	}
 
 	@Post
@@ -88,6 +92,7 @@ public class AnamneseController extends BaseController {
 
 		result.include("patient", patients.getById(patient));
 		result.include("doctors", doctors.get());
+		result.include("cids", allCIDs.get());
 	}
 
 	@Put

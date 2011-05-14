@@ -72,17 +72,17 @@ public class AnamneseDaoTests extends DaoBase {
 		dao.add(anamnese);
 		
 		Anamnese updatedAnamnese = new AnamneseBuilder(anamnese.getId())
-			.withText("new text")
+			.withComplaint("new text")
 			.instance();
 		dao.update(updatedAnamnese);
 		
 		Anamnese secondRetrievedAnamnese = dao.getById(anamnese.getId());
 		assertNotNull(secondRetrievedAnamnese);
-		assertEquals("new text", secondRetrievedAnamnese.getText().toString());
+		assertEquals("new text", secondRetrievedAnamnese.getComplaintAndDuration().toString());
 	}
 
 	private Anamnese aAnamnese() {
-		return new AnamneseBuilder().withDoctor(doctor).withText("anamnese here").withPatient(patient).instance();
+		return new AnamneseBuilder().withDoctor(doctor).withComplaint("anamnese here").withPatient(patient).instance();
 	}
 
 }

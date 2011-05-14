@@ -19,7 +19,23 @@ public class Anamnese {
 	private int id;
 	private Calendar date;
 	@Type(type = "text")
-	private String text;
+	private String complaintAndDuration;
+	@Type(type = "text")
+	private String hpma;
+	@Type(type = "text")
+	private String hsda;
+	@Type(type = "text")
+	private String hf;
+	@Type(type = "text")
+	private String clinicExam;
+	@Type(type = "text")
+	private String supplementaryExam;
+	@Type(type = "text")
+	private String hypothesis;
+	@ManyToOne(fetch=FetchType.EAGER)
+	private CID cid;
+	@Type(type = "text")
+	private String conduct;
 	@ManyToOne(fetch = FetchType.EAGER)
 	private Doctor doctor;
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -50,14 +66,6 @@ public class Anamnese {
 		this.date = date;
 	}
 
-	public String getText() {
-		return text;
-	}
-
-	public void setText(String text) {
-		this.text = text;
-	}
-
 	public Doctor getDoctor() {
 		return doctor;
 	}
@@ -78,4 +86,77 @@ public class Anamnese {
 		return new Anamnese();
 	}
 
+	public String getComplaintAndDuration() {
+		return complaintAndDuration;
+	}
+
+	public void setComplaintAndDuration(String complaintAndDuration) {
+		this.complaintAndDuration = complaintAndDuration;
+	}
+
+	public String getHpma() {
+		return hpma;
+	}
+
+	public void setHpma(String hpma) {
+		this.hpma = hpma;
+	}
+
+	public String getHsda() {
+		return hsda;
+	}
+
+	public void setHsda(String hsda) {
+		this.hsda = hsda;
+	}
+
+	public String getHf() {
+		return hf;
+	}
+
+	public void setHf(String hf) {
+		this.hf = hf;
+	}
+
+	public String getClinicExam() {
+		return clinicExam;
+	}
+
+	public void setClinicExam(String clinicExam) {
+		this.clinicExam = clinicExam;
+	}
+
+	public String getSupplementaryExam() {
+		return supplementaryExam;
+	}
+
+	public void setSupplementaryExam(String supplementaryExam) {
+		this.supplementaryExam = supplementaryExam;
+	}
+
+	public String getHypothesis() {
+		return hypothesis;
+	}
+
+	public void setHypothesis(String hypothesis) {
+		this.hypothesis = hypothesis;
+	}
+
+	public CID getCid() {
+		return cid;
+	}
+
+	public void setCid(CID cid) {
+		this.cid = cid;
+	}
+
+	public String getConduct() {
+		return conduct;
+	}
+
+	public void setConduct(String conduct) {
+		this.conduct = conduct;
+	}
+
+	
 }

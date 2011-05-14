@@ -30,11 +30,50 @@
           	${anamnese.doctor.name}
         </div>
 	      	
-      	<div class="remarks">
-          	<label class="title">Anamnese:</label>
-            ${anamnese.text}
+      	<div>
+          	<label class="title">Queixa e Duração:</label>
+            ${anamnese.complaintAndDuration}
         </div>
-  
+
+      	<div>
+          	<label class="title">HPMA:</label>
+            ${anamnese.hpma}
+        </div>
+        
+      	<div>
+          	<label class="title">HSDA:</label>
+            ${anamnese.hsda}
+        </div>
+        
+      	<div>
+          	<label class="title">HF:</label>
+            ${anamnese.hf}
+        </div>
+        
+      	<div>
+          	<label class="title">Exame Clínico:</label>
+            ${anamnese.clinicExam}
+        </div>
+        
+      	<div>
+          	<label class="title">Exame Suplementar:</label>
+            ${anamnese.supplementaryExam}
+        </div>
+        
+      	<div>
+          	<label class="title">Hipótese Diagnóstica:</label>
+            ${anamnese.hypothesis}
+        </div>
+        
+      	<div>
+          	<label class="title">CID:</label>
+            ${anamnese.cid.name}
+        </div>
+        
+      	<div>
+          	<label class="title">Conduta:</label>
+            ${anamnese.conduct}
+        </div>  
 		
 			</div>			
 		</div>

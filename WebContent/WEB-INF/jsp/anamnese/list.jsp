@@ -12,7 +12,7 @@
 
 <html>
 	<head>
-		<title>.: EasyClinica - Anamneses :.</title>
+		<title>.: EasyClínica - Anamneses :.</title>
 	</head>
 	<body>
 
@@ -35,7 +35,7 @@
 							<tr class="tableheader">
 			                    <th>Data</th> 
 			                    <th>Médico</th>
-			                    <th>Anamnese</th> 
+			                    <th>Queixa e Duração</th> 
 			                    <th width="160px">&nbsp;</th>
 			                </tr> 
                   
@@ -45,7 +45,7 @@
 										<fmt:formatDate value="${anamnese.date.time}" pattern="dd/MM/yyyy" />
 									</td> 
 									<td>${anamnese.doctor.name}</td>
-									<td>${anamnese.text}</td>
+									<td>${anamnese.complaintAndDuration}</td>
 									
 									<td class="buttons">
 										<a class="btnpeopleshow" title="Exibir" href="<c:url value="/pacientes/${patient.id}/anamneses/${anamnese.id}"/>">&nbsp;</a>
