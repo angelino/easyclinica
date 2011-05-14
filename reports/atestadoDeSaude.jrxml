@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="atestadoDeSaude" language="groovy" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="96"/>
 	<parameter name="clinic" class="br.com.easyclinica.domain.entities.Clinic" isForPrompting="false"/>
 	<field name="name" class="java.lang.String"/>
 	<field name="rg" class="java.lang.String"/>
@@ -49,7 +49,7 @@
 				<textElement textAlignment="Center">
 					<font size="16" isBold="true"/>
 				</textElement>
-				<text><![CDATA[ATESTADO DE SAÚDE]]></text>
+				<text><![CDATA[PRÁTICA DE ATIVIDADES FÍSICAS]]></text>
 			</staticText>
 		</band>
 	</pageHeader>
@@ -67,17 +67,17 @@
 				<textElement>
 					<font size="12"/>
 				</textElement>
-				<text><![CDATA[(   ) Apto
-(   ) Apto com restrições
-(   ) Inapto
-(   ) Inapto aguardando exames]]></text>
+				<text><![CDATA[(   ) Apto para prática de atividades físicas.
+(   ) Apto para prática de atividades físicas, com restrições.
+(   ) Inapto para prática de atividades físicas.
+(   ) Inapto para prática de atividades físicas, aguardando exames.]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="0" y="154" width="555" height="37"/>
 				<textElement textAlignment="Justified">
 					<font size="12"/>
 				</textElement>
-				<text><![CDATA[Observa-se as seguintes restrições, baseado em questionário dirigido respondido pelo paciente, seus pais ou responsáveis, e exame clínico visando o aparelho cardio-respiratório:]]></text>
+				<text><![CDATA[Observando-se as seguintes restrições, baseado em questionário dirigido respondido pelo paciente, seus pais ou responsáveis, e exame clínico visando o aparelho cardio-respiratório:]]></text>
 			</staticText>
 			<line>
 				<reportElement x="0" y="214" width="555" height="1"/>
@@ -93,7 +93,7 @@
 				<textElement textAlignment="Justified">
 					<font size="12"/>
 				</textElement>
-				<text><![CDATA[Este exame não exclue patologias não aparentes, não sensíveis ao método, ou não informada pelo paciente, pais ou responsáveis. Desta forma, a qualquer sinal de sintoma de doença exibido pelo paciente, a atividade física deverá ser suspendida temporariamente até nova avaliação médica.]]></text>
+				<text><![CDATA[Este exame não exclui patologias não aparentes, não sensíveis ao método, ou não informadas pelo paciente, pais ou responsáveis. Desta forma, a qualquer sinal de sintoma de doença exibido pelo paciente, a atividade física deverá ser suspensa temporariamente até nova avaliação médica.]]></text>
 			</staticText>
 			<textField>
 				<reportElement x="0" y="397" width="393" height="20"/>

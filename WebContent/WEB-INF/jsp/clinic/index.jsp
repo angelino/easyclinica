@@ -51,8 +51,8 @@
 					    </div>
 				    	
 				    	<div>
-							<label class="title">Cidade:</label>
-							<input type="text" name="clinic.address.city" tabindex="11" maxlength="50" value="${clinic.address.city}" />
+							<label class="title">Cidade:<span>*</span></label>
+							<input type="text" name="clinic.address.city" required="required" tabindex="11" maxlength="50" value="${clinic.address.city}" />
 						</div>
 				    	
 					</fieldset>
