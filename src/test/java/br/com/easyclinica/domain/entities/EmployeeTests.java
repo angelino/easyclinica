@@ -30,4 +30,16 @@ public class EmployeeTests {
 		
 		assertFalse(e.isActive());
 	}
+	
+	@Test
+	public void shouldCreateAChatMessage() {
+		Employee from = new EmployeeBuilder().withName("bla").instance();
+		Employee to = new EmployeeBuilder().withName("ble").instance();
+		
+		ChatMessage message = from.createMessage(to, "hi");
+		
+		assertEquals("hi", message.getMessage());
+		assertSame(from, message.getFrom());
+		assertSame(to, message.getTo());
+	}
 }

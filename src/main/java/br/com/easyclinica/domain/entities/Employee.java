@@ -1,6 +1,7 @@
 package br.com.easyclinica.domain.entities;
 
 import java.io.Serializable;
+import java.util.Calendar;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,7 +12,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
 @Entity
+@Cache(usage=CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class Employee implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -125,6 +130,10 @@ public class Employee implements Serializable {
 
 	public void setDoctor(Doctor doctor) {
 		this.doctor = doctor;
+	}
+
+	public ChatMessage createMessage(Employee to, String message) {
+		return new ChatMessage(this, to, Calendar.getInstance(), message);
 	}
 
 }

@@ -11,6 +11,7 @@
 		<title><decorator:title default="Easy Clinica" /></title>
 
 		<helper:include fileName="style.css" type="css" />
+		<helper:include fileName="chat.css" type="css" />
 		<helper:include fileName="plugins/jquery-ui/jquery-ui-1.8.2.custom.css" type="css" />
 		<helper:include fileName="plugins/jquery.autocomplete/jquery.autocomplete.css" type="css" />
 		<script type="text/javascript" language="javascript">
@@ -23,6 +24,7 @@
 	    <helper:include fileName="plugins/jquery.maskedinput/jquery.maskedinput-1.2.2.min.js" type="js" />	    
 	    <helper:include fileName="plugins/jquery.autocomplete/jquery.autocomplete.js" type="js" />
 	    <helper:include fileName="easyclinica.js" type="js" />
+	    <helper:include fileName="chat.js" type="js" />
 	    <helper:include fileName="consultas.js" type="js" />
 	    <helper:include fileName="medicos.js" type="js" />
 	    <helper:include fileName="convenios.js" type="js" />

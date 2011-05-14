@@ -98,7 +98,10 @@ EasyClinica.cfg.services = {
 		recentMessages: BASE_URI + 'mensagens/_recentes',
 			
 		searchPatients: BASE_URI + 'patient/_list',
-		getHealthCarePlan: BASE_URI + 'convenios/{0}/resgatar'
+		getHealthCarePlan: BASE_URI + 'convenios/{0}/resgatar',
+		
+		newChatMessage: BASE_URI + 'chat',
+		getChatMessages: BASE_URI + 'chat/ultimas'
 };
 
 EasyClinica.cfg.images = {
