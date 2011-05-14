@@ -87,7 +87,7 @@ public class AppointmentsController extends BaseController {
 		Patient patient = allPatients.getById(patientId);
 		
 		result.include("patient", patient);
-		result.include("doctors", allDoctors.getActivated());
+		result.include("doctors", allDoctors.allActive());
 		result.include("specialties", allSpecialties.getAll());
 	}
 	

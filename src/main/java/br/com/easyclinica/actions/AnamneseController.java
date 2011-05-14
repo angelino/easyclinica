@@ -66,7 +66,7 @@ public class AnamneseController extends BaseController {
 
 		include(emptyAnamnese);
 		result.include("patient", patients.getById(patient));
-		result.include("doctors", doctors.get());
+		result.include("doctors", doctors.allActive());
 		result.include("cids", allCIDs.get());
 	}
 

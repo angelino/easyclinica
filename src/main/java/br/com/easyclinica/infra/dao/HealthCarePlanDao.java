@@ -108,4 +108,9 @@ public class HealthCarePlanDao implements AllHealthCarePlans {
 		
 		return ((Long) query.uniqueResult()).intValue();
 	}
+
+	@SuppressWarnings("unchecked")
+	public List<HealthCarePlan> allActive() {
+		return session.createQuery("from HealthCarePlan plan where plan.active = true order by name").list();
+	}
 }

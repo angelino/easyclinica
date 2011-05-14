@@ -67,7 +67,7 @@ public class DoctorDaoTests extends DaoBase {
 		session.save(doctorOne);
 		session.save(doctorTwo);
 		
-		List<Doctor> list = dao.getActivated();
+		List<Doctor> list = dao.allActive();
 		
 		assertEquals(1, list.size());
 		assertEquals(doctorOne.getId(), list.get(0).getId());
