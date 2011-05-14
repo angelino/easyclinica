@@ -1,60 +1,69 @@
 EasyClinica.pages['consultas'] = function(){
 
-	$(function() {
-		$('#aviso-retorno').hide();
-		$('#sugestao-taxadesala').hide();
+	$('#aviso-retorno').hide();
+	$('#sugestao-taxadesala').hide();
 
-		$('#informe-procedimento-message').hide();
-		
-		$("#txt_search_procedure").autocomplete(EasyClinica.cfg.services.searchProcedure, {
-			autoFill: false
-		}).result(function(event, item) {
-			$('#selected_procedure_id').val(item[1]);
-		});
-		
-		$('#lnk-default-roomtax').click(function() {
-			var roomTax = $('#lnk-default-roomtax').attr('data-value').toString().formatCurrency();
-			$('input[name=appointment.roomRateAmount]').val(roomTax);
-		});
-		
-		$('#btn_search_procedure').click(function(e){		
-			e.preventDefault();
-			
-			var procedureId = $('#selected_procedure_id').val();
-			
-			if(procedureId == 0) {
-				$('#informe-procedimento-message').show('slow');
-				return;
-			}
-			
-			var healthCarePlanId = $("input[name=appointment.healthCarePlan.id]:checked").val();
-			addNewProcedure(procedureId, healthCarePlanId);
-			
-		});
-		
-		$('input[name=appointment.healthCarePlan.id]').change(function(){
-			var healthCarePlanId = $(this).val();
-			checkIfRoomRateAmountIsStillNeeded();
-			
-			var specialtyId = $('select[name=appointment.specialty.id]').val();
-			if(specialtyId == 0) return;
-			refreshMedicalAppointmentAmount(specialtyId);
-					
-			var procedures = new Array();
-			var indice = 0;
-			$('.procedure-id').each(function(index){
-				var procedureId = $(this).val();
-				procedures[indice] = procedureId;
-				removeProcedure(procedureId);
-				
-				indice += 1;
-			});
-			
-			for (var i = 0; i <procedures.length; i++){
-				addNewProcedure(procedures[i], healthCarePlanId);
-			}
-		});
+	$('#informe-procedimento-message').hide();
 	
+	$("#txt_search_procedure").autocomplete(EasyClinica.cfg.services.searchProcedure, {
+		autoFill: false
+	}).result(function(event, item) {
+		$('#selected_procedure_id').val(item[1]);
+	});
+	
+	$("#txt_search_procedure").keydown(function(event){
+		if(event.keyCode == 13) {
+			$('#btn_search_procedure').click();
+	    }
+	});
+	
+	$('#lnk-default-roomtax').click(function() {
+		var roomTax = $('#lnk-default-roomtax').attr('data-value').toString().formatCurrency();
+		$('input[name=appointment.roomRateAmount]').val(roomTax);
+	});
+	
+	$('#btn_search_procedure').click(function(e){		
+		e.preventDefault();
+		
+		var procedureId = $('#selected_procedure_id').val();
+		
+		if(procedureId == 0) {
+			$('#informe-procedimento-message').show('slow');
+			return;
+		}
+		
+		var healthCarePlanId = $("input[name=appointment.healthCarePlan.id]:checked").val();
+		addNewProcedure(procedureId, healthCarePlanId);
+		
+	});
+	
+	$('input[name=appointment.return]').change(function(){
+		if($(this).val() == 'true') {
+			$('#valor-consulta').val('0.00'.formatCurrency());
+		}
+	});
+	
+	$('input[name=appointment.healthCarePlan.id]').change(function(){
+		var healthCarePlanId = $(this).val();
+		checkIfRoomRateAmountIsStillNeeded();
+		
+		var specialtyId = $('select[name=appointment.specialty.id]').val();
+		if(specialtyId == 0) return;
+		refreshMedicalAppointmentAmount(specialtyId);
+				
+		var procedures = new Array();
+		var indice = 0;
+		$('.procedure-id').each(function(index){
+			var procedureId = $(this).val();
+			procedures[indice] = procedureId;
+			removeProcedure(procedureId);
+			
+			indice += 1;
+		});
+		
+		for (var i = 0; i <procedures.length; i++){
+			addNewProcedure(procedures[i], healthCarePlanId);
+		}
 	});
 		
 	var addNewProcedure = function(procedureId, healthCarePlanId) {

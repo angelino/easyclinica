@@ -1,0 +1,4 @@
+EasyClinica.pages['observacoes'] = function(){
+	
+	
+};

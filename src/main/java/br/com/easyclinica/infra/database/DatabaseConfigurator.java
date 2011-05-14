@@ -16,6 +16,7 @@ import br.com.easyclinica.domain.entities.ChatMessage;
 import br.com.easyclinica.domain.entities.Clinic;
 import br.com.easyclinica.domain.entities.Doctor;
 import br.com.easyclinica.domain.entities.Employee;
+import br.com.easyclinica.domain.entities.GeneralObservations;
 import br.com.easyclinica.domain.entities.HealthCarePlan;
 import br.com.easyclinica.domain.entities.Material;
 import br.com.easyclinica.domain.entities.MaterialInProcedure;
@@ -98,6 +99,7 @@ public class DatabaseConfigurator {
 		configuration.addAnnotatedClass(AppointmentAssistant.class);
 		configuration.addAnnotatedClass(Receipt.class);
 		configuration.addAnnotatedClass(ChatMessage.class);
+		configuration.addAnnotatedClass(GeneralObservations.class);
 		configuration.addAnnotatedClass(CID.class);
 
 		return configuration;

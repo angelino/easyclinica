@@ -37,4 +37,8 @@ public class Messages {
 	public static final String RECEIPT_ADDED = "receipts.added";
 	public static final String RECEIPT_UPDATED = "receipts.updated";
 	public static final String RECEIPT_DELETED = "receipts.deleted";
+	
+	public static final String GENERAL_OBSERVATION_ADDED = "observation.added";
+	public static final String GENERAL_OBSERVATION_UPDATED = "observation.updated";
+	public static final String GENERAL_OBSERVATION_DELETED = "observation.deleted";
 }
