@@ -5,7 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-public class CID {
+public class CID implements IDable {
 
 	@Id
 	@GeneratedValue
