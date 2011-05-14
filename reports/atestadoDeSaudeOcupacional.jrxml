@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="atestadoDeSaudeOcupacional" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="289"/>
 	<parameter name="clinic" class="br.com.easyclinica.domain.entities.Clinic" isForPrompting="false"/>
 	<field name="name" class="java.lang.String"/>
 	<field name="rg" class="java.lang.String"/>
@@ -181,7 +181,7 @@
 				<textElement textAlignment="Center">
 					<font size="12"/>
 				</textElement>
-				<text><![CDATA[Autorização do Examinador]]></text>
+				<text><![CDATA[Autorização do Examinado]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="317" y="615" width="238" height="20"/>
