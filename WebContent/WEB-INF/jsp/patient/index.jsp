@@ -5,6 +5,7 @@
 <%@page import="br.com.easyclinica.view.Link"%>
 <%@page import="java.util.LinkedList"%>
 <%@page import="br.com.easyclinica.domain.entities.Position"%>
+<%@page import="br.com.easyclinica.domain.entities.Employee"%>
 <%@page import="br.com.easyclinica.infra.multitenancy.LoggedUser"%>
 
 <html>
@@ -19,8 +20,8 @@
             	<h2>Listagem de Pacientes</h2>
                 <fieldset class="search">
                 	<div class="search">
-                        <input type="text" name="patient.textobusca"/>
-                        <a href="#" id="btnBuscar">Buscar</a>
+                        <input type="text" name="patient.textobusca" allowEnter="true" />
+                        <a href="#" id="btnBuscar" allowEnter="true">Buscar</a>
                         <p>Digite parte do nome do paciente, ou email, ou CPF.</p>
                     </div>
                 </fieldset>

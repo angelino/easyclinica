@@ -68,7 +68,7 @@
 						    <th>Código:</th>
 						    <th>Procedimento:</th>
 						    <th colspan="2">Valor CH:</th>
-						    <th>Valor R$</th>
+						    <th width="100px">Valor R$</th>
 						    <th width="95px">&nbsp;</th>
 						</tr>
 						<tr>
