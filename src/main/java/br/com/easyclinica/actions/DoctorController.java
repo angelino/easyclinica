@@ -45,6 +45,13 @@ public class DoctorController extends BaseController {
 	}
 	
 	@Get
+	@Path("/medicos/_busca")
+	public void _list(String text, int page) {
+		int currentPage = page == 0 ? Paginator.firstPage() : page;
+		result.include("doctors", paginator.searchAndPaginate(allDoctors, text, currentPage));
+	}
+	
+	@Get
 	@Path("/medicos/novo")
 	public void newForm() {
 		Doctor emptyDoctor = Doctor.empty();

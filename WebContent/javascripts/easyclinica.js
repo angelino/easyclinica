@@ -88,6 +88,9 @@ EasyClinica.cfg.services = {
 		doctorScheduleNew: BASE_URI + 'medicos/minha-agenda/_new',
 		doctorScheduleEdit: BASE_URI + 'medicos/minha-agenda/{0}/_edit',
 		
+		searchDoctors: BASE_URI + 'medicos/_busca',
+		searchPlans: BASE_URI + 'convenios/_busca',
+		
 		scheduleList: BASE_URI + 'agenda/_list',
 		scheduleRemove: BASE_URI + 'agenda/_delete',
 		scheduleNew: BASE_URI + 'agenda/_new',

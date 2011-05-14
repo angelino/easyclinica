@@ -79,12 +79,33 @@ public class HealthCarePlanDao implements AllHealthCarePlans {
 		session.clear();
 	}
 
+	@SuppressWarnings("unchecked")
 	public List<HealthCarePlan> search(String textToSearch, int firstResult,
 			int maxResults) {
-		throw new RuntimeException("not implemented");
+		StringBuilder hql = new StringBuilder();
+		hql.append(" from HealthCarePlan plan ");
+		hql.append(" where ");
+		hql.append(" plan.name like :text_like ");
+		hql.append(" order by name ");
+		
+		Query query = session.createQuery(hql.toString())
+							 .setString("text_like", "%" + textToSearch + "%");
+		
+		query.setFirstResult(firstResult);
+		query.setMaxResults(maxResults);
+		
+		return query.list();
 	}
 
 	public int count(String textToSearch) {
-		throw new RuntimeException("not implemented");
+		StringBuilder hql = new StringBuilder();
+		hql.append(" select count(*) from HealthCarePlan plan ");
+		hql.append(" where ");
+		hql.append(" plan.name like :text_like ");
+		
+		Query query = session.createQuery(hql.toString())
+							 .setString("text_like", "%" + textToSearch + "%");
+		
+		return ((Long) query.uniqueResult()).intValue();
 	}
 }

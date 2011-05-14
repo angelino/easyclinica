@@ -51,6 +51,13 @@ public class HealthCarePlanController extends BaseController {
 		result.include("healthcares",
 				paginator.paginate(allHealthCares, currentPage));
 	}
+	
+	@Get
+	@Path("/convenios/_busca")
+	public void _list(String text, int page) {
+		int currentPage = page == 0 ? Paginator.firstPage() : page;
+		result.include("healthcares", paginator.searchAndPaginate(allHealthCares, text, currentPage));
+	}
 
 	@Get
 	@Path("/convenios/novo")

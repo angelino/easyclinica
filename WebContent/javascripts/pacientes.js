@@ -16,7 +16,6 @@ var searchPatients = function(page) {
 	$.post(url, {text: texto, page: page}, function(data){
 		$('#box_listagem').html(data);
 		EasyClinica.common.generalFunctions();
-		//showConfiguration();		
 		managerPagination();
 		
 		$('#loading').remove();
