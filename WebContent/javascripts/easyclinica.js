@@ -73,6 +73,7 @@ EasyClinica.cfg.services = {
 		searchProcedure: BASE_URI + 'procedures/_search',
 		searchMaterial: BASE_URI + 'materials/_search',
 		searchMedicine: BASE_URI + 'medicines/_search',
+		searchCID: BASE_URI + 'cid/_search',
 		
 		showDoctorDetails: BASE_URI + 'doctor/_show',
 		showHealthCarePlanDetails: BASE_URI + 'healthCarePlan/_show',

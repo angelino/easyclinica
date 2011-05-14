@@ -7,4 +7,5 @@ import br.com.easyclinica.domain.entities.CID;
 public interface AllCIDs {
 
 	List<CID> get();
+	List<CID> search(String q);
 }

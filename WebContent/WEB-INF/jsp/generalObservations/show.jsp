@@ -24,15 +24,16 @@
 			
 		   		<h2>Observação em <fmt:formatDate value="${observation.date.time}" pattern="dd/MM/yyyy" /></h2>				
 
-		      	<div class="date">
-					<label class="title">Data:</label>
-					<fmt:formatDate value="${observation.date.time}" pattern="dd/MM/yyyy" />
-				</div>
-		      	<div class="remarks">
-		          	<label class="title">Observações:</label>
-		            ${observation.text}
-		        </div>
-  	
+				<fieldset>
+			      	<div class="date">
+						<label class="title">Data:</label>
+						<fmt:formatDate value="${observation.date.time}" pattern="dd/MM/yyyy" />
+					</div>
+			      	<div class="remarks">
+			          	<label class="title">Observações:</label>
+			            ${observation.text}
+			        </div>
+  				</fieldset>
 			</div>			
 		</div>
 			

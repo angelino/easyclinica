@@ -31,7 +31,6 @@
 	            	<div class="date">
 	                	<label class="title">Data:<span>*</span></label>
 	                    <input type="text" name="appointment.appointmentDate" required="required" class="datepicker" />
-	                    <a href="javascript:void(0);">icondate</a>
 	                </div>
 	               	<div class="healthcare">
 	                   	<label class="title">Convênio:<span>*</span></label>
