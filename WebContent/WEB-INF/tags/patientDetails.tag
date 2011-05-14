@@ -11,5 +11,6 @@
   <p>Celular: ${patient.cellphone}</p>
   <p>RG: ${patient.rg}</p>
   <p>Data de Nascimento: <fmt:formatDate pattern="dd/MM/yyyy" value="${patient.birthDate.time}" /></p>
-  <p>Observações: ${patient.observations}</p>
+  <p>Observações do paciente: ${patient.observations}</p>
+  <p>Observações do convênio: ${patient.healthCarePlan.observations}</p>
 </div>
