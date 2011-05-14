@@ -31,6 +31,8 @@
 		
 		<dependency org="net.sf.ehcache" name="ehcache-core" rev="2.4.1"/>
 		
+		<dependency org="javax.mail" name="mail" rev="1.4.1"/>
+		
 		<!-- Test dependencies -->
 		<dependency org="junit" name="junit" rev="4.8.2" conf="test->default" />
 		<dependency org="org.mockito" name="mockito-all" rev="1.8.5" conf="test->default" />

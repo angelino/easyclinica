@@ -1,3 +1,3 @@
 EasyClinica.pages['prices'] = function(){
-	
+
 };

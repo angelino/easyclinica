@@ -18,49 +18,51 @@ import br.com.caelum.vraptor.interceptor.multipart.UploadedFile;
 import br.com.easyclinica.domain.entities.HealthCarePlan;
 import br.com.easyclinica.domain.entities.pricing.ImportedStuff;
 import br.com.easyclinica.domain.repositories.AllHealthCarePlans;
-import br.com.easyclinica.domain.services.pricing.PricingSheetExporter;
 import br.com.easyclinica.domain.services.pricing.PricingSheetImporter;
-import br.com.easyclinica.domain.services.pricing.PricingUpdater;
+import br.com.easyclinica.domain.services.pricing.exporter.PricingSheetExporterBuilder;
+import br.com.easyclinica.domain.services.pricing.update.PricingUpdater;
 
 @Resource
 public class PricesController {
 
-	private final PricingSheetExporter exporter;
+	private final PricingSheetExporterBuilder exporter;
 	private final AllHealthCarePlans plans;
 	private final Result result;
 	private final PricingSheetImporter importer;
 	private final PricingUpdater updater;
 
-	public PricesController(PricingSheetExporter exporter,
+	public PricesController(PricingSheetExporterBuilder exporter,
 			PricingSheetImporter importer, AllHealthCarePlans plans,
-			PricingUpdater updater,
-			Result result) {
+			PricingUpdater updater, Result result) {
 		this.exporter = exporter;
 		this.importer = importer;
 		this.plans = plans;
 		this.updater = updater;
 		this.result = result;
 	}
-	
+
 	@Get
 	@Path("/convenios/{id}/financeiro")
 	public void financial(int id) {
 		result.include("healthCarePlan", plans.getById(id));
 	}
-	
+
 	@Get
 	@Path("/convenios/{id}/precos")
-	public Download priceList(int id) throws IOException {
+	public Download priceList(int id, boolean materials, boolean medicines,
+			boolean specialties, boolean procedures) throws IOException {
 
 		HealthCarePlan plan = plans.getById(id);
 
 		ByteArrayOutputStream out = new ByteArrayOutputStream();
-		exporter.priceList(plan, out);
+
+		exporter.start().toPlan(plan).putMaterials(materials)
+				.putMedicines(medicines).putSpecialties(specialties)
+				.putProcedures(procedures).write(out);
 
 		return new InputStreamDownload(new ByteArrayInputStream(
 				out.toByteArray()), "application/ms-excel", "precos-"
-				+ formatName(plan.getName()) + ".xls", true,
-				out.size());
+				+ formatName(plan.getName()) + ".xls", true, out.size());
 	}
 
 	@Post
@@ -68,16 +70,21 @@ public class PricesController {
 	public void importPrices(int id, List<ImportedStuff> procedures,
 			List<ImportedStuff> specialties, List<ImportedStuff> medicines,
 			List<ImportedStuff> materials) {
-		
+
 		HealthCarePlan plan = plans.getById(id);
-		
-		if(procedures==null) procedures = Collections.emptyList();
-		if(specialties==null) specialties = Collections.emptyList();
-		if(medicines==null) medicines = Collections.emptyList();
-		if(materials==null) materials = Collections.emptyList();
-		
-		updater.pricesForAHealthCarePlan(plan, procedures, specialties, medicines, materials);
-		
+
+		if (procedures == null)
+			procedures = Collections.emptyList();
+		if (specialties == null)
+			specialties = Collections.emptyList();
+		if (medicines == null)
+			medicines = Collections.emptyList();
+		if (materials == null)
+			materials = Collections.emptyList();
+
+		updater.pricesForAHealthCarePlan(plan, procedures, specialties,
+				medicines, materials);
+
 		result.include("healthCarePlan", plan);
 	}
 

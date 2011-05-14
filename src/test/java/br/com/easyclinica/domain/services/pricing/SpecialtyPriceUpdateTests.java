@@ -11,6 +11,7 @@ import org.junit.Test;
 import br.com.easyclinica.domain.entities.HealthCarePlan;
 import br.com.easyclinica.domain.entities.Specialty;
 import br.com.easyclinica.domain.entities.pricing.ImportedStuff;
+import br.com.easyclinica.domain.services.pricing.update.SpecialtyPriceUpdate;
 import br.com.easyclinica.tests.helpers.HealthCarePlanBuilder;
 
 public class SpecialtyPriceUpdateTests{
