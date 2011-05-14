@@ -22,6 +22,7 @@
                 	<div class="search">
                         <input type="text" name="patient.textobusca" allowEnter="true" />
                         <a href="#" id="btnBuscar" allowEnter="true">Buscar</a>
+                        <img id="loading" src="<c:url value="images/loading.gif" />" alt="carregando..."/>
                         <p>Digite parte do nome do paciente, ou email, ou CPF.</p>
                     </div>
                 </fieldset>

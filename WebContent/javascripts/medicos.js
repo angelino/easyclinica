@@ -16,7 +16,7 @@ EasyClinica.pages['medicos'] = function(){
 	
 
 	var searchDoctors = function(page) {
-		$(this).after("<img id='loading' src='" + EasyClinica.cfg.images.loading + "' alt='carregando...'/>");
+		$('#loading').show();
 		
 		var url = EasyClinica.cfg.services.searchDoctors;
 		var texto = $('input[name=doctor.textobusca]').val();
@@ -26,10 +26,11 @@ EasyClinica.pages['medicos'] = function(){
 			EasyClinica.common.generalFunctions();
 			manageDoctorPagination();
 			
-			$('#loading').remove();
+			$('#loading').hide();
 		});
 	};
-
+	$('#loading').hide();
+	
 	var manageDoctorPagination = function() {
 		$('.boxpagination a[page]').click(function(e){
 			e.preventDefault();
@@ -38,6 +39,11 @@ EasyClinica.pages['medicos'] = function(){
 			searchDoctors(page);
 		});
 	};
-
 	manageDoctorPagination();
+	
+	$('input[name=doctor.textobusca]').keydown(function(event){
+		if(event.keyCode == 13) {
+			searchDoctors(1);
+	    }
+	});
 };
