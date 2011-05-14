@@ -129,7 +129,7 @@
 		</band>
 	</pageHeader>
 	<detail>
-		<band height="401" splitType="Stretch">
+		<band height="401" splitType="Immediate">
 			<staticText>
 				<reportElement x="0" y="4" width="40" height="20"/>
 				<textElement textAlignment="Left">
