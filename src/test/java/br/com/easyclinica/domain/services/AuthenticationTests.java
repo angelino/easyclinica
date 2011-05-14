@@ -13,6 +13,7 @@ import org.junit.Test;
 import br.com.easyclinica.domain.entities.Employee;
 import br.com.easyclinica.domain.repositories.AllEmployees;
 import br.com.easyclinica.domain.repositories.ClinicInfo;
+import br.com.easyclinica.infra.md5.MD5Calculator;
 import br.com.easyclinica.infra.multitenancy.LoggedUser;
 import br.com.easyclinica.tests.helpers.ClinicBuilder;
 
@@ -21,6 +22,7 @@ public class AuthenticationTests {
 	private LoggedUser loggedUser;
 	private AllEmployees employees;
 	private ClinicInfo clinicInfo;
+	private MD5Calculator md5;
 
 	@Before
 	public void setUp() {
@@ -29,15 +31,18 @@ public class AuthenticationTests {
 		
 		clinicInfo = mock(ClinicInfo.class);
 		when(clinicInfo.get()).thenReturn(new ClinicBuilder().instance());
+		
+		md5 = mock(MD5Calculator.class);
 	}
 	
 	@Test
 	public void shouldLoginValidUser() {
 		
-		Employee employee = anEmployee("user", "pwd");
+		Employee employee = anEmployee("user", "pwd-encriptado");
 		when(employees.getByLogin("login")).thenReturn(employee);
+		when(md5.calculate("pwd")).thenReturn("pwd-encriptado");
 		
-		Authentication auth = new Authentication(loggedUser, employees, clinicInfo);
+		Authentication auth = new Authentication(loggedUser, employees, clinicInfo, md5);
 		boolean authorized = auth.user("login", "pwd");
 		
 		assertTrue(authorized);
@@ -46,12 +51,12 @@ public class AuthenticationTests {
 	
 
 	@Test
-	public void shouldLoginEvenAValidUserIfItIsDeactivated() {
+	public void shouldNotLoginAValidUserIfItIsDeactivated() {
 		
-		Employee employee = anEmployee("user", "pwd", false);
+		Employee employee = anEmployee("user", "pwd-encriptado", false);
 		when(employees.getByLogin("login")).thenReturn(employee);
 		
-		Authentication auth = new Authentication(loggedUser, employees, clinicInfo);
+		Authentication auth = new Authentication(loggedUser, employees, clinicInfo, md5);
 		boolean authorized = auth.user("login", "pwd");
 		
 		assertFalse(authorized);
@@ -60,11 +65,12 @@ public class AuthenticationTests {
 	@Test
 	public void shouldNotLoginIfPasswordIsInvalid() {
 		
-		Employee employee = anEmployee("user", "pwd2");
+		Employee employee = anEmployee("user", "pwd-encriptado");
 		when(employees.getByLogin("login")).thenReturn(employee);
+		when(md5.calculate("pwd1")).thenReturn("erro");
 		
-		Authentication auth = new Authentication(loggedUser, employees, clinicInfo);
-		boolean authorized = auth.user("login", "pwd");
+		Authentication auth = new Authentication(loggedUser, employees, clinicInfo, md5);
+		boolean authorized = auth.user("login", "pwd1");
 		
 		assertFalse(authorized);
 		assertNull(loggedUser.getEmployee());
@@ -76,7 +82,7 @@ public class AuthenticationTests {
 		
 		when(employees.getByLogin("login")).thenReturn(null);
 		
-		Authentication auth = new Authentication(loggedUser, employees, clinicInfo);
+		Authentication auth = new Authentication(loggedUser, employees, clinicInfo, md5);
 		boolean authorized = auth.user("login", "pwd");
 		
 		assertFalse(authorized);

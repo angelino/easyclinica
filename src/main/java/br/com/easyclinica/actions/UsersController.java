@@ -13,6 +13,7 @@ import br.com.easyclinica.domain.entities.Position;
 import br.com.easyclinica.domain.repositories.AllDoctors;
 import br.com.easyclinica.domain.repositories.AllEmployees;
 import br.com.easyclinica.domain.validators.EmployeeValidator;
+import br.com.easyclinica.infra.md5.MD5Calculator;
 import br.com.easyclinica.infra.vraptor.validators.ErrorTranslator;
 import br.com.easyclinica.view.Messages;
 import br.com.easyclinica.view.paginator.Paginator;
@@ -25,10 +26,11 @@ public class UsersController extends BaseController {
 	private final AllEmployees allEmployees;
 	private final EmployeeValidator employeeValidator;
 	private final AllDoctors doctors;
+	private final MD5Calculator md5;
 
 	public UsersController(AllEmployees allEmployees, 
 			Result result, Validator validator, EmployeeValidator employeeValidator, 
-			ErrorTranslator translator, Paginator paginator, AllDoctors doctors) {
+			ErrorTranslator translator, Paginator paginator, AllDoctors doctors, MD5Calculator md5) {
 		super(result);
 		this.allEmployees = allEmployees;
 		this.result = result;
@@ -36,6 +38,7 @@ public class UsersController extends BaseController {
 		this.employeeValidator = employeeValidator;
 		this.translator = translator;
 		this.doctors = doctors;
+		this.md5 = md5;
 	}
 	
 	@Get
@@ -60,6 +63,7 @@ public class UsersController extends BaseController {
 		validator.onErrorUse(Results.logic()).forwardTo(UsersController.class).newForm();
 		
 		setDoctor(employee);
+		encryptPassword(employee);
 		allEmployees.add(employee);
 		
 		successMsg(Messages.EMPLOYEE_ADDED);
@@ -118,6 +122,13 @@ public class UsersController extends BaseController {
 		if(employee.getPassword().length() == 0) {
 			employee.setPassword(current.getPassword());
 		}
+		else {
+			encryptPassword(employee);
+		}
+	}
+
+	private void encryptPassword(final Employee employee) {
+		employee.setPassword(md5.calculate(employee.getPassword()));
 	}
 
 	private void include(Employee employee) {

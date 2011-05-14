@@ -63,6 +63,7 @@
 			<div>
 				<label class="title">Senha:</label>
 				<input type="password" name="employee.password" maxlength="100" />
+					<br />
 					<span>Se não quiser alterar a senha, deixe este campo em branco.</span>
 			</div>
 		</c:if>
