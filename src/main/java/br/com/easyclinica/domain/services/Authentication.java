@@ -5,6 +5,7 @@ import br.com.caelum.vraptor.ioc.RequestScoped;
 import br.com.easyclinica.domain.entities.Employee;
 import br.com.easyclinica.domain.repositories.AllEmployees;
 import br.com.easyclinica.domain.repositories.ClinicInfo;
+import br.com.easyclinica.infra.md5.MD5Calculator;
 import br.com.easyclinica.infra.multitenancy.LoggedUser;
 
 @Component
@@ -14,11 +15,13 @@ public class Authentication {
 	private final AllEmployees employees;
 	private final LoggedUser loggedUser;
 	private final ClinicInfo clinicInfo;
+	private final MD5Calculator md5;
 
-	public Authentication(LoggedUser loggedUser, AllEmployees employees, ClinicInfo clinicInfo) {
+	public Authentication(LoggedUser loggedUser, AllEmployees employees, ClinicInfo clinicInfo, MD5Calculator md5) {
 		this.loggedUser = loggedUser;
 		this.employees = employees;
 		this.clinicInfo = clinicInfo;
+		this.md5 = md5;
 	}
 
 	public boolean user(String login, String password) {
@@ -35,7 +38,7 @@ public class Authentication {
 	}
 
 	private boolean pwdMatches(String password, Employee employee) {
-		return employee.getPassword().equals(password);
+		return employee.getPassword().equals(md5.calculate(password));
 	}
 
 	private boolean thereIsAn(Employee employee) {
