@@ -85,7 +85,7 @@ public class MyScheduleController extends BaseController {
 		Schedule emptySchedule = Schedule.empty();		
 		emptySchedule.setDoctor(doctor);
 		
-		List<Doctor> medicos = allDoctors.getActivated();
+		List<Doctor> medicos = allDoctors.allActive();
 		result.include("medicos", medicos);
 		
 		include(emptySchedule);
@@ -116,7 +116,7 @@ public class MyScheduleController extends BaseController {
 	public void _edit(int scheduleId) {
 		Schedule schedule = allSchedule.getById(scheduleId);
 		
-		List<Doctor> medicos = allDoctors.getActivated();
+		List<Doctor> medicos = allDoctors.allActive();
 		result.include("medicos", medicos);
 		
 		include(schedule);

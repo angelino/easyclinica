@@ -25,7 +25,7 @@ public class DoctorDao implements AllDoctors {
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<Doctor> getActivated() {
+	public List<Doctor> allActive() {
 		return (List<Doctor>)session.createQuery("from Doctor doctors where doctors.active = 1 order by name").list();
 	}
 	

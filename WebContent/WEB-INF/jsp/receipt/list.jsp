@@ -35,7 +35,7 @@
 			                    <th>Em nome de</th>
 			                    <th>CPF</th>
 			                    <th>Valor</th> 
-			                    <th width="202px">&nbsp;</th>
+			                    <th width="212px">&nbsp;</th>
 			                </tr> 
                   
 							<c:forEach items="${patient.receipts}" var="receipt" varStatus="st">

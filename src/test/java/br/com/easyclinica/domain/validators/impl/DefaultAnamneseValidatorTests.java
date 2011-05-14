@@ -29,7 +29,7 @@ public class DefaultAnamneseValidatorTests {
 	
 	@Test
 	public void shouldNotReturnErrorsOnAValidAnamnese() {
-		Anamnese anamnese = new AnamneseBuilder().withText("text").withDoctor(aDoctor()).instance();
+		Anamnese anamnese = new AnamneseBuilder().withComplaint("text").withDoctor(aDoctor()).instance();
 		
 		List<Error> errors = validator.validate(anamnese);		
 		assertEquals(0, errors.size());
@@ -37,7 +37,7 @@ public class DefaultAnamneseValidatorTests {
 	
 	@Test
 	public void shouldReturnErrorIfDoctorIsNotPresent() {
-		Anamnese anamnese = new AnamneseBuilder().withText("text").instance();
+		Anamnese anamnese = new AnamneseBuilder().withComplaint("text").instance();
 		
 		List<Error> errors = validator.validate(anamnese);		
 		assertEquals(1, errors.size());

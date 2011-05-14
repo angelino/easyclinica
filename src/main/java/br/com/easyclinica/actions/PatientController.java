@@ -61,7 +61,7 @@ public class PatientController extends BaseController {
 	@Path("/pacientes/novo")
 	public void newForm(Patient patient) {
 		Patient patientToFill = (patient == null ? Patient.empty() : patient);
-		result.include("healthCarePlans", allHealthCarePlans.get());
+		result.include("healthCarePlans", allHealthCarePlans.allActive());
 		result.include("statuses", MaritalStatus.values());
 		include(patientToFill);
 	}

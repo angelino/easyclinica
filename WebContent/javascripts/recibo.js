@@ -8,4 +8,15 @@ EasyClinica.pages['recibos'] = function(){
 		EasyClinica.lib.openModal(url, 'POST', { id: recibo_id }, function(){});		
 	});
 	
+	$('select[name=receipt.kinship]').change(function() {
+		var kinship = $(this).val();
+		
+		if(kinship == 'ME') {
+			$('input[name=receipt.birthDate]').val($('input[name=birthDate]').val());
+		}
+		else {
+			$('input[name=receipt.birthDate]').val('');
+		}
+	});
+	
 };

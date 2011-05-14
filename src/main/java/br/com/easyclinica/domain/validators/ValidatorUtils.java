@@ -1,6 +1,7 @@
 package br.com.easyclinica.domain.validators;
 
 import java.math.BigDecimal;
+import java.util.Calendar;
 
 import br.com.caelum.stella.validation.CPFValidator;
 import br.com.caelum.vraptor.ioc.Component;
@@ -54,5 +55,9 @@ public class ValidatorUtils {
 		catch(Exception e) {
 			return false;
 		}
+	}
+
+	public boolean dateIsValid(Calendar date) {
+		return date != null;
 	}
 }

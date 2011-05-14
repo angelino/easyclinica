@@ -12,6 +12,8 @@
 	<input type="hidden" name="receipt.patient.id" value="${receipt.patient.id}" />
 	<input type="hidden" name="receipt.employee.id" value="${loggedUser.employee.id}" />
 	
+	<input type="hidden" name="birthDate" value='<fmt:formatDate pattern="dd/MM/yyyy" value="${receipt.patient.birthDate.time}" />' />
+	
 	<helper:errors errors="${errors}" />
 
 	<p class="required"><span>*</span> campos obrigatórios</p>
@@ -34,6 +36,14 @@
 					</option>
 				</c:forEach>
           	</select>
+        </div>
+      	<div>
+          	<label class="title">Data de Nascimento:<span>*</span></label>
+          	<% if(request.getParameter("put") != null && request.getParameter("put").equals("true")) { %>
+	          	<input type="text" name="receipt.birthDate" required="required" value="${receipt.birthDate}" />
+	        <% } else { %>
+	          	<input type="text" name="receipt.birthDate" required="required" value="<fmt:formatDate pattern="dd/MM/yyyy" value="${receipt.patient.birthDate.time}" />" />
+	        <% } %>          	
         </div>
         <div>
           	<label class="title">CPF:<span>*</span></label>
