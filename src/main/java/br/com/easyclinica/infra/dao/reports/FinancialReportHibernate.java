@@ -27,24 +27,21 @@ public class FinancialReportHibernate implements FinancialReportGenerator {
 		this.session = session;
 	}
 
-
 	@SuppressWarnings("unchecked")
 	public List<Appointment> full(Calendar startDate, Calendar endDate,
 			Doctor doctor, HealthCarePlan plan) {
-		Criteria report = session.createCriteria(Appointment.class)
-		.add(Restrictions.between("appointmentDate", startDate, endDate));
-		
-		if(doctor!=null) report.add(Restrictions.eq("doctor", doctor));
-		if(plan!=null) report.add(Restrictions.eq("healthCarePlan", plan));
-		
-		report		
-		.addOrder(byDate())
-		.createCriteria("patient")
-		.addOrder(byName());
-		
+		Criteria report = session.createCriteria(Appointment.class).add(
+				Restrictions.between("appointmentDate", startDate, endDate));
+
+		if (doctor != null)
+			report.add(Restrictions.eq("doctor", doctor));
+		if (plan != null)
+			report.add(Restrictions.eq("healthCarePlan", plan));
+
+		report.addOrder(byDate()).createCriteria("patient").addOrder(byName());
+
 		return report.list();
 	}
-	
 
 	@SuppressWarnings("unchecked")
 	public List<FinancialByDoctorReportData> byDoctor(Calendar start,
@@ -62,6 +59,12 @@ public class FinancialReportHibernate implements FinancialReportGenerator {
 										"appointmentAmount")
 								.add(Projections.sum("roomRateAmount"),
 										"roomRateAmount")
+								.add(Projections.sum("materialAmount"),
+										"materialAmount")
+								.add(Projections.sum("medicineAmount"),
+										"medicineAmount")
+								.add(Projections.sum("assistantAmount"),
+										"assistantAmount")
 								.add(Projections.property("doctor"), "doctor")
 								.add(Projections.groupProperty("doctor")))
 				.setResultTransformer(
@@ -88,8 +91,16 @@ public class FinancialReportHibernate implements FinancialReportGenerator {
 										"appointmentAmount")
 								.add(Projections.sum("roomRateAmount"),
 										"roomRateAmount")
-								.add(Projections.property("healthCarePlan"), "healthCarePlan")
-								.add(Projections.groupProperty("healthCarePlan")))
+								.add(Projections.sum("materialAmount"),
+										"materialAmount")
+								.add(Projections.sum("medicineAmount"),
+										"medicineAmount")
+								.add(Projections.sum("assistantAmount"),
+										"assistantAmount")
+								.add(Projections.property("healthCarePlan"),
+										"healthCarePlan")
+								.add(Projections
+										.groupProperty("healthCarePlan")))
 				.setResultTransformer(
 						Transformers
 								.aliasToBean(FinancialByHealthCarePlanReportData.class))
@@ -97,6 +108,7 @@ public class FinancialReportHibernate implements FinancialReportGenerator {
 
 		return criteria.list();
 	}
+
 	private Order byName() {
 		return Order.asc("name");
 	}
@@ -104,6 +116,5 @@ public class FinancialReportHibernate implements FinancialReportGenerator {
 	private Order byDate() {
 		return Order.asc("appointmentDate");
 	}
-
 
 }

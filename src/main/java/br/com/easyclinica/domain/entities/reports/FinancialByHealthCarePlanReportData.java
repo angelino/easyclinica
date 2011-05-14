@@ -11,6 +11,10 @@ public class FinancialByHealthCarePlanReportData {
 	private BigDecimal procedureAmount;
 	private BigDecimal appointmentAmount;
 	private BigDecimal roomRateAmount;
+	private BigDecimal materialAmount;
+	private BigDecimal medicineAmount;
+	private BigDecimal assistantAmount;
+	
 	public HealthCarePlan getHealthCarePlan() {
 		return healthCarePlan;
 	}
@@ -40,6 +44,24 @@ public class FinancialByHealthCarePlanReportData {
 	}
 	public void setRoomRateAmount(BigDecimal roomRateAmount) {
 		this.roomRateAmount = roomRateAmount;
+	}
+	public BigDecimal getMaterialAmount() {
+		return materialAmount;
+	}
+	public void setMaterialAmount(BigDecimal materialAmount) {
+		this.materialAmount = materialAmount;
+	}
+	public BigDecimal getMedicineAmount() {
+		return medicineAmount;
+	}
+	public void setMedicineAmount(BigDecimal medicineAmount) {
+		this.medicineAmount = medicineAmount;
+	}
+	public BigDecimal getAssistantAmount() {
+		return assistantAmount;
+	}
+	public void setAssistantAmount(BigDecimal assistantAmount) {
+		this.assistantAmount = assistantAmount;
 	}
 	
 	
