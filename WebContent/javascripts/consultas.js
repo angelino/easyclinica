@@ -32,10 +32,14 @@ EasyClinica.pages['consultas'] = function(){
 			return;
 		}
 		
+		$('#loading').show();
+		
 		var healthCarePlanId = $("input[name=appointment.healthCarePlan.id]:checked").val();
 		addNewProcedure(procedureId, healthCarePlanId);
 		
+		$('#loading').hide();
 	});
+	$('#loading').hide();
 	
 	$('input[name=appointment.return]').change(function(){
 		if($(this).val() == 'true') {
