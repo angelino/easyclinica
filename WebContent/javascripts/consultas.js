@@ -48,11 +48,16 @@ EasyClinica.pages['consultas'] = function(){
 	});
 	
 	$('input[name=appointment.healthCarePlan.id]').change(function(){
+		$('#loading').show();
+		
 		var healthCarePlanId = $(this).val();
 		checkIfRoomRateAmountIsStillNeeded();
 		
 		var specialtyId = $('select[name=appointment.specialty.id]').val();
-		if(specialtyId == 0) return;
+		if(specialtyId == 0) {
+			$('#loading').hide();
+			return;
+		}
 		refreshMedicalAppointmentAmount(specialtyId);
 				
 		var procedures = new Array();
@@ -68,6 +73,8 @@ EasyClinica.pages['consultas'] = function(){
 		for (var i = 0; i <procedures.length; i++){
 			addNewProcedure(procedures[i], healthCarePlanId);
 		}
+		
+		$('#loading').hide();
 	});
 		
 	var addNewProcedure = function(procedureId, healthCarePlanId) {
