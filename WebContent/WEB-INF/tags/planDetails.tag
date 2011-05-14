@@ -8,4 +8,5 @@
   <p>Telefone: ${plan.telephone}</p>
   <p>Contato: ${plan.contact}</p>
   <p>E-mail: ${plan.email}</p>
+  <p>Observações: ${plan.observations}</p>
 </div>

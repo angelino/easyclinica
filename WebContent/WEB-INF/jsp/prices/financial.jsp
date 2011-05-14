@@ -15,21 +15,30 @@
 				<h2>Financeiro</h2>
 
 				<p class="messengernotice">
-					Clique no link abaixo para gerar um arquivo Excel com os preços. Você poderá utilizar esse
-					arquivo para importar novos preços.
+					Clique no link abaixo para gerar um arquivo Excel com os preços. 
+					Você poderá utilizar esse arquivo para importar novos preços. 
+					<br />
+					Você pode exportar apenas
+					uma parte da relação de preços. Ou seja, se você pretende alterar apenas preço de uma especialidade,
+					exporte apenas a lista de especialidades; isso agilizará o processo! 
 					<br/>
 					Mas lembre-se de não modificar a estrutura do arquivo; apenas altere os valores.
 				</p>
-				
-				<ul class="botoes">
-					<li>
-						<a href='<c:url value="/convenios/${healthCarePlan.id}/precos" />' class="btn">Baixar os preços</a>
-					</li>
-					<li>
+				<div class="financial-buttons">				
+						<form action='<c:url value="/convenios/${healthCarePlan.id}/precos" />' id="frmDownloadPrices">
+							<input type="checkbox" value="true" name="materials" checked="checked" />Materiais
+							<input type="checkbox" value="true" name="medicines" checked="checked" />Medicamentos
+							<input type="checkbox" value="true" name="procedures" checked="checked" />Procedimentos
+							<input type="checkbox" value="true" name="specialties" checked="checked" />Especialidades
+							
+							<a href="javascript:void(0);" id="btnDownloadPrices" class="btn submit">Baixar os preços</a>
+						</form>
+				</div>
+				<div class="financial-buttons">
 						<a href='<c:url value="/convenios/${healthCarePlan.id}/precos/importar" />' class="btn">Importar preços</a>
-					</li>
-				</ul>					
-																							
+				</div>	
+				
+				<br />																	
 			</div>
 		</div>
 		

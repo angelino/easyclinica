@@ -1,4 +1,4 @@
-package br.com.easyclinica.domain.services.pricing;
+package br.com.easyclinica.domain.services.pricing.update;
 
 import java.util.HashMap;
 import java.util.List;
