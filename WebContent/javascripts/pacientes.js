@@ -6,9 +6,8 @@ EasyClinica.pages['pacientes'] = function(){
 		searchPatients(1);
 	});
 	
-
 	var searchPatients = function(page) {
-		$(this).after("<img id='loading' src='" + EasyClinica.cfg.images.loading + "' alt='carregando...'/>");
+		$('#loading').show();
 		
 		var url = EasyClinica.cfg.services.searchPatients;
 		var texto = $('input[name=patient.textobusca]').val();
@@ -19,10 +18,11 @@ EasyClinica.pages['pacientes'] = function(){
 			//showConfiguration();		
 			managerPagination();
 			
-			$('#loading').remove();
+			$('#loading').hide();
 		});
 	};
-
+	$('#loading').hide();
+	
 	var managerPagination = function() {
 		$('.boxpagination a[page]').click(function(e){
 			e.preventDefault();

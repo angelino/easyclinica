@@ -11,23 +11,23 @@
 	<body>
 
 		<div class="box" id="convenios">
-		
-  		        <fieldset class="search">
-               	<div class="search">
+			
+			<div class="boxcontent">
+			   <h2>Listagem de Convênios</h2>
+			   <fieldset class="search">
+               		<div class="search">
                        <input type="text" name="plan.textobusca" allowEnter="true"/>
                        <a href="#" id="btnBuscar">Buscar</a>
+                       <img id="loading" src="<c:url value="images/loading.gif" />" alt="carregando..."/>
                        <p>Digite seu critério de busca.</p>
                    </div>
                </fieldset>
-
+			</div>
 
 			<div class="boxcontent" id="box_listagem">
-				<h2>Listagem de Convênios</h2>
-			    	
-			    <helper:message successKey="${successKey}" errorKey="${errorKey}" />
+				<helper:message successKey="${successKey}" errorKey="${errorKey}" />
 			 			    	
 				<jsp:include page="_list.jsp"/>
-				
 			</div>
 		</div>
 			

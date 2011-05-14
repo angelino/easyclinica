@@ -17,7 +17,7 @@ EasyClinica.pages['convenios'] = function(){
 	});
 
 	var searchPlans = function(page) {
-		$(this).after("<img id='loading' src='" + EasyClinica.cfg.images.loading + "' alt='carregando...'/>");
+		$('#loading').show();
 		
 		var url = EasyClinica.cfg.services.searchPlans;
 		var texto = $('input[name=plan.textobusca]').val();
@@ -27,9 +27,10 @@ EasyClinica.pages['convenios'] = function(){
 			EasyClinica.common.generalFunctions();
 			managePlanPagination();
 			
-			$('#loading').remove();
+			$('#loading').hide();
 		});
 	};
+	$('#loading').hide();
 
 	var managePlanPagination = function() {
 		$('.boxpagination a[page]').click(function(e){
@@ -41,5 +42,11 @@ EasyClinica.pages['convenios'] = function(){
 	};
 	
 	managePlanPagination();
+	
+	$('input[name=plan.textobusca]').keydown(function(event){
+		if(event.keyCode == 13) {
+			searchPlans(1);
+	    }
+	});
 
 };
