@@ -20,4 +20,8 @@ public class Tenant {
 		return loggedUser.getClinic().getDomain();
 	}
 
+	public LoggedUser getLoggedUser() {
+		return loggedUser;
+	}
+
 }
