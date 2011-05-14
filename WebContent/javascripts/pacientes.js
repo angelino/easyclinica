@@ -12,7 +12,7 @@ EasyClinica.pages['pacientes'] = function(){
 		var url = EasyClinica.cfg.services.searchPatients;
 		var texto = $('input[name=patient.textobusca]').val();
 		
-		$.post(url, {text: texto, page: page}, function(data){
+		$.get(url, {text: texto, page: page}, function(data){
 			$('#box_listagem').html(data);
 			EasyClinica.common.generalFunctions();
 			//showConfiguration();		

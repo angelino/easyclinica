@@ -45,7 +45,7 @@ public class PatientController extends BaseController {
 		result.include("patients", paginator.paginate(allPatients, currentPage));
 	}
 
-	@Post
+	@Get
 	public void _list(String text, int page) {
 		int currentPage = page == 0 ? Paginator.firstPage() : page;
 		result.include("patients", paginator.searchAndPaginate(allPatients, text, currentPage));
