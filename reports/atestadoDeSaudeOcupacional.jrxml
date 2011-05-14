@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="atestadoDeSaudeOcupacional" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="295"/>
+	<property name="ireport.y" value="324"/>
 	<parameter name="clinic" class="br.com.easyclinica.domain.entities.Clinic" isForPrompting="false"/>
 	<field name="name" class="java.lang.String"/>
 	<field name="rg" class="java.lang.String"/>
@@ -58,7 +58,7 @@
 		<band splitType="Stretch"/>
 	</columnHeader>
 	<detail>
-		<band height="667" splitType="Stretch">
+		<band height="696" splitType="Immediate">
 			<textField>
 				<reportElement x="0" y="0" width="542" height="67"/>
 				<textElement textAlignment="Justified">
@@ -95,127 +95,171 @@
 				<textFieldExpression class="java.lang.String"><![CDATA["foi examinado nesta data, sendo constatado que está ( ) apto ( ) inapto para exercer a função de " + $F{profession} + "."]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="0" y="195" width="112" height="20"/>
+				<reportElement x="0" y="189" width="112" height="20"/>
 				<textElement>
 					<font size="12"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA["Exame Clínico:"]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="1" y="261" width="555" height="22"/>
+				<reportElement x="1" y="253" width="555" height="22"/>
 				<textElement>
 					<font size="12"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA["Procedimentos médicos e exames complementares que foi submetido:"]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="0" y="285" width="555" height="20"/>
+				<reportElement x="0" y="277" width="555" height="20"/>
 				<textElement>
 					<font size="12"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA["( ) Exame Clínico Geral:"]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement x="0" y="283" width="555" height="1"/>
+				<reportElement x="0" y="275" width="555" height="1"/>
 			</line>
 			<line>
-				<reportElement x="0" y="305" width="555" height="1"/>
+				<reportElement x="0" y="297" width="555" height="1"/>
 			</line>
 			<textField>
-				<reportElement x="0" y="306" width="555" height="20"/>
+				<reportElement x="0" y="298" width="555" height="20"/>
 				<textElement>
 					<font size="12"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA["( ) Audiometria Tonal:"]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement x="0" y="327" width="555" height="1"/>
+				<reportElement x="0" y="319" width="555" height="1"/>
 			</line>
 			<line>
-				<reportElement x="1" y="349" width="555" height="1"/>
+				<reportElement x="1" y="341" width="555" height="1"/>
 			</line>
 			<textField>
-				<reportElement x="1" y="329" width="555" height="20"/>
+				<reportElement x="1" y="321" width="555" height="20"/>
 				<textElement>
 					<font size="12"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA["( ) Hemograma:"]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement x="0" y="371" width="555" height="1"/>
+				<reportElement x="0" y="363" width="555" height="1"/>
 			</line>
 			<textField>
-				<reportElement x="0" y="425" width="144" height="20"/>
+				<reportElement x="0" y="529" width="144" height="20"/>
 				<textElement>
 					<font size="12"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA["Observações Gerais:"]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement x="1" y="467" width="555" height="1"/>
+				<reportElement x="1" y="568" width="555" height="1"/>
 			</line>
 			<line>
-				<reportElement x="1" y="491" width="555" height="1"/>
-			</line>
-			<line>
-				<reportElement x="0" y="516" width="555" height="1"/>
-			</line>
-			<line>
-				<reportElement x="0" y="543" width="555" height="1"/>
+				<reportElement x="1" y="592" width="555" height="1"/>
 			</line>
 			<textField>
-				<reportElement x="0" y="565" width="555" height="20"/>
+				<reportElement x="0" y="610" width="555" height="20"/>
 				<textElement>
 					<font size="12"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$P{clinic}.address.city + ", " + new SimpleDateFormat("dd 'de' MMMM 'de' yyyy", new Locale("pt", "br")).format(Calendar.getInstance().getTime())]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement x="1" y="637" width="238" height="1"/>
+				<reportElement x="1" y="667" width="238" height="1"/>
 			</line>
 			<line>
-				<reportElement x="317" y="636" width="238" height="1"/>
+				<reportElement x="317" y="666" width="238" height="1"/>
 			</line>
 			<staticText>
-				<reportElement x="1" y="638" width="238" height="20"/>
+				<reportElement x="1" y="668" width="238" height="20"/>
 				<textElement textAlignment="Center">
 					<font size="12"/>
 				</textElement>
 				<text><![CDATA[Autorização do Examinado]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="317" y="637" width="238" height="20"/>
+				<reportElement x="317" y="667" width="238" height="20"/>
 				<textElement textAlignment="Center">
 					<font size="12"/>
 				</textElement>
 				<text><![CDATA[Médico Examinador]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="1" y="215" width="554" height="36"/>
+				<reportElement x="1" y="210" width="554" height="36"/>
 				<textElement>
 					<font size="12"/>
 				</textElement>
 				<text><![CDATA[( ) admissional  ( ) periódico  ( ) demissional                                                                                                          ( ) de retorno ao trabalho  ( ) de mudança de função                ]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="1" y="351" width="555" height="20"/>
+				<reportElement x="1" y="343" width="555" height="20"/>
 				<textElement>
 					<font size="12"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA["( ) Eletrocardiograma:"]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement x="0" y="392" width="555" height="1"/>
+				<reportElement x="0" y="384" width="555" height="1"/>
 			</line>
 			<textField>
-				<reportElement x="1" y="372" width="555" height="20"/>
+				<reportElement x="1" y="364" width="555" height="20"/>
 				<textElement>
 					<font size="12"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA["Outros:"]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement x="1" y="415" width="555" height="1"/>
+				<reportElement x="1" y="407" width="555" height="1"/>
+			</line>
+			<textField>
+				<reportElement x="1" y="414" width="144" height="20"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["Riscos Observacionais:"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1" y="436" width="555" height="20"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["( ) Ergonômico:"]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="1" y="436" width="555" height="1"/>
+			</line>
+			<line>
+				<reportElement x="1" y="456" width="555" height="1"/>
+			</line>
+			<textField>
+				<reportElement x="1" y="457" width="555" height="20"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["( ) Físico:"]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="1" y="477" width="555" height="1"/>
+			</line>
+			<textField>
+				<reportElement x="1" y="478" width="555" height="20"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["( ) Químico:"]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="498" width="555" height="1"/>
+			</line>
+			<textField>
+				<reportElement x="1" y="499" width="555" height="20"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["( ) Não estabelecido:"]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="1" y="519" width="555" height="1"/>
 			</line>
 		</band>
 	</detail>
