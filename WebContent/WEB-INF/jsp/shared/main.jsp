@@ -35,7 +35,8 @@
 	    <helper:include fileName="usuarios.js" type="js" />	    
 	    <helper:include fileName="prices.js" type="js" />
 	    <helper:include fileName="recibo.js" type="js" />    
-	    <helper:include fileName="reports.js" type="js" />    
+	    <helper:include fileName="reports.js" type="js" />   
+	    <helper:include fileName="observacoes.js" type="js" />
 	    <decorator:head />
 	</head>
 

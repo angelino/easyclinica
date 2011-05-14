@@ -82,7 +82,7 @@
 	        	<h2>Procedimentos</h2>
 	            <fieldset class="procedures">
 	            	<div class="procedures">
-	                    <input type="text"  id="txt_search_procedure" />
+	                    <input type="text"  id="txt_search_procedure" allowEnter="true"/>
 	                    <input type="hidden" id="selected_procedure_id" value="0" />
 	                    <a href="#" id="btn_search_procedure">Adicionar</a>
 	                    <div class="error" id="informe-procedimento-message">

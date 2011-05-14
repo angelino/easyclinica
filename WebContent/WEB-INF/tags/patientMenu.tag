@@ -15,6 +15,7 @@
 	</c:if>
 	
 	<li ${selected=='Anamnese' ? 'class="active first"' : ''}><a href="<c:url value="/pacientes/${patient.id}/anamneses"/>">Anamnese</a></li>
+	<li ${selected=='Observacoes' ? 'class="active first"' : ''}><a href="<c:url value="/pacientes/${patient.id}/observacoes"/>">Observações</a></li>
 	
 	<c:if test="${loggedUser.employee.position != 'DOCTOR'}"> 
 	<li ${selected=='Consultas' ? 'class="active first"' : ''}>

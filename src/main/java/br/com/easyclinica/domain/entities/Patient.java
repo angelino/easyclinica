@@ -22,7 +22,7 @@ import br.com.easyclinica.domain.types.Address;
 
 @Entity
 @Cache(usage=CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-public class Patient {
+public class Patient implements IDable {
 
 	@Id
 	@GeneratedValue
@@ -51,6 +51,8 @@ public class Patient {
 	private List<Anamnese> anamneses;
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "patient")
 	private List<Receipt> receipts;
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "patient")
+	private List<GeneralObservations> generalObservations;
 
 	public Patient() {
 	}
@@ -213,5 +215,13 @@ public class Patient {
 
 	public void setMaritalStatus(MaritalStatus maritalStatus) {
 		this.maritalStatus = maritalStatus;
+	}
+
+	public void setGeneralObservations(List<GeneralObservations> generalObservations) {
+		this.generalObservations = generalObservations;
+	}
+
+	public List<GeneralObservations> getGeneralObservations() {
+		return generalObservations;
 	}
 }
