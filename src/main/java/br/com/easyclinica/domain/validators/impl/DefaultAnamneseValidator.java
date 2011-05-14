@@ -29,7 +29,7 @@ public class DefaultAnamneseValidator implements AnamneseValidator {
 		if(!validatorUtils.exists(obj.getDoctor())) {
 			errors.add(new Error("doctor", ValidationMessages.INVALID_DOCTOR));
 		}
-		
+
 		return errors;
 	}
 
