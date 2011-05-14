@@ -119,7 +119,9 @@
                         <td colspan="1">Consulta:
                         	<input type="hidden" name="appointment.appointmentAmount" />
                         </td>
-                        <td class="valor currency" id="valor-consulta"></td>                        
+                        <td class="valor">
+                        	<input type="text" class="amount currency" required="required" value="0,00" id="valor-consulta"/>
+                        </td>                        
                     </tr>
                     <tr class="boxtotal">
                         <td colspan="1">Taxa de Sala:</td>

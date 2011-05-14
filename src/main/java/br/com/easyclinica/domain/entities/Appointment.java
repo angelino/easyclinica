@@ -234,8 +234,8 @@ public class Appointment {
 			assistantAmount = assistantAmount.add(procedure.getAssistantsTotal());
 		}
 		
-		totalAmount.add(this.roomRateAmount);
-		totalAmount.add(this.appointmentAmount);
+		totalAmount = totalAmount.add(this.roomRateAmount);
+		totalAmount = totalAmount.add(this.appointmentAmount);
 	}
 
 }
