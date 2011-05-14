@@ -18,89 +18,68 @@
 	<fieldset>
 		<div>	
 			<label class="title">Nome:<span>*</span></label>
-			<input type="text" name="healthCarePlan.name" maxlength="50" required="required" value="${healthCarePlan.name}" />
+			<input type="text" name="healthCarePlan.name" tabindex="1" maxlength="50" required="required" value="${healthCarePlan.name}" />
     	</div>
-	
+    	<div class="telephone">
+			<label class="title">Telefone:<span>*</span></label>
+    		<input type="text" name="healthCarePlan.telephone" tabindex="3" class="mask_telefone" required="required" maxlength="50" value="${healthCarePlan.telephone}" />
+    	</div>
+    </fieldset>
+
+	<fieldset>
 		<div>
 			<label class="title">Nome do Responsável:</label>
-			<input type="text" name="healthCarePlan.contact" maxlength="100" value="${healthCarePlan.contact}" />
+			<input type="text" name="healthCarePlan.contact" tabindex="2" maxlength="100" value="${healthCarePlan.contact}" />
 		</div>
-	
-		<div class="telephone">
-			<label class="title">Telefone:<span>*</span></label>
-    		<input type="text" name="healthCarePlan.telephone" class="mask_telefone" required="required" maxlength="50" value="${healthCarePlan.telephone}" />
-    	</div>
-		
 		<div>
 			<label class="title">E-mail:</label>
-    		<input type="text" name="healthCarePlan.email" maxlength="100" value="${healthCarePlan.email}" />
+    		<input type="text" name="healthCarePlan.email" tabindex="4" maxlength="100" value="${healthCarePlan.email}" />
     	</div>
-		
+	</fieldset>
+	
+	<fieldset class="full">
 		<div>
 			<label class="title">Website:</label>
-			<input type="text" name="healthCarePlan.website" maxlength="100" value="${healthCarePlan.website}" />
+			<input type="text" name="healthCarePlan.website" tabindex="5" maxlength="100" value="${healthCarePlan.website}" />
     	</div>
-		
-		<div>
-			<label class="title">Valor em R$ da CH:<span>*</span></label>
-			<input type="text" name="healthCarePlan.ch" class="currency" required="required" value="${healthCarePlan.ch}" />
-		</div>
-		
-		<div class="pay-for-room-rate">
-			<label class="title">Paga por Taxa de Sala?</label>
-			<label>SIM</label>
-			<input type="radio" class="radio" name="healthCarePlan.payForRoomRate" value="true" <c:if test="${healthCarePlan.payForRoomRate}">checked</c:if> />
-			<label>NÃO</label>
-			<input type="radio" class="radio" name="healthCarePlan.payForRoomRate" value="false" <c:if test="${not healthCarePlan.payForRoomRate}">checked</c:if> />
-		</div>
+	</fieldset>
 	
-		<div>
-			<label class="title">Valor padrão para Taxa de Sala:<span>*</span></label>
-			<input type="text" name="healthCarePlan.roomRateDefaultAmount" class="currency" required="required" value="${healthCarePlan.roomRateDefaultAmount}" />
+	<fieldset class="full">
+		<div class="small">
+			<label class="title">CEP:</label>
+			<input type="text" name="healthCarePlan.address.postalCode" tabindex="6" class="mask_cep" maxlength="12" value="${healthCarePlan.address.postalCode}" />
 		</div>
-	
-		<div>
-			<label class="title">Período para retorno (em dias):<span>*</span></label>
-			<input type="text" name="healthCarePlan.periodToReturn" min="0" required="required" data-message="campo obrigatório" value="${healthCarePlan.periodToReturn}" />
-		</div>
-		
 	</fieldset>
 	
 	<fieldset>	
-		<div class="cep">
-			<label class="title">CEP:</label>
-			<input type="text" name="healthCarePlan.address.postalCode" class="mask_cep" maxlength="12" value="${healthCarePlan.address.postalCode}" />
-		</div>
-		
 		<div>
 			<label class="title">Endereço:</label>
-	    	<input type="text" name="healthCarePlan.address.street" maxlength="150" value="${healthCarePlan.address.street}" />
+	    	<input type="text" name="healthCarePlan.address.street" tabindex="7" maxlength="150" value="${healthCarePlan.address.street}" />
 	    </div>
-		
+			
+		<div>
+			<label class="title">Estado:</label>
+	    	<input type="text" name="healthCarePlan.address.state" tabindex="9" maxlength="2" value="${healthCarePlan.address.state}" />
+	    </div>
+	</fieldset>
+	
+	<fieldset>
 		<div>
 			<label class="title">Bairro:</label>
-			<input type="text" name="healthCarePlan.address.neighborhood" maxlength="100" value="${healthCarePlan.address.neighborhood}" />
-		</div>
+			<input type="text" name="healthCarePlan.address.neighborhood" tabindex="8" maxlength="100" value="${healthCarePlan.address.neighborhood}" />
+		</div>	
 		
 		<div>
 			<label class="title">Cidade:</label>
-			<input type="text" name="healthCarePlan.address.city" maxlength="50" value="${healthCarePlan.address.city}" />
+			<input type="text" name="healthCarePlan.address.city" tabindex="10" maxlength="50" value="${healthCarePlan.address.city}" />
 		</div>
-		
-		<div>
-			<label class="title">Estado:</label>
-	    	<input type="text" name="healthCarePlan.address.state" maxlength="2" value="${healthCarePlan.address.state}" />
-	    </div>
+	</fieldset>
 	
-   		<div class="remarks">
-       		<label class="title">Observações:</label>
-        	<textarea name="healthCarePlan.observations">${healthCarePlan.observations}</textarea>
-      	</div>
-      	
+	<fieldset>
 		<c:if test="${empty param.put}">
 			<div>
 				<label class="title">Copiar parte financeira do convênio:</label>
-				<select name="example.id">
+				<select name="example.id" tabindex="11">
 					<option value="0" selected="selected">Não copiar</option>
 					<c:forEach var="plan" items="${healthCarePlans}">
 						<option value="${plan.id}">${plan.name}</option>
@@ -108,7 +87,39 @@
 				</select>
 			</div>	
 		</c:if>
-
+		
+		<div class="pay-for-room-rate">
+			<label class="title">Paga por Taxa de Sala?</label>
+			<label>SIM</label>
+			<input type="radio" class="radio" name="healthCarePlan.payForRoomRate" tabindex="13" value="true" <c:if test="${healthCarePlan.payForRoomRate}">checked</c:if> />
+			<label>NÃO</label>
+			<input type="radio" class="radio" name="healthCarePlan.payForRoomRate" tabindex="14" value="false" <c:if test="${not healthCarePlan.payForRoomRate}">checked</c:if> />
+		</div>
+	</fieldset>
+	
+	<fieldset>
+		<div>
+			<label class="title">Valor em R$ da CH:<span>*</span></label>
+			<input type="text" name="healthCarePlan.ch" class="currency" tabindex="12" required="required" value="${healthCarePlan.ch}" />
+		</div>
+		<div>
+			<label class="title">Valor padrão para Taxa de Sala:<span>*</span></label>
+			<input type="text" name="healthCarePlan.roomRateDefaultAmount" tabindex="15" class="currency" required="required" value="${healthCarePlan.roomRateDefaultAmount}" />
+		</div>
+	</fieldset>
+	
+	<fieldset class="full">
+		<div class="small">
+			<label class="title">Período para retorno (em dias):<span>*</span></label>
+			<input type="text" name="healthCarePlan.periodToReturn" tabindex="16" min="0" required="required" data-message="campo obrigatório" value="${healthCarePlan.periodToReturn}" />
+		</div>
+	</fieldset>
+	
+    <fieldset class="full">
+    	<div class="remarks">
+       		<label class="title">Observações:</label>
+        	<textarea name="healthCarePlan.observations" tabindex="17">${healthCarePlan.observations}</textarea>
+      	</div>
     </fieldset>
     
     <div class="boxactions">
