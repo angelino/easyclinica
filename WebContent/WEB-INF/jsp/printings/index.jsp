@@ -24,7 +24,7 @@
 						<a href="<c:url value="/pacientes/${patient.id}/impressos/anamnese" />" class="btn">Anamnese</a>
 					</li>
 					<li>
-						<a href="<c:url value="/pacientes/${patient.id}/impressos/atestado-de-saude" />" class="btn">Atestado de Saúde</a>
+						<a href="<c:url value="/pacientes/${patient.id}/impressos/atestado-de-saude" />" class="btn">Prática de Atividades Físicas</a>
 					</li>
 					<li>
 						<a href="<c:url value="/pacientes/${patient.id}/impressos/atestado-de-saude-ocupacional" />" class="btn">Atestado de Saúde Ocupacional</a>
