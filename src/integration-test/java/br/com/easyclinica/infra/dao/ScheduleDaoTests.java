@@ -11,41 +11,39 @@ import org.junit.Test;
 import br.com.easyclinica.domain.entities.Doctor;
 import br.com.easyclinica.domain.entities.Schedule;
 import br.com.easyclinica.domain.entities.Specialty;
+import br.com.easyclinica.helper.CalendarUtils;
 import br.com.easyclinica.tests.helpers.DoctorBuilder;
 import br.com.easyclinica.tests.helpers.ScheduleBuilder;
 
 public class ScheduleDaoTests  extends DaoBase  {
 
 	private ScheduleDao dao;
+	private CalendarUtils calendarUtils;
 	
 	@Before
 	public void setUp() {
 		dao = new ScheduleDao(session);
+		calendarUtils = new CalendarUtils();
 	}
 	
 	@Test
-	public void shouldGetDoctorScheduleByPeriod() { 
+	public void shouldGetDoctorScheduleByDate() { 
 		Doctor doctor = aDoctor();
 		
 		Schedule schedule1 = new ScheduleBuilder().ofTheDoctor(doctor)
 												 .withSubject("Compromisso 1")
 												 .withStartTime(Calendar.getInstance())
-												 .withEndTime(Calendar.getInstance())
 												 .instance();
 		session.save(schedule1);
 		
 		Schedule schedule2 = new ScheduleBuilder().ofTheDoctor(doctor)
-												 .withSubject("Compromisso 1")
+												 .withSubject("Compromisso 2")
 												 .withStartTime(Calendar.getInstance())
-												 .withEndTime(Calendar.getInstance())
 												 .instance();
 		session.save(schedule2);
 		
-		Calendar start = Calendar.getInstance();
-		start.set(Calendar.HOUR_OF_DAY, 0);
-		
-		Calendar end = Calendar.getInstance();
-		end.set(Calendar.HOUR_OF_DAY, 23);
+		Calendar start = calendarUtils.CloneDateAndSetTime(Calendar.getInstance(), 0, 0, 0);
+		Calendar end = calendarUtils.CloneDateAndSetTime(Calendar.getInstance(), 23, 59, 59);
 		
 		List<Schedule> schedules = dao.getDoctorScheduleByPeriod(doctor, start, end);
 		

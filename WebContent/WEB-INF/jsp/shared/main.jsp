@@ -66,20 +66,11 @@
                   </c:if>
                   
                   
-                  	<c:choose>
-						<c:when test="${loggedUser.doctor}">
-							<li id="menu-link-schedule">
-							<c:url value="/medicos/minha-agenda" var="schedule_link"/>
-							<a href="${schedule_link}" title="Minha agenda">Minha Agenda</a>
-							</li>
-						</c:when>
-						<c:when test="${loggedUser.employee.position eq 'OWNER' or loggedUser.employee.position eq 'ATTENDANT' or loggedUser.employee.position eq 'FINANCIAL'}">
-							<li id="menu-link-schedule">
-							<c:url value="/agenda" var="schedule_link"/>
-							<a href="${schedule_link}" title="Ver agenda completa">Agenda Completa</a>
-							</li>
-						</c:when>
-					</c:choose>
+                  <li id="menu-link-schedule">
+						<c:url value="/agenda" var="schedule_link"/>
+						<a href="${schedule_link}" title="Ver Agenda">Agenda</a>
+				  </li>
+						
 
 				  <c:if test="${loggedUser.employee.position eq 'OWNER' or loggedUser.employee.position eq 'FINANCIAL'}">
                   <li id="menu-link-reports"><a href="<c:url value="/relatorios" />">Relatórios</a></li>

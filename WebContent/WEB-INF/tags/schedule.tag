@@ -5,16 +5,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 <div class="schedule-widget">
-	<h4>Agenda (próx. 2 horas)
-		<c:choose>
-			<c:when test="${loggedUser.doctor}">
-				<c:url value="/medicos/minha-agenda" var="schedule_link"/>
-			</c:when>
-			<c:otherwise>
-				<c:url value="/agenda" var="schedule_link"/>
-			</c:otherwise>
-		</c:choose> 
-		<a href="${schedule_link}" class="btnschedule" title="Ver agenda completa">&nbsp;</a>
+	<h4>
+		Agenda (próx. 2 horas)
+		<a href="<c:url value="/agenda" />" class="btnschedule" title="Ver agenda">&nbsp;</a>
 	</h4>
 	
 	<c:choose>

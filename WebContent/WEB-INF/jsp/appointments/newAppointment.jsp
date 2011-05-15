@@ -49,14 +49,14 @@
 	                       <input type="radio" class="radio" name="appointment.return" value="false" checked="checked"">
 	                   </div>
 	               	<div class="medical">
-	                   	<label class="title">Médico:<span>*</span></label>
-	                       <select name="appointment.doctor.id" min="1" data-message="Selecione um médico.">
+	                   <label class="title">Médico:<span>*</span></label>
+                       <select name="appointment.doctor.id" min="1" data-message="Selecione um médico.">
 							<option value="0">Selecione um médico</option>
 							<c:forEach var="doctor" items="${doctors}" varStatus="status">
 								<option value="${doctor.id}">${doctor.name}</option>
 							</c:forEach>
-						</select>
-	                   </div>
+					   </select>
+	                </div>
 	               	<div class="specialty">
 	                   	<label class="title">Especialidade:<span>*</span></label>
 						<select name="appointment.specialty.id" min="1" data-message="Selecione uma especialidade.">

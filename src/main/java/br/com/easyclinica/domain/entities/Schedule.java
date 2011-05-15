@@ -21,16 +21,14 @@ public class Schedule {
 	private int id;
 
 	private Calendar startTime;
-	private Calendar endTime;
+	private Calendar arrivalTime;
 	private String subject;
 	@Type(type = "text")
 	private String description;
 	@ManyToOne(fetch = FetchType.EAGER)
 	@Index(name = "ScheduleDoctorIndex")
 	private Doctor doctor;
-
-	private boolean moreThanOneDay;
-	private String color;
+	private boolean treated;
 
 	public Schedule(int id) {
 		this.id = id;
@@ -56,12 +54,12 @@ public class Schedule {
 		return startTime;
 	}
 
-	public void setEndTime(Calendar endTime) {
-		this.endTime = endTime;
+	public void setArrivalTime(Calendar arrivalTime) {
+		this.arrivalTime = arrivalTime;
 	}
 
-	public Calendar getEndTime() {
-		return endTime;
+	public Calendar getArrivalTime() {
+		return arrivalTime;
 	}
 
 	public void setSubject(String subject) {
@@ -87,34 +85,12 @@ public class Schedule {
 	public Doctor getDoctor() {
 		return doctor;
 	}
-
-	public void setMoreThanOneDay(boolean moreThanOneDay) {
-		this.moreThanOneDay = moreThanOneDay;
+	public void setTreated(boolean treated) {
+		this.treated = treated;
 	}
 
-	public boolean isMoreThanOneDay() {
-		return moreThanOneDay;
-	}
-
-	public void setColor(String color) {
-		this.color = color;
-	}
-
-	public String getColor() {
-		return color;
-	}
-
-	public String getDuration() {
-		if (this.endTime == null || this.startTime == null)
-			return "";
-
-		long milisec = this.endTime.getTimeInMillis()
-				- this.startTime.getTimeInMillis();
-		int minutes = (int) (milisec / (1000 * 60));
-		int hour = (int) (minutes / 60);
-		minutes = minutes % 60;
-
-		return hour + ":" + minutes;
+	public boolean isTreated() {
+		return treated;
 	}
 
 	public static Schedule empty() {

@@ -25,8 +25,8 @@ public class ScheduleBuilder {
 		return this;
 	}
 	
-	public ScheduleBuilder withEndTime(Calendar endTime) {
-		schedule.setEndTime(endTime);
+	public ScheduleBuilder withArrivalTime(Calendar arrivalTime) {
+		schedule.setArrivalTime(arrivalTime);
 		return this;
 	}
 	

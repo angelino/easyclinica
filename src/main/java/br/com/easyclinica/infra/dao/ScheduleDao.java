@@ -32,8 +32,7 @@ public class ScheduleDao implements AllSchedule {
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<Schedule> getDoctorScheduleByPeriod(Doctor doctor,
-			Calendar start, Calendar end) {
+	public List<Schedule> getDoctorScheduleByPeriod(Doctor doctor, Calendar start, Calendar end) {
 		
 		StringBuilder sql = new StringBuilder();
 		sql.append(" from Schedule s ");
@@ -47,7 +46,7 @@ public class ScheduleDao implements AllSchedule {
 					  .setParameter("end", end)
 					  .list();
 	}
-
+	
 	@SuppressWarnings("unchecked")
 	public List<Schedule> getScheduleByPeriod(Calendar start, Calendar end) {
 		
@@ -65,5 +64,4 @@ public class ScheduleDao implements AllSchedule {
 	public Schedule getById(int id) {
 		return (Schedule)session.load(Schedule.class, id);
 	}
-	
 }
