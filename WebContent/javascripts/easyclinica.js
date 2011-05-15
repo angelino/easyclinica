@@ -103,7 +103,8 @@ EasyClinica.cfg.services = {
 		
 		newChatMessage: BASE_URI + 'chat',
 		getChatMessages: BASE_URI + 'chat/ultimas',
-		getOnlineChatUsers: BASE_URI + 'chat/online'
+		getOnlineChatUsers: BASE_URI + 'chat/online',
+		getChatsInLast3Minutes: BASE_URI + 'chat/3minutos'
 };
 
 EasyClinica.cfg.images = {

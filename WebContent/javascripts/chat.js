@@ -173,7 +173,23 @@ function refreshOnlineUsersAutomatically() {
 	setTimeout('onlineUsers()',LIST_REFRESH_TIME);	
 }
 
+function backToThePast() {
+	$.ajax({
+		  url: EasyClinica.cfg.services.getChatsInLast3Minutes,
+		  success: function(data) {
+			for(var i in data.msgs) {
+				msg = data.msgs[i];
+				var window = msg.to == data.user ? msg.from : msg.to;
+				createChat(window);
+				makeMsgVisible(window, false);
+			}
+			showChatMessages(data);
+			
+		  }
+	});
+}
+
 $(function() {
-	refreshAutomatically();
-	refreshOnlineUsersAutomatically();
+	backToThePast();
+	onlineUsers();
 });
