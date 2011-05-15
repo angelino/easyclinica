@@ -1,6 +1,7 @@
 package br.com.easyclinica.infra.multitenancy;
 
 import java.util.Calendar;
+import java.util.List;
 
 import br.com.caelum.vraptor.ioc.Component;
 
@@ -23,5 +24,12 @@ public class LoggedUsersByTenant {
 		return loggedUsers.firstPassedBy(tenant.getDomain(), user);
 	}
 	
+	public List<String> onlineUsers() {
+		return loggedUsers.getLoggedUsersIn(tenant.getDomain());
+	}
+
+	public void remove(String user) {
+		loggedUsers.remove(tenant.getDomain(), user);
+	}
 	
 }

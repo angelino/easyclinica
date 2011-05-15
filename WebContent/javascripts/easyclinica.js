@@ -102,7 +102,8 @@ EasyClinica.cfg.services = {
 		getHealthCarePlan: BASE_URI + 'convenios/{0}/resgatar',
 		
 		newChatMessage: BASE_URI + 'chat',
-		getChatMessages: BASE_URI + 'chat/ultimas'
+		getChatMessages: BASE_URI + 'chat/ultimas',
+		getOnlineChatUsers: BASE_URI + 'chat/online'
 };
 
 EasyClinica.cfg.images = {
