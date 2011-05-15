@@ -151,12 +151,15 @@ function openChat(user) {
 function showOnlineUsers(data) {
 	var online = "<h4>Chat</h4>";
 	
-	for(var i in data.list) {
-		var user = data.list[i];
-		online += "<p>";
-		online += "<img src='/images/green-ball.png' width='15' height='15' />";
-		online += "<a href=\"javascript:void(0);\" onclick=\"openChat('" + user + "');\">" + user + "</a>";
-		online += "</p>";
+	if(data.list.length == 0) online += "<p>Não há usuários conectados no chat neste momento.</p>";
+	else {
+		for(var i in data.list) {
+			var user = data.list[i];
+			online += "<p>";
+			online += "<img src='/images/green-ball.png' width='15' height='15' />";
+			online += "<a href=\"javascript:void(0);\" onclick=\"openChat('" + user + "');\">" + user + "</a>";
+			online += "</p>";
+		}
 	}
 	
 	if($("#onlineUsers").exists()) {
