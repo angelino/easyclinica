@@ -53,6 +53,13 @@ public class ChatController {
 	}
 
 	@Get
+	@Path("/chat/online")
+	public void online() {
+		List<String> onlineUsers = loggedUsers.onlineUsers();
+		result.use(Results.json()).from(onlineUsers).serialize();
+	}
+	
+	@Get
 	@Path("/chat/ultimas")
 	public void getLatest() {
 		Calendar lastUpdate = updates.getLastUpdate() == null ? loggedUsers

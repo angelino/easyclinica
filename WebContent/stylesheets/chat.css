@@ -26,12 +26,12 @@
 }
 
 .chat-head {
-	background-color: #f99d39;
+	background-color: #4169E1;
 	padding:7px;
 	color: #ffffff;
 
-	border-right:1px solid #f99d39;
-	border-left:1px solid #f99d39;
+	border-right:1px solid #4169E1;
+	border-left:1px solid #4169E1;
 }
 
 .chat-msgs {

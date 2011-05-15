@@ -4,6 +4,7 @@ jQuery.fn.exists = function(){return jQuery(this).length>0;}
 var CHAT_BOX = 225;
 var SPACER = 20;
 var REFRESH_TIME = 1000;
+var LIST_REFRESH_TIME = 5000;
 
 function createChat(user) {
 	drawChat(user);
@@ -12,10 +13,7 @@ function createChat(user) {
 
 function drawChat(user) {
 	
-	if($(chatName(user)).exists()) {
-		showChat(user);
-	}
-	else {
+	if(!$(chatName(user)).exists()) {
 		$("body").append(
 			"<div class='chat-box' id='chat-box-" + user + "'>" +
 			"	<div class='chat-head'>" +
@@ -31,11 +29,18 @@ function drawChat(user) {
 			"	<div class='chat-msgs' id='chat-msgs-"+user+"'>"+
 			"	</div>"+
 			"	<div class='chat-keyboard'>" +
-			"		<textarea class='chat-textarea' onkeydown='return sayInChat(this,\""+user+"\", event);'></textarea>" +
+			"		<textarea class='chat-textarea' id='chat-textarea-"+user+"' onfocus=\"restoreColor('"+user+"', true)\" onkeydown='return sayInChat(this,\""+user+"\", event);'></textarea>" +
 			"	</div>"+
 			"</div>"
 		);
 	}
+}
+
+function restoreColor(user, color) {
+	var rgb = color ? '#4169E1' : '#00BFFF';
+	$(chatName(user) + ' .chat-head').css('background-color', rgb);
+	$(chatName(user) + ' .chat-head').css('border-right', '1px solid ' + rgb);
+	$(chatName(user) + ' .chat-head').css('border-left', '1px solid ' + rgb);
 }
 
 function sayInChat(msgField, user, event) {
@@ -73,7 +78,15 @@ function showChatMessages(data) {
 function putMsg(window, author, message) {
 	var chatDiv = '#chat-msgs-'+window;
 	createChat(window);
-	var formattedMsg = "<span class='chatAuthor'>" + author + ":</span><span class='chatText'>" + message + "</span><br/>";
+	if(!isChatVisible(window)) {
+		$(chatName(window)).show();
+		makeMsgVisible(window, true);
+	}
+	else if(!isMsgVisible(window)) {
+		restoreColor(window, false);
+	}
+	
+	var formattedMsg = "<span class='chatAuthor'>" + author + ": </span><span class='chatText'>" + message + "</span><br/>";
 	$(chatDiv).html($(chatDiv).html() + formattedMsg);	
 	$(chatDiv).attr({ scrollTop: $(chatDiv).attr("scrollHeight") });
 }
@@ -87,10 +100,7 @@ function rearrangeChats() {
 	});
 }
 
-function showChat(user) {
-	$(chatName(user)).show();
-}
-
+	
 function chatName(user) {
 	return '#chat-box-'+user;
 }
@@ -100,17 +110,70 @@ function closeChat(user) {
 	rearrangeChats();
 }
 
+function isChatVisible(user) {
+	return $(chatName(user)).is(':visible');
+}
+
+function isMsgVisible(user) {
+	return $(chatName(user) + ' .chat-msgs').is(':visible');
+}
+
 function upDownChat(user) {
-	var display = $(chatName(user) + ' .chat-msgs').css('display') == 'none' ? 'block' : 'none';
-	
+	makeMsgVisible(user, !isMsgVisible(user));
+}
+
+function makeMsgVisible(user, visibility) {
+	var display = visibility == true ? 'block' : 'none';
 	$(chatName(user)+' .chat-msgs').css('display', display);
 	$(chatName(user)+' .chat-keyboard').css('display', display);
+	
+	if(visibility == true) $('#chat-textarea-' + user).focus();
 }
 
 function refreshAutomatically() {
 	setTimeout('refreshChatMsgs()',REFRESH_TIME);	
 }
 
+function onlineUsers() {
+	$.ajax({
+		  url: EasyClinica.cfg.services.getOnlineChatUsers,
+		  success: showOnlineUsers
+		});
+}
+
+function openChat(user) {
+	createChat(user);
+	$(chatName(user)).show();
+	makeMsgVisible(user, true);
+	$('#chat-textarea-' + user).focus();
+}
+
+function showOnlineUsers(data) {
+	var online = "<h4>Chat</h4>";
+	
+	for(var i in data.list) {
+		var user = data.list[i];
+		online += "<p>";
+		online += "<img src='/images/green-ball.png' width='15' height='15' />";
+		online += "<a href=\"javascript:void(0);\" onclick=\"openChat('" + user + "');\">" + user + "</a>";
+		online += "</p>";
+	}
+	
+	if($("#onlineUsers").exists()) {
+		$("#onlineUsers").html(online);
+	}
+	else {
+		$(".boxright").append("<div id='onlineUsers' class='schedule-widget'>" + online + "</div>");
+	}
+	
+	refreshOnlineUsersAutomatically();
+}
+
+function refreshOnlineUsersAutomatically() {
+	setTimeout('onlineUsers()',LIST_REFRESH_TIME);	
+}
+
 $(function() {
 	refreshAutomatically();
+	refreshOnlineUsersAutomatically();
 });
