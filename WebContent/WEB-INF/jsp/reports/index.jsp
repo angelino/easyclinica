@@ -96,7 +96,28 @@
 							</div>
 						</form>
 					</div>
-										
+					
+					<h3><a href="#">Recibos Emitidos</a></h3>
+				    <div>
+				    	<form action="<c:url value="/relatorios/recibos" />" method="get">
+							<fieldset>
+								<div>
+				    				<label class="title">Data de Início:<span>*</span></label>
+				    				<input type="text" name="start" class="datepicker" required="required" />
+				    			</div>
+				    			
+				    			<div>
+				    				<label class="title">Data de Término:<span>*</span></label>
+				    				<input type="text" name="end" class="datepicker" required="required" />
+				    			</div>
+				    		</fieldset>
+				    		
+							<div class="boxactions">	
+								<input class="btnreport" type="submit" value="Gerar Relatório" />
+							</div>
+						</form>
+					</div>						
+
 				</div>
 
 			</div>	

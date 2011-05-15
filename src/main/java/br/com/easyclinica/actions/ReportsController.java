@@ -10,6 +10,7 @@ import br.com.caelum.vraptor.interceptor.download.Download;
 import br.com.easyclinica.domain.reports.FinancialByDoctorReportBuilder;
 import br.com.easyclinica.domain.reports.FinancialByHealthCarePlanReportBuilder;
 import br.com.easyclinica.domain.reports.FinancialReportBuilder;
+import br.com.easyclinica.domain.reports.ReceiptReportBuilder;
 import br.com.easyclinica.domain.repositories.AllDoctors;
 import br.com.easyclinica.domain.repositories.AllHealthCarePlans;
 import br.com.easyclinica.infra.multitenancy.LoggedUser;
@@ -25,6 +26,7 @@ public class ReportsController {
 	private final FinancialByDoctorReportBuilder doctorBuilder;
 	private final Result result;
 	private final FinancialByHealthCarePlanReportBuilder planBuilder;
+	private final ReceiptReportBuilder receiptBuilder;
 
 	public ReportsController(
 			JasperMaker jasperMaker,
@@ -34,7 +36,8 @@ public class ReportsController {
 			LoggedUser loggedUser,
 			Result result,
 			FinancialByDoctorReportBuilder financialByDoctorReportBuilder,
-			FinancialByHealthCarePlanReportBuilder financialByHealthCarePlanBuilder) {
+			FinancialByHealthCarePlanReportBuilder financialByHealthCarePlanBuilder,
+			ReceiptReportBuilder receiptBuilder) {
 		this.jasperMaker = jasperMaker;
 		this.reportBuilder = reportBuilder;
 		this.plans = plans;
@@ -42,6 +45,7 @@ public class ReportsController {
 		this.result = result;
 		this.doctorBuilder = financialByDoctorReportBuilder;
 		this.planBuilder = financialByHealthCarePlanBuilder;
+		this.receiptBuilder = receiptBuilder;
 	}
 
 	@Get
@@ -87,6 +91,16 @@ public class ReportsController {
 		return jasperMaker.makePdf("financialByHealthCarePlanReport",
 				planBuilder.build(), "financeiro_por_convenio.pdf", true,
 				planBuilder.config());
+	}
+	
+	@Get
+	@Path("/relatorios/recibos") 
+	public Download receipts(Calendar start, Calendar end) {
+		receiptBuilder.withStartDate(convertToStartDate(start)).withEndDate(convertToEndDate(end));
+
+		return jasperMaker.makePdf("receiptReport",
+				receiptBuilder.build(), "relatorio_de_recibos.pdf", true,
+				receiptBuilder.config());
 	}
 	
 	private Calendar convertToEndDate(Calendar date) {
