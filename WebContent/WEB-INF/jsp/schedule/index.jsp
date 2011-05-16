@@ -46,9 +46,18 @@
 		                	<label class="title">Data:<span>*</span></label>
 		                    <input type="text" name="schedule.startTime" required="required" class="datepicker" />
 		                </div>
-					</fieldset>				
+					</fieldset>
+					
+					<div class="boxactions">
+						<input type="button" id="btnCarregarCompromissos" class="btnsave" value="Salvar" />
+			        </div>			
 				</form>
 			</div>
+			
+			<div class="boxcontent" id="horarios">
+				
+			</div>
+			
 		</div>
 			
 		<div class="boxright">	

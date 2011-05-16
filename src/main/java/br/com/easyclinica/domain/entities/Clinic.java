@@ -142,6 +142,4 @@ public class Clinic implements Serializable {
 	public void setCnpj(String cnpj) {
 		this.cnpj = cnpj;
 	}
-
-	
 }

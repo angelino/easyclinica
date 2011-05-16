@@ -1,13 +1,7 @@
 EasyClinica.pages['agenda'] = function(){
-	alert('Opa');
-	
-	$('input[name=schedule.startTime]').change(function(){
-		if(!validarForm()) return;
-	
-		carregarListaDeCompromissos();
-	});
-	
-	$('select[name=schedule.doctor.id]').change(function(){
+	$('#btnCarregarCompromissos').click(function(e){
+		e.preventDefault();
+		
 		if(!validarForm()) return;
 	
 		carregarListaDeCompromissos();
@@ -23,13 +17,11 @@ EasyClinica.pages['agenda'] = function(){
 	};
 	
 	var carregarListaDeCompromissos = function() {
-		var doctor = $('select[name=schedule.doctor.id]').val();
+		var doctorId = $('select[name=schedule.doctor.id]').val();
 		var date = $('input[name=schedule.startTime]').val();
 		
-		var url = EasyClinica.cfg.services.scheduleList.format(doctor, date);
-		
-		$.get(url, {}, function(data){
-			
+		$.get(EasyClinica.cfg.services.scheduleList, {doctorId: doctorId, date: date}, function(data){
+			$('#horarios').html(data);
 		});
 	};
 };
