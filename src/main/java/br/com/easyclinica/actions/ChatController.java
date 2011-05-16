@@ -2,6 +2,7 @@ package br.com.easyclinica.actions;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Iterator;
 import java.util.List;
 
 import br.com.caelum.vraptor.Get;
@@ -56,9 +57,20 @@ public class ChatController {
 	@Path("/chat/online")
 	public void online() {
 		List<String> onlineUsers = loggedUsers.onlineUsers();
+		removeMeFrom(onlineUsers);
 		result.use(Results.json()).from(onlineUsers).serialize();
 	}
 	
+	private void removeMeFrom(List<String> onlineUsers) {
+		Iterator<String> it = onlineUsers.iterator();
+		while(it.hasNext()){
+			String user = it.next();
+			if(user.equals(loggedUser.getEmployee().getLogin())) {
+				it.remove();
+			}
+		}
+	}
+
 	@Get
 	@Path("/chat/ultimas")
 	public void getLatest() {
@@ -71,6 +83,20 @@ public class ChatController {
 		if (!messages.isEmpty()) {
 			updates.setLastUpdate(messages.get(messages.size() - 1).getDate());
 		}
+
+		MsgData data = new MsgData(loggedUser.getEmployee().getLogin(), messages);
+		result.use(Results.json()).withoutRoot().from(data).include("msgs")
+				.serialize();
+	}
+	
+	@Get
+	@Path("/chat/3minutos")
+	public void getLast3Minutes() {
+		Calendar threeMinutesAgo = Calendar.getInstance();
+		threeMinutesAgo.add(Calendar.MINUTE, -3);
+		
+		List<ChatMessage> messages = chatMessages.allSince(
+				loggedUser.getEmployee(), threeMinutesAgo);
 
 		MsgData data = new MsgData(loggedUser.getEmployee().getLogin(), messages);
 		result.use(Results.json()).withoutRoot().from(data).include("msgs")
