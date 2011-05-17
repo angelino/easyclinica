@@ -6,7 +6,10 @@
 <c:forEach items="${timeTable}" var="row" varStatus="st">
 
 	<div class="schedule">
-		<span><fmt:formatDate type="time" pattern="HH:mm" value="${row.time.time}"/></span>
+		<div class="time">
+			<span><fmt:formatDate type="time" pattern="HH:mm" value="${row.time.time}"/></span>			
+			<a class="btnaddevent" href="#">&nbsp;</a>			
+		</div>
 		
 		<c:if test="${fn:length(row.commitments) > 0}">
 			<table border="0" class="easy">
@@ -18,17 +21,24 @@
 				</tr>
 				
 				<c:forEach items="${row.commitments}" var="commitment" varStatus="st">
-					<tr>
+					<tr schedule_id="${commitment.id}">
 						<td>${commitment.subject}</td>
 						<td>
 							<input type="text" name="arrivalTime-${commitment.id}" class="time" value="<fmt:formatDate type="time" pattern="HH:mm" value="${commitment.arrivalTime.time}"/>" />
 							<a href="#" schedule_id="${commitment.id}" class="btnpeopleedit changeArrivalTime" title="Alterar horário de chegada?">&nbsp;</a>
 						</td>
 						<td>
-							<input type="checkbox" name="treated" schedule_id="${commitment.id}" value="1"/>
+							<c:choose>
+								<c:when test="${commitment.treated}">
+									<input type="checkbox" name="treated" schedule_id="${commitment.id}" checked="checked"/>
+								</c:when>
+								<c:otherwise>
+									<input type="checkbox" name="treated" schedule_id="${commitment.id}"/>
+								</c:otherwise>
+							</c:choose>							
 						</td>
 						<td>
-							<a class="btndelete last submit" title="Deletar compromisso" href="#">Excluir</a>
+							<a class="btndelete last submit" title="Deletar compromisso" schedule_id="${commitment.id}" href="#">Excluir</a>
 						</td>
 					</tr>
 				</c:forEach>

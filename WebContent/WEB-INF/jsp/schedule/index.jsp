@@ -49,7 +49,9 @@
 					</fieldset>
 					
 					<div class="boxactions">
-						<input type="button" id="btnCarregarCompromissos" class="btnsave" value="Salvar" />
+						<input type="button" id="btnCarregarCompromissos" class="btnschedule" value="Carregar Compromissos" />
+						
+						<image src="<c:url value="images/loading.gif" />" alt="loading" class="loading" />
 			        </div>			
 				</form>
 			</div>

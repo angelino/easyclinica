@@ -28,7 +28,7 @@ public class Schedule {
 	@ManyToOne(fetch = FetchType.EAGER)
 	@Index(name = "ScheduleDoctorIndex")
 	private Doctor doctor;
-	private boolean treated;
+	private boolean isTreated;
 
 	public Schedule(int id) {
 		this.id = id;
@@ -85,14 +85,23 @@ public class Schedule {
 	public Doctor getDoctor() {
 		return doctor;
 	}
-	public void setTreated(boolean treated) {
-		this.treated = treated;
+	
+	protected void setTreated(boolean isTreated) {
+		this.isTreated = isTreated;
 	}
 
 	public boolean isTreated() {
-		return treated;
+		return isTreated;
 	}
 
+	public void markAsTreated() {
+		this.isTreated = true;
+	}
+	
+	public void markAsNotTreated() {
+		this.isTreated = false;
+	}
+	
 	public static Schedule empty() {
 		Schedule empty = new Schedule();
 		return empty;

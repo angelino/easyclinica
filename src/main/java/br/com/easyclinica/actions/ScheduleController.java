@@ -60,8 +60,7 @@ public class ScheduleController extends BaseController {
 	
 	@Put
 	public void _changeArrivalTime(int scheduleId, Calendar arrivalTime) {
-		Schedule schedule = allSchedule.getById(scheduleId);
-		
+		Schedule schedule = allSchedule.getById(scheduleId);		
 		schedule.setArrivalTime(arrivalTime);
 		
 		allSchedule.update(schedule);
@@ -69,12 +68,33 @@ public class ScheduleController extends BaseController {
 		result.use(Results.json()).from("1", "status").serialize();
 	}
 	
+	@Put
+	public void _setAsNotTreated(int scheduleId) {
+		Schedule schedule = allSchedule.getById(scheduleId);		
+		schedule.markAsNotTreated();
+		
+		allSchedule.update(schedule);
+		
+		result.use(Results.json()).from("1", "status").serialize();
+	}
+	
+	@Put
+	public void _setAsTreated(int scheduleId) {
+		Schedule schedule = allSchedule.getById(scheduleId);		
+		schedule.markAsTreated();
+		
+		allSchedule.update(schedule);
+		
+		result.use(Results.json()).from("1", "status").serialize();
+	}
+	
 	@Delete
-	@Path("/agenda/delete")
-	public void delete(int scheduleId) {
+	public void _delete(int scheduleId) {
 		Schedule schedule = allSchedule.getById(scheduleId);
 		
 		allSchedule.delete(schedule);
+		
+		result.use(Results.json()).from("1", "status").serialize();
 	}
 	
 	@Post

@@ -554,3 +554,32 @@ ul.printings li{padding:5px 0;}
     border-width: 1px;
     background-color: #efefef;
 }
+
+/* SCHEDULE ########################################################### */
+
+.schedule { 
+	float:left; 
+	width:100%;
+	padding:3px;
+}
+
+.schedule .time {
+	float: left; 
+	width: 100px;
+}
+
+.schedule .time span {
+	float: left;
+}
+
+.schedule .time .btnaddevent {
+	float: left;
+	padding:2px;
+	margin: 0 5px;
+	background-image:url(/images/icons/add.png);
+}
+
+.schedule table.easy {
+	float:left; 
+	width: 500px;
+}

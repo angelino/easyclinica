@@ -1,4 +1,6 @@
 EasyClinica.pages['agenda'] = function(){
+	$('.loading').hide();
+	
 	$('#btnCarregarCompromissos').click(function(e){
 		e.preventDefault();
 		
@@ -17,6 +19,8 @@ EasyClinica.pages['agenda'] = function(){
 	};
 	
 	var carregarListaDeCompromissos = function() {
+		$('.loading').show();
+		
 		var doctorId = $('select[name=schedule.doctor.id]').val();
 		var date = $('input[name=schedule.startTime]').val();
 		
@@ -26,6 +30,10 @@ EasyClinica.pages['agenda'] = function(){
 			EasyClinica.common.generalFunctions('#horarios');
 			
 			configurarArrivalTimeChange();
+			configurarFlagAtendido();
+			configurarBotaoExcluir();
+			
+			$('.loading').hide();
 		});
 	};
 	
@@ -58,9 +66,51 @@ EasyClinica.pages['agenda'] = function(){
 	};
 	
 	var configurarFlagAtendido = function() {
-		$('#horarios').find('input[name=treated]').change() {
-			var atendido = $(this).is(':checked');
-			var scheduleId = $(this).attr('schedule_id'); 
-		};
+		$('#horarios').find('input[name=treated]').change(function() {
+			var scheduleId = $(this).attr('schedule_id');
+			
+			var dados = '_method=PUT&scheduleId=' + scheduleId;
+			
+			var url = '';
+			if($(this).is(':checked')) {
+				url = EasyClinica.cfg.services.scheduleSetAsTreated;
+			} else {
+				url = EasyClinica.cfg.services.scheduleSetAsNotTreated;
+			}
+			
+			$.ajax({
+		        type: 'POST',
+		        url: url,
+		        data: dados,
+		        success: function(json) { }
+		    });			
+		});
+	};
+	
+	var configurarBotaoExcluir = function() {
+		$('#horarios').find('.btndelete[schedule_id]').click(function(e){
+			e.preventDefault();
+			
+			if(!confirm('Deseja realmente deletar esse compromisso?')) return;
+			
+			var scheduleId = $(this).attr('schedule_id');
+			
+			var dados = '_method=DELETE&scheduleId=' + scheduleId;
+			
+			$.ajax({
+		        type: 'POST',
+		        url: EasyClinica.cfg.services.scheduleDelete,
+		        data: dados,
+		        success: function(json) { 
+		        	if(json.status == 1) {
+		        		var trCompromisso = $('tr[schedule_id=' + scheduleId + ']');
+		        		var table = trCompromisso.parent();
+		        		trCompromisso.remove();
+		        		
+		        		if(table.find('tr').size() == 1) table.remove();
+		        	}
+		        }
+		    });
+		});		
 	};
 };
