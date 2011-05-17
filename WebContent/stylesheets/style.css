@@ -127,6 +127,7 @@ table.easy tr td form{width:50px!important;}
 table.easy tr td input{background-color:#EEEEEE;background-repeat:no-repeat;background-position:10px 5px;border:1px solid #BFBFBF;color:#222222;cursor:pointer;float:left;font-size:1em;font-weight:bold;line-height:1.3em;margin:0 0 0 10px;padding:5px 10px 5px 25px;text-decoration:none;}
 table.easy tr td input:hover{background-color:#dfdfde;}
 table.easy tr td input.btndelete{background-image:url(/images/icons/delete.png);margin:0!important;}
+table.easy tr td a.btndelete{background-image:url(/images/icons/delete.png);}
 
 table.easy tr td.statusenable{background:transparent url(/images/icons/user_green.png) center no-repeat;text-indent:-9999px;}
 table.easy tr td.statusdisable{background:transparent url(/images/icons/user_grayoff.png) center no-repeat;text-indent:-9999px;}

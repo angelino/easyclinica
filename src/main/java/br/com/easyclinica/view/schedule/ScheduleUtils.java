@@ -28,7 +28,7 @@ public class ScheduleUtils {
 		List<Time> timeTable = new LinkedList<Time>();
 		while(start.before(end))
 		{
-			Time time = new Time(start);
+			Time time = new Time((Calendar) start.clone());
 			
 			for(Schedule schedule : schedules ) {
 				if(schedule.getStartTime().get(Calendar.HOUR_OF_DAY) == start.get(Calendar.HOUR_OF_DAY) &&

@@ -3,11 +3,14 @@ package br.com.easyclinica.actions;
 import java.util.Calendar;
 import java.util.List;
 
+import br.com.caelum.vraptor.Delete;
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
+import br.com.caelum.vraptor.Put;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
+import br.com.caelum.vraptor.view.Results;
 import br.com.easyclinica.domain.entities.Doctor;
 import br.com.easyclinica.domain.entities.Schedule;
 import br.com.easyclinica.domain.repositories.AllDoctors;
@@ -55,7 +58,18 @@ public class ScheduleController extends BaseController {
 		result.include("timeTable", scheduleUtils.buildDoctorSchedule(schedules));
 	}
 	
-	@Post
+	@Put
+	public void _changeArrivalTime(int scheduleId, Calendar arrivalTime) {
+		Schedule schedule = allSchedule.getById(scheduleId);
+		
+		schedule.setArrivalTime(arrivalTime);
+		
+		allSchedule.update(schedule);
+		
+		result.use(Results.json()).from("1", "status").serialize();
+	}
+	
+	@Delete
 	@Path("/agenda/delete")
 	public void delete(int scheduleId) {
 		Schedule schedule = allSchedule.getById(scheduleId);
