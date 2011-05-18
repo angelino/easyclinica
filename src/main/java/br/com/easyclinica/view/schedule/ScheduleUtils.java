@@ -21,9 +21,8 @@ public class ScheduleUtils {
 	}
 	
 	public List<Time> buildDoctorSchedule(List<Schedule> schedules) {
-		//TODO: Pegar o inicio e fim do funcionamento da clínica
-		Calendar start = calendarUtils.CloneDateAndSetTime(Calendar.getInstance(), 0, 0, 0);
-		Calendar end = calendarUtils.CloneDateAndSetTime(Calendar.getInstance(), 23, 59, 59);
+		Calendar start = getFirstHourOfTheSchedule();		
+		Calendar end = getLastHourOfTheSchedule();
 		
 		List<Time> timeTable = new LinkedList<Time>();
 		while(start.before(end))
@@ -44,5 +43,19 @@ public class ScheduleUtils {
 		}
 		
 		return timeTable;
+	}
+
+	private Calendar getFirstHourOfTheSchedule() {
+		int hourStartOperation = this.loggedUser.getClinic().getStartOperation().getHourOfDay();
+		int minuteStartOperation = this.loggedUser.getClinic().getStartOperation().getMinuteOfHour();
+		Calendar start = calendarUtils.CloneDateAndSetTime(Calendar.getInstance(), hourStartOperation, minuteStartOperation, 0);
+		return start;
+	}
+	
+	private Calendar getLastHourOfTheSchedule() {
+		int hourStartOperation = this.loggedUser.getClinic().getEndOperation().getHourOfDay();
+		int minuteStartOperation = this.loggedUser.getClinic().getEndOperation().getMinuteOfHour();
+		Calendar end = calendarUtils.CloneDateAndSetTime(Calendar.getInstance(), hourStartOperation, minuteStartOperation, 0);
+		return end;
 	}
 }

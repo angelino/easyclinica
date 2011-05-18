@@ -29,15 +29,55 @@ EasyClinica.pages['agenda'] = function(){
 			
 			EasyClinica.common.generalFunctions('#horarios');
 			
-			configurarArrivalTimeChange();
-			configurarFlagAtendido();
-			configurarBotaoExcluir();
+			configureArrivalTimeChange();
+			configureTreatedFlag();
+			configureDeleteButton();
+			configureAddCompromiseFunctions();
 			
 			$('.loading').hide();
 		});
 	};
 	
-	var configurarArrivalTimeChange = function() {
+	var configureAddCompromiseFunctions = function() {
+		
+		$('#horarios').find('.btnaddevent').click(function(e){
+			e.preventDefault();
+			
+			var subjectField = $(this).next('input[name=schedule.subject]');			
+			subjectField.show(200);
+		});
+		
+		$('input[name=schedule.subject]').hide();
+		$('input[name=schedule.subject]').change(function(){
+			var doctorId = $('select[name=schedule.doctor.id]').val();
+						
+			var subjectField = $(this);			
+			subjectField.addClass('ac_loading');
+			
+			var time = $('span#' + subjectField.attr('time_ref')).html(); 
+			var startTime = $('input[name=schedule.startTime]').val() + ' ' + time;
+			var fakeStartTime = $("<input type='text' name='schedule.startTime' value='" + startTime+ "' />");
+			
+			var dadosFormat = 'schedule.doctor.id={0}&{1}&{2}';
+			var dados = dadosFormat.format(doctorId, fakeStartTime.serialize(), subjectField.serialize());
+			
+			$.ajax({
+		        type: 'POST',
+		        url: EasyClinica.cfg.services.scheduleSave,
+		        data: dados,
+		        success: function(json) {
+		        	if(json.status == '1') {
+		        		//subjectField.removeClass('ac_loading');
+		        		
+		        		carregarListaDeCompromissos();
+		        	}
+		        }
+		    });
+			
+		});		
+	};
+	
+	var configureArrivalTimeChange = function() {
 		$('#horarios').find('a.changeArrivalTime').click(function(e){
 			e.preventDefault();
 			
@@ -65,7 +105,7 @@ EasyClinica.pages['agenda'] = function(){
 		});
 	};
 	
-	var configurarFlagAtendido = function() {
+	var configureTreatedFlag = function() {
 		$('#horarios').find('input[name=treated]').change(function() {
 			var scheduleId = $(this).attr('schedule_id');
 			
@@ -87,7 +127,7 @@ EasyClinica.pages['agenda'] = function(){
 		});
 	};
 	
-	var configurarBotaoExcluir = function() {
+	var configureDeleteButton = function() {
 		$('#horarios').find('.btndelete[schedule_id]').click(function(e){
 			e.preventDefault();
 			

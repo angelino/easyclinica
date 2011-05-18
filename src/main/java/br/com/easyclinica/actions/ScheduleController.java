@@ -98,14 +98,13 @@ public class ScheduleController extends BaseController {
 	}
 	
 	@Post
-	@Path("/agenda")
-	public void save(Schedule schedule) {
+	public void _save(Schedule schedule) {
 		Doctor doctor = allDoctors.getById(schedule.getDoctor().getId());
 		schedule.setDoctor(doctor);
 		
 		allSchedule.add(schedule);
 		
-		result.redirectTo(ScheduleController.class).index();
+		result.use(Results.json()).from("1", "status").serialize();
 	}
 	
 	private Doctor loggedDoctor() {

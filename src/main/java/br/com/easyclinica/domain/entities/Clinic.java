@@ -11,6 +11,8 @@ import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.annotations.Type;
+import org.joda.time.LocalTime;
 
 import br.com.easyclinica.domain.types.Address;
 
@@ -36,6 +38,13 @@ public class Clinic implements Serializable {
 	private String cnpj;
 	@ManyToOne(fetch=FetchType.EAGER)
 	private HealthCarePlan privatePlan;
+	
+	@Type(type="org.joda.time.contrib.hibernate.PersistentLocalTimeAsTime")
+	private LocalTime startOperation;
+	
+	@Type(type="org.joda.time.contrib.hibernate.PersistentLocalTimeAsTime")
+	private LocalTime endOperation;
+	
 	
 	public Clinic() {}
 	
@@ -141,5 +150,21 @@ public class Clinic implements Serializable {
 
 	public void setCnpj(String cnpj) {
 		this.cnpj = cnpj;
+	}
+
+	public void setEndOperation(LocalTime endOperation) {
+		this.endOperation = endOperation;
+	}
+
+	public LocalTime getEndOperation() {
+		return endOperation;
+	}
+
+	public void setStartOperation(LocalTime startOperation) {
+		this.startOperation = startOperation;
+	}
+
+	public LocalTime getStartOperation() {
+		return startOperation;
 	}
 }

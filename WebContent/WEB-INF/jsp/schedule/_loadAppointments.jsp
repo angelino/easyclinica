@@ -7,8 +7,9 @@
 
 	<div class="schedule">
 		<div class="time">
-			<span><fmt:formatDate type="time" pattern="HH:mm" value="${row.time.time}"/></span>			
-			<a class="btnaddevent" href="#">&nbsp;</a>			
+			<span id="${st.count}"><fmt:formatDate type="time" pattern="HH:mm" value="${row.time.time}"/></span>			
+			<a class="btnaddevent" href="#">&nbsp;</a>
+			<input type="text" name="schedule.subject" time_ref="${st.count}"/>			
 		</div>
 		
 		<c:if test="${fn:length(row.commitments) > 0}">

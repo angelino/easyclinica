@@ -97,6 +97,7 @@ EasyClinica.cfg.services = {
 		scheduleSetAsTreated: BASE_URI + 'schedule/_setAsTreated',
 		scheduleSetAsNotTreated: BASE_URI + 'schedule/_setAsNotTreated',
 		scheduleDelete: BASE_URI + 'schedule/_delete',
+		scheduleSave: BASE_URI + 'schedule/_save',
 		
 		postReply: BASE_URI + 'mensagens/{0}/respostas/_nova',
 		postMessage: BASE_URI + 'mensagens/_nova',
