@@ -21,7 +21,7 @@ margin-bottom:0;
 outline-color:-moz-use-text-color;
 outline-style:none;
 outline-width:0;
-padding:0;s
+padding:0;
 vertical-align:baseline;}
 :focus{outline-color:-moz-use-text-color;outline-style:none;outline-width:0;}
 body{-moz-background-clip:border;-moz-background-inline-policy:continuous;-moz-background-origin:padding;background:#FFFFFF none repeat scroll 0 0;margin:0 auto;}
@@ -474,7 +474,7 @@ div.error {
 .box_post p strong{font-size:13px;font-weight:bold;color:#3B5998;margin:0 3px 0 0;}
 .box_post p strong a{font-weight:bold;color:#3B5998;float:left;margin:0 5px 0 0;}
 .box_post p strong a:hover{text-decoration:underline;}
-.box_post p.tempo{width:auto;margin-top:8px;float:left;color:#808080;}
+.box_post p.tempo{width:auto;margin:0;float:left;color:#808080;}
 .box_post p.tempo span{margin:0 5px;}
 .box_post p.tempo1{margin:8px 0 0 63px;}
 .box_post span{float:left;margin:12px 5px 0 5px;color:#808080;}
