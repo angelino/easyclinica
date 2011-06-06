@@ -46,15 +46,15 @@ public class ScheduleUtils {
 	}
 
 	private Calendar getFirstHourOfTheSchedule() {
-		int hourStartOperation = 10;//this.loggedUser.getClinic().getStartOperation().getHourOfDay();
-		int minuteStartOperation = 15; //this.loggedUser.getClinic().getStartOperation().getMinuteOfHour();
+		int hourStartOperation = this.loggedUser.getClinic().getStartOperation().getHourOfDay();
+		int minuteStartOperation = this.loggedUser.getClinic().getStartOperation().getMinuteOfHour();
 		Calendar start = calendarUtils.CloneDateAndSetTime(Calendar.getInstance(), hourStartOperation, minuteStartOperation, 0);
 		return start;
 	}
 	
 	private Calendar getLastHourOfTheSchedule() {
-		int hourStartOperation = 20; //this.loggedUser.getClinic().getEndOperation().getHourOfDay();
-		int minuteStartOperation = 0;//this.loggedUser.getClinic().getEndOperation().getMinuteOfHour();
+		int hourStartOperation = this.loggedUser.getClinic().getEndOperation().getHourOfDay();
+		int minuteStartOperation = this.loggedUser.getClinic().getEndOperation().getMinuteOfHour();
 		Calendar end = calendarUtils.CloneDateAndSetTime(Calendar.getInstance(), hourStartOperation, minuteStartOperation, 0);
 		return end;
 	}
