@@ -9,16 +9,17 @@
 		<div class="time">
 			<span id="${st.count}"><fmt:formatDate type="time" pattern="HH:mm" value="${row.time.time}"/></span>			
 			<a class="btnaddevent" href="#">&nbsp;</a>
-			<input type="text" name="schedule.subject" time_ref="${st.count}"/>			
+			<input class="addcompromisso" type="text" name="schedule.subject" time_ref="${st.count}"/>
+			<span class="infocompromisso">Digite uma breve descrição do Compromisso.</span>		
 		</div>
 		
 		<c:if test="${fn:length(row.commitments) > 0}">
-			<table border="0" class="easy">
+			<table border="0" class="easy compromissos">
 				<tr class="tableheader">
 					<th>Compromisso:</th>
-					<th>Chegada</th>
-					<th>Atendido?</th>
-					<th>&nbsp;</th>
+					<th width="165">Chegada</th>
+					<th width="100">Atendido?</th>
+					<th width="100">&nbsp;</th>
 				</tr>
 				
 				<c:forEach items="${row.commitments}" var="commitment" varStatus="st">
@@ -31,10 +32,10 @@
 						<td>
 							<c:choose>
 								<c:when test="${commitment.treated}">
-									<input type="checkbox" name="treated" schedule_id="${commitment.id}" checked="checked"/>
+									<input class="checkbox" type="checkbox" name="treated" schedule_id="${commitment.id}" checked="checked"/>
 								</c:when>
 								<c:otherwise>
-									<input type="checkbox" name="treated" schedule_id="${commitment.id}"/>
+									<input class="checkbox" type="checkbox" name="treated" schedule_id="${commitment.id}"/>
 								</c:otherwise>
 							</c:choose>							
 						</td>

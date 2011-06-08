@@ -35,6 +35,7 @@ EasyClinica.pages['agenda'] = function(){
 			configureAddCompromiseFunctions();
 			
 			$('.loading').hide();
+			$('.infocompromisso').hide();
 		});
 	};
 	
@@ -45,6 +46,9 @@ EasyClinica.pages['agenda'] = function(){
 			
 			var subjectField = $(this).next('input[name=schedule.subject]');			
 			subjectField.show(200);
+			
+			var subjectDescription = subjectField.next('.infocompromisso');
+			subjectDescription.show(200);
 		});
 		
 		$('input[name=schedule.subject]').hide();

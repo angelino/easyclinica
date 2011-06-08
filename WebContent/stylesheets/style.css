@@ -135,6 +135,8 @@ table.easy tr td.namedisable{text-decoration:line-through;}
 table.easy tr td a.last{margin:0;}
 table.easy tr td.tablenostyle{background:#ffffff!important;border:none;}
 
+
+
 /*BOX TABELA PROCEDIMENTOS ######################################################################################################################*/
 .main .content .box form{float:left;width:100%;}
 .main .content .box table.tableprocedures{float:left;width:100%;border:none;}
@@ -560,12 +562,14 @@ ul.printings li{padding:5px 0;}
 .schedule { 
 	float:left; 
 	width:100%;
+	margin:6px 0 3px 0;
 	padding:3px;
+	border-bottom:#cccccc 1px solid;
 }
 
 .schedule .time {
 	float: left; 
-	width: 200px;
+	width: 280px;
 	font-weight: bold;
 }
 
@@ -597,3 +601,22 @@ ul.printings li{padding:5px 0;}
 	float:left; 
 	width: 400px;
 }
+
+/*BOX ADD COMPROMISSO ####################################################################*/
+.schedule .time input.addcompromisso{width:400px;}
+.schedule .time span.infocompromisso{float:left;width:100%;font-size:11px;color:#a6a6a6;}
+
+
+/*BOX TABELA CORES ####################################################################*/
+.timecolor1{background-color:#EEEEFF;}
+.timecolor2{background-color:#FFFFCC;}
+.timecolor3{background-color:#FFDDDD;}
+.timecolor4{background-color:#DDFFFF;}
+.timecolor4{background-color:#AAFFAA;}
+/*BOX TABELA COMPROMISSO ####################################################################*/
+.schedule table.compromissos{float:left;width:100%;clear:both;}
+.schedule table.compromissos tr td input.time{width:58px!important;margin:0 10px 0 0;}
+.schedule table.compromissos tr td input.checkbox{margin:-20px 0 0 38px;}
+.schedule table.compromissos tr td a.btnpeopleedit{margin:0 10px 0 0;}
+
+
