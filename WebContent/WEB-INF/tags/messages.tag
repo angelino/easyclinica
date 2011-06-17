@@ -15,38 +15,31 @@
 		
 			<c:forEach var="message" items="${list}">
 		
-				<div class="box_post">
-		          <div class="box_img">
-		              <helper:gravatar email="${message.employee.email}" size="50"></helper:gravatar>
-		          </div>
-		          <p><strong>${message.employee.name}</strong>${message.text}</p>
-		
-					<p class="tempo"><span><fmt:formatDate value="${message.date.time}" pattern="dd/MM/yyyy HH:mm" /></span></p>
+				<div class="boxfb">
+		          <helper:gravatar email="${message.employee.email}" size="50" cssClass="photobig"/>
+		          <span class="date"><fmt:formatDate value="${message.date.time}" pattern="dd/MM/yyyy HH:mm" /></span>
+		          <p><a href="javascript:void(0);">${message.employee.name}</a>: ${message.text}</p>
+		          
 					
-					<div class="box_comments_post">
-						<ul class="comments">
-							<c:forEach var="reply" items="${message.replies}">
-								<li>
-									<div class="img_foto_post"><helper:gravatar email="${reply.employee.email}" size="30"></helper:gravatar></div>
-									<div class="post"><p class="txt_post">${reply.text}</p></div>
-								</li>
-							</c:forEach>
-						</ul>
+				  <c:forEach var="reply" items="${message.replies}">
+						<div class="boxpost">
+							<helper:gravatar email="${reply.employee.email}" size="30" cssClass="photo"></helper:gravatar>
+							<span class="date"><fmt:formatDate value="${reply.date.time}" pattern="dd/MM/yyyy HH:mm" /></span>
+							<p><a href="javascript:void(0);">${reply.employee.name}</a>: ${reply.text}</p>
+						</div>
+				  </c:forEach>
 						
-						<ul class="actions">
-							<li>
-								<form method="post" class="form_publica_comentario">
-									<div class="img_foto_post">
-										<helper:gravatar email="${loggedUser.employee.email}" size="30"></helper:gravatar>
-									</div>
-									<textarea class="comment" name="reply"></textarea>
-									<input type="hidden" name="message" value="${message.id}" />
-									<input type="button" class="reply-button" value="Comentar" />
-								</form>
-							</li>
-						</ul>
-					</div>
-					
+				  <div class="boxpost loading">
+						<helper:gravatar email="${loggedUser.employee.email}" size="30" cssClass="photo"></helper:gravatar>
+						<form method="post" class="form_publica_comentario">
+							<fieldset>
+								<textarea name="reply"></textarea>
+								<input type="hidden" name="message" value="${message.id}" />
+								<input type="button" class="btn reply-button" value="Comentar" />
+							</fieldset>
+						</form>
+						<span class="loading">&nbsp;</span>
+              	  </div>
 				</div>
 			</c:forEach>
 		</c:otherwise>

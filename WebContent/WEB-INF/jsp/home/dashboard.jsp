@@ -10,10 +10,14 @@
 			<div class="boxcontent">
 				<h2>Mural</h2>
 				
-				<div class="newPost">
-					Compartilhe informações com toda a clínica!
-					<textarea id="messageText" class="comment"></textarea>
-					<input type="button" value="Postar" class="message-button" />
+				<div class="newpost">
+					<span>Compartilhe informações com toda a clínica!</span>
+					<form action="">
+						<fieldset>							
+							<textarea id="messageText" class="comment"></textarea>
+							<input type="button" value="Postar" class="btn message-button" />
+						</fieldset>
+					</form>	
 				</div>
 				
 				<div id="allMessages">

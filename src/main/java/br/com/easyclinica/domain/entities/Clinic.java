@@ -39,11 +39,11 @@ public class Clinic implements Serializable {
 	@ManyToOne(fetch=FetchType.EAGER)
 	private HealthCarePlan privatePlan;
 	
-	//@Type(type="org.joda.time.contrib.hibernate.PersistentLocalTimeAsTime")
-	//private LocalTime startOperation;
+	@Type(type="org.joda.time.contrib.hibernate.PersistentLocalTimeAsTime")
+	private LocalTime startOperation;
 	
-	//@Type(type="org.joda.time.contrib.hibernate.PersistentLocalTimeAsTime")
-	//private LocalTime endOperation;
+	@Type(type="org.joda.time.contrib.hibernate.PersistentLocalTimeAsTime")
+	private LocalTime endOperation;
 	
 	public Clinic() {}
 	
@@ -151,19 +151,19 @@ public class Clinic implements Serializable {
 		this.cnpj = cnpj;
 	}
 
-	//public void setEndOperation(LocalTime endOperation) {
-	//	this.endOperation = endOperation;
-	//}
+	public void setEndOperation(LocalTime endOperation) {
+		this.endOperation = endOperation;
+	}
 
-	//public LocalTime getEndOperation() {
-	//	return endOperation;
-	//}
+	public LocalTime getEndOperation() {
+		return endOperation;
+	}
 
-	//public void setStartOperation(LocalTime startOperation) {
-	//	this.startOperation = startOperation;
-	//}
+	public void setStartOperation(LocalTime startOperation) {
+		this.startOperation = startOperation;
+	}
 
-	//public LocalTime getStartOperation() {
-	//	return startOperation;
-	//}
+	public LocalTime getStartOperation() {
+		return startOperation;
+	}
 }
