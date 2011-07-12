@@ -14,10 +14,11 @@ import org.hibernate.usertype.EnhancedUserType;
 import org.joda.time.LocalTime;
 
 
+@SuppressWarnings("deprecation")
 public class PersistentLocalTime implements EnhancedUserType, Serializable {
 
-
-    private static final int[] SQL_TYPES = new int[] { Types.TIME };
+	private static final long serialVersionUID = 1L;
+	private static final int[] SQL_TYPES = new int[] { Types.TIME };
 
     public int[] sqlTypes() {
         return SQL_TYPES;
@@ -57,7 +58,7 @@ public class PersistentLocalTime implements EnhancedUserType, Serializable {
         return new LocalTime(timestamp);
     }
 
-    public void nullSafeSet(PreparedStatement preparedStatement, Object value, int index) throws HibernateException, SQLException {
+	public void nullSafeSet(PreparedStatement preparedStatement, Object value, int index) throws HibernateException, SQLException {
         if (value == null) {
             Hibernate.TIME.nullSafeSet(preparedStatement, null, index);
         } else {
