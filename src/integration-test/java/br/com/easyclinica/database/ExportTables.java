@@ -20,7 +20,7 @@ public class ExportTables {
 		se.create(true, true);
 	}
 	
-	@Test
+	@Test @Ignore
 	public void updateSchema() {
 		Configuration cfg = new DatabaseConfigurator(new HardCodedConfigForTests()).config("easyclinica");
 		

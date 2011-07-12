@@ -37,6 +37,8 @@
         <dependency org="joda-time" name="joda-time-hibernate" rev="1.3" conf="default">
         	<exclude module="hibernate"/>
         </dependency>
+        
+        <dependency org="org.hamcrest" name="hamcrest-all" rev="1.1" conf="default" />
 		
 		<!-- Test dependencies -->
 		<dependency org="junit" name="junit" rev="4.8.2" conf="test->default" />

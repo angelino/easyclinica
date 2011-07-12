@@ -24,7 +24,7 @@
 	    <helper:include fileName="plugins/jquery.maskedinput/jquery.maskedinput-1.2.2.min.js" type="js" />	    
 	    <helper:include fileName="plugins/jquery.autocomplete/jquery.autocomplete.js" type="js" />
 	    <helper:include fileName="easyclinica.js" type="js" />
-	    <helper:include fileName="chat.js" type="js" />
+	    <!--  helper:include fileName="chat.js" type="js" / -->
 	    <helper:include fileName="consultas.js" type="js" />
 	    <helper:include fileName="medicos.js" type="js" />
 	    <helper:include fileName="convenios.js" type="js" />

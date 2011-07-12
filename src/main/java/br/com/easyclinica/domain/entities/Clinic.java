@@ -39,10 +39,10 @@ public class Clinic implements Serializable {
 	@ManyToOne(fetch=FetchType.EAGER)
 	private HealthCarePlan privatePlan;
 	
-	@Type(type="org.joda.time.contrib.hibernate.PersistentLocalTimeAsTime")
+	@Type(type="br.com.easyclinica.infra.hibernate.PersistentLocalTime")
 	private LocalTime startOperation;
 	
-	@Type(type="org.joda.time.contrib.hibernate.PersistentLocalTimeAsTime")
+	@Type(type="br.com.easyclinica.infra.hibernate.PersistentLocalTime")
 	private LocalTime endOperation;
 	
 	public Clinic() {}
