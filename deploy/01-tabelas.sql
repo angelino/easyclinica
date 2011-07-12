@@ -1,3 +1,4 @@
+
 create table Anamnese (
     id integer not null auto_increment,
     clinicExam longtext,
@@ -13,7 +14,7 @@ create table Anamnese (
     doctor_id integer,
     patient_id integer,
     primary key (id)
-) type=InnoDB
+) type=InnoDB;
 
 create table Appointment (
     id integer not null auto_increment,
@@ -34,7 +35,7 @@ create table Appointment (
     patient_id integer,
     specialty_id integer,
     primary key (id)
-) type=InnoDB
+) type=InnoDB;
 
 create table AppointmentAssistant (
     id integer not null auto_increment,
@@ -44,7 +45,7 @@ create table AppointmentAssistant (
     type varchar(255),
     procedure_id integer,
     primary key (id)
-) type=InnoDB
+) type=InnoDB;
 
 create table AppointmentMaterial (
     id integer not null auto_increment,
@@ -53,7 +54,7 @@ create table AppointmentMaterial (
     material_id integer,
     procedure_id integer,
     primary key (id)
-) type=InnoDB
+) type=InnoDB;
 
 create table AppointmentMedicine (
     id integer not null auto_increment,
@@ -62,7 +63,7 @@ create table AppointmentMedicine (
     medicine_id integer,
     procedure_id integer,
     primary key (id)
-) type=InnoDB
+) type=InnoDB;
 
 create table AppointmentProcedure (
     id integer not null auto_increment,
@@ -74,14 +75,14 @@ create table AppointmentProcedure (
     appointment_id integer,
     procedure_id integer,
     primary key (id)
-) type=InnoDB
+) type=InnoDB;
 
 create table CID (
     id integer not null auto_increment,
     code varchar(255),
     name varchar(255),
     primary key (id)
-) type=InnoDB
+) type=InnoDB;
 
 create table ChatMessage (
     id integer not null auto_increment,
@@ -90,7 +91,7 @@ create table ChatMessage (
     from_id integer,
     to_id integer,
     primary key (id)
-) type=InnoDB
+) type=InnoDB;
 
 create table Clinic (
     id integer not null auto_increment,
@@ -113,7 +114,7 @@ create table Clinic (
     website varchar(255),
     privatePlan_id integer,
     primary key (id)
-) type=InnoDB
+) type=InnoDB;
 
 create table Doctor (
     id integer not null auto_increment,
@@ -125,7 +126,7 @@ create table Doctor (
     telephone varchar(255),
     specialty_id integer,
     primary key (id)
-) type=InnoDB
+) type=InnoDB;
 
 create table Employee (
     id integer not null auto_increment,
@@ -139,7 +140,7 @@ create table Employee (
     position varchar(255),
     doctor_id integer,
     primary key (id)
-) type=InnoDB
+) type=InnoDB;
 
 create table GeneralObservations (
     id integer not null auto_increment,
@@ -147,7 +148,7 @@ create table GeneralObservations (
     text longtext,
     patient_id integer,
     primary key (id)
-) type=InnoDB
+) type=InnoDB;
 
 create table HealthCarePlan (
     id integer not null auto_increment,
@@ -168,14 +169,14 @@ create table HealthCarePlan (
     telephone varchar(255),
     website varchar(255),
     primary key (id)
-) type=InnoDB
+) type=InnoDB;
 
 create table Material (
     id integer not null auto_increment,
     name varchar(255),
     unit varchar(255),
     primary key (id)
-) type=InnoDB
+) type=InnoDB;
 
 create table MaterialInProcedure (
     id integer not null auto_increment,
@@ -183,14 +184,14 @@ create table MaterialInProcedure (
     material_id integer,
     procedure_id integer,
     primary key (id)
-) type=InnoDB
+) type=InnoDB;
 
 create table Medicine (
     id integer not null auto_increment,
     code varchar(255),
     name varchar(255),
     primary key (id)
-) type=InnoDB
+) type=InnoDB;
 
 create table MedicineInProcedure (
     id integer not null auto_increment,
@@ -198,7 +199,7 @@ create table MedicineInProcedure (
     medicine_id integer,
     procedure_id integer,
     primary key (id)
-) type=InnoDB
+) type=InnoDB;
 
 create table Message (
     id integer not null auto_increment,
@@ -206,7 +207,7 @@ create table Message (
     text longtext,
     employee_id integer,
     primary key (id)
-) type=InnoDB
+) type=InnoDB;
 
 create table Patient (
     id integer not null auto_increment,
@@ -229,7 +230,7 @@ create table Patient (
     telephone varchar(255),
     healthCarePlan_id integer,
     primary key (id)
-) type=InnoDB
+) type=InnoDB;
 
 create table PrecifiedMaterial (
     id integer not null auto_increment,
@@ -237,7 +238,7 @@ create table PrecifiedMaterial (
     healthCarePlan_id integer,
     material_id integer,
     primary key (id)
-) type=InnoDB
+) type=InnoDB;
 
 create table PrecifiedMedicine (
     id integer not null auto_increment,
@@ -245,7 +246,7 @@ create table PrecifiedMedicine (
     healthCarePlan_id integer,
     medicine_id integer,
     primary key (id)
-) type=InnoDB
+) type=InnoDB;
 
 create table PrecifiedProcedure (
     id integer not null auto_increment,
@@ -255,7 +256,7 @@ create table PrecifiedProcedure (
     healthCarePlan_id integer,
     procedure_id integer,
     primary key (id)
-) type=InnoDB
+) type=InnoDB;
 
 create table PrecifiedSpecialty (
     id integer not null auto_increment,
@@ -263,7 +264,7 @@ create table PrecifiedSpecialty (
     healthCarePlan_id integer,
     specialty_id integer,
     primary key (id)
-) type=InnoDB
+) type=InnoDB;
 
 create table Receipt (
     id integer not null auto_increment,
@@ -277,7 +278,7 @@ create table Receipt (
     employee_id integer,
     patient_id integer,
     primary key (id)
-) type=InnoDB
+) type=InnoDB;
 
 create table Reply (
     id integer not null auto_increment,
@@ -286,7 +287,7 @@ create table Reply (
     employee_id integer,
     message_id integer,
     primary key (id)
-) type=InnoDB
+) type=InnoDB;
 
 create table Schedule (
     id integer not null auto_increment,
@@ -297,13 +298,13 @@ create table Schedule (
     subject varchar(255),
     doctor_id integer,
     primary key (id)
-) type=InnoDB
+) type=InnoDB;
 
 create table Specialty (
     id integer not null auto_increment,
     name varchar(255),
     primary key (id)
-) type=InnoDB
+) type=InnoDB;
 
 create table medical_procedures (
     id integer not null auto_increment,
@@ -313,171 +314,171 @@ create table medical_procedures (
     name varchar(255),
     tussCode varchar(255),
     primary key (id)
-) type=InnoDB
+) type=InnoDB;
 
-create index anamnesePatientIndex on Anamnese (patient_id)
+create index anamnesePatientIndex on Anamnese (patient_id);
 
 alter table Anamnese 
     add index FKC6D37B02397A30D5 (cid_id), 
     add constraint FKC6D37B02397A30D5 
     foreign key (cid_id) 
-    references CID (id)
+    references CID (id);
 
 alter table Anamnese 
     add index FKC6D37B02C6AED5F5 (patient_id), 
     add constraint FKC6D37B02C6AED5F5 
     foreign key (patient_id) 
-    references Patient (id)
+    references Patient (id);
 
 alter table Anamnese 
     add index FKC6D37B02A92C339F (doctor_id), 
     add constraint FKC6D37B02A92C339F 
     foreign key (doctor_id) 
-    references Doctor (id)
+    references Doctor (id);
 
-create index appointmentDateIndex on Appointment (appointmentDate)
+create index appointmentDateIndex on Appointment (appointmentDate);
 
-create index appointmentDoctorIndex on Appointment (doctor_id)
+create index appointmentDoctorIndex on Appointment (doctor_id);
 
-create index appointmentPlanIndex on Appointment (healthCarePlan_id)
+create index appointmentPlanIndex on Appointment (healthCarePlan_id);
 
-create index appointmentPatientIndex on Appointment (patient_id)
+create index appointmentPatientIndex on Appointment (patient_id);
 
 alter table Appointment 
     add index FKB7F037FAB1FFF7F (healthCarePlan_id), 
     add constraint FKB7F037FAB1FFF7F 
     foreign key (healthCarePlan_id) 
-    references HealthCarePlan (id)
+    references HealthCarePlan (id);
 
 alter table Appointment 
     add index FKB7F037FC6AED5F5 (patient_id), 
     add constraint FKB7F037FC6AED5F5 
     foreign key (patient_id) 
-    references Patient (id)
+    references Patient (id);
 
 alter table Appointment 
     add index FKB7F037FA92C339F (doctor_id), 
     add constraint FKB7F037FA92C339F 
     foreign key (doctor_id) 
-    references Doctor (id)
+    references Doctor (id);
 
 alter table Appointment 
     add index FKB7F037F6FB73C95 (specialty_id), 
     add constraint FKB7F037F6FB73C95 
     foreign key (specialty_id) 
-    references Specialty (id)
+    references Specialty (id);
 
 alter table Appointment 
     add index FKB7F037F23C797FF (employee_id), 
     add constraint FKB7F037F23C797FF 
     foreign key (employee_id) 
-    references Employee (id)
+    references Employee (id);
 
-create index PAProcedureIndex on AppointmentAssistant (procedure_id)
+create index PAProcedureIndex on AppointmentAssistant (procedure_id);
 
 alter table AppointmentAssistant 
     add index FK4CCF0E1F4B36F180 (procedure_id), 
     add constraint FK4CCF0E1F4B36F180 
     foreign key (procedure_id) 
-    references AppointmentProcedure (id)
+    references AppointmentProcedure (id);
 
-create index appMaterialProcedureIndex on AppointmentMaterial (procedure_id)
+create index appMaterialProcedureIndex on AppointmentMaterial (procedure_id);
 
 alter table AppointmentMaterial 
     add index FK8D6CDDC64B36F180 (procedure_id), 
     add constraint FK8D6CDDC64B36F180 
     foreign key (procedure_id) 
-    references AppointmentProcedure (id)
+    references AppointmentProcedure (id);
 
 alter table AppointmentMaterial 
     add index FK8D6CDDC61F45D95F (material_id), 
     add constraint FK8D6CDDC61F45D95F 
     foreign key (material_id) 
-    references Material (id)
+    references Material (id);
 
-create index appMedicineProcedureIndex on AppointmentMedicine (procedure_id)
+create index appMedicineProcedureIndex on AppointmentMedicine (procedure_id);
 
 alter table AppointmentMedicine 
     add index FK45E9CED94B36F180 (procedure_id), 
     add constraint FK45E9CED94B36F180 
     foreign key (procedure_id) 
-    references AppointmentProcedure (id)
+    references AppointmentProcedure (id);
 
 alter table AppointmentMedicine 
     add index FK45E9CED9EB5CDC7F (medicine_id), 
     add constraint FK45E9CED9EB5CDC7F 
     foreign key (medicine_id) 
-    references Medicine (id)
+    references Medicine (id);
 
-create index appProcedureIndex on AppointmentProcedure (appointment_id)
+create index appProcedureIndex on AppointmentProcedure (appointment_id);
 
 alter table AppointmentProcedure 
     add index FKB64E1E143F6AF075 (procedure_id), 
     add constraint FKB64E1E143F6AF075 
     foreign key (procedure_id) 
-    references medical_procedures (id)
+    references medical_procedures (id);
 
 alter table AppointmentProcedure 
     add index FKB64E1E14DB923235 (appointment_id), 
     add constraint FKB64E1E14DB923235 
     foreign key (appointment_id) 
-    references Appointment (id)
+    references Appointment (id);
 
-create index chatmessage_from on ChatMessage (from_id)
+create index chatmessage_from on ChatMessage (from_id);
 
-create index chatmessage_to on ChatMessage (to_id)
+create index chatmessage_to on ChatMessage (to_id);
 
 alter table ChatMessage 
     add index FK11CAB96FF3E24112 (to_id), 
     add constraint FK11CAB96FF3E24112 
     foreign key (to_id) 
-    references Employee (id)
+    references Employee (id);
 
 alter table ChatMessage 
     add index FK11CAB96FC9DEF583 (from_id), 
     add constraint FK11CAB96FC9DEF583 
     foreign key (from_id) 
-    references Employee (id)
+    references Employee (id);
 
 alter table Clinic 
     add index FK78780108C312E4A9 (privatePlan_id), 
     add constraint FK78780108C312E4A9 
     foreign key (privatePlan_id) 
-    references HealthCarePlan (id)
+    references HealthCarePlan (id);
 
 alter table Doctor 
     add index FK7A547D3F6FB73C95 (specialty_id), 
     add constraint FK7A547D3F6FB73C95 
     foreign key (specialty_id) 
-    references Specialty (id)
+    references Specialty (id);
 
 alter table Employee 
     add index FK4AFD4ACEA92C339F (doctor_id), 
     add constraint FK4AFD4ACEA92C339F 
     foreign key (doctor_id) 
-    references Doctor (id)
+    references Doctor (id);
 
-create index generalObservationsPatientIndex on GeneralObservations (patient_id)
+create index generalObservationsPatientIndex on GeneralObservations (patient_id);
 
 alter table GeneralObservations 
     add index FK633A36AFC6AED5F5 (patient_id), 
     add constraint FK633A36AFC6AED5F5 
     foreign key (patient_id) 
-    references Patient (id)
+    references Patient (id);
 
-create index materialInProcedureIndex on MaterialInProcedure (procedure_id)
+create index materialInProcedureIndex on MaterialInProcedure (procedure_id);
 
 alter table MaterialInProcedure 
     add index FKCC3FAB673F6AF075 (procedure_id), 
     add constraint FKCC3FAB673F6AF075 
     foreign key (procedure_id) 
-    references medical_procedures (id)
+    references medical_procedures (id);
 
 alter table MaterialInProcedure 
     add index FKCC3FAB671F45D95F (material_id), 
     add constraint FKCC3FAB671F45D95F 
     foreign key (material_id) 
-    references Material (id)
+    references Material (id);
 
 create index MedicineInProcedureIndex on MedicineInProcedure (procedure_id)
 
@@ -485,25 +486,25 @@ alter table MedicineInProcedure
     add index FKFD2160743F6AF075 (procedure_id), 
     add constraint FKFD2160743F6AF075 
     foreign key (procedure_id) 
-    references medical_procedures (id)
+    references medical_procedures (id);
 
 alter table MedicineInProcedure 
     add index FKFD216074EB5CDC7F (medicine_id), 
     add constraint FKFD216074EB5CDC7F 
     foreign key (medicine_id) 
-    references Medicine (id)
+    references Medicine (id);
 
 alter table Message 
     add index FK9C2397E723C797FF (employee_id), 
     add constraint FK9C2397E723C797FF 
     foreign key (employee_id) 
-    references Employee (id)
+    references Employee (id);
 
 alter table Patient 
     add index FK340C82E5AB1FFF7F (healthCarePlan_id), 
     add constraint FK340C82E5AB1FFF7F 
     foreign key (healthCarePlan_id) 
-    references HealthCarePlan (id)
+    references HealthCarePlan (id);
 
 create index PrecifiedMaterialPlanIndex on PrecifiedMaterial (healthCarePlan_id)
 
@@ -511,96 +512,96 @@ alter table PrecifiedMaterial
     add index FKCC15B892AB1FFF7F (healthCarePlan_id), 
     add constraint FKCC15B892AB1FFF7F 
     foreign key (healthCarePlan_id) 
-    references HealthCarePlan (id)
+    references HealthCarePlan (id);
 
 alter table PrecifiedMaterial 
     add index FKCC15B8921F45D95F (material_id), 
     add constraint FKCC15B8921F45D95F 
     foreign key (material_id) 
-    references Material (id)
+    references Material (id);
 
-create index PrecifiedMedicinePlanIndex on PrecifiedMedicine (healthCarePlan_id)
+create index PrecifiedMedicinePlanIndex on PrecifiedMedicine (healthCarePlan_id);
 
 alter table PrecifiedMedicine 
     add index FK8492A9A5AB1FFF7F (healthCarePlan_id), 
     add constraint FK8492A9A5AB1FFF7F 
     foreign key (healthCarePlan_id) 
-    references HealthCarePlan (id)
+    references HealthCarePlan (id);
 
 alter table PrecifiedMedicine 
     add index FK8492A9A5EB5CDC7F (medicine_id), 
     add constraint FK8492A9A5EB5CDC7F 
     foreign key (medicine_id) 
-    references Medicine (id)
+    references Medicine (id);
 
-create index PrecifiedProcedurePlanIndex on PrecifiedProcedure (healthCarePlan_id)
+create index PrecifiedProcedurePlanIndex on PrecifiedProcedure (healthCarePlan_id);
 
 alter table PrecifiedProcedure 
     add index FK4CC09CC83F6AF075 (procedure_id), 
     add constraint FK4CC09CC83F6AF075 
     foreign key (procedure_id) 
-    references medical_procedures (id)
+    references medical_procedures (id);
 
 alter table PrecifiedProcedure 
     add index FK4CC09CC8AB1FFF7F (healthCarePlan_id), 
     add constraint FK4CC09CC8AB1FFF7F 
     foreign key (healthCarePlan_id) 
-    references HealthCarePlan (id)
+    references HealthCarePlan (id);
 
-create index PrecifiedSpecialtyPlanIndex on PrecifiedSpecialty (healthCarePlan_id)
+create index PrecifiedSpecialtyPlanIndex on PrecifiedSpecialty (healthCarePlan_id);
 
 alter table PrecifiedSpecialty 
     add index FK29041EF3AB1FFF7F (healthCarePlan_id), 
     add constraint FK29041EF3AB1FFF7F 
     foreign key (healthCarePlan_id) 
-    references HealthCarePlan (id)
+    references HealthCarePlan (id);
 
 alter table PrecifiedSpecialty 
     add index FK29041EF36FB73C95 (specialty_id), 
     add constraint FK29041EF36FB73C95 
     foreign key (specialty_id) 
-    references Specialty (id)
+    references Specialty (id);
 
-create index receiptDateIndex on Receipt (date)
+create index receiptDateIndex on Receipt (date);
 
-create index receiptPatientIndex on Receipt (patient_id)
+create index receiptPatientIndex on Receipt (patient_id);
 
 alter table Receipt 
     add index FKA3BB0A18C6AED5F5 (patient_id), 
     add constraint FKA3BB0A18C6AED5F5 
     foreign key (patient_id) 
-    references Patient (id)
+    references Patient (id);
 
 alter table Receipt 
     add index FKA3BB0A1823C797FF (employee_id), 
     add constraint FKA3BB0A1823C797FF 
     foreign key (employee_id) 
-    references Employee (id)
+    references Employee (id);
 
 alter table Reply 
     add index FK4B322CA44DB9EB5 (message_id), 
     add constraint FK4B322CA44DB9EB5 
     foreign key (message_id) 
-    references Message (id)
+    references Message (id);
 
 alter table Reply 
     add index FK4B322CA23C797FF (employee_id), 
     add constraint FK4B322CA23C797FF 
     foreign key (employee_id) 
-    references Employee (id)
+    references Employee (id);
 
-create index ScheduleDoctorIndex on Schedule (doctor_id)
+create index ScheduleDoctorIndex on Schedule (doctor_id);
 
 alter table Schedule 
     add index FKDA40F6B7A92C339F (doctor_id), 
     add constraint FKDA40F6B7A92C339F 
     foreign key (doctor_id) 
-    references Doctor (id)
+    references Doctor (id);
 
-create index idx_procedure_lpmcode on medical_procedures (lpmCode)
+create index idx_procedure_lpmcode on medical_procedures (lpmCode);
 
-create index idx_procedure_ambcode on medical_procedures (ambCode)
+create index idx_procedure_ambcode on medical_procedures (ambCode);
 
-create index idx_procedure_tusscode on medical_procedures (tussCode)
+create index idx_procedure_tusscode on medical_procedures (tussCode);
 
-create index idx_procedure_cbhpmcode on medical_procedures (cbhpmCode)
+create index idx_procedure_cbhpmcode on medical_procedures (cbhpmCode);
