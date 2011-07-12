@@ -1,0 +1,1 @@
+INSERT INTO employee (active, cellphone, email, login, name, observations, password, position) VALUES (1, 'cellphone', 'email', 'demonstracao', 'owner', 'observations', '123', 'OWNER');

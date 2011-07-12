@@ -1,0 +1,1 @@
+INSERT INTO healthcareplan (active, city, neighborhood, postalCode, state, street, ch, contact, email, name, observations, payForRoomRate, periodToReturn, roomRateDefaultAmount, telephone, website) VALUES (1, 'city', 'neighborhood', 'postalCode', 'state', 'street', 0, 'contact', 'email', 'Particular', 'observations', 0, 0, 0, 'telephone', 'website');
