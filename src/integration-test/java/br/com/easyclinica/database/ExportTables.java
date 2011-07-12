@@ -29,16 +29,16 @@ public class ExportTables {
 		
 	}
 	
-	@Test @Ignore
-	public void createHomologSchemaInCloudbess() {
-		final String server = "ec2-75-101-156-134.compute-1.amazonaws.com";
-		final String customer = "teste";
+	@Test
+	public void createSchemaInCloudbess() {
+		final String server = "ec2-174-129-9-255.compute-1.amazonaws.com";
+		final String customer = "demonstracao";
 		
 		Configuration cfg = new DatabaseConfigurator(new Config() {
 			public String get(String key) {
 				if(key.equals("connection_string")) return "jdbc:mysql://"+server+"/#database#?useUnicode=true&characterEncoding=UTF-8";
 				if(key.equals("driver_class")) return "com.mysql.jdbc.Driver";
-				if(key.equals("db_pwd")) return "3@sycl1n1c@";
+				if(key.equals("db_pwd")) return "3@sycl1n1c@_rtf";
 				if(key.equals("db_prefix")) return "ec-";
 				if(key.equals("dialect")) return "org.hibernate.dialect.MySQLInnoDBDialect";
 				
