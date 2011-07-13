@@ -21,7 +21,7 @@
 		<band splitType="Stretch"/>
 	</background>
 	<detail>
-		<band height="252" splitType="Stretch">
+		<band height="521" splitType="Stretch">
 			<textField>
 				<reportElement x="12" y="176" width="528" height="39"/>
 				<textElement/>
@@ -75,6 +75,37 @@
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$P{clinic}.address.street + " - " + $P{clinic}.address.neighborhood]]></textFieldExpression>
 			</textField>
+			<textField>
+				<reportElement x="298" y="471" width="243" height="20"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$V{receiptData}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="321" width="555" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[RECIBO]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="13" y="355" width="528" height="53"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$V{texto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="13" y="419" width="528" height="39"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{receipt}.observations]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="308" y="465" width="223" height="1"/>
+			</line>
+			<line>
+				<reportElement x="1" y="295" width="554" height="1"/>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
 		</band>
 	</detail>
 </jasperReport>

@@ -25,7 +25,7 @@ public class ScheduleUtils {
 		Calendar end = getLastHourOfTheSchedule();
 		
 		List<Time> timeTable = new LinkedList<Time>();
-		while(start.before(end))
+		while(start.before(end) || start.equals(end))
 		{
 			Time time = new Time((Calendar) start.clone());
 			
