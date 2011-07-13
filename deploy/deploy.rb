@@ -14,7 +14,7 @@ command = "mysql -u ec-#{DOMAIN} -p3@sycl1n1c@_rtf -h #{HOST} ec-#{DOMAIN} < 03-
 system(command)
 
 p "criando usuario owner"
-command = "mysql -u ec-#{DOMAIN} -p3@sycl1n1c@_rtf -h #{HOST} ec-#{DOMAIN} < 04-usuario.sql"
+command = "mysql -u ec-#{DOMAIN} -p3@sycl1n1c@_rtf -h #{HOST} ec-#{DOMAIN} < 04-owner.sql"
 system(command)
 
 p "criando especialidades"

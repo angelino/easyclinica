@@ -21,8 +21,6 @@
 				
 					<helper:message successKey="${successKey}" errorKey="${errorKey}" />
 					
-					<p class="required"><span>*</span> campos obrigatórios</p>
-					
 					<fieldset>
 						<div class="medical">
 							<label class="title">Médico:<span>*</span></label>

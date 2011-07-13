@@ -480,7 +480,7 @@ alter table MaterialInProcedure
     foreign key (material_id) 
     references Material (id);
 
-create index MedicineInProcedureIndex on MedicineInProcedure (procedure_id)
+create index MedicineInProcedureIndex on MedicineInProcedure (procedure_id);
 
 alter table MedicineInProcedure 
     add index FKFD2160743F6AF075 (procedure_id), 
@@ -506,7 +506,7 @@ alter table Patient
     foreign key (healthCarePlan_id) 
     references HealthCarePlan (id);
 
-create index PrecifiedMaterialPlanIndex on PrecifiedMaterial (healthCarePlan_id)
+create index PrecifiedMaterialPlanIndex on PrecifiedMaterial (healthCarePlan_id);
 
 alter table PrecifiedMaterial 
     add index FKCC15B892AB1FFF7F (healthCarePlan_id), 
