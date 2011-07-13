@@ -24,6 +24,7 @@ public class PrecifiedMaterial {
 	private BigDecimal amount;
 
 	public PrecifiedMaterial() {
+		amount = BigDecimal.ZERO;
 	}
 
 	public PrecifiedMaterial(int id) {
@@ -59,7 +60,7 @@ public class PrecifiedMaterial {
 	}
 
 	public BigDecimal getAmount() {
-		return amount;
+		return amount == null ? BigDecimal.ZERO : amount;
 	}
 
 }

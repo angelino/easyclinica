@@ -18,6 +18,7 @@ import br.com.easyclinica.domain.entities.PrecifiedProcedure;
 import br.com.easyclinica.domain.entities.PrecifiedSpecialty;
 import br.com.easyclinica.domain.entities.Procedure;
 import br.com.easyclinica.domain.entities.Specialty;
+import br.com.easyclinica.domain.entities.pricing.PricedStuff;
 import br.com.easyclinica.tests.helpers.HealthCarePlanBuilder;
 import br.com.easyclinica.tests.helpers.MaterialBuilder;
 import br.com.easyclinica.tests.helpers.MedicineBuilder;
@@ -123,6 +124,30 @@ public class PrecifiedThingsDaoTests extends DaoBase {
 		PrecifiedSpecialty persistedPrecifiedSpecialty = dao.getMedicalAppointmentPrice(specialty, healthCarePlan);
 		
 		assertTrue((persistedPrecifiedSpecialty.getAmount() == precifiedSpecialty.getAmount()));
+	}
+	
+	@Test
+	public void shouldGetAllPrecifiedMaterialsForAPlan() {
+		HealthCarePlan healthCarePlan = aSavedHealthCarePlan();
+		
+		Material material1 = aSavedMaterial();
+		session.save(material1);
+		Material material2 = aSavedMaterial();
+		session.save(material2);
+		
+		PrecifiedMaterial precifiedMaterial1 = new PrecifiedMaterial();
+		precifiedMaterial1.setAmount(new BigDecimal(10.20));
+		precifiedMaterial1.setHealthCarePlan(healthCarePlan);
+		precifiedMaterial1.setMaterial(material1);
+		session.save(precifiedMaterial1);
+		
+		List<PricedStuff> materials = dao.getMaterialsPrice(healthCarePlan);
+		
+		assertEquals(2, materials.size());
+		assertEquals(precifiedMaterial1.getAmount().doubleValue(), materials.get(0).getAmount().doubleValue(), 0.00001);
+		assertEquals(material1.getId(), materials.get(0).getId());
+		assertEquals(BigDecimal.ZERO, materials.get(1).getAmount());
+		assertEquals(material2.getId(), materials.get(1).getId());
 	}
 	
 	private Procedure aSavedProcedure() {
