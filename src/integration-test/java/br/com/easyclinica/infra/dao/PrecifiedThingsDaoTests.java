@@ -127,7 +127,7 @@ public class PrecifiedThingsDaoTests extends DaoBase {
 	}
 	
 	@Test
-	public void shouldGetAllPrecifiedMaterialsForAPlan() {
+	public void shouldGetAllPricesForMaterialsForAPlan() {
 		HealthCarePlan healthCarePlan = aSavedHealthCarePlan();
 		
 		Material material1 = aSavedMaterial();
@@ -145,9 +145,36 @@ public class PrecifiedThingsDaoTests extends DaoBase {
 		
 		assertEquals(2, materials.size());
 		assertEquals(precifiedMaterial1.getAmount().doubleValue(), materials.get(0).getAmount().doubleValue(), 0.00001);
+		assertEquals(material1.getName(), materials.get(0).getName());
 		assertEquals(material1.getId(), materials.get(0).getId());
 		assertEquals(BigDecimal.ZERO, materials.get(1).getAmount());
 		assertEquals(material2.getId(), materials.get(1).getId());
+	}
+	
+
+	@Test
+	public void shouldGetAllPricesForMedicinesForAPlan() {
+		HealthCarePlan healthCarePlan = aSavedHealthCarePlan();
+		
+		Medicine medicine1 = aSavedMedicine();
+		session.save(medicine1);
+		Medicine medicine2 = aSavedMedicine();
+		session.save(medicine2);
+		
+		PrecifiedMedicine precifiedMedicine = new PrecifiedMedicine();
+		precifiedMedicine.setAmount(new BigDecimal(10.20));
+		precifiedMedicine.setHealthCarePlan(healthCarePlan);
+		precifiedMedicine.setMedicine(medicine1);
+		session.save(precifiedMedicine);
+		
+		List<PricedStuff> medicines = dao.getMedicinesPrice(healthCarePlan);
+		
+		assertEquals(2, medicines.size());
+		assertEquals(precifiedMedicine.getAmount().doubleValue(), medicines.get(0).getAmount().doubleValue(), 0.00001);
+		assertEquals(medicine1.getName(), medicines.get(0).getName());
+		assertEquals(medicine1.getId(), medicines.get(0).getId());
+		assertEquals(BigDecimal.ZERO, medicines.get(1).getAmount());
+		assertEquals(medicine2.getId(), medicines.get(1).getId());
 	}
 	
 	private Procedure aSavedProcedure() {
