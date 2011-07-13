@@ -109,7 +109,7 @@ ul.botoes li{padding:5px 0;}
 
 /*BOX TABELA GERAL ######################################################################################################################*/
 table.easy{float:left;width:100%;border:none; margin-top: 10px;}
-table.easy tr.tableheader th, .main .content .box form table tr.tableheader td{background:#576C82;color:#FFFFFF;font-weight:bold;padding:3px;text-align:center;text-transform:uppercase;}
+table.easy tr.tableheader th, .main .content .box form table tr.tableheader td{background:#576C82;color:#FFFFFF;font-weight:bold;padding:3px;text-align:left;text-transform:uppercase;}
 table.easy tr td{text-align:left;padding:8px; border-bottom:#efefef 1px solid;}
 table.easy tr.boxdivisortable td{padding:0;border:none;}
 table.easy tr td a{background-color:#EEEEEE;background-repeat:no-repeat;background-position:10px 5px;border:1px solid #BFBFBF;color:#222222;cursor:pointer;float:left;font-size:1em;font-weight:bold;line-height:1.3em;margin:0 7px 0 0;padding:5px 10px 5px 25px;text-decoration:none;}
