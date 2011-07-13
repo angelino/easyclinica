@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
 
 import br.com.caelum.vraptor.ioc.Component;
 import br.com.easyclinica.domain.entities.HealthCarePlan;
@@ -25,16 +26,13 @@ public class PrecifiedThingsDao implements PrecifiedThings {
 		this.session = session;
 	}
 	
-	public PrecifiedProcedure getPrice(Procedure procedure, HealthCarePlan healthCarePlan) {
-		StringBuilder sql = new StringBuilder();
-		sql.append(" from PrecifiedProcedure p ");
-		sql.append(" where p.healthCarePlan.id = :healthCarePlanId ");
-		sql.append(" and p.procedure.id = :procedureId ");
+	public PrecifiedProcedure getPrice(Procedure procedure, HealthCarePlan healthCarePlan) {		
+		PrecifiedProcedure price = (PrecifiedProcedure)session.createCriteria(PrecifiedProcedure.class)
+										  .add(Restrictions.eq("healthCarePlan.id", healthCarePlan.getId()))
+										  .add(Restrictions.eq("procedure.id", procedure.getId()))
+										  .uniqueResult();
 		
-		Query query = session.createQuery(sql.toString())
-						.setParameter("healthCarePlanId", healthCarePlan.getId())
-						.setParameter("procedureId", procedure.getId());
-		return (PrecifiedProcedure) query.uniqueResult();
+		return price == null ? PrecifiedProcedure.empty() : price;
 	}
 	
 	@SuppressWarnings("unchecked")
