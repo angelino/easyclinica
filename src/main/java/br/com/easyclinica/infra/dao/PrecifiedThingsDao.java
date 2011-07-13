@@ -57,6 +57,16 @@ public class PrecifiedThingsDao implements PrecifiedThings {
 		return (List<PricedStuff>) query.list();
 	}
 
+
+	@SuppressWarnings("unchecked")
+	public List<PricedStuff> getProceduresPrice(HealthCarePlan plan) {
+		StringBuilder sql = new StringBuilder();
+		sql.append("select new br.com.easyclinica.domain.entities.pricing.PricedStuff(m.id, m.name, pm.fixedAmount) from PrecifiedProcedure pm right outer join pm.procedure m left join pm.healthCarePlan plan with plan.id = :healthCarePlanId");
+	
+		Query query = session.createQuery(sql.toString())
+						.setParameter("healthCarePlanId", plan.getId());
+		return (List<PricedStuff>) query.list();
+	}
 	
 	@SuppressWarnings("unchecked")
 	public List<PrecifiedMaterial> getMaterialsPrice(Procedure procedure, HealthCarePlan healthCarePlan) {

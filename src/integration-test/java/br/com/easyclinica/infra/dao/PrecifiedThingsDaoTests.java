@@ -177,6 +177,33 @@ public class PrecifiedThingsDaoTests extends DaoBase {
 		assertEquals(medicine2.getId(), medicines.get(1).getId());
 	}
 	
+
+	@Test
+	public void shouldGetAllPricesForProceduresForAPlan() {
+		HealthCarePlan healthCarePlan = aSavedHealthCarePlan();
+		
+		Procedure procedure1 = aSavedProcedure();
+		session.save(procedure1);
+		Procedure procedure22 = aSavedProcedure();
+		session.save(procedure22);
+		
+		PrecifiedProcedure precifiedProcedure = new PrecifiedProcedure();
+		precifiedProcedure.setFixedAmount(new BigDecimal(10.20));
+		precifiedProcedure.setRoomTaxAmount(new BigDecimal(20.10));
+		precifiedProcedure.setHealthCarePlan(healthCarePlan);
+		precifiedProcedure.setProcedure(procedure1);
+		session.save(precifiedProcedure);
+		
+		List<PricedStuff> procedures = dao.getProceduresPrice(healthCarePlan);
+		
+		assertEquals(2, procedures.size());
+		assertEquals(precifiedProcedure.getFixedAmount().doubleValue(), procedures.get(0).getAmount().doubleValue(), 0.00001);
+		assertEquals(procedure1.getName(), procedures.get(0).getName());
+		assertEquals(procedure1.getId(), procedures.get(0).getId());
+		assertEquals(BigDecimal.ZERO, procedures.get(1).getAmount());
+		assertEquals(procedure22.getId(), procedures.get(1).getId());
+	}
+	
 	private Procedure aSavedProcedure() {
 		Procedure procedure = new ProcedureBuilder().instance();
 		session.save(procedure);
