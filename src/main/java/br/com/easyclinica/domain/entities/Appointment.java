@@ -66,6 +66,9 @@ public class Appointment {
 	public Appointment() {
 		procedures = new ArrayList<AppointmentProcedure>();
 		date = Calendar.getInstance();
+		
+		roomRateAmount = BigDecimal.ZERO;
+		appointmentAmount = BigDecimal.ZERO;
 	}
 
 	public int getId() {

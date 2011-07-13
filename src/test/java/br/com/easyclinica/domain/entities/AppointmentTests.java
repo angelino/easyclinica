@@ -33,7 +33,7 @@ public class AppointmentTests {
 		procedure.addMaterial(aMaterial());
 		appointment.addProcedure(procedure);
 		
-		assertEquals(new BigDecimal(10), appointment.getProcedureAmount());
+		assertEquals(new BigDecimal(10), appointment.getTotalAmount());
 	}
 
 	private AppointmentMaterial aMaterial() {
