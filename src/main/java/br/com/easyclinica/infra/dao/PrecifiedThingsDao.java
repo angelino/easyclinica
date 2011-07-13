@@ -14,6 +14,7 @@ import br.com.easyclinica.domain.entities.PrecifiedProcedure;
 import br.com.easyclinica.domain.entities.PrecifiedSpecialty;
 import br.com.easyclinica.domain.entities.Procedure;
 import br.com.easyclinica.domain.entities.Specialty;
+import br.com.easyclinica.domain.entities.pricing.PricedStuff;
 import br.com.easyclinica.domain.repositories.PrecifiedThings;
 
 @Component
@@ -32,6 +33,47 @@ public class PrecifiedThingsDao implements PrecifiedThings {
 										  .uniqueResult();
 		
 		return price == null ? PrecifiedProcedure.empty() : price;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<PricedStuff> getMaterialsPrice(HealthCarePlan plan) {
+		StringBuilder sql = new StringBuilder();
+		sql.append("select new br.com.easyclinica.domain.entities.pricing.PricedStuff(m.id, m.name, pm.amount) from PrecifiedMaterial pm right outer join pm.material m left join pm.healthCarePlan plan with plan.id = :healthCarePlanId");
+	
+		Query query = session.createQuery(sql.toString())
+						.setParameter("healthCarePlanId", plan.getId());
+		return (List<PricedStuff>) query.list();
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<PricedStuff> getMedicinesPrice(HealthCarePlan plan) {
+		StringBuilder sql = new StringBuilder();
+		sql.append("select new br.com.easyclinica.domain.entities.pricing.PricedStuff(m.id, m.name, pm.amount) from PrecifiedMedicine pm right outer join pm.medicine m left join pm.healthCarePlan plan with plan.id = :healthCarePlanId");
+	
+		Query query = session.createQuery(sql.toString())
+						.setParameter("healthCarePlanId", plan.getId());
+		return (List<PricedStuff>) query.list();
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<PricedStuff> getSpecialtiesPrice(HealthCarePlan plan) {
+		StringBuilder sql = new StringBuilder();
+		sql.append("select new br.com.easyclinica.domain.entities.pricing.PricedStuff(m.id, m.name, pm.amount) from PrecifiedSpecialty pm right outer join pm.specialty m left join pm.healthCarePlan plan with plan.id = :healthCarePlanId");
+	
+		Query query = session.createQuery(sql.toString())
+						.setParameter("healthCarePlanId", plan.getId());
+		return (List<PricedStuff>) query.list();
+	}
+
+
+	@SuppressWarnings("unchecked")
+	public List<PricedStuff> getProceduresPrice(HealthCarePlan plan) {
+		StringBuilder sql = new StringBuilder();
+		sql.append("select new br.com.easyclinica.domain.entities.pricing.PricedStuff(m.id, m.name, pm.fixedAmount) from PrecifiedProcedure pm right outer join pm.procedure m left join pm.healthCarePlan plan with plan.id = :healthCarePlanId");
+	
+		Query query = session.createQuery(sql.toString())
+						.setParameter("healthCarePlanId", plan.getId());
+		return (List<PricedStuff>) query.list();
 	}
 	
 	@SuppressWarnings("unchecked")

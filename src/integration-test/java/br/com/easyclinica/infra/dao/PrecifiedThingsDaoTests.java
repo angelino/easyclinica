@@ -20,6 +20,7 @@ import br.com.easyclinica.domain.entities.PrecifiedProcedure;
 import br.com.easyclinica.domain.entities.PrecifiedSpecialty;
 import br.com.easyclinica.domain.entities.Procedure;
 import br.com.easyclinica.domain.entities.Specialty;
+import br.com.easyclinica.domain.entities.pricing.PricedStuff;
 import br.com.easyclinica.tests.helpers.HealthCarePlanBuilder;
 import br.com.easyclinica.tests.helpers.MaterialBuilder;
 import br.com.easyclinica.tests.helpers.MedicineBuilder;
@@ -136,6 +137,110 @@ public class PrecifiedThingsDaoTests extends DaoBase {
 		PrecifiedSpecialty persistedPrecifiedSpecialty = dao.getMedicalAppointmentPrice(specialty, healthCarePlan);
 		
 		assertTrue((persistedPrecifiedSpecialty.getAmount() == precifiedSpecialty.getAmount()));
+	}
+	
+	@Test
+	public void shouldGetAllPricesForMaterialsForAPlan() {
+		HealthCarePlan healthCarePlan = aSavedHealthCarePlan();
+		
+		Material material1 = aSavedMaterial();
+		session.save(material1);
+		Material material2 = aSavedMaterial();
+		session.save(material2);
+		
+		PrecifiedMaterial precifiedMaterial1 = new PrecifiedMaterial();
+		precifiedMaterial1.setAmount(new BigDecimal(10.20));
+		precifiedMaterial1.setHealthCarePlan(healthCarePlan);
+		precifiedMaterial1.setMaterial(material1);
+		session.save(precifiedMaterial1);
+		
+		List<PricedStuff> materials = dao.getMaterialsPrice(healthCarePlan);
+		
+		assertEquals(2, materials.size());
+		assertEquals(precifiedMaterial1.getAmount().doubleValue(), materials.get(0).getAmount().doubleValue(), 0.00001);
+		assertEquals(material1.getName(), materials.get(0).getName());
+		assertEquals(material1.getId(), materials.get(0).getId());
+		assertEquals(BigDecimal.ZERO, materials.get(1).getAmount());
+		assertEquals(material2.getId(), materials.get(1).getId());
+	}
+
+
+	@Test
+	public void shouldGetAllPricesForSpecialtiesForAPlan() {
+		HealthCarePlan healthCarePlan = aSavedHealthCarePlan();
+		
+		Specialty specialty1 = aSavedSpecialty();
+		session.save(specialty1);
+		Specialty specialty2 = aSavedSpecialty();
+		session.save(specialty2);
+		
+		PrecifiedSpecialty precifiedSpecialty = new PrecifiedSpecialty();
+		precifiedSpecialty.setAmount(new BigDecimal(10.20));
+		precifiedSpecialty.setHealthCarePlan(healthCarePlan);
+		precifiedSpecialty.setSpecialty(specialty1);
+		session.save(precifiedSpecialty);
+		
+		List<PricedStuff> specialties = dao.getSpecialtiesPrice(healthCarePlan);
+		
+		assertEquals(2, specialties.size());
+		assertEquals(precifiedSpecialty.getAmount().doubleValue(), specialties.get(0).getAmount().doubleValue(), 0.00001);
+		assertEquals(specialty1.getName(), specialties.get(0).getName());
+		assertEquals(specialty1.getId(), specialties.get(0).getId());
+		assertEquals(BigDecimal.ZERO, specialties.get(1).getAmount());
+		assertEquals(specialty2.getId(), specialties.get(1).getId());
+	}
+	
+
+	@Test
+	public void shouldGetAllPricesForMedicinesForAPlan() {
+		HealthCarePlan healthCarePlan = aSavedHealthCarePlan();
+		
+		Medicine medicine1 = aSavedMedicine();
+		session.save(medicine1);
+		Medicine medicine2 = aSavedMedicine();
+		session.save(medicine2);
+		
+		PrecifiedMedicine precifiedMedicine = new PrecifiedMedicine();
+		precifiedMedicine.setAmount(new BigDecimal(10.20));
+		precifiedMedicine.setHealthCarePlan(healthCarePlan);
+		precifiedMedicine.setMedicine(medicine1);
+		session.save(precifiedMedicine);
+		
+		List<PricedStuff> medicines = dao.getMedicinesPrice(healthCarePlan);
+		
+		assertEquals(2, medicines.size());
+		assertEquals(precifiedMedicine.getAmount().doubleValue(), medicines.get(0).getAmount().doubleValue(), 0.00001);
+		assertEquals(medicine1.getName(), medicines.get(0).getName());
+		assertEquals(medicine1.getId(), medicines.get(0).getId());
+		assertEquals(BigDecimal.ZERO, medicines.get(1).getAmount());
+		assertEquals(medicine2.getId(), medicines.get(1).getId());
+	}
+	
+
+	@Test
+	public void shouldGetAllPricesForProceduresForAPlan() {
+		HealthCarePlan healthCarePlan = aSavedHealthCarePlan();
+		
+		Procedure procedure1 = aSavedProcedure();
+		session.save(procedure1);
+		Procedure procedure22 = aSavedProcedure();
+		session.save(procedure22);
+		
+		PrecifiedProcedure precifiedProcedure = new PrecifiedProcedure();
+		precifiedProcedure.setFixedAmount(new BigDecimal(10.20));
+		precifiedProcedure.setRoomTaxAmount(new BigDecimal(20.10));
+		precifiedProcedure.setHealthCarePlan(healthCarePlan);
+		precifiedProcedure.setProcedure(procedure1);
+		session.save(precifiedProcedure);
+		
+		List<PricedStuff> procedures = dao.getProceduresPrice(healthCarePlan);
+		
+		assertEquals(2, procedures.size());
+		assertEquals(precifiedProcedure.getFixedAmount().doubleValue(), procedures.get(0).getAmount().doubleValue(), 0.00001);
+		assertEquals(procedure1.getName(), procedures.get(0).getName());
+		assertEquals(procedure1.getId(), procedures.get(0).getId());
+		assertEquals(BigDecimal.ZERO, procedures.get(1).getAmount());
+		assertEquals(procedure22.getId(), procedures.get(1).getId());
 	}
 	
 	private Procedure aSavedProcedure() {

@@ -1,10 +1,15 @@
 package br.com.easyclinica.domain.entities;
 
+import java.util.Collections;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Material {
@@ -15,6 +20,9 @@ public class Material {
 	
 	@Enumerated(EnumType.STRING)
 	private Unit unit;
+	
+	@OneToMany(fetch=FetchType.EAGER, mappedBy="material")
+	private List<PrecifiedMaterial> precifiedMaterials;
 
 	public Material() {
 	}
@@ -52,4 +60,9 @@ public class Material {
 		return this.name;
 	}
 
+	public List<PrecifiedMaterial> getPrecifiedMaterials() {
+		return Collections.unmodifiableList(precifiedMaterials);
+	}
+
+	
 }
