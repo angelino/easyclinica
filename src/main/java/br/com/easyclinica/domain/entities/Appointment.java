@@ -234,6 +234,9 @@ public class Appointment {
 			assistantAmount = assistantAmount.add(procedure.getAssistantsTotal());
 		}
 		
+		if(this.roomRateAmount == null) this.roomRateAmount = BigDecimal.ZERO;
+		if(this.appointmentAmount == null) this.appointmentAmount = BigDecimal.ZERO;
+		
 		totalAmount = totalAmount.add(this.roomRateAmount);
 		totalAmount = totalAmount.add(this.appointmentAmount);
 	}

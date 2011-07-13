@@ -6,6 +6,8 @@ import static org.junit.Assert.assertTrue;
 import java.math.BigDecimal;
 import java.util.List;
 
+import junit.framework.Assert;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -47,6 +49,17 @@ public class PrecifiedThingsDaoTests extends DaoBase {
 		PrecifiedProcedure persistedPrecifiedProcedure = dao.getPrice(procedure, healthCarePlan);
 		
 		assertTrue((persistedPrecifiedProcedure.getFixedAmount() == precifiedProcedure.getFixedAmount()));
+	}
+	
+	@Test
+	public void shouldGetZeroAsTheFixedPriceOfAProcedureThatDoesNotHavePrice() { 
+		Procedure procedure = aSavedProcedure();
+		HealthCarePlan healthCarePlan = aSavedHealthCarePlan();
+
+		PrecifiedProcedure persistedPrecifiedProcedure = dao.getPrice(procedure, healthCarePlan);
+		
+		Assert.assertNotNull(persistedPrecifiedProcedure);
+		assertEquals(BigDecimal.ZERO, persistedPrecifiedProcedure.getFixedAmount());
 	}
 	
 	@Test

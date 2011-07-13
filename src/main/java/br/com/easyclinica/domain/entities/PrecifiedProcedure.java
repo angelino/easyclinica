@@ -24,6 +24,12 @@ public class PrecifiedProcedure {
 	private BigDecimal roomTaxAmount;
 	private int ch;
 
+	public PrecifiedProcedure()
+	{
+		this.fixedAmount = BigDecimal.ZERO;
+		this.roomTaxAmount = BigDecimal.ZERO;
+	}
+	
 	public HealthCarePlan getHealthCarePlan() {
 		return healthCarePlan;
 	}
@@ -72,4 +78,9 @@ public class PrecifiedProcedure {
 		this.roomTaxAmount = roomTaxAmount;
 	}
 
+	public static PrecifiedProcedure empty()
+	{
+		return new PrecifiedProcedure();
+	}
+	
 }
