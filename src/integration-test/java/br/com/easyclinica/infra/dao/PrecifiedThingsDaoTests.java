@@ -224,6 +224,7 @@ public class PrecifiedThingsDaoTests extends DaoBase {
 		
 		assertEquals(2, procedures.size());
 		assertEquals(precifiedProcedure.getFixedAmount().doubleValue(), procedures.get(0).getAmount().doubleValue(), 0.00001);
+		assertEquals(precifiedProcedure.getRoomTaxAmount().doubleValue(), procedures.get(0).getRoomTaxAmount().doubleValue(), 0.00001);
 		assertEquals(procedure1.getName(), procedures.get(0).getName());
 		assertEquals(procedure1.getId(), procedures.get(0).getId());
 		assertEquals(BigDecimal.ZERO, procedures.get(1).getAmount());
