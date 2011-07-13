@@ -150,6 +150,32 @@ public class PrecifiedThingsDaoTests extends DaoBase {
 		assertEquals(BigDecimal.ZERO, materials.get(1).getAmount());
 		assertEquals(material2.getId(), materials.get(1).getId());
 	}
+
+
+	@Test
+	public void shouldGetAllPricesForSpecialtiesForAPlan() {
+		HealthCarePlan healthCarePlan = aSavedHealthCarePlan();
+		
+		Specialty specialty1 = aSavedSpecialty();
+		session.save(specialty1);
+		Specialty specialty2 = aSavedSpecialty();
+		session.save(specialty2);
+		
+		PrecifiedSpecialty precifiedSpecialty = new PrecifiedSpecialty();
+		precifiedSpecialty.setAmount(new BigDecimal(10.20));
+		precifiedSpecialty.setHealthCarePlan(healthCarePlan);
+		precifiedSpecialty.setSpecialty(specialty1);
+		session.save(precifiedSpecialty);
+		
+		List<PricedStuff> specialties = dao.getSpecialtiesPrice(healthCarePlan);
+		
+		assertEquals(2, specialties.size());
+		assertEquals(precifiedSpecialty.getAmount().doubleValue(), specialties.get(0).getAmount().doubleValue(), 0.00001);
+		assertEquals(specialty1.getName(), specialties.get(0).getName());
+		assertEquals(specialty1.getId(), specialties.get(0).getId());
+		assertEquals(BigDecimal.ZERO, specialties.get(1).getAmount());
+		assertEquals(specialty2.getId(), specialties.get(1).getId());
+	}
 	
 
 	@Test
