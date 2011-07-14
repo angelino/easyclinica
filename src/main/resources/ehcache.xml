@@ -14,7 +14,7 @@
 		maxElementsInMemory="1" eternal="true" />
 		
 	<cache name="br.com.easyclinica.domain.entities.Patient" eternal="false"
-		timeToIdleSeconds="180" timeToLiveSeconds="300" overflowToDisk="true"
+		timeToIdleSeconds="180" timeToLiveSeconds="300" 
 		maxElementsInMemory="20" maxElementsOnDisk="500" overflowToDisk="false"
 		diskExpiryThreadIntervalSeconds="120" memoryStoreEvictionPolicy="LRU" />
 		
