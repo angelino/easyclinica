@@ -35,6 +35,7 @@ public class ChatMessageDao implements AllChatMessages {
 					)
 				.add(Restrictions.gt("date", date))
 				.addOrder(Order.asc("date"))
+				.setCacheable(true)
 				.list();
 	}
 

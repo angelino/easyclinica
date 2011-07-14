@@ -68,6 +68,7 @@ public class DatabaseConfigurator {
 		configuration.setProperty("hibernate.cache.provider_class", "org.hibernate.cache.EhCacheProvider");
 		configuration.setProperty("hibernate.cache.use_second_level_cache", "true");
 		configuration.setProperty("hibernate.cache.use_query_cache", "true");
+		configuration.setProperty("hibernate.cache.provider_configuration_file_resource_path", "/ehcache.xml");
 		
 		if(cfg.get("env").equals("dev")){
 			configuration.setProperty("hibernate.hbm2ddl.auto", "update");

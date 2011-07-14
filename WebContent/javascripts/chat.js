@@ -4,7 +4,10 @@ jQuery.fn.exists = function(){return jQuery(this).length>0;}
 var CHAT_BOX = 225;
 var SPACER = 20;
 var REFRESH_TIME = 1000;
+var SLOW_REFRESH_TIME = 5000;
 var LIST_REFRESH_TIME = 5000;
+
+var timesWithNoMsgs = 0;
 
 function createChat(user) {
 	drawChat(user);
@@ -66,13 +69,15 @@ function refreshChatMsgs() {
 }
 
 function showChatMessages(data) {
+	var qty = 0;
 	for(var i in data.msgs){
 		var msg = data.msgs[i];
 		var window = msg.to == data.user ? msg.from : msg.to;
 		putMsg(window, msg.from, msg.message);
+		qty++;
 	}
 	
-	refreshAutomatically();
+	refreshAutomatically(qty);
 }
 
 function putMsg(window, author, message) {
@@ -130,8 +135,16 @@ function makeMsgVisible(user, visibility) {
 	if(visibility == true) $('#chat-textarea-' + user).focus();
 }
 
-function refreshAutomatically() {
-	setTimeout('refreshChatMsgs()',REFRESH_TIME);	
+function refreshAutomatically(qty) {
+	if(qty==0) timesWithNoMsgs++;
+	else timesWithNoMsgs=0;
+	
+	if(timesWithNoMsgs > 15) {
+		setTimeout('refreshChatMsgs()',SLOW_REFRESH_TIME);
+	}
+	else {
+		setTimeout('refreshChatMsgs()',REFRESH_TIME);
+	}
 }
 
 function onlineUsers() {

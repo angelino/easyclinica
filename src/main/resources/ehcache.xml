@@ -1,0 +1,21 @@
+<ehcache>
+	<diskStore path="java.io.tmpdir" />
+
+	<defaultCache maxElementsInMemory="20" eternal="false"
+		timeToIdleSeconds="120" timeToLiveSeconds="300" overflowToDisk="false"
+		maxElementsOnDisk="500" diskPersistent="false"
+		diskExpiryThreadIntervalSeconds="120" memoryStoreEvictionPolicy="LRU" />
+
+	<cache name="org.hibernate.cache.StandardQueryCache"
+		maxElementsInMemory="5" eternal="false" timeToLiveSeconds="300"
+		overflowToDisk="true" />
+
+	<cache name="br.com.easyclinica.domain.entities.Clinic"
+		maxElementsInMemory="1" eternal="true" />
+		
+	<cache name="br.com.easyclinica.domain.entities.Patient" eternal="false"
+		timeToIdleSeconds="180" timeToLiveSeconds="300" overflowToDisk="true"
+		maxElementsInMemory="20" maxElementsOnDisk="500" overflowToDisk="false"
+		diskExpiryThreadIntervalSeconds="120" memoryStoreEvictionPolicy="LRU" />
+		
+</ehcache> 
