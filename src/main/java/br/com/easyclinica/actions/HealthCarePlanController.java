@@ -11,7 +11,6 @@ import br.com.caelum.vraptor.view.Results;
 import br.com.easyclinica.domain.entities.HealthCarePlan;
 import br.com.easyclinica.domain.repositories.AllHealthCarePlans;
 import br.com.easyclinica.domain.services.pricing.PricingCopier;
-import br.com.easyclinica.domain.services.pricing.PricingZerifier;
 import br.com.easyclinica.domain.validators.HealthCarePlanValidator;
 import br.com.easyclinica.infra.vraptor.validators.ErrorTranslator;
 import br.com.easyclinica.view.Messages;
@@ -26,13 +25,12 @@ public class HealthCarePlanController extends BaseController {
 	private final ErrorTranslator translator;
 	private final Paginator paginator;
 	private final PricingCopier copier;
-	private final PricingZerifier zerifier;
 
 	public HealthCarePlanController(AllHealthCarePlans allHealthCares,
 			Result result, Validator validator,
 			HealthCarePlanValidator healthCarePlanValidator,
 			ErrorTranslator translator, Paginator paginator,
-			PricingCopier copier, PricingZerifier zerifier) {
+			PricingCopier copier) {
 		super(result);
 		this.allHealthCares = allHealthCares;
 		this.result = result;
@@ -41,7 +39,6 @@ public class HealthCarePlanController extends BaseController {
 		this.translator = translator;
 		this.paginator = paginator;
 		this.copier = copier;
-		this.zerifier = zerifier;
 	}
 
 	@Get
@@ -76,12 +73,7 @@ public class HealthCarePlanController extends BaseController {
 				.forwardTo(HealthCarePlanController.class).newForm(healthCarePlan);
 
 		allHealthCares.add(healthCarePlan);
-		if (example.getId() > 0) {
-			copier.copyPrices(example, healthCarePlan);
-		}
-		else {
-			zerifier.zeroPrices(healthCarePlan);
-		}
+		copier.copyPrices(example, healthCarePlan);
 
 		successMsg(Messages.HEALTH_CARE_PLAN_ADDED);
 		result.redirectTo(HealthCarePlanController.class).show(
