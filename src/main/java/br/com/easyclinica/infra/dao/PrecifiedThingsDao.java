@@ -14,6 +14,7 @@ import br.com.easyclinica.domain.entities.PrecifiedProcedure;
 import br.com.easyclinica.domain.entities.PrecifiedSpecialty;
 import br.com.easyclinica.domain.entities.Procedure;
 import br.com.easyclinica.domain.entities.Specialty;
+import br.com.easyclinica.domain.entities.pricing.PricedProcedure;
 import br.com.easyclinica.domain.entities.pricing.PricedStuff;
 import br.com.easyclinica.domain.repositories.PrecifiedThings;
 
@@ -67,13 +68,13 @@ public class PrecifiedThingsDao implements PrecifiedThings {
 
 
 	@SuppressWarnings("unchecked")
-	public List<PricedStuff> getProceduresPrice(HealthCarePlan plan) {
+	public List<PricedProcedure> getProceduresPrice(HealthCarePlan plan) {
 		StringBuilder sql = new StringBuilder();
-		sql.append("select new br.com.easyclinica.domain.entities.pricing.PricedStuff(m.id, m.name, pm.fixedAmount, pm.roomTaxAmount) from PrecifiedProcedure pm right outer join pm.procedure m left join pm.healthCarePlan plan with plan.id = :healthCarePlanId");
+		sql.append("select new br.com.easyclinica.domain.entities.pricing.PricedProcedure(m.id, m.name, pm.fixedAmount, m.ambCode, pm.ch, pm.roomTaxAmount) from PrecifiedProcedure pm right outer join pm.procedure m left join pm.healthCarePlan plan with plan.id = :healthCarePlanId");
 	
 		Query query = session.createQuery(sql.toString())
 						.setParameter("healthCarePlanId", plan.getId());
-		return (List<PricedStuff>) query.list();
+		return (List<PricedProcedure>) query.list();
 	}
 	
 	@SuppressWarnings("unchecked")

@@ -6,9 +6,8 @@ import org.apache.poi.ss.usermodel.Sheet;
 
 import br.com.caelum.vraptor.ioc.Component;
 import br.com.easyclinica.domain.entities.HealthCarePlan;
-import br.com.easyclinica.domain.entities.Material;
-import br.com.easyclinica.domain.entities.PrecifiedMaterial;
-import br.com.easyclinica.domain.repositories.AllMaterials;
+import br.com.easyclinica.domain.entities.pricing.PricedStuff;
+import br.com.easyclinica.domain.repositories.PrecifiedThings;
 import br.com.easyclinica.domain.services.pricing.HeaderCreator;
 
 @Component
@@ -16,12 +15,12 @@ public class MaterialPricingSheetExporter implements StuffExporter {
 
 	private HealthCarePlan plan;
 	private HSSFWorkbook wb;
-	private final AllMaterials materials;
 	private final HeaderCreator header;
+	private final PrecifiedThings precifiedThings;
 
-	public MaterialPricingSheetExporter(AllMaterials materials, HeaderCreator header) {
-		this.materials = materials;
+	public MaterialPricingSheetExporter(HeaderCreator header, PrecifiedThings precifiedThings) {
 		this.header = header;
+		this.precifiedThings = precifiedThings;
 	}
 
 	public void export(HealthCarePlan plan, HSSFWorkbook wb) {
@@ -37,24 +36,14 @@ public class MaterialPricingSheetExporter implements StuffExporter {
 		header.create(sheet, "ID", "Nome do Material", "Valor");
 
 		int rowCount = 1;
-		for (Material material : materials.getAll()) {
-			PrecifiedMaterial precifiedMaterial = findInPlan(material);
+		
+		for(PricedStuff stuff : precifiedThings.getMaterialsPrice(plan)) {
 			Row row = sheet.createRow(rowCount++);
-			row.createCell(0).setCellValue(material.getId());
-			row.createCell(1).setCellValue(material.getName());
-			row.createCell(2).setCellValue(
-					(precifiedMaterial == null ? 0.0 : precifiedMaterial
-							.getAmount().doubleValue()));
+			row.createCell(0).setCellValue(stuff.getId());
+			row.createCell(1).setCellValue(stuff.getName());
+			row.createCell(2).setCellValue(stuff.getAmount().doubleValue());
 		}
-	}
-
-	private PrecifiedMaterial findInPlan(Material material) {
-		for (PrecifiedMaterial pm : plan.getPrecifiedMaterials()) {
-			if (pm.getMaterial().getId() == material.getId())
-				return pm;
-		}
-
-		return null;
+		
 	}
 
 	public String getName() {

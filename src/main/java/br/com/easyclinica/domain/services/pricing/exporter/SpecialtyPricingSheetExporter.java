@@ -6,22 +6,21 @@ import org.apache.poi.ss.usermodel.Sheet;
 
 import br.com.caelum.vraptor.ioc.Component;
 import br.com.easyclinica.domain.entities.HealthCarePlan;
-import br.com.easyclinica.domain.entities.PrecifiedSpecialty;
-import br.com.easyclinica.domain.entities.Specialty;
-import br.com.easyclinica.domain.repositories.AllSpecialties;
+import br.com.easyclinica.domain.entities.pricing.PricedStuff;
+import br.com.easyclinica.domain.repositories.PrecifiedThings;
 import br.com.easyclinica.domain.services.pricing.HeaderCreator;
 
 @Component
 public class SpecialtyPricingSheetExporter implements StuffExporter {
 
-	private final AllSpecialties specialties;
 	private HealthCarePlan plan;
 	private HSSFWorkbook wb;
 	private final HeaderCreator header;
+	private PrecifiedThings precifiedThings;
 
-	public SpecialtyPricingSheetExporter(AllSpecialties specialties, HeaderCreator header) {
-		this.specialties = specialties;
+	public SpecialtyPricingSheetExporter(HeaderCreator header, PrecifiedThings precifiedThings) {
 		this.header = header;
+		this.precifiedThings = precifiedThings;
 	}
 
 	public void export(HealthCarePlan plan, HSSFWorkbook wb) {
@@ -37,23 +36,14 @@ public class SpecialtyPricingSheetExporter implements StuffExporter {
 		header.create(sheet, "ID", "Nome da Especialidade", "Valor");
 
 		int rowCount = 1;
-		for (Specialty specialty : specialties.getAll()) {
-			PrecifiedSpecialty precifiedSpecialty = findInPlan(specialty);
+		
+		for(PricedStuff stuff : precifiedThings.getSpecialtiesPrice(plan)) {
 			Row row = sheet.createRow(rowCount++);
-			row.createCell(0).setCellValue(specialty.getId());
-			row.createCell(1).setCellValue(specialty.getName());
-			row.createCell(2).setCellValue(
-					(precifiedSpecialty == null ? 0.0 : precifiedSpecialty
-							.getAmount().doubleValue()));
+			row.createCell(0).setCellValue(stuff.getId());
+			row.createCell(1).setCellValue(stuff.getName());
+			row.createCell(2).setCellValue(stuff.getAmount().doubleValue());
 		}
-	}
-
-	private PrecifiedSpecialty findInPlan(Specialty specialty) {
-		for (PrecifiedSpecialty ps : plan.getPrecifiedSpecialties()) {
-			if (ps.getSpecialty().getId() == specialty.getId())
-				return ps;
-		}
-		return null;
+		
 	}
 
 	public String getName() {
