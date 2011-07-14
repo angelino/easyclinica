@@ -38,6 +38,13 @@
         	<exclude module="hibernate"/>
         </dependency>
         
+		<dependency org="joda-time" name="joda-time-jsptags" rev="1.0.1" conf="default">
+			<exclude module="jstl" />
+			<exclude module="jsp-api" />
+			<exclude module="servlet-api" />
+			<exclude module="joda-time" />
+		</dependency>
+		
         <dependency org="org.hamcrest" name="hamcrest-all" rev="1.1" conf="default" />
 		
 		<!-- Test dependencies -->

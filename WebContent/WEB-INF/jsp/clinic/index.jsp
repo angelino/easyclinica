@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="joda" uri="http://www.joda.org/joda/time/tags" %>
 <%@ taglib uri="/WEB-INF/easyclinica.tld" prefix="helper" %>
 <%@page import="br.com.easyclinica.view.Link"%>
 <%@page import="java.util.LinkedList"%>
@@ -54,7 +55,11 @@
 							<label class="title">Cidade:<span>*</span></label>
 							<input type="text" name="clinic.address.city" required="required" tabindex="11" maxlength="50" value="${clinic.address.city}" />
 						</div>
-				    	
+
+						<div>
+							<label class="title">Hora de abertura:</label>
+					    	<input type="text" name="clinic.startOperation" tabindex="13" value="<joda:format value="${clinic.startOperation}" pattern="HH:mm:ss" />" />
+					    </div>					
 					</fieldset>
 					
 					<fieldset>	
@@ -87,7 +92,11 @@
 							<label class="title">Estado:</label>
 					    	<input type="text" name="clinic.address.state" tabindex="12" maxlength="2" value="${clinic.address.state}" />
 					    </div>
-					
+
+						<div>
+							<label class="title">Hora de fechamento:</label>
+					    	<input type="text" name="clinic.endOperation" tabindex="14" value="<joda:format value="${clinic.endOperation}" pattern="HH:mm:ss" />" />
+					    </div>					
 				    </fieldset>
 				    
 				    <div class="boxactions">

@@ -63,7 +63,7 @@ public class PersistentLocalTime implements EnhancedUserType, Serializable {
             Hibernate.TIME.nullSafeSet(preparedStatement, null, index);
         } else {
             LocalTime lt = ((LocalTime) value);
-            Time time = new Time(lt.getMillisOfDay());
+            Time time = new Time(lt.getHourOfDay(), lt.getMinuteOfHour(), lt.getSecondOfMinute());
             Hibernate.TIME.nullSafeSet(preparedStatement, time, index);
         }
     }
