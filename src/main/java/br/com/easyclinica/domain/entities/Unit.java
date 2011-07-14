@@ -7,7 +7,7 @@ public enum Unit {
 	PAR("par"),
 	KG("kg"),
 	PACOTE("pacote"),
-	CENTIMETRO("centÃ­metro"),
+	CENTIMETRO("centímetro"),
 	METRO("metro");
 
 	private String name;
