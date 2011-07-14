@@ -43,9 +43,9 @@ public class ProcedurePricingSheetExporter implements StuffExporter {
 			row.createCell(0).setCellValue(stuff.getId());
 			row.createCell(1).setCellValue(stuff.getAmbCode());
 			row.createCell(2).setCellValue(stuff.getName());
-			row.createCell(3).setCellValue(stuff.getAmount().doubleValue());
+			row.createCell(3).setCellValue(stuff.getAmount() == null ? 0.0 : stuff.getAmount().doubleValue());
 			row.createCell(4).setCellValue(stuff.getCh());
-			row.createCell(5).setCellValue(stuff.getRoomTaxAmount().doubleValue());
+			row.createCell(5).setCellValue(stuff.getRoomTaxAmount() == null ? 0.0 : stuff.getRoomTaxAmount().doubleValue());
 		}
 
 	}
