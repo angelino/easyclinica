@@ -1,8 +1,9 @@
 package br.com.easyclinica.infra.dao;
 
+import java.math.BigDecimal;
+import java.util.LinkedList;
 import java.util.List;
 
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Order;
@@ -11,6 +12,7 @@ import org.hibernate.criterion.Restrictions;
 import br.com.caelum.vraptor.ioc.Component;
 import br.com.easyclinica.domain.entities.HealthCarePlan;
 import br.com.easyclinica.domain.entities.Medicine;
+import br.com.easyclinica.domain.entities.MedicineInProcedure;
 import br.com.easyclinica.domain.entities.MedicineWithPriceAndQuantity;
 import br.com.easyclinica.domain.entities.Procedure;
 import br.com.easyclinica.domain.repositories.AllMedicines;
@@ -40,11 +42,37 @@ public class MedicineDao implements AllMedicines {
 		hql.append(" and pm.healthCarePlan.id = :healthCarePlanId ");
 		hql.append(" and m.procedure.id = :procedureId ");
 		
-		Query query = session.createQuery(hql.toString())
-							 .setParameter("healthCarePlanId", healthCarePlan.getId())
-							 .setParameter("procedureId", procedure.getId());
+		List<MedicineWithPriceAndQuantity> medicines = (List<MedicineWithPriceAndQuantity>)session.createQuery(hql.toString())
+				 .setParameter("healthCarePlanId", healthCarePlan.getId())
+				 .setParameter("procedureId", procedure.getId())
+				 .list();
+
+		List<MedicineWithPriceAndQuantity> result = new LinkedList<MedicineWithPriceAndQuantity>();
+		if(procedure.getMedicines().size() == medicines.size()) result = medicines;
+		else 
+		{
+			for(MedicineInProcedure medicineInProcedure : procedure.getMedicines())
+			{
+				boolean found = false;
+				for(MedicineWithPriceAndQuantity medicineWithPrice : medicines)
+				{
+					if(medicineWithPrice.getMedicine().getId() == medicineInProcedure.getMedicine().getId())
+					{
+						result.add(medicineWithPrice);
+						found = true;
+						break;
+					}
+				}
+				
+				if(!found)
+				{
+					MedicineWithPriceAndQuantity medicineWithPrice = new MedicineWithPriceAndQuantity(medicineInProcedure.getMedicine(), BigDecimal.ZERO, BigDecimal.ZERO);
+					result.add(medicineWithPrice);
+				}
+			}
+		}
 		
-		return (List<MedicineWithPriceAndQuantity>) query.list();
+		return  result;
 	}
 
 	@SuppressWarnings("unchecked")
