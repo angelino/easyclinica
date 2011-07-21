@@ -28,6 +28,7 @@ import br.com.easyclinica.domain.entities.PrecifiedMaterial;
 import br.com.easyclinica.domain.entities.PrecifiedMedicine;
 import br.com.easyclinica.domain.entities.PrecifiedProcedure;
 import br.com.easyclinica.domain.entities.PrecifiedSpecialty;
+import br.com.easyclinica.domain.entities.Prescription;
 import br.com.easyclinica.domain.entities.Procedure;
 import br.com.easyclinica.domain.entities.Receipt;
 import br.com.easyclinica.domain.entities.Reply;
@@ -102,6 +103,7 @@ public class DatabaseConfigurator {
 		configuration.addAnnotatedClass(ChatMessage.class);
 		configuration.addAnnotatedClass(GeneralObservations.class);
 		configuration.addAnnotatedClass(CID.class);
+		configuration.addAnnotatedClass(Prescription.class);
 
 		return configuration;
 	}

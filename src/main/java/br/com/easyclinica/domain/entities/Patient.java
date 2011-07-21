@@ -53,7 +53,9 @@ public class Patient implements IDable {
 	private List<Receipt> receipts;
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "patient")
 	private List<GeneralObservations> generalObservations;
-
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "patient")
+	private List<Prescription> prescriptions;
+	
 	public Patient() {
 	}
 
@@ -224,4 +226,14 @@ public class Patient implements IDable {
 	public List<GeneralObservations> getGeneralObservations() {
 		return generalObservations;
 	}
+
+	public List<Prescription> getPrescriptions() {
+		return prescriptions;
+	}
+
+	public void setPrescriptions(List<Prescription> prescriptions) {
+		this.prescriptions = prescriptions;
+	}
+	
+	
 }

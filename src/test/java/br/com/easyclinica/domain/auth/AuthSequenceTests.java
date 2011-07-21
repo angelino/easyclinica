@@ -1,8 +1,14 @@
 package br.com.easyclinica.domain.auth;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import static org.mockito.Matchers.any;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
+import java.util.Arrays;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -26,7 +32,7 @@ public class AuthSequenceTests {
 	public void shouldRunTheAuthorizerIfItIsAloneAndReturnItsReturn() {
 		when(auth1.allows(any(Class.class), any(Employee.class))).thenReturn(true);
 		
-		AuthSequence sequence = new AuthSequence(auth1);
+		AuthSequence sequence = new AuthSequence(Arrays.asList(auth1));
 		
 		boolean authorized = sequence.checkPermissionsFor(any(Class.class), any(Employee.class));
 		
@@ -39,7 +45,7 @@ public class AuthSequenceTests {
 		when(auth2.allows(any(Class.class), any(Employee.class))).thenReturn(false);
 		when(auth3.allows(any(Class.class), any(Employee.class))).thenReturn(true);
 		
-		AuthSequence sequence = new AuthSequence(auth1, auth2, auth3);
+		AuthSequence sequence = new AuthSequence(Arrays.asList(auth1, auth2, auth3));
 		
 		boolean authorized = sequence.checkPermissionsFor(any(Class.class), any(Employee.class));
 		
@@ -56,7 +62,7 @@ public class AuthSequenceTests {
 		when(auth2.allows(any(Class.class), any(Employee.class))).thenReturn(true);
 		when(auth3.allows(any(Class.class), any(Employee.class))).thenReturn(true);
 		
-		AuthSequence sequence = new AuthSequence(auth1, auth2, auth3);
+		AuthSequence sequence = new AuthSequence(Arrays.asList(auth1, auth2, auth3));
 		
 		boolean authorized = sequence.checkPermissionsFor(any(Class.class), any(Employee.class));
 		

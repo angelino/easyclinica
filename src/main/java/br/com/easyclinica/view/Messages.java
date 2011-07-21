@@ -41,4 +41,8 @@ public class Messages {
 	public static final String GENERAL_OBSERVATION_ADDED = "observation.added";
 	public static final String GENERAL_OBSERVATION_UPDATED = "observation.updated";
 	public static final String GENERAL_OBSERVATION_DELETED = "observation.deleted";
+	
+	public static final String PRESCRIPTION_ADDED = "prescription.added";
+	public static final String PRESCRIPTION_UPDATED = "prescription.updated";
+	public static final String PRESCRIPTION_DELETED = "prescription.deleted";
 }

@@ -1,9 +1,13 @@
 package br.com.easyclinica.domain.auth;
 
+import br.com.caelum.vraptor.ioc.ApplicationScoped;
+import br.com.caelum.vraptor.ioc.Component;
 import br.com.easyclinica.actions.ReceiptController;
 import br.com.easyclinica.domain.entities.Employee;
 import br.com.easyclinica.domain.entities.Position;
 
+@Component
+@ApplicationScoped
 public class ReceiptOnlyToOwnersAndFinancial implements Authorizer {
 
 	public boolean allows(Class<?> clazz, Employee employee) {

@@ -22,7 +22,13 @@
 		<a href="<c:url value="/pacientes/${patient.id}/consultas"/>">Consultas</a>
 	</li>
 	</c:if>
-	
+
+	<c:if test="${loggedUser.employee.position == 'DOCTOR' || loggedUser.employee.position == 'OWNER'}"> 
+	<li ${selected=='prescricoes' ? 'class="active first"' : ''}>
+		<a href="<c:url value="/pacientes/${patient.id}/prescricoes"/>">Prescrições</a>
+	</li>
+	</c:if>
+		
 	<c:if test="${loggedUser.employee.position == 'FINANCIAL' or loggedUser.employee.position == 'OWNER'}">
 	<li ${selected=='Recibos' ? 'class="active first"' : ''}>
 		<a href="<c:url value="/pacientes/${patient.id}/recibos"/>">Recibos</a>

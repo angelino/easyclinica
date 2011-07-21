@@ -25,4 +25,6 @@ public class ValidationMessages {
 	public static final String INVALID_AMOUNT = "errors.invalid_amount";
 	public static final String INVALID_GENERAL_OBSERVATIONS = "errors.invalid_general_observations";
 	public static final String INVALID_BIRTHDATE = "errors.invalid_birthdate";
+
+	public static final String INVALID_PRESCRIPTION = "errors.invalid_prescription";
 }
