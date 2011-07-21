@@ -24,11 +24,13 @@ public class PrecifiedMaterial {
 	private BigDecimal amount;
 
 	public PrecifiedMaterial() {
-		amount = BigDecimal.ZERO;
+		this(0);
 	}
 
 	public PrecifiedMaterial(int id) {
 		this.id = id;
+		
+		amount = BigDecimal.ZERO;
 	}
 
 	public HealthCarePlan getHealthCarePlan() {
