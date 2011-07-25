@@ -1,5 +1,9 @@
 package br.com.easyclinica.actions;
 
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
+
 import br.com.caelum.vraptor.Delete;
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
@@ -8,6 +12,7 @@ import br.com.caelum.vraptor.Put;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.Validator;
+import br.com.caelum.vraptor.interceptor.download.Download;
 import br.com.caelum.vraptor.view.Results;
 import br.com.easyclinica.domain.entities.Patient;
 import br.com.easyclinica.domain.entities.Prescription;
@@ -15,6 +20,8 @@ import br.com.easyclinica.domain.repositories.AllDoctors;
 import br.com.easyclinica.domain.repositories.AllPatients;
 import br.com.easyclinica.domain.repositories.AllPrescriptions;
 import br.com.easyclinica.domain.validators.PrescriptionsValidator;
+import br.com.easyclinica.infra.multitenancy.LoggedUser;
+import br.com.easyclinica.infra.reports.JasperMaker;
 import br.com.easyclinica.infra.vraptor.validators.ErrorTranslator;
 import br.com.easyclinica.view.Messages;
 
@@ -27,10 +34,12 @@ public class PrescriptionsController extends BaseController {
 	private final PrescriptionsValidator prescriptionsValidator;
 	private final AllPrescriptions prescriptions;
 	private final AllDoctors doctors;
+	private final JasperMaker jasperMaker;
+	private final LoggedUser loggedUser;
 	
 	public PrescriptionsController(Result result, AllPatients patients, AllPrescriptions prescriptions, 
 			AllDoctors doctors, Validator validator, ErrorTranslator translator, 
-			PrescriptionsValidator prescriptionsValidator) {
+			PrescriptionsValidator prescriptionsValidator, JasperMaker jasperMaker, LoggedUser loggedUser) {
 		super(result);
 		
 		this.patients = patients;
@@ -39,6 +48,8 @@ public class PrescriptionsController extends BaseController {
 		this.validator = validator;
 		this.translator = translator;
 		this.prescriptionsValidator = prescriptionsValidator;
+		this.jasperMaker = jasperMaker;
+		this.loggedUser = loggedUser;
 	}
 
 	@Get
@@ -114,6 +125,24 @@ public class PrescriptionsController extends BaseController {
 		successMsg(Messages.PRESCRIPTION_DELETED);
 		result.redirectTo(PrescriptionsController.class).list(patient);
 	}
+	
+	@Get
+	@Path("/pacientes/{patient_id}/prescricoes/{id}/imprimir")
+	public Download prescription(int patient_id, int id) {
+		Patient patient = patients.getById(patient_id);
+		Prescription prescription = prescriptions.getById(id);
+		
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("prescription", prescription);
+		params.put("clinic", loggedUser.getClinic());
+		
+		return jasperMaker.makePdf(  
+	               "prescription",  
+	               Collections.singletonList(patient),   
+	               "prescricao.pdf",   
+	               true,   
+	               params);
+	}	
 	
 	private void include(Prescription prescription) {
 		result.include("prescription", prescription);
