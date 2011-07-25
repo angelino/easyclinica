@@ -8,6 +8,12 @@
 	<variable name="prescriptionDate" class="java.lang.String">
 		<variableExpression><![CDATA[$P{clinic}.address.city + ", " + new SimpleDateFormat("dd 'de' MMMMM 'de' yyyy", new Locale("pt", "br")).format($P{prescription}.date.getTime())]]></variableExpression>
 	</variable>
+	<variable name="doctor" class="java.lang.String">
+		<variableExpression><![CDATA[$P{prescription}.doctor.name]]></variableExpression>
+	</variable>
+	<variable name="crm" class="java.lang.String">
+		<variableExpression><![CDATA["CRM: " + $P{prescription}.doctor.crm]]></variableExpression>
+	</variable>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -51,20 +57,30 @@
 		<band height="8" splitType="Stretch"/>
 	</columnHeader>
 	<detail>
-		<band height="259" splitType="Stretch">
+		<band height="323" splitType="Stretch">
 			<textField>
-				<reportElement x="10" y="12" width="528" height="162"/>
+				<reportElement x="10" y="46" width="528" height="162"/>
 				<textElement/>
 				<textFieldExpression class="java.lang.String"><![CDATA[$P{prescription}.text]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="295" y="226" width="243" height="20"/>
+				<reportElement x="10" y="11" width="528" height="20"/>
 				<textElement textAlignment="Center"/>
 				<textFieldExpression class="java.lang.String"><![CDATA[$V{prescriptionDate}]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement x="304" y="222" width="223" height="1"/>
+				<reportElement x="304" y="241" width="223" height="1"/>
 			</line>
+			<textField>
+				<reportElement x="304" y="242" width="223" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$V{doctor}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="304" y="262" width="223" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$V{crm}]]></textFieldExpression>
+			</textField>
 		</band>
 	</detail>
 	<columnFooter>
