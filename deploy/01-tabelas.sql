@@ -266,6 +266,16 @@ create table PrecifiedSpecialty (
     primary key (id)
 ) type=InnoDB;
 
+
+create table Prescription (
+    id integer not null auto_increment,
+    date datetime,
+    text longtext,
+    doctor_id integer,
+    patient_id integer,
+    primary key (id)
+) type=InnoDB;
+    
 create table Receipt (
     id integer not null auto_increment,
     amount decimal(19,2),
@@ -562,6 +572,23 @@ alter table PrecifiedSpecialty
     foreign key (specialty_id) 
     references Specialty (id);
 
+   create index prescriptionPatientIndex on Prescription (patient_id);
+
+create index prescriptionDoctorIndex on Prescription (doctor_id);
+
+alter table Prescription 
+    add index FK253AF83AC6AED5F5 (patient_id), 
+    add constraint FK253AF83AC6AED5F5 
+    foreign key (patient_id) 
+    references Patient (id);
+
+alter table Prescription 
+    add index FK253AF83AA92C339F (doctor_id), 
+    add constraint FK253AF83AA92C339F 
+    foreign key (doctor_id) 
+    references Doctor (id);
+
+        
 create index receiptDateIndex on Receipt (date);
 
 create index receiptPatientIndex on Receipt (patient_id);
