@@ -110,7 +110,7 @@
 				<text><![CDATA[Total Geral]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="222" y="5" width="68" height="32"/>
+				<reportElement x="222" y="5" width="79" height="32"/>
 				<textElement textAlignment="Right">
 					<font size="12" isBold="true"/>
 				</textElement>
@@ -178,7 +178,7 @@
 				</graphicElement>
 			</line>
 			<textField evaluationTime="Auto" isBlankWhenNull="true">
-				<reportElement x="222" y="0" width="68" height="20"/>
+				<reportElement x="222" y="0" width="79" height="20"/>
 				<textElement textAlignment="Right"/>
 				<textFieldExpression class="java.lang.String"><![CDATA[java.text.NumberFormat.getCurrencyInstance(new Locale("pt", "br")).format($F{appointmentAmount})]]></textFieldExpression>
 			</textField>

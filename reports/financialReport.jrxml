@@ -187,7 +187,7 @@
 				<textFieldExpression class="java.lang.String"><![CDATA[($F{return} ? "X" : "")]]></textFieldExpression>
 			</textField>
 			<textField evaluationTime="Auto">
-				<reportElement x="701" y="46" width="98" height="20"/>
+				<reportElement x="724" y="46" width="75" height="20"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
@@ -197,79 +197,79 @@
 				<reportElement x="0" y="70" width="802" height="1"/>
 			</line>
 			<textField>
-				<reportElement x="405" y="46" width="120" height="20"/>
+				<reportElement x="426" y="46" width="120" height="20"/>
 				<textElement/>
 				<textFieldExpression class="java.lang.String"><![CDATA[java.text.NumberFormat.getCurrencyInstance(new Locale("pt", "br")).format($F{procedureAmount})]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="636" y="46" width="59" height="20"/>
+				<reportElement x="657" y="46" width="59" height="20"/>
 				<textElement/>
 				<textFieldExpression class="java.lang.String"><![CDATA[java.text.NumberFormat.getCurrencyInstance(new Locale("pt", "br")).format($F{roomRateAmount})]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="531" y="46" width="100" height="20"/>
+				<reportElement x="552" y="46" width="100" height="20"/>
 				<textElement/>
 				<textFieldExpression class="java.lang.String"><![CDATA[java.text.NumberFormat.getCurrencyInstance(new Locale("pt", "br")).format($F{appointmentAmount})]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="71" y="46" width="100" height="20"/>
+				<reportElement x="71" y="46" width="110" height="20"/>
 				<textElement/>
 				<textFieldExpression class="java.lang.String"><![CDATA[java.text.NumberFormat.getCurrencyInstance(new Locale("pt", "br")).format($F{materialAmount})]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="176" y="46" width="120" height="20"/>
+				<reportElement x="197" y="46" width="120" height="20"/>
 				<textElement/>
 				<textFieldExpression class="java.lang.String"><![CDATA[java.text.NumberFormat.getCurrencyInstance(new Locale("pt", "br")).format($F{medicineAmount})]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="301" y="46" width="100" height="20"/>
+				<reportElement x="322" y="46" width="100" height="20"/>
 				<textElement/>
 				<textFieldExpression class="java.lang.String"><![CDATA[java.text.NumberFormat.getCurrencyInstance(new Locale("pt", "br")).format($F{assistantAmount})]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="71" y="26" width="100" height="20"/>
+				<reportElement x="71" y="26" width="110" height="20"/>
 				<textElement>
 					<font size="10" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Total de Materiais]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="176" y="26" width="120" height="20"/>
+				<reportElement x="197" y="26" width="120" height="20"/>
 				<textElement>
 					<font size="10" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Total de Medicamentos]]></text>
+				<text><![CDATA[Total de Medic.]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="301" y="26" width="100" height="20"/>
+				<reportElement x="322" y="26" width="100" height="20"/>
 				<textElement>
 					<font size="10" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Total de Assist.]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="405" y="26" width="120" height="20"/>
+				<reportElement x="426" y="26" width="120" height="20"/>
 				<textElement>
 					<font size="10" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Total de Proced.]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="531" y="26" width="100" height="20"/>
+				<reportElement x="552" y="26" width="100" height="20"/>
 				<textElement>
 					<font size="10" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Valor Consulta]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="636" y="26" width="59" height="20"/>
+				<reportElement x="657" y="26" width="59" height="20"/>
 				<textElement>
 					<font size="10" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Tx. Sala]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="701" y="26" width="98" height="20"/>
+				<reportElement x="724" y="26" width="75" height="20"/>
 				<textElement>
 					<font size="10" isBold="true"/>
 				</textElement>
