@@ -191,6 +191,7 @@ EasyClinica.pages['consultas'] = function(){
 	};
 	
 	var refreshAppointmentValue = function() {
+		
 		refreshProceduresValue();
 		
 		var valor_consulta = $('#valor-consulta').val().convertToFloat();

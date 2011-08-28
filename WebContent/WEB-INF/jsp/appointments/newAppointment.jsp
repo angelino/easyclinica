@@ -84,7 +84,7 @@
 	                    <input type="text"  id="txt_search_procedure" allowEnter="true"/>
 	                    <input type="hidden" id="selected_procedure_id" value="0" />
 	                    <a href="#" id="btn_search_procedure">Adicionar</a>
-	                    <img id="loading" src="<c:url value="images/loading.gif" />" alt="carregando..."/>
+	                    <img id="loading" src="<c:url value="/images/loading.gif" />" alt="carregando..."/>
 	                    <div class="error" id="informe-procedimento-message">
 	                    	<p>Informe o procedimento que deseja adicionar.</p>
 	                    </div>

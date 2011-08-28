@@ -18,7 +18,7 @@
                		<div class="search">
                        <input type="text" name="doctor.textobusca" allowEnter="true"/>
                        <a href="#" id="btnBuscar" allowEnter="true">Buscar</a>
-                       <img id="loading" src="<c:url value="images/loading.gif" />" alt="carregando..."/>
+                       <img id="loading" src="<c:url value="/images/loading.gif" />" alt="carregando..."/>
                        <p>Digite seu critério de busca.</p>
                    </div>
                </fieldset>
