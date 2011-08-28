@@ -117,11 +117,11 @@
 				<text><![CDATA[Total Especialid.]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="301" y="17" width="86" height="20"/>
+				<reportElement x="301" y="5" width="86" height="32"/>
 				<textElement textAlignment="Right">
 					<font size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Total Proced.]]></text>
+				<text><![CDATA[Total de Proced.]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="398" y="5" width="64" height="32"/>
@@ -131,11 +131,11 @@
 				<text><![CDATA[Total Materiais]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="473" y="17" width="76" height="20"/>
+				<reportElement x="473" y="5" width="76" height="32"/>
 				<textElement textAlignment="Right">
 					<font size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Total Medic.]]></text>
+				<text><![CDATA[Total de Medic.]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="557" y="5" width="77" height="32"/>
