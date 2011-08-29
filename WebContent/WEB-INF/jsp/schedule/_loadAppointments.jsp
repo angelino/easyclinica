@@ -3,6 +3,15 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
+<table border="0" class="easy compromissos">
+	<tr class="tableheader">
+		<th>Paciente</th>
+		<th width="195">Chegada</th>
+		<th width="100">Atendido?</th>
+		<th width="100">&nbsp;</th>
+	</tr>
+</table>
+	
 <c:forEach items="${timeTable}" var="row" varStatus="st">
 
 	<div class="schedule">
@@ -15,21 +24,15 @@
 		
 		<c:if test="${fn:length(row.commitments) > 0}">
 			<table border="0" class="easy compromissos">
-				<tr class="tableheader">
-					<th>Compromisso:</th>
-					<th width="165">Chegada</th>
-					<th width="100">Atendido?</th>
-					<th width="100">&nbsp;</th>
-				</tr>
-				
+
 				<c:forEach items="${row.commitments}" var="commitment" varStatus="st">
 					<tr schedule_id="${commitment.id}">
 						<td>${commitment.subject}</td>
-						<td>
+						<td width="195">
 							<input type="text" name="arrivalTime-${commitment.id}" class="time" value="<fmt:formatDate type="time" pattern="HH:mm" value="${commitment.arrivalTime.time}"/>" />
 							<a href="#" schedule_id="${commitment.id}" class="btnpeopleedit changeArrivalTime" title="Alterar horário de chegada?">&nbsp;</a>
 						</td>
-						<td>
+						<td width="100">
 							<c:choose>
 								<c:when test="${commitment.treated}">
 									<input class="checkbox" type="checkbox" name="treated" schedule_id="${commitment.id}" checked="checked"/>
@@ -39,7 +42,7 @@
 								</c:otherwise>
 							</c:choose>							
 						</td>
-						<td>
+						<td width="100">
 							<a class="btndelete last submit" title="Deletar compromisso" schedule_id="${commitment.id}" href="#">Excluir</a>
 						</td>
 					</tr>
