@@ -87,6 +87,8 @@ public class PricingSheetImporter {
 		while(it.hasNext()) {
 			ImportedStuff importedMaterial = it.next();
 			PrecifiedMaterial precifiedMaterial = map.get(importedMaterial.getId());
+			
+			// TODO: OU precifiedMaterial == null && importedMaterial tudo zerado, remove tb
 			if(precifiedMaterial != null && precifiedMaterial.getAmount().doubleValue() == importedMaterial.getValue().doubleValue()) {
 				it.remove();
 			}

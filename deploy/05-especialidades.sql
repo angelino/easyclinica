@@ -54,3 +54,4 @@ insert into specialty(name) values ('CIRURGIA PEDIÁTRICA');
 insert into specialty(name) values ('CIRURGIA PLÁSTICA');
 insert into specialty(name) values ('CIRURGIA TORÁCICA');
 insert into specialty(name) values ('UROLOGIA');
+insert into specialty(name) values ('PSICOLOGIA');

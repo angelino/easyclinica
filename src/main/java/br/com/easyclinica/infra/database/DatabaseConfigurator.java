@@ -57,11 +57,11 @@ public class DatabaseConfigurator {
 		configuration.setProperty("hibernate.jdbc.batch_size", "20");
 		
 		if(cfg.get("env").equals("production")){
-			configuration.setProperty("hibernate.c3p0.acquire_increment", "5");
+			configuration.setProperty("hibernate.c3p0.acquire_increment", "1");
 			configuration.setProperty("hibernate.c3p0.idle_test_period", "100");
-			configuration.setProperty("hibernate.c3p0.max_size", "20");
+			configuration.setProperty("hibernate.c3p0.max_size", "4");
 			configuration.setProperty("hibernate.c3p0.max_statements", "0");
-			configuration.setProperty("hibernate.c3p0.min_size", "3");
+			configuration.setProperty("hibernate.c3p0.min_size", "2");
 			configuration.setProperty("hibernate.c3p0.timeout", "1800");
 			
 		}
