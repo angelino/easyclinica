@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib uri="/WEB-INF/easyclinica.tld" prefix="helper" %>
 <%@page import="br.com.easyclinica.domain.entities.HealthCarePlan"%>
 <%@page import="br.com.easyclinica.view.Link"%>
@@ -19,16 +20,50 @@
 				
 				<form action="<c:url value="/convenios/${id}/precos" />" method="post">
 						
+						<c:forEach var="procedure" items="${import.importedProcedures}" varStatus="st">
+							<input type="hidden" name="procedures[${st.index}].id" value="${procedure.id}" />
+							<input type="hidden" name="procedures[${st.index}].ch" value="${procedure.ch}" />
+							<input type="hidden" name="procedures[${st.index}].roomTax" value="${procedure.roomTax}" />
+							<input type="hidden" name="procedures[${st.index}].value" value="${procedure.value}" />
+						</c:forEach>
+									
+					<c:forEach var="material" items="${import.importedMaterials}" varStatus="st">
+						<input type="hidden" name="materials[${st.index}].id" value="${material.id}" />
+						<input type="hidden" name="materials[${st.index}].value" value="${material.value}" />
+					</c:forEach>
+					
+					<c:forEach var="medicine" items="${import.importedMedicines}" varStatus="st">
+							<input type="hidden" name="medicines[${st.index}].id" value="${medicine.id}" />
+							<input type="hidden" name="medicines[${st.index}].value" value="${medicine.value}" />
+					</c:forEach>
+										
+					<c:forEach var="specialty" items="${import.importedSpecialties}" varStatus="st">
+						<input type="hidden" name="specialties[${st.index}].id" value="${specialty.id}" />
+						<input type="hidden" name="specialties[${st.index}].value" value="${specialty.value}" />
+					</c:forEach>
+	
 					<ul class="boxmenu" id="easyabas">
 						<li><a href="#procedimentos">Procedimentos</a></li>
 						<li><a href="#materiais">Materiais</a></li>
 						<li><a href="#remedios">Remédios</a></li>
 						<li><a href="#especialidades">Especialidades</a></li>
 					</ul>
-					<div id="procedimentos">						
+					
+					
+					<div id="procedimentos">	
+		
 						<c:choose>
 							<c:when test="${empty import.importedProcedures}">
 								<p class="messengernotice">Não há procedimentos a serem importados!</p>
+							</c:when>
+							<c:when test="${fn:length(import.importedProcedures) > 50}">
+								<p class="messengernotice">Existem muitos ítens a serem importados, o que nos impede
+								de exibir todos! Mas fique tranquilo, confirme a importação e todos eles serão
+								importados.
+								<br/>
+								Na próxima vez, apague as linhas que você não modificou
+								do arquivo Excel, e importe somente as que você alterou! Isso facilitará a aumentará
+								a velocidade da importação.</p>
 							</c:when>
 							<c:otherwise>
 								<table border="0" class="easy">
@@ -41,10 +76,6 @@
 										<tr>
 											<td>
 												${procedure.name}
-												<input type="hidden" name="procedures[${st.index}].id" value="${procedure.id}" />
-												<input type="hidden" name="procedures[${st.index}].ch" value="${procedure.ch}" />
-												<input type="hidden" name="procedures[${st.index}].roomTax" value="${procedure.roomTax}" />
-												<input type="hidden" name="procedures[${st.index}].value" value="${procedure.value}" />
 											</td>
 											<c:choose>
 												<c:when test="${procedure.value > 0}">
@@ -62,10 +93,21 @@
 						</c:choose>							
 					</div>
 					
-					<div id="materiais">						
+					<div id="materiais">	
+					
+										
 						<c:choose>
 							<c:when test="${empty import.importedMaterials}">
 								<p class="messengernotice">Não há materiais a serem importados!</p>
+							</c:when>
+							<c:when test="${fn:length(import.importedMaterials) > 50}">
+								<p class="messengernotice">Existem muitos ítens a serem importados, o que nos impede
+								de exibir todos! Mas fique tranquilo, confirme a importação e todos eles serão
+								importados.
+								<br/>
+								Na próxima vez, apague as linhas que você não modificou
+								do arquivo Excel, e importe somente as que você alterou! Isso facilitará a aumentará
+								a velocidade da importação.</p>
 							</c:when>
 							<c:otherwise>
 								<table border="0" class="easy">
@@ -77,8 +119,6 @@
 										<tr>
 											<td>
 												${material.name}
-												<input type="hidden" name="materials[${st.index}].id" value="${material.id}" />
-												<input type="hidden" name="materials[${st.index}].value" value="${material.value}" />
 											</td>
 											<td class="currency">
 												${material.value}
@@ -90,10 +130,20 @@
 						</c:choose>
 					</div>
 					
-					<div id="remedios">						
+					<div id="remedios">	
+					
 						<c:choose>
 							<c:when test="${empty import.importedMedicines}">
 								<p class="messengernotice">Não há medicamentos a serem importados!</p>
+							</c:when>
+							<c:when test="${fn:length(import.importedMedicines) > 50}">
+								<p class="messengernotice">Existem muitos ítens a serem importados, o que nos impede
+								de exibir todos! Mas fique tranquilo, confirme a importação e todos eles serão
+								importados.
+								<br/>
+								Na próxima vez, apague as linhas que você não modificou
+								do arquivo Excel, e importe somente as que você alterou! Isso facilitará a aumentará
+								a velocidade da importação.</p>
 							</c:when>
 							<c:otherwise>
 								<table border="0" class="easy">
@@ -105,8 +155,6 @@
 										<tr>
 											<td>
 												${medicine.name}
-												<input type="hidden" name="medicines[${st.index}].id" value="${medicine.id}" />
-												<input type="hidden" name="medicines[${st.index}].value" value="${medicine.value}" />
 											</td>
 											<td class="currency">
 												${medicine.value}
@@ -123,6 +171,15 @@
 							<c:when test="${empty import.importedSpecialties}">
 								<p class="messengernotice">Não há especialidades a serem importadas!</p>
 							</c:when>
+							<c:when test="${fn:length(import.importedSpecialties) > 50}">
+								<p class="messengernotice">Existem muitos ítens a serem importados, o que nos impede
+								de exibir todos! Mas fique tranquilo, confirme a importação e todos eles serão
+								importados.
+								<br/>
+								Na próxima vez, apague as linhas que você não modificou
+								do arquivo Excel, e importe somente as que você alterou! Isso facilitará a aumentará
+								a velocidade da importação.</p>
+							</c:when>
 							<c:otherwise>
 							
 								<table border="0" class="easy">
@@ -134,8 +191,6 @@
 										<tr>
 											<td>
 												${specialty.name}
-												<input type="hidden" name="specialties[${st.index}].id" value="${specialty.id}" />
-												<input type="hidden" name="specialties[${st.index}].value" value="${specialty.value}" />
 											</td>
 											<td class="currency">
 												${specialty.value}

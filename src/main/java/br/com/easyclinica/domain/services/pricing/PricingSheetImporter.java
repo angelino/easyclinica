@@ -62,10 +62,20 @@ public class PricingSheetImporter {
 		while(it.hasNext()) {
 			ImportedStuff importedSpecialty = it.next();
 			PrecifiedSpecialty precifiedSpecialty = map.get(importedSpecialty.getId());
-			if(precifiedSpecialty != null && precifiedSpecialty.getAmount().doubleValue() == importedSpecialty.getValue().doubleValue()) {
+			if(valuesAreTheSame(importedSpecialty, precifiedSpecialty) || itIsZeroForBothSides(importedSpecialty, precifiedSpecialty)) {
 				it.remove();
 			}
 		}
+	}
+
+	private boolean valuesAreTheSame(ImportedStuff importedSpecialty,
+			PrecifiedSpecialty precifiedSpecialty) {
+		return (precifiedSpecialty != null && precifiedSpecialty.getAmount().doubleValue() == importedSpecialty.getValue().doubleValue());
+	}
+
+	private boolean itIsZeroForBothSides(ImportedStuff importedSpecialty,
+			PrecifiedSpecialty precifiedSpecialty) {
+		return (precifiedSpecialty == null && importedSpecialty.getValue().doubleValue() == 0);
 	}
 
 	private Map<Integer, PrecifiedSpecialty> generateIndexForSpecialties(HealthCarePlan plan) {
@@ -88,11 +98,20 @@ public class PricingSheetImporter {
 			ImportedStuff importedMaterial = it.next();
 			PrecifiedMaterial precifiedMaterial = map.get(importedMaterial.getId());
 			
-			// TODO: OU precifiedMaterial == null && importedMaterial tudo zerado, remove tb
-			if(precifiedMaterial != null && precifiedMaterial.getAmount().doubleValue() == importedMaterial.getValue().doubleValue()) {
+			if(valuesAreTheSame(importedMaterial, precifiedMaterial) || itIsZeroForBothSides(importedMaterial, precifiedMaterial)) {
 				it.remove();
 			}
 		}
+	}
+
+	private boolean valuesAreTheSame(ImportedStuff importedMaterial,
+			PrecifiedMaterial precifiedMaterial) {
+		return (precifiedMaterial != null && precifiedMaterial.getAmount().doubleValue() == importedMaterial.getValue().doubleValue());
+	}
+
+	private boolean itIsZeroForBothSides(ImportedStuff importedMaterial,
+			PrecifiedMaterial precifiedMaterial) {
+		return (precifiedMaterial == null && importedMaterial.getValue().doubleValue() == 0);
 	}
 	
 	private Map<Integer, PrecifiedMaterial> generateIndexForMaterials(HealthCarePlan plan) {
@@ -113,10 +132,20 @@ public class PricingSheetImporter {
 		while(it.hasNext()) {
 			ImportedStuff importedMedicine = it.next();
 			PrecifiedMedicine precifiedMedicine = map.get(importedMedicine.getId());
-			if(precifiedMedicine != null && precifiedMedicine.getAmount().doubleValue() == importedMedicine.getValue().doubleValue()) {
+			if(valuesAreTheSame(importedMedicine, precifiedMedicine) || itIsZeroForBothSides(importedMedicine, precifiedMedicine)) {
 				it.remove();
 			}
 		}
+	}
+
+	private boolean valuesAreTheSame(ImportedStuff importedMedicine,
+			PrecifiedMedicine precifiedMedicine) {
+		return (precifiedMedicine != null && precifiedMedicine.getAmount().doubleValue() == importedMedicine.getValue().doubleValue());
+	}
+
+	private boolean itIsZeroForBothSides(ImportedStuff importedMedicine,
+			PrecifiedMedicine precifiedMedicine) {
+		return (precifiedMedicine == null && importedMedicine.getValue().doubleValue() == 0);
 	}
 	
 	private Map<Integer, PrecifiedMedicine> generateIndexForMedicines(HealthCarePlan plan) {
@@ -137,11 +166,22 @@ public class PricingSheetImporter {
 		while(it.hasNext()) {
 			ImportedStuff importedProcedure = it.next();
 			PrecifiedProcedure precifiedProcedure = map.get(importedProcedure.getId());
-			if(precifiedProcedure != null && precifiedProcedure.getFixedAmount().doubleValue() == importedProcedure.getValue().doubleValue() && precifiedProcedure.getRoomTaxAmount().doubleValue() == importedProcedure.getRoomTax().doubleValue()
-					&& precifiedProcedure.getCh() == importedProcedure.getCh()) {
+			if(valuesAreTheSame(importedProcedure, precifiedProcedure) || itIsZeroInBothSides(importedProcedure, precifiedProcedure)) {
 				it.remove();
 			}
 		}
+	}
+
+	private boolean valuesAreTheSame(ImportedStuff importedProcedure,
+			PrecifiedProcedure precifiedProcedure) {
+		return (precifiedProcedure != null && precifiedProcedure.getFixedAmount().doubleValue() == importedProcedure.getValue().doubleValue() && 
+				precifiedProcedure.getRoomTaxAmount().doubleValue() == importedProcedure.getRoomTax().doubleValue()
+				&& precifiedProcedure.getCh() == importedProcedure.getCh());
+	}
+
+	private boolean itIsZeroInBothSides(ImportedStuff importedProcedure,
+			PrecifiedProcedure precifiedProcedure) {
+		return (precifiedProcedure == null && importedProcedure.getValue().doubleValue() == 0 && importedProcedure.getRoomTax().doubleValue() == 0 && importedProcedure.getCh() == 0);
 	}
 	
 	private Map<Integer, PrecifiedProcedure> generateIndexForProcedures(HealthCarePlan plan) {

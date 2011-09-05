@@ -26,10 +26,10 @@
 				</p>
 				<div class="financial-buttons">				
 						<form action='<c:url value="/convenios/${healthCarePlan.id}/precos" />' id="frmDownloadPrices">
-							<input type="checkbox" value="true" name="materials" checked="checked" />Materiais
-							<input type="checkbox" value="true" name="medicines" checked="checked" />Medicamentos
-							<input type="checkbox" value="true" name="procedures" checked="checked" />Procedimentos
-							<input type="checkbox" value="true" name="specialties" checked="checked" />Especialidades
+							<input type="radio" value="material" name="filter" />Materiais
+							<input type="radio" value="medicine" name="filter" />Medicamentos
+							<input type="radio" value="procedure" name="filter" />Procedimentos
+							<input type="radio" value="specialty" name="filter" />Especialidades
 							
 							<a href="javascript:void(0);" id="btnDownloadPrices" class="btn submit">Baixar os preços</a>
 						</form>

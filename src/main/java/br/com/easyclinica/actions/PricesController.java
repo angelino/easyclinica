@@ -49,17 +49,14 @@ public class PricesController {
 
 	@Get
 	@Path("/convenios/{id}/precos")
-	public Download priceList(int id, boolean materials, boolean medicines,
-			boolean specialties, boolean procedures) throws IOException {
+	public Download priceList(int id, String filter) throws IOException {
 
 		HealthCarePlan plan = plans.getById(id);
 
 		ByteArrayOutputStream out = new ByteArrayOutputStream();
 
-		exporter.start().toPlan(plan).putMaterials(materials)
-				.putMedicines(medicines).putSpecialties(specialties)
-				.putProcedures(procedures).write(out);
-
+		exporter.start().toPlan(plan).filterBy(filter).write(out);
+		
 		return new InputStreamDownload(new ByteArrayInputStream(
 				out.toByteArray()), "application/ms-excel", "precos-"
 				+ formatName(plan.getName()) + ".xls", true, out.size());

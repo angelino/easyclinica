@@ -66,4 +66,9 @@ public class PricingSheetExporterBuilder {
 			throw new RuntimeException(e);
 		}
 	}
+
+	public PricingSheetExporterBuilder filterBy(String filter) {
+		find(filter).export(plan, wb);
+		return this;
+	}
 }
