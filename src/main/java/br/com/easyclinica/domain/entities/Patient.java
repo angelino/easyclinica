@@ -41,6 +41,10 @@ public class Patient implements IDable {
 	private String rg;
 	private String cpf;
 	private String profession;
+	
+	@Enumerated(EnumType.STRING)
+	private Gender gender;
+	
 	@Enumerated(EnumType.STRING)
 	private MaritalStatus maritalStatus;
 	private String email;
@@ -233,6 +237,14 @@ public class Patient implements IDable {
 
 	public void setPrescriptions(List<Prescription> prescriptions) {
 		this.prescriptions = prescriptions;
+	}
+
+	public Gender getGender() {
+		return gender;
+	}
+
+	public void setGender(Gender gender) {
+		this.gender = gender;
 	}
 	
 	

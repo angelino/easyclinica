@@ -391,7 +391,7 @@ String.prototype.convertToFloat = function(){
 		var matched = this.match(regexCurrency);
 		if(matched != null) {
 			valor = "";
-			for (i = 0; i < matched.length; i++) {
+			for (var i = 0; i < matched.length; i++) {
 				valor += (matched[i] == '' ? ',' : matched[i]);
 			}
 		}	
@@ -408,7 +408,7 @@ String.prototype.convertToInt = function(){
 	var matched = this.match(regexCurrency);
 	if(matched != null) {
 		valor = "";
-		for (i = 0; i < matched.length; i++) {
+		for (var i = 0; i < matched.length; i++) {
 			valor += matched[i];
 		}
 	}	
@@ -462,7 +462,7 @@ onlyNumbersAndComma = function(element, key) {
 	var matched = texto.match(regexCurrency);
 	if(matched != null) {
 		valor = "";
-		for (i = 0; i < matched.length; i++) {
+		for (var i = 0; i < matched.length; i++) {
 			valor += (matched[i] == '' ? ',' : matched[i]);
 		}
 	}

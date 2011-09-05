@@ -6,7 +6,7 @@
 	<h2>Paciente: ${patient.name}</h2>
 	
 	<div class="modal-content">		
-		
+	
 		<div>
 			<p>Telefone:</p>
 			<span>${patient.telephone}</span>

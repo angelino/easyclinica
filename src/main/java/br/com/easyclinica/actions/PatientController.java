@@ -8,6 +8,7 @@ import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.Validator;
 import br.com.caelum.vraptor.view.Results;
+import br.com.easyclinica.domain.entities.Gender;
 import br.com.easyclinica.domain.entities.MaritalStatus;
 import br.com.easyclinica.domain.entities.Patient;
 import br.com.easyclinica.domain.repositories.AllHealthCarePlans;
@@ -62,6 +63,7 @@ public class PatientController extends BaseController {
 	public void newForm(Patient patient) {
 		Patient patientToFill = (patient == null ? Patient.empty() : patient);
 		result.include("healthCarePlans", allHealthCarePlans.allActive());
+		result.include("genders", Gender.values());
 		result.include("statuses", MaritalStatus.values());
 		include(patientToFill);
 	}
@@ -90,6 +92,7 @@ public class PatientController extends BaseController {
 		Patient patientToBeEdited = allPatients.getById(id);
 		
 		result.include("healthCarePlans", allHealthCarePlans.get());
+		result.include("genders", Gender.values());
 		result.include("statuses", MaritalStatus.values());
 		include(patientToBeEdited);
 	}
