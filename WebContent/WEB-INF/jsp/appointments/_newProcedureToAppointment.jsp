@@ -10,14 +10,14 @@
     <th>Valor R$</th>
     <th width="95px">
 		<input type="hidden" name="procedure-#index#-roomRate" value="${precifiedProcedure.roomTaxAmount}" />
-    	<input type="hidden" name="index" value="#index#"/>
-		<input type="hidden" name="procedure_id" value="${procedure.id}"/>
+    	<input type="hidden" name="procedure_id" value="${procedure.id}"/>
     	
     	<ul class="procedure-elements">
     		<li>
     			<a href="" class="new-assistant" title="Adicionar assistente ao procedimento." form="frm-new-assistant-${procedure.id}">assistente</a>
     			<div class="new-assistant">
     				<form class="frm-new-assistant-${procedure.id}">
+    					<input type="hidden" name="index" value="#index#"/>
     					<input type="hidden" name="assistant_procedure_id" value="${procedure.id}"/>
 	    				<fieldset>
 							<p class="required"><span>*</span> campos obrigatórios</p>
@@ -55,6 +55,7 @@
     			<a href="" class="new-material" title="Adicionar material ao procedimento." form="frm-new-material-${procedure.id}">material</a>
     			<div class="new-material">
     				<form class="frm-new-material-${procedure.id}">
+    					<input type="hidden" name="index" value="#index#"/>
     					<input type="hidden" name="material_procedure_id" value="${procedure.id}"/>
 	    				<fieldset>
 							<p class="required"><span>*</span> campos obrigatórios</p>
@@ -87,6 +88,7 @@
     			<a href="" class="new-medicine" title="Adicionar medicamento ao procedimento." form="frm-new-medicine-${procedure.id}">medicamento</a>
     			<div class="new-medicine">
     				<form class="frm-new-medicine-${procedure.id}">
+    					<input type="hidden" name="index" value="#index#"/>
     					<input type="hidden" name="medicine_procedure_id" value="${procedure.id}"/>
 	    				<fieldset>
 							<p class="required"><span>*</span> campos obrigatórios</p>
