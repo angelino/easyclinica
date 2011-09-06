@@ -14,6 +14,7 @@ EasyClinica.pages['consultas'] = function(){
 	$("#txt_search_procedure").keydown(function(event){
 		if(event.keyCode == 13) {
 			$('#btn_search_procedure').click();
+			event.preventDefault();
 	    }
 	});
 	
