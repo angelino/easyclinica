@@ -45,6 +45,8 @@ EasyClinica.pages['consultas'] = function(){
 		if($(this).val() == 'true') {
 			$('#valor-consulta').val('0.00'.formatCurrency());
 		}
+		
+		refreshAppointmentValue();
 	});
 	
 	$('input[name=appointment.healthCarePlan.id]').change(function(){
