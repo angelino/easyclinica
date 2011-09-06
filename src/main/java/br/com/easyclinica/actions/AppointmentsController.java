@@ -37,7 +37,6 @@ import br.com.easyclinica.domain.services.VerifyIfAnAppointmentIsReturnService;
 import br.com.easyclinica.domain.validators.AppointmentValidator;
 import br.com.easyclinica.infra.vraptor.validators.ErrorTranslator;
 import br.com.easyclinica.view.Messages;
-import br.com.easyclinica.view.paginator.PaginatedResult;
 import br.com.easyclinica.view.paginator.Paginator;
 
 @Resource
