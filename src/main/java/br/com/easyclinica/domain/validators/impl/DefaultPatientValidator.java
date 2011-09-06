@@ -32,9 +32,6 @@ public class DefaultPatientValidator implements PatientValidator {
 			errors.add(new Error("patient", ValidationMessages.INVALID_HEALTHCAREPLAN));
 		}
 		
-		if(!validatorUtils.cpfIsValid(patient.getCpf())) {
-			errors.add(new Error("patient", ValidationMessages.INVALID_CPF));
-		}
 		return errors;
 	}
 }

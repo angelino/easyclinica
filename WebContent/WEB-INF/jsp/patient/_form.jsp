@@ -30,7 +30,7 @@
 
 	<fieldset>
 		<div class="title">
-			<label class="title">CPF:<span>*</span></label>
+			<label class="title">CPF:</label>
     		<input type="text" name="patient.cpf" maxlength="50" tabindex="2" value="${patient.cpf}" class="mask_cpf" />
     	</div>
 		<div class="title">

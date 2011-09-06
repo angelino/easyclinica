@@ -66,17 +66,4 @@ public class PatientValidatorTests {
 		assertEquals(ValidationMessages.INVALID_HEALTHCAREPLAN, errors.get(0).getKey());	
 	}
 	
-	@Test
-	public void shouldReturnErrorIfCpfIsInvalid() {
-		Patient patient = new PatientBuilder().withHealthCarePlan(plan).withCpf("123").instance();
-		
-		List<Error> errors = validator.validate(patient);		
-		assertEquals(1, errors.size());
-		assertEquals(ValidationMessages.INVALID_CPF, errors.get(0).getKey());
-		
-		Patient validPatient = new PatientBuilder().withHealthCarePlan(plan).withCpf("330.591.998-17").instance();
-		errors = validator.validate(validPatient);
-		assertEquals(0, errors.size());
-	}
-
 }

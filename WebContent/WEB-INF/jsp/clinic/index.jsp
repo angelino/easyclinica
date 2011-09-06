@@ -23,13 +23,15 @@
 					<input type="hidden" name="clinic.privatePlan.id" value="${clinic.privatePlan.id}"/>
 					<helper:errors errors="${errors}" />
 				
-					<p class="required"><span>*</span> campos obrigatórios</p>
-				
-					<fieldset>
+					
+					<fieldset class="full">
 						<div>
 							<label class="title">Name:<span>*</span></label>
 							<input type="text" name="clinic.name" maxlength="50" tabindex="1" required="required" value="${clinic.name}" />
 						</div>
+					</fieldset>
+					
+					<fieldset>
 						
 						<div class="telephone">
 							<label class="title">Telefone:<span>*</span></label>
@@ -56,10 +58,15 @@
 							<input type="text" name="clinic.address.city" required="required" tabindex="11" maxlength="50" value="${clinic.address.city}" />
 						</div>
 
+					    <div>
+							<label class="title">CEP:</label>
+					    	<input type="text" name="clinic.address.postalCode" tabindex="13" value="${clinic.address.postalCode}" />					    
+					    </div>				
+
 						<div>
 							<label class="title">Hora de abertura:</label>
-					    	<input type="text" name="clinic.startOperation" tabindex="13" value="<joda:format value="${clinic.startOperation}" pattern="HH:mm:ss" />" />
-					    </div>					
+					    	<input type="text" name="clinic.startOperation" tabindex="15" value="<joda:format value="${clinic.startOperation}" pattern="HH:mm:ss" />" />
+					    </div>						    
 					</fieldset>
 					
 					<fieldset>	
