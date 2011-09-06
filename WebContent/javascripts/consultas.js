@@ -280,7 +280,12 @@ EasyClinica.pages['consultas'] = function(){
 		$(selector).find('.qty, .amount').change(function(){
 			refreshAppointmentValue();
 		});
+		
+		$(selector).find('.qty, .amount').keyup(function(){
+			refreshAppointmentValue();
+		});
 	};
+	configureAmountManager();
 	
 	$('select[name=appointment.specialty.id]').change(function(){
 		var specialty_id = $(this).val();
