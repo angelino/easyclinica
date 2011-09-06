@@ -24,7 +24,7 @@
 						${doctor.crm}
 					</div>
 					<div>
-						<label class="title">Espeialidade:</label>
+						<label class="title">Especialidade:</label>
 						${doctor.specialty}
 					</div>					
 					<div class="telephone">
@@ -35,6 +35,10 @@
 						<label class="title">E-mail:</label>
 						${doctor.email}
 					</div>					
+					<div>
+						<label class="title">Intervalo entre consultas:</label>
+						${doctor.intervalBetweenAppointments} minutos
+					</div>	
 					<div class="remarks">
 			       		<label class="title">Observações:</label>
 			        	${doctor.observations}

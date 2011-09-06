@@ -20,7 +20,7 @@ public class ScheduleUtils {
 		this.loggedUser = loggedUser;
 	}
 	
-	public List<Time> buildDoctorSchedule(List<Schedule> schedules) {
+	public List<Time> buildDoctorSchedule(List<Schedule> schedules, int interval) {
 		Calendar start = getFirstHourOfTheSchedule();		
 		Calendar end = getLastHourOfTheSchedule();
 		
@@ -29,7 +29,7 @@ public class ScheduleUtils {
 		{
 			Time time = new Time((Calendar) start.clone());
 			
-			for(Schedule schedule : schedules ) {
+			for(Schedule schedule : schedules) {
 				if(schedule.getStartTime().get(Calendar.HOUR_OF_DAY) == start.get(Calendar.HOUR_OF_DAY) &&
 				   schedule.getStartTime().get(Calendar.MINUTE) == start.get(Calendar.MINUTE))
 				{
@@ -39,7 +39,7 @@ public class ScheduleUtils {
 			
 			timeTable.add(time);
 			
-			start.add(Calendar.MINUTE, 15);
+			start.add(Calendar.MINUTE, interval);
 		}
 		
 		return timeTable;

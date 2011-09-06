@@ -48,14 +48,14 @@ public class ScheduleController extends BaseController {
 	
 	@Get
 	public void _loadAppointments(int doctorId, Calendar date) {
-		Doctor doctor = new Doctor(doctorId);
+		Doctor doctor = allDoctors.getById(doctorId);
 		
 		Calendar start = calendarUtils.CloneDateAndSetTime(date, 0, 0, 0);
 		Calendar end = calendarUtils.CloneDateAndSetTime(date, 23, 59, 59);
 		
 		List<Schedule> schedules = allSchedule.getDoctorScheduleByPeriod(doctor, start, end);
 		
-		result.include("timeTable", scheduleUtils.buildDoctorSchedule(schedules));
+		result.include("timeTable", scheduleUtils.buildDoctorSchedule(schedules, doctor.getIntervalBetweenAppointments()));
 	}
 	
 	@Put

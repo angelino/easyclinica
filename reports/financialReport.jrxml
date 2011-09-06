@@ -184,7 +184,7 @@
 			<textField evaluationTime="Auto">
 				<reportElement x="747" y="0" width="52" height="20"/>
 				<textElement/>
-				<textFieldExpression class="java.lang.String"><![CDATA[($F{return} ? "X" : "")]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[($F{return} ? "Sim" : "Não")]]></textFieldExpression>
 			</textField>
 			<textField evaluationTime="Auto">
 				<reportElement x="724" y="46" width="75" height="20"/>
