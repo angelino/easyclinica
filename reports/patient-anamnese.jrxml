@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="patient-anamnese" language="groovy" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="181"/>
+	<property name="ireport.y" value="0"/>
 	<parameter name="patient" class="br.com.easyclinica.domain.entities.Patient" isForPrompting="false"/>
 	<parameter name="clinic" class="br.com.easyclinica.domain.entities.Clinic" isForPrompting="false"/>
 	<field name="complaintAndDuration" class="java.lang.String"/>
@@ -16,17 +16,23 @@
 	<field name="hypothesis" class="java.lang.String"/>
 	<field name="conduct" class="java.lang.String"/>
 	<field name="cid" class="br.com.easyclinica.domain.entities.CID"/>
-	<variable name="patientName" class="java.lang.String">
+	<variable name="patientName" class="java.lang.String" resetType="None">
 		<variableExpression><![CDATA[$P{patient}.name]]></variableExpression>
 	</variable>
-	<variable name="patientPlan" class="java.lang.String">
+	<variable name="patientPlan" class="java.lang.String" resetType="None">
 		<variableExpression><![CDATA[$P{patient}.getHealthCarePlan().getName()]]></variableExpression>
 	</variable>
-	<variable name="patientPhone" class="java.lang.String">
+	<variable name="patientPhone" class="java.lang.String" resetType="None">
 		<variableExpression><![CDATA[$P{patient}.getTelephone()]]></variableExpression>
 	</variable>
-	<variable name="birthDate" class="java.lang.String">
+	<variable name="birthDate" class="java.lang.String" resetType="None">
 		<variableExpression><![CDATA[new SimpleDateFormat("dd/MM/yyyy", new Locale("pt", "br")).format($P{patient}.getBirthDate().getTime())]]></variableExpression>
+	</variable>
+	<variable name="patientObservations" class="java.lang.String" resetType="None">
+		<variableExpression><![CDATA[$P{patient}.getObservations()]]></variableExpression>
+	</variable>
+	<variable name="patientId" class="java.lang.Integer" resetType="None">
+		<variableExpression><![CDATA[$P{patient}.getId()]]></variableExpression>
 	</variable>
 	<background>
 		<band splitType="Stretch"/>
@@ -68,10 +74,17 @@
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$P{clinic}.address.street + " - " + $P{clinic}.address.neighborhood]]></textFieldExpression>
 			</textField>
+			<textField evaluationTime="Band">
+				<reportElement x="1" y="68" width="63" height="29"/>
+				<textElement>
+					<font size="24" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$V{patientId}]]></textFieldExpression>
+			</textField>
 		</band>
 	</title>
 	<pageHeader>
-		<band height="55" splitType="Stretch">
+		<band height="94" splitType="Stretch">
 			<staticText>
 				<reportElement x="0" y="0" width="86" height="20"/>
 				<textElement textAlignment="Right">
@@ -79,7 +92,7 @@
 				</textElement>
 				<text><![CDATA[Paciente:]]></text>
 			</staticText>
-			<textField evaluationTime="Report">
+			<textField evaluationTime="Band">
 				<reportElement x="96" y="0" width="295" height="20"/>
 				<textElement/>
 				<textFieldExpression class="java.lang.String"><![CDATA[$V{patientName}]]></textFieldExpression>
@@ -89,9 +102,9 @@
 				<textElement textAlignment="Right">
 					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[Plano de Saúde:]]></text>
+				<text><![CDATA[Convênio:]]></text>
 			</staticText>
-			<textField evaluationTime="Report">
+			<textField evaluationTime="Band">
 				<reportElement x="96" y="25" width="228" height="20"/>
 				<textElement/>
 				<textFieldExpression class="java.lang.String"><![CDATA[$V{patientPlan}]]></textFieldExpression>
@@ -103,7 +116,7 @@
 				</textElement>
 				<text><![CDATA[Telefone:]]></text>
 			</staticText>
-			<textField evaluationTime="Report">
+			<textField evaluationTime="Band">
 				<reportElement x="446" y="0" width="109" height="20"/>
 				<textElement/>
 				<textFieldExpression class="java.lang.String"><![CDATA[$V{patientPhone}]]></textFieldExpression>
@@ -116,15 +129,27 @@
 				<text><![CDATA[Data de Nascimento:]]></text>
 			</staticText>
 			<line>
-				<reportElement x="0" y="50" width="555" height="1"/>
+				<reportElement x="0" y="91" width="555" height="1"/>
 				<graphicElement>
 					<pen lineWidth="3.0"/>
 				</graphicElement>
 			</line>
-			<textField evaluationTime="Report">
+			<textField evaluationTime="Band">
 				<reportElement x="446" y="26" width="109" height="20"/>
 				<textElement/>
 				<textFieldExpression class="java.lang.String"><![CDATA[$V{birthDate}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="50" width="86" height="20"/>
+				<textElement textAlignment="Right">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Observações:]]></text>
+			</staticText>
+			<textField evaluationTime="Band">
+				<reportElement x="97" y="50" width="458" height="38" isPrintWhenDetailOverflows="true"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$V{patientObservations}]]></textFieldExpression>
 			</textField>
 		</band>
 	</pageHeader>
@@ -245,7 +270,7 @@
 				</textElement>
 				<text><![CDATA[CID:]]></text>
 			</staticText>
-			<textField isStretchWithOverflow="true">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement positionType="Float" x="0" y="328" width="538" height="20"/>
 				<textElement/>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{cid}.name]]></textFieldExpression>
