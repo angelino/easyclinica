@@ -11,7 +11,7 @@ import br.com.easyclinica.infra.database.DatabaseConfigurator;
 
 public class ExportTables {
 
-	@Test
+	@Test @Ignore
 	public void createNewSchema() {
 		Configuration cfg = new DatabaseConfigurator(new HardCodedConfigForTests()).config("easyclinica");
 		
