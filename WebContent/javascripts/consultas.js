@@ -89,12 +89,12 @@ EasyClinica.pages['consultas'] = function(){
 			$('.modal').remove();
 			
 			suggestRoomRate(index);
-			configureAmountManager();
-			configureRemoveActions();
+			configureAmountManager('tr[procedure_id='+ procedureId +']');
+			configureRemoveActions('tr[procedure_id='+ procedureId +']');
 			refreshAppointmentValue();
-			managerProcedureElements();
+			managerProcedureElements('tr[procedure_id='+ procedureId +']');
 			EasyClinica.common.generalFunctions('tr[procedure_id='+ procedureId +']');
-			EasyClinica.common.formValidation();
+			EasyClinica.common.formValidation('tr[procedure_id='+ procedureId +']');
 			roomRateAmountManager();
 			
 			$("input[name=materialName]").autocomplete(EasyClinica.cfg.services.searchMaterial, {
@@ -383,10 +383,12 @@ EasyClinica.pages['consultas'] = function(){
 		});
 	};
 	
-	var managerProcedureElements = function(){		
+	var managerProcedureElements = function(selector){
+		if(selector === undefined) selector = '*';
+		
 		hideFormToAddNewProcedureElements();
 		
-		$('.procedure-elements li a').click(function(e){
+		$(selector).find('.procedure-elements li a').click(function(e){
 			e.preventDefault();
 			
 			hideFormToAddNewProcedureElements();
@@ -413,7 +415,7 @@ EasyClinica.pages['consultas'] = function(){
 			}
 		});
 		
-		$('.procedure-elements .btnclose').click(function(e){
+		$(selector).find('.procedure-elements .btnclose').click(function(e){
 			var rel = $(this).attr('rel');			
 			var box = $('div.' + rel);
 			box.hide();
@@ -434,7 +436,7 @@ EasyClinica.pages['consultas'] = function(){
 			
 		});
 		
-		$('.new-assistant .btnsave').click(function(e){
+		$(selector).find('.new-assistant .btnsave').click(function(e){
 			e.preventDefault();
 			
 			var form = findRecursiveParent($(this), 'form');
@@ -447,7 +449,7 @@ EasyClinica.pages['consultas'] = function(){
 	        } 
 		});
 		
-		$('.new-material .btnsave').click(function(e){
+		$(selector).find('.new-material .btnsave').click(function(e){
 			e.preventDefault();
 			
 			var form = findRecursiveParent($(this), 'form');
@@ -460,7 +462,7 @@ EasyClinica.pages['consultas'] = function(){
 	        } 
 		});
 		
-		$('.new-medicine .btnsave').click(function(e){
+		$(selector).find('.new-medicine .btnsave').click(function(e){
 			e.preventDefault();
 			
 			var form = findRecursiveParent($(this), 'form');
@@ -575,7 +577,7 @@ EasyClinica.pages['consultas'] = function(){
 	};
 	
 	var generateAssistantTemplate = function(form){
-		var index = $('input[name=index]').val();
+		var index = form.find('input[name=index]').val();
         var procedure_id = form.find('input[name=assistant_procedure_id]').val();
         var assistantName = form.find('input[name=assistantName]').val();
         var assistantType = form.find('select[name=assistantType]').val();
@@ -630,7 +632,7 @@ EasyClinica.pages['consultas'] = function(){
 			refreshAppointmentValue();
 			assistantCHChange('.assistant-'+procedure_id);
 			EasyClinica.common.generalFunctions('.assistant-'+procedure_id);
-			EasyClinica.common.formValidation();
+			EasyClinica.common.formValidation('.assistant-'+procedure_id);
         });
 	};
 	
@@ -652,7 +654,7 @@ EasyClinica.pages['consultas'] = function(){
 	};
 	
 	var generateMaterialTemplate = function(form){
-		var index = $('input[name=index]').val();
+		var index = form.find('input[name=index]').val();
         var procedure_id = form.find('input[name=material_procedure_id]').val();
         var materialName = form.find('input[name=materialName]').val();
         var materialId = form.find('input[name=materialId]').val();
@@ -703,11 +705,11 @@ EasyClinica.pages['consultas'] = function(){
 		refreshAppointmentValue();
 		assistantCHChange('.material-'+procedure_id);
 		EasyClinica.common.generalFunctions('.material-'+procedure_id);
-		EasyClinica.common.formValidation();
+		EasyClinica.common.formValidation('.material-'+procedure_id);
 	};
 	
 	var generateMedicineTemplate = function(form){
-		var index = $('input[name=index]').val();
+		var index = form.find('input[name=index]').val();
         var procedure_id = form.find('input[name=medicine_procedure_id]').val();
         var medicineName = form.find('input[name=medicineName]').val();
         var medicineId = form.find('input[name=medicineId]').val();
@@ -752,6 +754,6 @@ EasyClinica.pages['consultas'] = function(){
 		refreshAppointmentValue();
 		assistantCHChange('.medicine-'+procedure_id);
 		EasyClinica.common.generalFunctions('.medicine-'+procedure_id);
-		EasyClinica.common.formValidation();
+		EasyClinica.common.formValidation('.medicine-'+procedure_id);
 	};
 };

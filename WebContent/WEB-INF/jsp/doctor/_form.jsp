@@ -57,7 +57,7 @@
       <fieldset>
       	<div class="remarks">
           	<label class="title">Observações:</label>
-            <textarea name="doctor.observations">${doctor.observations}</textarea>
+            <textarea name="doctor.observations" allowEnter="true">${doctor.observations}</textarea>
         </div>
       </fieldset>
       
