@@ -8,18 +8,18 @@ import br.com.easyclinica.domain.entities.Position;
 
 @Component
 @ApplicationScoped
-public class ReceiptOnlyToOwnersAndFinancial implements Authorizer {
+public class ReceiptNotToDoctors implements Authorizer {
 
 	public boolean allows(Class<?> clazz, Employee employee) {
 		if (clazz.equals(ReceiptController.class)
-				&& userIsNotFinancialOrOwner(employee))
+				&& userIsDoctor(employee))
 			return false;
 
 		return true;
 	}
 
-	private boolean userIsNotFinancialOrOwner(Employee employee) {
-		return (employee.getPosition() != Position.FINANCIAL && employee.getPosition() != Position.OWNER);
+	private boolean userIsDoctor(Employee employee) {
+		return (employee.getPosition() == Position.DOCTOR);
 	}
 
 }
