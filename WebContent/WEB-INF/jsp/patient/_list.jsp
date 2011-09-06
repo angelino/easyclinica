@@ -12,6 +12,7 @@
    		<c:otherwise>
     		<table border="0" class="easy">
 				<tr class="tableheader">
+					<th width="20px">Id</th>
 					<th>Nome</th>
 					<th>Sexo</th>
 					<th>Convênio</th>
@@ -23,6 +24,7 @@
 				
 				<c:forEach var="patient" items="${patients.result}" varStatus="status">
 					<tr class="${status.count % 2 == 0 ? 'odd' : 'even' }">
+						<td>${patient.id}</td>
                         <td>${patient.name}</td>
                         <td>${patient.gender.formattedName}</td>
 						<td>${patient.healthCarePlan.name}</td>
