@@ -29,7 +29,7 @@
 	</li>
 	</c:if>
 		
-	<c:if test="${loggedUser.employee.position == 'FINANCIAL' or loggedUser.employee.position == 'OWNER'}">
+	<c:if test="${loggedUser.employee.position != 'DOCTOR'}">
 	<li ${selected=='Recibos' ? 'class="active first"' : ''}>
 		<a href="<c:url value="/pacientes/${patient.id}/recibos"/>">Recibos</a>
 	</li>
