@@ -16,6 +16,7 @@ import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.annotations.OrderBy;
 import org.hibernate.annotations.Type;
 
 import br.com.easyclinica.domain.types.Address;
@@ -49,8 +50,11 @@ public class Patient implements IDable {
 	private MaritalStatus maritalStatus;
 	private String email;
 	private String healthCarePlanCode;
+	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "patient")
+	@OrderBy(clause = "date desc")
 	private List<Appointment> appointments;
+	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "patient")
 	private List<Anamnese> anamneses;
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "patient")
