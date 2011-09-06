@@ -28,6 +28,7 @@ import br.com.easyclinica.domain.entities.builders.MedicineWithPriceAndQuantityB
 import br.com.easyclinica.domain.repositories.AllAppointments;
 import br.com.easyclinica.domain.repositories.AllDoctors;
 import br.com.easyclinica.domain.repositories.AllHealthCarePlans;
+import br.com.easyclinica.domain.repositories.AllPatientAppointments;
 import br.com.easyclinica.domain.repositories.AllPatients;
 import br.com.easyclinica.domain.repositories.AllProcedures;
 import br.com.easyclinica.domain.repositories.AllSpecialties;
@@ -36,6 +37,8 @@ import br.com.easyclinica.domain.services.VerifyIfAnAppointmentIsReturnService;
 import br.com.easyclinica.domain.validators.AppointmentValidator;
 import br.com.easyclinica.infra.vraptor.validators.ErrorTranslator;
 import br.com.easyclinica.view.Messages;
+import br.com.easyclinica.view.paginator.PaginatedResult;
+import br.com.easyclinica.view.paginator.Paginator;
 
 @Resource
 public class AppointmentsController extends BaseController {
@@ -52,6 +55,8 @@ public class AppointmentsController extends BaseController {
 	private final AppointmentValidator appointmentValidator;
 	private final ErrorTranslator translator;
 	private final VerifyIfAnAppointmentIsReturnService verifyIfAnAppointmentIsReturnService;
+	private final Paginator paginator;
+	private final AllPatientAppointments appointments;
 	
 	public AppointmentsController(AllDoctors allDoctors, AllSpecialties allSpecialties, AllPatients allPatients, 
 								AllProcedures allProcedures, AllHealthCarePlans allHealthCarePlans, 
@@ -60,7 +65,7 @@ public class AppointmentsController extends BaseController {
 								MedicineWithPriceAndQuantityBuilder medicineWithPriceAndQuantityBuilder, 
 								Validator validator, AppointmentValidator appointmentValidator, ErrorTranslator translator,
 								VerifyIfAnAppointmentIsReturnService verifyIfAnAppointmentIsReturnService,
-								Result result) {
+								Result result, Paginator paginator, AllPatientAppointments appointments) {
 
 	
 		super(result);
@@ -79,6 +84,8 @@ public class AppointmentsController extends BaseController {
 		this.appointmentValidator = appointmentValidator;
 		this.translator = translator;
 		this.verifyIfAnAppointmentIsReturnService = verifyIfAnAppointmentIsReturnService;
+		this.paginator = paginator;
+		this.appointments = appointments;
 	}
 
 	@Get
@@ -100,9 +107,9 @@ public class AppointmentsController extends BaseController {
 	
 	@Get
 	@Path("/pacientes/{patient}/consultas")
-	public Patient list(int patient) {
+	public void list(int patient, int page) {
 		result.include("patient", allPatients.getById(patient));
-		return allPatients.getById(patient);
+		result.include("appointments", paginator.paginate(appointments.forPatient(patient), page));
 	}
 	
 	private void setAllParents(Appointment appointment) {
@@ -176,6 +183,6 @@ public class AppointmentsController extends BaseController {
 		allAppointments.delete(appointment);
 		
 		successMsg(Messages.APPOINTMENT_DELETED);
-		result.redirectTo(AppointmentsController.class).list(patientId);
+		result.redirectTo(AppointmentsController.class).list(patientId, 1);
 	}
 }

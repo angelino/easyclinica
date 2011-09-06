@@ -7,11 +7,11 @@
 
 <c:if test="${total > 1}">
 	<div class="boxpagination">
-		<a href="?page=1" page="1" class="first"><img src="<c:url value="images/icons/resultset_first.png"/>" /></a>
+		<a href="?page=1" page="1" class="first"><img src="<c:url value="/images/icons/resultset_first.png"/>" /></a>
 		<% if(current == 1) { %>
-			<a href="javascript:void(0);" class="previous"><img src="<c:url value="images/icons/resultset_previous.png" />" /></a>
+			<a href="javascript:void(0);" class="previous"><img src="<c:url value="/images/icons/resultset_previous.png" />" /></a>
 		<% } else { %>
-			<a href="?page=<%= current - 1 %>" page="<%= current - 1 %>" class="previous"><img src="<c:url value="images/icons/resultset_previous.png" />" /></a>
+			<a href="?page=<%= current - 1 %>" page="<%= current - 1 %>" class="previous"><img src="<c:url value="/images/icons/resultset_previous.png" />" /></a>
 		<% } %>
 		
 		<%
@@ -36,10 +36,10 @@
 		<% } %>
 		
 		<% if(current.equals(total)) { %>
-			<a href="javascript:void(0);" class="next"><img src="<c:url value="images/icons/resultset_next.png" />" /></a>
+			<a href="javascript:void(0);" class="next"><img src="<c:url value="/images/icons/resultset_next.png" />" /></a>
 		<% } else { %>
-			<a href="?page=<%= current + 1 %>" page="<%= current + 1 %>" class="next"><img src="<c:url value="images/icons/resultset_next.png" />" /></a>
+			<a href="?page=<%= current + 1 %>" page="<%= current + 1 %>" class="next"><img src="<c:url value="/images/icons/resultset_next.png" />" /></a>
 		<% } %>
-		<a href="?page=<%= total %>" page="<%= total %>" class="last"><img src="<c:url value="images/icons/resultset_last.png" />" /></a>
+		<a href="?page=<%= total %>" page="<%= total %>" class="last"><img src="<c:url value="/images/icons/resultset_last.png" />" /></a>
 	</div>
 </c:if>
