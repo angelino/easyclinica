@@ -38,7 +38,7 @@
 			                    <th width="156px">&nbsp;</th>
 			                </tr> 
                   
-							<c:forEach items="${patient.appointments}" var="appointment" varStatus="st">
+							<c:forEach items="${appointments.result}" var="appointment" varStatus="st">
 								<tr class="${st.count%2==0?'odd':'even'}"> 
 									<td>
 										<fmt:formatDate value="${appointment.appointmentDate.time}" pattern="dd/MM/yyyy" />
@@ -61,6 +61,8 @@
 								</tr>
 							</c:forEach>
 				  		</table>
+				  		
+				  		<helper:pagging total="${appointments.totalPages}" current="${appointments.currentPage}" />
 					</c:otherwise>
 				</c:choose>
 			</div>
