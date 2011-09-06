@@ -13,7 +13,7 @@
 		</div>
 		
 		<div>
-			<p>Espeialidade:</p>
+			<p>Especialidade:</p>
 			<span>${doctor.specialty}</span>
 		</div>
 		
@@ -26,7 +26,12 @@
 			<p>E-mail:</p>
 			<span>${doctor.email}</span>
 		</div>
-		
+
+		<div>
+			<p>Intervalo entre Consultas:</p>
+			<span>${doctor.intervalBetweenAppointments} minutos</span>
+		</div>
+				
 		<div class="observations">
 			<p>Observações:</p>
 			<span>${doctor.observations}</span>

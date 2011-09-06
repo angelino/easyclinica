@@ -30,6 +30,8 @@ public class Doctor implements IDable, Serializable {
 	private String email;
 	@Type(type="text") 
 	private String observations;
+	private int intervalBetweenAppointments;
+	
 	private boolean active;
 	
 	public Doctor() { }
@@ -120,5 +122,16 @@ public class Doctor implements IDable, Serializable {
 	@Override
 	public String toString() {
 		return this.name;
-	}	
+	}
+
+	public int getIntervalBetweenAppointments() {
+		return intervalBetweenAppointments;
+	}
+
+	public void setIntervalBetweenAppointments(int intervalBetweenAppointments) {
+		this.intervalBetweenAppointments = intervalBetweenAppointments;
+	}
+
+	
+	
 }

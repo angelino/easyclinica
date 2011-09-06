@@ -47,6 +47,11 @@
          	<label class="title">E-mail:</label>
          	<input type="text" name="doctor.email" value="${doctor.email}" maxlength="100" />
          </div>
+         
+         <div>
+         	<label class="title">Intervalo entre consultas:</label>
+         	<input type="text" name="doctor.intervalBetweenAppointments" value="${doctor.intervalBetweenAppointments}" maxlength="2" /> minutos
+         </div>
       </fieldset>
       
       <fieldset>
