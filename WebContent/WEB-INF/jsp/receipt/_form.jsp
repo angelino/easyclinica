@@ -16,8 +16,6 @@
 	
 	<helper:errors errors="${errors}" />
 
-	<p class="required"><span>*</span> campos obrigatórios</p>
-
 	<fieldset>
       	<div class="date">
 			<label class="title">Data:<span>*</span></label>
