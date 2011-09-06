@@ -49,8 +49,8 @@
          </div>
          
          <div>
-         	<label class="title">Intervalo entre consultas:</label>
-         	<input type="text" name="doctor.intervalBetweenAppointments" value="${doctor.intervalBetweenAppointments}" maxlength="2" /> minutos
+         	<label class="title">Intervalo entre consultas (em minutos):</label>
+         	<input type="text" name="doctor.intervalBetweenAppointments" value="${doctor.intervalBetweenAppointments}" maxlength="2" />
          </div>
       </fieldset>
       
