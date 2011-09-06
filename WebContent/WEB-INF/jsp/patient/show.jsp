@@ -27,6 +27,11 @@
 						${patient.name}
 					</div>
 					
+					<div class="title">
+						<label class="title">Sexo:</label>
+						${patient.gender.formattedName}
+			    	</div>
+					
 					<div class="telephone">
 						<label class="title">Telefone:</label>
 			    		${patient.telephone}

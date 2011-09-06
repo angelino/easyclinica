@@ -17,6 +17,15 @@
 			<label class="title">Nome:<span>*</span></label>
 			<input type="text" name="patient.name" maxlength="50" tabindex="1" required="required" value="${patient.name}" />
 		</div>
+		
+		<div class="title">
+			<label class="title">Sexo:</label>
+			<select name="patient.gender" tabindex="2" style="width:100px">
+				<c:forEach var="gender" items="${genders}">
+					<option value="${gender}" <c:if test="${gender == patient.gender}">selected</c:if>>${gender.formattedName}</option>
+				</c:forEach>
+			</select>
+    	</div>
 	</fieldset>
 
 	<fieldset>

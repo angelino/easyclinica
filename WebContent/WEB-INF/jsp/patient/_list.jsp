@@ -13,6 +13,7 @@
     		<table border="0" class="easy">
 				<tr class="tableheader">
 					<th>Nome</th>
+					<th>Sexo</th>
 					<th>Convênio</th>
 					<th>Número no Convênio</th>
 					<th>Telefone</th>
@@ -23,6 +24,7 @@
 				<c:forEach var="patient" items="${patients.result}" varStatus="status">
 					<tr class="${status.count % 2 == 0 ? 'odd' : 'even' }">
                         <td>${patient.name}</td>
+                        <td>${patient.gender.formattedName}</td>
 						<td>${patient.healthCarePlan.name}</td>
 						<td>${patient.healthCarePlanCode}</td>
 						<td>${patient.telephone}</td>
