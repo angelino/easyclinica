@@ -67,7 +67,7 @@ public class PatientDao implements AllPatients {
 
 	@SuppressWarnings("unchecked")
 	public List<Patient> search(String textToSearch, int firstResult, int maxResults) {
-		textToSearch = textToSearch.replace(' ', '%');
+		textToSearch = "%" + textToSearch.trim().replace(' ', '%') + "%";
 		
 		return session.createCriteria(Patient.class).add(Restrictions.disjunction().add(Restrictions.eq("cpf",textToSearch))
 																				   .add(Restrictions.like("email", textToSearch))
@@ -80,7 +80,7 @@ public class PatientDao implements AllPatients {
 	}
 
 	public int count(String textToSearch) {
-		textToSearch = textToSearch.replace(' ', '%');
+		textToSearch = "%" + textToSearch.trim().replace(' ', '%') + "%";
 		
 		return ((Long) session.createCriteria(Patient.class).add(Restrictions.disjunction().add(Restrictions.eq("cpf",textToSearch))
 																		    .add(Restrictions.like("email", textToSearch))
