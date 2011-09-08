@@ -5,6 +5,32 @@ EasyClinica.pages['consultas'] = function(){
 
 	$('#informe-procedimento-message').hide();
 	
+	$('#btnSalvar').click(function(e){
+		var btnSalvar = $(this);
+		
+		var url = EasyClinica.cfg.services.modal.confirmacaoConsulta;
+		EasyClinica.lib.openModal(url, 'GET', {}, function(){
+			
+			$('#btnConfirmar').click(function(e){
+				e.preventDefault();
+				
+				$('.error').hide();
+		        
+		        var form = findRecursiveParent(btnSalvar, 'form');
+		        var validator = form.data('validator');
+		        validator.checkValidity();
+		        if (validator && validator.checkValidity()) {
+		            validator.destroy();
+		            form.submit();
+		        }
+		        
+		        $('.modal').remove();
+			});
+			
+		});
+        
+	});
+	
 	$("#txt_search_procedure").autocomplete(EasyClinica.cfg.services.searchProcedure, {
 		autoFill: false
 	}).result(function(event, item) {

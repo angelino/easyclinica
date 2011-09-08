@@ -429,6 +429,12 @@ div.error {
 .dados-consulta span{float:left;}
 .dados-consulta div.observations p {width: 100%;}
 
+.modal-confirmacao-consulta{float:left;padding:0 20px;text-align:left;margin-bottom: 15px;}
+.modal-confirmacao-consulta div {float:left; width: 100%;margin-top:5px;}
+.modal-confirmacao-consulta p{float:left;width:135px!important;margin:0!important;font-weight: bold;}
+.modal-confirmacao-consulta span{float:left;}
+.modal-confirmacao-consulta div.observations p {width: 100%;}
+
 .modal-anamneses .modal-content{padding:0 20px;text-align:left;}
 .modal-anamneses .modal-content div {float:left; width: 100%;margin-top:5px;}
 .modal-anamneses .modal-content p{float:left;width:143px;font-weight: bold;}

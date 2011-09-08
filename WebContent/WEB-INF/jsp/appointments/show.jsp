@@ -180,7 +180,8 @@
 				</table>
 					
 				<div class="boxactions">
-					<a class="btnback" href="<c:url value="/pacientes/${appointment.patient.id}/consultas" />">Voltar</a>
+					<c:url value="/pacientes/${appointment.patient.id}/consultas" var="urlBack"/>
+					<a class="btnback" href="<c:out value="${urlBack}" />">Voltar</a>
 			    </div>
 			</div>
 
