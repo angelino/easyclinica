@@ -1,5 +1,7 @@
 package br.com.easyclinica.actions;
 
+import java.util.List;
+
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
@@ -116,6 +118,13 @@ public class PatientController extends BaseController {
 		Patient patient = allPatients.getById(id);
 		
 		result.use(Results.json()).from(patient.getHealthCarePlan()).serialize();  
+	}
+	
+	@Get
+	public void _search(String q) {
+		List<Patient> patients = allPatients.search(q);
+		
+		result.include("patients", patients);
 	}
 	
 	private void include(Patient patient) {

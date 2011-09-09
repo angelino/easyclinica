@@ -33,9 +33,18 @@ EasyClinica.pages['agenda'] = function(){
 			configureTreatedFlag();
 			configureDeleteButton();
 			configureAddCompromiseFunctions();
+			configurePatientAutoComplete();
 			
 			$('.loading').hide();
 			$('.infocompromisso').hide();
+		});
+	};
+	
+	var configurePatientAutoComplete = function() {
+		$("input[name=schedule.subject]").autocomplete(EasyClinica.cfg.services.searchPatient, {
+			autoFill: false
+		}).result(function(event, item) {
+			//$('#selected_procedure_id').val(item[1]);
 		});
 	};
 	

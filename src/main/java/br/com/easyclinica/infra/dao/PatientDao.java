@@ -55,7 +55,7 @@ public class PatientDao implements AllPatients {
 
 	@SuppressWarnings("unchecked")
 	public List<Patient> search(String text) {
-		text = text.replace(' ', '%');
+		text = "%" + text.trim().replace(' ', '%') + "%";
 		
 		return session.createCriteria(Patient.class).add(Restrictions.disjunction().add(Restrictions.eq("cpf",text))
 																				   .add(Restrictions.like("email", text))

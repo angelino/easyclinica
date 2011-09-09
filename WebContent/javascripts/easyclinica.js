@@ -91,6 +91,7 @@ EasyClinica.cfg.services = {
 		
 		searchDoctors: BASE_URI + 'medicos/_busca',
 		searchPlans: BASE_URI + 'convenios/_busca',
+		searchPatient: BASE_URI + 'patient/_search',
 		
 		scheduleList: BASE_URI + 'schedule/_loadAppointments',
 		scheduleChangeArrivalTime: BASE_URI + 'schedule/_changeArrivalTime',
