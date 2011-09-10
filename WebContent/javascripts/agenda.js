@@ -24,24 +24,31 @@ EasyClinica.pages['agenda'] = function(){
 		var doctorId = $('select[name=schedule.doctor.id]').val();
 		var date = $('input[name=schedule.startTime]').val();
 		
-		$.get(EasyClinica.cfg.services.scheduleList, {doctorId: doctorId, date: date}, function(data){
-			$('#horarios').html(data);
-			
-			EasyClinica.common.generalFunctions('#horarios');
-			
-			configureArrivalTimeChange();
-			configureTreatedFlag();
-			configureDeleteButton();
-			configureAddCompromiseFunctions();
-			configurePatientAutoComplete();
-			
-			$('.loading').hide();
-			$('.infocompromisso').hide();
-		});
+		dados = "doctorId={0}&date={1}".format(doctorId, date);
+		
+		$.ajax({
+	        type: 'POST',
+	        url: EasyClinica.cfg.services.scheduleList,
+	        data: dados,
+	        success: function(data) {
+	        	$('#horarios').html(data);
+				
+				EasyClinica.common.generalFunctions('#horarios');
+				
+				configureArrivalTimeChange();
+				configureTreatedFlag();
+				configureDeleteButton();
+				configureAddCompromiseFunctions();
+				configurePatientAutoComplete();
+				
+				$('.loading').hide();
+				$('.infocompromisso').hide();
+	        }
+	    });
 	};
 	
 	var configurePatientAutoComplete = function() {
-		$("input[name=schedule.subject]").autocomplete(EasyClinica.cfg.services.searchPatient, {
+		$("input[autocomplete=true]").autocomplete(EasyClinica.cfg.services.searchPatient, {
 			autoFill: false
 		}).result(function(event, item) {
 			//$('#selected_procedure_id').val(item[1]);
@@ -80,8 +87,6 @@ EasyClinica.pages['agenda'] = function(){
 		        data: dados,
 		        success: function(json) {
 		        	if(json.status == '1') {
-		        		//subjectField.removeClass('ac_loading');
-		        		
 		        		carregarListaDeCompromissos();
 		        	}
 		        }
