@@ -22,9 +22,9 @@
 
 	<fieldset>
       	<div>
-          	<label class="title">Médico:<span>*</span></label>
+          	<label class="title"><c:out value="Médico:"/><span>*</span></label>
           	<select name="anamnese.doctor.id" min="1" data-message="Selecione um médico." tabindex="2">
-          		<option value="0">Selecione um médico</option>
+          		<option value="0"><c:out value="Selecione um médico"/></option>
           		<c:forEach var="doctor" items="${doctors}">
           			<option value="${doctor.id}" <c:if test="${doctor.id == anamnese.doctor.id}">selected</c:if>>${doctor.name}</option>
           		</c:forEach>
