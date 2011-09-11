@@ -16,25 +16,6 @@
 		<script type="text/javascript" language="javascript">
 			var BASE_URI = "/";
 		</script>
-		<helper:include fileName="plugins/jquery-1.4.4.min.js" type="js" />
-		<helper:include fileName="plugins/jquery.tools/jquery.tools.min.js" type="js" />
-		<helper:include fileName="plugins/jquery-ui/jquery-ui-1.8.4.custom.min.js" type="js" />
-		<helper:include fileName="plugins/jquery-ui/jquery.ui.timepicker-0.0.8.js" type="js" />
-	    <helper:include fileName="plugins/jquery.maskedinput/jquery.maskedinput-1.2.2.min.js" type="js" />	    
-	    <helper:include fileName="plugins/jquery.autocomplete/jquery.autocomplete.js" type="js" />
-	    <helper:include fileName="easyclinica.js" type="js" />
-	    <helper:include fileName="consultas.js" type="js" />
-	    <helper:include fileName="medicos.js" type="js" />
-	    <helper:include fileName="convenios.js" type="js" />
-	    <helper:include fileName="pacientes.js" type="js" />
-	    <helper:include fileName="anamnese.js" type="js" />
-	    <helper:include fileName="agenda.js" type="js" />
-	    <helper:include fileName="dashboard.js" type="js" />	    
-	    <helper:include fileName="usuarios.js" type="js" />	    
-	    <helper:include fileName="prices.js" type="js" />
-	    <helper:include fileName="recibo.js" type="js" />    
-	    <helper:include fileName="reports.js" type="js" />   
-	    <helper:include fileName="observacoes.js" type="js" />
 	    <decorator:head />
 	</head>
 
@@ -42,7 +23,6 @@
     
     	<div class="main">
             
-            <!-- START HEADER -->
             <div class="header">
        	    	<div class="hcontent">
 		       	    <h1><a href="#">${loggedUser.clinic.name}</a></h1>
@@ -78,23 +58,16 @@
 		                </ul>
 		    	</div>
 		    </div>
-            <!-- END HEADER -->
-        	
-	    	<!-- START CONTENT -->
             <div class="content">
             	<div class="ccontent">
     				<decorator:body />
     			</div> 			
 			</div>
-            <!-- END CONTENT -->
-            
-            <!-- START FOOTER - ->
             <div class="footer">
             	<div class="fcontent">
             		<p>Copyright &copy; 2011 Easy Clínica.</p>
             	</div>
             </div>
-            <!-- END FOOTER -->
             
         </div>
 
@@ -113,5 +86,6 @@
 
 </script>
 
+	<helper:include fileName="completo.min.js" type="js" />
     </body>
 </html>

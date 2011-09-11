@@ -21,6 +21,29 @@
 		<pathelement location="${build.dir}" />
 	</path>
 
+	<target name="js.concatenate">
+		<delete file="${webapp.dir}/javascripts/completo.js" />
+		<delete file="${webapp.dir}/javascripts/completo.min.js" /> 
+		
+	    <concat destfile="${webapp.dir}/javascripts/completo.js">
+			<filelist dir="${webapp.dir}javascripts/plugins/" files="jquery-1.4.4.min.js" />
+			<fileset dir="${webapp.dir}javascripts/plugins/jquery-ui/" includes="*.js" />
+			<fileset dir="${webapp.dir}javascripts/plugins/jquery.autocomplete/" includes="*.js" />
+			<fileset dir="${webapp.dir}javascripts/plugins/jquery.tools" includes="*.js" />
+			<fileset dir="${webapp.dir}javascripts/plugins/jquery.maskedinput" includes="*.js" />
+			
+			<filelist dir="${webapp.dir}javascripts/" files="easyclinica.js" />
+	        <fileset dir="${webapp.dir}javascripts/" includes="*.js" excludes="easyclinica.js, chat.js" />
+	    </concat>
+	</target>
+	
+	<target name="js.minify">
+		<taskdef name="jsmin"
+		        classname="net.matthaynes.jsmin.JSMin_Task"
+		        classpath="unresolved/jsmin.0.2.4.jar"/>
+		
+		<jsmin srcfile="${webapp.dir}/javascripts/completo.js" suffix="true" />
+	</target>
 	
 	<target name="reports">
 		<ant target="reports" antfile="build-reports.xml" />
@@ -55,22 +78,22 @@
 			</fileset>
 		</copy>
 	</target>
-
+	
 	<target name="config" description="--> put the right production files">
 		<delete file="${build.dir}/easyclinica.properties" />
 		<move file="${build.dir}/easyclinica-production.properties" toFile="${build.dir}/easyclinica.properties"/>
 
 		<delete file="${build.dir}/log4j.xml" />
-		<move file="${build.dir}/log4j-production.xml" toFile="${build.dir}/log4j.xml"/>
+		<move file="${build.dir}/log4j-production.xml" toFile="${build.dir}/log4j.xml"/>		
 	</target>
 
-	<target name="only-war" description="--> generate war file" depends="resolve, compile, reports, config">			
+	<target name="only-war" description="--> generate war file" depends="resolve, compile, reports, config, js.concatenate, js.minify">			
 		<war destfile="${output.dir}/${project.name}.war">
 			<zipfileset dir="${webapp.dir}" />
 		</war>
 	</target>
 		
-	<target name="war" description="--> generate war file" depends="test, reports, config">			
+	<target name="war" description="--> generate war file" depends="test, reports, config, js.concatenate, js.minify">			
 		<war destfile="${output.dir}/${project.name}.war">
 			<zipfileset dir="${webapp.dir}" />
 		</war>
