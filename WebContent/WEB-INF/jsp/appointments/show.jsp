@@ -178,11 +178,6 @@
 						<td class="currency">${appointment.totalAmount}</td>
 					</tr>
 				</table>
-					
-				<div class="boxactions">
-					<c:url value="/pacientes/${appointment.patient.id}/consultas" var="urlBack"/>
-					<a class="btnback" href="<c:out value="${urlBack}" />">Voltar</a>
-			    </div>
 			</div>
 
 		</div>

@@ -131,7 +131,7 @@ ul.botoes li{padding:5px 0;}
 .ccontent{width:980px;margin:0 auto;}
 
 .ccontent p.required span {color:#ff0000;}
-.ccontent .box{float:left;width:700px;margin:30px 0 20px 0;padding: 0 0 20px 0;}
+.ccontent .box{float:left;width:700px;margin:15px 0 20px 0;padding: 0 0 20px 0;}
 .ccontent .box ul.boxmenu{float:left;width:100%;}
 .ccontent .box ul.boxmenu li{float:left;color:#FFFFFF;text-decoration:none;}
 .ccontent .box ul.boxmenu li a{float:left;background:#445566;padding:3px 10px;margin:0 5px 0 0;color:#FFFFFF;text-decoration:none;}
@@ -331,7 +331,7 @@ table.easy tr td.tablenostyle{background:#ffffff!important;border:none;}
 .ccontent .box fieldset .pay-for-room-rate input.radio{margin:2px 5px 0 5px;border:none;}
 
 /*BOX DIREITO ######################################################################################################################*/
-.ccontent .boxright{float:right;width:230px;margin:30px 0 0 0;}
+.ccontent .boxright{float:right;width:230px;margin:15px 0 0 0;}
 /*BOX DIREITO TEXTOSIMPLES ######################################################################################################################*/
 .ccontent .boxright .simplebox{float:left;width:91%;}
 .ccontent .boxright .simplebox h4{background:#FFFFFF;border-color:#DDDDDD #CCCCCC #CCCCCC #DDDDDD;border-style:solid;border-width:1px;color:#333333;font-weight:bold;padding:5px 10px;margin:0 0 10px 0;}

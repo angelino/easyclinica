@@ -43,7 +43,7 @@ var EasyClinica = {
 	setup: function() {
 		// alinhamento do box lateral direito
 		if($('.boxmenu').length > 0) {
-			$('.boxright').css('margin-top', '55px');
+			$('.boxright').css('margin-top', '40px');
 		}
 		
 		$(window).keydown(function(event){

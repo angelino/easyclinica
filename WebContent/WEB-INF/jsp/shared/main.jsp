@@ -46,7 +46,7 @@
 		                  </c:if>
 		                  
 		                  
-		                  <li id="menu-link-schedule">
+		                  <li id="menu-link-agenda">
 								<c:url value="/agenda" var="schedule_link"/>
 								<a href="${schedule_link}" title="Ver Agenda">Agenda</a>
 						  </li>
@@ -63,11 +63,11 @@
     				<decorator:body />
     			</div> 			
 			</div>
-            <div class="footer">
+            <!-- div class="footer">
             	<div class="fcontent">
             		<p>Copyright &copy; 2011 Easy Clínica.</p>
             	</div>
-            </div>
+            </div -->
             
         </div>
 
