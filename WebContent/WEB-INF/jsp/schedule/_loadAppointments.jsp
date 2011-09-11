@@ -18,7 +18,7 @@
 		<div class="time">
 			<span id="${st.count}"><fmt:formatDate type="time" pattern="HH:mm" value="${row.time.time}"/></span>			
 			<a class="btnaddevent" href="#">&nbsp;</a>
-			<input class="addcompromisso" type="text" name="schedule.subject" time_ref="${st.count}" allowEnter="true"/>
+			<input class="addcompromisso" type="text" name="schedule.subject" time_ref="${st.count}" allowEnter="true" autocomplete="true"/>
 			<span class="infocompromisso">Digite uma breve descrição do Compromisso.</span>		
 		</div>
 		

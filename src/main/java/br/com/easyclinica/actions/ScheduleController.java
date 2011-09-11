@@ -46,7 +46,7 @@ public class ScheduleController extends BaseController {
 		result.include("loggedDoctor", loggedDoctor());
 	}
 	
-	@Get
+	@Post
 	public void _loadAppointments(int doctorId, Calendar date) {
 		Doctor doctor = allDoctors.getById(doctorId);
 		
