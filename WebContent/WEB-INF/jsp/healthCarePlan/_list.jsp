@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib uri="/WEB-INF/easyclinica.tld" prefix="helper" %>
 
@@ -13,12 +13,12 @@
   		<c:otherwise>   	
       		<table border="0" class="easy">
 			<tr class="tableheader">
-				<th width="65px">Status:</th>
+				<th width="20px">&nbsp;</th>
 				<th>Nome:</th>
 				<th>Contato:</th>
 				<th>Telefone:</th>
 				<th>Valor CH (R$):</th>
-				<th width="171px">&nbsp;</th>
+				<th width="42px">&nbsp;</th>
 			</tr>
 			
 			<c:forEach var="healthCare" items="${healthcares.result}" varStatus="status">
@@ -38,29 +38,37 @@
 					<td>${healthCare.contact}</td>
 					<td>${healthCare.telephone}</td>
 					<td class="currency">${healthCare.ch}</td>
-					<td class="buttons">
-                                    <a class="btnpeopleshow" title="Exibir" href="<c:url value="/convenios/${healthCare.id}"/>">&nbsp;</a>
-						<a class="btnpeopleedit" title="Editar" href="<c:url value="/convenios/${healthCare.id}/editar" />">&nbsp;</a>
-                                    
-                                    <c:if test="${healthCare.id != loggedUser.clinic.privatePlan.id}">
-                                     
-                                     <c:choose>
-								<c:when test="${healthCare.active}">
-									<form action="<c:url value="/convenios/${healthCare.id}/deactivate" />" method="post">
-                                       	<input type="hidden" name="_method" value="PUT" />
-                                       	<a class="btnpeopledisable last submit" title="Desativar" href="#">&nbsp;</a>
-									</form>
-								</c:when>
-								<c:otherwise>
-									<form action="<c:url value="/convenios/${healthCare.id}/activate" />" method="post">
-                                       	<input type="hidden" name="_method" value="PUT" />
-                                       	<a class="btnpeopleenable last submit" title="Ativar" href="#">&nbsp;</a>
-									</form>
-								</c:otherwise>
-							</c:choose>
-							
-                                 </c:if>
-                                </td>
+					<td class="buttons">                       
+	                   	<span class="btntools">
+	                       	Ferramentas
+	                       	<span class="boxtools">
+	                       		<span class="buttons">
+		                       		<span class="arrow">&nbsp;</span>
+		                       		
+			                        <a class="btnpeopleshow" title="Exibir" href="<c:url value="/convenios/${healthCare.id}"/>">&nbsp;</a>
+									<a class="btnpeopleedit" title="Editar" href="<c:url value="/convenios/${healthCare.id}/editar" />">&nbsp;</a>
+			                                    
+			                        <c:if test="${healthCare.id != loggedUser.clinic.privatePlan.id}">
+			                                     
+			                            <c:choose>
+											<c:when test="${healthCare.active}">
+												<form action="<c:url value="/convenios/${healthCare.id}/deactivate" />" method="post">
+			                                       	<input type="hidden" name="_method" value="PUT" />
+			                                       	<a class="btnpeopledisable last submit" title="Desativar" href="#">&nbsp;</a>
+												</form>
+											</c:when>
+											<c:otherwise>
+												<form action="<c:url value="/convenios/${healthCare.id}/activate" />" method="post">
+			                                       	<input type="hidden" name="_method" value="PUT" />
+			                                       	<a class="btnpeopleenable last submit" title="Ativar" href="#">&nbsp;</a>
+												</form>
+											</c:otherwise>
+										</c:choose>									
+			                        </c:if>
+		                        </span>
+	                         </span>
+	                       </span>
+                    </td>
 				</tr>
 			</c:forEach>
 		</table>

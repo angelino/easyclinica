@@ -41,52 +41,59 @@
     <body>
     
     	<div class="main">
+            
             <!-- START HEADER -->
             <div class="header">
-       	    <h1><a href="#">${loggedUser.clinic.name}</a></h1>
-
-                <ul class="menulogin">
-                  <c:if test="${loggedUser.employee.position eq 'OWNER'}">
-                  <li><a href="<c:url value="/clinica" />">Dados da Clínica</a></li>
-                  </c:if>
-                  <li><a href="<c:url value="/perfil" />">Meu perfil</a></li>
-                  <li><a href="<c:url value="/logoff" />" class="logout" id="lnkLogout">Logout</a></li>
-                </ul>
-
-                <ul class="menu" id="menu-principal">
-                  <li class="first" id="menu-link-dashboard"><a href="<c:url value="/" />">Mural</a></li>
-                  <li id="menu-link-pacientes"><a href="<c:url value="/pacientes" />">Pacientes</a></li>
-                  <li id="menu-link-convenios"><a href="<c:url value="/convenios" />">Convênios</a></li>
-                  <li id="menu-link-medicos"><a href="<c:url value="/medicos" />">Médicos</a></li>
-                  
-                  <c:if test="${loggedUser.employee.position eq 'OWNER'}">
-                  <li id="menu-link-usuarios"><a href="<c:url value="/usuarios" />">Usuários</a></li>
-                  </c:if>
-                  
-                  
-                  <li id="menu-link-schedule">
-						<c:url value="/agenda" var="schedule_link"/>
-						<a href="${schedule_link}" title="Ver Agenda">Agenda</a>
-				  </li>
-						
-
-				  <c:if test="${loggedUser.employee.position eq 'OWNER' or loggedUser.employee.position eq 'FINANCIAL'}">
-                  <li id="menu-link-reports"><a href="<c:url value="/relatorios" />">Relatórios</a></li>
-                  </c:if>
-                </ul>
-            </div>
+       	    	<div class="hcontent">
+		       	    <h1><a href="#">${loggedUser.clinic.name}</a></h1>
+		
+		                <ul class="menulogin">
+		                  <c:if test="${loggedUser.employee.position eq 'OWNER'}">
+		                  <li><a href="<c:url value="/clinica" />">Dados da Clínica</a></li>
+		                  </c:if>
+		                  <li><a href="<c:url value="/perfil" />">Meu perfil</a></li>
+		                  <li><a href="<c:url value="/logoff" />" class="logout" id="lnkLogout">Logout</a></li>
+		                </ul>
+		
+		                <ul class="menu" id="menu-principal">
+		                  <li class="first" id="menu-link-dashboard"><a href="<c:url value="/" />">Mural</a></li>
+		                  <li id="menu-link-pacientes"><a href="<c:url value="/pacientes" />">Pacientes</a></li>
+		                  <li id="menu-link-convenios"><a href="<c:url value="/convenios" />">Convênios</a></li>
+		                  <li id="menu-link-medicos"><a href="<c:url value="/medicos" />">Médicos</a></li>
+		                  
+		                  <c:if test="${loggedUser.employee.position eq 'OWNER'}">
+		                  <li id="menu-link-usuarios"><a href="<c:url value="/usuarios" />">Usuários</a></li>
+		                  </c:if>
+		                  
+		                  
+		                  <li id="menu-link-schedule">
+								<c:url value="/agenda" var="schedule_link"/>
+								<a href="${schedule_link}" title="Ver Agenda">Agenda</a>
+						  </li>
+								
+		
+						  <c:if test="${loggedUser.employee.position eq 'OWNER' or loggedUser.employee.position eq 'FINANCIAL'}">
+		                  <li id="menu-link-reports"><a href="<c:url value="/relatorios" />">Relatórios</a></li>
+		                  </c:if>
+		                </ul>
+		    	</div>
+		    </div>
             <!-- END HEADER -->
         	
 	    	<!-- START CONTENT -->
             <div class="content">
-    			<decorator:body />    			
+            	<div class="ccontent">
+    				<decorator:body />
+    			</div> 			
 			</div>
             <!-- END CONTENT -->
             
             <!-- START FOOTER -->
-            <!--div class="footer">
-            	<p>Copyright &copy; 2011 Easy Clínica.</p>
-            </div-->
+            <div class="footer">
+            	<div class="fcontent">
+            		<p>Copyright &copy; 2011 Easy Clínica.</p>
+            	</div>
+            </div>
             <!-- END FOOTER -->
             
         </div>

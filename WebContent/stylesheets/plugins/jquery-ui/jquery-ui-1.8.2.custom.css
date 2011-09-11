@@ -300,6 +300,7 @@
 .ui-selectable-helper { border:1px dotted black }
 /* Accordion
 ----------------------------------*/
+.ui-accordion{width:720px;margin:0 0 0 -20px;}
 .ui-accordion .ui-accordion-header { cursor: pointer; position: relative; margin-top: 1px; zoom: 1; }
 .ui-accordion .ui-accordion-li-fix { display: inline; }
 .ui-accordion .ui-accordion-header-active { border-bottom: 0 !important; }

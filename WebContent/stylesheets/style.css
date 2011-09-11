@@ -53,137 +53,12 @@ a.btn:hover{background-color:#445566; color: #FFFFFF;}
 ul.botoes{float:left;margin:5px 0;}
 ul.botoes li{padding:5px 0;}
 
-/*START LOGIN ######################################################################################################################*/
-.main .boxlogin{float:left;width:300px;background:#ffffff;position:absolute;top:30%;left:50%;margin:-160px 0 0 -150px;}
-.main .boxlogin h1{float:left;width:290px;font-size:28px;margin:0;padding:20px 0 20px 10px;color:#444444;background:#EBEBEB;}
-.main .boxlogin h2{float:left;width:290px;font-size:28px;margin:0;padding:20px 0 20px 10px;color:#EAEAEA;background:#242d31;}
-.main .boxlogin form{float:left;width:260px;margin:0 0 0 20px;}
-.main .boxlogin form fieldset{float:left;margin:10px 0 0 0;}
-.main .boxlogin form fieldset label{float:left;width:35px;margin:5px 0 0 0;padding:0 10px 0 0;font-weight:bold;text-align:right;}
-.main .boxlogin form fieldset input, .main .boxlogin form fieldset select, .main .boxlogin form fieldset textarea{float:left;width:200px;padding:4px 6px;border-color:#CCCCCC #DDDDDD #DDDDDD #CCCCCC;border-right:1px solid #DDDDDD;border-style:solid;border-width:2px 1px 1px 2px;}
-.main .boxlogin form fieldset.boxactions{float:left;width:100%;margin:10px 0 20px 0;}
-.main .boxlogin form fieldset.boxactions input{float:left;width:auto;background-color:#EEEEEE;background-repeat:no-repeat;background-position:10px 5px;border:1px solid #BFBFBF;color:#222222;cursor:pointer;float:left;font-size:1em;font-weight:bold;line-height:1.3em;margin:0 0 0 10px;padding:5px 10px 5px 35px;text-decoration:none;}
-.main .boxlogin form fieldset.boxactions input:hover{background-color:#dfdfde;}
-/*END LOGIN ######################################################################################################################*/
-
-
-/*START HEADER ######################################################################################################################*/
-.main .header{float:left;width:96.9%;padding:0 20px;background:#242d31;position:relative;}
-.main .header h1{float:left;width:100%;font-size:28px;margin:5px 0;padding:8px 0;}
-.main .header h1 a{float:left;color:#EAEAEA;text-decoration:none;}
-
-.main ul.menulogin{float:left;position:absolute;top:0;right:20px;}
-.main ul.menulogin li{float:left;}
-.main ul.menulogin li a{float:left;padding:5px 10px;color:#CCDDEE;border-bottom:1px dotted #334455;text-decoration:none;}
-.main ul.menulogin li a:hover{float:left;padding:5px 10px;text-decoration:underline;}
-
-.main ul.menu{float:left;}
-.main ul.menu li{float:left;margin:0 5px 0 0;border-top:1px solid #5C738A;color:#333333;}
-.main ul.menu li a{float:left;background:#445566;padding:3px 10px;color:#FFFFFF;text-decoration:none;}
-.main ul.menu li a:hover{background:#576c82;}
-.main ul.menu li.active{color:#333333;}
-.main ul.menu li.active a{background:#EEEEEE;color:#364B69;cursor:default;}
-/*END HEADER ######################################################################################################################*/
-
-/*START CONTENT ######################################################################################################################*/
-/*BOX SUBMENU ######################################################################################################################*/
-.main .content{float:left;width:96.9%;padding:0 20px;background:#efefef;}
-.main .content p.required span {color:#ff0000;}
-.main .content .box{float:left;width:73%;margin:30px 0 20px 0;padding: 0 0 20px 0;}
-.main .content .box ul.boxmenu{float:left;width:100%;}
-.main .content .box ul.boxmenu li{float:left;color:#FFFFFF;text-decoration:none;}
-.main .content .box ul.boxmenu li a{float:left;background:#445566;padding:3px 10px;margin:0 5px 0 0;color:#FFFFFF;text-decoration:none;}
-.main .content .box ul.boxmenu li a:hover{background:#576c82;}
-.main .content .box ul.boxmenu li.active{color:#333333;}
-.main .content .box ul.boxmenu li.active a{background:#FFFFFF;color:#364B69;cursor:default;}
-
-/*BOX CONTEUDO GERAL ######################################################################################################################*/
-.main .content .box .boxcontent{float:left;width:95.5%;padding:0 20px;background:#FFFFFF;color:#333333;}
-.main .content .box .boxcontent h2{float:left;width:100%;color:#445566;font-size:18px;margin:10px 0 5px 0;}
-.main .content .box .boxcontent p{float:left;width:100%;font-size:12px;line-height:20px;margin:15px 0;color: #000;}
-.main .content .box .boxcontent p span.small{font-size:11px;}
-.main .content .box .boxcontent p span.gray{color:#999999;}
-.main .content .box .boxcontent p span.hightlight{background:#FFFFCC;}
-.main .content .box .boxcontent hr{background:#AAAAAA;border:0 none;height:1px;}
-.main .content .box .boxcontent em{float:left;}
-
-/*BOX TABELA GERAL ######################################################################################################################*/
-table.easy{float:left;width:100%;border:none; margin-top: 10px;}
-table.easy tr.tableheader th, .main .content .box form table tr.tableheader td{background:#576C82;color:#FFFFFF;font-weight:bold;padding:3px;text-align:left;text-transform:uppercase;}
-table.easy tr td{text-align:left;padding:8px; border-bottom:#efefef 1px solid;}
-table.easy tr.boxdivisortable td{padding:0;border:none;}
-table.easy tr td a{background-color:#EEEEEE;background-repeat:no-repeat;background-position:10px 5px;border:1px solid #BFBFBF;color:#222222;cursor:pointer;float:left;font-size:1em;font-weight:bold;line-height:1.3em;margin:0 7px 0 0;padding:5px 10px 5px 25px;text-decoration:none;}
-table.easy tr td a:hover{background-color:#dfdfde;}
-table.easy tr td a.btnpeopleedit{background-image:url(/images/icons/pencil.png);}
-table.easy tr td a.btnpeopleshow{background-image:url(/images/icons/vcard.png);}
-table.easy tr td a.btnpeopleenable{background-image:url(/images/icons/user_green.png);}
-table.easy tr td a.btnpeopledisable{background-image:url(/images/icons/user_grayoff.png);}
-table.easy tr td a.btnappointments{background-image:url(/images/icons/appointments.png);}
-table.easy tr td a.btnschedule{background-image:url(/images/icons/schedule.png);}
-table.easy tr td a.btnreceipt{background-image:url(/images/icons/receipt.png);}
-table.easy tr td a.btnpdf{background-image:url(/images/icons/pdf.png);}
-
-table.easy tr td form{width:50px!important;}
-table.easy tr td input{background-color:#EEEEEE;background-repeat:no-repeat;background-position:10px 5px;border:1px solid #BFBFBF;color:#222222;cursor:pointer;float:left;font-size:1em;font-weight:bold;line-height:1.3em;margin:0 0 0 10px;padding:5px 10px 5px 25px;text-decoration:none;}
-table.easy tr td input:hover{background-color:#dfdfde;}
-table.easy tr td input.btndelete{background-image:url(/images/icons/delete.png);margin:0!important;}
-table.easy tr td a.btndelete{background-image:url(/images/icons/delete.png);}
-
-table.easy tr td.statusenable{background:transparent url(/images/icons/user_green.png) center no-repeat;text-indent:-9999px;}
-table.easy tr td.statusdisable{background:transparent url(/images/icons/user_grayoff.png) center no-repeat;text-indent:-9999px;}
-table.easy tr td.namedisable{text-decoration:line-through;}
-table.easy tr td a.last{margin:0;}
-table.easy tr td.tablenostyle{background:#ffffff!important;border:none;}
-
-
-
-/*BOX TABELA PROCEDIMENTOS ######################################################################################################################*/
-.main .content .box form{float:left;width:100%;}
-.main .content .box table.tableprocedures{float:left;width:100%;border:none;}
-.main .content .box table.tableprocedures tr.tableheader th, .main .content .box table.tableprocedures tr.tableheader td{background:#576C82;color:#FFFFFF;font-weight:bold;padding:3px;text-align:center;text-transform:uppercase;}
-.main .content .box table.tableprocedures tr td{text-align:left;padding:8px; border-bottom:#efefef 1px solid;}
-.main .content .box table.tableprocedures tr td.center{text-align:center;}
-.main .content .box table.tableprocedures tr.boxsubtotal td{background:#efefef;font-weight:bold;padding:0 8px;text-transform:uppercase;border:none;}
-.main .content .box table.tableprocedures tr.boxdivisortable td{padding:0;border:none;}
-.main .content .box table.tableprocedures tr.boxtotal{padding:20px 0 0 0;}
-.main .content .box table.tableprocedures tr.boxtotal td{padding:0 8px;border:none;text-transform:uppercase;font-weight:bold;}
-.main .content .box table.tableprocedures tr td a{background-color:#EEEEEE;background-repeat:no-repeat;background-position:10px 5px;border:1px solid #BFBFBF;color:#222222;cursor:pointer;float:left;font-size:1em;font-weight:bold;line-height:1.3em;margin:0 7px 0 0;padding:5px 10px 5px 35px;text-decoration:none;}
-.main .content .box table.tableprocedures tr td a:hover{background-color:#dfdfde;}
-.main .content .box table.tableprocedures tr td a.btndelete{background-image:url(/images/icons/delete.png);}
-.main .content .box table.tableprocedures tr td a.last{margin:0;}
-.main .content .box table.tableprocedures tr td input{float:left;width:200px;padding:4px 6px;border-color:#CCCCCC #DDDDDD #DDDDDD #CCCCCC;border-right:1px solid #DDDDDD;border-style:solid;border-width:2px 1px 1px 2px;}
-.main .content .box table.tableprocedures tr td input.qty{width:33px}
-.main .content .box table.tableprocedures tr td input.amount{width:60px}
-.main .content .box table tr td.tablenostyle{background:#ffffff!important;border:none;}
-
-.main .content .box .tableprocedures .procedure-elements li{float:left;}
-.main .content .box .tableprocedures .procedure-elements li > a{display:block;text-indent:-9999px;background-repeat:no-repeat;width:22px;height:22px;padding:2px;cursor:pointer;}
-.main .content .box .tableprocedures .procedure-elements li > a:hover{filter:alpha(opacity=70);opacity:0.7;}
-.main .content .box .tableprocedures .procedure-elements li > a.active{background-color:#fff;}
-.main .content .box .tableprocedures .procedure-elements li a.new-assistant{background-image:url(/images/icons/assistant.png);}
-.main .content .box .tableprocedures .procedure-elements li a.new-material{background-image:url(/images/icons/material.png);}
-.main .content .box .tableprocedures .procedure-elements li a.new-medicine{background-image:url(/images/icons/medicine.png);}
-
-.main .content .box .tableprocedures div.new-assistant{background-color: #FFFFFF;position: absolute;width: 400px;padding: 5px;}
-.main .content .box .tableprocedures div.new-assistant fieldset{width:100%;}
-.main .content .box .tableprocedures div.new-assistant p{text-align: left;margin:0;}
-.main .content .box .tableprocedures div.new-assistant label.title{text-align: left;}
-
-.main .content .box .tableprocedures div.new-material{background-color: #FFFFFF;position: absolute;width: 400px;padding: 5px;}
-.main .content .box .tableprocedures div.new-material fieldset{width:100%;}
-.main .content .box .tableprocedures div.new-material p{text-align: left;margin:0;}
-.main .content .box .tableprocedures div.new-material label.title{text-align: left;}
-
-.main .content .box .tableprocedures div.new-medicine{background-color: #FFFFFF;position: absolute;width: 400px;padding: 5px;}
-.main .content .box .tableprocedures div.new-medicine fieldset{width:100%;}
-.main .content .box .tableprocedures div.new-medicine p{text-align: left;margin:0;}
-.main .content .box .tableprocedures div.new-medicine label.title{text-align: left;}
 
 /*BOX BOTOES ######################################################################################################################*/
 .boxactions{float:left;width:100%;background-color:#EEEEEE; border:#EEEEEE 1px solid;font-size:14px;padding:10px 0;margin:10px 0;}
-.boxactions a{background-color:#EEEEEE;background-repeat:no-repeat;background-position:10px 5px;border:1px solid #BFBFBF;color:#222222;cursor:pointer;float:left;font-size:1em;font-weight:bold;line-height:1.3em;margin:0 0 0 10px;padding:5px 10px 5px 35px;text-decoration:none;}
+.boxactions a{background-color:#EEEEEE;background-repeat:no-repeat;background-position:10px 5px;border:1px solid #BFBFBF;color:#222222;cursor:pointer;float:left;font-size:1em;font-weight:bold;line-height:1.3em;margin:0 0 0 10px;padding:5px 10px 5px 35px;!padding:4px 0 4px 10px;text-decoration:none;}
 .boxactions a:hover{background-color:#dfdfde;}
-.boxactions input{background-color:#EEEEEE;background-repeat:no-repeat;background-position:10px 5px;border:1px solid #BFBFBF;color:#222222;cursor:pointer;float:left;font-size:1em;font-weight:bold;line-height:1.3em;margin:0 0 0 10px;padding:5px 10px 5px 35px;text-decoration:none;}
+.boxactions input{background-color:#EEEEEE;background-repeat:no-repeat;background-position:10px 5px;border:1px solid #BFBFBF;color:#222222;cursor:pointer;float:left;font-size:1em;font-weight:bold;line-height:1.3em;margin:0 0 0 10px;padding:5px 10px 5px 35px;!padding:4px 0 4px 10px;text-decoration:none;}
 .boxactions input:hover{background-color:#dfdfde;}
 .boxactions a.btnsave{background-image:url(/images/icons/disk.png);}
 .boxactions input.btnsave{background-image:url(/images/icons/disk.png);}
@@ -212,6 +87,159 @@ table.easy tr td.tablenostyle{background:#ffffff!important;border:none;}
 .boxactions a.btnreport{background-image:url(/images/icons/report.png);}
 .boxactions input.btnreport{background-image:url(/images/icons/report.png);}
 
+
+
+/*START LOGIN ######################################################################################################################*/
+.boxlogin{width:300px;padding:0 0 20px 0;background:#ffffff;position:absolute;top:50%;left:50%;margin:-160px 0 0 -150px;}
+.boxlogin h1{font-size:28px;font-weight:normal;margin:0;padding:0;border-color:#EBEBEB;border-style:solid;border-width:20px 0px 20px 10px;color:#444444;background:#EBEBEB;}
+.boxlogin h2{font-size:28px;font-weight:normal;margin:0;padding:0;border-color:#242d31;border-style:solid;border-width:20px 0px 20px 10px;color:#EAEAEA;background:#242d31;}
+.boxlogin form{float:left;width:260px;margin:0 0 0 20px;}
+.boxlogin form fieldset{float:left;margin:10px 0 0 0;}
+.boxlogin form fieldset label{width:35px;margin:5px 0 0 0;padding:0 10px 0 0;font-weight:bold;text-align:right;display:inline-block;}
+.boxlogin form fieldset input{width:195px;padding:4px 6px;border-color:#CCCCCC #DDDDDD #DDDDDD #CCCCCC;border-right:1px solid #DDDDDD;border-style:solid;border-width:2px 1px 1px 2px;}
+.boxlogin form fieldset.boxactions{margin:10px 0 0 0;}
+.boxlogin form fieldset.boxactions input{width:auto;background-color:#EEEEEE;background-repeat:no-repeat;background-position:10px 5px;border:1px solid #BFBFBF;color:#222222;cursor:pointer;float:left;font-size:1em;font-weight:bold;line-height:1.3em;margin:0 0 0 10px;padding:5px 10px 5px 35px;!padding:5px 3px 5px 25px;text-decoration:none;}
+.boxlogin form fieldset.boxactions input:hover{background-color:#dfdfde;}
+/*END LOGIN ######################################################################################################################*/
+
+/*START HEADER ######################################################################################################################*/
+.header{float:left;width:100%;background:#242d31;}
+
+.hcontent{width:980px;margin:0 auto;position:relative;}
+
+.hcontent h1{float:left;width:100%;font-size:28px;}
+.hcontent h1 a{float:left;padding:15px 0;color:#EAEAEA;text-decoration:none;}
+
+.hcontent ul.menulogin{float:left;position:absolute;top:0;right:20px;}
+.hcontent ul.menulogin li{float:left;}
+.hcontent ul.menulogin li a{float:left;padding:5px 10px;color:#CCDDEE;border-bottom:1px dotted #334455;text-decoration:none;}
+.hcontent ul.menulogin li a:hover{float:left;padding:5px 10px;text-decoration:underline;}
+
+.hcontent ul.menu{float:left;}
+.hcontent ul.menu li{float:left;margin:0 5px 0 0;border-top:1px solid #5C738A;color:#333333;}
+.hcontent ul.menu li a{float:left;background:#445566;padding:3px 10px;color:#FFFFFF;text-decoration:none;}
+.hcontent ul.menu li a:hover{background:#576c82;}
+.hcontent ul.menu li.active{color:#333333;}
+.hcontent ul.menu li.active a{background:#EEEEEE;color:#364B69;cursor:default;}
+/*END HEADER ######################################################################################################################*/
+
+/*START CONTENT ######################################################################################################################*/
+
+/*BOX SUBMENU ######################################################################################################################*/
+.content{float:left;width:100%;background:#efefef;}
+
+.ccontent{width:980px;margin:0 auto;}
+
+.ccontent p.required span {color:#ff0000;}
+.ccontent .box{float:left;width:700px;margin:30px 0 20px 0;padding: 0 0 20px 0;}
+.ccontent .box ul.boxmenu{float:left;width:100%;}
+.ccontent .box ul.boxmenu li{float:left;color:#FFFFFF;text-decoration:none;}
+.ccontent .box ul.boxmenu li a{float:left;background:#445566;padding:3px 10px;margin:0 5px 0 0;color:#FFFFFF;text-decoration:none;}
+.ccontent .box ul.boxmenu li a:hover{background:#576c82;}
+.ccontent .box ul.boxmenu li.active{color:#333333;}
+.ccontent .box ul.boxmenu li.active a{background:#FFFFFF;color:#364B69;cursor:default;}
+
+/*BOX CONTEUDO GERAL ######################################################################################################################*/
+.ccontent .box .boxcontent{float:left;width:680px;padding:0 20px 20px 20px;background:#FFFFFF;color:#333333;}
+.ccontent .box .boxcontent h2{float:left;width:100%;color:#445566;font-size:18px;padding:10px 0 5px 0;line-height:normal;}
+.ccontent .box .boxcontent p{float:left;width:100%;font-size:12px;line-height:20px;margin:15px 0;color: #000;}
+.ccontent .box .boxcontent p span.small{font-size:11px;}
+.ccontent .box .boxcontent p span.gray{color:#999999;}
+.ccontent .box .boxcontent p span.hightlight{background:#FFFFCC;}
+.ccontent .box .boxcontent hr{background:#AAAAAA;border:0 none;height:1px;}
+.ccontent .box .boxcontent em{float:left;}
+
+/*BOX TABELA GERAL ######################################################################################################################*/
+.btntools{float:left;width:30px;height:27px;border:1px solid #bfbfbf;color:#222222;background:#eeeeee url("/images/icons/cog.png") center no-repeat;text-indent:-9999px;cursor:pointer;position:relative;}
+.btntools:hover{background-color:#dfdfde;}
+.btntools span.boxtools{float:left;height:45px;position:absolute;top:-45px;right:-10px;display:none;}
+.btntools span.boxtools span.buttons{float:left;padding:5px;background-color:#EFEFEF;}
+.btntools:hover span.boxtools{display:block;}
+
+.btntools span.boxtools .arrow{position:absolute;top:37px;right:20px;width:0;height:0;border-width:6px;border-color: #EFEFEF transparent transparent transparent;border-style:solid;}
+
+table{border-collapse:collapse;border-spacing:0px;}
+
+table.easy{float:left;width:100%;border:none; margin-top: 10px;}
+table.easy tr.tableheader th, .ccontent .box form table tr.tableheader td{background:#576C82;color:#FFFFFF;font-weight:bold;padding:3px;text-align:left;text-transform:uppercase;}
+table.easy tr td{text-align:left;padding:8px; border-bottom:#efefef 1px solid;vertical-align:middle;}
+table.easy tr td.buttons form{margin:0;padding:0;}
+table.easy tr.boxdivisortable td{padding:0;border:none;}
+table.easy tr td a{width:30px;height:27px;background-color:#EEEEEE;background-repeat:no-repeat;background-position:center;border:1px solid #BFBFBF;cursor:pointer;float:left;margin:0 7px 0 0;padding:0;}
+table.easy tr td a:hover{background-color:#dfdfde;}
+table.easy tr td a.btnpeopleedit{background-image:url(/images/icons/pencil.png);}
+table.easy tr td a.btnpeopleshow{background-image:url(/images/icons/vcard.png);}
+table.easy tr td a.btnpeopleenable{background-image:url(/images/icons/user_green.png);}
+table.easy tr td a.btnpeopledisable{background-image:url(/images/icons/user_grayoff.png);}
+table.easy tr td a.btnappointments{background-image:url(/images/icons/appointments.png);}
+table.easy tr td a.btnschedule{background-image:url(/images/icons/schedule.png);}
+table.easy tr td a.btnreceipt{background-image:url(/images/icons/receipt.png);}
+table.easy tr td a.btnpdf{background-image:url(/images/icons/pdf.png);}
+
+table.easy tr td form{width:40px!important;}
+table.easy tr td input{background-color:#EEEEEE;background-repeat:no-repeat;background-position:10px 5px;border:1px solid #BFBFBF;color:#222222;cursor:pointer;float:left;font-size:1em;font-weight:bold;line-height:1.3em;margin:0 0 0 10px;padding:5px 10px 5px 25px;text-decoration:none;}
+table.easy tr td input:hover{background-color:#dfdfde;}
+table.easy tr td input.btndelete{background-image:url(/images/icons/delete.png);margin:0!important;}
+table.easy tr td a.btndelete{background-image:url(/images/icons/delete.png);}
+
+table.easy tr td.statusenable{background:transparent url(/images/icons/user_green.png) center no-repeat;text-indent:-9999px;}
+table.easy tr td.statusdisable{background:transparent url(/images/icons/user_grayoff.png) center no-repeat;text-indent:-9999px;}
+table.easy tr td.namedisable{text-decoration:line-through;}
+table.easy tr td a.last{margin:0;}
+table.easy tr td.tablenostyle{background:#ffffff!important;border:none;}
+
+
+
+/*BOX TABELA PROCEDIMENTOS ######################################################################################################################*/
+.ccontent .box form{float:left;width:100%;}
+.ccontent .box table.tableprocedures{float:left;width:100%;border:none;}
+.ccontent .box table.tableprocedures tr.tableheader th, .ccontent .box table.tableprocedures tr.tableheader td{background:#576C82;color:#FFFFFF;font-weight:bold;padding:3px;text-align:center;text-transform:uppercase;}
+.ccontent .box table.tableprocedures tr td{text-align:left;padding:8px; border-bottom:#efefef 1px solid;}
+.ccontent .box table.tableprocedures tr td.center{text-align:center;}
+.ccontent .box table.tableprocedures tr.boxsubtotal td{background:#efefef;font-weight:bold;padding:0 8px;text-transform:uppercase;border:none;}
+.ccontent .box table.tableprocedures tr.boxdivisortable td{padding:0;border:none;}
+.ccontent .box table.tableprocedures tr.boxtotal{padding:20px 0 0 0;}
+.ccontent .box table.tableprocedures tr.boxtotal td{padding:0 8px;border:none;text-transform:uppercase;font-weight:bold;}
+.ccontent .box table.tableprocedures tr td a{background-color:#EEEEEE;background-repeat:no-repeat;background-position:10px 5px;border:1px solid #BFBFBF;color:#222222;cursor:pointer;float:left;font-size:1em;font-weight:bold;line-height:1.3em;margin:0 7px 0 0;padding:5px 10px 5px 35px;text-decoration:none;}
+.ccontent .box table.tableprocedures tr td a:hover{background-color:#dfdfde;}
+.ccontent .box table.tableprocedures tr td a.btndelete{background-image:url(/images/icons/delete.png);}
+.ccontent .box table.tableprocedures tr td a.last{margin:0;}
+.ccontent .box table.tableprocedures tr td input{float:left;width:200px;padding:4px 6px;border-color:#CCCCCC #DDDDDD #DDDDDD #CCCCCC;border-right:1px solid #DDDDDD;border-style:solid;border-width:2px 1px 1px 2px;}
+.ccontent .box table.tableprocedures tr td input.qty{width:33px}
+.ccontent .box table.tableprocedures tr td input.amount{width:60px}
+.ccontent .box table tr td.tablenostyle{background:#ffffff!important;border:none;}
+
+.ccontent .box .tableprocedures .procedure-elements li{float:left;}
+.ccontent .box .tableprocedures .procedure-elements li > a{display:block;text-indent:-9999px;background-repeat:no-repeat;width:22px;height:22px;padding:2px;cursor:pointer;}
+.ccontent .box .tableprocedures .procedure-elements li > a:hover{filter:alpha(opacity=70);opacity:0.7;}
+.ccontent .box .tableprocedures .procedure-elements li > a.active{background-color:#fff;}
+.ccontent .box .tableprocedures .procedure-elements li a.new-assistant{background-image:url(/images/icons/assistant.png);}
+.ccontent .box .tableprocedures .procedure-elements li a.new-material{background-image:url(/images/icons/material.png);}
+.ccontent .box .tableprocedures .procedure-elements li a.new-medicine{background-image:url(/images/icons/medicine.png);}
+
+.ccontent .box .tableprocedures div.new-assistant{background-color: #FFFFFF;position: absolute;width:300px;padding:0 20px;}
+.ccontent .box .tableprocedures div.new-assistant fieldset{width:100%;}
+.ccontent .box .tableprocedures div.new-assistant fieldset input{width:95%;}
+.ccontent .box .tableprocedures div.new-assistant fieldset select{width:99%;}
+.ccontent .box .tableprocedures div.new-assistant p{text-align: left;margin:0;}
+.ccontent .box .tableprocedures div.new-assistant label.title{text-align: left;}
+
+.ccontent .box .tableprocedures div.new-material{background-color: #FFFFFF;position: absolute;width:300px;padding:0 20px;}
+.ccontent .box .tableprocedures div.new-material fieldset{width:100%;}
+.ccontent .box .tableprocedures div.new-material fieldset input{width:95%;}
+.ccontent .box .tableprocedures div.new-material fieldset select{width:99%;}
+.ccontent .box .tableprocedures div.new-material p{text-align: left;margin:0;}
+.ccontent .box .tableprocedures div.new-material label.title{text-align: left;}
+
+.ccontent .box .tableprocedures div.new-medicine{background-color: #FFFFFF;position: absolute;width:300px;padding:0 20px;}
+.ccontent .box .tableprocedures div.new-medicine fieldset{width:100%;}
+.ccontent .box .tableprocedures div.new-medicine fieldset input{width:95%;}
+.ccontent .box .tableprocedures div.new-medicine fieldset select{width:99%;}
+.ccontent .box .tableprocedures div.new-medicine p{text-align: left;margin:0;}
+.ccontent .box .tableprocedures div.new-medicine label.title{text-align: left;}
+
+
+
 /*BOX PAGINACAO ######################################################################################################################*/
 .boxpagination{float:left;width:100%;background-color:#EEEEEE;border:#EEEEEE 1px solid;font-size:14px;padding:10px 0;margin:10px 0 20px 0;text-align:center;}
 .boxpagination a{color:#999999;cursor:pointer;font-size:1em;font-weight:bold;line-height:1.3em;margin:0 2px 0 0;padding:0px 7px;text-decoration:none;}
@@ -220,114 +248,114 @@ table.easy tr td.tablenostyle{background:#ffffff!important;border:none;}
 .boxpagination a.first img, .boxpagination a.previous img, .boxpagination a.next img, .boxpagination a.last img{float:left;margin:0;padding:0;}
 
 /*BOX FORMULARIO ######################################################################################################################*/
-.main .content .box fieldset{float:left;width:50%;}
-.main .content .box fieldset.full{float:left;width:100%;}
-.main .content .box fieldset.procedures{float:left;width:100%;}
-.main .content .box fieldset label{float:left;width:100%;}
-.main .content .box fieldset label.title{float:left;font-weight:bold;margin:10px 0 2px 0;}
-.main .content .box fieldset label.title span{color:#F00;}
-.main .content .box fieldset input, .main .content .box fieldset select, .main .content .box fieldset textarea{float:left;width:200px;padding:4px 6px;border-color:#CCCCCC #DDDDDD #DDDDDD #CCCCCC;border-right:1px solid #DDDDDD;border-style:solid;border-width:2px 1px 1px 2px;}
-.main .content .box fieldset input.radio{float:left;width:auto;margin:0;padding:0;}
+.ccontent .box fieldset{float:left;width:50%;}
+.ccontent .box fieldset.full{float:left;width:100%;}
+.ccontent .box fieldset.procedures{float:left;width:100%;}
+.ccontent .box fieldset label{float:left;width:100%;}
+.ccontent .box fieldset label.title{float:left;font-weight:bold;margin:10px 0 2px 0;}
+.ccontent .box fieldset label.title span{color:#F00;}
+.ccontent .box fieldset input, .ccontent .box fieldset select, .ccontent .box fieldset textarea{float:left;width:200px;padding:4px 6px;border-color:#CCCCCC #DDDDDD #DDDDDD #CCCCCC;border-right:1px solid #DDDDDD;border-style:solid;border-width:2px 1px 1px 2px;}
+.ccontent .box fieldset input.radio{float:left;width:auto;margin:0;padding:0;}
 
-.main .content .box fieldset div{float:left;width:100%;}
-.main .content .box fieldset div label.title{width:100%;color:#000000;}
-.main .content .box fieldset div input{width:90%;}
-.main .content .box fieldset div select{width:90%;}
-.main .content .box fieldset div textarea{width:97%;height:100px;}
-.main .content .box fieldset div input.radio{margin:2px 5px 0 5px;border:none;}
+.ccontent .box fieldset div{float:left;width:100%;}
+.ccontent .box fieldset div label.title{width:100%;color:#000000;}
+.ccontent .box fieldset div input{width:90%;}
+.ccontent .box fieldset div select{width:90%;}
+.ccontent .box fieldset div textarea{width:97%;height:100px;}
+.ccontent .box fieldset div input.radio{margin:2px 5px 0 5px;border:none;}
 
-.main .content .box fieldset.full div input{width:95%;}
+.ccontent .box fieldset.full div input{width:95%;}
 
-.main .content .box fieldset .small input{width:100px!important;}
+.ccontent .box fieldset .small input{width:100px!important;}
 
-.main .content .box fieldset .date{float:left;width:100%;}
-.main .content .box fieldset .date label.title{width:100%;}
-.main .content .box fieldset .date input{width:68px;}
-.main .content .box fieldset .date a{float:left;width:25px;height:25px;background:url(/images/icons/calendar_view_week.png) center no-repeat;text-indent:-9999px;}
+.ccontent .box fieldset .date{float:left;width:100%;}
+.ccontent .box fieldset .date label.title{width:100%;}
+.ccontent .box fieldset .date input{width:68px;}
+.ccontent .box fieldset .date a{float:left;width:25px;height:25px;background:url(/images/icons/calendar_view_week.png) center no-repeat;text-indent:-9999px;}
 
-.main .content .box fieldset .healthcare{float:left;width:100%;}
-.main .content .box fieldset .healthcare label{width:auto;}
-.main .content .box fieldset .healthcare label.title{width:100%;}
-.main .content .box fieldset .healthcare input.radio{margin:2px 5px 0 5px;border:none;}
+.ccontent .box fieldset .healthcare{float:left;width:100%;}
+.ccontent .box fieldset .healthcare label{width:auto;}
+.ccontent .box fieldset .healthcare label.title{width:100%;}
+.ccontent .box fieldset .healthcare input.radio{margin:2px 5px 0 5px;border:none;}
 
-.main .content .box fieldset .returning{float:left;}
-.main .content .box fieldset .returning label{width:auto;}
-.main .content .box fieldset .returning label.title{width:100%;}
-.main .content .box fieldset .returning input.radio{margin:2px 5px 0 5px;border:none;}
+.ccontent .box fieldset .returning{float:left;}
+.ccontent .box fieldset .returning label{width:auto;}
+.ccontent .box fieldset .returning label.title{width:100%;}
+.ccontent .box fieldset .returning input.radio{margin:2px 5px 0 5px;border:none;}
 
-.main .content .box fieldset .medical{float:left;width:100%;}
-.main .content .box fieldset .medical label{width:100%;}
-.main .content .box fieldset .medical select{width:90%;}
+.ccontent .box fieldset .medical{float:left;width:100%;}
+.ccontent .box fieldset .medical label{width:100%;}
+.ccontent .box fieldset .medical select{width:90%;}
 
-.main .content .box fieldset .specialty{float:left;width:100%;}
-.main .content .box fieldset .specialty label{width:100%;}
-.main .content .box fieldset .specialty select{width:90%;}
+.ccontent .box fieldset .specialty{float:left;width:100%;}
+.ccontent .box fieldset .specialty label{width:100%;}
+.ccontent .box fieldset .specialty select{width:90%;}
 
-.main .content .box fieldset .remarks{float:left;width:100%;}
-.main .content .box fieldset .remarks label{width:100%;}
-.main .content .box fieldset .remarks textarea{width:95%;height:100px;}
+.ccontent .box fieldset .remarks{float:left;width:100%;}
+.ccontent .box fieldset .remarks label{width:100%;}
+.ccontent .box fieldset .remarks textarea{width:95%;height:100px;}
 
-.main .content .box fieldset .telephone{float:left;width:100%;}
-.main .content .box fieldset .telephone label.title{width:100%;}
-.main .content .box fieldset .telephone input{width:200px;}
+.ccontent .box fieldset .telephone{float:left;width:100%;}
+.ccontent .box fieldset .telephone label.title{width:100%;}
+.ccontent .box fieldset .telephone input{width:200px;}
 
-.main .content .box fieldset .crm{float:left;width:100%;}
-.main .content .box fieldset .crm label.title{width:100%;}
-.main .content .box fieldset .crm input{width:200px;}
+.ccontent .box fieldset .crm{float:left;width:100%;}
+.ccontent .box fieldset .crm label.title{width:100%;}
+.ccontent .box fieldset .crm input{width:200px;}
 
-.main .content .box fieldset .cep input{width:100px!important;}
+.ccontent .box fieldset .cep input{width:100px!important;}
 
-.main .content .box fieldset .procedures{float:left;width:100%;}
-.main .content .box fieldset .procedures label{width:100%;}
-.main .content .box fieldset .procedures input{width:43%;}
-.main .content .box fieldset .procedures a{background-color:#EEEEEE;background-repeat:no-repeat;background-position:10px 5px;border:1px solid #BFBFBF;color:#222222;cursor:pointer;float:left;font-size:1em;font-weight:bold;line-height:1.3em;margin:0 0 0 10px;padding:5px 10px 5px 35px;text-decoration:none;}
-.main .content .box fieldset .procedures a:hover{background-color:#dfdfde;}
-.main .content .box fieldset .procedures a{background-image:url(/images/icons/add.png);}
-.main .content .box fieldset .procedures p{float:left;width:100%;color:#999999;margin:0 0 5px 0;}
+.ccontent .box fieldset .procedures{float:left;width:100%;}
+.ccontent .box fieldset .procedures label{width:100%;}
+.ccontent .box fieldset .procedures input{width:43%;}
+.ccontent .box fieldset .procedures a{background-color:#EEEEEE;background-repeat:no-repeat;background-position:10px 5px;border:1px solid #BFBFBF;color:#222222;cursor:pointer;float:left;font-size:1em;font-weight:bold;line-height:1.3em;margin:0 0 0 10px;padding:5px 10px 5px 35px;text-decoration:none;}
+.ccontent .box fieldset .procedures a:hover{background-color:#dfdfde;}
+.ccontent .box fieldset .procedures a{background-image:url(/images/icons/add.png);}
+.ccontent .box fieldset .procedures p{float:left;width:100%;color:#999999;margin:0 0 5px 0;}
 
-.main .content .box fieldset .search{float:left;width:100%;}
-.main .content .box fieldset .search label{width:100%;}
-.main .content .box fieldset .search input{width:64%;}
-.main .content .box fieldset .search a{background-color:#EEEEEE;background-repeat:no-repeat;background-position:10px 5px;border:1px solid #BFBFBF;color:#222222;cursor:pointer;float:left;font-size:1em;font-weight:bold;line-height:1.3em;margin:0 0 0 10px;padding:5px 10px 5px 35px;text-decoration:none;}
-.main .content .box fieldset .search a:hover{background-color:#dfdfde;}
-.main .content .box fieldset .search a{background-image:url(/images/icons/search.png);}
-.main .content .box fieldset .search p{float:left;width:100%;color:#999999;margin:0 0 5px 0;}
+.ccontent .box fieldset .search{float:left;width:100%;}
+.ccontent .box fieldset .search label{width:100%;}
+.ccontent .box fieldset .search input{width:64%;}
+.ccontent .box fieldset .search a{background-color:#EEEEEE;background-repeat:no-repeat;background-position:10px 5px;border:1px solid #BFBFBF;color:#222222;cursor:pointer;float:left;font-size:1em;font-weight:bold;line-height:1.3em;margin:0 0 0 10px;padding:5px 10px 5px 35px;text-decoration:none;}
+.ccontent .box fieldset .search a:hover{background-color:#dfdfde;}
+.ccontent .box fieldset .search a{background-image:url(/images/icons/search.png);}
+.ccontent .box fieldset .search p{float:left;width:100%;color:#999999;margin:0 0 5px 0;}
 
-.main .content .box fieldset .pay-for-room-rate{float:left;}
-.main .content .box fieldset .pay-for-room-rate label{width:auto;}
-.main .content .box fieldset .pay-for-room-rate label.title{width:100%;}
-.main .content .box fieldset .pay-for-room-rate input.radio{margin:2px 5px 0 5px;border:none;}
+.ccontent .box fieldset .pay-for-room-rate{float:left;}
+.ccontent .box fieldset .pay-for-room-rate label{width:auto;}
+.ccontent .box fieldset .pay-for-room-rate label.title{width:100%;}
+.ccontent .box fieldset .pay-for-room-rate input.radio{margin:2px 5px 0 5px;border:none;}
 
 /*BOX DIREITO ######################################################################################################################*/
-.main .content .boxright{float:left;width:27%;margin:30px 0 0 0;}
+.ccontent .boxright{float:right;width:230px;margin:30px 0 0 0;}
 /*BOX DIREITO TEXTOSIMPLES ######################################################################################################################*/
-.main .content .boxright .simplebox{float:left;width:91%;margin:0 0 10px 30px;}
-.main .content .boxright .simplebox h4{background:#FFFFFF;border-color:#DDDDDD #CCCCCC #CCCCCC #DDDDDD;border-style:solid;border-width:1px;color:#333333;font-weight:bold;padding:5px 10px;margin:0 0 10px 0;}
-.main .content .boxright .simplebox p{margin:0 0 10px 10px;}
+.ccontent .boxright .simplebox{float:left;width:91%;}
+.ccontent .boxright .simplebox h4{background:#FFFFFF;border-color:#DDDDDD #CCCCCC #CCCCCC #DDDDDD;border-style:solid;border-width:1px;color:#333333;font-weight:bold;padding:5px 10px;margin:0 0 10px 0;}
+.ccontent .boxright .simplebox p{padding:0 0 10px 10px;}
 /*BOX DIREITO POSTIT ######################################################################################################################*/
-.main .content .boxright .postit{float:left;margin:0 0 10px 30px;background-color:#FFFFCC;border-color:#FFFFFF #DDDDDD #DDDDDD #FFFFFF;border-style:solid;border-width:1px;padding:0 10px;width: 85%;}
-.main .content .boxright .postit h4{font-size:16px;font-weight:normal;margin:10px 0;}
-.main .content .boxright .postit p{margin:0 0 10px 0;}
+.ccontent .boxright .postit{float:left;background-color:#FFFFCC;border-color:#FFFFFF #DDDDDD #DDDDDD #FFFFFF;border-style:solid;border-width:1px;padding:0 10px;width: 85%;}
+.ccontent .boxright .postit h4{font-size:16px;font-weight:normal;padding:10px 0;}
+.ccontent .boxright .postit p{padding:0 0 10px 0;}
 /*BOX DIREITO LINKS ######################################################################################################################*/
-.main .content .boxright .simpleboxlink{float:left;width:91%;margin:0 0 10px 30px;}
-.main .content .boxright .simpleboxlink h4{background:#FFFFFF;border-color:#DDDDDD #CCCCCC #CCCCCC #DDDDDD;border-style:solid;border-width:1px;color:#333333;font-weight:bold;padding:5px 10px;margin:0 0 10px 0;}
-.main .content .boxright .simpleboxlink h4 a{background-position: 0 5px; background-repeat: no-repeat;color: #222222;cursor: pointer;font-size: 1em;font-weight: bold;line-height: 1.3em;margin: 6px 0 0 7px;padding: 5px 8px 0 5px;text-decoration: none;}
-.main .content .boxright .simpleboxlink h4 a.btnschedule{background-image:url(/images/icons/schedule.png);}
-.main .content .boxright .simpleboxlink ul{float:left;}
-.main .content .boxright .simpleboxlink ul li{float:left;width:100%;}
-.main .content .boxright .simpleboxlink ul li a{float:left;color:#6A6A6A;padding:5px 10px;text-decoration:none;}
-.main .content .boxright .simpleboxlink ul li a:hover{text-decoration:underline;}
+.ccontent .boxright .simpleboxlink{float:left;width:100%;}
+.ccontent .boxright .simpleboxlink h4{background:#FFFFFF;border-color:#DDDDDD #CCCCCC #CCCCCC #DDDDDD;border-style:solid;border-width:1px;color:#333333;font-weight:bold;padding:5px 10px;margin:0 0 10px 0;}
+.ccontent .boxright .simpleboxlink h4 a{background-position: 0 5px; background-repeat: no-repeat;color: #222222;cursor: pointer;font-size: 1em;font-weight: bold;line-height: 1.3em;margin: 6px 0 0 7px;padding: 5px 8px 0 5px;text-decoration: none;}
+.ccontent .boxright .simpleboxlink h4 a.btnschedule{background-image:url(/images/icons/schedule.png);}
+.ccontent .boxright .simpleboxlink ul{float:left;}
+.ccontent .boxright .simpleboxlink ul li{float:left;width:100%;}
+.ccontent .boxright .simpleboxlink ul li a{float:left;color:#6A6A6A;padding:5px 10px;text-decoration:none;}
+.ccontent .boxright .simpleboxlink ul li a:hover{text-decoration:underline;}
 /*BOX DIREITO SCHEDULE WIDGET ######################################################################################################################*/
-.main .content .boxright .schedule-widget{float:left;width:91%;margin:0 0 10px 30px;}
-.main .content .boxright .schedule-widget h4{background:#FFFFFF;border-color:#DDDDDD #CCCCCC #CCCCCC #DDDDDD;border-style:solid;border-width:1px;color:#333333;font-weight:bold;padding:5px 10px;margin:0 0 10px 0;}
-.main .content .boxright .schedule-widget h4 a{background-position: 0 5px; background-repeat: no-repeat;color: #222222;cursor: pointer;font-size: 1em;font-weight: bold;line-height: 1.3em;margin: 6px 0 0 7px;padding: 5px 8px 0 5px;text-decoration: none;}
-.main .content .boxright .schedule-widget h4 a.btnschedule{background-image:url(/images/icons/schedule.png);}
-.main .content .boxright .schedule-widget ul{float:left;width:100%;}
-.main .content .boxright .schedule-widget ul li{float:left;width:100%;}
-.main .content .boxright .schedule-widget ul li.hour{width:12%;}
-.main .content .boxright .schedule-widget ul li.subject{width:88%;}
-.main .content .boxright .schedule-widget ul li a{float:left;color:#6A6A6A;padding:5px 10px;text-decoration:none;}
-.main .content .boxright .schedule-widget ul li a:hover{text-decoration:underline;}
+.ccontent .boxright .schedule-widget{float:left;width:100%;}
+.ccontent .boxright .schedule-widget h4{background:#FFFFFF;border-color:#DDDDDD #CCCCCC #CCCCCC #DDDDDD;border-style:solid;border-width:1px;color:#333333;font-weight:bold;padding:5px 10px;margin:0 0 10px 0;}
+.ccontent .boxright .schedule-widget h4 a{background-position: 0 5px; background-repeat: no-repeat;color: #222222;cursor: pointer;font-size: 1em;font-weight: bold;line-height: 1.3em;margin: 6px 0 0 7px;padding: 5px 8px 0 5px;text-decoration: none;}
+.ccontent .boxright .schedule-widget h4 a.btnschedule{background-image:url(/images/icons/schedule.png);}
+.ccontent .boxright .schedule-widget ul{float:left;width:100%;}
+.ccontent .boxright .schedule-widget ul li{float:left;width:100%;}
+.ccontent .boxright .schedule-widget ul li.hour{width:12%;}
+.ccontent .boxright .schedule-widget ul li.subject{width:88%;}
+.ccontent .boxright .schedule-widget ul li a{float:left;color:#6A6A6A;padding:5px 10px;text-decoration:none;}
+.ccontent .boxright .schedule-widget ul li a:hover{text-decoration:underline;}
 
 /*MESAGEM ERRO/AVISOS/NOTICIAS ######################################################################################################################*/
 p.messengererror{float:left;width:99.2%;background:#FFDDDD;border:1px solid #FFBBBB;text-align:center;padding:10px 0;}
@@ -365,8 +393,9 @@ div.error {
 /*END CONTENT ######################################################################################################################*/
 
 /*START FOOTER ######################################################################################################################*/
-.main .footer{float:left;width:96.9%;background:#DDDDDD;padding:0 20px;border-top:1px solid #BBBBBB;position:absolute;bottom:0;}
-.main .footer p{float:left;width:100%;text-align:center;padding:10px 0;}
+.footer{float:left;width:100%;background:#DDDDDD;border-top:1px solid #BBBBBB;}
+.fcontent{width:980px;margin:0 auto;}
+.fcontent p{float:left;width:100%;text-align:center;padding:10px 0;}
 /*END FOTTER ######################################################################################################################*/
 
 /*START MODAL ######################################################################################################################*/
@@ -429,11 +458,12 @@ div.error {
 .dados-consulta span{float:left;}
 .dados-consulta div.observations p {width: 100%;}
 
-.modal-confirmacao-consulta{float:left;padding:0 20px;text-align:left;margin-bottom: 15px;}
+.modal-confirmacao-consulta{float:left;padding:0;text-align:left;}
 .modal-confirmacao-consulta div {float:left; width: 100%;margin-top:5px;}
-.modal-confirmacao-consulta p{float:left;width:135px!important;margin:0!important;font-weight: bold;}
+.modal-confirmacao-consulta p{float:left; margin:0 20px;font-weight: bold;}
 .modal-confirmacao-consulta span{float:left;}
 .modal-confirmacao-consulta div.observations p {width: 100%;}
+.modal-confirmacao-consulta .boxactions{float:left;width:536px;margin:10px 0 0 0;}
 
 .modal-anamneses .modal-content{padding:0 20px;text-align:left;}
 .modal-anamneses .modal-content div {float:left; width: 100%;margin-top:5px;}
@@ -454,7 +484,7 @@ div.error {
 .modal-schedule .modal-content fieldset label{float:left;width:100%;}
 .modal-schedule .modal-content fieldset label.title{float:left;font-weight:bold;margin:10px 0 2px 0;}
 .modal-schedule .modal-content fieldset label.title span{color:#F00;}
-.modal-schedule .modal-content fieldset input, .main .content .box fieldset select, .main .content .box fieldset textarea{float:left;width:200px;padding:4px 6px;border-color:#CCCCCC #DDDDDD #DDDDDD #CCCCCC;border-right:1px solid #DDDDDD;border-style:solid;border-width:2px 1px 1px 2px;}
+.modal-schedule .modal-content fieldset input, .ccontent .box fieldset select, .ccontent .box fieldset textarea{float:left;width:200px;padding:4px 6px;border-color:#CCCCCC #DDDDDD #DDDDDD #CCCCCC;border-right:1px solid #DDDDDD;border-style:solid;border-width:2px 1px 1px 2px;}
 .modal-schedule .modal-content fieldset input.radio{float:left;width:auto;margin:0;padding:0;}
 
 .modal-schedule .modal-content fieldset div{float:left;width:100%;}
@@ -475,42 +505,42 @@ div.error {
 /*END MODAL ######################################################################################################################*/
 
 /* MENSAGENS NA HOME */
-.main .content .box .boxcontent #allMessages .boxfb{float:left;width:755px;height:auto;margin:0 0 35px 0;padding:0 0 15px 0;border-bottom:1px solid #cccccc;}
+.ccontent .box .boxcontent #allMessages .boxfb{float:left;width:675px;height:auto;margin:0 0 35px 0;padding:0 0 15px 0;border-bottom:1px solid #cccccc;}
 
-.main .content .box .boxcontent #allMessages .boxfb img.photobig{float:left;width:60px;height:60px;margin:8px;background-color:#000000;}
-.main .content .box .boxcontent #allMessages .boxfb p{float:left;width:635px;margin:-5px 0 0 0;}
-.main .content .box .boxcontent #allMessages .boxfb span.date{float:left;margin:6px 0 0 0;font-size:10px;color:#aaaaaa;}
-.main .content .box .boxcontent #allMessages .boxfb p a{color:#445566;font-weight:bold;text-decoration:none;}
-.main .content .box .boxcontent #allMessages .boxfb p a:hover{text-decoration:underline;}
-.main .content .box .boxcontent #allMessages .boxfb .boxaction{float:right;}
-.main .content .box .boxcontent #allMessages .boxfb .boxaction ul{float:left;margin:15px 15px 0 0;}
-.main .content .box .boxcontent #allMessages .boxfb .boxaction ul li{float:left;padding:0 3px;color:#797979;font-size:12px;}
-.main .content .box .boxcontent #allMessages .boxfb .boxaction ul li a{float:left;color:#82b64f;text-decoration:none;}
-.main .content .box .boxcontent #allMessages .boxfb .boxaction ul li a.data{color:#797979}
-.main .content .box .boxcontent #allMessages .boxfb .boxaction ul li a:hover{text-decoration:underline;}
+.ccontent .box .boxcontent #allMessages .boxfb img.photobig{float:left;width:60px;height:60px;margin:8px;background-color:#000000;}
+.ccontent .box .boxcontent #allMessages .boxfb p{float:left;width:595px;margin:-5px 0 0 0;}
+.ccontent .box .boxcontent #allMessages .boxfb span.date{float:left;margin:6px 0 0 0;font-size:10px;color:#aaaaaa;}
+.ccontent .box .boxcontent #allMessages .boxfb p a{color:#445566;font-weight:bold;text-decoration:none;}
+.ccontent .box .boxcontent #allMessages .boxfb p a:hover{text-decoration:underline;}
+.ccontent .box .boxcontent #allMessages .boxfb .boxaction{float:right;}
+.ccontent .box .boxcontent #allMessages .boxfb .boxaction ul{float:left;margin:15px 15px 0 0;}
+.ccontent .box .boxcontent #allMessages .boxfb .boxaction ul li{float:left;padding:0 3px;color:#797979;font-size:12px;}
+.ccontent .box .boxcontent #allMessages .boxfb .boxaction ul li a{float:left;color:#82b64f;text-decoration:none;}
+.ccontent .box .boxcontent #allMessages .boxfb .boxaction ul li a.data{color:#797979}
+.ccontent .box .boxcontent #allMessages .boxfb .boxaction ul li a:hover{text-decoration:underline;}
 
-.main .content .box .boxcontent #allMessages .boxfb .boxpost{float:left;width:652px;height:auto;margin:0 0 5px 96px;background-color:#EFEFEF;position:relative;}
-.main .content .box .boxcontent #allMessages .boxfb .boxpost span.loading{float:left;width:100%;height:11px;margin:17.5px 0;background:url(../img/loading/loading_orange.gif) center 0 no-repeat;display:none;}
-.main .content .box .boxcontent #allMessages .boxfb .boxpost a.btnremove{float:left;width:15px;height:15px;background:red url(../img/btn/btn_removecolor.png) 0 0 no-repeat;cursor:pointer;position:absolute;top:3px;right:3px;text-indent:-9999px;}
-.main .content .box .boxcontent #allMessages .boxfb .boxpost img.photo{float:left;width:40px;height:40px;margin:3px 8px 3px 3px;background-color:#000000;}
-.main .content .box .boxcontent #allMessages .boxfb .boxpost span.date{float:left;margin:6px 0 0 0;font-size:10px;color:#aaaaaa;}
-.main .content .box .boxcontent #allMessages .boxfb .boxpost p{float:left;width:580px!important;margin:3px 0;}
-.main .content .box .boxcontent #allMessages .boxfb .boxpost p.like{width:615px;margin:2px 0 0 0;}
-.main .content .box .boxcontent #allMessages .boxfb .boxpost p a{color:#445566;font-weight:bold;text-decoration:none;}
-.main .content .box .boxcontent #allMessages .boxfb .boxpost p a:hover{text-decoration:underline;}
+.ccontent .box .boxcontent #allMessages .boxfb .boxpost{float:left;width:579px;height:auto;margin:5px 0 0 96px;background-color:#EFEFEF;position:relative;}
+.ccontent .box .boxcontent #allMessages .boxfb .boxpost span.loading{float:left;width:100%;height:11px;margin:17.5px 0;background:url(../img/loading/loading_orange.gif) center 0 no-repeat;display:none;}
+.ccontent .box .boxcontent #allMessages .boxfb .boxpost a.btnremove{float:left;width:15px;height:15px;background:red url(../img/btn/btn_removecolor.png) 0 0 no-repeat;cursor:pointer;position:absolute;top:3px;right:3px;text-indent:-9999px;}
+.ccontent .box .boxcontent #allMessages .boxfb .boxpost img.photo{float:left;width:40px;height:40px;margin:3px 8px 3px 3px;background-color:#000000;}
+.ccontent .box .boxcontent #allMessages .boxfb .boxpost span.date{float:left;margin:6px 0 0 0;font-size:10px;color:#aaaaaa;}
+.ccontent .box .boxcontent #allMessages .boxfb .boxpost p{float:left;width:520px!important;padding:3px 0;}
+.ccontent .box .boxcontent #allMessages .boxfb .boxpost p.like{width:615px;margin:2px 0 0 0;}
+.ccontent .box .boxcontent #allMessages .boxfb .boxpost p a{color:#445566;font-weight:bold;text-decoration:none;}
+.ccontent .box .boxcontent #allMessages .boxfb .boxpost p a:hover{text-decoration:underline;}
 
-.main .content .box .boxcontent #allMessages .boxfb .boxpost form{float:left;width:585px;margin:3px 0 0 0;}
-.main .content .box .boxcontent #allMessages .boxfb .boxpost form fieldset{float:left;width:100%;}
-.main .content .box .boxcontent #allMessages .boxfb .boxpost form fieldset textarea{float:left;width:585px;margin:0 0 5px 0;padding:5px;color:#bcbcbc;font-size:12px;border:#aaaaaa 1px solid;resize:none;}
-.main .content .box .boxcontent #allMessages .boxfb .boxpost form fieldset input.btn{float:right;width:auto;margin:0 0 5px 0;padding:5px 10px 5px 10px;color:#222222;font-size:12px;font-weight: bold;border:1px solid #BFBFBF;background-color:#EEEEEE;cursor:pointer;display:inline;}
-.main .content .box .boxcontent #allMessages .boxfb .boxpost form fieldset input.btn:hover{background-color:#dfdfde;}
+.ccontent .box .boxcontent #allMessages .boxfb .boxpost form{float:left;width:520px;margin:3px 0 0 0;}
+.ccontent .box .boxcontent #allMessages .boxfb .boxpost form fieldset{float:left;width:100%;}
+.ccontent .box .boxcontent #allMessages .boxfb .boxpost form fieldset textarea{float:left;width:508px;margin:0 0 5px 0;padding:5px;color:#bcbcbc;font-size:12px;border:#aaaaaa 1px solid;resize:none;}
+.ccontent .box .boxcontent #allMessages .boxfb .boxpost form fieldset input.btn{float:right;width:auto;margin:0 0 5px 0;padding:5px 10px 5px 10px;color:#222222;font-size:12px;font-weight: bold;border:1px solid #BFBFBF;background-color:#EEEEEE;cursor:pointer;display:inline;}
+.ccontent .box .boxcontent #allMessages .boxfb .boxpost form fieldset input.btn:hover{background-color:#dfdfde;}
 
-.main .content .box .boxcontent .newpost span{float:left;width:748px!important;margin:3px 0 0 0;}
-.main .content .box .boxcontent .newpost form{float:left;width:748px;margin:3px 0 0 0;}
-.main .content .box .boxcontent .newpost form fieldset{float:left;width:100%;}
-.main .content .box .boxcontent .newpost form fieldset textarea{float:left;width:735px;margin:0 0 5px 0;padding:5px;color:#bcbcbc;font-size:12px;border:#aaaaaa 1px solid;resize:none;}
-.main .content .box .boxcontent .newpost form fieldset input.btn{float:right;width:auto;margin:0 0 5px 0;padding:5px 10px 5px 10px;color:#222222;font-size:12px;font-weight: bold;border:1px solid #BFBFBF;background-color:#EEEEEE;cursor:pointer;display:inline;}
-.main .content .box .boxcontent .newpost form fieldset input.btn:hover{background-color:#dfdfde;}
+.ccontent .box .boxcontent .newpost span{float:left;width:680px!important;margin:3px 0 0 0;}
+.ccontent .box .boxcontent .newpost form{float:left;width:680px;margin:3px 0 0 0;}
+.ccontent .box .boxcontent .newpost form fieldset{float:left;width:100%;}
+.ccontent .box .boxcontent .newpost form fieldset textarea{float:left;width:670px;margin:0 0 5px 0;padding:5px;color:#bcbcbc;font-size:12px;border:#aaaaaa 1px solid;resize:none;}
+.ccontent .box .boxcontent .newpost form fieldset input.btn{float:right;width:auto;margin:0 0 5px 0;padding:5px 10px 5px 10px;color:#222222;font-size:12px;font-weight: bold;border:1px solid #BFBFBF;background-color:#EEEEEE;cursor:pointer;display:inline;}
+.ccontent .box .boxcontent .newpost form fieldset input.btn:hover{background-color:#dfdfde;}
 
 /* PRINTINGS ########################################################### */
 ul.printings{float:left;margin:5px 0;}

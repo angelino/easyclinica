@@ -147,6 +147,20 @@ EasyClinica.cfg.validation = {
 };
 
 /* COMMON */
+EasyClinica.common.boxActionButtons = function() {
+	
+	$('span.boxtools span.buttons').each(function(index) {
+		var box = $(this);
+		var numberOfChildren = box.children().size();
+		var width = "{0}px".format((numberOfChildren - 2) * 39 + 32);
+		 
+		box.css("width", width);
+		box.parent().css("width", width);
+		box.children().last().addClass("last");
+	});
+	
+};
+
 EasyClinica.common.generalFunctions = function(selector){
 	if (selector === undefined) selector = '*';
 	

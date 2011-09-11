@@ -20,8 +20,6 @@
     					<input type="hidden" name="index" value="#index#"/>
     					<input type="hidden" name="assistant_procedure_id" value="${procedure.id}"/>
 	    				<fieldset>
-							<p class="required"><span>*</span> campos obrigatórios</p>
-							
 							<div>	
 								<label class="title">Tipo:<span>*</span></label>
 								<select name="assistantType">
@@ -58,8 +56,6 @@
     					<input type="hidden" name="index" value="#index#"/>
     					<input type="hidden" name="material_procedure_id" value="${procedure.id}"/>
 	    				<fieldset>
-							<p class="required"><span>*</span> campos obrigatórios</p>
-							
 							<div>	
 								<label class="title">Nome:<span>*</span></label>
 								<input type="text" name="materialName" maxlength="255" />
@@ -91,8 +87,6 @@
     					<input type="hidden" name="index" value="#index#"/>
     					<input type="hidden" name="medicine_procedure_id" value="${procedure.id}"/>
 	    				<fieldset>
-							<p class="required"><span>*</span> campos obrigatórios</p>
-							
 							<div>	
 								<label class="title">Nome:<span>*</span></label>
 								<input type="text" name="medicineName" maxlength="255" />
