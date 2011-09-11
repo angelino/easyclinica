@@ -58,7 +58,7 @@ ul.botoes li{padding:5px 0;}
 .boxactions{float:left;width:100%;background-color:#EEEEEE; border:#EEEEEE 1px solid;font-size:14px;padding:10px 0;margin:10px 0;}
 .boxactions a{background-color:#EEEEEE;background-repeat:no-repeat;background-position:10px 5px;border:1px solid #BFBFBF;color:#222222;cursor:pointer;float:left;font-size:1em;font-weight:bold;line-height:1.3em;margin:0 0 0 10px;padding:5px 10px 5px 35px;!padding:4px 0 4px 10px;text-decoration:none;}
 .boxactions a:hover{background-color:#dfdfde;}
-.boxactions input{background-color:#EEEEEE;background-repeat:no-repeat;background-position:10px 5px;border:1px solid #BFBFBF;color:#222222;cursor:pointer;float:left;font-size:1em;font-weight:bold;line-height:1.3em;margin:0 0 0 10px;padding:5px 10px 5px 35px;!padding:4px 0 4px 10px;text-decoration:none;}
+.boxactions input{overflow: visible;background-color:#EEEEEE;background-repeat:no-repeat;background-position:10px 5px;border:1px solid #BFBFBF;color:#222222;cursor:pointer;float:left;font-size:1em;font-weight:bold;line-height:1.3em;margin:0 0 0 10px;padding:5px 10px 5px 35px;text-decoration:none;}
 .boxactions input:hover{background-color:#dfdfde;}
 .boxactions a.btnsave{background-image:url(/images/icons/disk.png);}
 .boxactions input.btnsave{background-image:url(/images/icons/disk.png);}
@@ -154,6 +154,7 @@ ul.botoes li{padding:5px 0;}
 .btntools:hover{background-color:#dfdfde;}
 .btntools span.boxtools{float:left;height:45px;position:absolute;top:-45px;right:-10px;display:none;}
 .btntools span.boxtools span.buttons{float:left;padding:5px;background-color:#EFEFEF;}
+.btntools span.boxtools span.buttons a{text-indent: -9999px;}
 .btntools:hover span.boxtools{display:block;}
 
 .btntools span.boxtools .arrow{position:absolute;top:37px;right:20px;width:0;height:0;border-width:6px;border-color: #EFEFEF transparent transparent transparent;border-style:solid;}
@@ -285,15 +286,15 @@ table.easy tr td.tablenostyle{background:#ffffff!important;border:none;}
 
 .ccontent .box fieldset .medical{float:left;width:100%;}
 .ccontent .box fieldset .medical label{width:100%;}
-.ccontent .box fieldset .medical select{width:90%;}
+.ccontent .box fieldset .medical select{width:95%;}
 
 .ccontent .box fieldset .specialty{float:left;width:100%;}
 .ccontent .box fieldset .specialty label{width:100%;}
-.ccontent .box fieldset .specialty select{width:90%;}
+.ccontent .box fieldset .specialty select{width:95%;}
 
 .ccontent .box fieldset .remarks{float:left;width:100%;}
 .ccontent .box fieldset .remarks label{width:100%;}
-.ccontent .box fieldset .remarks textarea{width:95%;height:100px;}
+.ccontent .box fieldset .remarks textarea{width:305px;height:100px;}
 
 .ccontent .box fieldset .telephone{float:left;width:100%;}
 .ccontent .box fieldset .telephone label.title{width:100%;}
@@ -640,8 +641,11 @@ ul.printings li{padding:5px 0;}
 /*BOX TABELA COMPROMISSO ####################################################################*/
 .schedule table.compromissos{float:left;width:100%;clear:both;}
 .schedule table.compromissos tr td{vertical-align:middle;}
+.schedule table.compromissos tr td.name{padding-left:65px;}
 .schedule table.compromissos tr td input.time{width:58px!important;margin:0 10px 0 0;}
-.schedule table.compromissos tr td input.checkbox{float:none;margin:0 0 0 30px;}
-.schedule table.compromissos tr td a.btnpeopleedit{margin:0 10px 0 0;}
+.schedule table.compromissos tr td input.checkbox{float:none;margin:0 0 0 30px;background:none;border:none;}
+.schedule table.compromissos tr td a.btnpeopleedit{margin:0 10px 0 0;text-indent: -9999px;}
+.schedule table.compromissos tr td a.btndelete{margin:0;text-indent: -9999px;}
+.schedule table.compromissos tr td a.last{margin:0!important;}
 
-
+table.easy tr.tableheader th.name{padding:3px 3px 3px 5px!important; border-left:#ffffff 60px solid;}

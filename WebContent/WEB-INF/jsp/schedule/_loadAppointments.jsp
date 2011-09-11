@@ -5,10 +5,10 @@
 
 <table border="0" class="easy compromissos">
 	<tr class="tableheader">
-		<th>Paciente</th>
-		<th width="195">Chegada</th>
-		<th width="100">Atendido?</th>
-		<th width="100">&nbsp;</th>
+		<th class="name">Paciente</th>
+		<th width="140">Chegada</th>
+		<th width="70">Atendido?</th>
+		<th width="35">&nbsp;</th>
 	</tr>
 </table>
 	
@@ -27,12 +27,12 @@
 
 				<c:forEach items="${row.commitments}" var="commitment" varStatus="st">
 					<tr schedule_id="${commitment.id}">
-						<td>${commitment.subject}</td>
-						<td width="195">
+						<td class="name">${commitment.subject}</td>
+						<td width="140">
 							<input type="text" name="arrivalTime-${commitment.id}" class="time" value="<fmt:formatDate type="time" pattern="HH:mm" value="${commitment.arrivalTime.time}"/>" />
-							<a href="#" schedule_id="${commitment.id}" class="btnpeopleedit changeArrivalTime" title="Alterar horário de chegada?">&nbsp;</a>
+							<a href="#" schedule_id="${commitment.id}" class="btnpeopleedit changeArrivalTime last" title="Alterar horário de chegada?">&nbsp;</a>
 						</td>
-						<td width="100">
+						<td width="70">
 							<c:choose>
 								<c:when test="${commitment.treated}">
 									<input class="checkbox" type="checkbox" name="treated" schedule_id="${commitment.id}" checked="checked"/>
@@ -42,7 +42,7 @@
 								</c:otherwise>
 							</c:choose>							
 						</td>
-						<td width="100">
+						<td width="35">
 							<a class="btndelete last submit" title="Deletar compromisso" schedule_id="${commitment.id}" href="#">Excluir</a>
 						</td>
 					</tr>

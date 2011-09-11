@@ -88,7 +88,7 @@
 			</div>
             <!-- END CONTENT -->
             
-            <!-- START FOOTER -->
+            <!-- START FOOTER - ->
             <div class="footer">
             	<div class="fcontent">
             		<p>Copyright &copy; 2011 Easy Clínica.</p>
