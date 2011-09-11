@@ -19,7 +19,7 @@
 					<th>Número no Convênio</th>
 					<th>Telefone</th>
 					<th>Celular</th>
-					<th width="191px">&nbsp;</th>
+					<th width="42px">&nbsp;</th>
 				</tr>
 				
 				<c:forEach var="patient" items="${patients.result}" varStatus="status">
@@ -33,10 +33,18 @@
 						<td>${patient.cellphone}</td>
 						
 						<td class="buttons">
-							<a class="btnpeopleshow" href="<c:url value="/pacientes/${patient.id}" />">&nbsp;</a>
-							<a class="btnpeopleedit" title="Editar" href="<c:url value="/pacientes/${patient.id}/editar" />">&nbsp;</a>
-                            <a class="btnappointments" title="Consultas" href="<c:url value="/pacientes/${patient.id}/consultas" />">&nbsp;</a>
-                         </td>
+							<span class="btntools">Ferramentas
+      							<span class="boxtools">
+      								<span class="buttons">
+      									<span class="arrow">&nbsp;</span>
+      									
+										<a class="btnpeopleshow" href="<c:url value="/pacientes/${patient.id}" />">&nbsp;</a>
+										<a class="btnpeopleedit" title="Editar" href="<c:url value="/pacientes/${patient.id}/editar" />">&nbsp;</a>
+			                            <a class="btnappointments" title="Consultas" href="<c:url value="/pacientes/${patient.id}/consultas" />">&nbsp;</a>
+                        			</span>
+                        		</span>
+                        	</span>
+                        </td>
 					</tr>
 				</c:forEach>
 			</table>

@@ -155,6 +155,9 @@ ul.botoes li{padding:5px 0;}
 .btntools span.boxtools{float:left;height:45px;position:absolute;top:-45px;right:-10px;display:none;}
 .btntools span.boxtools span.buttons{float:left;padding:5px;background-color:#EFEFEF;}
 .btntools span.boxtools span.buttons a{text-indent: -9999px;}
+.btntools span.boxtools span.buttons form {width: 30px!important;height:29px!important;padding:0;}
+.btntools span.boxtools span.buttons form input{width: 30px!important;height:29px!important;padding:0!important;background-position:center;}
+.btntools span.boxtools span.buttons form.last{margin:0!important;}
 .btntools:hover span.boxtools{display:block;}
 
 .btntools span.boxtools .arrow{position:absolute;top:37px;right:20px;width:0;height:0;border-width:6px;border-color: #EFEFEF transparent transparent transparent;border-style:solid;}

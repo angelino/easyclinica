@@ -153,7 +153,7 @@ EasyClinica.common.boxActionButtons = function() {
 		var box = $(this);
 		var numberOfChildren = box.children().size();
 		var width = "{0}px".format((numberOfChildren - 2) * 39 + 32);
-		 
+		
 		box.css("width", width);
 		box.parent().css("width", width);
 		box.children().last().addClass("last");

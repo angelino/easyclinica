@@ -26,12 +26,12 @@
 		    		<c:otherwise>   	
 			       		<table border="0" class="easy">
 							<tr class="tableheader">
-								<th width="65px">Status</th>
-								<th>Nome</th>
-								<th>Telefone</th>
-								<th>Login</th>
-								<th>Cargo</th>
-								<th width="171px">&nbsp;</th>
+								<th width="19px"></th>
+								<th>Nome:</th>
+								<th>Telefone:</th>
+								<th>Login:</th>
+								<th>Cargo:</th>
+								<th width="42px">&nbsp;</th>
 							</tr>
 							
 							<c:forEach var="employee" items="${employees}" varStatus="status">
@@ -51,26 +51,34 @@
 									<td>${employee.cellphone}</td>
 									<td>${employee.login}</td>
 									<td><fmt:message key="${employee.position.localeKey}"></fmt:message></td>
-									<td class="buttons">
-										<a class="btnpeopleedit" title="Editar" href="<c:url value="/usuarios/${employee.id}/editar" />">&nbsp;</a>
-                                        <a class="btnpeopleshow" title="Exibir" href="<c:url value="/usuarios/${employee.id}" />">&nbsp;</a>
-                                        
-                                        <c:if test="${loggedUser.employee.id != employee.id}">
-	                                        <c:choose>
-												<c:when test="${employee.active}">
-													<form action="<c:url value="/usuarios/${employee.id}/desativar" />" method="post">
-			                                        	<input type="hidden" name="_method" value="PUT" />
-			                                        	<a class="btnpeopledisable last submit" title="Desativar" href="#">&nbsp;</a>
-													</form>
-												</c:when>
-												<c:otherwise>
-													<form action="<c:url value="/usuarios/${employee.id}/ativar" />" method="post">
-			                                        	<input type="hidden" name="_method" value="PUT" />
-			                                        	<a class="btnpeopleenable last submit" title="Ativar" href="#">&nbsp;</a>
-													</form>
-												</c:otherwise>
-											</c:choose>
-										</c:if>
+									<td class="buttons">									
+										<span class="btntools">Ferramentas
+			      							<span class="boxtools">
+			      								<span class="buttons">
+			      									<span class="arrow">&nbsp;</span>
+									
+													<a class="btnpeopleedit" title="Editar" href="<c:url value="/usuarios/${employee.id}/editar" />">&nbsp;</a>
+			                                        <a class="btnpeopleshow" title="Exibir" href="<c:url value="/usuarios/${employee.id}" />">&nbsp;</a>
+			                                        
+			                                        <c:if test="${loggedUser.employee.id != employee.id}">
+				                                        <c:choose>
+															<c:when test="${employee.active}">
+																<form action="<c:url value="/usuarios/${employee.id}/desativar" />" method="post">
+						                                        	<input type="hidden" name="_method" value="PUT" />
+						                                        	<a class="btnpeopledisable last submit" title="Desativar" href="#">&nbsp;</a>
+																</form>
+															</c:when>
+															<c:otherwise>
+																<form action="<c:url value="/usuarios/${employee.id}/ativar" />" method="post">
+						                                        	<input type="hidden" name="_method" value="PUT" />
+						                                        	<a class="btnpeopleenable last submit" title="Ativar" href="#">&nbsp;</a>
+																</form>
+															</c:otherwise>
+														</c:choose>
+													</c:if>
+												</span>
+											</span>
+										</span>
                                     </td>
 								</tr>
 							</c:forEach>

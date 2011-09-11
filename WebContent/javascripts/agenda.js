@@ -50,8 +50,6 @@ EasyClinica.pages['agenda'] = function(){
 	var configurePatientAutoComplete = function() {
 		$("input[autocomplete=true]").autocomplete(EasyClinica.cfg.services.searchPatient, {
 			autoFill: false
-		}).result(function(event, item) {
-			//$('#selected_procedure_id').val(item[1]);
 		});
 	};
 	
@@ -68,30 +66,33 @@ EasyClinica.pages['agenda'] = function(){
 		});
 		
 		$('input[name=schedule.subject]').hide();
-		$('input[name=schedule.subject]').change(function(){
-			var doctorId = $('select[name=schedule.doctor.id]').val();
-						
-			var subjectField = $(this);			
-			subjectField.addClass('ac_loading');
-			
-			var time = $('span#' + subjectField.attr('time_ref')).html(); 
-			var startTime = $('input[name=schedule.startTime]').val() + ' ' + time;
-			var fakeStartTime = $("<input type='text' name='schedule.startTime' value='" + startTime+ "' />");
-			
-			var dadosFormat = 'schedule.doctor.id={0}&{1}&{2}';
-			var dados = dadosFormat.format(doctorId, fakeStartTime.serialize(), subjectField.serialize());
-			
-			$.ajax({
-		        type: 'POST',
-		        url: EasyClinica.cfg.services.scheduleSave,
-		        data: dados,
-		        success: function(json) {
-		        	if(json.status == '1') {
-		        		carregarListaDeCompromissos();
-		        	}
-		        }
-		    });
-			
+		$('input[name=schedule.subject]').keyup(function(event){
+			if (event.keyCode == '13') {
+			     event.preventDefault();
+			     
+			     var doctorId = $('select[name=schedule.doctor.id]').val();
+					
+				 var subjectField = $(this);			
+				 subjectField.addClass('ac_loading');
+				
+				 var time = $('span#' + subjectField.attr('time_ref')).html(); 
+				 var startTime = $('input[name=schedule.startTime]').val() + ' ' + time;
+				 var fakeStartTime = $("<input type='text' name='schedule.startTime' value='" + startTime+ "' />");
+				
+				 var dadosFormat = 'schedule.doctor.id={0}&{1}&{2}';
+				 var dados = dadosFormat.format(doctorId, fakeStartTime.serialize(), subjectField.serialize());
+				
+				 $.ajax({
+			        type: 'POST',
+			        url: EasyClinica.cfg.services.scheduleSave,
+			        data: dados,
+			        success: function(json) {
+			        	if(json.status == '1') {
+			        		carregarListaDeCompromissos();
+			        	}
+			        }
+			     });
+			}
 		});		
 	};
 	
@@ -165,7 +166,7 @@ EasyClinica.pages['agenda'] = function(){
 		        		var table = trCompromisso.parent();
 		        		trCompromisso.remove();
 		        		
-		        		if(table.find('tr').size() == 1) table.remove();
+		        		if(table.find('tr').size() == 0) table.remove();
 		        	}
 		        }
 		    });

@@ -35,7 +35,7 @@
 			                    <th>Em nome de</th>
 			                    <th>CPF</th>
 			                    <th>Valor</th> 
-			                    <th width="212px">&nbsp;</th>
+			                    <th width="42px">&nbsp;</th>
 			                </tr> 
                   
 							<c:forEach items="${patient.receipts}" var="receipt" varStatus="st">
@@ -48,14 +48,22 @@
 									<td class="currency">${receipt.amount}</td>
 									
 									<td class="buttons">
-										<a class="btnpdf" title="Gerar recibo em formato .pdf" href="<c:url value="/pacientes/${receipt.patient.id}/recibos/${receipt.id}"/>">&nbsp;</a>
-										<a class="btnpeopleedit" title="Editar" href="<c:url value="/pacientes/${receipt.patient.id}/recibos/${receipt.id}/editar"/>">&nbsp;</a>
-                                    	<a class="btnpeopleshow exibir" title="Exibir" recibo_id="${receipt.id}">&nbsp;</a>
-                                        
-										<form action="<c:url value="/pacientes/${receipt.patient.id}/recibos/${receipt.id}"/>" method="post">
-									        <input type="hidden" name="_method" value="delete"/>
-									        <input type="submit" class="btndelete" title="Excluir Recibo" value="" onclick="return confirm('Deseja realmente deletar esse recibo?');"/>
-									    </form>
+										<span class="btntools">Ferramentas
+      										<span class="boxtools">
+      											<span class="buttons">
+      												<span class="arrow">&nbsp;</span>
+      												
+													<a class="btnpdf" title="Gerar recibo em formato .pdf" href="<c:url value="/pacientes/${receipt.patient.id}/recibos/${receipt.id}"/>">&nbsp;</a>
+													<a class="btnpeopleedit" title="Editar" href="<c:url value="/pacientes/${receipt.patient.id}/recibos/${receipt.id}/editar"/>">&nbsp;</a>
+			                                    	<a class="btnpeopleshow exibir" title="Exibir" recibo_id="${receipt.id}">&nbsp;</a>
+			                                        
+													<form action="<c:url value="/pacientes/${receipt.patient.id}/recibos/${receipt.id}"/>" method="post">
+												        <input type="hidden" name="_method" value="delete"/>
+												        <input type="submit" class="btndelete" title="Excluir Recibo" value="" onclick="return confirm('Deseja realmente deletar esse recibo?');"/>
+												    </form>
+												</span>
+											</span>
+										</span>
                                     </td>
 								</tr>
 							</c:forEach>

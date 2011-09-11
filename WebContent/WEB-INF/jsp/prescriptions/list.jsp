@@ -36,7 +36,7 @@
 			                    <th>Data</th> 
 			                    <th>Médico</th> 
 			                    <th>Observação</th> 
-			                    <th width="205px">&nbsp;</th>
+			                    <th width="42px">&nbsp;</th>
 			                </tr> 
                   
 							<c:forEach items="${patient.prescriptions}" var="prescription" varStatus="st">
@@ -48,14 +48,22 @@
 									<td>${prescription.text}</td>
 									
 									<td class="buttons">
-										<a class="btnpdf" title="Gerar prescrição em formato .pdf" href="<c:url value="/pacientes/${patient.id}/prescricoes/${prescription.id}/imprimir"/>">&nbsp;</a>
-										<a class="btnpeopleshow" title="Exibir" href="<c:url value="/pacientes/${patient.id}/prescricoes/${prescription.id}"/>">&nbsp;</a>
-										<a class="btnpeopleedit" title="Editar" href="<c:url value="/pacientes/${patient.id}/prescricoes/${prescription.id}/editar"/>">&nbsp;</a>
-                                                                            	
-                                    	<form action="<c:url value="/pacientes/${patient.id}/prescricoes/${prescription.id}"/>" method="post">
-									        <input type="hidden" name="_method" value="delete"/>
-									        <input type="submit" class="btndelete" title="Excluir Prescrição" value="" onclick="return confirm('Deseja realmente deletar essa prescrição?');"/>
-									    </form>
+										<span class="btntools">Ferramentas
+      										<span class="boxtools">
+      											<span class="buttons">
+      												<span class="arrow">&nbsp;</span>
+									
+													<a class="btnpdf" title="Gerar prescrição em formato .pdf" href="<c:url value="/pacientes/${patient.id}/prescricoes/${prescription.id}/imprimir"/>">&nbsp;</a>
+													<a class="btnpeopleshow" title="Exibir" href="<c:url value="/pacientes/${patient.id}/prescricoes/${prescription.id}"/>">&nbsp;</a>
+													<a class="btnpeopleedit" title="Editar" href="<c:url value="/pacientes/${patient.id}/prescricoes/${prescription.id}/editar"/>">&nbsp;</a>
+			                                                                            	
+			                                    	<form action="<c:url value="/pacientes/${patient.id}/prescricoes/${prescription.id}"/>" method="post">
+												        <input type="hidden" name="_method" value="delete"/>
+												        <input type="submit" class="btndelete" title="Excluir Prescrição" value="" onclick="return confirm('Deseja realmente deletar essa prescrição?');"/>
+												    </form>
+												</span>
+											</span>
+										</span>
                                     </td>
 								</tr>
 							</c:forEach>

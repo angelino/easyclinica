@@ -36,7 +36,7 @@
 			                    <th>Data</th> 
 			                    <th>Médico</th>
 			                    <th>Queixa e Duração</th> 
-			                    <th width="160px">&nbsp;</th>
+			                    <th width="42px">&nbsp;</th>
 			                </tr> 
                   
 							<c:forEach items="${patient.anamneses}" var="anamnese" varStatus="st">
@@ -48,13 +48,22 @@
 									<td>${anamnese.complaintAndDuration}</td>
 									
 									<td class="buttons">
-										<a class="btnpeopleshow" title="Exibir" href="<c:url value="/pacientes/${patient.id}/anamneses/${anamnese.id}"/>">&nbsp;</a>
-										<a class="btnpeopleedit" title="Editar" href="<c:url value="/pacientes/${patient.id}/anamneses/${anamnese.id}/editar"/>">&nbsp;</a>
-                                                                            	
-                                    	<form action="<c:url value="/pacientes/${patient.id}/anamneses/${anamnese.id}"/>" method="post">
-									        <input type="hidden" name="_method" value="delete"/>
-									        <input type="submit" class="btndelete" title="Excluir Anamnese" value="" onclick="return confirm('Deseja realmente deletar essa anamnese?');"/>
-									    </form>
+										<span class="btntools">Ferramentas
+	                       					<span class="boxtools">
+	                       						<span class="buttons">
+		                       						<span class="arrow">&nbsp;</span>
+									
+													<a class="btnpeopleshow" title="Exibir" href="<c:url value="/pacientes/${patient.id}/anamneses/${anamnese.id}"/>">&nbsp;</a>
+													<a class="btnpeopleedit" title="Editar" href="<c:url value="/pacientes/${patient.id}/anamneses/${anamnese.id}/editar"/>">&nbsp;</a>
+			                                                                            	
+			                                    	<form action="<c:url value="/pacientes/${patient.id}/anamneses/${anamnese.id}"/>" method="post">
+												        <input type="hidden" name="_method" value="delete"/>
+												        <input type="submit" class="btndelete" title="Excluir Anamnese" value="" onclick="return confirm('Deseja realmente deletar essa anamnese?');"/>
+												    </form>
+												</span>
+											</span>
+										</span>
+											
                                     </td>
 								</tr>
 							</c:forEach>

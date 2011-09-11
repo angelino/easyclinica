@@ -35,7 +35,7 @@
 							<tr class="tableheader">
 			                    <th>Data</th> 
 			                    <th>Observação</th> 
-			                    <th width="160px">&nbsp;</th>
+			                    <th width="42px">&nbsp;</th>
 			                </tr> 
                   
 							<c:forEach items="${patient.generalObservations}" var="observation" varStatus="st">
@@ -46,13 +46,22 @@
 									<td>${observation.text}</td>
 									
 									<td class="buttons">
-										<a class="btnpeopleshow" title="Exibir" href="<c:url value="/pacientes/${patient.id}/observacoes/${observation.id}"/>">&nbsp;</a>
-										<a class="btnpeopleedit" title="Editar" href="<c:url value="/pacientes/${patient.id}/observacoes/${observation.id}/editar"/>">&nbsp;</a>
-                                                                            	
-                                    	<form action="<c:url value="/pacientes/${patient.id}/observacoes/${observation.id}"/>" method="post">
-									        <input type="hidden" name="_method" value="delete"/>
-									        <input type="submit" class="btndelete" title="Excluir Observação" value="" onclick="return confirm('Deseja realmente deletar essa observação?');"/>
-									    </form>
+										<span class="btntools">Ferramentas
+	               							<span class="boxtools">
+	               								<span class="buttons">
+                									<span class="arrow">&nbsp;</span>
+										
+													<a class="btnpeopleshow" title="Exibir" href="<c:url value="/pacientes/${patient.id}/observacoes/${observation.id}"/>">&nbsp;</a>
+													<a class="btnpeopleedit" title="Editar" href="<c:url value="/pacientes/${patient.id}/observacoes/${observation.id}/editar"/>">&nbsp;</a>
+			                                                                            	
+			                                    	<form action="<c:url value="/pacientes/${patient.id}/observacoes/${observation.id}"/>" method="post">
+												        <input type="hidden" name="_method" value="delete"/>
+												        <input type="submit" class="btndelete" title="Excluir Observação" value="" onclick="return confirm('Deseja realmente deletar essa observação?');"/>
+												    </form>
+												</span>
+											</span>
+										</span>
+											
                                     </td>
 								</tr>
 							</c:forEach>

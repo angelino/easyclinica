@@ -35,7 +35,7 @@
 			                    <th>Convênio</th>
 			                    <th>Médico</th>
 			                    <th>Especialidade</th> 
-			                    <th width="156px">&nbsp;</th>
+			                    <th width="42px">&nbsp;</th>
 			                </tr> 
                   
 							<c:forEach items="${appointments.result}" var="appointment" varStatus="st">
@@ -51,12 +51,19 @@
 									<td>${appointment.specialty.name}</td>
 									
 									<td class="buttons">
-										<a class="btnpeopleshow" title="Exibir" href="<c:url value="/pacientes/${patient.id}/consultas/${appointment.id}"/>">&nbsp;</a>
+										<span class="btntools">Ferramentas
+	                       					<span class="boxtools">
+	                       						<span class="buttons">
+		                       						<span class="arrow">&nbsp;</span>
+														<a class="btnpeopleshow" title="Exibir" href="<c:url value="/pacientes/${patient.id}/consultas/${appointment.id}"/>">&nbsp;</a>
                                     	
-                                    	<form action="<c:url value="/pacientes/${patient.id}/consultas/${appointment.id}"/>" method="post">
-									        <input type="hidden" name="_method" value="delete"/>
-									        <input type="submit" class="btndelete" title="Excluir Consulta" value="" onclick="return confirm('Deseja realmente deletar essa consulta?');"/>
-									    </form>
+				                                    	<form action="<c:url value="/pacientes/${patient.id}/consultas/${appointment.id}"/>" method="post">
+													        <input type="hidden" name="_method" value="delete"/>
+													        <input type="submit" class="btndelete" title="Excluir Consulta" value="" onclick="return confirm('Deseja realmente deletar essa consulta?');"/>
+													    </form>
+													</span>
+												</span>
+											</span>
 									</td>
 								</tr>
 							</c:forEach>
