@@ -1,3 +1,4 @@
+Before do
 #delete from appointmentassistant;
 #delete from appointmentmaterial;
 #delete from appointmentmedicine;
@@ -15,3 +16,4 @@
 
 #delete from doctor;
 #delete from patient;
+end

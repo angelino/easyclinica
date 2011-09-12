@@ -10,6 +10,14 @@ E /^seleciono "(.*)" em "(.*)"$/ do |valor, campo|
   select valor,:from=>campo
 end
 
+E /^clico em Buscar$/ do
+  click_link "Buscar"  
+end
+
+E /^espero a resposta$/ do
+  sleep 2
+end
+  
 Quando /^pressiono "(.*)"$/ do |botao|
   click_button botao
 end
@@ -20,6 +28,10 @@ end
 
 Entao /^devo ver "(.*)"$/ do |texto|
   page.should have_content(texto)
+end
+
+Entao /^nao devo ver "(.*)"$/ do |texto|
+  page.should_not have_content(texto)
 end
 
 E /^seleciono "(.*)" no autocomplete "(.*)"$/ do |opcao, campo|

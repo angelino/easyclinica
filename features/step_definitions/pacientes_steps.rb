@@ -17,3 +17,8 @@ Dado /^que um paciente "([^"]*)" do convenio "([^"]*)" esta cadastrado$/ do |nom
   
   click_button 'btnSalvar'
 end
+
+Quando /^busco o paciente "([^"]*)"$/ do |nome|
+  fill_in 'patient.textobusca', :with => nome
+end
+

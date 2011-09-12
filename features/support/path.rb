@@ -6,6 +6,8 @@ module Path
       '/login'
     when "tela de novo paciente"
       '/pacientes/novo'
+    when "tela de listagem de pacientes"
+      '/pacientes'
     when "tela de novo medico"
       '/medicos/novo'
     when "tela de novo convenio"
