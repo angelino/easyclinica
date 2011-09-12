@@ -54,3 +54,19 @@ Cenario: Deve validar campos obrigatorios
 	E que estou na tela de novo medico
 	Quando pressiono "Salvar"
 	Entao devo ver "campo obrigatório"
+	
+Cenario: Deve buscar medico
+	Dado que estou logado como owner
+	E que um medico "Roberto Aniche" padrao esta cadastrado
+	E que um medico "Marcelo Aniche" padrao esta cadastrado
+  	E que estou na tela de listagem de medicos
+	E busco o medico "Roberto"
+	E clico no link "Buscar"
+	Entao devo ver "Roberto Aniche"
+	E busco o medico "Marcelo"
+	E clico no link "Buscar"
+	Entao devo ver "Marcelo Aniche"
+	E busco o medico "Aniche"
+	E clico no link "Buscar"
+	Entao devo ver "Marcelo Aniche"
+	E devo ver "Roberto Aniche"

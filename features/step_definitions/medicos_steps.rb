@@ -6,3 +6,7 @@ Dado /^que um medico "([^"]*)" padrao esta cadastrado$/ do |nome|
   select 'ORTOPEDIA E TRAUMATOLOGIA',:from=>'doctor.specialty.id'
   click_button 'Salvar'
 end
+
+E /^busco o medico "([^"]*)"$/ do |medico|
+  fill_in "doctor.textobusca", :with => medico
+end

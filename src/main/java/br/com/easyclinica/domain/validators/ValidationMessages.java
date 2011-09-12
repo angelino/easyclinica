@@ -27,4 +27,5 @@ public class ValidationMessages {
 	public static final String INVALID_BIRTHDATE = "errors.invalid_birthdate";
 
 	public static final String INVALID_PRESCRIPTION = "errors.invalid_prescription";
+	public static final String INVALID_INTERVAL_BETWEEN_APPOINTMENTS = "errors.invalid_interval_between_appointments";
 }

@@ -31,7 +31,9 @@ public class DefaultDoctorValidator implements DoctorValidator {
 		if(obj.getSpecialty().getId() == 0) {
 			errors.add(new Error("doctor", ValidationMessages.INVALID_SPECIALTY));
 		}
-		
+		if(obj.getIntervalBetweenAppointments() < 5) {
+			errors.add(new Error("doctor", ValidationMessages.INVALID_INTERVAL_BETWEEN_APPOINTMENTS));
+		}		
 		return errors;
 	}
 }

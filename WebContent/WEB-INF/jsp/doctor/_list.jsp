@@ -13,10 +13,10 @@
        	<table border="0" class="easy">
 			<tr class="tableheader">
 				<th width="19px"></th>
-				<th>Nome:</th>
-				<th>CRM:</th>
-				<th>Telefone:</th>
-				<th>E-mail:</th>
+				<th>Nome</th>
+				<th>CRM</th>
+				<th>Telefone</th>
+				<th>E-mail</th>
 				<th width="42px">&nbsp;</th>
 			</tr>
 			

@@ -38,3 +38,8 @@ E /^seleciono "(.*)" no autocomplete "(.*)"$/ do |opcao, campo|
   fill_in campo, :with => opcao
   locate("li:contains('#{opcao}')").click
 end
+
+Quando /^dou enter e espero$/ do
+  pending
+  sleep 2
+end

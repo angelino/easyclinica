@@ -50,7 +50,7 @@
          
          <div>
          	<label class="title">Intervalo entre consultas (em minutos):</label>
-         	<input type="text" name="doctor.intervalBetweenAppointments" value="${doctor.intervalBetweenAppointments}" maxlength="2" />
+         	<input type="text" name="doctor.intervalBetweenAppointments" value="${doctor.intervalBetweenAppointments == 0 ? 5 : doctor.intervalBetweenAppointments}" maxlength="2" />
          </div>
       </fieldset>
       
