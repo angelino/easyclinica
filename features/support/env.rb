@@ -3,7 +3,8 @@ require 'capybara/dsl'
 require 'capybara/cucumber'
 
 Capybara.default_driver = :selenium
-Capybara.app_host = 'http://homologacao.easyclinica.com.br'
+#Capybara.app_host = 'http://homologacao.easyclinica.com.br'
+Capybara.app_host = 'http://easyclinica.dev:8080'
 Capybara.register_driver :selenium do |app|
   Capybara::Driver::Selenium.new(app, :browser => :firefox)
 
@@ -17,5 +18,5 @@ end
 
 World(Capybara)
 
-# requer usuario homolog senha 123
+# requer usuario homolog senha 1234
 # requer medico Dr. Roberto

@@ -4,6 +4,7 @@ Funcionalidade: Cadastro de pacientes
 
 Esquema do Cenario: Novo paciente
   Dado que estou logado como owner
+  E que um convenio "Amil" padrao esta cadastrado
   E que estou na tela de novo paciente
   Quando preencho "<nome>" em "patient.name"
   E preencho "<telefone>" em "patient.telephone"
@@ -23,7 +24,7 @@ Esquema do Cenario: Novo paciente
   E preencho "<cidade>" em "patient.address.city"
   E preencho "<estado>" em "patient.address.state"
   E preencho "<observacoes>" em "patient.observations"
-  E pressiono "btnSalvar"
+  E pressiono "Salvar"
   Entao devo ver "Paciente adicionado com sucesso!"
   E devo ver "<nome>"
   E devo ver "<telefone>"
@@ -52,6 +53,7 @@ Exemplos:
 
 Cenario: Editar Paciente
 	Dado que estou logado como owner
+	E que um convenio "Amil" padrao esta cadastrado
 	E que um paciente "Mauricio" padrao esta cadastrado
 	Quando clico no link "Edição"
 	E preencho "Mauricio 2" em "patient.name"
@@ -96,5 +98,5 @@ Cenario: Editar Paciente
 Cenario: Deve validar campos obrigatorios
 	Dado que estou logado como owner
 	E que estou na tela de novo paciente
-	Quando pressiono "btnSalvar"
+	Quando pressiono "Salvar"
 	Entao devo ver "campo obrigatório"

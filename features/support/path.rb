@@ -8,6 +8,9 @@ module Path
       '/pacientes/novo'
     when "tela de novo medico"
       '/medicos/novo'
+    when "tela de novo convenio"
+      '/convenios/novo'
+
     else
       raise 'Nao sei aonde eh!'
     end
