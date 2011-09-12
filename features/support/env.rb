@@ -19,4 +19,3 @@ end
 World(Capybara)
 
 # requer usuario homolog senha 1234
-# requer medico Dr. Roberto

@@ -1,19 +1,27 @@
-Before do
-#delete from appointmentassistant;
-#delete from appointmentmaterial;
-#delete from appointmentmedicine;
-#delete from appointmentprocedure;
-#delete from appointment;
+require 'rubygems'
+require 'mysql'
 
-#delete from anamnese;
-#delete from generalobservations;
-#delete from chatmessage;
-#delete from message;
-#delete from receipt;
-#delete from prescription;
-#delete from reply;
-#delete from schedule;
 
-#delete from doctor;
-#delete from patient;
-end
+#Before do
+#  con = Mysql.new('localhost', 'root', '', 'easyclinica')
+#  con.query('delete from appointmentassistant')
+  
+#  con.query('delete from appointmentmaterial')
+#  con.query('delete from appointmentmedicine')
+#  con.query('delete from appointmentprocedure')
+#  con.query('delete from appointment')
+
+#  con.query('delete from anamnese')
+#  con.query('delete from generalobservations')
+#  con.query('delete from chatmessage')
+#  con.query('delete from message')
+#  con.query('delete from receipt')
+#  con.query('delete from prescription')
+#  con.query('delete from reply')
+#  con.query('delete from schedule')
+
+#  con.query('delete from doctor')
+#  con.query('delete from patient')
+  
+#  con.close
+#end

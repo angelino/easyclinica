@@ -31,7 +31,7 @@ Cenario: Buscar varios pacientes pelo sobrenome
   E que um paciente "Roberto Aniche" padrao esta cadastrado
   E que um paciente "Murilo Amendola" padrao esta cadastrado
   E que estou na tela de listagem de pacientes
-  Quando busco o paciente "Amendola"
+  Quando busco o paciente "Aniche"
   E clico em Buscar
   E espero a resposta
   Entao devo ver "Mauricio Aniche"
