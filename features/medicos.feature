@@ -11,6 +11,7 @@ Esquema do Cenario: Novo medico
   E preencho "<email>" em "doctor.email"
   E preencho "<observacoes>" em "doctor.observations"
   E seleciono "<especialidade>" em "doctor.specialty.id"
+  E preencho "<tempo>" em "doctor.intervalBetweenAppointments"
   E pressiono "Salvar"
   Entao devo ver "Médico adicionado com sucesso!"
   E devo ver "<nome>"
@@ -19,12 +20,13 @@ Esquema do Cenario: Novo medico
   E devo ver "<email>"
   E devo ver "<especialidade>"
   E devo ver "<observacoes>"
+  E devo ver "<tempo> minutos"
   
 Exemplos:
 
-|nome           | crm    | telefone        | email            | especialidade | observacoes  |
-|Doctor House   | 12.345 | (11) 1122-3344  | doctor@house.com | Ortopedia     | super medico |
-|Spock          | 123-A  |                 |                  | Pediatria     | vulcaniano   |
+|nome           | crm    | telefone        | email            | especialidade                 | observacoes  | tempo |
+|Doctor House   | 12.345 | (11) 1122-3344  | doctor@house.com | ORTOPEDIA E TRAUMATOLOGIA     | super medico |  10   |
+|Spock          | 123-A  |                 |                  | PEDIATRIA                     | vulcaniano   |  15   |
 
 Cenario: Editar Medico
 	Dado que estou logado como owner
@@ -35,7 +37,8 @@ Cenario: Editar Medico
 	E preencho "(11) 8888-7777" em "doctor.telephone"
 	E preencho "novo@email.com" em "doctor.email"
 	E preencho "nova obs" em "doctor.observations"
-	E seleciono "Pediatria" em "doctor.specialty.id"
+	E seleciono "PEDIATRIA" em "doctor.specialty.id"
+	E preencho "30" em "doctor.intervalBetweenAppointments"
 	E pressiono "Salvar"
 	Entao devo ver "Médico alterado com sucesso!"
 	E devo ver "Dr. Seboso 2"
@@ -43,7 +46,8 @@ Cenario: Editar Medico
 	E devo ver "(11) 8888-7777"
 	E devo ver "novo@email.com"
 	E devo ver "nova obs"
-	E devo ver "Pediatria"
+	E devo ver "PEDIATRIA"
+	E devo ver "30 minutos"
 	
 Cenario: Deve validar campos obrigatorios
 	Dado que estou logado como owner
