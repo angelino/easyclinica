@@ -12,13 +12,13 @@
    		<c:otherwise>
     		<table border="0" class="easy">
 				<tr class="tableheader">
-					<th width="20px">Id</th>
-					<th>Nome</th>
-					<th>Sexo</th>
-					<th>Convênio</th>
-					<th>Número no Convênio</th>
-					<th>Telefone</th>
-					<th>Celular</th>
+					<th width="20px">Id:</th>
+					<th>Nome:</th>
+					<th>Sexo:</th>
+					<th>Convênio:</th>
+					<th>Número no Convênio:</th>
+					<th>Telefone:</th>
+					<th>Celular:</th>
 					<th width="42px">&nbsp;</th>
 				</tr>
 				
