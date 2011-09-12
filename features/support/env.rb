@@ -2,6 +2,14 @@ require 'capybara'
 require 'capybara/dsl'
 require 'capybara/cucumber'
 
+require 'rubygems'
+require 'mysql' # ruby-mysql gem
+
+DB_HOST = "localhost"
+DB_USER = "root"
+DB_PWD = ""
+DB_SCHEMA = "easyclinica"
+
 Capybara.default_driver = :selenium
 #Capybara.app_host = 'http://homologacao.easyclinica.com.br'
 Capybara.app_host = 'http://easyclinica.dev:8080'
