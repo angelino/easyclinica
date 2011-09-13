@@ -23,6 +23,7 @@ Before do
   con.query('truncate table precifiedspecialty')
   con.query('truncate table precifiedprocedure')
   con.query('truncate table precifiedmedicine')
+  con.query('delete from healthcareplan where id not in (select privateplan_id from clinic)')
     
   con.close
 end

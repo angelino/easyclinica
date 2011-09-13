@@ -7,6 +7,11 @@ end
 
 Quando /^salvo a consulta$/ do
 	click_button 'btnSalvar'
+  page.execute_script("var e = jQuery.Event('click');$('#btnConfirmar').trigger(e);");
+end
+
+Quando /^altero o preco do (.*)o procedimento para "(.*)"$/ do |procedimento, valor|
+	fill_in "appointment.procedures[#{procedimento.to_i - 1}].amount", :with => valor
 end
 
 Quando /^altero a quantidade do (.*)o material do (.*)o procedimento para "(.*)"$/ do |material, procedimento, valor|
