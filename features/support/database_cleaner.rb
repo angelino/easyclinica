@@ -1,28 +1,28 @@
 Before do
   con = Mysql.connect(DB_HOST, DB_USER, DB_PWD, DB_SCHEMA)
-  con.query('delete from appointmentassistant')
+  con.query('truncate table appointmentassistant')
   
-  con.query('delete from appointmentmaterial')
-  con.query('delete from appointmentmedicine')
-  con.query('delete from appointmentprocedure')
-  con.query('delete from appointment')
+  con.query('truncate table appointmentmaterial')
+  con.query('truncate table appointmentmedicine')
+  con.query('truncate table appointmentprocedure')
+  con.query('truncate table appointment')
 
-  con.query('delete from anamnese')
-  con.query('delete from generalobservations')
-  con.query('delete from chatmessage')
-  con.query('delete from message')
-  con.query('delete from receipt')
-  con.query('delete from prescription')
-  con.query('delete from reply')
-  con.query('delete from schedule')
+  con.query('truncate table anamnese')
+  con.query('truncate table generalobservations')
+  con.query('truncate table chatmessage')
+  con.query('truncate table message')
+  con.query('truncate table receipt')
+  con.query('truncate table prescription')
+  con.query('truncate table reply')
+  con.query('truncate table schedule')
 
-  con.query('delete from doctor')
-  con.query('delete from patient')
+  con.query('truncate table doctor')
+  con.query('truncate table patient')
 
-  con.query('delete from precifiedmaterial')
-  con.query('delete from precifiedspecialty')
-  con.query('delete from precifiedprocedure')
-  con.query('delete from precifiedmedicine')
+  con.query('truncate table precifiedmaterial')
+  con.query('truncate table precifiedspecialty')
+  con.query('truncate table precifiedprocedure')
+  con.query('truncate table precifiedmedicine')
     
   con.close
 end
