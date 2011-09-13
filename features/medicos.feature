@@ -2,32 +2,26 @@
 
 Funcionalidade: Cadastro de medicos
 
-Esquema do Cenario: Novo medico
+Cenario: Novo medico
   Dado que estou logado como owner
   E que estou na tela de novo medico
-  Quando preencho "<nome>" em "doctor.name"
-  E preencho "<crm>" em "doctor.crm"
-  E preencho "<telefone>" em "doctor.telephone"
-  E preencho "<email>" em "doctor.email"
-  E preencho "<observacoes>" em "doctor.observations"
-  E seleciono "<especialidade>" em "doctor.specialty.id"
-  E preencho "<tempo>" em "doctor.intervalBetweenAppointments"
+  Quando preencho "Marcelo Aniche" em "doctor.name"
+  E preencho "123.456" em "doctor.crm"
+  E preencho "(11) 1122-3344" em "doctor.telephone"
+  E preencho "marcelo@aniche.com.br" em "doctor.email"
+  E preencho "sei la" em "doctor.observations"
+  E seleciono "PEDIATRIA" em "doctor.specialty.id"
+  E preencho "20" em "doctor.intervalBetweenAppointments"
   E pressiono "Salvar"
   Entao devo ver "Médico adicionado com sucesso!"
-  E devo ver "<nome>"
-  E devo ver "<crm>"
-  E devo ver "<telefone>"
-  E devo ver "<email>"
-  E devo ver "<especialidade>"
-  E devo ver "<observacoes>"
-  E devo ver "<tempo> minutos"
+  E devo ver "Marcelo Aniche"
+  E devo ver "123.456"
+  E devo ver "(11) 1122-3344"
+  E devo ver "marcelo@aniche.com.br"
+  E devo ver "PEDIATRIA"
+  E devo ver "sei la"
+  E devo ver "20 minutos"
   
-Exemplos:
-
-|nome           | crm    | telefone        | email            | especialidade                 | observacoes  | tempo |
-|Doctor House   | 12.345 | (11) 1122-3344  | doctor@house.com | ORTOPEDIA E TRAUMATOLOGIA     | super medico |  10   |
-|Spock          | 123-A  |                 |                  | PEDIATRIA                     | vulcaniano   |  15   |
-
 Cenario: Editar Medico
 	Dado que estou logado como owner
 	E que um medico "Dr. Seboso" padrao esta cadastrado
