@@ -156,7 +156,7 @@ Cenario: Procedimentos e taxa de sala
 	Entao devo ver "R$ 12,34"
 	E devo ver "R$ 162,51"
 
-@javascript @bla
+@javascript
 Cenario: Material e procedimento adicionados
 	Dado que estou logado como owner
 	E que um convenio "Amil" padrao esta cadastrado
