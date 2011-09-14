@@ -156,3 +156,25 @@ Cenario: Procedimentos e taxa de sala
 	Entao devo ver "R$ 12,34"
 	E devo ver "R$ 162,51"
 
+@javascript @bla
+Cenario: Material e procedimento adicionados
+	Dado que estou logado como owner
+	E que um convenio "Amil" padrao esta cadastrado
+	E que um medico "Dr. Roberto Aniche" padrao esta cadastrado
+	E que um paciente "Mauricio" do convenio "Amil" esta cadastrado
+	Quando clico no link "Nova consulta"
+	E marco a consulta para o dia "10/10/2010"
+	E seleciono o doutor "Dr. Roberto Aniche"
+	E adiciono o procedimento "ou preestabelecido"
+	E adiciono o remedio "PROZAC CX. 2 BLIS. X 7 CAPS." no 1o procedimento
+	E adiciono o material "Gaze" no 1o procedimento
+	E altero a quantidade do 1o material do 1o procedimento para "2,0"
+	E altero o preco do 1o material do 1o procedimento para "123,45"
+	E altero a quantidade do 1o medicamento do 1o procedimento para "3,0"
+	E altero o preco do 1o medicamento do 1o procedimento para "78,90"
+	E salvo a consulta
+	Entao devo ver "R$ 483,60"
+	E devo ver "R$ 246,90"
+	E devo ver "R$ 236,70"
+	
+# cenario: mudar todos valores e ver atualizacao

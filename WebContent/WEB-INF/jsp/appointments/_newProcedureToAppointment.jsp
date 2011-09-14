@@ -14,7 +14,7 @@
     	
     	<ul class="procedure-elements">
     		<li>
-    			<a href="" class="new-assistant" title="Adicionar assistente ao procedimento." form="frm-new-assistant-${procedure.id}">assistente</a>
+    			<a href="" class="new-assistant" title="Adicionar assistente ao procedimento." form="frm-new-assistant-${procedure.id}" id="add-assistant-#index#">assistente</a>
     			<div class="new-assistant">
     				<form class="frm-new-assistant-${procedure.id}">
     					<input type="hidden" name="index" value="#index#"/>
@@ -42,7 +42,7 @@
 					    </fieldset>
 					    		
 					    <div class="boxactions">
-							<input type="button" class="btnsave" value="Salvar" />
+							<input type="button" class="btnsave" value="Salvar" id="btnSaveAssistant-#index#" />
 					      	<a class="btnclose" rel="new-assistant" form="frm-new-assistant-${procedure.id}">Fechar</a>
 						</div>
 					</form>
@@ -50,7 +50,7 @@
     		</li>
     		
     		<li>
-    			<a href="" class="new-material" title="Adicionar material ao procedimento." form="frm-new-material-${procedure.id}">material</a>
+    			<a href="" class="new-material" title="Adicionar material ao procedimento." form="frm-new-material-${procedure.id}" id="add-material-#index#">material</a>
     			<div class="new-material">
     				<form class="frm-new-material-${procedure.id}">
     					<input type="hidden" name="index" value="#index#"/>
@@ -74,14 +74,14 @@
 					    </fieldset>
 					    		
 					    <div class="boxactions">
-							<input type="button" class="btnsave" value="Salvar" />
+							<input type="button" class="btnsave" value="Salvar" id="btnSaveMaterial-#index#" />
 					      	<a class="btnclose" rel="new-material" form="frm-new-material-${procedure.id}">Fechar</a>
 						</div>
 					</form>
     			</div>
     		</li>
     		<li>
-    			<a href="" class="new-medicine" title="Adicionar medicamento ao procedimento." form="frm-new-medicine-${procedure.id}">medicamento</a>
+    			<a href="" class="new-medicine" title="Adicionar medicamento ao procedimento." form="frm-new-medicine-${procedure.id}" id="add-medicine-#index#">medicamento</a>
     			<div class="new-medicine">
     				<form class="frm-new-medicine-${procedure.id}">
     					<input type="hidden" name="index" value="#index#"/>
@@ -105,7 +105,7 @@
 					    </fieldset>
 					    		
 					    <div class="boxactions">
-							<input type="button" class="btnsave" value="Salvar" />
+							<input type="button" class="btnsave" value="Salvar" id="btnSaveMedicine-#index#" />
 					      	<a class="btnclose" rel="new-medicine" form="frm-new-medicine-${procedure.id}">Fechar</a>
 						</div>
 					</form>

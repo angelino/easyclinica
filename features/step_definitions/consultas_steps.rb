@@ -10,15 +10,15 @@ Quando /^salvo a consulta$/ do
   page.execute_script("var e = jQuery.Event('click');$('#btnConfirmar').trigger(e);");
 end
 
-Quando /^altero o preco do (.*)o procedimento para "(.*)"$/ do |procedimento, valor|
+Quando /^altero o preco do ([0-9]*)o procedimento para "(.*)"$/ do |procedimento, valor|
 	fill_in "appointment.procedures[#{procedimento.to_i - 1}].amount", :with => valor
 end
 
-Quando /^altero a quantidade do (.*)o material do (.*)o procedimento para "(.*)"$/ do |material, procedimento, valor|
+Quando /^altero a quantidade do ([0-9]*)o material do ([0-9]*)o procedimento para "(.*)"$/ do |material, procedimento, valor|
 	fill_in "appointment.procedures[#{procedimento.to_i - 1}].materials[#{material.to_i - 1}].qty", :with => valor
 end
 
-Quando /^altero o preco do (.*)o material do (.*)o procedimento para "(.*)"$/ do |material, procedimento, valor|
+Quando /^altero o preco do ([0-9]*)o material do ([0-9]*)o procedimento para "(.*)"$/ do |material, procedimento, valor|
 	fill_in "appointment.procedures[#{procedimento.to_i - 1}].materials[#{material.to_i - 1}].unitAmount", :with => valor
 end
 
@@ -61,4 +61,18 @@ end
 Quando /^seleciono a especialidade "([^"]*)"$/ do |especialidade|
   select especialidade,:from=>'appointment.specialty.id'
   sleep 2
+end
+
+Quando /^adiciono o remedio "(.*)" no ([0-9]*)o procedimento$/ do |nome, posicao|
+  click_link "add-medicine-#{posicao.to_i - 1}"
+  fill_in 'medicineName', :with => nome
+  find("li:contains('#{nome}')").click
+  click_button "btnSaveMedicine-#{posicao.to_i- 1}"
+end
+
+Quando /^adiciono o material "(.*)" no ([0-9]*)o procedimento$/ do |nome, posicao|
+  click_link "add-material-#{posicao.to_i - 1}"
+  fill_in 'materialName', :with => nome
+  find("li:contains('#{nome}')").click
+  click_button "btnSaveMaterial-#{posicao.to_i- 1}"
 end
