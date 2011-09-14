@@ -11,6 +11,9 @@ EasyClinica.pages['consultas'] = function(){
 		var url = EasyClinica.cfg.services.modal.confirmacaoConsulta;
 		EasyClinica.lib.openModal(url, 'GET', {}, function(){
 			
+			 var position = btnSalvar.position();
+             $('.modal-popup').css('margin-top', (position.top - 100) + 'px');
+			
 			$('#btnConfirmar').click(function(e){
 				e.preventDefault();
 				
