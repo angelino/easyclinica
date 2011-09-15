@@ -33,14 +33,14 @@ public class ProcedureDao implements AllProcedures {
 						.add(Restrictions.eq("lpmCode", text))
 						.add(Restrictions.eq("cbhpmCode", text))
 						.add(Restrictions.like("name", text, MatchMode.ANYWHERE)))
-						.addOrder(Order.asc("name"))
+				.addOrder(Order.asc("name"))
 				.list();
 	}
 
 	@SuppressWarnings("unchecked")
 	public List<Procedure> getAll() {
 		return session.createCriteria(Procedure.class)
-				.addOrder(Order.asc("name")).list();
+					  .addOrder(Order.asc("name")).list();
 	}
 
 }

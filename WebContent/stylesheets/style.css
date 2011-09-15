@@ -420,7 +420,7 @@ div.error {
 	border: #000 solid 1px; 
 	position:absolute;
 	left:50%;
-	top:50%;
+	top:0;
 	z-index: 998;
 	margin: -250px 0 100px -300px;
 	width: 40%;
