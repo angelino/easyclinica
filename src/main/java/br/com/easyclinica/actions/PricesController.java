@@ -59,7 +59,7 @@ public class PricesController {
 		exporter.start().toPlan(plan).filterBy(filter).write(out);
 		
 		return new InputStreamDownload(new ByteArrayInputStream(
-				out.toByteArray()), "application/ms-excel", "precos-"
+				out.toByteArray()), "application/ms-excel", "precos-" + filter + "-"
 				+ formatName(plan.getName()) + ".xls", true, out.size());
 	}
 

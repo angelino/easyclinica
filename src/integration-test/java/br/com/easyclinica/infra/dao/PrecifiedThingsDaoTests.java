@@ -164,6 +164,38 @@ public class PrecifiedThingsDaoTests extends DaoBase {
 		assertEquals(BigDecimal.ZERO, materials.get(1).getAmount());
 		assertEquals(material2.getId(), materials.get(1).getId());
 	}
+	
+	@Test
+	public void shouldGetAllPricesForMaterialsForAPlanAndNotMixUpWithAnotherPlan() {
+		HealthCarePlan healthCarePlan = aSavedHealthCarePlan();
+		
+		Material material1 = aSavedMaterial();
+		session.save(material1);
+		Material material2 = aSavedMaterial();
+		session.save(material2);
+		
+		PrecifiedMaterial precifiedMaterial = new PrecifiedMaterial();
+		precifiedMaterial.setAmount(new BigDecimal(10.20));
+		precifiedMaterial.setHealthCarePlan(healthCarePlan);
+		precifiedMaterial.setMaterial(material1);
+		session.save(precifiedMaterial);
+
+		PrecifiedMaterial precifiedMaterial2 = new PrecifiedMaterial();
+		precifiedMaterial2.setAmount(new BigDecimal(10.20));
+		precifiedMaterial2.setHealthCarePlan(aSavedHealthCarePlan());
+		precifiedMaterial2.setMaterial(material1);
+		session.save(precifiedMaterial2);
+
+		
+		List<PricedStuff> materials = dao.getMaterialsPrice(healthCarePlan);
+		
+		assertEquals(2, materials.size());
+		assertEquals(precifiedMaterial.getAmount().doubleValue(), materials.get(0).getAmount().doubleValue(), 0.00001);
+		assertEquals(material1.getName(), materials.get(0).getName());
+		assertEquals(material1.getId(), materials.get(0).getId());
+		assertEquals(BigDecimal.ZERO, materials.get(1).getAmount());
+		assertEquals(material2.getId(), materials.get(1).getId());
+	}
 
 
 	@Test
@@ -180,6 +212,37 @@ public class PrecifiedThingsDaoTests extends DaoBase {
 		precifiedSpecialty.setHealthCarePlan(healthCarePlan);
 		precifiedSpecialty.setSpecialty(specialty1);
 		session.save(precifiedSpecialty);
+		
+		List<PricedStuff> specialties = dao.getSpecialtiesPrice(healthCarePlan);
+		
+		assertEquals(2, specialties.size());
+		assertEquals(precifiedSpecialty.getAmount().doubleValue(), specialties.get(0).getAmount().doubleValue(), 0.00001);
+		assertEquals(specialty1.getName(), specialties.get(0).getName());
+		assertEquals(specialty1.getId(), specialties.get(0).getId());
+		assertEquals(BigDecimal.ZERO, specialties.get(1).getAmount());
+		assertEquals(specialty2.getId(), specialties.get(1).getId());
+	}
+	
+	@Test
+	public void shouldGetAllPricesForSpecialtiesForAPlanAndNotMixUpWithOtherPlans() {
+		HealthCarePlan healthCarePlan = aSavedHealthCarePlan();
+		
+		Specialty specialty1 = aSavedSpecialty();
+		session.save(specialty1);
+		Specialty specialty2 = aSavedSpecialty();
+		session.save(specialty2);
+		
+		PrecifiedSpecialty precifiedSpecialty = new PrecifiedSpecialty();
+		precifiedSpecialty.setAmount(new BigDecimal(10.20));
+		precifiedSpecialty.setHealthCarePlan(healthCarePlan);
+		precifiedSpecialty.setSpecialty(specialty1);
+		session.save(precifiedSpecialty);
+
+		PrecifiedSpecialty precifiedSpecialty2 = new PrecifiedSpecialty();
+		precifiedSpecialty2.setAmount(new BigDecimal(10.20));
+		precifiedSpecialty2.setHealthCarePlan(aSavedHealthCarePlan());
+		precifiedSpecialty2.setSpecialty(specialty1);
+		session.save(precifiedSpecialty2);
 		
 		List<PricedStuff> specialties = dao.getSpecialtiesPrice(healthCarePlan);
 		
@@ -217,7 +280,74 @@ public class PrecifiedThingsDaoTests extends DaoBase {
 		assertEquals(medicine2.getId(), medicines.get(1).getId());
 	}
 	
+	@Test
+	public void shouldGetAllPricesForMedicinesForAPlanAndNotMixedUpWithAnotherPlan() {
+		HealthCarePlan healthCarePlan = aSavedHealthCarePlan();
+		
+		Medicine medicine1 = aSavedMedicine();
+		session.save(medicine1);
+		Medicine medicine2 = aSavedMedicine();
+		session.save(medicine2);
+		
+		PrecifiedMedicine precifiedMedicine = new PrecifiedMedicine();
+		precifiedMedicine.setAmount(new BigDecimal(10.20));
+		precifiedMedicine.setHealthCarePlan(healthCarePlan);
+		precifiedMedicine.setMedicine(medicine1);
+		session.save(precifiedMedicine);
 
+		PrecifiedMedicine precifiedMedicine1 = new PrecifiedMedicine();
+		precifiedMedicine1.setAmount(new BigDecimal(10.20));
+		precifiedMedicine1.setHealthCarePlan(aSavedHealthCarePlan());
+		precifiedMedicine1.setMedicine(medicine1);
+		session.save(precifiedMedicine1);
+		
+		List<PricedStuff> medicines = dao.getMedicinesPrice(healthCarePlan);
+		
+		assertEquals(2, medicines.size());
+		assertEquals(precifiedMedicine.getAmount().doubleValue(), medicines.get(0).getAmount().doubleValue(), 0.00001);
+		assertEquals(medicine1.getName(), medicines.get(0).getName());
+		assertEquals(medicine1.getId(), medicines.get(0).getId());
+		assertEquals(BigDecimal.ZERO, medicines.get(1).getAmount());
+		assertEquals(medicine2.getId(), medicines.get(1).getId());
+	}
+	
+
+	@Test
+	public void shouldGetAllPricesForProceduresForAPlanAndNotMixUpWithAnotherPlan() {
+		HealthCarePlan healthCarePlan = aSavedHealthCarePlan();
+		
+		Procedure procedure1 = aSavedProcedure();
+		session.save(procedure1);
+		Procedure procedure22 = aSavedProcedure();
+		session.save(procedure22);
+		
+		PrecifiedProcedure precifiedProcedure = new PrecifiedProcedure();
+		precifiedProcedure.setFixedAmount(new BigDecimal(10.20));
+		precifiedProcedure.setRoomTaxAmount(new BigDecimal(20.10));
+		precifiedProcedure.setHealthCarePlan(healthCarePlan);
+		precifiedProcedure.setProcedure(procedure1);
+		session.save(precifiedProcedure);
+
+		PrecifiedProcedure precifiedProcedure1 = new PrecifiedProcedure();
+		precifiedProcedure1.setFixedAmount(new BigDecimal(10.20));
+		precifiedProcedure1.setRoomTaxAmount(new BigDecimal(20.10));
+		precifiedProcedure1.setHealthCarePlan(aSavedHealthCarePlan());
+		precifiedProcedure1.setProcedure(procedure1);
+		session.save(precifiedProcedure1);
+		
+		List<PricedProcedure> procedures = dao.getProceduresPrice(healthCarePlan);
+		
+		assertEquals(2, procedures.size());
+		assertEquals(precifiedProcedure.getFixedAmount().doubleValue(), procedures.get(0).getAmount().doubleValue(), 0.00001);
+		assertEquals(precifiedProcedure.getRoomTaxAmount().doubleValue(), procedures.get(0).getRoomTaxAmount().doubleValue(), 0.00001);
+		assertEquals(precifiedProcedure.getCh(), procedures.get(0).getCh());
+		assertEquals(procedure1.getAmbCode(), procedures.get(0).getAmbCode());
+		assertEquals(procedure1.getName(), procedures.get(0).getName());
+		assertEquals(procedure1.getId(), procedures.get(0).getId());
+		assertEquals(BigDecimal.ZERO, procedures.get(1).getAmount());
+		assertEquals(procedure22.getId(), procedures.get(1).getId());
+	}
+	
 	@Test
 	public void shouldGetAllPricesForProceduresForAPlan() {
 		HealthCarePlan healthCarePlan = aSavedHealthCarePlan();

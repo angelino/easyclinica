@@ -39,7 +39,7 @@ public class PrecifiedThingsDao implements PrecifiedThings {
 	@SuppressWarnings("unchecked")
 	public List<PricedStuff> getMaterialsPrice(HealthCarePlan plan) {
 		StringBuilder sql = new StringBuilder();
-		sql.append("select new br.com.easyclinica.domain.entities.pricing.PricedStuff(m.id, m.name, pm.amount) from PrecifiedMaterial pm right outer join pm.material m left join pm.healthCarePlan plan with plan.id = :healthCarePlanId");
+		sql.append("select new br.com.easyclinica.domain.entities.pricing.PricedStuff(m.id, m.name, pm.amount) from PrecifiedMaterial pm right join pm.healthCarePlan h with h.id = :healthCarePlanId right outer join pm.material m");
 	
 		Query query = session.createQuery(sql.toString())
 						.setParameter("healthCarePlanId", plan.getId());
@@ -49,7 +49,7 @@ public class PrecifiedThingsDao implements PrecifiedThings {
 	@SuppressWarnings("unchecked")
 	public List<PricedStuff> getMedicinesPrice(HealthCarePlan plan) {
 		StringBuilder sql = new StringBuilder();
-		sql.append("select new br.com.easyclinica.domain.entities.pricing.PricedStuff(m.id, m.name, pm.amount) from PrecifiedMedicine pm right outer join pm.medicine m left join pm.healthCarePlan plan with plan.id = :healthCarePlanId");
+		sql.append("select new br.com.easyclinica.domain.entities.pricing.PricedStuff(m.id, m.name, pm.amount) from PrecifiedMedicine pm right join pm.healthCarePlan h with h.id = :healthCarePlanId right outer join pm.medicine m");
 	
 		Query query = session.createQuery(sql.toString())
 						.setParameter("healthCarePlanId", plan.getId());
@@ -59,7 +59,7 @@ public class PrecifiedThingsDao implements PrecifiedThings {
 	@SuppressWarnings("unchecked")
 	public List<PricedStuff> getSpecialtiesPrice(HealthCarePlan plan) {
 		StringBuilder sql = new StringBuilder();
-		sql.append("select new br.com.easyclinica.domain.entities.pricing.PricedStuff(m.id, m.name, pm.amount) from PrecifiedSpecialty pm right outer join pm.specialty m left join pm.healthCarePlan plan with plan.id = :healthCarePlanId");
+		sql.append("select new br.com.easyclinica.domain.entities.pricing.PricedStuff(m.id, m.name, pm.amount) from PrecifiedSpecialty pm right join pm.healthCarePlan h with h.id = :healthCarePlanId right outer join pm.specialty m");
 	
 		Query query = session.createQuery(sql.toString())
 						.setParameter("healthCarePlanId", plan.getId());
@@ -70,7 +70,7 @@ public class PrecifiedThingsDao implements PrecifiedThings {
 	@SuppressWarnings("unchecked")
 	public List<PricedProcedure> getProceduresPrice(HealthCarePlan plan) {
 		StringBuilder sql = new StringBuilder();
-		sql.append("select new br.com.easyclinica.domain.entities.pricing.PricedProcedure(m.id, m.name, pm.fixedAmount, m.ambCode, pm.ch, pm.roomTaxAmount) from PrecifiedProcedure pm right outer join pm.procedure m left join pm.healthCarePlan plan with plan.id = :healthCarePlanId");
+		sql.append("select new br.com.easyclinica.domain.entities.pricing.PricedProcedure(m.id, m.name, pm.fixedAmount, m.ambCode, pm.ch, pm.roomTaxAmount) from PrecifiedProcedure pm right join pm.healthCarePlan h with h.id = :healthCarePlanId right outer join pm.procedure m");
 	
 		Query query = session.createQuery(sql.toString())
 						.setParameter("healthCarePlanId", plan.getId());
