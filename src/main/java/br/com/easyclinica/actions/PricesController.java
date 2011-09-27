@@ -3,8 +3,9 @@ package br.com.easyclinica.actions;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.text.Normalizer;
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.List;
 
 import br.com.caelum.vraptor.Get;
@@ -64,25 +65,58 @@ public class PricesController {
 
 	@Post
 	@Path("/convenios/{id}/precos")
-	public void importPrices(int id, List<ImportedStuff> procedures,
-			List<ImportedStuff> specialties, List<ImportedStuff> medicines,
-			List<ImportedStuff> materials) {
+	public void importPrices(int id, String proceduresId, String proceduresCh, String proceduresRoomTax, String proceduresValue,
+			String materialsId, String materialsValue,
+			String medicinesId, String medicinesValue,
+			String specialtiesId, String specialtiesValue) {
 
 		HealthCarePlan plan = plans.getById(id);
 
-		if (procedures == null)
-			procedures = Collections.emptyList();
-		if (specialties == null)
-			specialties = Collections.emptyList();
-		if (medicines == null)
-			medicines = Collections.emptyList();
-		if (materials == null)
-			materials = Collections.emptyList();
+		List<ImportedStuff> procedures = convert(proceduresId, proceduresCh, proceduresRoomTax, proceduresValue);
+		List<ImportedStuff> specialties = convert(specialtiesId, specialtiesValue);
+		List<ImportedStuff> medicines = convert(medicinesId, medicinesValue);
+		List<ImportedStuff> materials = convert(materialsId, materialsValue);
 
 		updater.pricesForAHealthCarePlan(plan, procedures, specialties,
 				medicines, materials);
 
 		result.include("healthCarePlan", plan);
+	}
+
+	private List<ImportedStuff> convert(String proceduresId,
+			String proceduresCh, String proceduresRoomTax,
+			String proceduresValue) {
+		List<ImportedStuff> list = new ArrayList<ImportedStuff>();
+		
+		if(proceduresId.length()>0) {
+			String[] ids = proceduresId.split(",");
+			String[] values = proceduresValue.split(",");
+			String[] chs = proceduresCh.split(",");
+			String[] roomTaxes = proceduresRoomTax.split(",");
+			
+			for(int i = 0; i < ids.length; i++) {
+				list.add(new ImportedStuff(Integer.parseInt(ids[i]), "", new BigDecimal(values[i]), 
+						Integer.parseInt(chs[i]), new BigDecimal(roomTaxes[i])));
+			}
+		}
+		
+		return list;
+	}
+
+	private List<ImportedStuff> convert(String idFromView,
+			String valueFromView) {
+		List<ImportedStuff> list = new ArrayList<ImportedStuff>();
+		
+		if(idFromView.length()>0) {
+			String[] ids = idFromView.split(",");
+			String[] values = valueFromView.split(",");
+			
+			for(int i = 0; i < ids.length; i++) {
+				list.add(new ImportedStuff(Integer.parseInt(ids[i]), "", new BigDecimal(values[i])));
+			}
+		}
+		
+		return list;
 	}
 
 	@Get

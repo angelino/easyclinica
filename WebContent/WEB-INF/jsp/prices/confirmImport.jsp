@@ -19,29 +19,25 @@
 				<p class="messengernotice">Por favor, confirme os valores que serão importados. Essa operação não poderá ser revertida!</p>
 				
 				<form action="<c:url value="/convenios/${id}/precos" />" method="post">
-						
-						<c:forEach var="procedure" items="${import.importedProcedures}" varStatus="st">
-							<input type="hidden" name="procedures[${st.index}].id" value="${procedure.id}" />
-							<input type="hidden" name="procedures[${st.index}].ch" value="${procedure.ch}" />
-							<input type="hidden" name="procedures[${st.index}].roomTax" value="${procedure.roomTax}" />
-							<input type="hidden" name="procedures[${st.index}].value" value="${procedure.value}" />
-						</c:forEach>
-									
-					<c:forEach var="material" items="${import.importedMaterials}" varStatus="st">
-						<input type="hidden" name="materials[${st.index}].id" value="${material.id}" />
-						<input type="hidden" name="materials[${st.index}].value" value="${material.value}" />
-					</c:forEach>
-					
-					<c:forEach var="medicine" items="${import.importedMedicines}" varStatus="st">
-							<input type="hidden" name="medicines[${st.index}].id" value="${medicine.id}" />
-							<input type="hidden" name="medicines[${st.index}].value" value="${medicine.value}" />
-					</c:forEach>
-										
-					<c:forEach var="specialty" items="${import.importedSpecialties}" varStatus="st">
-						<input type="hidden" name="specialties[${st.index}].id" value="${specialty.id}" />
-						<input type="hidden" name="specialties[${st.index}].value" value="${specialty.value}" />
-					</c:forEach>
+					<c:forEach var="procedure" items="${import.importedProcedures}" varStatus="st"><c:set var="proceduresId" scope="page" value="${procedure.id},${proceduresId}" /><c:set var="proceduresCh" scope="page" value="${procedure.ch},${proceduresCh}" /><c:set var="proceduresRoomTax" scope="page" value="${procedure.roomTax},${proceduresRoomTax}" /><c:set var="proceduresValue" scope="page" value="${procedure.value},${proceduresValue}" /></c:forEach>
+					<c:forEach var="material" items="${import.importedMaterials}" varStatus="st"><c:set var="materialsId" scope="page" value="${material.id},${materialsId}" /><c:set var="materialsValue" scope="page" value="${material.value},${materialsValue}" /></c:forEach>
+					<c:forEach var="medicine" items="${import.importedMedicines}" varStatus="st"><c:set var="medicinesId" scope="page" value="${medicine.id},${medicinesId}" /><c:set var="medicinesValue" scope="page" value="${medicine.value},${medicinesValue}" /></c:forEach>
+					<c:forEach var="specialty" items="${import.importedSpecialties}" varStatus="st"><c:set var="specialtiesId" scope="page" value="${specialty.id},${specialtiesId}" /><c:set var="specialtiesValue" scope="page" value="${specialty.value},${specialtiesValue}" /></c:forEach>
 	
+						<input type="hidden" name="proceduresId" value="${proceduresId}" />
+						<input type="hidden" name="proceduresCh" value="${proceduresCh}" />
+						<input type="hidden" name="proceduresRoomTax" value="${proceduresRoomTax}" />
+						<input type="hidden" name="proceduresValue" value="${proceduresValue}" />
+						
+						<input type="hidden" name="materialsId" value="${materialsId}" />
+						<input type="hidden" name="materialsValue" value="${materialsValue}" />
+
+						<input type="hidden" name="medicinesId" value="${medicinesId}" />
+						<input type="hidden" name="medicinesValue" value="${medicinesValue}" />
+
+						<input type="hidden" name="specialtiesId" value="${specialtiesId}" />
+						<input type="hidden" name="specialtiesValue" value="${specialtiesValue}" />
+
 					<ul class="boxmenu" id="easyabas">
 						<li><a href="#procedimentos">Procedimentos</a></li>
 						<li><a href="#materiais">Materiais</a></li>
