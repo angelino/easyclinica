@@ -10,6 +10,7 @@ import br.com.caelum.vraptor.Result;
 import br.com.easyclinica.domain.entities.Schedule;
 import br.com.easyclinica.domain.repositories.AllMessages;
 import br.com.easyclinica.domain.repositories.AllSchedule;
+import br.com.easyclinica.domain.services.newbie.Newbie;
 import br.com.easyclinica.infra.gravatar.GravatarImage;
 import br.com.easyclinica.infra.multitenancy.LoggedUser;
 
@@ -20,12 +21,14 @@ public class HomeController {
 	private final Result result;
 	private final LoggedUser loggedUser;
 	private final AllSchedule allSchedule;
+	private final Newbie newbie;
 
-	public HomeController(AllMessages messages, Result result, LoggedUser loggedUser, AllSchedule allSchedule) {
+	public HomeController(AllMessages messages, Result result, LoggedUser loggedUser, AllSchedule allSchedule, Newbie newbie) {
 		this.messages = messages;
 		this.result = result;
 		this.loggedUser= loggedUser;
 		this.allSchedule = allSchedule;
+		this.newbie = newbie;
 	}
 	
 	@Get
@@ -40,6 +43,7 @@ public class HomeController {
 		else schedules = allSchedule.getScheduleByPeriod(Calendar.getInstance(), twoHoursAfter);
 		
 		result.include("schedules", schedules);
+		result.include("newbie", newbie);
 		result.include("gravatar", new GravatarImage());
 		result.include("messages", messages.recents());
 	}

@@ -8,8 +8,22 @@
 	<body>
 		<div class="box" id="dashboard">		
 			<div class="boxcontent">
-				<h2>Mural</h2>
 				
+				<c:if test="${newbie.newbie}">
+				<h2>Seja bem vindo ao Easy Clínica!</h2>
+				<div style="padding-bottom:15px;">
+				Olá, seja bem vindo ao Easy Clínica, o sistema de gerenciamento que
+				facilita a vida do médico.
+				
+				Você ainda não tem nenhum paciente cadastrado! Se quiser ajuda para começar,
+				assista o vídeo abaixo!
+				</div>
+				
+				<iframe src="http://player.vimeo.com/video/28370112?title=0&amp;byline=0&amp;portrait=0&amp;color=62a0ac" frameborder="0" width="670" height="400"></iframe>
+				</c:if>
+
+				<h2>Mural</h2>
+								
 				<div class="newpost">
 					<span>Compartilhe informações com toda a clínica!</span>
 					<form action="">
