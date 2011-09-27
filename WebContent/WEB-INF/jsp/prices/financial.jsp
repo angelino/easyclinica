@@ -18,11 +18,10 @@
 					Clique no link abaixo para gerar um arquivo Excel com os preços. 
 					Você poderá utilizar esse arquivo para importar novos preços. 
 					<br />
-					Você pode exportar apenas
-					uma parte da relação de preços. Ou seja, se você pretende alterar apenas preço de uma especialidade,
-					exporte apenas a lista de especialidades; isso agilizará o processo! 
+					Lembre-se de não modificar a estrutura do arquivo; apenas altere os valores.
 					<br/>
-					Mas lembre-se de não modificar a estrutura do arquivo; apenas altere os valores.
+					Para entender mais sobre o sistema de precificação, você pode ver 
+					um vídeo <a href="http://www.easyclinica.com.br/blog/entendendo-a-precificacao-da-consulta" target="_blank">aqui</a>. 
 				</p>
 				<div class="financial-buttons">				
 						<form action='<c:url value="/convenios/${healthCarePlan.id}/precos" />' id="frmDownloadPrices">
