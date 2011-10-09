@@ -2,5 +2,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 
 <c:forEach var="patient" items="${patients}">
-	${patient.name} (${patient.healthCarePlan.name})|${patient.id}
+	${patient.name}|${patient.id}
 </c:forEach>

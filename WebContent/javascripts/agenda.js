@@ -48,8 +48,10 @@ EasyClinica.pages['agenda'] = function(){
 	};
 	
 	var configurePatientAutoComplete = function() {
-		$("input[autocomplete=true]").autocomplete(EasyClinica.cfg.services.searchPatient, {
+		$("input[easyautocomplete=true]").autocomplete(EasyClinica.cfg.services.searchPatient, {
 			autoFill: false
+		}).result(function(event, item) {
+			$('input[name=schedule.patient.id]').val(item[1]);
 		});
 	};
 	
@@ -75,12 +77,19 @@ EasyClinica.pages['agenda'] = function(){
 				 var subjectField = $(this);			
 				 subjectField.addClass('ac_loading');
 				
+				 var patientId = subjectField.next('input[type=hidden]').val();
+				 
 				 var time = $('span#' + subjectField.attr('time_ref')).html(); 
 				 var startTime = $('input[name=schedule.startTime]').val() + ' ' + time;
 				 var fakeStartTime = $("<input type='text' name='schedule.startTime' value='" + startTime+ "' />");
 				
+				 
 				 var dadosFormat = 'schedule.doctor.id={0}&{1}&{2}';
 				 var dados = dadosFormat.format(doctorId, fakeStartTime.serialize(), subjectField.serialize());
+				 
+				 if(patientId > 0) {
+					 dados += '&schedule.patient.id={0}'.format(patientId);
+				 }
 				
 				 $.ajax({
 			        type: 'POST',

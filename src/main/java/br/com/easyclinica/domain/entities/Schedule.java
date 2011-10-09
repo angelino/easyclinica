@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.Cache;
@@ -29,6 +30,10 @@ public class Schedule {
 	@Index(name = "ScheduleDoctorIndex")
 	private Doctor doctor;
 	private boolean isTreated;
+	
+	@ManyToOne(optional= true)
+	@JoinColumn(name="patient_id", nullable=true)
+	private Patient patient;
 
 	public Schedule(int id) {
 		this.id = id;
@@ -88,6 +93,14 @@ public class Schedule {
 	
 	protected void setTreated(boolean isTreated) {
 		this.isTreated = isTreated;
+	}
+
+	public Patient getPatient() {
+		return patient;
+	}
+
+	public void setPatient(Patient patient) {
+		this.patient = patient;
 	}
 
 	public boolean isTreated() {

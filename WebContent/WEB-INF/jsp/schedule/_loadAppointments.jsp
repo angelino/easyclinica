@@ -18,7 +18,8 @@
 		<div class="time">
 			<span id="${st.count}"><fmt:formatDate type="time" pattern="HH:mm" value="${row.time.time}"/></span>			
 			<a class="btnaddevent" id="add_event_${st.count}" href="#">&nbsp;</a>
-			<input class="addcompromisso" type="text" id="schedule_subject_${st.count}" name="schedule.subject" time_ref="${st.count}" allowEnter="true" autocomplete="true"/>
+			<input class="addcompromisso" type="text" id="schedule_subject_${st.count}" name="schedule.subject" time_ref="${st.count}" allowEnter="true" easyautocomplete="true"/>
+			<input type="hidden" name="schedule.patient.id" value="0" />
 			<span class="infocompromisso">Digite uma breve descrição do Compromisso.</span>		
 		</div>
 		
@@ -27,7 +28,20 @@
 
 				<c:forEach items="${row.commitments}" var="commitment" varStatus="itemSt">
 					<tr schedule_id="${commitment.id}">
-						<td class="name">${commitment.subject}</td>
+						<td class="name">
+							${commitment.subject}
+							<c:if test="${commitment.patient != null && commitment.patient.id > 0}">
+								<div class="dados-paciente">
+									<a href="<c:url value="/pacientes/${commitment.patient.id}" />" class="btnpeopleshow" target="_blank" title="Visualizar dados do paciente">Visualizar dados do paciente</a>
+									<p>
+										<span>${commitment.patient.healthCarePlan.name}</span>
+										<c:if test="${not empty commitment.patient.telephone || not empty commitment.patient.cellphone}">
+											<span>${commitment.patient.telephone}  ${commitment.patient.cellphone}</span>
+										</c:if>
+									</p>
+								</div>
+							</c:if>
+						</td>
 						<td width="140">
 							<input type="text" name="arrivalTime-${commitment.id}" class="time" value="<fmt:formatDate type="time" pattern="HH:mm" value="${commitment.arrivalTime.time}"/>" id="arrivalTime_${st.count}_${itemSt.count}"/>
 							<a href="#" schedule_id="${commitment.id}" class="btnpeopleedit changeArrivalTime last" title="Alterar horário de chegada?" id="save_arrivalTime_${st.count}_${itemSt.count}">&nbsp;</a>

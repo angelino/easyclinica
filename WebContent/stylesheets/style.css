@@ -651,4 +651,9 @@ ul.printings li{padding:5px 0;}
 .schedule table.compromissos tr td a.btndelete{margin:0;text-indent: -9999px;}
 .schedule table.compromissos tr td a.last{margin:0!important;}
 
+.schedule table.compromissos tr td div.dados-paciente{width:270px;float:left;}
+.schedule table.compromissos tr td div.dados-paciente a.btnpeopleshow{margin:0 10px 0 0;text-indent: -9999px;}
+.schedule table.compromissos tr td div.dados-paciente p{float:left;width:auto;padding:0;margin:0;}
+.schedule table.compromissos tr td div.dados-paciente p span{width:100%;float:left;margin:0;padding:0;height:14px;}
+
 table.easy tr.tableheader th.name{padding:3px 3px 3px 5px!important; border-left:#ffffff 60px solid;}
