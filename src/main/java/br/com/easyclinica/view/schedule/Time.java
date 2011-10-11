@@ -12,7 +12,7 @@ public class Time {
 	private List<Schedule> commitments;
 
 	public Time(Calendar time) {
-		this.time = time;
+		this.time = (Calendar) time.clone();
 		
 		this.commitments = new LinkedList<Schedule>();
 	}
